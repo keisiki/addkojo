@@ -1,0 +1,2670 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;セクハラ系コマンド
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;310,엉덩이를 쓰다듬는다
+;TFLAG:193(1=불쾌(TALENT:臆病なら涙目) 2&&3=恥ずかしがる(TALENT:男嫌い兼MASTERが男なら, 身をすくめる) 4=されるがまま)
+;CFLAG:우후후 == 2&&TCVAR:20(パンツ無し안면승마(70=커닐링구스강제 71=펠라치오強制 72=애널봉사) 35=치마内見せつけ 52=스마타)
+;CFLAG:우후후 == 2&&TEQUIP:식스나인(パンツありTCVAR:20(70～72)はこちら)
+;PREVCOM(305=膝枕
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_SUCCESS_COM_K42_310
+;成否判定
+;TFLAG:192(-2=コマンド終了, -1＝強制失敗, 0=COM依存, 1=強制成功or大成功
+IF TALENT:연인
+	TFLAG:192 = 1
+ELSE
+	TFLAG:192 = 0
+ENDIF
+
+@M_KOJO_MESSAGE_COM_K42_310
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_310_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_310_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+		PRINTFORML 하타테의 탄력있는 엉덩이를 어루만졌다
+		PRINTFORML 하타테는「응…」하고 목소리를 조금 높였지만, 그 이상의 반응은 없었다
+		PRINTW 
+	ELSEIF CFLAG:우후후 == 2
+		SELECTCASE TCVAR:20
+		CASE 70;커닐링구스강제
+			PRINTFORML 「시러엇, 엉덩이, 좋아한다니깐…%UNICODE(0x2665) *1%」
+			PRINTW 
+		CASE 72;애널봉사
+			PRINTFORML 「그렇게, 엉덩이 벌리지 마…」
+			PRINTW 
+		CASE 35;치마の中を見せる
+			PRINTFORML 「우웃, 그렇게 비비지 마…」
+			PRINTW 
+		CASE 52;스마타
+			PRINTFORML 「엉덩이를 비비면서 하면 집중이 안된다구우～」
+			PRINTW 
+		ENDSELECT
+	;손가락輪を渡している
+	ELSEIF CFLAG:1100 >= 1 && !TALENT:TARGET:육아중 && PREVCOM == 413;요리를 만든다
+		PRINTFORML 「배고프지. 밥 해줄테니까 기다려줘♪」
+		PRINT 鼻歌を歌いながらはたては
+		IF TIME > 360 && TIME < 660
+			PRINT 아침 식사를
+		ELSEIF TIME > 660 && TIME < 1020
+			PRINT 점심 식사를
+		ELSEIF TIME > 1020 && TIME < 1320
+			PRINT 저녁 식사를
+		ELSE
+			PRINT 야식을
+		ENDIF
+			PRINTFORML 만들고 있다…
+			PRINTFORML 에이프런을 두르고 식사를 만들고 있는 하타테의 모습은 마치 색시와 같은 모습이다
+			PRINTW 
+			CALL ASK_YN("뒤로 먹는다","역시 그만두자")
+			IF !RESULT
+				PRINTFORML 「꺅！?」
+				PRINTFORML 뒤에서 꽉 껴안자 하타테는 귀여운 비명을 질렀다
+				PRINTW 
+				PRINTFORML 「정말이지 위험하다니깐…이랄까, 어라, 어라라…\/\/\/」
+				PRINTFORML 「저기요…엉덩이에, 딱딱한 게 닿이는데요…\/\/\/」
+				PRINTW 
+				PRINTFORML 하타테는 뺨을 붉히면서도 저항하려고 하지는 않는다
+				PRINTFORML 「혹시…식사보다 먼저 먹고 싶어진거야…?」
+				PRINTW 
+				PRINTFORML 하타테는 이쪽에서 말하는 것보다 빠르게 엉덩이를 내밀었다
+				PRINTFORML 「어쩔 수 없네…\/\/\/　남편의 성욕을 해소하는 것도, 아내의 의무니까…%UNICODE(0x2665) *1%」
+				PRINTW 
+				PRINT 흥분을 억제할 수 없게 되어, 
+				IF EQUIP:TARGET:하반신속옷1 != 0 || EQUIP:TARGET:하반신속옷2 != 0
+					PRINT 하타테의 속옷을 끌어내리고,
+				ELSE
+					PRINTFORML 아무것도 입지 않은
+				ENDIF
+					PRINTFORML 하반신에 손을 뻗쳤다
+					PRINTW 
+					PRINTFORML 「앙…%UNICODE(0x2665) *1%　읏…」
+					IF PALAM:윤활 < PALAMLV:3
+						PALAM:윤활 = PALAMLV:3
+					ENDIF
+					PRINTFORML 앞으로의 행위에 기대를 했던건지, 하타테의 비순은 촉촉하게 젖어 있다
+					PRINTFORML 질구에 손가락이 미끄러지듯이 느릿느릿한 감촉과 함께 쉽게 침입해 들어갔다
+					PRINTW 
+					PRINTFORML 「그치마안…%UNICODE(0x2665) *1%　나도 당신과 야한 일하고 싶었는걸…%UNICODE(0x2665) *1%」
+					PRINTFORML 「당신이 하고 싶으면, 언제든지 마음대로 해도 돼? 하타테는 당신의 전용이니까…%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「아읏, 동글동글, 시러어…%UNICODE(0x2665) *1%　있지, 이제 전희는 됐으니까%UNICODE(0x2665) *1%」
+					PRINTFORML 「충분히 젖었다는 거, 알고 있지?　빨리 넣자, 응?　그치%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 하타테는 흠뻑 젖은 비순을 아프도록 발기한 페니스에 밀어붙인다
+					PRINTFORML 하타테가 말할 것도 없이 이쪽도 한계다
+					PRINTW 
+					PRINTFORML 더 이상 참을 수 없게 되어, 페니스를 질구에 맞혀 푹푹 침입시켜 갔다
+					PRINTFORML 「아앗%UNICODE(0x2665) *1%　와써어%UNICODE(0x2665) *1%　자기의 자지♪」
+					PRINTW 
+					PRINTFORML 이전에는 이러한 행위 속에서도 좀처럼 입에 내지 않았던 은어를, 하타테는 사용하게 되었다
+					PRINTFORML 평소에 쓰지 않는 은어를 사용하자 그것만으로도 성욕을 배로 증가시켰다
+					PRINTW 
+					PRINTFORML 「안쪽, 찔러줘엇%UNICODE(0x2665) *1%　가득, 찔꺽찔꺽 해줘어%UNICODE(0x2665) *1%」
+					PRINTFORML 허리를 앞으로 내밀자, 톡톡한 감촉과 함께 페니스는 질 깊숙이 삼켜져 간다
+					PRINTW 
+					PRINTFORML 「응, 하아아아…♪　기분 좋아……자기쪽에서 해주는 거, 기뻐…%UNICODE(0x2665) *1%」
+					PRINTFORML 「잔뜩 맛보도록 해…자기의 자지가 먹고 싶어서 제철이 되어버린 애처의 보지…%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 그 한 마디로 이성의 끈이 끊어졌다
+					PRINTFORML 하타테의 의외로 살집이 좋은 엉덩이를 움켜쥐고 사정없는 피스톤질을 시작했다
+					PRINTW 
+					PRINTFORML 「앗, 그거 조앗%UNICODE(0x2665) *1%　자기의 것이라고 마킹되고 있는 거 같아서엇…%UNICODE(0x2665) *1%」
+					PRINTFORML 「괜찮으니까앗, 좀 더, 좀 더 팡팡 소리내서 찔러저엇%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 이번에는, 허리를 촥 밀착시켜 안쪽을 통통 두들겼다
+					PRINTFORML 「아아앗, 안 됏, 격렬하다가 갑자기 다정하게 해버리며언, 자궁이 내려가버려엇%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「얀쪽, 동글동글해서, 기분 조아앗%UNICODE(0x2665) *1%　더, 더어 해줘%UNICODE(0x2665) *1%」
+					PRINTFORML 질 안쪽을 귀두로 개발해 줄 때마다, 하타테는 사랑스럽고 요염한 소리를 내며 쾌감에 얼굴을 녹였다
+					PRINTW 
+					PRINTFORML 「자지잇%UNICODE(0x2665) *1%　%MASTERNAME:42%의, 자기의 자지 정말 조아해앳%UNICODE(0x2665) *1%」
+					PRINTFORML 「자기와의 야한 일, 정말 좋앗%UNICODE(0x2665) *1%　아앗%UNICODE(0x2665) *1%　얏, 하앗, 응, 응%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「앗, 앗, 앙%UNICODE(0x2665) *1%　앙%UNICODE(0x2665) *1%　앗, 앙%UNICODE(0x2665) *1%」
+					PRINTFORML 하타테를 사랑스럽게 뒤에서 끌어안으며 허리를 격렬하게 흔들었다
+					PRINTW 
+					PRINTFORML 「이, 있지, 당신 말이야%UNICODE(0x2665) *1%　쌀 때는, 반드시, 질내에 싸줘……응읏%UNICODE(0x2665) *1%」
+					PRINTFORML 목에 팔을 감은 채, 하타테는 울먹이며 간청해 왔다
+					PRINTW 
+					PRINTFORML 「그치만, 질내가 가장 행복한 기분이 드는걸%UNICODE(0x2665) *1%」
+					PRINTFORML 「질내 사정이외에는, 허락 안 해줄거니까…%UNICODE(0x2665) *1%　앙%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「게다가, 이미 쿠퍼액, 하타테의 질내에 가득 쏟고 있는걸…%UNICODE(0x2665) *1%」
+					PRINTFORML 「쿠퍼액에도 정액은 들어있으니까%UNICODE(0x2665) *1%　이미 저질러버렸다구%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「그러니까, 이제 뽑아봤자 소용없어♪　안쪽에 뷰뷰해버리자?　부부끼리 아이 만들기 하자?」
+					PRINTFORML 완전히 녹아버린 하타테는 몇 번이고 질내사정을 졸라댔다. 이제 거부권은 없다
+					PRINTW 
+					PRINTFORML 「와줘엇%UNICODE(0x2665) *1%　와줫%UNICODE(0x2665) *1%　질내에, 잔뜩 싸줘엇%UNICODE(0x2665) *1%」
+					PRINTFORML 이젠 이쪽도 한계다. 하타테의 허리를 잡아 막판 스퍼트를 날렸다
+					PRINTW 
+					PRINTFORML 「갱장해앳%UNICODE(0x2665) *1%　자기, 씩씩해앳%UNICODE(0x2665) *1%」
+					PRINTFORML 「하타테, 가버려엇%UNICODE(0x2665) *1%　～～～～～～～～읏%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 하타테의 질곡이 급격히 수축되어 폭력적일 정도로 한계 직전의 육봉을 단단히 죄었다
+					PRINTFORML 「와줘엇%UNICODE(0x2665) *1%　질내엣%UNICODE(0x2665) *1%　아기 씨를%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 뷰룻！　뷰루루루룻！　도븃！　뷰뷰븃！
+					PRINTFORML 「～～～～～～～～～읏%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「싸고 이써엇, 질내에, 정액을, 가득%UNICODE(0x2665) *1%」
+					PRINTFORML 농후한 정액이 하타테의 질곡을 철썩 철썩 때렸다
+					PRINTW 
+					PRINTFORML 「하아%UNICODE(0x2665) *1%　응, 하앗, 핫, 후웃, 하아…%UNICODE(0x2665) *1%」
+					PRINTFORML 엄청난 양의 종자들이 하타테의 작은 질곡을 견디지 못하고 틈새로 쏟아져 내렸다
+					PRINTW 
+					PRINTFORML 「하앗, 하앗%UNICODE(0x2665) *1%　에헤헤, 엄청난 양이네…%UNICODE(0x2665) *1%」
+					IF ESTRUS_CYCLE(TARGET) == 15
+						PRINTFORML 「아…그치만 오늘은 안전일이었구나…아마, 생기진 않았겠지…」
+						PRINTFORML 실망한 표정을 한 하타테에게 다시 싸주겠다고 귓전에 대고 속삭였다
+						PRINTW 
+						PRINTFORML 「！　응…%UNICODE(0x2665) *1%　착상할 때까지, 자기의 아이 잔뜩 싸줘…%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테는 뺨에 입을 맞추고 미소를 지어보였다…
+						PRINTW 
+					ELSEIF ESTRUS_CYCLE(TARGET) == 150
+						PRINTFORML 「오늘, 위험일이었네…♪　내일쯤, 배란하고 수정할지도…%UNICODE(0x2665) *1%」
+						PRINTFORML 불쑥 엉뚱한 소리를 하는 하타테
+						PRINTFORML 그 얼굴에는 임신에 대한 두려움 따위는 없었고 희망이 넘쳐흐르고 있었다
+						PRINTW 
+					ELSE
+						PRINTFORML 「응ー, 오늘은 위험일이 아니라서 미묘할지도. 생기면 좋을텐데」
+						PRINTFORML 하타테는 아랫배를 문지르면서, 생기기를 기원했다
+						PRINTW 
+						IF TALENT:MASTER:텐구잉태 && TALENT:MASTER:농후정액 && ESTRUS_CYCLE(TARGET) == 15
+							PRINTFORML 「그치만. 이번에는 생길 것 같아」
+							PRINTFORML 「%MASTERNAME:42%, 엄청 쌓여있었지. 엄청 진했었는걸♪」
+							PRINTFORML 「지금쯤, 내 뱃속에서 달걀을 찾고 있을지도…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+						ENDIF
+					ENDIF
+					PRINTW 
+					PRINTFORML 「아읏, 아직 부족해? 나도, 더 하고 싶지만…식사가 다 식을 거야」
+					PRINTFORML 「계속은, 식사를 하고 나서 하자…%UNICODE(0x2665) *1%」
+					PRINTFORML 하타테는 뺨에 입을 맞추고 고혹적인 눈길을 보냈다…
+					PRINTW 
+					
+					
+					
+			ELSE
+				PRINTFORML 「다 됐어♪　어라, 왜 그래?」
+				PRINTFORML 에이프런을 입은 하타테는 엄청 귀엽네
+				PRINTW 
+				PRINTFORML 「싫다아 정말%UNICODE(0x2665) *1%　쑥스럽잖아%UNICODE(0x2665) *1%」
+				PRINTFORML 하타테는 볼에 손을 대고 싫다아하고 고개를 흔들었다
+				PRINTW 
+			ENDIF
+	;연모ならされるがまま, それ以外は손を払いのける
+	ELSEIF PREVCOM == 305;膝枕のどさくさ
+		IF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「양, 정말이지ー, 엉덩이 좋아한다니깐…」
+				PRINTFORML 하타테는 약간 기가 막힌듯 했지만, 싫어하는 내색은 전혀 없었다
+				PRINTW 
+			CASE 1
+				PRINTFORML 「꺄앗…！　저, 정마알～, 만질거면…………야한 짓을 할 때…………만져줘…」
+				PRINTFORML 하타테가 타일렀지만, 그다지 싫은 것 같지는 않았다
+				PRINTW 
+			CASE 2
+				PRINTFORML 「저, 정마알～～～～, 안된다구…」
+				PRINTFORML 「%MASTERNAME:42%이(가) 갖고 싶어지잖아…\/\/\/」
+				PRINTW 
+			ENDSELECT
+		ELSEIF TALENT:사모
+			PRINTFORML 「니앗！?　조, 좀 그만 둬어～～！」
+			PRINTFORML 하타테는 얼굴을 붉히며 손을 꼬집어 왔다, 조금 아프다
+			PRINTW 
+			PRINTFORML 「그, 그런 건, 제대로 할 때에 하라구…」
+			PRINTFORML 제대로 할 때란…
+			PRINTFORML 「…！　시끄러！　여자애에게 그런 말 되묻지 마！　저질！」
+			PRINTW 
+		ELSEIF CFLAG:호감도 >= 500
+			PRINTFORML 「햐앗！?　뭐하는 거야 이 저질！」
+			PRINTFORML 하타테에게 힘껏 뺨을 꼬집혔다. 얼굴이 떡이 될 것 같다
+			PRINTW 
+		ELSE
+			PRINTFORML 「꺄ー！！」
+			PRINTFORML 하타테가 확 뛰어버린 탓에 머리를 부딪혔다
+			PRINTFORML 「요괴가 모처럼 무릎배게를 해줬는데！　저질！　변태앳！　죽엇！」
+			PRINTFORML 덤으로 하타테에게 실컷 얻어맞았다
+			PRINTW 
+		ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「양, 정말이지ー, 엉덩이 좋아한다니깐…」
+				PRINTFORML 하타테는 약간 기가 막힌듯 했지만, 싫어하는 내색은 전혀 없었다
+				PRINTW 
+			CASE 1
+				PRINTFORML 「꺄앗…！　저, 정마알～, 만질거면, 좀 더 제대로 된 때에 만져줘…」
+				PRINTFORML 하타테는 타일렀지만 그다지 싫은 기색을 보이지는 않았다
+				PRINTW 
+			ENDSELECT
+		ELSEIF TALENT:애욕 || TALENT:섹프
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「너 말이야, 정말 엉덩이를 좋아하는구나」
+				PRINTFORML 「뭐, 내 엉덩이 싸지는 않지만, 특별히 허락해줄게♪」
+				PRINTW 
+			CASE 1
+				PRINTFORML 「이런 곳에서…건드리는 방법이 너무 야하잖아～♪」
+				PRINTW 
+			CASE 2
+				PRINTFORML 「아, 응…%UNICODE(0x2665) *1%　장난치고는, 아슬아슬한 곳을 쓰다듬고 있는데~」
+				PRINTW 
+			ENDSELECT
+		ELSEIF TALENT:사모
+			PRINTFORML 「니얏！?　조, 좀 그만 둬어～～！」
+			PRINTFORML 하타테는 얼굴을 붉히며 엉덩이를 누르고 있다
+			PRINTW 
+		ELSEIF CFLAG:호감도 >= 500
+			PRINTFORML 「햐앗！?　뭐하는 거야 이 저질！」
+			PRINTFORML 하타테에게 실컷 노려보아졌다
+			PRINTW 
+		ELSE
+			PRINTFORML 「저질！　변태앳！　죽엇！」
+			PRINTFORML 하타테에게 힘껏 얻어맞았다
+			PRINTW 
+		ENDIF
+	ENDIF
+	CFLAG:1101 += 1
+ENDIF
+RETURN 1
+;==================================================
+;311,끌어안는다
+;TFLAG:193(1=大成功 0=成功 -1=失敗)
+;CFLAG:우후후 == 2&&TCVAR:20(32=前から抱きつく 60=ディープキス 73=ぱふぱふ 74=乳合わせ 77=乳を吸わせる VA性交(85=V挿入する 87=A挿入する 88=허리振りV 89=허리振りA) 86=だいしゅきホールド)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_SUCCESS_COM_K42_311
+;成否判定
+;TFLAG:192(-2=コマンド終了, -1＝強制失敗, 0=COM依存, 1=強制成功or大成功
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K42_311
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_311_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_311_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF CHK_DATENOW(CFLAG:42:데이트중)
+		IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9) || GET_TARGETNUM() >= 2
+			IF TALENT:연인
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「싫다아 정말, 주위에서 보고 있으니까, 부끄러워어」
+					PRINTFORML 「！　저기, %MASTERNAME:42%?　뭔가, 닿이고 있는데」
+					PRINTFORML 「이런 곳에서, 흥분 해버린 거야…?」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「싫다아 정말, 주위에서 보고 있으니까, 부끄러워어」
+					PRINTFORML 하타테는 붉게 물든 뺨을 가리듯 가슴에 얼굴을 파묻었다
+					PRINTW 
+				ENDSELECT
+			ELSEIF TALENT:연모
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「%MASTERNAME:42%, 꼭 안아주는 건 기쁜데, 여기는 조금…」
+					PRINTFORML 「！　정말ー, %MASTERNAME:42%은(는) 변태…」
+					PRINTFORML 단단한 물체가 아랫배를 누르자 하타테는 볼을 살짝 꼬집었다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「%MASTERNAME:42%, 꼭 안아주는 건 기쁜데, 여기는 굳이 안 그래도 되는 곳인데…」
+					PRINTFORML 하타테는 그러면서도 등에 살며시 손을 올렸다
+					PRINTW 
+				ENDSELECT
+			ELSEIF TALENT:애욕 || TALENT:섹프
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「！　뭐, 뭐야아, 사람들 앞에서 갑자기 안아서는」
+					PRINTFORML 「아…뭐야, 그런 거구나…♪」
+					PRINTFORML 딱딱한 것을 알아차린 하타테는 히죽 웃더니, 손가락으로 더듬기 시작했다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「뭐, 뭐야아, 사람들 앞에서 그러지 마, 좀 부끄럽단 말이야…」
+					PRINTFORML 순수한 애정 표현은 부끄러운지, 하타테는 뺨을 붉히며 난처한 표정을 짓고 있다
+					PRINTW 
+				ENDSELECT
+			ELSEIF TALENT:사모
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「자, 잠깐만～, 주위에서 보고 있으니까. 부끄러워」
+					PRINTFORML 「！　%MASTERNAME:42%, 뭔가, 단단한 게 닿이는데요…」
+					PRINTFORML 「왜 데이트중에 이렇게 딱딱해지는 거야, 최악～…」
+					PRINTFORML 하타테는 얼굴을 붉히며 고개를 돌리고 있다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「자, 잠깐만～, 주위에서 보고 있으니까. 부끄러워」
+					PRINTFORML 하타테는 얼굴을 붉히며 항의하고 있지만, 저항하려고는 하지 않았다
+					PRINTW 
+				ENDSELECT
+			ELSE
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「자, 잠깐만, 주변에 사람들이 있는데 뭘 하는 거야…」
+					PRINTFORML 「！　너 말이야…이럴 때…최악이야！」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「자, 잠깐만, 주변에 사람들이 있는데 뭘 하는 거야…」
+					PRINTFORML 「떨・어・지・라・구웃！」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		;二人きり
+		ELSE
+			IF TALENT:연인
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					IF TALENT:연모
+						PRINTFORML 「꽉 하는 거, 기분 좋아…♪」
+						PRINTFORML 「！　%MASTERNAME:42%, 아래쪽이 뭔가 굉장해져 있는데…」
+						PRINTW 
+						PRINTFORML 「하타테에게 안겨서 코너에 빠져버린 거구나…」
+						PRINTFORML 「…그, 그럼, 내가 책임을 져야 하려나…%UNICODE(0x2665) *1%」
+						PRINTW 
+					ELSE
+						PRINTFORML 「하타테양의 몫이 갖고 싶어 졌어?　자, 어서와♪」
+						PRINTFORML 「！　응～～, 여기에 닿이는 건 소라인가…」
+						PRINTFORML 「어…커져버렸네, 이거 만져봐도 되려나…?\/\/\/」
+						PRINTW 
+					ENDIF
+				CASEELSE
+					IF TALENT:연모
+						PRINTFORML 「이렇게 하는 것만으로도 행복해♪　두 사람으로도, 좋아」
+						PRINTFORML 하타테의 팔이 목에 감긴다. 잠시 둘이서 행복을 서로 누렸다
+						PRINTW 
+					ELSE
+						PRINTFORML 「이런 것도, 괜찮네」
+						PRINTFORML 「달라붙은 곳부터 둥실둥실 따뜻해지는 기분이야」
+						PRINTW 
+					ENDIF
+				ENDSELECT
+			;抱きつき返す
+			ELSEIF TALENT:연모
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					IF DAY:2 == 2
+						PRINTFORML 「우우, 더워～…」
+						PRINTFORML 「이렇게나 더운데도, 이쪽은 정말 건강하네…」
+						PRINTW 
+					ELSEIF DAY:2 == 4
+						PRINTFORML 「따뜻해♪　쭉 붙어있고 싶어」
+						PRINTFORML 「……거기도 달라붙고 싶다고?　정말이지ー…저질…」
+						PRINTW 
+					ELSE
+						PRINTFORML 「후훗, 답례ー♪　…저기, 뭔가 닿이는데」
+						PRINTFORML 「나 때문에 반응해버렸어…?　그, 그렇구나…」
+						PRINTW 
+					ENDIF
+				CASEELSE
+					IF DAY:2 == 2
+						PRINTFORML 「우우, 더워…그치만, 떨어지고 싶지 않아…」
+						PRINTFORML 하타테와 서로 땀범벅이 되면서 어느 쪽이 먼저 떠나는가의 승부가 되었다
+						PRINTW 
+					ELSEIF DAY:2 == 4
+						PRINTFORML 「따뜻해♪　쭉 붙어있고 싶어」
+						PRINTFORML 꼭 껴안은 하타네는 안심하고 몸을 맡기고 있다
+						PRINTW 
+					ELSE
+						PRINTFORML 「와훗. 답례야♪　하타테양의 안는 기분은 어떻나요?」
+						PRINTW 
+					ENDIF
+				ENDSELECT
+			ELSEIF TALENT:애욕 || TALENT:섹프
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「！　뭐, 뭐야아, 갑자기 안아 오고」
+					PRINTFORML 「아…뭐야, 그렇구나…♪」
+					PRINTFORML 딱딱한 것을 알아차린 하타테는 히죽 웃더니, 손가락으로 더듬기 시작했다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「뭐, 뭐야아, 그만둬, 부끄러우니까…」
+					PRINTFORML 순수한 애정 표현은 부끄러운지, 하타테는 뺨을 붉히며 난처한 표정을 짓고 있다
+					PRINTW 
+				ENDSELECT
+			;まんざらでもない
+			ELSEIF TALENT:사모
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「싫다아, 정말, 부끄러워」
+					PRINTFORML 「…저기요, 뭔가, 닿이고 있는데요…」
+					PRINTFORML 「무드 망했으니까 30점이야」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「싫다아, 정말, 부끄러워」
+					PRINTFORML 「뭐 그래도 안는 쪽이 다정하니까 80점을 줄까♪」
+					PRINTW 
+				ENDSELECT
+			;じたばたする（친밀LV5）or突き飛ばす
+			ELSE
+				IF ABL:친밀 >= 5
+					SELECTCASE K42_BOKKI()
+					CASE IS >= 2
+						PRINTFORML 「잠깐～, 주위에서 보고 있으니까. 부끄러워」
+						PRINTFORML 「！　뭐, 뭔가 닿이는데…이, 이 저질！」
+						PRINTW 
+					CASEELSE
+						PRINTFORML 「잠깐, 놓아줘～～」
+						PRINTFORML 하타테가 진심으로 저항하면 떨쳐버릴 수 있을 것 같기도 하지만 그럴 의도는 없는 것 같다
+						PRINTW 
+					ENDSELECT
+				ELSE
+					SELECTCASE K42_BOKKI()
+					CASE IS >= 2
+						PRINTFORML 「뭐, 뭐야……！?　잠깐, 이거…」
+						PRINTFORML 「벼, 변태ーーーー애！　이거 놔ーーーー！」
+						PRINTFORML 하타테에게 힘껏 떠밀려, {RAND:10}번 회전했다
+					CASEELSE
+						PRINTFORML 「뭐, 뭘 안고 있는 거야！ 느닷없이！」
+						PRINTFORML 「무드고 나발이고 아무것도 없잖아！　그러면 미움 받는다구！」
+						PRINTFORML 「보통은 지금의 너에게 안겨도 설레거나 하지 않는다는 말이야！」
+						PRINTFORML 하타테에게 설교를 듣고 말았다
+						PRINTW 
+					ENDSELECT
+				ENDIF
+			ENDIF
+		ENDIF
+	;はたては구上内で연모か연인か애욕以外の時は덮치기してこないよう制限してあります
+	ELSEIF CFLAG:우후후 == 2;押し倒され
+		SELECTCASE TCVAR:20
+		CASE 32;前から抱きつく
+			IF TALENT:연인
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「%MASTERNAME:42%, 딱딱해졌네…%UNICODE(0x2665) *1%」
+					PRINTFORML 「나 때문에 이렇게 된 거지?　기뻐…%UNICODE(0x2665) *1%」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「%MASTERNAME:42%의 체온, 느껴져…%UNICODE(0x2665) *1%」
+					PRINTFORML 「계속 이렇게, 붙어있고 싶어%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDSELECT
+			ELSEIF TALENT:연모
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「저, 저기 뭔가 닿이고 있는데」
+					PRINTFORML 「하타테양 때문에 두근거리고 있는 거지, 그렇다면, 용서해줄까나…%UNICODE(0x2665) *1%」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「%MASTERNAME:42%와(과) 꼭 안겨있으면 엄청 행복한 기분이야」
+					PRINTFORML 「%MASTERNAME:42%에게 소중히 여겨지는 것 같아서, 안심해버려」
+					PRINTW 
+				ENDSELECT
+			ELSEIF TALENT:애욕 || TALENT:섹프
+				SELECTCASE K42_BOKKI()
+				CASE IS >= 2
+					PRINTFORML 「저, 저기 뭔가 닿이고 있는데」
+					PRINTFORML 「정말이지 즙까지 나오고 있는 거 같은데. 뭐, 나도 갖고 싶지만…♪」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「딱히 연인이 아니더라도 온기를 원할 때가 있어」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		CASE 60;ディープキス
+				PRINTFORML 「쥬룻, 츄, 햝짝, 츄룻%UNICODE(0x2665) *1%」
+				PRINTW 
+		CASE 73;ぱふぱふ
+			IF TALENT:TARGET:가슴사이즈 > 0
+				PRINTFORML 「어때?　치유 돼?　하타테양의 가슴입니다%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF TALENT:TARGET:가슴사이즈 == 0
+				PRINTFORML 「에헤헤, 나, 의외로 가슴은 있다구?」
+				PRINTW 
+			ELSEIF TALENT:TARGET:가슴사이즈 < 0
+				PRINTFORML 「별로 기분, 안 좋으려나…매끈매끈하고 부드럽다구?　그, 그렇구나…%UNICODE(0x2665) *1%」
+				PRINTW 
+			ENDIF
+		CASE 74;乳合わせ
+			IF TALENT:연인
+				IF GETBIT(TALENT:MASTER:성별,1)
+					IF TALENT:TARGET:가슴사이즈 > 0
+						PRINTFORML 「왜 그래?　하타테양의 큰 가슴이 그리워진거야?」
+						PRINTFORML 「걱정하지 않아도 내 가슴은 %MASTERNAME:42% 전용이야?　다른 사람에게 보여주거나 만지게 해주지 않으니까」
+						PRINTW 
+					ELSEIF TALENT:TARGET:가슴사이즈 == 0
+						PRINTFORML 「나, 작아보이는 것 같으면서도 제법 있다구?」
+						PRINTFORML 하타테는 으쓱으쓱 가슴을 내밀며 약간 자랑스러운 표정을 짓고 있다
+						PRINTW 
+					ELSE
+						PRINTFORML 「내 가슴 그다지 큰 편은 아니지만, %MASTERNAME:42%, 이런 것도, 좋아해?」
+						
+						CALL ASK_YN("좋아해","엄청 좋아해")
+						IF !RESULT
+							PRINTFORMW 「내 가슴으로도 기뻐하는구나…\/\/\/　후후, %MASTERNAME:42%(이)니까 바싹 붙어 줄게%UNICODE(0x2665) *1%」
+						ELSE
+							PRINTFORML 「엄, 엄청 좋아한다니…\/\/\/　내 가슴이라도 좋다면, 얼마든지, 자…\/\/\/」
+						ENDIF
+
+					ENDIF
+				ELSE
+					IF TALENT:TARGET:가슴사이즈 > TALENT:MASTER:가슴사이즈
+						PRINTFORML 「에헤헤ー, 내 쪽이 더 크네♪」
+						PRINTFORML 「앗, 화내지 마. 왓, 갑자기 주무르는 건 반칙…읏, 시러엇%UNICODE(0x2665) *1%」
+						PRINTW 
+					ELSEIF TALENT:TARGET:가슴사이즈 == TALENT:MASTER:가슴사이즈
+						PRINTFORML 「으으으, 비등비등하려나」
+						PRINTFORML 하타테는 말랑말랑한 가슴을 누르면서 고민하고 있다
+						PRINTW 
+					ELSE
+						PRINTFORML 「크으으, %MASTERNAME:42%이(가) 더 커…」
+						PRINTFORML 이를 갈고 있는 하타테의 머리를 옳지 옳지하고 쓰다듬어 주었다
+						PRINTW 
+					ENDIF
+				ENDIF
+			ELSEIF TALENT:연모
+				IF GETBIT(TALENT:MASTER:성별,1)
+					IF TALENT:TARGET:가슴사이즈 > 0
+						PRINTFORML 「왜 그래?　하타테양의 큰 가슴이 그리워진거야?」
+						PRINTFORML 「걱정하지 않아도 내 가슴은 %MASTERNAME:42% 전용이야?　다른 사람에게 보여주거나 만지게 해주지 않으니까」
+						PRINTFORML 압도적인 볼륨과 부드러움을 자랑하는 쌍 언덕이 짓눌러가는 모습은 압권이다
+						PRINTW 
+					ELSEIF TALENT:TARGET:가슴사이즈 == 0
+						PRINTFORML 「나, 어느샌가 가슴이 커져있어서 말이야. %MASTERNAME:42%은(는) 큰쪽이 좋아?」
+						
+						CALL ASK_M("큰 편이 좋아", 0, "작은 편이 좋아", 1, "하타테의 가슴이 좋아", 2)
+						SELECTCASE RESULT
+							CASE 0
+								PRINTFORML 「원래는 작았던 나로서는 조금 복잡한 심경이지만…지금의 크기도 내 가슴이니까！」
+								PRINTFORML 하타테는 성장한 가슴을 과시하듯 말캉말캉하며 더욱 밀어붙였다
+								PRINTW 
+							CASE 1
+								PRINTFORML 「어, 그, 그렇구나ー…정말로…」
+								PRINTFORML 하타테는 약간 충격을 받았다
+							CASE 2
+								PRINTFORML 「！　아, 하아, 그렇구나\/\/\/　내 꺼라서, 좋은 거구나\/\/\/」
+								PRINTFORML 하타테는 필사적으로 감추려했지만, 입가의 언저리가 씰룩거리는 것을 참지는 못하는 듯 하다
+								PRINTW 
+						ENDSELECT
+					ELSE
+						PRINTFORML 「%MASTERNAME:42%, 나 말이야, 가슴 작으니까, 이런 거 해도 별로 즐겁지 않지…?」
+						PRINTFORML 「…기분이 좋으니까 이러고 있는 거라구?　그렇구나, 에헤헤, 그런 거구나…%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테는 행복한 듯이 볼을 비비기 시작했다
+						PRINTW 
+					ENDIF
+				ELSE
+					IF TALENT:TARGET:가슴사이즈 > TALENT:MASTER:가슴사이즈
+						PRINTFORML 「에헤헤ー, 내 가슴이 더 크네♪」
+						PRINTFORML 「앗, 화내지 마. 왓, 갑자기 주무르는 건 반칙…읏, 시러엇%UNICODE(0x2665) *1%」
+						PRINTW 
+					ELSEIF TALENT:TARGET:가슴사이즈 == TALENT:MASTER:가슴사이즈
+						PRINTFORML 「으으으, 비등비등하려나」
+						PRINTFORML 하타테는 말랑말랑한 가슴을 누르면서 고민하고 있다
+						PRINTW 
+					ELSE
+						PRINTFORML 「크으으, %MASTERNAME:42%이(가) 더 커…」
+						PRINTFORML 이를 갈고 있는 하타테의 머리를 옳지 옳지하고 쓰다듬어 주었다
+						PRINTW 
+					ENDIF
+				ENDIF
+			ENDIF
+		CASE 77;乳を吸わせる
+			PRINTFORML 「아읏, %MASTERNAME:42%, 아기 같네…%UNICODE(0x2665) *1%」
+			PRINTFORML 하타테의 한 팔에 머리를 안기면서 정신없이 젖꼭지에 달라붙었다
+			PRINTW 
+		CASE 85;V挿入
+		CASE 86;だいしゅきホールド
+			PRINTFORML 「%MASTERNAME:42%, %MASTERNAME:42%%UNICODE(0x2665) *1%, 좋아해, 좋아해앳%UNICODE(0x2665) *1%」
+			PRINTFORML 하타테는 늘씬하게 뻗은 다리를 등에 감으면서 계속 이름을 불렀다
+			PRINTW 
+		CASE 87;A挿入
+		CASE 88;V허리振り
+			PRINTFORML 「앗, 괜찮으니까%UNICODE(0x2665) *1%　더, 좀 더%UNICODE(0x2665) *1%」
+			PRINTW 
+		CASE 89;A허리振り
+			PRINTFORML 「아읏%UNICODE(0x2665) *1%　엉덩잇%UNICODE(0x2665) *1%　엄청나게 질퍽질퍽하고 이써엇%UNICODE(0x2665) *1%」
+			PRINTW 
+		ENDSELECT
+	;데이트중でない, 押し倒されていない
+	ELSE
+		IF CFLAG:1100 >= 1
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「♪　자기, 따뜻해♪」
+				PRINTW 
+			CASE 1
+				PRINTFORML 「더 세게 꼭 안아줘도 돼…♪」
+			CASE 2
+				PRINTFORML 「지금, 나는 환상향에서 제일 행복한 요괴일 거야♪」
+				PRINTW 
+			ENDSELECT
+		ELSEIF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「뒤에서 꼭 안아주는 거, 지켜주는 것 같아서 안심돼♪」
+				PRINTW 
+			CASE 1
+				PRINTFORML 「…♪　응응, 전혀 힘들지 않아♪」
+				PRINTW 
+			CASE 2
+				PRINTFORML 「후훗, %MASTERNAME:42%에게 달라붙는 거, 좋아해…%UNICODE(0x2665) *1%」
+			ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「우왓, 뭐야, 갑자기 안겨들어서」
+				PRINTFORML 「%MASTERNAME:42%은(는) 아무에게나 이렇게 하는 거야?」
+				CALL ASK_YN("하타테에게만","사람들에게 안기는 것을 좋아해서")
+				IF !RESULT
+					PRINTFORML 「！　아, 하아, 그렇구나, 나뿐이구나…\/\/\/」
+					PRINTFORML 하타테는 얼굴을 붉히면서 어색하게 뺨을 손끝으로 긁고 있다
+					PRINTW 
+				ELSE
+					PRINTFORML 「아, 그렇구나, 유감이야」
+					PRINTFORML 「거기에서는 나한테만이라고 말했어야 하는 부분이라구」
+					PRINTW 
+				ENDIF
+			CASE 1
+				PRINTFORML 「상당히 정열적이네. 하타테양의 매력에 당해버린 거야?」
+				PRINTFORML 「아, 이상한 데 건드리면 냅다 날려버릴테니까」
+				PRINTW 
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「성희롱이다ー！」
+				PRINTFORML 하타테에 의해 바람에 날려가 버렸다
+				PRINTW 
+				PRINTFORML 이번 기록은:{RAND:10}m
+				PRINTW 
+			CASE 1
+				PRINTFORML 「우왓, 느닷없이 안아오지 마！」
+				PRINTFORML 하타테는 조금 성가신 듯한 표정이다
+				PRINTW 
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;312,키스한다
+;TFLAG:193(99=拒絶(キス不可) 1=大成功 0=成功 -1=失敗)
+;CFLAG:우후후 == 2&&TCVAR:20(카운터행동:32=前から抱きつく 50=수음 60=キス 性交(85=V挿入する 87=A挿入する 88=허리振りV 89=허리振りA) 86=だいしゅきホールド)
+;PREVCOM(305=膝枕
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_SUCCESS_COM_K42_312
+;成否判定
+;TFLAG:192(-2=コマンド終了, -1＝強制失敗, 0=COM依存, 1=強制成功or大成功
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K42_312
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_312_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_312_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	
+	IF FLAG:70
+		IF EXP:키스경험 == 0
+			PRINTFORML 하타테는 아직 아무에게도 허락하지 않은 입술을 마음대로 유린당하고 있다
+			PRINTFORML 입뿐 아니라, 혀까지 얽히고 진한 키스까지 끝냈다고는 꿈에도 생각하지 못할 것이다
+			PRINTW 
+		ELSE
+			PRINTFORML …솔직히 하타테와 키스는 이미 했고, 무엇보다 수줍은 표정을 지어주지 않기 때문에 별로 즐겁지 않다
+			PRINTW 
+		ENDIF
+	ELSEIF CFLAG:수면
+		IF CFLAG:K42C_結婚 >= 1
+			PRINTFORML 「응…자기, 더어…%UNICODE(0x2665) *1%」
+			PRINTFORML 하타테는 잠들어 있음에도 불구하고 어리광을 부리는 듯한 표정을 짓고 있다
+			PRINTFORML 행복해하는 표정에 이쪽의 볼도 느슨해졌다
+			PRINTW 
+		ELSEIF TALENT:연모 || TALENT:연인
+			PRINTFORML 「응…%MASTERNAME:42%…좋아해…%UNICODE(0x2665) *1%」
+			PRINTFORML 하타테는 잠들어 있음에도 불구하고 행복한 표정을 짓고 있다
+			PRINTFORML 꿈속에서도 자신과 사랑을 하고 있는 꿈을 꾸고 있는 것일까
+			PRINTW 
+		ELSEIF TALENT:사모
+			PRINTFORML 「응…좋아해……」
+			PRINTFORML 하타테는 잠꼬대를 하고 있다
+			PRINTFORML 꿈속에서 연인과 키스하고 있는 꿈이라도 꾸고 있는 것일까
+			PRINTW 
+		ELSE
+			PRINTFORML 「읏…응～～～～」
+			PRINTFORML 하타테는 간지럽다는 듯이 얼굴을 찌푸렸다
+			PRINTW 
+		ENDIF
+	ELSEIF CFLAG:TARGET:동침중
+		IF TALENT:연인
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「…정말 좋아해%UNICODE(0x2665) *1%」
+				PRINTFORML 하타테는 가슴에 뺨을 비비면서 또 한 번 키스를 졸라댔다
+				PRINTW 
+			CASE 1
+				PRINTFORML 「정말이지…부끄러운 짓을」
+				PRINTFORML 하타테는 이불을 머리 끝까지 뒤집어썼다
+				PRINTFORML 잠시 후, 살짝살짝 이불을 움직이기 시작해서 코 위 까지만 내비치며 이쪽을 슬쩍 훔쳐 봤다
+				PRINTFORML 「…정말 좋아해%UNICODE(0x2665) *1%」
+				PRINTW 
+			ENDSELECT
+		ELSEIF TALENT:연모
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「에헤헤, 연인같아서, 행복해…%UNICODE(0x2665) *1%」
+				PRINTFORML 하타테는 가슴에 뺨을 비비면서 웃는 얼굴을 하고 있다
+				PRINTW 
+			CASE 1
+				PRINTFORML 「정말이지…부끄러운 짓을」
+				PRINTFORML 하타테는 이불을 머리 끝까지 뒤집어썼다
+				PRINTFORML 잠시 후, 살짝살짝 이불을 움직이기 시작해서 코 위 까지만 내비치며 이쪽을 슬쩍 훔쳐 봤다
+				PRINTW 
+			CASE 2
+				PRINTFORML 「…！」
+				PRINTFORML 하타테는 부끄러워하며 이불 속으로 기어들어 가버렸다
+				PRINTW 
+			ENDSELECT
+		ENDIF
+	ELSEIF PREVCOM == 305;=膝枕, ひざ元から体を起こしてキス. 친밀5以上で호의的反応
+		IF FIRSTTIME(SELECTCOM)
+			IF TALENT:연인
+				PRINTFORML 「낭만적인 키스도 괜찮다고 생각했었는데」
+				PRINTFORML 「이런 키스도 연인같은 느낌이라서 괜찮네」
+				PRINTFORML 하타테는 미소를 지으며 천천히 덮여 왔다
+				PRINTW 
+			ELSEIF TALENT:연모
+				PRINTFORML 「……정말이지ー, 기습이나 하고」
+				PRINTFORML 말과는 달리, 하타테의 표정과 입술은 기쁜 모양이다
+				PRINTW 
+				PRINTFORML 「그치만, 방금 것은 제대로 실감나지 않았으니까」
+				PRINTFORML 「이번에는, 좀 더 천천히 해줬으면 좋겠어…%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF TALENT:애욕 || TALENT:섹프
+				PRINTFORML 「……뭐야?　연인놀이가 하고 싶어진거야?」
+				PRINTFORML 「뭐, 어쩔 수 없네. 이번에만 어울려 줄게」
+				PRINTW 
+				PRINTFORML 「랄까, 제대로 된 여자친구를 만들라구 너 말이야. 신경이 쓰이는 사람 정도는 있지 않아?」
+				PRINTFORML 「나?　나는 별로 상관없잖아. 바보♪」
+				PRINTW 
+			ELSEIF TALENT:사모
+				PRINTFORML 「……」
+				PRINTFORML 「잠깐 방금 키스한 거야！?」
+				PRINTFORML 하타테가 확 일어서는 바람에 머리를 부딪쳤다
+				PRINTW 
+				PRINTFORML 「앗, 미, 미안해」
+				PRINTFORML 하타테는 동요하면서도 의리있게 허벅지 위에 다시 머리를 얹는다
+				PRINTW 
+				PRINTFORML 「……있지, 왜 내게 키스하려고 한 거야?」
+				PRINTFORML 「하고 싶어져서라니…그야 그렇겠지만」
+				PRINTW 
+				PRINTFORML 「내가 하고 싶은 말은…그, 그…내가 좋아서, 라든지…」
+				PRINTFORML 「아냐, 역시 대답 안해도 돼」
+				PRINTFORML 하타테는 양손으로 볼을 폭 으스러뜨렸다. 미묘하게 아프다
+				PRINTW 
+			ELSE
+				PRINTFORML 「잠깐…너 뭐하려고 한 거야！」
+				PRINTFORML 하타테가 확 비켜서는 바람에 머리를 부딪쳤다
+				PRINTW 
+			ENDIF
+		ELSE
+			IF TALENT:연인
+				PRINTFORML 「응…%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF TALENT:연모
+				PRINTFORML 「후훗, %MASTERNAME:42%은(는) 키스하고 싶어하는 사람이네」
+				PRINTFORML 「좋아, 좀 더 키스하자%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF TALENT:애욕 || TALENT:섹프
+				PRINTFORML 「너 말이야…이런 건 제대로 된 연인과…」
+				PRINTFORML 「나는…나는 괜찮잖아. 너랑 할 만큼 했는데」
+				PRINTW 
+			ELSEIF TALENT:사모
+				PRINTFORML 「%MASTERNAME:42%은(는) 이런 걸 하는 동경이 있었어?」
+				PRINTFORML 
+				PRINTW 
+			ELSE
+				PRINTFORML 「앗…뭐하는 거야 정말！」
+				PRINTFORML 또 다시 머리를 부딪치고 말았다
+				PRINTW 
+				PRINTFORML 「기습은 금지！」
+				PRINTFORML 기습이 아니면 괜찮은 걸까
+				PRINTW 
+				PRINTFORML 「…～～～～, 그건, 음 상담을 하고…」
+				PRINTFORML 하타테는 입을 손으로 가리고 눈을 뒤로 젖혔다
+				PRINTW 
+			ENDIF
+		ENDIF
+	ELSEIF TFLAG:193 == 99
+		PRINTFORML 「잠깐, 그만해…！」
+		PRINTW 
+	ELSE
+		IF FIRSTTIME(SELECTCOM)
+			IF EXP:키스경험 > 0
+				PRINTFORML 「앗, 드디어 나한테 키스해 줄 생각이 들었구나」
+				PRINTFORML 「계속 기다렸으니까?　반성의 의미로, 좀 더 해줘」
+				PRINTW 
+			ELSE
+				IF TALENT:연인
+					IF CHK_DATENOW(CFLAG:42:데이트중)
+						IF TALENT:MASTER:키스미경험
+							PRINTFORML （왜, 왜, 왠지, %MASTERNAME:42% 긴장한 거 같은데?）
+							PRINTFORML （혹시, 나와 마찬가지로, 처음이려나）
+							PRINTFORML （어, 어깨에 손을 올렸습니다앗）
+							PRINTFORML （우와앗, 얼굴, 가까워！　어, 어떡하지！?）
+							PRINTFORML （으, 음, 이럴 땐 여자가 눈을 감고…）
+							PRINTW 
+							PRINTFORML 하타테가 눈을 꼭 감았을 때, 입술에서 부드러운 감촉이 느껴졌다
+							PRINTFORML （앗…키스, 해버렸네…）
+							PRINTFORML 하타테는 무의식적으로 %CALLNAME:MASTER%의 팔을 꽉 잡았다
+							PRINTW 
+							PRINTFORML 「이게, 키스구나…」
+							PRINTFORML 입술을 떼자, 하타테는 여기에 있지 않는 듯한 표정을 짓고 있었다
+							PRINTW 
+							PRINTFORML 「와, 와아, 뭔가, 엄청 부끄러워졌어」
+							PRINTFORML 하타테는 이쪽의 가슴에 얼굴을 묻으며 덥썩 껴안아왔다
+							PRINTW 
+							PRINTFORML 「미, 미안. 혼자 들떠 버려서」
+							PRINTFORML 겨우 진정됐는지, 하타테는 고개를 들고 이쪽의 눈을 바라보았다
+							PRINTW 
+							PRINTFORML 「와, 역시 부끄러워%UNICODE(0x2665) *1%　바로 %MASTERNAME:42%의 얼굴 못 보겠어～」
+							PRINTFORML 하타테가 제자리로 돌아갈 때까지 그녀에게 잠시 가슴을 빌려 주는 처지가 되었다
+							PRINTW 
+						ELSE
+							PRINTFORML （호, 호, 혹시 나,  긴장한 걸까?）
+							PRINTFORML （어, 어깨에 손을 올렸습니다앗）
+							PRINTFORML （우와앗, 얼굴, 가까워！　어, 어떡하지！?）
+							PRINTFORML （그, 그치만, 고개를 돌리지 못하겠어, %MASTERNAME:42%의 입술에, 눈이 가…！）
+							PRINTFORML （으, 음, 이럴 땐 여자가 눈을 감고…）
+							PRINTW 
+							PRINTFORML 하타테가 눈을 꼭 감았을 때, 입술에서 부드러운 감촉이 느껴졌다
+							PRINTFORML （앗…키스, 해버렸네…）
+							PRINTFORML 하타테는 무의식적으로 %CALLNAME:MASTER%의 팔을 꽉 잡았다
+							PRINTW 
+							PRINTFORML 「이게, 키스구나…」
+							PRINTFORML 입술을 떼자, 하타테는 여기에 있지 않는 듯한 표정을 짓고 있었다
+							PRINTW 
+							PRINTFORML 「나, 나 말이야, 이상한 얼굴 하지 않았어?　긴장해버려서…」
+							PRINTFORML 정신을 차린 하타테는 손바닥으로 얼굴을 누르며 당황하고 있었다
+							PRINTW 
+							PRINTL [0] 귀여운 얼굴이었어
+							PRINTL [1] 좀 웃긴 얼굴이었어
+							$INPUT_LOOP_KISS01
+							INPUT
+							IF RESULT == 0
+								PRINTFORML 「그, 그래?　다행이다…랄까, 귀여워어！?　저, 정말이지, 이럴 때 말하는 거, 반칙이잖아…」
+								PRINTFORML 하타테는 평소의 강인한 태도를 감추고 머뭇머뭇거리고 있다
+								PRINTW 
+							ELSEIF RESULT == 1
+								PRINTFORML 「뭐！?　웃겼다니, 이상했다는 거지！? 잠깐만！　알려줘어ーー！」
+								PRINTW 
+							ELSE
+								GOTO INPUT_LOOP_KISS01
+							ENDIF
+						ENDIF
+						TCVAR:353 += 1
+					ELSE
+						IF BASE:42:무드 == MAXBASE:42:무드
+							PRINTFORML 「…………」
+							PRINTFORML 입술을 떼자, 하타테는 꿈꾸는 듯한 표정을 짓고 있었다
+							PRINTW 
+							PRINTFORML 「…………어라, 내 정신이 어디론가 가버렸었네?」
+							PRINTFORML 「미, 미안해. 이런 거, 지식으로 밖에 몰랐으니까…」
+							PRINTW 
+							PRINTFORML 「요괴인 내가 말하는 것도 이상하지만 말이야, 이런 거, 동경하고 있었어」
+							PRINTFORML 「옆에서 가장 좋아하는 사람이 있어주고, 이야기를 들어주고, 다정한 키스를 해주는 거 말이야」
+							PRINTW 
+							PRINTFORML 「에헤헤,뭔가 어린애 같지. 이상하지」
+							PRINTFORML 「그렇지 않다니…읏……　……　……정말, 기습이나 하고」
+							PRINTW 
+							PRINTFORMW 「정말이지ー, 싫었을 리가 없잖아. 정말 싫었으면」
+							PRINTFORML 「좀 더, 키스해 주었으면 좋겠다는 생각이 안 들었을테니까…%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테는 소리를 죽인 뒤 눈을 감으며 입술을 내밀었다
+							PRINTW 
+						ELSE
+							PRINTFORML 「…………」
+							PRINTFORML 「에헤헤, 키스, 해버렸네」
+							PRINTFORML 하타테는 입술을 손으로 누르며 수줍어하고 있다
+							PRINTW 
+							PRINTFORML 「첫 키스는 새콤달콤하다고, 요정의 잡지에 써있었는데」
+							PRINTFORML 「전혀, 그렇지 않았어」
+							PRINTFORML 「그 대신에, 몸도 마음도 녹아버렸네…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					ENDIF
+				ELSEIF TALENT:연모
+					IF CHK_DATENOW(CFLAG:42:데이트중)
+							PRINTFORML 「…………」
+							PRINTFORML 입술을 떼자, 하타테는 방심한 듯한 표정을 짓고 있다
+							PRINTFORML 잠시 후, 그녀의 눈에서 눈물이 한 방울 흘러내리더니 볼을 타고 땅으로 떨어졌다
+							PRINTW 
+							PRINTFORMW 「앗, 미안. 달라. 싫거나 그런 게 아니라」
+							PRINTFORMW 「%MASTERNAME:42%이(가) 키스를 해줬다는 걸 이해하고 나니까」
+							PRINTFORMW 「가슴 안쪽이 울컥해버려고」
+							PRINTFORMW 「왜 갑자기 행복해지는 지 모르게 되어버려서」
+							PRINTFORMW 「랄까, 지금 무슨 말을 하는 지도 이해할 수 없게 되버려서…！」
+							PRINTW 
+							PRINTFORML 울면서 흥분하고 있는 하타테의 눈물을 손으로 닦아주고, 살며시 껴안았다
+							PRINTFORML 「…！　응, 좋아해…！　%MASTERNAME:42%이(가) 좋아…！」
+							PRINTW 
+							TCVAR:353 += 1
+					ELSE
+						IF BASE:42:무드 == MAXBASE:42:무드
+							PRINTFORML 「…………」
+							PRINTFORML 입술을 떼자, 하타테는 꿈꾸는 듯한 표정을 짓고 있다
+							PRINTW 
+							PRINTFORML 「…………어라, 내 정신이 어디론가 가버렸었네?」
+							PRINTFORML 「미, 미안해. 이런 거, 지식으로 밖에 몰랐으니까…」
+							PRINTW 
+							PRINTFORML 「좋아하는 사람에게, 좋은 분위기가 되어서 키스를 받는 거, 동경하고 있었으니까…」
+							PRINTFORML 「뭐 괜찮잖아！　정마알ー, 웃지마아ー！　싫어！」
+							PRINTW 
+							PRINTFORML 놀림을 받은 하타테는 토라져서 외면해 버렸다
+							PRINTFORML 미안하다고 사과를 하려했으나, 하타테는 계속 토라진 채이다
+							PRINTW 
+							PRINTFORML 「어떻게든 용서를 받고 싶다면, 부탁을 들어줘」
+							PRINTFORML 「한 번 더, 안으면서 키스를 해줘. 그러면, 용서해줄게」
+							PRINTW 
+						ELSE
+							PRINTFORML 「…………」
+							PRINTFORML 「…………왓, %MASTERNAME:42%！?　바, 방금, 키스한 거야！?」
+							PRINTFORML 하타테는 입술을 손으로 누르고 당황하고 있다
+							PRINTW 
+							PRINTFORML 「저기…한 가지 부탁이 있는데」
+							PRINTFORML 「긴장해서 전혀 감촉을 못느꼈는데, 한 번 더 해주면 안 될까…」
+							PRINTW 
+						ENDIF
+					ENDIF
+				ELSEIF TALENT:애욕 || TALENT:섹프
+					IF CHK_DATENOW(CFLAG:42:데이트중)
+						PRINTFORML 「…………」
+						PRINTFORML 입술을 떼자, 하타테는 어리둥절한 표정을 짓고 있다
+						PRINTW 
+						PRINTFORML 「어, 방금, 키스, 한 거야…?」
+						PRINTFORML 「아니, 안 된다든가, 그런 건 아니지만, 그…」
+						PRINTW 
+						PRINTFORML （뭐랄까, 생각보다 훨씬 부드러운 키스였어）
+						PRINTFORML （이 녀석과의 키스, 생각보다 나쁘지 않을지도）
+						PRINTW 
+					ELSE
+						IF BASE:42:무드 == MAXBASE:42:무드
+							PRINTFORML 「…………」
+							PRINTFORML 「……뭐야, 연인과의 예행 연습이야?」
+							PRINTW 
+							PRINTFORML 「하타테양의 기준으로는 방금 것은 나쁘지 않았어」
+							PRINTFORML 「연습하고 싶으면 더 해도 되지만, 어떡할래?」
+							PRINTFORML 하타테는 부드러운 입술을 쿡쿡 찔렀다
+							PRINTW 
+						ELSE
+							PRINTFORML 「…………」
+							PRINTFORML 「그다지, 키스하는 거 싫진 않지만…」
+							PRINTW 
+							PRINTFORML 「나도 일단 여자라구?　좀 더 무드같은 걸 생각해줘도 괜찮잖아」
+							PRINTFORML 「라는 것으로, 다음에는 더 낫기를 바랄게」
+							PRINTW 
+						ENDIF
+					ENDIF
+				ELSEIF TALENT:사모
+					IF CHK_DATENOW(CFLAG:42:데이트중)
+						PRINTFORML 「…………」
+						PRINTFORML 입술을 떼자, 하타테는 꿈꾸는 듯한 표정을 짓고 있다
+						PRINTW 
+						PRINTFORML 「어, 아, 미안. 나, 멍때리고 있었어?」
+						PRINTFORML 「아, 그, 그나저나, 우리 키스 해버렸네」
+						PRINTFORML 「키스란, 이런 느낌이구나…」
+						PRINTFORML 하타테는 입술을 손가락으로 덧그렸다. 감촉이 생각났는지, 그 뺨은 붉다
+						PRINTW 
+						TCVAR:353 += 1
+					ELSE
+						IF BASE:42:무드 == MAXBASE:42:무드
+							PRINTFORML 「…………」
+							PRINTFORML 입술을 떼자, 하타테는 꿈꾸는 듯한 표정을 짓고 있다
+							PRINTW 
+							PRINTFORML 「나, 키스해버렸어…%MASTERNAME:42%と」
+							PRINTFORML 「싫엇, 뭔가 갑자기 부끄러워졌어. 싫다아, 정마알」
+							PRINTFORML 하타테는 볼에 손을 대고 쑥스러운 듯 고개를 흔들고 있따
+							PRINTW 
+						ELSE
+							PRINTFORML 「…………」
+							PRINTFORML （어라? 나 방금 키스한 거야?　%MASTERNAME:42%와(과)?）
+							PRINTFORML 「…………」
+							PRINTFORML 하타테의 얼굴이 새빨개지며, 머리에서 김을 내뿜고 있다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ELSE
+					IF CHK_DATENOW(CFLAG:42:데이트중)
+						PRINTFORML 「푸핫！！ 자, 자 잠깐만, 무엇을！」
+						PRINTFORML 하타테는 입을 누르며 만화 캐릭터처럼 뒷걸음질쳤다
+						PRINTFORML （우～…데이트중이라고 해서 우쭐해졌나봐…경솔했어）
+						PRINTW 
+						TCVAR:353 += 1
+					ELSE
+						IF BASE:42:무드 == MAXBASE:42:무드
+							PRINTFORML 「자, 자 잠깐만, 무엇을！」
+							PRINTFORML 하타테는 입을 누르며 만화 캐릭터처럼 뒷걸음질쳤다
+							PRINTFORML （좋은 무드였다고는 하지만, 나는 대체 무슨…）
+							PRINTW 
+						ELSE
+							PRINTFORML 「…！　잠깐만！　뭘 하는 거야！?」
+							PRINTFORML （첫 키스, 빼앗겨버렸어…！　좋아하지도 않는 녀석에게, 이렇게 허무하게…）
+							PRINTFORML 하타테는 눈물 어린 눈으로 %CALLNAME:MASTER%을(를) 노려 보았다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		;２回目以降
+		ELSE
+			;周りに誰かいる
+			IF GET_TARGETNUM() >= 2
+				;데이트중
+				IF CHK_DATENOW(CFLAG:42:데이트중)
+					IF TALENT:연모 || TALENT:연인 || (TALENT:사모 && CFLAG:호감도 >= 2000)
+						;文に見せつける
+						IF K42_FIND_AROUND() == 29
+							PRINTFORML 「잠깐만, 아무리 데이트중이라지만, 아야 앞에서…읏！」
+							PRINTFORML 「응, 안 된다니까안,읏 %UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%」
+							PRINTW 
+							PRINTFORML 「아야아, 그런 눈으로 쳐다보지 마…아런 거, 참을 수 있을리가 없잖아…%UNICODE(0x2665) *1%」
+							PRINTFORML 동료들 앞에서, 하타테는 키스로 흐트러진 모습을 드러내고 있다
+							PRINTFORML 사진을 찍히고 있지만, 그것마저도 시야에 들어오지 않는 것 같다
+							PRINTW 
+						;椛に見せつける
+						ELSEIF K42_FIND_AROUND() == 65
+							PRINTFORML 「앗, %MASTERNAME:42%, 기다려, 모미지가, 동료가 보고 있으니까, 무긋, 응%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%」
+							PRINTFORML 「푸하앗, 앗, 아니야 모미지, 맨날 이런 짓을 하는 건 아니라구, 무굿～～～～～～%UNICODE(0x2665) *1%」
+							PRINTFORML 같은 텐구 동료들의 따가운 눈초리에도 불구하고, 하타테는 완전히 스위치가 켜진 것 같다
+							PRINTW 
+						;にとりに見せつける
+						ELSEIF K42_FIND_AROUND() == 51
+							PRINTFORML 「앗, 니토리씨가, 캇파씨가 보고 있으니까, %MASTERNAME:42%, 응응～～%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테가 손바닥으로 탁탁 때리는 것을 무시하고, 혀를 비틀어 넣어 하타테의 손을 맞잡았다
+							PRINTFORML 「후～～%UNICODE(0x2665) *1%　응흣%UNICODE(0x2665) *1%　응읏%UNICODE(0x2665) *1%」
+							PRINTFORML 니토리의 절망과 경멸의 눈초리를 받으며 하타테는 키스에 열중했다…
+							PRINTW 
+						;汎用
+						ELSE
+							PRINTFORML 「안 됏, %MASTERNAME:42%, 사람들이 보고 있으니까…」
+							PRINTFORML 하타테의 제지를 무시하고, 입술을 반강제적으로 빼앗았다
+							PRINTFORML 「안 돼앳, 읏, 응, 응…%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 가까이에 있던 사람들이 따가운 눈초리를 보내면서 하타테는 키스에 열중해 갔다
+							PRINTW 
+						ENDIF
+					ELSE
+						PRINTFORML 「잠깐, 읏, 믓, 응응응읏」
+						PRINTFORML 사람들 앞인데도 입술을 틀어막혀, 하타테는 얼굴을 새빨갛게 붉히며 저항하고 있다
+						PRINTFORML 「응읏, 그만, 그만두라니까ーーーーーーー안！」
+						PRINTFORML 하타테가 만든 바람에 의해 날아가 버렸다
+						PRINTFORML 「남들 앞에서 무슨 파렴치한 짓을 하는 거야 바보！」
+						PRINTW 
+					ENDIF
+					TCVAR:353 += 1
+				;데이트중でない
+				ELSE
+					IF TALENT:연모 || TALENT:연인 || (TALENT:사모 && CFLAG:호감도 >= 2000)
+						;文に見せつける
+						IF K42_FIND_AROUND() == 29
+							PRINTFORML 「잠깐만, 아야 앞에서…읏！」
+							PRINTFORML 「응, 안 된다니깐, 게다가 여기, 집도 아니…읏, %UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%」
+							PRINTW 
+							PRINTFORML 「아야아, 그런 눈으로 쳐다보지 마…응%UNICODE(0x2665) *1%　흣%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 동료들 앞에서, 하타테는 키스로 흐트러진 모습을 드러내고 있다
+							PRINTFORML 사진을 찍히고 있지만, 그것마저도 시야에 들어오지 않는 것 같다
+							PRINTW 
+						;椛に見せつける
+						ELSEIF K42_FIND_AROUND() == 65
+							PRINTFORML 「앗, %MASTERNAME:42%, 기다려, 모미지가, 동료가 보고 있으니까, 무긋, 응%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%」
+							PRINTFORML 「푸하앗, 앗, 아니야 모미지, 맨날 이런 짓을 하는 건 아니라구, 무굿～～～～～～%UNICODE(0x2665) *1%」
+							PRINTFORML 같은 텐구 동료들의 따가운 눈초리에도 불구하고, 하타테는 완전히 스위치가 켜진 것 같다
+							PRINTW 
+						;にとりに見せつける
+						ELSEIF K42_FIND_AROUND() == 51
+							PRINTFORML 「앗, 니토리씨가, 캇파씨가 보고 있으니까, %MASTERNAME:42%, 응응～～%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테가 손바닥으로 탁탁 때리는 것을 무시하고, 혀를 비틀어 넣어 하타테의 손을 맞잡았다
+							PRINTFORML 「후～～%UNICODE(0x2665) *1%　응흣%UNICODE(0x2665) *1%　응읏%UNICODE(0x2665) *1%」
+							PRINTFORML 니토리의 절망과 경멸의 눈초리를 받으며 하타테는 키스에 열중했다…
+							PRINTW 
+						;汎用
+						ELSE
+							PRINTFORML 「안 됏, %MASTERNAME:42%, 사람들이 보고 있으니까…」
+							PRINTFORML 하타테의 제지를 무시하고, 입술을 반강제적으로 빼앗았다
+							PRINTFORML 「안 돼앳, 읏, 응, 응…%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 가까이에 있던 사람들이 따가운 눈초리를 보내면서 하타테는 키스에 열중해 갔다
+							PRINTW 
+						ENDIF
+					ELSE
+						PRINTFORML 「잠깐, 읏, 믓, 응응응읏」
+						PRINTFORML 사람들 앞인데도 입술을 틀어막혀, 하타테는 얼굴을 새빨갛게 붉히며 저항하고 있다
+						PRINTFORML 「응읏, 그만, 그만두라니까ーーーーーーー안！」
+						PRINTFORML 하타테가 만든 바람에 의해 날아가 버렸다
+						PRINTFORML 「남들 앞에서 무슨 파렴치한 짓을 하는 거야 바보！」
+						PRINTW 
+					ENDIF
+				ENDIF
+			;二人きり
+			ELSE
+				;데이트중
+				IF CHK_DATENOW(CFLAG:42:데이트중)
+					;人目もはばからなくていいからイチャつきまくり
+					IF (CFLAG:MASTER:현재위치 == 連れ込み宿 || CFLAG:MASTER:현재위치 == ラブホ)
+						IF TALENT:연모 && TALENT:연인
+							IF TALENT:키스마
+								PRINTFORML 「좋아%UNICODE(0x2665) *1%　좋아해%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스, 굉장해…%UNICODE(0x2665) *1%　하아, 더어, 응응～～～～%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTW 
+								PRINTFORML 하타테는 자신으로부터 적극적으로 입술을 탐하듯 달라붙었다
+								PRINTFORML 주위에 사람이 있을 때는 절대로 볼 수 없는 광경이다
+								PRINTW 
+								PRINTFORML 「햝짝, 츗…좀 더어, 혀 내밀어줘…%UNICODE(0x2665) *1%」
+								PRINTFORML 「%MASTERNAME:42%의 침, 마시게…해주세요%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 끈적끈적하게 혀를 부딪히며 구강 내의 타액을 교환했다
+								PRINTFORML 입술의 접합 부분에서는 음란한 물소리가 새어나오며 틈새로 한 가닥 은실이 흘러내렸다
+								PRINTW 
+								PRINTFORML 「하아…%UNICODE(0x2665) *1%　하아…%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스만으로 젖어버렸어…%UNICODE(0x2665) *1%　상스럽지, 미안해」
+								;パンツ＋치마
+								IF TEQUIP:0 == 3
+									PRINTFORML 「자, 속옷이 벌서 엉망진창이 되버렸어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래의 속옷은 오줌을 싼 것처럼 젖어있었고 허벅지까지 더럽혀져 있었다
+									PRINTW 
+								;노팬티치마
+								ELSEIF TEQUIP:0 == 1
+									PRINTFORML 「자, 거기가 흠뻑 젖었어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래 쪽은 아무것도 입지 않은 채, 은빛의 실이 사르르 흘러내리고 있었다
+									PRINTW 
+								ENDIF
+								PRINTFORML 「있지, 좀 더어, 더어, 키스하자아…%UNICODE(0x2665) *1%」
+								PRINTFORML 매달리는 하타테의 눈동자에 하트 마크가 떠있는 것 같은 착각을 느꼈다…
+								PRINTW 
+							ELSE
+								PRINTFORML 「츄, 츄…%UNICODE(0x2665) *1%　아앙, 좀 더 하자아%UNICODE(0x2665) *1%　읏, 읏%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 손가락을 얽으면서 몇 번이나 서로의 입술을 포갰다
+								PRINTFORML 「응, 츄～～～～～～%UNICODE(0x2665) *1%　조아, 조아해애%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:연인
+							PRINTFORML 「응～～, 츄%UNICODE(0x2665) *1%　츄%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테는 %CALLNAME:MASTER%의 무릎위에 올라타서, 목을 포옹한 상태로 몇 번이나 키스를 졸랐다
+							PRINTW 
+						ELSEIF TALENT:연모
+							PRINTFORML 「응, 핫%UNICODE(0x2665) *1%　뭐야, 엄청 적극적이잖아…%UNICODE(0x2665) *1%」
+							PRINTFORML （%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%）
+						ELSEIF TALENT:애욕 || TALENT:섹프
+							PRINTFORML 「응, 핫…%UNICODE(0x2665) *1%　뭐야아, 엄청 적극적이잖아…%UNICODE(0x2665) *1%」
+							PRINTFORML 「벌써 하고 싶어진 거야?　읏, 응응읏～～～～～, ～～～～읏, ～～읏, ……%UNICODE(0x2665) *1%」
+							PRINTFORML 「푸하앗…정말이지, 방금 거에 젖어버렸잖아…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:사모
+							PRINTFORML 「핫, 하앗, 하앗%UNICODE(0x2665) *1%」
+							PRINTFORML 「응츗%UNICODE(0x2665) *1%　응응읏～～%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%은(는) 꽤나 키스를 좋아하는구나…」
+							PRINTFORML 「나는…비밀%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「읏, 핫…차, 착각하지마. 읏, 別に%MASTERNAME:42%을(를) 좋아한다거나, 그런 게 아니니까」
+							PRINTFORML 「키스에 흥미가 있을 뿐이니까. 읏, 츄, 그것뿐이니까앗. 츗…」
+							PRINTW 
+						ENDIF
+					;ラブホ以外
+					ELSE
+						IF TALENT:연모 && TALENT:연인
+							IF TALENT:키스마
+								PRINTFORML 「좋아%UNICODE(0x2665) *1%　좋아해%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스, 굉장해…%UNICODE(0x2665) *1%　하아, 더어, 응응～～～～%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTW 
+								PRINTFORML 하타테는 자신으로부터 적극적으로 입술을 탐하듯 달라붙었다
+								PRINTFORML 언제 사람이 올지 모르는 상황임에도 키스에 열중하고 있다
+								PRINTW 
+								PRINTFORML 「햝짝, 츗…좀 더어, 혀 내밀어줘…%UNICODE(0x2665) *1%」
+								PRINTFORML 「왜 그래, 읏, 사람들이 올지도, 모르는데…%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 끈적끈적하게 혀를 부딪히며 구강 내의 타액을 교환했다
+								PRINTFORML 입술의 접합 부분에서는 음란한 물소리가 새어나오며 틈새로 한 가닥 은실이 흘러내렸다
+								PRINTW 
+								PRINTFORML 「아직, 그만두지 마아, 좀 더 하자아」
+								PRINTFORML 사람들에게 들키는 건 시간문제일지도…
+								PRINTW 
+							ELSE
+								PRINTFORML 「츄, 츄…%UNICODE(0x2665) *1%　아읏, 좀 더 하자아%UNICODE(0x2665) *1%　읏, 읏%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 손가락을 얽으면서 몇 번이나 서로의 입술을 포갰다
+								PRINTFORML 「시러어, 좀 더, 키스하자%UNICODE(0x2665) *1%　뽀뽀해줘어」
+								PRINTFORML 이건 당분간 놓아주지 않을 것 같다…
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:연인
+							PRINTFORML 「읏～～, 츄%UNICODE(0x2665) *1%　츄%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 「어떡하지, 키스, 멈춰지지 않아. 사람들이, 올지도 모르는데…%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테는 %CALLNAME:MASTER%의 목을 부둥켜안으며 몇 번이나 키스를 졸랐다
+							PRINTW 
+						ELSEIF TALENT:연모
+							PRINTFORML 「응, 핫%UNICODE(0x2665) *1%　나, 엄청 두근두근거려…%UNICODE(0x2665) *1%」
+							PRINTFORML 「다른 사람들에게 들킬까 봐 그런거려나…앗, 그만두지 마아」
+							PRINTW 
+						ELSEIF TALENT:애욕 || TALENT:섹프
+							PRINTFORML 「잠깐만, 여기는 다른 사람들이…응, 응읏…흣, 응읏…%UNICODE(0x2665) *1%」
+							PRINTFORML 「바보옷, 스위치 켜져버렸잖아…%UNICODE(0x2665) *1%　이젠 모르겠으니까…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:사모
+							PRINTFORML 「핫, 하앗, 하앗, 자, 잠깐만」
+							PRINTFORML 「여긴 사람들이 올지도 모르잖아, 읏, 안 된다니까…」
+							PRINTFORML 「사람들이 안 오는 곳에서는, 잔뜩해도, 좋으니까…」
+							PRINTFORML 「기다리라니깐, 응 츗, 읏, 응～～～～～～！」
+							PRINTW 
+						ELSE
+							PRINTFORML 「읏, 잠깐만, 여기서는 다른 사람들이…응읏…」
+							PRINTFORML 「하지 말라니까…좀 더, 사람들이 없는 곳에서 하자…읏」
+							PRINTW 
+						ENDIF
+					ENDIF
+					TCVAR:353 += 1
+				;デートでない
+				ELSE
+					;自宅でイチャコラ
+					IF CFLAG:현재위치 == OMANEKIBEYA()
+						IF TALENT:연모 && TALENT:연인
+							IF TALENT:키스마
+								PRINTFORML 「좋아%UNICODE(0x2665) *1%　좋아해%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스, 굉장해…%UNICODE(0x2665) *1%　하아, 더어, 응응～～～～%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTW 
+								PRINTFORML 하타테는 자신으로부터 적극적으로 입술을 탐하듯 달라붙었다
+								PRINTFORML 주위에 사람이 있을 때는 절대로 볼 수 없는 광경이다
+								PRINTW 
+								PRINTFORML 「햝짝, 츗…좀 더어, 혀 내밀어줘…%UNICODE(0x2665) *1%」
+								PRINTFORML 「%MASTERNAME:42%의 침, 마시게…해주세요%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 끈적끈적하게 혀를 부딪히며 구강 내의 타액을 교환했다
+								PRINTFORML 입술의 접합 부분에서는 음란한 물소리가 새어나오며 틈새로 한 가닥 은실이 흘러내렸다
+								PRINTW 
+								PRINTFORML 「하아…%UNICODE(0x2665) *1%　하아…%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스만으로 젖어버렸어…%UNICODE(0x2665) *1%　상스럽지, 미안해」
+								;パンツ＋치마
+								IF TEQUIP:0 == 3
+									PRINTFORML 「자, 속옷이 벌서 엉망진창이 되버렸어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래의 속옷은 오줌을 싼 것처럼 젖어있었고 허벅지까지 더럽혀져 있었다
+									PRINTW 
+								;노팬티치마
+								ELSEIF TEQUIP:0 == 1
+									PRINTFORML 「자, 거기가 흠뻑 젖었어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래 쪽은 아무것도 입지 않은 채, 은빛의 실이 사르르 흘러내리고 있었다
+									PRINTW 
+								ENDIF
+								PRINTFORML 「있지, 좀 더어, 더어, 키스하자아…%UNICODE(0x2665) *1%」
+								PRINTFORML 매달리는 하타테의 눈동자에 하트 마크가 떠있는 것 같은 착각을 느꼈다…
+								PRINTW 
+							ELSE
+								PRINTFORML 「츄, 츄…%UNICODE(0x2665) *1%　아앙, 좀 더 하자아%UNICODE(0x2665) *1%　읏, 읏%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 손가락을 얽으면서 몇 번이나 서로의 입술을 포갰다
+								PRINTFORML 「응, 츄～～～～～～%UNICODE(0x2665) *1%　조아, 조아해애%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:연인
+							PRINTFORML 「응～～, 츄%UNICODE(0x2665) *1%　츄%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테는 %CALLNAME:MASTER%의 무릎위에 올라타서, 목을 포옹한 상태로 몇 번이나 키스를 졸랐다
+							PRINTFORML 「집이라면, 아무한테도 방해받을 수 없겠지…%UNICODE(0x2665) *1%　더, 키스하자…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:연모
+							PRINTFORML 「응, 핫%UNICODE(0x2665) *1%　뭐야, 엄청 적극적이잖아…%UNICODE(0x2665) *1%」
+							PRINTFORML （%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%）
+							PRINTFORML 「아앙, 심술부리지말고, 그만두지 마%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:애욕 || TALENT:섹프
+							IF TALENT:MASTER:연인
+								PRINTFORML 「읏, 츗, 츄, 츄웃…하앗」
+								PRINTFORML 「이, 있지…나랑 키스같은 거 해도 괜찮아?」
+								PRINTW 
+								PRINTFORML 「그치만 너 말이야, 연인이 있지 않아?　내가 말할 처지는 아니지만 말이지…」
+								PRINTFORML 「나, 나는…싫었다면 이런 짓은 안 했겠지…응읏…！　응, 후우…%UNICODE(0x2665) *1%」
+								PRINTFORML 「치사해…이렇게 되버리면 아무말도 못하게 되버리잖아…」
+								PRINTW 
+							ELSE
+								PRINTFORML 「읏, 츗, 츄, 츄웃…하앗」
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%　너 말이야, 정말로 키스를 좋아하나보네」
+								PRINTW 
+								PRINTFORML 「굳이 하고 싶으면 연인이랑 하면 될텐데. 없어?　그런 사람」
+								PRINTFORML 「나는 뭐…너라면 불편하지는 않아. 중요한 건, 남자친구가 생겨버리면 곤란해져버린다구, 너 때문에」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:사모
+							PRINTFORML 「핫, 하앗, 하앗%UNICODE(0x2665) *1%」
+							PRINTFORML 「응츗%UNICODE(0x2665) *1%　응응읏～～%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%은(는) 꽤나 키스를 좋아하는구나…」
+							PRINTFORML 「나는…비밀%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「읏, 핫…차, 착각하지마. 읏, 別に%MASTERNAME:42%을(를) 좋아한다거나, 그런 게 아니니까」
+							PRINTFORML 「키스에 흥미가 있을 뿐이니까. 읏, 츄, 그것뿐이니까앗. 츗…」
+							PRINTW 
+						ENDIF
+					;自宅以外・屋外
+					ELSEIF OUTROOF(CFLAG:TARGET:현재위치) == 1
+						IF TALENT:연모 && TALENT:연인
+							IF TALENT:키스마
+								PRINTFORML 「안 댓, %MASTERNAME:42%, 키스하면 안 대앳…」
+								PRINTFORML 하타테의 반대를 무시하고 억지라고 하기에는 부드럽게 입술을 뺏고 혀를 상대의 혀에 들이밀었다
+								PRINTW 
+								PRINTFORML 「안 된다니까안…（안 되는데도…%UNICODE(0x2665) *1%）읏%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%」
+								PRINTFORML （키스, 기분 좋아…%UNICODE(0x2665) *1%　머리 속이, 둥실둥실해져버려…%UNICODE(0x2665) *1%）
+								PRINTW 
+								PRINTFORML 충분히 혀를 얽은 후 입술을 떼자 하타테는 눈동자 속에 하트 마크를 띄우고 있었다
+								PRINTFORML 「그래서 안 된다고 말했었는데…%UNICODE(0x2665) *1%　가슴이 찡～하고, 이상한 느낌이 와버리니까…」
+								PRINTW 
+								PRINTFORML 「책임지고, 좀 더 키스 해줘%UNICODE(0x2665) *1%　응, 응?%UNICODE(0x2665) *1%」
+								PRINTFORML 완전히「사랑해」의 스위치가 켜진 하타테는 스스로 혀를 내밀기 시작했다…
+								PRINTW 
+							ELSE
+								PRINTFORML 「츄, 츄%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%」
+								PRINTFORML 「안대…앳%UNICODE(0x2665) *1%　더 이상은%UNICODE(0x2665) *1%　들켜버려어…엇%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테는 황홀한 표정을 지으며, 형식적인 저항을 하고 있다
+								PRINTW 
+								PRINTFORML 「어읏, 안 된다니까안…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:연모 || TALENT:연인
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「%MASTERNAME:42%, 안 된다구우, 정말이지…읏, 누군가, 올지도 모르니까…앗%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테는 말리려고 하면서도 이쪽의 손을 꼭 쥐고 키스를 멈추려 하지 않았다
+								PRINTFORML 「아니얏, 손이랑 입이, 마음대로…읏%UNICODE(0x2665) *1% 후읏%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　…%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「응, %MASTERNAME:42%, 여기는, 누군가 와버릴지도 몰라…」
+								PRINTFORML 하타테는 키스 때문에 노이즈가 생긴 머리를 쥐어짜면서 제지하려 했다
+								PRINTFORML 「좀 더, 사람들이 없는 곳에서…읏, 응응～～～～%UNICODE(0x2665) *1%　…%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF TALENT:애욕 || TALENT:섹프
+							IF TALENT:MASTER:연인
+								PRINTFORML 「잠깐만, 여기는, 사람들이, 와버리니까…응읏…」
+								PRINTFORML 「푸하앗, 안 돼, 그치만…네 연인에게 보이기라도 한다면…응응～～～～읏」
+								PRINTW 
+								PRINTFORML （아아, 또야. 안 된다는 걸 알고 있는데도）
+								PRINTFORML （이 녀석의 키스 때문에, 아무 생각도 못하게 되버려…%UNICODE(0x2665) *1%）
+								PRINTW 
+							ELSE
+								PRINTFORML 「잠깐만, 여기는, 사람들이, 와버리니까…응읏…」
+								PRINTFORML 「정말이지, 성급하다니깐…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:사모
+							PRINTFORML 「자, 잠깐만, 여기는, 사람들이 와버리니까…응읏」
+							PRINTFORML 저항하는 하타테의 턱을 손가락으로 들어올려 망설임 없이 입술을 빼앗았다
+							PRINTFORML 「응, 응응～～～～！　응읏, 읏, 응……」
+							PRINTFORML 처음에는 가슴을 두드렸던 손이 점점 저항을 없애더니, 어느샌가 이쪽의 팔을 붙잡고 있었다
+							PRINTW 
+						ELSE
+							PRINTFORML 「바보옷, 이런 곳은 사람들이 오가니까…응읏！」
+							PRINTFORML 항의하는 하타테의 입술을 억지로 자신의 입술로 틀어막았다
+							PRINTW 
+						ENDIF
+					;屋内
+					ELSE
+						IF TALENT:연모 && TALENT:연인
+							IF TALENT:키스마
+								PRINTFORML 「좋아%UNICODE(0x2665) *1%　좋아해%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스, 굉장해…%UNICODE(0x2665) *1%　하아, 더어, 응응～～～～%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTW 
+								PRINTFORML 하타테는 자신으로부터 적극적으로 입술을 탐하듯 달라붙었다
+								PRINTFORML 주위에 사람이 있을 때는 절대로 볼 수 없는 광경이다
+								PRINTW 
+								PRINTFORML 「햝짝, 츗…좀 더어, 혀 내밀어줘…%UNICODE(0x2665) *1%」
+								PRINTFORML 「%MASTERNAME:42%의 침, 마시게…해주세요%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 끈적끈적하게 혀를 부딪히며 구강 내의 타액을 교환했다
+								PRINTFORML 입술의 접합 부분에서는 음란한 물소리가 새어나오며 틈새로 한 가닥 은실이 흘러내렸다
+								PRINTW 
+								PRINTFORML 「하아…%UNICODE(0x2665) *1%　하아…%UNICODE(0x2665) *1%」
+								PRINTFORML 「키스만으로 젖어버렸어…%UNICODE(0x2665) *1%　상스럽지, 미안해」
+								;パンツ＋치마
+								IF TEQUIP:0 == 3
+									PRINTFORML 「자, 속옷이 벌서 엉망진창이 되버렸어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래의 속옷은 오줌을 싼 것처럼 젖어있었고 허벅지까지 더럽혀져 있었다
+									PRINTW 
+								;노팬티치마
+								ELSEIF TEQUIP:0 == 1
+									PRINTFORML 「자, 거기가 흠뻑 젖었어…%UNICODE(0x2665) *1%」
+									PRINTFORML 치마 아래 쪽은 아무것도 입지 않은 채, 은빛의 실이 사르르 흘러내리고 있었다
+									PRINTW 
+								ENDIF
+								PRINTFORML 「있지, 좀 더어, 더어, 키스하자아…%UNICODE(0x2665) *1%」
+								PRINTFORML 매달리는 하타테의 눈동자에 하트 마크가 떠있는 것 같은 착각을 느꼈다…
+								PRINTW 
+							ELSE
+								PRINTFORML 「츄, 츄…%UNICODE(0x2665) *1%　아앙, 좀 더 하자아%UNICODE(0x2665) *1%　읏, 읏%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테와 손가락을 얽으면서 몇 번이나 서로의 입술을 포갰다
+							PRINTFORML 「응, 츄～～～～～～%UNICODE(0x2665) *1%　조아, 조아해애%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDIF
+						ELSEIF TALENT:연모 || TALENT:연인
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「응～～, 츄%UNICODE(0x2665) *1%　츄%UNICODE(0x2665) *1%　%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테는 %CALLNAME:MASTER%의 무릎위에 올라타서, 목을 포옹한 상태로 몇 번이나 키스를 졸랐다
+								PRINTFORML 「집이라면, 아무한테도 방해받을 수 없겠지…%UNICODE(0x2665) *1%　더, 키스하자…%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「응, 핫%UNICODE(0x2665) *1%　뭐야, 엄청 적극적이잖아…%UNICODE(0x2665) *1%」
+								PRINTFORML （%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%　%MASTERNAME:42%%UNICODE(0x2665) *1%）
+								PRINTFORML 「아앙, 심술부리지말고, 그만두지 마%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF TALENT:사모
+							PRINTFORML 「핫, 하앗, 하앗%UNICODE(0x2665) *1%」
+							PRINTFORML 「응츗%UNICODE(0x2665) *1%　응응읏～～%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%은(는) 꽤나 키스를 좋아하는구나…」
+							PRINTFORML 「나는…비밀%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「읏, 핫…차, 착각하지마. 읏, 別に%MASTERNAME:42%을(를) 좋아한다거나, 그런 게 아니니까」
+							PRINTFORML 「키스에 흥미가 있을 뿐이니까. 읏, 츄, 그것뿐이니까앗. 츗…」
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;313,가슴애무
+;CFLAG:우후후 == 2&&TCVAR:20(27=谷間を見せる 33=가슴を揉ませる 53=파이즈리(小分岐は地の文EVENT_MESSAGE_COM_セクハラ.ERB参照) 73=ぱふぱふ 77=乳を吸わせる 性交(85=V挿入する 87=A挿入する 88=허리振りV 89=허리振りA) 86=だいしゅきホールド)
+;ABL:B감각(2未満=性的には感じてない 5未満=多少感じてる 5以上=カイカン)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;乳のサイズでも変わる場合があるので, 地の文EVENT_MESSAGE_COM_セクハラ.ERB参照
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_313
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_313_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_313_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSE
+		IF FIRSTTIME(SELECTCOM)
+			IF TALENT:연인 || TALENT:연모 || TALENT:사모
+				SELECTCASE TALENT:가슴사이즈
+				CASE IS > 0
+					PRINTFORML 「내 가슴, 힐끔힐끔 쳐다봤었지」
+					PRINTFORML 「그래, 들켰거든. 뭐어 상관은 없지만」
+					PRINTW 
+				CASE 0
+					PRINTFORML 「내 가슴, 만지고 싶은 거야…?」
+					PRINTFORML 「어떡할까…랄까, 그런 얼굴 하지마!　내가 나쁜 사람 같잖아…」
+					PRINTW 
+				CASE IS < 0
+					PRINTFORML 「내 꺼 그렇게 크진 않은데…만지고 싶어?」
+					PRINTFORML 「그렇구나, 여자아이의 가슴이라면 뭐든 상관없는 거네…」
+					PRINTFORML 「내 거니까 만지고 싶은 거라구?　그, 그렇구나…\/\/\/」
+					PRINTW 
+				ENDSELECT
+				
+					PRINTFORML 「자, 이, 이걸로 됐지…?」
+					PRINTFORML 하타테는 허리를 약간 펴고 고개를 돌려 뒤로 손을 마주 잡았다
+					PRINTW 
+					PRINTFORML 「응…!　잠깐만, 만지는 방법이 너무 야하잖아…」
+					PRINTFORML 「싫엇, 거긴, 하…말시키지 맛, 바보옷…\/\/\/」
+					PRINTW 
+				
+			ELSE
+				PRINTFORML 「뭣…！」
+				PRINTFORML 「～～～～～～왜, 갑자기 소녀의 가슴을 만지고 있는 거야！　저질！！」
+				PRINTFORML 돌풍에 날려, {RAND:10}번 회전하고 말았다
+				PRINTW 
+			ENDIF
+		ELSE
+			IF CFLAG:현재위치 == OMANEKIBEYA() || AT_HOME(MASTER)
+				;연모または연인, 섹프のみ
+				IF CFLAG:우후후 == 2
+					SELECTCASE TCVAR:20
+					;谷間を見せる
+					CASE 27
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「봐…%UNICODE(0x2665) *1%　하타테의 가슴, 이렇게 커져버렸어%UNICODE(0x2665) *1%」
+							PRINTFORML 「만져보고 싶어?　%MASTERNAME:42%(이)라면, 마음대로 해도 상관없어…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「하타테의 가슴, 작긴 해도 분명히 있으니까…앗！」
+							PRINTFORML 「%MASTERNAME:42%, 좀 더 만져서 커지게 만들어줘…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「우우, 예전에는 조금이라도 골짜기를 만들 수 있었는데…」
+							PRINTW 
+						ELSE
+							PRINTFORML 「봐, 하타테의 가슴, 이전보다 더 커졌어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%이(가) 만져서 그러려나…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					;가슴を揉ませる
+					CASE 33
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「하타테의 가슴, 부드럽지?　%MASTERNAME:42%, 정신없이 비비고 있네…♪」
+							PRINTFORML 「좋아, 원하는 만큼 주물러도 되니까%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「%MASTERNAME:42%이(가) 만지는 법, 엄청 야해…%UNICODE(0x2665) *1%」
+							PRINTFORML 「하타테의 가슴, 마음대로 해도 좋아…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「우우, 미안해, 가슴이 없어서…」
+							PRINTFORML 「아응%UNICODE(0x2665) *1%　젖꼭지, 둥글둥글하면 안 대앳%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「하타테의 가슴, 그렇게나 좋은 거야…?」
+							PRINTFORML 「%MASTERNAME:42%말고는 만질 수 없으니까…♪」
+							PRINTW 
+						ENDIF
+					;파이즈리
+					CASE 53
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「자, 하타테의 가슴, 기분 좋지?」
+							PRINTFORML 「이제 이런 것도 가능해졌어♪　문질문질 ♪」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「노, 노력하면 나도 골짜기는 만들 수 있다구…?」
+							PRINTFORML 「하타테의 가슴으로 기분 좋게 만들테니까, 읏, 읏…」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「으, 가슴이 없어도, 젖꼭지는 붙어 있으니까」
+							PRINTFORML 「아응%UNICODE(0x2665) *1%　내가 오히려 기분이 더 좋아져버려…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「%MASTERNAME:42%, 가슴 사이에 끼워주는 거, 좋아해?」
+							PRINTFORML 「우후후, 물어볼 것도 없었나보네ー♪」
+							PRINTW 
+						ENDIF
+					;ぱふぱふ
+					CASE 73
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「네에, %MASTERNAME:42%이(가) 좋아하는 하타테의 가슴이야♪」
+							PRINTFORML 「이렇게 하면 치유되지?　%MASTERNAME:42%의 얼굴, 야무지지 못하네♪」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「그러니까…이렇게 하면 치유되는 사람이 많다고 잡지에서 읽은 적이 있는데…」
+							PRINTFORML 「내 거 작아도 치유가 된다구…?　부드러워?　그렇구나…♪」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「우우…이러면 전혀 치유가 안 되잖아…」
+							PRINTFORML 「예전에는 좀 더 컸던 것 같은데 어느샌가…」
+							PRINTW 
+						ELSE
+							PRINTFORML 「이렇게, 가슴을 얼굴에 끼워주면 위로가 되는 거지♪」
+							PRINTFORML 「후후, %MASTERNAME:42%의 얼굴, 야무지지 못하네♪」
+							PRINTW 
+						ENDIF
+					;乳を吸わせる
+					CASE 77
+						SELECTCASE RAND:3
+						CASE 0
+							PRINTFORML 「%MASTERNAME:42% 아기 같아서, 귀여워…%UNICODE(0x2665) *1%」
+							PRINTFORML 하타테는 사랑이 가득 찬 눈빛으로 이쪽을 바라보고 있다 
+							PRINTW 
+						CASE 1
+							PRINTFORML 「%MASTERNAME:42%은(는) 응석받이씨네ー♪」
+							PRINTFORML 「앗…%UNICODE(0x2665) *1%　얏, 그런 빠는 법, 아기는 하지 않는다구우…%UNICODE(0x2665) *1%」
+							PRINTW 
+						CASE 2
+						PRINTFORML 「젖꼭지잇%UNICODE(0x2665) *1%　좀 더, 더어 빨아줘%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테는 이쪽의 머리를 감싸안으며 쾌감에 허덕이고 있다
+						PRINTW 
+						ENDSELECT
+					;V挿入
+					CASE 85
+					;だいしゅきホールド
+					CASE 86
+					;A挿入
+					CASE 87
+					;허리振りV
+					CASE 88
+					;허리振りA
+					CASE 89
+					ENDSELECT
+				;우후후中でない
+				ELSE
+					IF TALENT:연모 || TALENT:연인
+						IF ABL:B감각 >= 5
+							SELECTCASE RAND:3
+							CASE 0
+								PRINTFORML 「아읏, 안 대앳%UNICODE(0x2665) *1%」
+								PRINTFORML 「정말이지ー, 만지면 안 돼ー♪　시럿, 안 된다니까앗%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「아읏%UNICODE(0x2665) *1%　%MASTERNAME:42%은(는) 변태%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 2
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%　그렇게 천천히 만지면, 두근거려버리잖아…%UNICODE(0x2665) *1%」
+								PRINTFORML 「가슴말고 다른 곳도 만져지고 싶어져…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「응…%UNICODE(0x2665) *1%　조금, 기분 좋을지도…」
+							PRINTFORML 「아직은 잘 모르겠어…조금 더, 만져볼래…?」
+							PRINTW 
+						ELSE
+							PRINTFORML 「…………훗」
+							PRINTFORML 「훗…쿠, 쿡, 자, 잠깐 기다려줘, 간지러워, 간지럽다니깐！」
+							PRINTFORML 「아하하하하핫！　간지러우니까！　그만해！　그만해ーーーーーー앳！　아하하하하하ーー핫」
+							PRINTW 
+						ENDIF
+					ELSEIF TALENT:애욕 || TALENT:섹프
+						IF ABL:B감각 >= 5
+							PRINTFORML 「읏%UNICODE(0x2665) *1%　이 녀석아, 너 말이야 금방이라도 만지고 싶어 한다니까…♪」
+							PRINTFORML 「그렇게 만져대면, 하고 싶어지잖아…♪　아응%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「읏…시러어, 이런 때에 만지다니 」
+							PRINTFORML 「좀 더 무드라는 걸 생각해보라구, 읏…정마알…♪」
+							PRINTW 
+						ELSE
+							PRINTFORML 「풋, 크큭, 잠깐만, 간지러워～！」
+							PRINTW 
+						ENDIF
+					ELSEIF TALENT:사모
+						IF ABL:B감각 >= 5
+							PRINTFORML 「읏%UNICODE(0x2665) *1%　바, 바보야…그렇게 만지작거리지 마…」
+							PRINTFORML 「안 됏, 목소리, 새어버렷, 응응%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「읏…자, 잠깐만, 만지는 방법이 야하지 않아…?」
+							PRINTFORML 「차, 참으면 되는 거지, 참으면…！　읏…！」
+							PRINTW 
+						ELSE
+							PRINTFORML 「아, 잠, 푸흣, 쿠쿡, 간지러우니까！　그만둬！」
+							PRINTFORML 하타테에게서 {RAND:5}미터만큼 날려져버렸다 
+							PRINTW 
+						ENDIF
+					ELSE
+						IF ABL:B감각 >= 5
+							PRINTFORML 「아븟%UNICODE(0x2665) *1%　…………뭐야 그 얼굴은！　날려버릴 거야！」
+							PRINTFORML 날려 보내고 나서 말하는 건 그만두었으면
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「얏…따, 딱히 느낀 건 없어, 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ELSE
+							PRINTFORML 「잠깐, 어딜 만지는 거야 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDIF
+			;自宅以外の室内
+			ELSEIF INROOM(CFLAG:MASTER:현재위치)
+				IF CFLAG:우후후 == 2
+					SELECTCASE TCVAR:20
+					;谷間を見せる
+					CASE 27
+					;가슴を揉ませる
+					CASE 33
+					;파이즈리
+					CASE 53
+					;ぱふぱふ
+					CASE 73
+					;乳を吸わせる
+					CASE 77
+					ENDSELECT
+				ELSE
+					IF TALENT:연모 || TALENT:연인
+						IF ABL:B감각 >= 5
+							PRINTFORML 「아븟%UNICODE(0x2665) *1%　이런 곳에서 어딜 만지는 거야！　냅다 날려버릴테니까！」
+							PRINTFORML 날려 보내고 나서 말하는 건 그만두었으면
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「얏…따, 딱히 느낀 건 없어, 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ELSE
+							PRINTFORML 「잠깐만, 이런 곳에서 어딜 만지고 있는 거야 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ENDIF
+					ELSEIF TALENT:사모
+						IF ABL:B감각 >= 5
+							PRINTFORML 「안 됏, 안 된다니까…%UNICODE(0x2665) *1%　사람들,  와버리니까…%UNICODE(0x2665) *1%」
+							PRINTFORML 「만지게 해줄테니까, 다른 곳으로, 가자…?」
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「바보옷, 이런 곳에서 뭘 하는 거야…읏…%UNICODE(0x2665) *1%」
+							PRINTFORML 「느껴져 뭔가, 다른…안 댓%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「잠깐만, 누가 올지도 모르니까…안 된다니까…！」
+							PRINTFORML 하타테는 필사적으로 이쪽 손을 떼어내려고 하고 있다
+							PRINTW 
+						ENDIF
+					ELSE
+						IF ABL:B감각 >= 5
+							PRINTFORML 「아후응%UNICODE(0x2665) *1%　뭘 만지고 있는 거야！　날려버린다！」
+							PRINTFORML 날려 보내고 나서 말하는 건 그만두었으면
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「얏…따, 딱히 느낀 건 없어, 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ELSE
+							PRINTFORML 「잠깐, 어딜 만지는 거야 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDIF
+			;屋外
+			ELSE
+				IF CFLAG:우후후 == 2
+					SELECTCASE TCVAR:20
+					;谷間を見せる
+					CASE 27
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「쿡쿡…하타테의 가슴, 보고 있었지%UNICODE(0x2665) *1%」
+							PRINTFORML 「손대고 싶어?　만지고 싶어?　아니면, 좀 더 대단한 걸 해보고 싶어…?　쿡쿡…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「하타테의 가슴, 작아도 분명히 있어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「보는 것만으로도 만족해?　%MASTERNAME:42%(이)라면, 마음대로 해도, 괜찮아…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「%MASTERNAME:42%은(는) 가슴 없는 여자는 싫어…?」
+							PRINTFORML 「정말로 싫은지 아닌지 잘 확인해 봐…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「봐, 하타테의 가슴, 전보다 커졌어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「지금이라면, 여러가지를 해볼 수 있겠지만, 어떡할까…?　쿡쿡…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					;가슴を揉ませる
+					CASE 33
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「봐…%UNICODE(0x2665) *1%　하타테의 가슴, 이렇게나 커져버렸어%UNICODE(0x2665) *1%」
+							PRINTFORML 「만져보고 싶어?　%MASTERNAME:42%(이)라면, 마음대로 해도 상관없어…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「하타테의 가슴, 작긴 해도 분명히 있으니까…앗！」
+							PRINTFORML 「%MASTERNAME:42%, 좀 더 만져서 커지게 만들어줘…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「우우, 예전에는 조금이라도 골짜기를 만들 수 있었는데…」
+							PRINTW 
+						ELSE
+							PRINTFORML 「봐, 하타테의 가슴, 이전보다 더 커졌어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%이(가) 만져서 그러려나…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					;파이즈리
+					CASE 53
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「봐…%UNICODE(0x2665) *1%　하타테의 가슴, 이렇게나 커져버렸어%UNICODE(0x2665) *1%」
+							PRINTFORML 「만져보고 싶어?　%MASTERNAME:42%(이)라면, 마음대로 해도 상관없어…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「하타테의 가슴, 작긴 해도 분명히 있으니까…앗！」
+							PRINTFORML 「%MASTERNAME:42%, 좀 더 만져서 커지게 만들어줘…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「우우, 예전에는 조금이라도 골짜기를 만들 수 있었는데…」
+							PRINTW 
+						ELSE
+							PRINTFORML 「봐, 하타테의 가슴, 이전보다 더 커졌어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「%MASTERNAME:42%이(가) 만져서 그러려나…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					;ぱふぱふ
+					CASE 73
+						IF TALENT:TARGET:가슴사이즈 > 0
+							PRINTFORML 「봐…%UNICODE(0x2665) *1%　하타테의 가슴, 이렇게나 커져버렸어%UNICODE(0x2665) *1%」
+							PRINTFORML 「만져보고 싶어?　%MASTERNAME:42%(이)라면, 마음대로 해도 상관없어…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -1
+							PRINTFORML 「작은 가슴이라도 기분 좋은 거야?　행복해보이네%UNICODE(0x2665) *1%」
+							PRINTFORML 「하타테의 가슴은, %MASTERNAME:42%의 것이니까…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF TALENT:TARGET:가슴사이즈 == -2
+							PRINTFORML 「가슴이 전혀 없는데도, %MASTERNAME:42%은(는) 기뻐하는구나」
+							PRINTFORML 「%MASTERNAME:42%의 그런 점, 좋아해…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSE
+							PRINTFORML 「봐, 하타테의 가슴, 이전보다 더 커졌어…%UNICODE(0x2665) *1%」
+							PRINTFORML 「사람들에게 보여져?　후후, 그 때는 %MASTERNAME:42%의 칠칠치 못한 얼굴도 보이겠네…쿡쿡…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					;乳を吸わせる
+					CASE 77
+						SELECTCASE RAND:2
+						CASE 0
+							PRINTFORML 「밖에서 창피하지 않냐구?　그야 창피한 게 당연하잖아…\/\/\/」
+							PRINTFORML 「그치만, 응석받이씨가 가슴을 안 놔주니까%UNICODE(0x2665) *1%　어쩔 수 없네…%UNICODE(0x2665) *1%」
+							PRINTW 
+						CASE 1
+							PRINTFORML 「자, 좀 더 빨아줘…%UNICODE(0x2665) *1%」
+							PRINTFORML 「누군가에게 보여져?　괜찮아, %MASTERNAME:42%이(가) 하타테의 것이라는 걸 알리는 거지…%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDSELECT
+					ENDSELECT
+				ELSE
+					IF TALENT:연모 || TALENT:연인
+						IF ABL:B감각 >= 5
+							PRINTFORML 「안 돼, 밖에서 이러는 건…부끄러워」
+							PRINTFORML 「집에 가자?　집이라면 마음대로 만지작거려도 괜찮으니까, 응, 응?」
+							PRINTFORML 「야아아응, 유두가 자극되서, 읏%UNICODE(0x2665) *1%　응흣%UNICODE(0x2665) *1%」
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「응…！　바, 밖은 불안하니까…이런 일은, 집에서 하자, 응?」
+							PRINTW 
+						ELSE
+							PRINTFORML 「시럿, 밖에서는 안 돼, 집에서는 얼마든지 만져도 괜찮으니까, 응?」
+							PRINTW 
+						ENDIF
+					ELSEIF TALENT:사모
+						IF ABL:B감각 >= 5
+							PRINTFORML 「아, 안 된다니까…밖에서는, 싫어…적어도, 집에서…」
+							PRINTFORML 하타테는 가슴이 비벼지는 것에 거의 저항할 의지를 보이지 않고 있다
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「바, 바보야…왜 이런 곳에서 저질스러운 짓을 하는 거야…」
+							PRINTFORML 하타테의 저항의 목소리는 생각했던 것보다 약했다
+							PRINTW 
+						ELSE
+							PRINTFORML 「자, 잠깐만！　이런 곳에서 만지지 마！」
+							PRINTFORML 하타테는 손으로 가슴을 가리고 이쪽을 노려봤다
+							PRINTW 
+						ENDIF
+					ELSE
+						IF ABL:B감각 >= 5
+							PRINTFORML 「아흥%UNICODE(0x2665) *1%　이런 곳에서 뭘 만지는 거야！　확 날려버릴 거야！」
+							PRINTFORML 날려 보내고 나서 말하는 건 그만두었으면
+							PRINTW 
+						ELSEIF ABL:B감각 >= 2
+							PRINTFORML 「응…따, 딱히 느낀 건 없어, 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ELSE
+							PRINTFORML 「잠깐만, 이런 곳에서 어딜 만지고 있는 거야 변태！」
+							PRINTFORML 하타테에게 때려눕혀졌다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+		CFLAG:1103 += 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;314,애널애무
+;CFLAG:우후후 == 2&&TCVAR:20(72=애널봉사
+;CFLAG:우후후 == 2&&TEQUIP:식스나인(パンツありTCVAR:20(70～72)はこちら)
+;ABL:A감각(2未満=受け入れられない 4未満=異物感に翻弄 4以上=カイカン)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_314
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_314_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_314_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FIRSTTIME(SELECTCOM)
+		PRINTFORML 「！」
+		PRINTFORM 「자, 잠깐만, 거긴 다른…
+		IF TALENT:연모 || TALENT:연인
+			PRINTL 아우아우…」
+			PRINTFORML 하타테는 자신이 사랑하는 사람의 손의 변태적인 행위를 받아들일지 말지 망설이고 있는 것 같다
+			PRINTW 
+		ELSE
+			PRINTL 싫어, 앞도 안 되지만, 그만둬엇, 앗, 싫엇, 그만두라니까앗！」
+			PRINTFORML 「그, 그만두라니까, 이 녀서ーーーーーー억！」
+			PRINTFORML 하타테의 돌풍에 날려져 {RAND:10}회 회전했다
+			PRINTW 
+			PRINTFORML 「다음 번엔 갈기갈기 찢어버릴니까！　알겠어！?」
+			PRINTFORML 엉덩이를 누른 하타테의 비난과 함께 고개를 끄덕였다
+			PRINTW 
+		ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			IF CFLAG:현재위치 == OMANEKIBEYA() || AT_HOME(MASTER)
+				IF ABL:A감각 >= 5
+					PRINTFORML 「아～～, 아아아아, 시러어, 부끄러워, 아읏%UNICODE(0x2665) *1%　앗%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%」
+					PRINTFORML 「달라앗%UNICODE(0x2665) *1%　하타테, 변태따위가 아냣%UNICODE(0x2665) *1%　싫어, 시러엇%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 하타테는 수치로 고개를 설레설레 흔들면서도 항문으로 두 개의 손가락을 물고 허리를 비비꼬고 있다
+					PRINTW 
+				ELSEIF ABL:A감각 >= 3
+					PRINTFORML 「아…엉덩이…만질 거,야?　힛…그런, 안쪽까지 넣어버리면, 야아…\/\/\/」
+					PRINTFORML 적응시킨 보람이 있는지, 하타테의 엉덩이는 손가락을 통째로 삼키게 되었다
+					PRINTFORML 엉덩이를 만지는 행위에도 수치심은 몰라도 혐오감은 덜해진 것 같다
+					PRINTW 
+					PRINTFORML 「엉덩이, 이상해져버려…싫엇, 뭔가 무서워, 시러엇」
+					PRINTFORML 그렇다고는 해도, 쾌감보다는 이물감이 더 느껴지는지 눈썹을 여덟 팔자로 구부리고 몸을 뒤틀고 있다
+					PRINTW 
+				ELSEIF ABL:A감각 >= 1
+					PRINTFORML 「우읏, 이상한 느낌이야…너무 움직이지 마…」
+					PRINTFORML 조금 긴장은 풀렸지만, 손가락 하나를 입구 부근에서 움직이는 것이 고작이다
+					PRINTW 
+				ELSE
+					PRINTFORMW 「싫엇, 엉덩이, 기분 나쁘니까…움직이는 거 싫어」
+					PRINTW 
+				ENDIF
+			ELSE
+				IF ABL:A감각 >= 5
+					PRINTFORML 「앗아아, 시러어, 부끄럽다구우, 이런 곳에서」
+					PRINTFORML 「달라앗%UNICODE(0x2665) *1%　하타테, 느껴져 뭔가앗%UNICODE(0x2665) *1%　싫어, 시러엇%UNICODE(0x2665) *1%」
+					PRINTW 
+				ELSEIF ABL:A감각 >= 3
+					PRINTFORML 「저기, 그만두자아, 그런 데 건드리지 마…\/\/\/」
+					PRINTFORML 입은 저항하면서도, 하타테는 엉덩이 구멍을 만져지는 대로 두고 있다
+					PRINTW 
+				ELSEIF ABL:A감각 >= 1
+					PRINTFORML 「우읏, 이상한 느낌인데다, 아프고, 이런 곳에서, 시러어…변태앳…\/\/\/」
+					PRINTFORML 조금 긴장은 풀렸지만, 손가락 하나를 입구 부근에서 움직이는 것이 고작이다
+					PRINTW 
+				ELSE
+					PRINTFORMW 「그만둬엇…이런 곳에서, 엉덩이, 만지지 마앗…아팟, 아파앗」
+					PRINTW 
+				ENDIF
+			ENDIF
+		ELSE
+			IF ABL:A감각 >= 5
+				PRINTFORML 「달라앗, 뭔가 기분이 좋아져서, 싫어, 시러엇%UNICODE(0x2665) *1%」
+				PRINTFORML 「바보옷, 변태앳, 절대로 용서하지 않을 거야%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF ABL:A감각 >= 3
+				PRINTFORML 「싫어, 그런 곳에, 손가락, 넣어버리면…시러엇…」
+				PRINTW 
+			ELSEIF ABL:A감각 >= 1
+				PRINTFORML 「기분 나쁘다고, 말했는데…그마안, 우우…이 변태…」
+				PRINTW 
+			ELSE
+				PRINTFORML 「잠깐, 아팟, 아파앗！　그런 곳에 손가락을 집어 넣지 마앗, 바보옷！　변태앳！」
+				PRINTW 
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;315,클리애무
+;CFLAG:우후후 == 2&&TCVAR:20(35=치마の中を見せる 70=커닐링구스강제 85=V挿入する 86=だいしゅきホールド 87=A挿入する 88=허리振りV 89=허리振り
+;ABL:C감각(4未満=くすぐったい 6未満=ちょっといいかも 6以上=カイカン)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_315
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_315_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_315_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF FIRSTTIME(SELECTCOM)
+		IF TALENT:연모 || TALENT:연인
+			PRINTFORML 「앗！　그, 그런 데를 만지면, 흣, 쿠, 히힛」
+			PRINTFORML 하타테는 기분이 좋은 것보다 간지러움이 더 느껴지는 것 같다
+			PRINTW 
+		ELSE
+			PRINTFORML  「얏, 어디를, 만지는……햣！?　쿠, 쿠훗」
+			PRINTFORML 느낀다기보다는 확실히 간지러워하고 있다
+			PRINTW 
+		ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			IF CFLAG:현재위치 == OMANEKIBEYA() || AT_HOME(MASTER)
+				IF ABL:C감각 >= 6
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「～～～～～～읏%UNICODE(0x2665) *1%～～～～～～～～읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테는 눈을 꼭 감으며 허벅지를 떨고 있다
+						PRINTW 
+					CASE 1
+						PRINTFORML 「앗%UNICODE(0x2665) *1%　앗%UNICODE(0x2665) *1%　좋앗%UNICODE(0x2665) *1%　기분 조앗%UNICODE(0x2665) *1%」
+						PRINTFORML 「그치마안, 거기, 문질러버리면, 소리, 나와버리는 거얼%UNICODE(0x2665) *1%」
+						PRINTW 
+					ENDSELECT
+				ELSEIF ABL:C감각 >= 4
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「응, 거기…♪」
+						PRINTFORML 「흣%UNICODE(0x2665) *1%　거기, 부드럽게 문지르는 거, 좋아할, 지도…♪」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「응, 응…\/\/\/」
+						PRINTFORML 「앗…%UNICODE(0x2665) *1%　싫엇, 나, 이상한 소리 질러버렸어…\/\/\/」
+						PRINTW 
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:3
+					CASE 0
+						PRINTFORML 「읏…%UNICODE(0x2665) *1%」
+						PRINTFORML 「방금, 뭔가 기분 좋았어, 일지도…♪」
+					CASE 1
+						PRINTFORML 「응…만져도 되지만, 천천히, 응」
+						PRINTFORML 「응, 후…크훗, 후훗, 앗, 안 됏, 간지러우니까 안 돼앳♪」
+						PRINTW 
+					CASE 2
+						PRINTFORML 「읏…조금, 아파…」
+						PRINTFORML 「응, 괜찮아. 그치만, 조금 더 부드럽게 하면, 좋겠는데…♪」
+						PRINTW 
+					ENDSELECT
+				ENDIF
+			ELSE
+				IF ABL:C감각 >= 6
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「앗아아, 시러어, 이런 곳에서엇 나앗%UNICODE(0x2665) *1%」
+						PRINTFORML 「흣%UNICODE(0x2665) *1%　흐읏%UNICODE(0x2665) *1%　흐읏%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테는 입을 누르고 필사적으로 헐떡이는 소리가 새어나오지 않도록 하고 있다
+						PRINTW 
+					CASE 1
+						PRINTFORML 「나, 나앗%UNICODE(0x2665) *1%　지입, 집 밖%UNICODE(0x2665) *1%　인데도옷%UNICODE(0x2665) *1%」
+						PRINTFORML 「시러엇, 목소리, 새어나와앗%UNICODE(0x2665) *1%　안 대앳%UNICODE(0x2665) *1%　～～～～～～～～～～읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+						PRINTW 
+					ENDSELECT
+				ELSEIF ABL:C감각 >= 4
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「저기, 그만두자, 그런 데 건드리는 거, 싫어…\/\/\/」
+						PRINTFORML 입은 저항하면서도, 하타테는 클리가 만져지는 대로 두고 있다
+						PRINTW 
+					CASE 1
+						PRINTFORML 「정말이지, 이런 곳에서 야한 짓을 하면 안 된다니까」
+						PRINTFORML 
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「앗, 잠깐만, 아팟…난폭하게 하지 마앗」
+						PRINTFORML 「정말이지ー…너무 아프게는 하지 마」
+						PRINTFORML 「집이 아닌 곳에서 하는 것도 안 되니까?」
+					CASE 1
+						PRINTFORML 「시러엇, 이런 장소에서…앗」
+						PRINTW 
+					ENDSELECT
+				ENDIF
+			ENDIF
+		ELSE
+			IF ABL:C감각 >= 6
+				PRINTFORML 「달라앗, 뭔가 기분이 좋아져서엇」
+				PRINTFORML 「아응%UNICODE(0x2665) *1%」
+				PRINTFORML 「바보옷, 가지고, 놀지 마앗…%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSEIF ABL:C감각 >= 4
+				PRINTFORML 「이 녀석앗, 그만두라니까앗…！」
+				SELECTCASE RAND:2
+				CASE 0
+					PRINTFORML 「응앗%UNICODE(0x2665) *1%」
+					PRINTFORML 「…바, 방금 것은 달라！
+					PRINTW 
+				CASE 1
+					PRINTFORML 「…응훗, 훗♪　으후후후후훗♪　아하하하하핫！　간지럽히는 거！ 그만 둬엇♪　으힛♪」
+					PRINTW 
+				ENDSELECT
+				PRINTW 
+			ELSE
+				PRINTFORML 「이, 이녀석아！　이상한 데 만지지 마…크흣♪　크히히히히힛♪　간지러우니까 그만둬♪」
+				PRINTW 
+			ENDIF
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;316,손가락挿入れ
+;CFLAG:우후후 == 2&&TCVAR:20(35=치마の中を見せる 70=커닐링구스강제 87=A挿入する 89=허리振りA
+;TALENT:처녀(손가락挿入れ連続時喪失注意, 基本拒否ぎみ)
+;ABL:V감각(1未満=違和感に戸惑う 5未満=ちょっと기분 좋아 5以上＝カイカン)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_316
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_316_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_316_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FIRSTTIME(SELECTCOM)
+		IF TALENT:연모 || TALENT:연인
+			PRINTFORML 「앗！　자, 잠깐만, 거기는, 마음의 준비가」
+			PRINTFORML 「아앗 안%UNICODE(0x2665) *1%대%UNICODE(0x2665) *1%　거기느은, 앗%UNICODE(0x2665) *1%」
+			PRINTW 
+		ELSE
+			PRINTFORML 「！　바보옷, 거기는…」
+			PRINTFORML 「그만둬 바보야앗！！　아우웃%UNICODE(0x2665) *1%　…！」
+			PRINTFORML 자신도 모르게 헐떡이는 소리를 내자 하타테는 황급히 입을 눌렀다
+			PRINTW 
+		ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			IF CFLAG:현재위치 == OMANEKIBEYA() || AT_HOME(MASTER)
+				IF TALENT:처녀 == 1
+					IF PALAM:윤활 >= PALAMLV:3
+						IF ABL:V감각 >= 6
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「아읏%UNICODE(0x2665) *1%　아읏%UNICODE(0x2665) *1%　우앗, 소리가, 나와버려%UNICODE(0x2665) *1%」
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%　야%UNICODE(0x2665) *1%　아～～～～～～앗%UNICODE(0x2665) *1%」
+								PRINTFORML 질내를 휘젓자, 하타테는 처녀라고는 생각되지 않는 소리를 지르며 쾌락을 탐하고 있다
+								PRINTW 
+							CASE 1
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　아으앗%UNICODE(0x2665) *1%　안 돼앳, 그렇게 안쪽엣%UNICODE(0x2665) *1%」
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　앗%UNICODE(0x2665) *1%　처음을%UNICODE(0x2665) *1%　처음을 줄 수 없게 되버려엇%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF ABL:V감각 >= 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「나 말이야, 응응읏%UNICODE(0x2665) *1%　느끼기잇%UNICODE(0x2665) *1%　쉬운 타입일까앗%UNICODE(0x2665) *1%」
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　부끄러운 소리가앗, 잔뜩, 잔뜨윽%UNICODE(0x2665) *1%　나와버려어어엇%UNICODE(0x2665) *1%」」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「응, 응…\/\/\/　찔꺽찔꺽하는, 소리, 새어버려어…%UNICODE(0x2665) *1%」
+								PRINTFORML 「그%UNICODE(0x2665) *1%　그치마안%UNICODE(0x2665) *1%　기분 좋은 거얼%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSE
+							SELECTCASE RAND:3
+							CASE 0
+								PRINTFORML 「앗, 안%UNICODE(0x2665) *1%　대%UNICODE(0x2665) *1%」
+								PRINTFORML 「그 이상은, 응읏%UNICODE(0x2665) *1%　무서우니까앗, 기다려어」
+							CASE 1
+								PRINTFORML 「조금 무서우니까, 부드럽게 해줘」
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%　손가락, 주륵하고, 들어, 왔어…%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 2
+								PRINTFORML 「싫엇, 찔꺽찔꺽하고 소리 내지 마앗…\/\/\/」
+								PRINTW 
+							ENDSELECT
+						ENDIF
+					ELSE
+						IF ABL:V감각 >= 6
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「～～～～～～읏%UNICODE(0x2665) *1%～～～～～～～～읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테는 눈을 꼭 감고 허벅지를 떨고 있다
+								PRINTW 
+							CASE 1
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　앗%UNICODE(0x2665) *1%　손가락으로 문질문질하는 거 시러엇」
+								PRINTFORML 「나앗, 거기잇, 약하니까앗%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF ABL:V감각 >= 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「우, 앗！　괘, 괜찮아…」
+								PRINTFORML 「뭔가, 나, 나 말이야%UNICODE(0x2665) *1%　거기, 기분 좋을지도%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「응, 응…\/\/\/」
+								PRINTFORML 「왠지, 기분 좋아지는 거 같아…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSE
+							SELECTCASE RAND:3
+							CASE 0
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%」
+								PRINTFORML 「입구에서 문질문질 하는 거는 조금 기분 좋은 거 같아…%UNICODE(0x2665) *1%」
+							CASE 1
+								PRINTFORML 「야앗…조금, 무서워…」
+								PRINTFORML 「천천히 움직여줘…」
+								PRINTW 
+							CASE 2
+								PRINTFORML 「읏…조금, 아파…」
+								PRINTW 
+							ENDSELECT
+						ENDIF
+					ENDIF
+				;非처녀
+				ELSE
+					IF PALAM:윤활 >= PALAMLV:3
+						IF ABL:V감각 >= 6
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「아앗%UNICODE(0x2665) *1% 격렬해앳%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　손가라악%UNICODE(0x2665) *1%」
+								PRINTFORML 「더어%UNICODE(0x2665) *1%　좀 더어%UNICODE(0x2665) *1%　야아아앙%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「우아아앗%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%　손가라악, 손가락으론 부족해앳%UNICODE(0x2665) *1%」
+								PRINTFORML 「더어%UNICODE(0x2665) *1%　더 커다란 걸 주세요%UNICODE(0x2665) *1% 더어 커다란 거～%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF ABL:V감각 >= 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「아～～%UNICODE(0x2665) *1%　아아～～%UNICODE(0x2665) *1%」
+								PRINTFORML 「찔꺽찔꺽하는 거, 기분 조아앗%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「쿠훗%UNICODE(0x2665) *1%　～～～～～～읏%UNICODE(0x2665) *1%」
+								PRINTFORML 「소리, 새고 있어…%UNICODE(0x2665) *1%　앗%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSE
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%」
+								PRINTFORML 「거기, 좋아…\/\/\/　%MASTERNAME:42%의 손가락, 기분 좋아…%UNICODE(0x2665) *1%」
+							CASE 1
+								PRINTFORML 「손가락, 간단히 들어가버렸네…\/\/\/」
+								PRINTFORML 「괜찮아%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　부드러운 게, 좋아…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ENDIF
+					ELSE
+						IF ABL:V감각 >= 6
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「안%UNICODE(0x2665) *1%　안 댓%UNICODE(0x2665) *1%　안 대앳%UNICODE(0x2665) *1%」
+								PRINTFORML 「거기잇, 약하니까앗%UNICODE(0x2665) *1%　이상하게%UNICODE(0x2665) *1%　되버리%UNICODE(0x2665) *1%　니까앗%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 1
+								PRINTFORML 「앗%UNICODE(0x2665) *1%　싫어 싫어 시러엇%UNICODE(0x2665) *1%　그렇게%UNICODE(0x2665) *1%」
+								PRINTFORML 「찔꺽찔꺽하면 안 돼%UNICODE(0x2665) *1% 이상해져엇%UNICODE(0x2665) *1%　이상해져버려엇%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSEIF ABL:V감각 >= 2
+							SELECTCASE RAND:2
+							CASE 0
+								PRINTFORML 「시러엇, 야한 소리가 나%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　응읏%UNICODE(0x2665) *1%」
+								PRINTFORML 하타테의 사타구니에서 끈적끈적한 소리가 들려온다
+								PRINTW 
+							CASE 1
+								PRINTFORML 「좋아, 무리하게 해도, 괜찮으니까…%UNICODE(0x2665) *1%」
+								PRINTFORML 「손가라악, 와써엇…%UNICODE(0x2665) *1%　후, 응응%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ELSE
+							SELECTCASE RAND:3
+							CASE 0
+								PRINTFORML 「읏…%UNICODE(0x2665) *1%」
+								PRINTFORML 「괜찮으니까, 좀 더 안쪽까지…%UNICODE(0x2665) *1%　응응응%UNICODE(0x2665) *1%
+								PRINTW 」
+							CASE 1
+								PRINTFORML 「%MASTERNAME:42%의 손가락, 좋아해…%UNICODE(0x2665) *1%」
+								PRINTFORML 「응, 후…%UNICODE(0x2665) *1%　좋아, 조금씩이라면, 안쪽으로 가도…%UNICODE(0x2665) *1%」
+								PRINTW 
+							CASE 2
+								PRINTFORML 「읏…조금, 아파…」
+								PRINTFORML 「좀 더, 적응시키고 나서…읏, 그거, 좋아…%UNICODE(0x2665) *1%」
+								PRINTW 
+							ENDSELECT
+						ENDIF
+					ENDIF
+				ENDIF
+			;自宅以外
+			ELSE
+				IF ABL:V감각 >= 6
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「저기, 집으로, 돌아가자…?　여기서는, 부끄러워어…」
+						PRINTFORML 「앗%UNICODE(0x2665) *1%　아아읏%UNICODE(0x2665) *1%　안 돼, 손가라악, 움직이고 이써엇%UNICODE(0x2665) *1%」
+						PRINTFORML 「시러엇%UNICODE(0x2665) *1%　여기서 가버리는 거, 시러엇%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「나, 나앗%UNICODE(0x2665) *1%　지입, 집 밖%UNICODE(0x2665) *1%　인데도옷%UNICODE(0x2665) *1%」
+						PRINTFORML 「시러엇, 목소리, 새어나와앗%UNICODE(0x2665) *1%　안 대앳%UNICODE(0x2665) *1%　～～～～～～～～～～읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+						PRINTW 
+					ENDSELECT
+				ELSEIF ABL:V감각 >= 2
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「여기서는, 부끄러워…응%UNICODE(0x2665) *1%」
+						PRINTFORML 「집에서, 하자?　앗%UNICODE(0x2665) *1%　안 된,다고 했는데…%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「아응\/\/\/　여기서는, 안 대애…\/\/\/」
+						PRINTFORML 「집에서 하자?　응?　응\/\/\/　정마알…\/\/\/」
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「앗, 조금, 아팟…난폭하게 하지 마」
+						PRINTFORML 「정말이지ー…너무 아프게는 하지 마」
+						PRINTFORML 「집이 아닌 곳에서 하는 것도 안 되니까?」
+					CASE 1
+						PRINTFORML 「싫엇, 이런 장소에서…얏」
+						PRINTW 
+					ENDSELECT
+				ENDIF
+			ENDIF
+		ELSE
+			IF ABL:V감각 >= 6
+				IF PALAM:윤활 >= PALAMLV:3
+					PRINTFORML 「달랏%UNICODE(0x2665) *1%　달라앗%UNICODE(0x2665) *1%」
+					PRINTFORML 「뭔가 느껴져엇%UNICODE(0x2665) *1%　아%UNICODE(0x2665) *1%　아아응%UNICODE(0x2665) *1%」
+				ELSE
+					PRINTFORML 「뭔가 기분이 조아져엇%UNICODE(0x2665) *1%　기%UNICODE(0x2665) *1%　기분 조아앗%UNICODE(0x2665) *1%　우우우읏%UNICODE(0x2665) *1%」
+					PRINTFORML 「덜 젖었는데엣%UNICODE(0x2665) *1%　덜 젖었는데도옷%UNICODE(0x2665) *1%　뭐야앗%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDIF
+			ELSEIF ABL:V감각 >= 2
+				IF PALAM:윤활 >= PALAMLV:3
+					PRINTFORML 「싫엇, 소리, 새어버려엇\/\/\/　달라아, 달라앗\/\/\/」
+					PRINTFORML 「뭔가 기분 좋은 게, 햐응%UNICODE(0x2665) *1%」
+				ELSE
+					PRINTFORML 「그만둬…기, 기분 좋을리가 없잖아, 덜 젖었는데…！」
+					PRINTFORML 「이런 거, 아프기만 하다구웃…으우우웃\/\/\/」
+					PRINTW 
+				ENDIF
+			ELSE
+				IF PALAM:윤활 >= PALAMLV:3
+					PRINTFORML 「안 됏, 그런 데, 그만둬엇…！」
+					PRINTFORML 「아, 아냐앗, 뭔가 젖어있어…시러엇\/\/\/」
+				ELSE
+					PRINTFORML 「안 됏, 그런 곳, 그만, 아팟…！」
+					PRINTFORML 「아파앗, 그, 그마안…！」
+					PRINTW 
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;317,허리を動かす
+;ABL:V감각(2未満=まだ気持ち良くない 5未満=ちょっと기분 좋아 5以上=カイカン
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_317
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_317_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_317_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE ABL:V감각
+	CASE IS >= 5
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「앗%UNICODE(0x2665) *1%　굉장히잇%UNICODE(0x2665) *1%　격렬해앳%UNICODE(0x2665) *1%」
+			PRINTFORML 「기분 조치잇?　하타테의 질내, 기분 조치잇?」
+			PRINTFORML 「더어%UNICODE(0x2665) *1%　더 쥬세요오%UNICODE(0x2665) *1%　%MASTERNAME:42%의 것, 더 쥬세요오%UNICODE(0x2665) *1%」
+			PRINTW 
+		CASE 1
+			PRINTFORML 「앗%UNICODE(0x2665) *1%　안쪽까지 닿여서엇%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%　응읏%UNICODE(0x2665) *1%」
+			PRINTFORML 「응, 조앗%UNICODE(0x2665) *1%　%MASTERNAME:42%의 자지, 조아해앳%UNICODE(0x2665) *1%」
+			PRINTW 
+		CASE 2
+			PRINTFORML 「아읏%UNICODE(0x2665) *1%　아읏%UNICODE(0x2665) *1%　아읏%UNICODE(0x2665) *1%　아읏%UNICODE(0x2665) *1%」
+			PRINTFORML 「%MASTERNAME:42%와(과)의 섹스, 기분 조앗%UNICODE(0x2665) *1%　%MASTERNAME:42%와(과) 하는 게, 기분 조앗%UNICODE(0x2665) *1%」
+			PRINTW 
+		ENDSELECT
+	CASE IS >= 2
+	CASEELSE
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「앗…꽤 좋은 느낌이야…♪　그대로, 움직여줘…♪」
+			PRINTW 
+		CASEELSE
+			PRINTFORML 「읏…조금만 더 천천히…아직, 익숙하지가 않으니까…」
+			PRINTW 
+		ENDSELECT
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;318,허리를 움직인다(A)
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_318
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_318_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_318_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;====================================================================================================
+;320,상대주도정상위
+;====================================================================================================
+@M_KOJO_MESSAGE_COM_K42_320
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_320_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_320_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+ENDIF
+RETURN 1
+;====================================================================================================
+;322,상대주도후배위
+;====================================================================================================
+@M_KOJO_MESSAGE_COM_K42_322
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_322_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_322_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF PALAM:윤활 >= PALAMLV:3
+		PRINTFORML 「봐…부끄럽지만, 이미 엄청 젖어버렸어」
+		PRINTFORML 「%MASTERNAME:42%와(과) 하고 싶어서, 이렇게 되버렸어…♪」
+		PRINTW 
+	ELSE
+		PRINTFORML 「아직 충분히 젖지는 않았지만…이제 더 이상 못 참게 되버렸어…♪」
+		PRINTFORML 「%MASTERNAME:42%이(가) 넣어주면, 아마 금방 젖을테니까…♪」
+		PRINTW 
+	ENDIF
+	
+	PRINTFORML 「응, 뒤에서, 와줘…♪」
+	SELECTCASE ABL:V감각
+	CASE IS >= 5
+		PRINTFORML 「아, 아아앗♪　왔다앗, 갖고 싶은 게, 와써엇%UNICODE(0x2665) *1%」
+		PRINTFORML 「이걸, 이거얼 갖고 시퍼써엇%UNICODE(0x2665) *1%　%MASTERNAME:42%의 굵은 거시잇%UNICODE(0x2665) *1%」
+		PRINTW 
+		PRINTFORML 「움직여줘어♪　안쪽, 안쪽이 조아%UNICODE(0x2665) *1%　가장 안쪽에서 찔러줘어%UNICODE(0x2665) *1%」
+		PRINTFORML 「아아아, 안쪽에, 왔다앗%UNICODE(0x2665) *1%　조앗%UNICODE(0x2665) *1%　이거 조아앗%UNICODE(0x2665) *1%　응아앗%UNICODE(0x2665) *1%」
+		PRINTW 
+	CASE IS >= 2
+		PRINTFORML 「앗…♪　들어, 왔다…♪」
+		PRINTFORML 「읏♪　이 느낌, 좋아해…%UNICODE(0x2665) *1%」
+		PRINTW 
+		PRINTFORML 「좋아, 잔뜩 뒤에서 찔러줘%UNICODE(0x2665) *1%」
+		PRINTFORML 「하타테를 기분 좋게 해줘, %MASTERNAME:42%의 것으로 기분 좋아지고 싶어%UNICODE(0x2665) *1%」
+		PRINTW 
+	CASEELSE
+		PRINTFORML 「아, 우우…들어, 와써어…」
+		PRINTFORML 「응읏, 아직은 익숙하지 않지만, 괜찮으니까안…」
+		PRINTFORML 「내 쪽은, 신경쓰지말고, 잔뜩 움직여줘…♪」
+		PRINTW 
+	ENDSELECT
+	PRINTFORML 
+ENDIF
+RETURN 1
+;==================================================
+;330,치마めくり
+;TFLAG:193(-5=拒絶（ビンタ） -3=拒絶（つねり） -1=いやがる 0=いやがる（嬉しげ） 1=受け入れ)
+;TFLAG:193=1&&ABL:노출벽(5以上=人目のある場所で, 自ら치마をまくり上げる 4以下=人目のある場所でめくられるさいに弱い저항 3以上=人目のない場所で自ら치마をまくり上げる 3未満=弱い저항)
+;TFLAG:400(1=デート先or地底のモブが反応する)
+;後ろからピラリ, ではなく, 前からペラって感じ（そうじゃなかったら, めくり上げようとするのを止めて即座にビンタとか無理, めくり上げられた後にしかならないしその状況ならビンタ食らうより普通に弾幕で一発ＫＯにならないほうがおかしい
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_330
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_330_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_330_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSE
+		IF FIRSTTIME(SELECTCOM)
+			IF TALENT:연인
+				PRINTFORML 「양！」
+				PRINTW 
+			ELSEIF TALENT:연모
+				PRINTFORML 「꺅…！」
+				PRINTW 
+			ELSEIF TALENT:사모
+				PRINTFORML 「…………꺄앗！！」
+				PRINTFORML 하타테는 경직된 다음 황급히 치마를 눌렀다
+				PRINTW 
+			ELSE
+				PRINTFORML 「뭐…」
+				PRINTFORML 하타테는 몸을 와들와들 떨며 도깨비와 같은 모습을 보여 주었다
+				PRINTFORML 「뭐 하는 거야 이 변태ーーーー앳！！！！」
+			ENDIF
+		ELSE
+			IF TALENT:연모 || TALENT:연인
+				SELECTCASE TFLAG:193
+				CASE 1;受け入れ
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「그런 짓은 하지 않아도, 야한 일을 할 때…보여줄텐데…%UNICODE(0x2665) *1%」
+						PRINTFORML 「넘기는 쪽이 좋아?　잘 모르겠어…」
+					CASE 1
+						PRINTFORML 「정마알, 그렇게 하타테의 팬티를 보고 싶은 거야?　어쩔 수 없네…\/\/\/」
+						PRINTW 
+					ENDSELECT
+				CASE 0;嬉し気
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「시러어, 정말이지ー, 저질이라니까\/\/\/」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「정말이지ー, 진짜로 %MASTERNAME:42%은(는) 변태라니까\/\/\/」
+						PRINTW 
+					ENDSELECT
+				CASE -1;いやがる
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「싫다아, 정말, 저질이라니까아…」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「%MASTERNAME:42%, 보지 마아…\/\/\/」
+						PRINTW 
+					ENDSELECT
+				CASE -3;つねる
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「정말이지ー, 안ー됩ー니ー다ー」
+						PRINTFORML 하타테씨, 손등이 아픕니다
+						PRINTW 
+					CASE 1
+						PRINTFORML 「정말이지ー, 진짜로 손버릇이 나쁘다니깐」
+						PRINTFORML 하타테가 손등을 살짝 꼬집어왔다. 조금 아프다
+						PRINTW 
+					ENDSELECT
+				CASE -5;ビンタ
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 하타테의 일섬이 정통으로 뺨에 작렬했다
+						PRINTFORML 「앗, 미, 미안！　나도 모르게 반사적으로…」
+						PRINTFORML 「아프지 않았어?　아, 아팠지, 아아, 어떡해…」
+						PRINTFORML {RAND:10}미터만큼 내던져져 땅에 나뒹굴고 있는 자신을 보고, 하타테는 안절부절하고 있다
+						PRINTW 
+					CASE 1
+						PRINTFORML 하타테의 일섬이 정통으로 뺨에 작렬했다
+						PRINTFORML 「앗, 미, 미안！　나도 모르게 반사적으로…」
+						PRINTFORML 「아프지 않았어?　아, 아팠지, 아아, 어떡해…」
+						PRINTFORML {RAND:10}미터만큼 내던져져 땅에 나뒹굴고 있는 자신을 보고, 하타테는 안절부절하고 있다
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			ELSEIF TALENT:사모
+				PRINTFORML 「꺄앗！」
+				SELECTCASE TFLAG:193
+				CASE 1;受け入れ
+					PRINTFORML 「내 팬티, 그렇게나 보고 싶은 거야…?　정말이지, 변태구나…\/\/\/」
+					PRINTW 
+				CASE 0;嬉し気
+					PRINTFORML 「정말ー, 안 된다고 했잖아\/\/\/」
+					PRINTFORML 하타테는 항의하고 있지만, 입으로는 미소를 짓고 있다
+					PRINTW 
+				CASE -1;いやがる
+					PRINTFORML 「그, 그만둬엇！\/\/\/」
+					PRINTFORML 하타테는 얼굴을 새빨갛게 하여 치마를 누르고 있다
+					PRINTW 
+				CASE -3;つねる
+					PRINTFORML 「%MASTERNAME:42%～～～～?　장・난・치면 안 돼요～～～～～～?」
+					PRINTFORML 하타테는 웃는 얼굴로 빠듯빠듯하게 손등을 꼬집고 있다. 아프다
+					PRINTW 
+				CASE -5;ビンタ
+					PRINTFORML 하타테의 일섬이 정통으로 뺨에 작렬했다
+					PRINTFORML 「앗, 미, 미안！　나도 모르게 반사적으로…에헤헤」
+					PRINTW 
+				ENDSELECT
+			ELSE
+				PRINTFORML 「꺄아아ーー앗！！」
+				SELECTCASE TFLAG:193
+				CASE 1;受け入れ
+					PRINTFORML 「…읏, 보고 싶으면 보면 되잖아」
+					PRINTFORML 하타테는 어떤 심경의 변화가 일어났는지 차가운 눈으로 이쪽을 응시할 뿐 반격해 오지 않았다
+					PRINTW 
+				CASE 0;嬉し気
+					PRINTFORML 「바, 바보얏, 무슨 짓이야…」
+					PRINTFORML 하타테는 치마를 누르고 새빨개진 얼굴로 이쪽을 보고 있다
+					PRINTFORML 화를 낼 줄 알았지만, 그 이상은 아무것도 하지 않은 채 수줍은 듯한 표정을 짓고 있다
+					PRINTW 
+				CASE -1;いやがる
+					PRINTFORML 「자, 잠깐만！ 뭐하는 거야！　기분 나쁜 짓 하지 마！」
+					PRINTFORML 하타테는 황급히 치마를 누르며 이쪽을 바라보고 있다
+					PRINTFORML %PANTS_DESCRIPTION(EQUIP:TARGET:하반신속옷2, TARGET)%%SHOW_BOTTOM(TARGET)%였던가…
+					PRINTW 
+				CASE -3;つねる
+					PRINTFORML 「손・버・릇・이・나쁜 손은 이거일까나～～～～?」
+					PRINTFORML 하타테는 그 가느다란 팔로 손등을 상상도 못할 힘으로 세게 꼬집었다
+					PRINTFORML 살이 끊어질 정도로 아프다. 살려줘
+					PRINTW 
+				CASE -5;ビンタ
+					PRINTFORML 「또, 또 너야아ーーーーーーーーー앗！！」
+					PRINTFORML 하타테의 손목 스냅이 뺨을 세게 후려쳤다
+					PRINTFORML {RAND:10}미터만큼 날려가 버렸다
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		ENDIF
+	ENDIF
+	CFLAG:1102 += 1
+ENDIF
+RETURN 1

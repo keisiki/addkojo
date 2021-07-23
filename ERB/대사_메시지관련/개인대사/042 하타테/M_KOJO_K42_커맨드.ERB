@@ -1,0 +1,134 @@
+﻿
+;==================================================
+;189,新妻プレイ
+;==================================================
+@M_KOJO_MESSAGE_COM_K42_189
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K42_189_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K42_189_1
+;-------------------------------------------------
+;記入チェック（=0, 非表示, 1, 表示）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;小分岐
+	;-------------------------------------------------
+	;初めて
+	;記入チェック
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;연모時のみ可能
+		PRINTFORML 「어, 이걸 입어 달라고…?」
+		PRINTFORML 「이, 이렇게 하면 괜찮으려나, 어울려?」
+		PRINTW 
+		PRINTFORML 「정말?　후후, 고마워, 다・앙・신%UNICODE(0x2665) *1%」
+		PRINTFORML 「꺄아ー, 말해버렸다ー%UNICODE(0x2665) *1%」
+		PRINTFORML 하타테는 싫다아 싫다아하며 고개를 흔들고 있다
+		PRINTW 
+		RETURN 1
+		RETURN 1
+	ENDIF
+	;基本セット
+	;開始
+	IF TEQUIP:새댁플레이
+		IF CFLAG:K42C_結婚 >= 1
+			IF TEQUIP:0 == 0 && TEQUIP:1 == 0
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「에헤헤…어때, 자기%UNICODE(0x2665) *1%」
+					PRINTFORM 에이프런을 들여다보자
+					IF TALENT:TARGET:가슴사이즈 > 0
+						PRINTFORML 터질듯한 가슴에, 시선이 고정된다…
+					ELSEIF TALENT:TARGET:가슴사이즈 == -1
+						PRINTFORML 사랑스러운 자그마한 가슴이 살짝 보일락말락 하는 것이 두근두근거린다…
+					ELSEIF TALENT:TARGET:가슴사이즈 == -2
+						PRINTFORML 가슴은 슬플 정도의 절벽이었지만, 젖꼭지가 보일락말락 하는 것이 정말 야하다
+					ELSE
+						PRINTFORML 모양이 좋은 가슴에, 시선이 고정된다…
+					ENDIF
+					PRINTW 
+					PRINTFORML 「아ー, 가슴만 보고 있어ー. 야하다니깐…%UNICODE(0x2665) *1%」
+					PRINTFORML 하타테는 화난 척을 하며 이마를 쿡쿡 찌르고 있다
+					PRINTW 
+				CASE 1
+					PRINTFORML 「이렇게 입으면 기뻐하겠지…%UNICODE(0x2665) *1%」
+					PRINTFORML 알몸 에이프런 차림의 하타테는 엉덩이를 이쪽으로 내밀어 보이고 있다…
+					PRINTW 
+				CASE 2
+					PRINTFORML 「이, 이런 차림도 괜찮은 거야…?」
+					PRINTFORML 하타테는 쭈뼛쭈뼛하며 수줍어하고 있다
+					PRINTW 
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「자기야, 어서와%UNICODE(0x2665) *1%」
+					PRINTFORML 「밥부터 먹을래?　목욕부터?　아니면, 나・부・터?」
+					PRINTW 
+					PRINTFORML 「스스로 말해놓고도 그렇지만, 꽤 부끄럽네, 이거…」
+					PRINTFORML 「시럿, 옷 벗고 뛰어들지 마앗%UNICODE(0x2665) *1%」
+					PRINTW 
+				CASE 1
+					PRINTFORML 「있지 있지 어때ー?」
+					CALL ASK_YN("엄청 잘 어울려","하타테양은 역시 최고로 귀여운 며느리야")
+					IF !RESULT
+						PRINTFORML 「정말?　기뻐ー%UNICODE(0x2665) *1%」
+						PRINTFORML 하타테가 웃는 얼굴로 껴안아 왔다
+						PRINTW 
+					ELSE
+						PRINTFORML 「저, 정말이지～～, 너무 과찬이잖아…\/\/\/」
+						PRINTFORML 하타테는 쑥스러운지 실실 웃고 있다
+						PRINTW 
+					ENDIF
+				CASE 2
+					PRINTFORML 「에헤헤, 이제 신혼놀이가 아니라, 제대로 결혼한거지…♪」
+					PRINTFORML 「행복하네, 다・앙・신%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+			RETURN 1
+		ELSE
+			IF TEQUIP:0 == 0 && TEQUIP:1 == 0
+				SELECTCASE RAND:2
+				CASE 0
+					PRINTFORML 「냉정하게 생각해보면, 앞치마를 맨몸에 두르고 요리를 하는 건 위험해」
+					PRINTFORML 「나는 요괴니까 기름이 튀는 정도로는 크게 다치지 않지만 말이야ー」
+					PRINTW 
+				CASE 1
+					PRINTFORML 「알몸에 에이프런이라니…뭔가 부끄럽네」
+					PRINTFORML 「그치만, %MASTERNAME:42%, 왠지 기뻐보여…♪」
+					PRINTW 
+				CASE 2
+					PRINTFORML 「앗, 나, 이거 책에서 본 적 있어」
+					PRINTFORML 「맨몸에 에이프런을 입고 요리하는 아내를 남편이 뒤에서 껴안고…야한 일, 해버리는 거지…%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+				CASE 0
+					PRINTFORML 「에헤헤, 이걸 입고 있으면 정말 색시가 된 기분이야…%UNICODE(0x2665) *1%」
+					PRINTFORML 「어, 그, 있지, 웃지 마…다・앙・신」
+					PRINTFORML 「…………꺄ーー아, 정말, 부끄러워! 당신이라니! 싫다아ー\/\/\/」
+					PRINTFORML 혼자 날아오르고 혼자 수줍어하는 하타테는 보고만 있어도 질리지 않았다
+					PRINTW 
+				CASE 1
+					PRINTFORML 「에헤헤, 뭔가, 이렇게 입는 것도 괜찮네…%UNICODE(0x2665) *1%」
+					PRINTFORML 하타테는 에이프런에 손을 얹으며 감개무량한 표정을 지었다
+					PRINTW 
+				ENDSELECT
+				RETURN 1
+			ENDIF
+		ENDIF
+		RETURN 1
+	;終了
+	ELSE
+		PRINTFORML 「아아, 정마알 좀 더 입고 싶었는데」
+		PRINTW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
