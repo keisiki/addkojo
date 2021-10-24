@@ -963,7 +963,7 @@ ELSEIF ARG == K17C_ID
 				DATAFORM (상쾌해졌단 얼굴 하고선…… 귀여워 %K17_HEART()%)
 			ENDDATA
 			PRINTFORML 「어땠%K17_RS("어/을까나")%?　후훗……」
-			PRINTFORMDL %K17_RS("자랑스러운 듯한/만족한 듯한/요염하게 미소 짓는")% %CALLNAME:TARGET%에게 모조리 쥐어 짜내진 %CALLNAME:MASTER%은 한동안 멍하니 있었다
+			PRINTFORMDL %K17_RS("자랑스러운 듯한/만족한 듯한/요염하게 미소 짓는")% %CALLNAME:TARGET%에게 모조리 쥐어 짜내진 %마스터는% 한동안 멍하니 있었다
 		
 		;조금 더
 		CASE IS >= 30
@@ -2120,7 +2120,7 @@ SELECTCASE iTmp
 		PRINTW
 		PRINTFORML 「무, 무, 무슨 짓이야」
 		PRINTFORML 「그만햇 ……%K17_RS("냐앙/아앙/야앙/히양") %%K17_BLUSH()%　%K17_RS("냐앙/아앙/야앙/히양") %%K17_BLUSH()%　그만 하라고옷 , %K17_RS("냐앙/아앙/야앙/히양") %%K17_HEART()%」
-		PRINTFORMDL %CALLNAME:MASTER%은 당분간 고간에 숨을 내뿜을 때마다 허리를 뒤틀어대는 샹하이를 보며 재밌게 놀았다……
+		PRINTFORMDL %마스터는% 당분간 고간에 숨을 내뿜을 때마다 허리를 뒤틀어대는 샹하이를 보며 재밌게 놀았다……
 		CFLAG:K17C_ID:K17C_CF_샹하이호감도 = MIN(CFLAG:K17C_ID:K17C_CF_샹하이호감도 + 10,10000)
 		TIME += 10
 ENDSELECT

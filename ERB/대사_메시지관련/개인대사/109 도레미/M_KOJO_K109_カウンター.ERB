@@ -19,7 +19,7 @@ RETURN RESULT
 				PRINTFORML 「너무 가깝다니 뭔가 신경 쓰이는 일이라도 있나요？」
 				PRINTFORMDW 도레미는 %CALLNAME:MASTER%의 바로 옆에 앉아 있다
 			CASE 1
-				PRINTFORML 「거리가 가까워？%CALLNAME:MASTER%가 그걸 말하는 건가요」
+				PRINTFORML 「거리가 가까워？%마스터가% 그걸 말하는 건가요」
 				PRINTFORMDW 확실히…
 			CASE 2
 				PRINTFORML 「제 얼굴에 뭐라도 묻어 있나요？」
@@ -78,7 +78,7 @@ RETURN RESULT
 			CASE 1
 				PRINTFORMW 「그러고 보니 저번에、재미있는 꿈을 발견했었는데요…」
 			CASE 2
-				PRINTFORML 「%CALLNAME:MASTER%는……아뇨、아무것도 아닙니다」
+				PRINTFORML 「%마스터는%……아뇨、아무것도 아닙니다」
 				PRINTFORMDW 갑자기 왜 그러는 걸까
 			CASE 3
 				PRINTFORML 「괜찮다면、원하시는 꿈이라도 보여드릴까요」
@@ -142,7 +142,7 @@ RETURN RESULT
 				PRINTFORMDW 맥이지만 말이야
 			CASE 4
 				PRINTFORML 기쁜듯이 다가오는 도레미의 꼬리가 붕붕 좌우로 흔들리고 있다
-				PRINTFORMW 마치 개와 비슷하다고 %CALLNAME:MASTER%는 생각했다
+				PRINTFORMW 마치 개와 비슷하다고 %마스터는% 생각했다
 		ENDSELECT
 	ENDIF
 RETURN 1
@@ -270,7 +270,7 @@ RETURN RESULT
 		SELECTCASE RAND:5
 			CASE 0 
 				CALL HPH_PRINT,@"「%CALLNAME:MASTER%HPH」","L"
-				PRINTFORMDW %CALLNAME:MASTER%가 뺨을 들이밀자、도레미는 기쁜 듯이 문질러 왔다
+				PRINTFORMDW %마스터가% 뺨을 들이밀자、도레미는 기쁜 듯이 문질러 왔다
 			CASE 1
 				PRINTFORMW 「…좀 더、이대로…」
 			CASE 2
@@ -334,7 +334,7 @@ RETURN RESULT
 				PRINTFORMDL 도레미의 시선이 신경쓰인다…
 				PRINTFORMW 「신경쓰이시나요？그건 피차일반이네요」
 			CASE 2
-				PRINTFORML 「%CALLNAME:MASTER%가 너무 잘생겨서 자꾸 바라보게 되어버린다니까요」
+				PRINTFORML 「%마스터가% 너무 잘생겨서 자꾸 바라보게 되어버린다니까요」
 				PRINTFORMDW 거짓말 하지마
 			CASE 3
 				PRINTFORML 「…이대로 키스라도 해버릴래요？」
