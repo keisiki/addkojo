@@ -1,13 +1,13 @@
 ﻿;-------------------------------------------------
-; eraTheWorld 4.576용 00말(캐릭터의 이름을 넣는, 아래에 컨셉 등 한마디 있으면 들어갈 수 있다)
+; eraTheWorld proto4. 48용 키리사메 마리사 대사(캐릭터의 이름을 넣는, 아래에 컨셉 등 한마디 있으면 들어갈 수 있다)
 ;-------------------------------------------------
 ;다른 사람에 의한 수정, 가필, 개변에 대해서는, 동고의 라이센스 조항에 따라 주세요.
 
 ;------ 오려내기 개시 -----------
 ;eraTheWorld proto4. 07 패치 혼잡용 Ver1. 13
 ;템플릿의 사용법
-;처음에 치환 커맨드 등에 의해 K126 를 K(캐릭터 No)로 변경해 주세요  
-;캐릭터 No는 CSV 폴더의 Chara 파일을 참조예(키리사메 마리사의 경우)：K126 =치환=> K11
+;처음에 치환 커맨드 등에 의해 K11 를 K(캐릭터 No)로 변경해 주세요  
+;캐릭터 No는 CSV 폴더의 Chara 파일을 참조예(키리사메 마리사의 경우)：K11 =치환=> K11
 ;
 ;------ 오려내기 끝 -----------
 
@@ -19,27 +19,21 @@
 ;******************************************************************************
 
 ;### 말존재 판정 ###################################
-@M_KOJO_K126(ARG)
+@M_KOJO_K11(ARG)
 ;여기서 RESULTS를 설정하면(자) 다른 동캐릭터 말을 돌진해져도 정상 동작한다.
 
 ;RESULTS = _TEST_
 
 ;(와)과 설정하면(자),"EVENT"계 이벤트라면
-;M_KOJO_TEST_EVENT_K126_1()등으로 불리는…은 두. (미테스트 기능)
+;M_KOJO_TEST_EVENT_K11_1()등으로 불리는…은 두. (미테스트 기능)
 
-;여기서 CFLAG등의 캐릭터 변수를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다
+;여기서 CFLAG나 TALENT를 이용하는 경우, 캐릭터 번호가 필수입니다
 
-;코멘트 아웃을 제외해 면간대사있음, 시간정지구상유에 1을 넣으면(자), 각각 시간정지시, 면간시에 커맨드 말이 읽히도록(듯이)
-;넣지 않으면 시간정지시, 면간시는 일절 말하지 않습니다
-;X에는 캐릭터 번호를 넣어 주세요
-
-;CFLAG:X:면간대사있음 = 0
-;CFLAG:X:시간정지대사있음 = 0
-
-;말존재 판정입니다, 지워 코멘트 아웃 하지 말아 주세요
+;면간대사있음에 1을 넣으면(자), 면간시에 커맨드 말이 읽히도록(듯이)
+CFLAG:11:면간대사있음 = 0
 RETURN 1
 ;### 대사색깔판정 ###################################
-@M_KOJO_COLOR_K126
+@M_KOJO_COLOR_K11
 
 ;여기서 SETCOLOR 하는 것으로 말에 첨가할 수 있습니다
 ;예：SETCOLOR 0xC07070
@@ -47,54 +41,30 @@ RETURN 1
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
 ;"UPDATE 판정"
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
-@M_KOJO_UPDATE_K126
+@M_KOJO_UPDATE_K11
 ;말 독자적인 UPDATE용
 ;ENCOUNTER 전용에 독자 분기 플래그를 가르쳤을 경우등에 부디
-;UPDATE 판정으로 CFLAG등의 캐릭터 변수를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다
+;UPDATE 판정으로 CFLAG를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다
 RETURN 1
 
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
 ;"ENCOUNTER"계 이벤트(엑스트라 구문)
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
-@M_KOJO_ENCOUNTER_K126
+@M_KOJO_ENCOUNTER_K11
 ;초대면, 인사의 타이밍
 ;TALENT의 변경은 여기서 부디.
-;경험의 변경은 어긋남이 나오는 경우가 있기 때문에, CSV를 수정해 동고 하는 일을 추천 합니다
-PRINTL
-PRINTFORMW 「저기, 거기 계신 분…」
-PRINTFORMW %마스터가% 길을 걷고 있으면, 누군가에게 불러 세워졌다
-PRINTFORMW 가냘픈 소리가 나는 쪽 방향에 눈을 돌리면, 한사람의 소녀가 우두커니 서 있다
-PRINTFORMW 「최근 며칠 먹을 것도 없어 배를 곯고 있습니다」
-PRINTFORMW 「불쌍한 저에게 아무쪼록 은혜를…」
-PRINTFORMW 불면 넘어져 버릴 것 같은, 몸집이 작은 몸
-PRINTFORMW 여윈 손발은 병적일 정도로 희고, 좋든 싫든 간에 그 처지의 박복함을 연상할 수 있다
-PRINTFORMW 푸석푸석한 푸른 머리카락은 정돈되지 않은 체 뻗쳐 있을 뿐. 용모는 갖추어져 있지만, 그 눈에는 소녀답지 않은 비굴한 빛이 머물어…
-PRINTFORMW 무엇보다도 눈에 거슬리는 것은, 여러가지 독촉장이나 청구서같은게 기워져 더러워진 의복이었다
-PRINTFORMW 「정말 조금만으로 좋습니다 아무쪼록…」
-PRINTFORMW ………관련되고 싶지 않다
-PRINTFORMW 그것이 정직한 감상이었다
-PRINTFORMW 그러나, 정말로 단순한 불행한 소녀였다고 하면(자)?
-PRINTFORMW 여기서 자신이 도망가 버리면(자), 이제 그녀에게 손을 뻗쳐 주는 사람은 나타나지 않을지도 모른다
-PRINTFORMW 스스로 손해를 본다해도 그녀에게 살아갈 힘을, 희망을 주는 것이… 
-PRINTFORMW 사람으로서, 남자로서 이루어야 할 일인 것은 아닌가
-PRINTFORMW %마스터는% 뜻을 정하고, 지갑으로부터 지폐를 꺼내…
-PRINTFORMW 「네?」
-PRINTFORMW 소녀의 손을 잡아,  강하게 쥐었다
-PRINTFORMW 「아…이렇게 많이…감사합니다…!」
-PRINTFORMW 「제발 이름을, 이름을 가르쳐주세요」
-PRINTFORMW 자칭할 정도의 인물이 아니지만, 라고 폼을 잡으면서도 %마스터는% 자기소개 했다
-PRINTFORMW 「%CALLNAME:MASTER% 씨군요…저는 요리가미 시온이라고 합니다. 이 은혜는 평생 잊지 않겠습니다…!」
-PRINTFORMW 소녀…시온이 깊숙이 고개를 숙인다.
-PRINTFORMW 「정말로, 정말로…」
-PRINTFORMW 고개를 들은 시온의 얼굴에는…
-PRINTL
-PRINTFORML 「얼굴과 이름…기억했으니까요, %CALLNAME:MASTER%」
-PRINTW 
-PRINTFORMW …오싹 하는, 섬뜩한 미소가 떠올라 있었다
-PRINTFORMW 이것이 이 가난신과의 만남이며, 그리고
-PRINTFORMW ………관련되지 말걸
-PRINTFORMW 그것이 정직한, 그저 정직한 감상이었다
-PRINTFORML 
+	PRINTFORMW 「오, 못 보던 얼굴인데」
+	PRINTFORMW ――말을 걸어온 흑백의 옷을 입고 큰 모자를 쓰고 빗자루를 들고 있다. 동화 속에 나오는 마녀 같은 복장이다.
+	PRINTFORMW 「아―, 네가 소문으로 듣던 밖에서 왔다는 인간이야? 난 키리사메 마리사. 평범한 마법사야. 네 이름도 가르쳐줘」
+	PRINTFORMW 당신은 자신의 이름을 마리사에게 전했다.
+	PRINTFORMW 「%CALLNAME:MASTER%이지? 알았어」
+	PRINTFORMW 「환상향은 그냥 인간에겐 각박한 환경이니까 조심하라구? 뭐 나 같이 그냥 인간이 아니라면 그렇지도 않지만」
+	PRINTFORMW 어라? 방금 마법사라고 하지 않았던가? 마법사는 인간인가? 하고 마리사에 묻자
+	PRINTFORMW 「나는 ｛평범한｝ 마법사야. 번듯하게 인간이라구」
+	PRINTFORMW 라는 반응이 돌아왔다. ｛평범한｝ 마법사란 어떤 의미인 것일까?
+	PRINTFORMW 「뭐 나한테도 미학이 있단 거지. 인간 편인 건 틀림없으니까 안심하셔」
+	PRINTFORMW 「무슨 어려운 일이 있으면 나나 레이무한테 상담하라구. 그리고 내 가게 ｛키리사메 마법점｝도 잘 부탁한다♪」
+	PRINTFORMW ――나의 마녀에 대한 어두운 이미지와는 정반대인, 매우 쾌활하고 웃음이 잘 어울리는 소녀였다.
 RETURN 1
 
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
@@ -103,36 +73,22 @@ RETURN 1
 ;==================================================
 ;데이트 오는 길에 First KISS(합의도 붙는다)
 ;==================================================
-@M_KOJO_SPEVENT_K126_1(ARG, ARG:1)
+@M_KOJO_SPEVENT_K11_1(ARG, ARG:1)
 ;말 주인은 TARGET
 ;지문 표시
-CALL SPEVENT_MESSAGE_1(ARG, ARG:1)
+;CALL SPEVENT_MESSAGE_3(ARG, ARG:1)
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
 LOCAL = 1
 ;-------------
-;지문
-CALL SPEVENT_MESSAGE_1(ARG, ARG:1)
 IF LOCAL
-    PRINTFORMW 「아―…배고파, 배고파아」
-	PRINTFORMW 데이트의 돌아가는 길, 시온이 조용히 입을 열었다
-	PRINTFORMW 출출해 졌다고 생각해 음식점을 찾았지만, 공교롭게도 눈에 띄지 않는다
-	PRINTFORMW 집에 돌아가면(자) 무언가 만들어 줄테니까, 라고 말하면(자) 시온은 흐응, 하고 뺨을 부풀렸다
-	PRINTFORMW 「배가 아니고, 그…입의 근처가, 배고프다고 할까 외롭다고 할까」
-	PRINTFORMW 이해하기 어려운 대답에, 고개를 갸웃하는 %CALLNAME:MASTER%
-	PRINTFORMW 「으―…이제 됐어!가만히 있어봐!」
-	PRINTFORMW 그런 모습에 화가 치밀었는지, 시온이 갑자기 달려들어 와…
-	PRINTL
-    PRINTFORML 츄…
-    PRINTW 
-	PRINTFORMW 시야 가득히 퍼지는, 시온의 얼굴
-	PRINTFORMW 입술에 닿는, 부드러운 감촉
-	PRINTFORMW %마스터가% 무엇을 당했는지 이해했을 때에는, 벌써 시온의 몸은 떨어져 있었다
-	PRINTFORMW 「빼앗아 버렸다…%CALLNAME:MASTER%의 입술…」
-	PRINTFORMW 「이것으로 오늘쯤은 배고프지 않아」
-	PRINTFORMW 「에헤헤, 다시 봐%CALLNAME:MASTER%」
-	PRINTFORMW 기다려, 라고 겨우 목소리를 내기 시작했을 때에는, 시온의 모습은 아득히 멀어졌다
-	PRINTFORMW 홍당무 같이 얼굴을 붉게 한 체, 그저 서 있는 %CALLNAME:MASTER%만이 남겨졌던 것이었다
+	PRINTFORMW 「야, %CALLNAME:MASTER%? 잠깐 이쪽 봐주지 않을래?」
+	PRINTFORMW 당신은 그 말대로 마리사 쪽을 돌아보았다.
+	PRINTFORMW 「음…」
+	PRINTFORMW 순간적이었지만, 뭔가 부드러운 것이 입술에 닿았다.
+	PRINTFORMW 그리고 눈앞에 있던 마리사의 얼굴이 숙여진다…
+	PRINTFORMW 「내 첫키스야. 받아줘」
+	PRINTFORMW 평소 같은 웃음을 띠고 있지만, 뺨이 붉어져 있는 건 잘 알 수 있었다.
 	;키스를 캔슬하고 싶은 경우는 이하를 개방
 	;TCVAR:키스캔슬 = 1
 ENDIF
@@ -141,10 +97,10 @@ RETURN 1
 ;==================================================
 ;데이트 오는 길에 고백(연인이 붙는다)
 ;==================================================
-@M_KOJO_SPEVENT_K126_2(ARG, ARG:1)
+@M_KOJO_SPEVENT_K11_2(ARG, ARG:1)
 ;말 주인은 TARGET
 ;지문 표시
-CALL SPEVENT_MESSAGE_2(ARG, ARG:1)
+;CALL SPEVENT_MESSAGE_3(ARG, ARG:1)
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
 LOCAL = 1
@@ -159,18 +115,15 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 0
-		PRINTFORMW 「%CALLNAME:MASTER%도 별난사람이네」
-		PRINTFORMW 그렇게 말하면서, 시온은 갑자기 멈춰 섰다.
-		PRINTFORMW 「나 같은 가난 신에게 이렇게 빠져서는 , 분명 정상적으로 죽진 못할꺼야」
-		PRINTFORMW 정신 없이 눈을 돌리면서,  검은 고양이의 봉제인형을 바쁘게 만지작 거리고 있다
-		PRINTFORMW 평소부터 제법 거동이 미심쩍은 부분이 있는 그녀이지만, 이번은 무엇인가 모습이 다르게 보였다
-		PRINTFORMW 「혹시, 말이야 …」
-		PRINTFORMW 「%CALLNAME:MASTER%, 나에게 반하기리도, 헸어?」
-		PRINTFORMW 어조는 가볍지만, 시온은 똑바로 이쪽을 응시하고 있다
-		PRINTFORMW 불안, 후회, 그리고 기대…혼돈된 감정을 그 눈동자로부터 분명히 읽어낼 수 있다
-		PRINTFORMW …여기선, 각오해야 할 것이다
-		PRINTFORMW 어느 쪽의 대답을 선택하든, 정직한 마음을 전해야 한다…
+		PRINTFORMW 「이봐, %CALLNAME:MASTER%. 오늘은 전하고 싶은 말이 있거든」
+		PRINTFORMW 마리사가 이쪽을 바라본다. 그 얼굴은 진지하고 긴장한 것처럼 보인다.
+		PRINTFORMW 지금까지 마리사와 보낸 시간 중엔 본 적도, 상상한 적도 없는 표정을, 지금의 마리사가 짓고 있다.
+		PRINTFORMW 「에둘러 말하기 싫으니까, 단도직입적으로 말할게」
+		PRINTFORMW ………
+		PRINTFORMW 「%CALLNAME:MASTER%를 좋아한다구. 나와 사귀어 주지 않을래?」
+		PRINTFORMW 정말로 마리사는 각오를 다지고 있었다. 자신도 각오를 결정하지 않으면…
 		RETURN 1
+
 	ENDIF
 	;-------------------------------------------------
 	;고백 OK(연인이 붙는다)
@@ -178,24 +131,12 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORMW 첫인상은 최악이었다
-		PRINTFORMW 얼굴을 맞대게 되고 나서도, 그 성격에 질려버린 적이 몇 번이나 있다
-		PRINTFORMW 그런데도, 여기까지 그녀와 교제를 계속한 것은…
-		PRINTFORMW 역시 자신이 눈앞의 가난신을…요리가미 시온을 진심으로 사랑하는 것이 틀림없다
-		PRINTFORMW 「………아………」
-		PRINTFORMW %CALLNAME:MASTER%의 말에, 시온이 조그맣게 목소리를 흘린다
-		PRINTFORMW 아주 조금의 침묵의 뒤, 그녀의 얼굴에는 천천히, 미소가 떠올랐다
-		PRINTFORMW 「아하, 하하하…곤란한걸―」
-		PRINTFORMW 그렇게 말하고는 시온은 %CALLNAME:MASTER%에 걸어오며,  손가락 한 개의 거리까지 강요해 왔다
-		PRINTFORMW 「확인 해 두지만…나, 가난신이야?  관련되는 사람 모두 불행하게 할게?」
-		PRINTFORMW 「그, 그런데도 좋아한다고 말한다면, 어쩔 수 없는데…」
-		PRINTFORMW 눈을 치켜 뜨고 물어 보는 시온을 꼭 껴안아, 물론이라고 강하게 대답한다
-		PRINTFORMW 시온과 함께라면, 어떤 불행도 괴롭지않아…
-		PRINTFORMW 그것이, %CALLNAME:MASTER%의 거짓 없는 지금의 기분이기 때문에
-		PRINTFORMW 「그런가…왠지, 진심으로 기쁜데」
-		PRINTFORMW 시온은 부끄러운 듯이 웃으면서, 가는 팔로 %CALLNAME:MASTER%의 등을 안았다
-		PRINTFORMW 「나도…%CALLNAME:MASTER%를 좋아, 해」
-		PRINTFORMW 마음을 서로 전한 두 사람의 그림자는, 길고 긴 사이에 다가붙고 있었다…
+		PRINTFORMW 「저, 정말이야? 거짓말…이 아니야? 아니, 나도 거짓말은 하지 않아」
+		PRINTFORMW 「아아앗, 아무리 내가 거짓말쟁이라도 %CALLNAME:MASTER%에 대한 것이 좋아하는 것은 거짓말이 아니라구!!」
+		PRINTFORMW 진심이라는 것 정도야 조금 전의 표정을 보면 알지만…드물게도, 마리사가 어쩔 줄 몰라하고 있다.
+		PRINTFORMW 그런 마리사를 당신은 살며시 꼭 껴안는다.
+		PRINTFORMW 「헤헤, %CALLNAME:MASTER%, 너무 좋아, 다」
+		PRINTFORMW 그렇게 말해 마리사는 지금까지 본 적이 없는, 아주 큰 미소를 당신에게 향하는 것이었다.
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -204,14 +145,11 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORMW …그녀의 생각을 받아들일 수는 없다…
-		PRINTFORMW 정직한 마음을 전하면(자), 시온이 일순간 고개를 숙여…
-		PRINTFORMW 얼굴을 올렸을 때에는, 평소의 그녀다운 표정으로 돌아오고 있었다
-		PRINTFORMW 「뭐, 뭐…당연하지. 나는 가난신이고」
-		PRINTFORMW 「좋아라든지 들어버리면(자), 반대로 어떻게 해야할지 하고 생각하고 있었어」
-		PRINTFORMW 「이상한 이야기 물어봐서 미안해 %CALLNAME:MASTER%, 바이바이」
-		PRINTFORMW 말을 건낼 틈도 없이, 시온은 전속력으로 달려가 버렸다
-		PRINTFORMW 그 등 뒤는, 어딘지 모르게 슬퍼 보였다…
+		PRINTFORMW 「…그런가, 알았다구」
+		PRINTFORMW 마리사는 풀썩 낙담하고 있지만…
+		PRINTFORMW 「하지만, 난 포기하지 않아」
+		PRINTFORMW 「언젠가 반드시 %마스터를% 뒤돌아 보게 해 보이겠다구!!」
+		PRINTFORMW 그렇게 외치며 다시 기운을 차리는 마리사를 보니, 당신은 마음이 놓이는 것이었다.
 		RETURN 1
 	ENDIF
 
@@ -221,13 +159,13 @@ RETURN 1
 ;==================================================
 ;데이트 돌아오는 길
 ;==================================================
-@M_KOJO_SPEVENT_K126_3(ARG, ARG:1)
+@M_KOJO_SPEVENT_K11_3(ARG, ARG:1)
 ;말 주인은 TARGET
 ;지문 표시
 CALL SPEVENT_MESSAGE_3(ARG, ARG:1)
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 IF LOCAL
 	;-------------------------------------------------
@@ -235,23 +173,21 @@ IF LOCAL
 	;-------------------------------------------------
 	;통상 귀가
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 0
 		IF TALENT:연인
-			PRINTFORMW 「오늘은 즐거웠어, %CALLNAME:MASTER%」
-			PRINTFORMW 「다시 둘이서 , 다양한 곳에 가보자」
-			PRINTFORMW 「…%마스터와% 함께라면, 어디라도 즐거우니까」
-			PRINTFORMW 시온은 뺨을 붉히면서 미소짓고 있다…
+			PRINTFORML 「오늘은 즐거웠어요」
+			PRINTFORML 「%CALLNAME:MASTER%에 리드 받는 것도 좋지만, 언젠가 내 빗자루를 타고 둘이서 하늘을 날아보는 건 어떨까?」
+			PRINTFORMW 「아직 아무도 실은 적 없는 특등석, 내 남친만 누릴 수 있는 특권이라구?」
 		ELSEIF TALENT:연모
-			PRINTFORMW 「오늘의 감상?」
-			PRINTFORMW 「…응, 즐거웠어」
-			PRINTFORMW 「뭐야 그 표정, 가난 신이 데이트 즐기면 안돼?」
-			PRINTFORMW 불평을 하면서도, 시온의 표정은 부드러웠다
+			PRINTFORML 「오늘은 즐거웠어요」
+			PRINTFORML 「다시 둘이서 어딘가 가자.」
+			PRINTFORMW 그렇게 마리사는 웃는 얼굴로 고했다.
 		ELSE
-			PRINTFORML 「권유하려면 좀 더 , 데이트코스 라던가 생각해줘」
-			PRINTFORML 「…아니, 즐겁지 않았던 것은 아니, 지만」
-			PRINTFORMW 시온은 고개를 돌리면서, 작은 소리로 덧붙였다
+			PRINTFORML 「오늘은 즐거웠어요」
+			PRINTFORML 「기회가 있으면 또 부탁한다구~」
+			PRINTFORMW 그렇게 마리사는 웃는 얼굴로 고했다.
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -261,9 +197,8 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORMW 「알았다 알았어… 허락해줄게」
-		PRINTFORMW 「…필사적으로 가난신의 비위를 맞추는건, 어떤 기분?」
-		PRINTFORMW 시온은 우월감에 입가를 일그러뜨리며 웃고 있다…
+		PRINTFORML 「뭐 나는 관대하니까」
+		PRINTFORMW 「이 정도라면 용서해 준다구」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -272,8 +207,8 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORMW 「 아직도 풀리지 않았어…성의라는 것을 보여 주지 않으면」
-		PRINTFORMW 그렇게 말하면서, 시온은 품속의 그릇을 슬쩍 내비치고 있다
+		PRINTFORML 「흥, 조금은 용서해주지」
+		PRINTFORMW 「하지만, 아직 완전하게 용서한 것은 아니니까.」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -282,12 +217,10 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORMW 「뭐, 조금은 다시 봤을까」
-		PRINTFORMW 「 「죽이고 싶다」에서 「얼굴도 보고 싶지 않다」가 된 정도이지만」
-		PRINTFORMW 시온의 분노는 아직 풀리지 않는 것 같다…
+		PRINTFORML 「……뭐 조금은 다시 보았다구」
+		PRINTFORMW 「하지만, 이 정도로 나의 분노가 가라앉았다고 생각하면 큰 착각이야」
 		RETURN 1
 	ENDIF
-	PRINTFORML 
 ENDIF
 RETURN 1
 
@@ -297,7 +230,7 @@ RETURN 1
 ;==================================================
 ;방에서 만남
 ;==================================================
-@M_KOJO_EVENT_K126_1(ARG, ARG:1)
+@M_KOJO_EVENT_K11_1(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -313,23 +246,28 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
 		IF TALENT:연인
-			PRINTFORMW 「아, %CALLNAME:MASTER%다」
-			PRINTFORMW 「혹시…나를 만나러 와 주었어?」
-			PRINTFORMW %마스터가% 그렇다고 대답하자, 시온의 얼굴이 환해졌다
-			PRINTFORMW 「에헤헤…기쁜걸」
-			PRINTFORMW 「나도 만나고 싶었어, %CALLNAME:MASTER%」
+			PRINTFORML 
+			PRINTFORML 「오우, %CALLNAME:MASTER%」
+			PRINTFORML 마리사는 당신의 근처에 들러 왔다.
+			PRINTFORML 「역시 %CALLNAME:MASTER%의 근처가 편하다구―♪」
+			PRINTFORML 「자, 오늘은 무엇을 할까?」
+			PRINTFORMW 마리사는 당신에게 눈부실 정도의 웃는 얼굴을 보여주고 있다.
 		ELSEIF TALENT:연모
-			PRINTFORMW 「아, %CALLNAME:MASTER%다」
-			PRINTFORMW 「에~그럼 그러니까…, 아이스크림 막대가 있는데 빨을래?」
-			PRINTFORMW %마스터는% 정중하게 거절했다…
+			PRINTFORML 
+			PRINTFORML 「――아, %CALLNAME:MASTER%」
+			PRINTFORML 마리사는 당신을 눈치챘다.
+			PRINTFORML 「오늘은 나를 만나러 와 준 걸까? 기뻐」
+			PRINTFORMW 마리사는 어쩐지 수줍어 하는 것처럼 보인다.
 		ELSEIF TALENT:사모
-			PRINTFORMW 「우와―, 일부러 가난 신에게 만나러 왔어」
-			PRINTFORMW 「어쩔 수 없지, 상대해 줄게」
+			PRINTFORML 
+			PRINTFORML 「오우, %CALLNAME:MASTER%」
+			PRINTFORML 「헤헤, 나에게 무슨 용무야?」
+			PRINTFORMW 마리사는 웃는 얼굴을 띠며 말을 건네 왔다.
 		ELSE
 			PRINTFORML 
-			PRINTFORMW 「우와―, 일부러 가난 신에게 만나러 왔다」
-			PRINTFORMW 「…이상한 녀석」
-			ENDIF
+			PRINTFORML 「, %CALLNAME:MASTER%인가」
+			PRINTFORMW 「나에게 무슨 용무야?」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -338,28 +276,137 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		IF TALENT:연인
-			PRINTFORMW 「가난 신이  만나러 왔어―」
-			PRINTFORMW 「내%마스터는% 오늘도  멋지게 기운이 넘치네」
-		ELSEIF TALENT:연모
-			PRINTFORMW 「가난 신이  만나러 왔어―」
-			PRINTFORMW 「건강해보여서 다행이다…라니」
-		ELSEIF TALENT:사모
-			PRINTFORMW 「가난 신이  만나러 왔어―」
-			PRINTFORMW 「…여전히 기운이 넘치네」
-		ELSE
-			PRINTFORMW 「가난 신이  만나러 왔어―」
-			PRINTFORMW 「당신은 가까운 시일에 끝장나겠네」
+		;할로윈, 분명하게 움직이는 거야?
+		IF DAY:2 == 3 && DAY:3 == 30 && !TCVAR:11:오늘만났는지
+			IF TALENT:연모
+				PRINTFORML 「트릭 ☆ or ☆ 트리트!」
+				PRINTFORML 「과자를 주지 않으면 장난 해버린다♪」
+				PRINTFORMW 「자, 어떻게 할래 %CALLNAME:MASTER%?」
+				PRINTFORML [0]-과자를 준다
+				PRINTFORML [1]-과자를 주지 않는다
+			INPUT
+			;아무것도 줄어들지 않고 아무것도 되지 않지만요…무슨 일이 있었어 (분)편이 좋은 것인지
+				IF !RESULT
+					PRINTFORMW 「헤헤, 그러면 고맙게 받겠다구」
+					PRINTFORMW 「자, 과자를 준 %CALLNAME:MASTER%에는 특별히 장난의 선물이다♪」
+					PRINTFORMW 「나랑 놀·아·주·기, 원하는 것이겠지? …어째서♪」
+				ELSE
+					PRINTFORMW 「헤에, 그럼 장난을 쳐 볼까?」
+					PRINTFORMW 「후후후, 마음껏 즐겁게 해 줄까♪…라기엔, 아무것도 생각해 두지 않았어요…」
+				ENDIF
+				RETURN
+			ELSE
+				PRINTFORML 「트릭 ☆ or ☆ 트리트!」
+				PRINTFORML 「과자를 주지 않으면 장난 해버린다♪」
+				PRINTFORMW 「자, 어떻게 하는 %CALLNAME:MASTER%?」
+				PRINTFORML [0]-과자를 준다
+				PRINTFORML [1]-과자를 주지 않는다
+			INPUT
+				IF !RESULT
+					PRINTFORMW 「헤헤, 그러면 고맙게 받겠다구♪」
+				ELSE
+					PRINTFORMW 「헤에, 그럼 장난을 쳐 볼까?」
+					PRINTFORMW 「그러면, 즐겁게 해 줄까♪…라기엔 아무것도 생각해 두지 않았어요…」
+				ENDIF
+				RETURN
 			ENDIF
+			RETURN
+		;크리스마스, 재료로서 맛있는 생각이 든 홍백마리사
+		ELSEIF DAY:2 == 4 && DAY:3 == 25 && !TCVAR:11:오늘만났는지
+			IF TALENT:연모
+				PRINTFORMW 「%CALLNAME:MASTER%, 메리 크리스마스!」
+				PRINTFORMW …눈앞에 흑백이 아니고 홍백의 의상을 감긴 마리사가 있다. 꽤 신선하다.
+				PRINTFORMW 「후후후, 이 날을 위해서 특별히 만들었으니, 눈에 단단히 담아 놓으라구?」
+				PRINTFORMW 「응, 선물? 눈앞에 있잖아」
+				PRINTFORMW 「선물은 나·라·구…♪」
+			ELSE
+				PRINTFORMW 「%CALLNAME:MASTER%, 메리 크리스마스!」
+				PRINTFORMW …눈앞에 흑백이 아니고 홍백의 의상을 감긴 마리사가 있다. 꽤 신선하다.
+				PRINTFORMW 「후후후, 이 날을 위해서 특별히 만들었으니, 눈에 단단히 담아 놓으라구?」
+				PRINTFORMW 「응, 선물? 으음, 제대로 먹을 수 있는 맛있는 버섯이라구, 안심해도 돼?」
+			ENDIF
+			RETURN
+		;신년 새해복 많이 받으세요
+		ELSEIF DAY:2 == 1 && DAY:3 == 1 && DAY:0 != 1 && !TCVAR:11:오늘만났는지
+			IF TALENT:연모
+				PRINTFORMW 「%CALLNAME:MASTER%, 새해 복많이 받으세요!」
+				PRINTFORMW 「올해도, 좋은 한 해 되길♪」
+			ELSE
+				PRINTFORMW 「%CALLNAME:MASTER%, 새해 복많이 받으세요!」
+				PRINTFORMW 「올해도 아무쪼록♪」
+			ENDIF
+		;바렌타인
+		ELSEIF DAY:2 == 4 && DAY:3 == 14 && DAY:0 != 1 && !TCVAR:11:오늘만났는지
+			PRINTFORMW 「, %CALLNAME:MASTER%, 오늘은 발렌타인 데이다」
+				SELECTCASE CFLAG:호감도
+					CASE 1000 TO 3000
+						PRINTFORMW 「모처럼이고, 자, 이거 줄게」
+					CASE 3001 TO 5000
+						PRINTFORMW 「%CALLNAME:MASTER%에는 특별히 이걸 선물할게♪」
+					CASE IS > 5000
+						IF EXP:ARG:애정경험 < 100
+							IF TALENT:연인
+								PRINTFORMW 「정말 좋아하는 %마스터를% 위해서 깜짝 놀랄만한 물건을 준비했어, 받아 줘」
+								PRINTFORMW 「노력해서 구했으니까, 맛있게 먹어달라구♪」
+							ELSE
+								PRINTFORMW 「%CALLNAME:MASTER%한테 신세지고 있으니, 받아 줘」
+								PRINTFORMW 「노력해서 구했으니까, 맛있게 먹어달라구♪」
+							ENDIF
+						ELSE
+							IF TALENT:연인
+								PRINTFORMW 「정말 좋아하는 %마스터를% 위해서 깜짝 놀랄만한 물건을 준비했어」
+								PRINTFORMW 「과자 많이 만들어 보지는 않았지만, 노력해서 만들었어, 나의 마음, 받아 달라구」
+							ELSE
+								PRINTFORMW 「%CALLNAME:MASTER%한테 신세지고 있으니, 받아 줘」
+								PRINTFORMW 「과자 많이 만들어 보지는 않았지만, 노력해서 만들었어」
+							ENDIF
+						ENDIF
+				ENDSELECT
+		;그 외
+		ELSEIF TALENT:연인
+			PRINTFORML 
+			PRINTFORML 「에~그럼%마스터는%…, 여기 있었네♪」
+			PRINTFORML 마리사는 당신의 근처에 달라붙어 왔다.
+			PRINTFORML 「역시 %마스터의% 근처가 편하다구―」
+			PRINTFORML 「자, 오늘은 무엇을 해볼까―♪」
+			PRINTFORMW 마리사는 당신을 향해 눈부실 정도의 미소를 짓고 있다.
+		ELSEIF TALENT:연모
+			PRINTFORML 
+			PRINTFORML 「――어이~, %CALLNAME:MASTER%」
+			PRINTFORML 마리사는 당신의 근처에 들러 왔다.
+			PRINTFORML 「오늘은 내가 근처에 있어도…괜찮을까…?」
+			PRINTFORMW 마리사는 어쩐지 수줍어 하는 것처럼 보인다.
+		ELSEIF TALENT:사모
+			PRINTFORML 
+			PRINTFORML 「어이~, %CALLNAME:MASTER%」
+			PRINTFORML 「잠깐 내 신작 마법을 보고 가지 않을래?」
+			PRINTFORMW 마리사는 즐거운 듯이 당신에게 말을 건네 왔다.
+		ELSE
+			PRINTFORML 
+			PRINTFORML 「, %CALLNAME:MASTER%인가」
+			PRINTFORMW 「이제 환상향에는 익숙해졌지?」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;TARGET가 목욕해 와 함께 들어간다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORML 
+		IF TALENT:연인
+			PRINTFORML 「―%CALLNAME:MASTER%, 들어가고 있었냐구」
+			PRINTFORML 목욕탕의 문이 열리자, 마리사가 들어 왔다.
+			PRINTFORML 「모처럼 내가 등을 밀어 줄까」
+			PRINTFORML 「아니, 이런 때는 서방님이라고도 부르는 게 더 좋은가?」
+			PRINTFORML 당신은 마리사의 발언에 긴장하고 있다…
+			PRINTFORML 「뭐야, 그렇게 긴장하지 않아도 괜찮다구? 흐·응···?」
+			PRINTFORMW 마리사는 요염한 미소를 띠고 있다…
+		ELSE
+			PRINTFORML 「아―, %CALLNAME:MASTER%, 들어가고 있었냐구」
+			PRINTFORML 「으응~, 나도 함께 씻어 줄까」
+			PRINTFORML 마리사는 당신의 정면에 앉아 있다…
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -368,8 +415,8 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
-		PRINTFORMW 「…오랫만에 들어가려고 생각했는데」
-		PRINTFORMW 시온은 불평을 말하면서 떠나 갔다…
+		PRINTFORML 「아―, 미안, 방해했네」
+		PRINTFORMW 마리사는 떠나 갔다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -388,25 +435,27 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 6
 		IF TALENT:연인
-			PRINTFORMW 정신이 들자, 어느 새인가 시온이 옆에 서 있었다
-			PRINTFORMW 「에헤헤, %CALLNAME:MASTER%…」
-			PRINTFORMW 응석부리는 것 같은 소리를 내, 시온이 슬쩍 다가온다
-			PRINTFORMW 「%CALLNAME:MASTER%, 따뜻하다…」
-			PRINTFORMW 행복한 미소를 띠는 시온을 봐서, %CALLNAME:MASTER%도 뺨을 느슨해졌다
+			PRINTFORML 「오우, %CALLNAME:MASTER%」
+			PRINTFORML 마리사는 당신의 근처에 들러 왔다.
+			PRINTFORML 「역시 %CALLNAME:MASTER%의 근처가 침착하군―」
+			PRINTFORML 「자, 오늘은 무엇을 해볼까―♪」
+			PRINTFORMW 마리사는 당신에게 눈부실 정도의 웃는 얼굴을 향하여 있다.
 		ELSEIF TALENT:연모
-			PRINTFORMW 이가 빠진 그릇을 손에 들고, 멍하니 서 있던 시온이 %마스터를% 눈치챘다
-			PRINTFORMW 「아, %CALLNAME:MASTER%다」
-			PRINTFORMW 그릇을 품속에 밀어넣어, 시온이 %CALLNAME:MASTER%에 접근해 온다
-			PRINTFORMW 「구걸도 질려 버렸다. 같이 시간 때우기 해줘」
+			PRINTFORML 
+			PRINTFORML 「――아, %CALLNAME:MASTER%」
+			PRINTFORML 마리사는 당신을 눈치챘다.
+			PRINTFORML 「오늘은 나를 만나러 와 준 걸까? 기쁘다구」
+			PRINTFORMW 마리사는 어쩐지 수줍어 있는 것처럼 보인다.
 		ELSEIF TALENT:사모
-			PRINTFORMW 길가에 앉아 구걸을 하고 있던 시온이 %마스터를% 눈치챘다
-			PRINTFORMW 「아, %CALLNAME:MASTER%다. 여기로와」
-			PRINTFORMW 시온은 근처의 지면을 팡팡하고 두드리고 있다
-			PRINTFORMW …앉아라라고 하는 것일까…
+			PRINTFORML 
+			PRINTFORML 「어이~, %CALLNAME:MASTER%」
+			PRINTFORML 「잠깐 내 신작 마법을 보고 가지 않을래?」
+			PRINTFORMW 마리사는 즐거운 듯이 당신에게 말을 건네 왔다.
 		ELSE
-			PRINTFORMW 「무엇인가 베풀어―」
-			PRINTFORMW 시온은 이빠진 그릇을 내밀어 왔다… 
-			ENDIF
+			PRINTFORML 
+			PRINTFORML 「, %CALLNAME:MASTER%인가」
+			PRINTFORMW 「나에게 무슨 용무야?」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -417,28 +466,35 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 7
 		IF TALENT:연인
-			PRINTFORMW 「……………」
-			PRINTFORMW 초조함 숨길려고도 하지 않고, 이쪽을 노려보고 있는 시온
-			PRINTFORMW 그 배후에는 희미하게 오라 같은 것이 떠올라 있다…
-			PRINTFORMW (그 여자…단순히 넘어갈거라고 생각하지 마…)
+			PRINTFORML 「잠깐, %CALLNAME:MASTER%, 나를 떼놓고 데이트중인 거야?」
+			PRINTFORML 「아아, 따로 그만 하라고 하는 건 아니라구? 그래도…」
+			PRINTFORML 「%CALLNAME:MASTER%의 연인은, 나뿐이니까?」
+			PRINTFORML 「그러면, 방해하는 것도 실례니까, 나는 어딘가 가고 있겠다구. 즐기고 와」
+			PRINTFORMW …마리사의 말에 제대로 양심을 찔려 버렸다.
 		ELSEIF TALENT:연모
-			PRINTFORMW 「……………」
-			PRINTFORMW 시온이 지긋이 시선을 향하여 온다
-			PRINTFORMW 기분 탓인지, 그 표정에는 초조한 빛이 떠올라 있다
+			PRINTFORML 
+			PRINTFORML 「―아, %CALLNAME:MASTER%, 데이트중인가…」
+			PRINTFORML 「방해하는 것도 실례니, 나는 다른 데 있겠다구...」
+			PRINTFORMW (으응 …나도 좀 더 노력하지 않으면…)
 		ELSEIF TALENT:사모
-			PRINTFORMW 「……………」
-			PRINTFORMW 무표정의 시온이 지긋이 시선을 향하고있다…
+			PRINTFORML 「…응, 이야~ 데이트중인가?」
+			PRINTFORML 「방해하는 것도 실례니, 나는 다른 데 있겠다구. 즐기고 와~」
+			PRINTFORMW (어? 왜 눈 앞에 안개가…어째서일까? )
+		ELSE
+			PRINTFORML 「%CALLNAME:MASTER%인가? 데이트중인가?」
+			PRINTFORMW 「방해하는 것도 실례니, 나는 다른 데 있겠다구. 즐기고 와~」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;그 외
 	PRINTFORML  
 ENDIF
-ENDIF
 RETURN 1
+
 ;==================================================
 ;아침에 일어 났을 때(안녕 말)
 ;==================================================
-@M_KOJO_EVENT_K126_2(ARG, ARG:1)
+@M_KOJO_EVENT_K11_2(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -529,11 +585,11 @@ RETURN 1
 ;==================================================
 ;밤에 잘 때(휴업(휴가) 말)
 ;==================================================
-@M_KOJO_EVENT_K126_3(ARG, ARG:1)
+@M_KOJO_EVENT_K11_3(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -542,10 +598,23 @@ IF LOCAL
 	;-------------------------------------------------
 	;자기 방에 돌아간다(정시가 되어 잔다)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORMW 
+		IF TALENT:연인
+			PRINTFORML 「후아…이제 졸리다구…슬슬 돌아갈까」 
+			PRINTFORML 「아, 그렇다%CALLNAME:MASTER%, 잠깐 여기 봐 봐」
+			PRINTFORML 그 말대로 당신은 마리사 쪽을 향했다.
+			PRINTFORML 「응…쭙…」
+			PRINTFORMW 「헤헤, 굿바이 키스라구」
+		ELSEIF TALENT:연모
+			PRINTFORML 「후아…이제 졸리다구…」 
+			PRINTFORML 「그러니까 , 오늘은 이제 돌아간다구」
+			PRINTFORMW 「벌써 조금 더, 함께 있고 싶지만…」
+		ELSE
+			PRINTFORML 「후아…이제 졸리다구…」 
+			PRINTFORMW 「그러니까 , 오늘은 이제 돌아간다구」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -560,10 +629,20 @@ IF LOCAL
 	;-------------------------------------------------
 	;수면중(일어나지 않기 때문에 회화 라기 보다는 잠꼬대? )
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORMW 
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「으음…좋아~…이래도 버틸 수 있겠냐구∼!…」
+			PRINTFORMW 아무래도 마리사의 꿈 속에서는 탄막이 퍼지고 있는 것 같다.
+		CASE 1
+			PRINTFORML 「으음… 제길∼…당해버린거냐구∼…」
+			PRINTFORMW 아무래도 마리사는 꿈 속에서 상대의 총알을 맞아 버린 것 같다.
+		CASE 2
+			PRINTFORML 「으음…이것으로 마지막이다∼…｛연부｝마스터 스파크!…」
+			PRINTFORMW 꿈 속의 마리사는 최애 스펠로 필살의 일격을 가한 것 같다.
+		ENDSELECT
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -587,10 +666,12 @@ IF LOCAL
 	;-------------------------------------------------
 	;MASTER가 다운(방까지 옮겨진다)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 6
-		PRINTFORMW 
+		PRINTFORML 「이, 이봐 괜찮냐구 %CALLNAME:MASTER%?」
+		PRINTFORML 「어쩔 수 없군, 내가 방까지 옮겨 줄까」
+		PRINTFORMW 「정말, 컨디션 관리는 제대로 하라구―」 
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -650,7 +731,7 @@ RETURN 1
 ;==================================================
 ;이동시 엇갈림
 ;==================================================
-@M_KOJO_EVENT_K126_4(ARG, ARG:1)
+@M_KOJO_EVENT_K11_4(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -676,21 +757,27 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORMW 「응」
-		PRINTFORMW 시온이 이빠진 그릇을 내보이며, 재촉 하는 것 같은 눈을 향해왔다…
-		PRINTFORMW %마스터는% 빠른 걸음으로 그 자리를 떠났다
-		PRINTFORMW 「야박한 사람-」
+		IF TALENT:연인
+			PRINTFORML 「어이~, %CALLNAME:MASTER%, 어디 가?」
+			PRINTFORML 당신이 마리사에 행선지를 고하면(자),
+			PRINTFORML 「흐응, 뭐 나는 붙잡아 두는 타입은 아니니까, 자유롭게 나가도 좋고 다른 여자에게 말을 거는 것도 상관없어」
+			PRINTFORML 「하지만…너는 내 꺼니까?」
+			PRINTFORMW 그러면서 마리사는 미소를 띠며 말해 왔다.
+		ELSEIF TALENT:연모
+			PRINTFORML 「어이~, %CALLNAME:MASTER%」
+			PRINTFORML 마리사와 엇갈렸다.
+			PRINTFORML 「으응, 나를 좀 더 봐주었으면 하는데…」
+			PRINTFORMW 와 마리사는 작은 소리로 중얼거렸다.
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;무시해 통과했다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 1
+	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORMW 「배고파―」
-		PRINTFORMW 들으라고 하는 듯한 시온의 소리를 거들떠보지도 않고, %마스터는% 그 자리를 통과했다
-		PRINTFORMW 「…칫」
+		PRINTFORML 
 		RETURN 1
 	ENDIF
 	;그 외
@@ -701,12 +788,11 @@ RETURN 1
 ;==================================================
 ;다른 사람 개입으로 무드 변화
 ;==================================================
-@M_KOJO_EVENT_K126_5(ARG, ARG:1)
+@M_KOJO_EVENT_K11_5(ARG, ARG:1)
 ;말 주인은 TARGET
-;ARG에 들어 온 캐릭터(인원수가 방대해서, 자기 파악 자기책임으로
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -718,8 +804,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORML 
-		RETURN 1
+		
 	ENDIF
 	;-------------------------------------------------
 	;루코토가 들어 왔다
@@ -730,20 +815,22 @@ IF LOCAL
 		PRINTFORML 
 		RETURN 1
 	ENDIF
-	;그 외(캐릭터 지정 없음
-	PRINTFORML  
+	;그 외
+	PRINTFORML 「이런, 누군가 온 것 같다」
+	PRINTFORMW 기색을 짐작 한 마리사는 당신으로부터 스윽 떨어졌다.
+	 
 ENDIF
 RETURN 1
 
 ;==================================================
 ;정사를 목격했다
 ;==================================================
-@M_KOJO_EVENT_K126_6(ARG, ARG:1)
+@M_KOJO_EVENT_K11_6(ARG, ARG:1)
 ;말 주인은 TARGET
 ;ARG에 정사 상대
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -755,37 +842,38 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG:1 == 1
-		IF TALENT:연인
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이는데, 조온, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 
-				PRINTFORMW (…누나를 이기는 여동생은 없어, 조온…)
-				PRINTFORMW 시온은 여동생에게 보이지 않게 우쭐거리는 미소를 띠었다…
+		IF TALENT:11:연인
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「아, %CALLNAME:MASTER%, 레이무, 즐거운 것 같다구?」
+				PRINTFORML 「뭐 이 정도는 내가 빌려 주겠다구」
+				PRINTFORML 
+				PRINTFORML (탄막에서는 약간 내가 밀리고 있지만, 이 승부는 내가 이기고 있다)
+				PRINTFORMW (이 쪽은 연인이라는 여유가 있고, 거기에 %CALLNAME:MASTER% 믿고 있으니까)
 			ELSE
-				PRINTFORMW 「…즐거워 보이는데, %CALLNAME:MASTER%」
-				PRINTFORMW 「마음대로 하면?  본심은 나라도 알고 있으니까」
-				PRINTFORMW 시온은 우쭐거리는 미소를 띠고 있다…
+				PRINTFORML 「흐응, %CALLNAME:MASTER%에는 내가 있는데…」
+				PRINTFORMW 「뭐 상관없나, %CALLNAME:MASTER%, 믿고 있다구?」
 			ENDIF
-		ELSEIF TALENT:연모
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이는데, 조온, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 
-				PRINTFORMW (조온…%CALLNAME:MASTER%…)
-				PRINTFORMW (…나중에 기억해두라고…)
-				PRINTFORMW 시온의 몸으로부터 희미하게 오라가 솟아오르고 있다…
+		ELSEIF TALENT:11:연모
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「아, %CALLNAME:MASTER%, 레이무…」
+				PRINTFORML 「………」
+				PRINTFORML 
+				PRINTFORML (이 승부로 질 수는…하물며 상대가 레이무라면 더욱더 질 수 없어)
+				PRINTFORMW ( 나도 좀 더 노력하지 않으면…)
 			ELSE
-				PRINTFORMW 「…즐거워 보이네, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 시온은 떠나 갔다…
+				PRINTFORML 「아…」
+				PRINTFORMW 「……나도 좀 더 노력하지 않으면…」
 			ENDIF
 		ELSE
-			PRINTFORMW 「과시하지 말아줄래?」
-			PRINTFORMW 시온은 질린 듯한 눈길을 향해왔다…
-			IF ARG == 125
-				PRINTFORMW 「흐응…조온은, 그런 얼굴도 하는구나」
-				PRINTFORMW 「남자 같은 것 돈줄로 밖에 보지 않는다고 생각했지만」
+			PRINTFORMW 「이봐 이봐, 사이 화목한 것은 좋지만, 다른 사람도 신경 써 달라구」
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「하하하, 상당히 즐거워 보이네, 레이무랑 %CALLNAME:MASTER%」
+				PRINTFORML 「그런가―, 레이무에도 마침내 그런 때가 온 건가」
+				PRINTFORML 「왠지, 이렇게…감개무량하네, 소꿉친구로서」
+				PRINTFORMW 「그럼 나는 이것으로 실례한다구」
 			ENDIF
 		ENDIF
 		RETURN 1
@@ -795,32 +883,30 @@ IF LOCAL
 	;기입 체크(=0, 비표시, 1, 표시)
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && ARG:1 == 1
+	IF LOCAL:1 && ARG:1 == 2
 		IF TALENT:연인
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이네, 조온, %CALLNAME:MASTER%」
-				PRINTFORMW 「…아니, %마스터는% 나랑 하고있을 때보다 지루해 보이는 걸」
-				PRINTFORMW 그렇게 말하면서 시온은 당황하는 두 명에게 접근해 왔다
-				PRINTFORMW 「누나를 이기는 여동생은 없어, 조온…그것을 제대로 보여 주겠어」
-				PRINTFORMW 시온은 조온을 밀쳐%CALLNAME:MASTER%에 몸을 문질러 붙여 왔다…
+			IF ARG == 1
+				PRINTFORML 「 %CALLNAME:MASTER%, 레이무, 즐거운 것 같네?」
+				PRINTFORML 마리사는 요염한 미소를 띠고 있다…
+				PRINTFORML 「레이무, 이 승부는 내가 이긴 거니까, 지금부터 그것을 보여 주겠다구」
+				PRINTFORMW 그렇게 말하면서 마리사는 이쪽에 접근해 왔다…
 			ELSE
-				PRINTFORMW 「…즐거워 보이네, %CALLNAME:MASTER%」
-				PRINTFORMW 「…아니, %마스터는% 나랑 하고있을 때보다 지루해 보이는 걸」
-				PRINTFORMW 그러한과 시온은 당황하는 두 명에게 접근해 왔다
-				PRINTFORMW 「후후, %CALLNAME:MASTER%의 본심은 나겠지?」
-				PRINTFORMW 시온은 %CALLNAME:MASTER%에 몸을 문질러 붙여 왔다…
+				PRINTFORML 「흐흥, 상당히 즐거운 것 같은데」
+				PRINTFORML 마리사는 요염한 미소를 띠고 있다…
+				PRINTFORML 「내가 %CALLNAME:MASTER%의 연인이란 점을 보여 주지 않으면 안된다구 」
+				PRINTFORMW 그렇게 말하면서 마리사는 이쪽에 접근해 왔다…
 			ENDIF
 		ELSEIF TALENT:연모
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이네, 조온」
-				PRINTFORMW 「%마스터는% 그렇게 능숙한거야?  나에게도 시범해줘」
-				PRINTFORMW 그러한과 시온은 당황하는 두 명에게 접근해 왔다
-				PRINTFORMW 「최강 최악의 자매가 상대 해 줄게, %CALLNAME:MASTER%」
-				PRINTFORMW 시온은 요염한 미소를 띠고 있다…
+			IF ARG == 1
+				PRINTFORML 「%CALLNAME:MASTER%, 레이무…」
+				PRINTFORML 「………」
+				PRINTFORML 「이 승부는 절대로 양보하지 못 해, 레이무」
+				PRINTFORMW 그렇게 말하면서 마리사는 이쪽에 접근해 왔다…
 			ELSE
-				PRINTFORMW 「…즐거워 보이네, %CALLNAME:MASTER%」
-				PRINTFORMW 「나도 끼어줘」
-				PRINTFORMW 그러한과 시온은 당황하는 두 명에게 접근해 왔다…
+				PRINTFORML 「흐흥, 상당히 즐거운 것 같은데」
+				PRINTFORML 마리사는 요염한 미소를 띠고 있다…
+				PRINTFORML 「나도 지고 있을 수 없다구…」
+				PRINTFORMW 그렇게 말하면서 마리사는 이쪽에 접근해 왔다…
 			ENDIF
 		ENDIF
 		RETURN 1
@@ -831,41 +917,51 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG:1 == 3
-		IF TALENT:연인
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이는 걸, 조온, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 
-				PRINTFORMW (…누나를 이기는 여동생은 없어, 조온…)
-				PRINTFORMW 시온은 여동생에게 보이지 않게 우쭐거리는 미소를 띠었다…
+		IF TALENT:11:연인
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「아, %CALLNAME:MASTER%, 레이무, 즐거운 것 같다구?」
+				PRINTFORML 「뭐 이 정도는 내가 빌려 주겠다구」
+				PRINTFORML 
+				PRINTFORML (탄막에서는 약간 내가 밀리고 있지만, 이 승부는 내가 이기고 있다)
+				PRINTFORMW (이 쪽은 연인이라는 여유가 있고, 거기에 %CALLNAME:MASTER% 믿고 있으니까)
 			ELSE
-				PRINTFORMW 「…즐거워 보이는데, %CALLNAME:MASTER%」
-				PRINTFORMW 「마음대로 하면?  본심은 나라도 알고 있으니까」
-				PRINTFORMW 시온은 우쭐거리는 미소를 띠고 있다…
+				PRINTFORML 「흐응, %CALLNAME:MASTER%에는 내가 있는데…」
+				PRINTFORMW 「뭐 상관없나, %CALLNAME:MASTER%, 믿고 있다구?」
 			ENDIF
-		ELSEIF TALENT:연모
-			IF ARG == 125
-				PRINTFORMW 「…즐거워 보이네, 조온, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 
-				PRINTFORMW (조온…%CALLNAME:MASTER%…)
-				PRINTFORMW (…나중에 기억해두라고…)
-				PRINTFORMW 시온의 몸으로부터 희미하게 오라가 솟아오르고 있다…
+		ELSEIF TALENT:11:연모
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「아, %CALLNAME:MASTER%, 레이무…」
+				PRINTFORML 「………」
+				PRINTFORML 
+				PRINTFORML (이 승부로 질 수는…하물며 상대가 레이무라면 더욱더 질 수 없어)
+				PRINTFORMW ( 나도 좀 더 노력하지 않으면…)
 			ELSE
-				PRINTFORMW 「…즐거워 보이네, %CALLNAME:MASTER%」
-				PRINTFORMW 「별로 말참견하지 않겠지만…정도껏 해둬」
-				PRINTFORMW 시온은 떠나 갔다…
+				PRINTFORML 「아…」
+				PRINTFORMW 「……나도 좀 더 노력하지 않으면…」
 			ENDIF
 		ELSE
-			PRINTFORMW 「과시하지 말아줄래?」
-			PRINTFORMW 시온은 질린 듯한 눈길을 향해왔다…
-			IF ARG == 125
-				PRINTFORMW 「흐응…조온은, 그런 얼굴도 하는구나」
-				PRINTFORMW 「남자 같은 것 돈줄로 밖에 보지 않는다고 생각했지만」
+			PRINTFORMW 「이봐 이봐, 사이 화목한 것은 좋지만, 다른 사람도 신경 써 달라구」
+			;레이무와
+			IF ARG == 1
+				PRINTFORML 「하하하, 상당히 즐거워 보이네, 레이무랑 %CALLNAME:MASTER%」
+				PRINTFORML 「그런가―, 레이무에도 마침내 그런 때가 온 건가」
+				PRINTFORML 「왠지, 이렇게…감개무량하네, 소꿉친구로서」
+				PRINTFORMW 「그럼 나는 이것으로 실례한다구」
 			ENDIF
 		ENDIF
 		RETURN 1
 	ENDIF
+	;-------------------------------------------------
+	;MASTER에 이끌려 참가
+	;기입 체크(=0, 비표시, 1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	;IF LOCAL:1 && ARG:1 == 4
+		;PRINTFORML 
+		;RETURN 1
+	;ENDIF
 	;그 외
 	PRINTFORML  
 ENDIF
@@ -874,12 +970,12 @@ RETURN 1
 ;==================================================
 ;정사를 볼 수 있었다
 ;==================================================
-@M_KOJO_EVENT_K126_7(ARG, ARG:1)
+@M_KOJO_EVENT_K11_7(ARG, ARG:1)
 ;말 주인은 TARGET
 ;ARG에 목격자
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -897,10 +993,12 @@ IF LOCAL
 	;-------------------------------------------------
 	;목격자가 질 수 없어 참가(목격자의 친해져도:고)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG:1 == 2
-		PRINTFORML 
+		PRINTFORML 「어? 섞이는…의 것인지?」
+		PRINTFORML 「뭐 좋지만…질 생각은 없는거야?」
+		PRINTFORMW 마리사는 겁없는 미소를 띠고 있다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -912,21 +1010,24 @@ IF LOCAL
 		PRINTFORML 
 		RETURN 1
 	ENDIF
+	;-------------------------------------------------
+	;MASTER에 이끌려 목격자도 참가
+	;기입 체크(=0, 비표시, 1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	;IF LOCAL:1 && ARG:1 == 4
+		;PRINTFORML 
+		;RETURN 1
+	;ENDIF
 	;그 외
 	PRINTFORML  
 ENDIF
 RETURN 1
 
 ;==================================================
-;목격한 정사를 캐묻는다(현재 없음
+;목격한 정사를 캐묻는다
 ;==================================================
-@M_KOJO_EVENT_K126_8(ARG, ARG:1)
-RETURN 1
-
-;==================================================
-;팬티몰수되었다
-;==================================================
-@M_KOJO_EVENT_K126_9(ARG, ARG:1)
+@M_KOJO_EVENT_K11_8(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -937,6 +1038,7 @@ IF LOCAL
 	;-------------------------------------------------
 	;소분기
 	;-------------------------------------------------
+	;MASTER만 캐묻고
 	;기입 체크(=0, 비표시, 1, 표시)
 	LOCAL:1 = 0
 	;-------------------------------------------------
@@ -944,18 +1046,70 @@ IF LOCAL
 		PRINTFORML 
 		RETURN 1
 	ENDIF
+	;-------------------------------------------------
+	;두 사람 모두 설교
+	;기입 체크(=0, 비표시, 1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG:1 == 2
+		PRINTFORML 
+		RETURN 1
+	ENDIF
+	;그 외
 	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;팬티몰수되었다
+;==================================================
+@M_KOJO_EVENT_K11_9(ARG, ARG:1)
+;말 주인은 TARGET
+;--------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;같은 장소에 있어 팬티를 회수되었다
+	;기입 체크(=0, 비표시, 1, 표시)
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG:1 == 1
+		PRINTFORML 「어이, %CALLNAME:MASTER%, 조금 멈추어 달라구」
+		PRINTFORML 그렇게 말해져 당신이 움직임을 멈추자, 마리사는 팬티를 보관해 두는 장소를 정확하게 짚어 왔다.
+		PRINTFORML 「너 무엇인가 숨기고 있지? 이런 것에는 냄새를 잘 맡는다구」
+		PRINTFORML 「응? 이게 뭐야, 몰수다 몰수」
+		PRINTFORMW 당신은 팬티를 몰수당해 버렸다…
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;원거리이동중에 팬티를 회수되었다
+	;기입 체크(=0, 비표시, 1, 표시)
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG:1 == 2
+		PRINTFORML 「어이, %CALLNAME:MASTER%, 조금 멈추어 달라구」
+		PRINTFORML 그렇게 말해져 당신이 움직임을 멈추자, 마리사는 팬티를 보관해 두는 장소를 정확하게 짚어 왔다.
+		PRINTFORML 「너 무엇인가 숨기고 있지? 이런 것에는 냄새를 잘 맡는다구」
+		PRINTFORML 「응? 이게 뭐야, 몰수다 몰수」
+		PRINTFORMW 당신은 팬티를 몰수당해 버렸다…
+		RETURN 1
+	ENDIF
 ENDIF
 RETURN 1
 
 ;==================================================
 ;덮치기
 ;==================================================
-@M_KOJO_EVENT_K126_10(ARG, ARG:1)
+@M_KOJO_EVENT_K11_10(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -970,10 +1124,23 @@ IF LOCAL
 		;-------------------------------------------------
 		;MASTER를 덮치기(개시시)
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1 && !ARG:1
-			PRINTFORML 
+			IF TALENT:연인
+			PRINTFORML 「어이, %CALLNAME:MASTER%」
+			PRINTFORML 대답을 할 새도 없이, 당신은 마리사에게 밀려 넘어뜨려져 버렸다.
+			PRINTFORML 「후후후, 참을 만큼 참았으니까, 이제는 내 차례라구」
+			PRINTFORMW 「자, %CALLNAME:MASTER%? 잔뜩, 서로 사랑하자구…」
+		ELSEIF TALENT:연모
+			PRINTFORML 「어이, %CALLNAME:MASTER%」
+			PRINTFORML 대답을 할 새도 없이, 당신은 마리사에게 밀려 넘어뜨려져 버렸다.
+			PRINTFORMW 「나, 이제 못 참아…너도 좋지? %CALLNAME:MASTER%…」
+		ELSE
+			PRINTFORML 「어이, %CALLNAME:MASTER%」
+			PRINTFORML 대답할 새도 없이, 당신은 마리사에게 밀려 넘어뜨려져 버렸다.
+			PRINTFORMW 「%마스터가% 시작 안 하고 애만 태울 거라면, 나부터 시작할 거라구」
+			ENDIF
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
@@ -991,75 +1158,60 @@ IF LOCAL
 	;-------------------------------------------------
 	;달랠 수 있었다(종료시)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		;-------------------------------------------------
-		;빠져 나갔다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && !ARG:1
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;안아 도착해 모드 만족 종료
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 1
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;안아 도착해 모드 강제 종료
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 2
-			PRINTFORML 
-			RETURN 1
-		ENDIF
+		SELECTCASE ARG:1
+			CASE 0
+			;빠져 나갔다
+				PRINTFORML 「응, 벌써 끝내는 거야?」
+				PRINTFORML 「왠지 개운하지는 않지만, 싫어도 어쩌겠어」
+				PRINTFORMW 조금 아쉬워 하면서도, 마리사는 굽혀 주었다.
+				RETURN 1
+			CASE 1
+			;안아 도착해 모드 만족 종료
+				PRINTFORML 
+				RETURN 1
+			CASE 2
+			;안아 도착해 모드 강제 종료
+				PRINTFORML 
+				RETURN 1
+		ENDSELECT
 	ENDIF
 	;-------------------------------------------------
 	;빠져 나가는 실패
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		;-------------------------------------------------
-		;마음대로해 상태로부터 빠져 나갈 수 없었다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 1
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;욕구 불만이 높아서 빠져 나갈 수 없었다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 2
-			PRINTFORML 
-			RETURN 1
-		ENDIF
+		SELECTCASE ARG:1
+			CASE 1
+			;마음대로해 상태로부터 빠져 나갈 수 없었다
+				RETURN 1
+			CASE 2
+			;욕구 불만이 높아서 빠져 나갈 수 없었다
+				PRINTFORML 「어이쿠, 놓칠 수 없다구?」
+				PRINTFORML 「나는 아직 만족하지 못했으니까, 좀 더 놀아 달라구」
+				PRINTFORMW 마리사는 아직 당신을 떼어 놓을 것은 없는 것 같다…
+				RETURN 1
+		ENDSELECT
 	ENDIF
 	;그 외
-	PRINTFORML  
+				PRINTFORML 「어이쿠, 놓칠 수 없다구?」
+				PRINTFORML 「나는 아직 만족하지 못했으니까, 좀 더 놀아 달라구」
+				PRINTFORMW 마리사는 아직 당신을 떼어 놓을 것은 없는 것 같다…
+				RETURN 1
 ENDIF
 RETURN 1
 
 ;==================================================
 ;목욕탕에서 만남
 ;==================================================
-@M_KOJO_EVENT_K126_11(ARG, ARG:1)
+@M_KOJO_EVENT_K11_11(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -1068,19 +1220,41 @@ IF LOCAL
 	;-------------------------------------------------
 	;내쫓아졌다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORML 
+		PRINTFORML 「응―？%CALLNAME:MASTER%인가」
+		PRINTFORML …입욕중의 마리사와 시선이 마주쳤다.
+		PRINTFORML 「...야, 뭐 하고 있어, 빨리 나가!」
+		PRINTFORMW 마리사의 노기에 압도되어 당신은 그 자리를 떠났다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;시선이 마주쳤다(내쫓아지지 않다)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORML 
+		IF TALENT:연인
+			PRINTFORML 「뭐야, %CALLNAME:MASTER%인가」
+			PRINTFORML 들어 온 사람이 당신이라는 것을 알게 되자, 마리사는 경계를 풀었다.
+			PRINTFORML 「하하-응, 나와 함께 목욕하고 싶어서 온 거야?」
+			PRINTFORML 「좋아♪ 여기 와♪」
+			PRINTFORML 마리사는 당신이 앉을 만한 공간을 만들었다.
+			PRINTFORMW 당신이 거기에 앉자, 마리사는 히죽 웃으면서 몸을 접근해왔다.
+		ELSEIF TALENT:연모
+			PRINTFORML 「응―？%CALLNAME:MASTER%인가」
+			PRINTFORML …입욕중의 마리사와 시선이 마주쳤다.
+			PRINTFORML 「모처럼인데, 함께 들어갈까?」
+			PRINTFORML 마리사는 당신이 앉을 만한 공간을 만들었다.
+			PRINTFORMW 모처럼의 권유다. 당신은 마리사의 권유를 받기로 했다.
+		ELSE
+			PRINTFORML 「응, %CALLNAME:MASTER%인가」
+			PRINTFORML …입욕중의 마리사와 시선이 마주쳤다.
+			PRINTFORML 「어쩌면, 함께 들어가고 싶은 것인지?」
+			PRINTFORML 「뭐 좋지만, 절대로 이상한 생각은 하지 말라구?」
+			PRINTFORMW 당신은 의심 어린 시선을 받고 있다…
+		ENDIF
 		RETURN 1
 	ENDIF
 	;그 외
@@ -1091,7 +1265,7 @@ RETURN 1
 ;==================================================
 ;침상에 잠입해
 ;==================================================
-@M_KOJO_EVENT_K126_12(ARG, ARG:1)
+@M_KOJO_EVENT_K11_12(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1163,12 +1337,12 @@ RETURN 1
 ;==================================================
 ;업무 중
 ;==================================================
-@M_KOJO_EVENT_K126_13(ARG, ARG:1)
+@M_KOJO_EVENT_K11_13(ARG, ARG:1)
 ;말 주인은 TARGET
 ;ARG:1에 남아 있는 일량
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -1177,28 +1351,90 @@ IF LOCAL
 	;-------------------------------------------------
 	;일개시(직장에 이동한다)
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORML 
+		PRINTFORML 「이런, 이제 시간인가」
+		PRINTFORMW 「오늘은 하고 싶은 것이 있다, 또」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;업무중
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	;무엇을 하는 걸까 이 아이
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORML 
+	;창고에서의 발굴?
+	;시간에 분기 시키고 있지만 일량이 아니면 안될지도?
+		IF TIME:0 >= 780 && TIME:0 < 960
+			PRINTFORML 「바스락바스락…응? 이것은…」
+			SELECTCASE RAND:12
+			CASE 0
+				PRINTFORML 「레이무의 무녀옷인가, 나도 한 번 입어 볼까?」
+				PRINTFORMW 「그래도 언제 봐도 이상한 디자인이야, 이 옷」
+			CASE 1
+				PRINTFORML 「장난감 삼신기라...」
+				PRINTFORMW 「뒤에 「끼고 싶지 않다」고 쓰여있는데. 이게 대체 뭐야?」
+			CASE 2
+				PRINTFORML 「음양옥인가, 요괴가 맞으면 아파할 텐데」
+				PRINTFORMW 「인간에게도 마찬가지지만…」
+			CASE 3
+				PRINTFORML 「바늘이다, 부적와 달리 인간에게도 효과가 있지」
+				PRINTFORMW 「대량의 피를 빨아들인 바늘은 매직아이템 같은 것이고」
+			CASE 4
+				PRINTFORML 「부적이다, 적에게의 정신적인 대미지가 큰, 대요괴전용이지」
+				PRINTFORMW 「이것이 있으면 부담없이 요괴 퇴치를 할 수 있을지도, 나에게는 마법이 있지만」
+			CASE 5
+				PRINTFORML 「케세란파사란이다, 행운을 부르는 것 같아, 버섯이지만.」
+				PRINTFORMW 「가지고 돌아가고 싶지만 접신할 수 있는 사람 밖에 다루지 못해, 아쉽네」
+			CASE 6
+				PRINTFORML 「레이무의 큰 리본인가」
+				PRINTFORMW 「그러고 보니  리본에 신묘마루의 기모노를 씌우고 있었던 때가 있었군, 무슨 일이 있었던 걸까?」
+			CASE 7
+				PRINTFORML 「레이무의 속옷인가…어째서 이런 곳에?」
+				PRINTFORMW 「…상당히 화려한 걸 입고 있어…」
+			CASE 8
+				PRINTFORML 「붕붕마루 신문인가, 아야가 발행하고 있는 신문이다」
+				PRINTFORMW 「…오오, 그리운데, 그러고 보니  이런 일도 있었군… 아, 작업에 다시 집중해야지」
+			CASE 9
+				PRINTFORML 「불제봉, 제삿일에 사용하는 것인 것 같은데」
+				PRINTFORMW 「무기가 아닌 것 같은 생각이 드는데 …괜찮겠지?」
+			CASE 10
+				PRINTFORML 「…내가 준 버섯이 아닌가」
+				PRINTFORMW 「모처럼 맛있는 걸 구경했으니, 먹어 주세요…」
+			CASE 11
+				PRINTFORML 「…나와 레이무 가 작은 무렵의 사진이다」
+				PRINTFORMW 「이렇게 보니, 나랑 레이무도 참 오래 사귀었었구나」
+			ENDSELECT
+			RETURN 1
+	;트레이닝, 조금 더 어쩐지 없는가?
+		ELSE
+			SELECTCASE RAND:6
+			CASE 0
+				PRINTFORMW 「화력의 특훈이다, 탄막은 파워다!」
+			CASE 1
+				PRINTFORMW 「속도의 특훈이다, 아무리 빨라도 충분히 빠를 순 없다」
+			CASE 2
+				PRINTFORMW 「아름다움을 연마해라, 매료시키는 탄막은 즐거우니까」
+			CASE 3
+				PRINTFORMW 「고밀도 탄막 회피 특훈이다, 집중력의 특훈이기도 하고」
+			CASE 4
+				PRINTFORMW 「탄막의 궤도를 예측하는 특훈이다, 피탄수를 줄이는 건 중요하다구」
+			CASE 5
+				PRINTFORMW 「새로운 마법을 시험해 보자구, 어느 것으로 해볼까…」
+			ENDSELECT
+			RETURN 1
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;일종료
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORML 
+		PRINTFORMW 「후우, 오늘은 여기까지 하자」
 		RETURN 1
 	ENDIF
 	;그 외
@@ -1209,26 +1445,21 @@ RETURN 1
 ;==================================================
 ;식사계
 ;==================================================
-@M_KOJO_EVENT_K126_14(ARG, ARG:1)
+@M_KOJO_EVENT_K11_14(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 1
+LOCAL = 0
 ;-------------
 
 IF LOCAL
 	;-------------------------------------------------
 	;가지고 있던 음식을 먹을 수 있었다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 1
+	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == -1
-		PRINTFORML 「저기, 그거 줘」
-		PRINTFORML 시온은 %마스터가% 가지고 있는 요리를 보자마자 그것을 졸라 왔다
-		PRINTFORML 「모처럼 만든 요리를 그대로 두는 것은, 요리에 대한 모독이야」
-		PRINTFORML 「이렇게 당신이 망설이고 있는 몇초 사이에도, 맛있음은 없어져 가는 거야」
-		PRINTFORML 「요리뿐만이 아냐, 식재료를 만들어 준 사람들도 생각해」
-		PRINTFORMW %마스터는% 엄청난 끈질김을 참을 수 없어, 시온에게 요리를 건네주어 버렸다…
+		PRINTFORML 
 		RETURN 1
 	ENDIF
 	;그 외
@@ -1239,7 +1470,7 @@ RETURN 1
 ;==================================================
 ;MASTER가 덮치기
 ;==================================================
-@M_KOJO_EVENT_K126_15(ARG, ARG:1)
+@M_KOJO_EVENT_K11_15(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1270,56 +1501,13 @@ IF LOCAL
 	ENDIF
 	;그 외
 	PRINTFORML  
-	;-------------------------------------------------
-	;사후 묘사
-	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
-	;-------------------------------------------------
-	IF LOCAL:1 && ARG == 3
-		;-------------------------------------------------
-		;정액이 늘어져 왔다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 1
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;애액이 늘어져 왔다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 2
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;사후의 무드
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 3
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		;옷을 입는다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1 && ARG:1 == 4
-			PRINTFORML 
-			RETURN 1
-		ENDIF
-	ENDIF
 ENDIF
 RETURN 1
 
 ;==================================================
 ;동침한다
 ;==================================================
-@M_KOJO_EVENT_K126_16(ARG, ARG:1)
+@M_KOJO_EVENT_K11_16(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1354,14 +1542,14 @@ RETURN 1
 ;==================================================
 ;시간정지 종료시
 ;==================================================
-@M_KOJO_EVENT_K126_17(ARG, ARG:1)
+@M_KOJO_EVENT_K11_17(ARG, ARG:1)
 ;말 주인은 TARGET
 ;배타와 명기되어 있지 않은 물건은 상황에 따라서는 연속으로 표시되므로 주의
 ;ARG에 사정 상황
 ;ARG:1에 사정 상태
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
@@ -1371,25 +1559,37 @@ IF LOCAL
 	;ARG=1~3은 배타
 	;수수께끼의 쾌감
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
+		PRINTFORML (―!?)
+		PRINTFORML (뭐, 뭐야? 지금의 감각…)
+		PRINTFORMW 마리사는 수수께끼의 쾌감에 당황하고 있는 것 같다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;절정
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
+		PRINTFORML (―!?)
+		PRINTFORML 마리사는 갑작스러운 절정에 몸을 진동시키고 있다…
+		PRINTFORML (뭐, 뭐야? 나, 느끼고…있다구? )
+		PRINTFORML (젠장, 도대체 무엇이 일어나는 거지? )
+		PRINTFORMW 마리사는 주위를 경계하고 있다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;팬티 분실
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
+		PRINTFORML (―!?)
+		PRINTFORML 마리사는 하반신의 시원함에 놀라고 있는 것 같다…
+		PRINTFORML (젠장, 기색도 없이 속옷을 훔치는 건 누구의 소행이야? 유카리인가? 사쿠야인가? 그 밖에는…)
+		PRINTFORMW 마리사는 주위를 경계하고 있다…
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1419,7 +1619,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 5
-		;무지 소유＆정액경험 100 미만
+		;유치 소유＆정액경험 100 미만
 		IF ARG:1 == 1
 		;통상 닦아 잡기
 		ELSEIF ARG:1 == 2
@@ -1455,7 +1655,7 @@ IF LOCAL
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
-	;【무자각처녀상실】
+	;【무자각처녀 상실】
 	;기입 체크(=0, 비표시, 1, 표시)
 	LOCAL:1 = 0
 	;-------------------------------------------------
@@ -1477,24 +1677,16 @@ IF LOCAL
 		ENDIF
 		RETURN 1
 	ENDIF
-	;-------------------------------------------------
-	;시간정지해제 공통
-	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
-	;-------------------------------------------------
-	IF LOCAL:1 && ARG == 0
-		RETURN 1
-	ENDIF
 ENDIF
 RETURN 1
 ;==================================================
 ;싱싱한으로 시켜라 때
 ;==================================================
-@M_KOJO_EVENT_K126_18(ARG, ARG:1)
+@M_KOJO_EVENT_K11_18(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 IF LOCAL
 	;-------------------------------------------------
@@ -1502,41 +1694,60 @@ IF LOCAL
 	;-------------------------------------------------
 	;피임요구 대사
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
+		PRINTFORMW 「아―, 조금 기다려 달라구」
+		PRINTFORMW 「피임은 해 줘, 부탁해」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;끊었다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
+		PRINTFORMW 「아니, 안 되는 건 안 된다구」
+		PRINTFORMW 「난 아이 기를…자신 없다구…」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;끊었는데 다 달라붙어 끊어졌다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
+		PRINTFORMW 「적당히 해!」
+		PRINTFORMW 「그렇게 간단한 일이 아니라구, 아이를 기른다는 것은」
+		PRINTFORMW 「조금은 내 입장도 생각해 줘, 아니 그냥 상식적으로 생각해!」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;위험일 이외 허가
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
+		PRINTFORMW 「……그렇게 나와의 아이, 갖고 싶은가?」
+		PRINTFORMW 「물론, 진심으로 좋아서 하는 말이야?」
+		PRINTFORMW 당신은 진지한 표정으로 수긍했다.
+		PRINTFORMW 「………」
+		PRINTFORMW 「알았어요, 아이를 갖고 싶을 정도로 내가 좋다는 의미일 테니까」
+		PRINTFORMW 「거기에 %마스터와% 함께라면 노력해도 좋다는 생각도 들고」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;위험일 허가
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 5
+		PRINTFORMW 「……그렇게 나와의 아이, 갖고 싶은가?」
+		PRINTFORMW 「물론, 진심으로 좋아서 하는 말이야?」
+		PRINTFORMW 당신은 진지한 표정으로 수긍했다.
+		PRINTFORMW 「………」
+		PRINTFORMW 「알았어요, 아이를 갖고 싶을 정도로 내가 좋다는 의미일 테니까」
+		PRINTFORMW 「거기에 %마스터와% 함께라면 노력해도 좋다는 생각도 들고」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -1544,30 +1755,35 @@ RETURN 1
 ;==================================================
 ;신사 생활을 승인해 받는다
 ;==================================================
-@M_KOJO_EVENT_K126_19(ARG, ARG:1)
+@M_KOJO_EVENT_K11_19(ARG, ARG:1)
 ;말 주인은 ARG
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 IF LOCAL
 	;-------------------------------------------------
 	;소분기
 	;-------------------------------------------------
 	;인정된다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORML 
+		PRINTFORML 「, 좋은 것인지, 고맙구나」
+		PRINTFORML 「뭐 나는 레이무의 밥을 만들기도 하고, 신사의 가사는 문제 없다」
+		PRINTFORML 「그러나, 신사에서 마법의 연구를 해도 될까?」
+		PRINTFORMW 「이든%마스터와% 한 지붕 아래인가…즐거워질 것 같다」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;인정되지 않는다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORML 
+		PRINTFORML 「네-무엇이야, 안 되는 건가?」
+		PRINTFORML 「신사에 잘 얼굴을 내밀고 있기 때문에 내가 살아도 그렇게 이상해 깨지 않는다고 생각하지만…」
+		PRINTFORMW 「아니 분명히 그런 것은 아니에요…어쩔 수 없는가」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -1575,21 +1791,34 @@ RETURN 1
 ;==================================================
 ;귀가시
 ;==================================================
-@M_KOJO_EVENT_K126_20(ARG, ARG:1)
+@M_KOJO_EVENT_K11_20(ARG, ARG:1)
 ;말 주인은 LOCALS or RESULT
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 IF LOCAL
 	;-------------------------------------------------
 	;소분기
 	;-------------------------------------------------
 	;통상 귀가
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORML 
+		IF TALENT:연인
+			PRINTFORML 「후아…이제 졸려졌군…슬슬 돌아갈까」 
+			PRINTFORML 「아, 그렇다%CALLNAME:MASTER%, 잠깐 여기 봐 줘」
+			PRINTFORML 부탁받은 대로 당신은 마리사 쪽을 향했다.
+			PRINTFORML 「응…쭙…」
+			PRINTFORMW 「헤헤, 작별의 키스, 라구」
+		ELSEIF TALENT:연모
+			PRINTFORML 「후아…이제 졸려졌군…」 
+			PRINTFORML 「그러니까, 이제 오늘은 돌아가자구」
+			PRINTFORMW 「벌써 좀 더, 함께 있고 싶지만…」
+		ELSE
+			PRINTFORML 「후아…이제 졸려졌군…」 
+			PRINTFORMW 「그러니까, 이제 오늘은 돌아가자구」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1615,7 +1844,7 @@ RETURN 1
 ;==================================================
 ;함락 소질 취득시
 ;==================================================
-@M_KOJO_EVENT_K126_21(ARG, ARG:1)
+@M_KOJO_EVENT_K11_21(ARG, ARG:1)
 ;말 주인은 ARG
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1629,23 +1858,20 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
-		PRINTFORMW 시온은 고민하고 있었다
-		PRINTFORMW 자신에게 치근거리는 이상한 인간…%CALLNAME:MASTER%
-		PRINTFORMW 그와 만나고 얼마 되지 않은 무렵에는, 그가 불행하게 당하는 것을 공상해 우월감에 잠겨 있었다
-		PRINTFORML 
-		PRINTFORMW …잠겨 있었, 지만
-		PRINTFORMW (어째서? )
-		PRINTFORMW (%마스터가% 불행하게 된다 라고 생각하면, 가슴이 괴롭고…)
-		PRINTFORMW 시온은 자신의 능력을 제어할 수 없다
-		PRINTFORMW 그녀에게 있어, 타인이 자신의 능력으로 불행하게 되는 것은 즐거운 것이 당연하고, 슬픔이나 동정을 갖는 것 과는 먼 일이었다
-		PRINTFORMW 하지만…지금의 시온에 있어, %CALLNAME:MASTER%만은 예외인 것이다
-		PRINTFORMW 그것이 어째선가…그녀 자신, 희미하게 그것에 눈치채기 시작하고 있었다
-		PRINTFORML 
-		PRINTFORMW ( 나, %CALLNAME:MASTER%를…)
-		PRINTFORML 
-		PRINTFORMW 「좋아, 하는걸까…」
-		PRINTFORML 
-		PRINTFORMW 입을 통해 나와 버린 그 말에 답하는 사람은, 아무도 없었다…
+		PRINTFORMW 「우웅…」
+		PRINTFORMW 최근 아무래도 이상하다. 마법 연구가 손에 잡히지 않는다. 잠도 통 못 자고 있다. 이것 저것 모두…
+		PRINTFORMW 「나, %CALLNAME:MASTER% 생각만 하고 있나…」
+		PRINTFORMW 그러고 보니 %마스터를% 계속 보고 싶고, 잠깐만 떨어져 있어도 또 만나고 싶어지고…
+		PRINTFORMW 「뭐라 하지 않아도, 나는 %CALLNAME:MASTER%에 대한 모든 것이 좋다구…」
+		PRINTFORMW 인연이 맺어진다라는 건, 이런 일이었는가. ｛연부( 恋符)｝면서 이것저것 사용하고 있는 주제에, 뭐야 나는.
+		PRINTFORMW 「우물쭈물 거리면서 고민하는 건 내 스타일이 아니라구...」
+		PRINTFORMW 「그렇다면, 할 수 있는 건 하나 뿐…인가」
+		PRINTFORMW 마리사는 무엇인가를 결심한 것 같다…
+	;당신이 마리사 의외로 연인이 되어 있으면(자) 추가
+		IF TALENT:MASTER:연인 && TALENT:MASTER:연인 != 11
+			PRINTFORMW …그래도, %마스터는% 이미 연인이 있어…
+			PRINTFORMW 이 기분, 참는다고 해결 될까? 나는 어떻게 하면 좋아…?
+		ENDIF
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1654,48 +1880,46 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
-		PRINTFORMW (그 인간, 뭔가 짜증나)
-		PRINTFORMW 시온은 문득, %CALLNAME:MASTER%에 대해 생각하고 있었다
-		PRINTFORMW ( 나와 그렇게까지 교제해 , 별로 불행하게 되지 않은 생각이 든다)
-		PRINTFORMW (물어 보면 무슨, 게임 시스템의 한계라고 도저히 알 수 없는 일만 말하고…)
-		PRINTFORML 
-		PRINTFORMW (…애시당초, 어째서 저녀석 언제나 나를 만나려 오는거야? )
-		PRINTFORMW (가난신에게 차를 내오는 인간이라니, 들어본 적 없다…)
-		PRINTFORML 
-		PRINTFORMW 생각하면 생각할수록, %CALLNAME:MASTER%에 대한 것이 신경 쓰여 진다
-		PRINTFORMW 이윽고 시온은 생각하는 것을 그만둬, 잠으로 도피를 시도했다
-		PRINTFORMW (%CALLNAME:MASTER%…정말로 뭔지 알 수 없는, 짜증나는 놈…)
-		PRINTFORMW (언젠가 반드시, 불행의 수렁에 두드려 떨어뜨려 주마)
-		PRINTFORMW 
-		PRINTFORMW …그러나, %마스터를% 무시한다고 하는 선택지를 무의식 중에 머리로부터 지우고 있었던 것을
-		PRINTFORMW 시온 자신은 눈치채지 못했다…
+		PRINTFORMW 「글쎄, 오늘도  즐거웠다구」
+		PRINTFORMW 나는 평소에 하쿠레이 신사를 비롯해 여러가지 곳에 얼굴을 내밀거나, 마법의 연구를 하거나 하며 일상생활을 구가하고 있다.
+		PRINTFORMW 최근에는, 보다 삶이 즐거워진 걸 느끼고 있다.
+		PRINTFORMW 「우웅, 무엇인가 전에 바뀐 게 있었었나…, %CALLNAME:MASTER%인가」
+		PRINTFORMW 확실히%마스터와% 함께 있으면 즐겁다. 그렇지만 레이무와 함께 있을 때의｛즐거움｝과는 무엇인가가 다르다…
+		PRINTFORMW 「우웅, 이 기분은 뭐라 부르면 좋지…?」
+		PRINTFORMW 마리사는 묘한 기분을 안게 되었다.
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;애욕 취득
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
-		PRINTFORML 
+		PRINTFORMW 「아아, 부족해, 부족하다…」
+		PRINTFORMW 「%마스터를%, 좀 더 갖고 싶다…」
+		PRINTFORMW 「아아…이 기분은 뭘까? 사랑일까? 단순한 욕망일까?」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;정부 취득
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
-		PRINTFORML 
+		PRINTFORMW 「안 돼, 전혀 이 관계로부터 빠져나올 수 없다고…」
+		PRINTFORMW 「그렇지만, 왠지 어딘지 부족해졌네…」
+		PRINTFORMW 「좀 더 날 생각해주면 좋겠다…고 해도, 그것이 과연 괜찮은 관계인가…?」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;섹프 취득
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 5
-		PRINTFORML 
+		PRINTFORMW 「아아 , 완전히 빠져 버린다…」
+		PRINTFORMW 「몸만의 관계는, 분명히 건전하다고는 할 수 없어…」
+		PRINTFORMW 「그렇지만 빠져 나갈 수 없는 것 같아 …우웅, 왜 그러는 거지…」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -1703,7 +1927,7 @@ RETURN 1
 ;==================================================
 ;조교 종료시에 자위
 ;==================================================
-@M_KOJO_EVENT_K126_22(ARG, ARG:1)
+@M_KOJO_EVENT_K11_22(ARG, ARG:1)
 ;말 주인은 ARG
 ;ARG:0에 자위 상황
 ;ARG:1에 자위 종류
@@ -1863,7 +2087,7 @@ RETURN 1
 ;==================================================
 ;목욕탕 데리고 나가
 ;==================================================
-@M_KOJO_EVENT_K126_23(ARG, ARG:1)
+@M_KOJO_EVENT_K11_23(ARG, ARG:1)
 ;말 주인은 LOCAL
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1883,9 +2107,20 @@ IF LOCAL
 	;-------------------------------------------------
 	;함께 들어가 주었다
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
+		IF TALENT:연인
+			PRINTFORML 「응? 함께 목욕하자고? 알았다,  좋다구」
+			PRINTFORML 「그래,  모처럼이고, 내가 등을 흘려 줄까」
+			PRINTFORML 「아니, 이런 때는 서방님이라고도 부르는 편이 더 나을까?」
+			PRINTFORML 당신은 마리사의 발언에 긴장했다…
+			PRINTFORMW 「뭐야, 그렇게 긴장하지 않아도 괜찮다구···?」
+			PRINTFORMW 마리사는 요염한 미소를 띠고 있다…
+		ELSEIF TALENT:연모
+			PRINTFORML 「응? 함께 목욕하자고? 알았다,  좋다구」
+			PRINTFORMW 「그래,  모처럼이니, 내가 등을 밀어 줄까」
+		ENDIF
 		RETURN 1
 	ENDIF
 	;그 외
@@ -1895,7 +2130,7 @@ RETURN 1
 ;==================================================
 ;회임
 ;==================================================
-@M_KOJO_EVENT_K126_24(ARG, ARG:1)
+@M_KOJO_EVENT_K11_24(ARG, ARG:1)
 ;말 주인은 LOCAL
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
@@ -1907,9 +2142,12 @@ IF LOCAL
 	;-------------------------------------------------
 	;연모
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
+		PRINTFORML 「아―%CALLNAME:MASTER%, 아무래도 너무 열심히 한 것 같네」
+		PRINTFORML 「나 같은 가출 아가씨가 육아 같은 걸 할 수 있는지 불안하지만, 정말 좋아하는 %마스터와%의 아이라구?」
+		PRINTFORMW 「여러모로 공부하고 노력할 테니까, 확실히 서포트해 줘?」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1918,6 +2156,9 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
+		PRINTFORML 「아―%CALLNAME:MASTER%, 아무래도 너무 열심히 한 것 같네」
+		PRINTFORML 「설마 가출 아가씨에게 육아를 강요하는 만큼 악당은 아니겠지?」
+		PRINTFORMW 「제대로 책임을 져 달라구?」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1943,9 +2184,8 @@ RETURN 1
 ;==================================================
 ;출산
 ;==================================================
-@M_KOJO_EVENT_K126_25(ARG, ARG:1)
+@M_KOJO_EVENT_K11_25(ARG, ARG:1)
 ;말 주인은 LOCAL
-;ARG:1	몇 사람눈의 아이인가
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
 LOCAL = 1
@@ -1956,17 +2196,23 @@ IF LOCAL
 	;-------------------------------------------------
 	;연모
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
+		PRINTFORML 「좋아, 건강하게 태어나 줬다구」
+		PRINTFORML 「그래도, 내가 자식을 낳게 된다고는 생각하지 않았다구」
+		PRINTFORMW 「지금부터 바빠질 것 같구나…그래도 즐겁게도 될 것 같다」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;사모
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
+		PRINTFORML 「좋아, 건강하게 태어나 줬다구」
+		PRINTFORML 「그러나, 내가 자식을 낳게 된다고는 생각하지 않았다」
+		PRINTFORMW 「지금부터 바빠질 것 같구나…그래도 즐겁게도 될 것 같다」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
@@ -1992,11 +2238,11 @@ RETURN 1
 ;==================================================
 ;딸딸이들킴
 ;==================================================
-@M_KOJO_EVENT_K126_26(ARG, ARG:1)
+@M_KOJO_EVENT_K11_26(ARG, ARG:1)
 
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 IF LOCAL
 	SELECTCASE ARG
@@ -2004,74 +2250,112 @@ IF LOCAL
 		CASE 0
 		;볼 수 있던 순간
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+				PRINTFORML 「에엣!」
+				PRINTFORMW 「%CALLNAME:MASTER%, 여성의 방에 들어갈 때는 노크 정도는 하라구…」
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 1
 		;아무것도하지않는다
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			IF TALENT:연모
+				PRINTFORML 「…뭐야, 좀 만져 주지…」
+				PRINTFORMW 마리사는 그렇게 중얼거렸다.
+			ELSE
+				PRINTFORMW 「젠장, 도대체 뭐라고 말한담...」
+			ENDIF
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 2
 		;그대로 속행
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			IF TALENT:연모
+				PRINTFORML 「우와, 취향 이상해…%마스터는%…」
+				PRINTFORML 「그렇게 보고 싶은가? 어쩔 수 없는데」
+				PRINTFORMW 「참을 수 없게 되면 덮쳐 주어도 좋다구?」
+			ENDIF
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 3
 		;추방
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			PRINTFORML 마리사는 팔괘로를 들어 레이저를 발사했다…
+			PRINTFORML 레이저는 당신의 얼굴의 바로 옆에 착탄 했다.
+			PRINTFORML 「다음은 명중이야? 다치고 싶지 않다면, 알아 두라구?」
+			PRINTFORMW 당신은 그 자리를 떠났다…
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 4
 		;해 치운다
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			PRINTFORML 「헤에, %CALLNAME:MASTER%도 쌓여 있는 거구나」
+			PRINTFORML 「내 파트너, 해 주는 것이지요?」
+			PRINTFORML 「나에 대한 생각 가득 풀어 수 있어도 좋다구?」
+			PRINTFORMW 마리사는 요염한 미소를 띠면서 말했다.
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 5
 		;사후
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			IF TALENT:연모
+				PRINTFORML 「하아…하아…좋았어요%CALLNAME:MASTER%」
+				PRINTFORMW 「다시 나의 상대 해 주는 것이지요?」
+			ELSE
+				PRINTFORML 「하아…하아…설마 %마스터와% 이런 일 해버릴 줄은」
+				PRINTFORMW 「뭐 상관없나, 상대 해 주어 고맙다구」
+			ENDIF
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 6
 		;사후숙박
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
+		IF LOCAL:1
+		IF TALENT:연모
+				PRINTFORML 「응, 묵고 가려구?」
+				PRINTFORMW 「후후후, 오늘 밤은 떼어 놓지 않을 거라구?」
+			ELSE
+				PRINTFORML 「응, 묵고 가려구?」
+				PRINTFORMW 「으응~, 누울 수 있는 자리가 있을까…조금 정리할게」
+			ENDIF
+			RETURN 1
+		ENDIF
 	ENDSELECT
 ENDIF
 
 ;==================================================
 ;상대에게서 데이트의 권유
 ;==================================================
-@M_KOJO_EVENT_K126_27(ARG, ARG:1)
+@M_KOJO_EVENT_K11_27(ARG, ARG:1)
 ;말 주인은 LOCAL
 ;ARG:1은 목적지
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 IF LOCAL
 	SELECTCASE ARG
@@ -2079,54 +2363,32 @@ IF LOCAL
 		CASE 0
 		;권해 불만
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+			PRINTFORMW 「어이, 오늘은 나랑 좀 놀아 주련?」
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 1
 		;받았다
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
+				PRINTFORML 「헤헤, 역시 그렇게 나와 주셔야지」
+				PRINTFORMW 「그럼 가자구♪」
 			RETURN 1
 		ENDIF
 		;-------------------------------------------------
 		CASE 2
 		;끊었다
 		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
+		LOCAL:1 = 1
 		;-------------------------------------------------
 		IF LOCAL:1
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		CASE 3
-		;방에 이끌렸다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		CASE 4
-		;방에 이끌린 것을 받았다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1
-			RETURN 1
-		ENDIF
-		;-------------------------------------------------
-		CASE 5
-		;방에 이끌린 것을 끊었다
-		;기입 체크(=0, 비표시, 1, 표시)
-		LOCAL:1 = 0
-		;-------------------------------------------------
-		IF LOCAL:1
+				PRINTFORML 「쳇―, 무정한데―」
+				PRINTFORMW 「다음 번엔 사귀어주세요?」
 			RETURN 1
 		ENDIF
 	ENDSELECT
@@ -2136,7 +2398,7 @@ RETURN 1
 ;==================================================
 ;탈의 말
 ;==================================================
-@M_KOJO_EVENT_K126_28(ARG, ARG:1)
+@M_KOJO_EVENT_K11_28(ARG, ARG:1)
 ;말 주인은 TARGET
 ;ARG에 탈이 하는 방법 선택
 ;ARG:1(ARG=3의 경우만 있어) 지문의 반응
@@ -2242,7 +2504,7 @@ RETURN 1
 ;==================================================
 ;분노 말
 ;==================================================
-@M_KOJO_EVENT_K126_29(ARG, ARG:1)
+@M_KOJO_EVENT_K11_29(ARG, ARG:1)
 ;말 주인은 TARGET
 ;ARG는 TARGET의 담력으로 분기
 ;--------------------------------------------------
@@ -2274,64 +2536,67 @@ RETURN 1
 ;==================================================
 ;상대가 덮치기을 해제
 ;==================================================
-@M_KOJO_EVENT_K126_30(ARG, ARG:1)
+@M_KOJO_EVENT_K11_30(ARG, ARG:1)
 ;말 주인은 TARGET
 ;--------------------------------------------------
 ;기입 체크(=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------
 
 IF LOCAL
 	;-------------------------------------------------
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 1
 	;지쳤다
-		PRINTFORML 
+			PRINTFORML 「아아, 하앙, 너무 지쳤다구…」
+			PRINTFORML 「오늘은 이제 끝내자구…」
+			PRINTFORMW 마리사는 지친 모습으로 당신을 해방했다.
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 2
 	;만족해 해방
-		PRINTFORML 
+			PRINTFORML 「아아-즐거웠다」
+			PRINTFORML 「기분 좋았고, %마스터의% 귀여운 얼굴도 가득 볼 수 있었고, 나는 만족해」
+			PRINTFORMW 마리사는 매우 기분이 좋을 것 같다.
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 3
 	;만족 하는 것을 밀어 넘어뜨려졌다
-		PRINTFORML 
+			PRINTFORML 「워!아직 하고 싶다고?」
+			PRINTFORML 「정말, 어쩔 수 없네, 어울려 줘야지」
+			PRINTFORMW 「그런데, %마스터는% 그렇게 기운이 넘치는구나…」
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
 	;기입 체크(=0, 비표시, 1, 표시)
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
 	;망가질 때까지 해 준다
-		PRINTFORML 
+			PRINTFORML 「어? 좀 더 가지고 놀아달라구?」
+			PRINTFORML 「후후후…어떻게 되어도 몰라?」
+			PRINTFORMW 마리사는 요염한 미소를 띠고 있다…
 		RETURN 1
 	ENDIF
 ENDIF
 RETURN 1
-
-
-
-
 [SKIPSTART]
 ;-------------------------------------------------
-;딸딸이들킴 만남시의 지문. 대사색깔은 여기서 붙여 주세요.
-;CFLAG등의 캐릭터 변수를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다.
+;딸딸이들킴 만남시의 지문.
 ;Default의 것과 옮겨놓고 싶은 경우는 상하의 SKIPSTART~SKIPEND를 제외해 주세요.
 ;옮겨놓는 관심이 없으면 패스.
 ;-------------------------------------------------
-@M_KOJO_EVENT_K126_ONABARE_1(ARG)
+@M_KOJO_EVENT_K11_ONABARE_1(ARG)
 ;-------------------------------------------------
 IF ARG
 	PRINTFORML A 만지작거리고 있는 경우
@@ -2344,12 +2609,11 @@ ENDIF
 
 [SKIPSTART]
 ;-------------------------------------------------
-;딸딸이들킴로 그대로 계속해도 경우의 지문. 대사색깔은 여기서 붙여 주세요.
-;CFLAG등의 캐릭터 변수를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다.
+;딸딸이들킴로 그대로 계속해도 경우의 지문.
 ;Default의 것과 옮겨놓고 싶은 경우는 상하의 SKIPSTART~SKIPEND를 제외해 주세요.
 ;옮겨놓는 관심이 없으면 패스.
 ;-------------------------------------------------
-@M_KOJO_EVENT_K126_ONABARE_2(ARG)
+@M_KOJO_EVENT_K11_ONABARE_2(ARG)
 ;-------------------------------------------------
 IF ARG
 	PRINTFORML A 만지작거리고 있는 경우
@@ -2362,12 +2626,11 @@ ENDIF
 
 [SKIPSTART]
 ;-------------------------------------------------
-;딸딸이들킴 이루어 무너뜨려 크스의 지문. 대사색깔은 여기서 붙여 주세요.
-;CFLAG등의 캐릭터 변수를 사용하는 경우, 캐릭터 번호의 지정이 필요하게 됩니다.
+;딸딸이들킴 이루어 무너뜨려 크스의 지문.
 ;Default의 것과 옮겨놓고 싶은 경우는 상하의 SKIPSTART~SKIPEND를 제외해 주세요.
 ;옮겨놓는 관심이 없으면 패스.
 ;-------------------------------------------------
-@M_KOJO_EVENT_K126_ONABARE_3(전희1, 실전은어느쪽인가, 회수, 주입량)
+@M_KOJO_EVENT_K11_ONABARE_3(전희1, 실전은어느쪽인가, 회수, 주입량)
 ;-------------------------------------------------
 #DIM 전희1
 ;1=C 2=B 3=M
