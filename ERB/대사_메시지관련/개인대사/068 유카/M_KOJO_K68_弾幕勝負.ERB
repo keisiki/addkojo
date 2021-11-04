@@ -636,7 +636,7 @@ ELSEIF (TALENT:MASTER:성별 != 2) || ((TALENT:MASTER:연령 == -1 || TALENT:MAS
 		CALL HEARTCB_K68(0xD02830)
 		PRINTFORMW 」
 		;射精処理
-		TCVAR:68:자각 = 1
+		TCVAR:68:씨받음자각 = 1
 		EX:68:질내정액 += BASE:MASTER:정력
 		CFLAG:68:누계질내정액 += BASE:MASTER:정력
 		CALL SAMEN_SHOOT3(BASE:MASTER:정력 , MASTER, 68)
@@ -1133,7 +1133,7 @@ SELECTCASE LOCAL:2
 						PRINTFORMDW 탄막 승부에서 우수해도, 왜일까 이긴 신경이 쓰일 수 없었다……
 					ENDIF
 					;射精処理
-					TCVAR:68:자각 = 1
+					TCVAR:68:씨받음자각 = 1
 					EX:68:질내정액 += BASE:MASTER:정력
 					CFLAG:68:누계질내정액 += BASE:MASTER:정력
 					CALL SAMEN_SHOOT3(BASE:MASTER:정력, MASTER, 68)
@@ -1240,13 +1240,13 @@ SELECTCASE LOCAL:2
 					PRINTFORMDW 유향은 곤혹한 표정인 채, 아이가 생기면(자) 책임을 잡히고라고 전해 왔다
 					;射精処理
 					IF BASE:MASTER:정력 >= 600
-						TCVAR:68:자각 = 1
+						TCVAR:68:씨받음자각 = 1
 						EX:68:질내정액 += 600
 						CFLAG:68:누계질내정액 += 600
 						CALL SAMEN_SHOOT3(600, MASTER, 68)
 						BASE:MASTER:정력 -= 600
 					ELSE
-						TCVAR:68:자각 = 1
+						TCVAR:68:씨받음자각 = 1
 						EX:68:질내정액 += BASE:MASTER:정력
 						CFLAG:68:누계질내정액 += BASE:MASTER:정력
 						CALL SAMEN_SHOOT3(BASE:MASTER:정력, MASTER, 68)
