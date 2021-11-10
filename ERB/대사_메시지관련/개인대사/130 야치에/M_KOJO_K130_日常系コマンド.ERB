@@ -1290,7 +1290,7 @@ IF LOCAL
 				PRINTFORMW 「무슨 일 있었어요?」
 			ENDIF
 		ENDIF
-	;TARGET以外連れ出し(TARGET同行中のみ
+	;TARGET以外連れ出し(TARGET동행中のみ
 	ELSE
 	ENDIF
 ENDIF
@@ -1591,7 +1591,7 @@ IF LOCAL
 ENDIF
 RETURN 1
 ;==================================================
-;405,외출한다(同行時デート
+;405,외출한다(동행時デート
 ;条件が厄介なので, COMF405 出掛ける.ERBを参照のこと
 ;==================================================
 @M_KOJO_MESSAGE_COM_K130_405
@@ -1606,7 +1606,7 @@ LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	;TARGETとデート
-	IF CFLAG:同行
+	IF CFLAG:동행
 		IF TALENT:연인
 			PRINTFORMW 「%마스터와%의 데이트는 언제나 기대돼요%UNICODE(0x2665) *1%」
 		ELSEIF TALENT:연모
@@ -1621,7 +1621,7 @@ IF LOCAL
 			PRINTFORMW 야치에는 그렇게 말하며 따라오고 있다.
 		ENDIF
 	;TARGET以外とデート
-	ELSEIF CFLAG:MASTER:同行
+	ELSEIF CFLAG:MASTER:동행
 	;お出かけお見送り
 	ELSE
 		IF TALENT:연인
