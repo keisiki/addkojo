@@ -1,11 +1,11 @@
 ﻿;※※※※※※※※※※※※※※※※※※※※※※※※※※
-;"COUNTER"계 말
+;"COUNTER"系口上
 ;※※※※※※※※※※※※※※※※※※※※※※※※※※
 ;-------------------------------------------------
-;커뮤니케이션
+;コミュニケーション
 ;-------------------------------------------------
 ;==================================================
-;거리가 가깝다
+;距離が近い
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_1
 CALL EVENT_COUNTER_MESSAGE
@@ -15,7 +15,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;치라 보고
+;チラ見
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_2
 CALL EVENT_COUNTER_MESSAGE
@@ -25,7 +25,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;이야기
+;おはなし
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_3
 CALL EVENT_COUNTER_MESSAGE
@@ -35,7 +35,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;좋은 냄새
+;いい匂い
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_4
 CALL EVENT_COUNTER_MESSAGE
@@ -45,10 +45,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;베리소프트
+;ベリーソフト
 ;-------------------------------------------------
 ;==================================================
-;접근해 온다
+;近寄ってくる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_11
 CALL EVENT_COUNTER_MESSAGE
@@ -58,7 +58,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;웃는 얼굴을 띄운다
+;笑顔を浮かべる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_12
 CALL EVENT_COUNTER_MESSAGE
@@ -68,7 +68,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;상관해 갖고 싶어한다
+;構って欲しがる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_13
 CALL EVENT_COUNTER_MESSAGE
@@ -78,7 +78,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;몸을 문질러 댄다
+;身をすり寄せる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_14
 CALL EVENT_COUNTER_MESSAGE
@@ -88,7 +88,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;응시해 온다
+;見つめてくる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_15
 CALL EVENT_COUNTER_MESSAGE
@@ -98,7 +98,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;어깨에 턱이상
+;肩にあご乗せ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_16
 CALL EVENT_COUNTER_MESSAGE
@@ -108,10 +108,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;소프트
+;ソフト
 ;-------------------------------------------------
 ;==================================================
-;요염한 행동
+;色っぽい仕草
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_20
 CALL EVENT_COUNTER_MESSAGE
@@ -121,7 +121,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;응시한다
+;見つめる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_21
 CALL EVENT_COUNTER_MESSAGE
@@ -131,7 +131,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;몸을 접댄다
+;体を摺り寄せる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_22
 CALL EVENT_COUNTER_MESSAGE
@@ -141,7 +141,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;치마걷어 올리기
+;スカートめくり
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_23
 CALL EVENT_COUNTER_MESSAGE
@@ -151,7 +151,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;입김을 내뿜는다
+;息を吹きかける
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_24
 CALL EVENT_COUNTER_MESSAGE
@@ -161,7 +161,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;엉덩이를어루만진다
+;尻を撫でる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_25
 CALL EVENT_COUNTER_MESSAGE
@@ -171,7 +171,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;팔 달라붙어
+;腕抱き付き
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_26
 CALL EVENT_COUNTER_MESSAGE
@@ -180,7 +180,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_26_1
 RETURN 1
 ;==================================================
-;골짜기를 보인다
+;谷間を見せる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_27
 CALL EVENT_COUNTER_MESSAGE
@@ -190,10 +190,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;성희롱
+;セクハラ
 ;-------------------------------------------------
 ;==================================================
-;키스
+;キス
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_30
 CALL EVENT_COUNTER_MESSAGE
@@ -203,15 +203,15 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「가만히 해 주세요……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 나의 먹이니까……
+			PRINTFORM 「가만히 있어…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 내 먹이니까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「쭙……후아, 후훗, 어쩐지 굉장히 엣찌……
+			PRINTFORM 「츄웃…… 푸하, 후훗, 왠지 무척 야하네……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「하앗……아직, 지금부터예요……
+			PRINTFORM 「하아앗…… 아직, 지금부터가 시작이야……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -219,7 +219,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;뒤로부터 안겨든다
+;後ろから抱きつく
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_31
 CALL EVENT_COUNTER_MESSAGE
@@ -229,17 +229,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「후훗, 이것으로 이제(벌써) 도망칠 수 없어」
+			PRINTFORML 「후훗, 이제 더 이상 도망칠 수 없겠네」
 		CASE 1
-			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@이럭저럭 하고 있으면, 침착해요……」
+			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@하고 이렇게 있으면 안심이 돼……」
 		CASEELSE
-			PRINTFORML (상당히 초심인 곳도 있군요……사랑스럽다)
+			PRINTFORML （꽤 미숙한 점도 있구나…… 귀여워）
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;앞에서 안겨든다
+;前から抱きつく
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_32
 CALL EVENT_COUNTER_MESSAGE
@@ -249,17 +249,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「상당히 기분이야 유혹하는군 ……」
+			PRINTFORML 「꽤 기분 좋아 보이네……」
 		CASE 1
-			PRINTFORML 「이봐, 좋아하는 것이겠죠……?　후훗, 얌전해져 버려서」
+			PRINTFORML 「자, 좋아하지……?　후훗, 얌전해져 버렸네」
 		CASEELSE
-			PRINTFORML 「마음대로해 괜찮아요……?」
+			PRINTFORML 「마음대로 해도 좋아……」
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;가슴을 비비게 한다
+;胸を揉ませる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_33
 CALL EVENT_COUNTER_MESSAGE
@@ -269,11 +269,11 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML (……조금 부끄럽네요)
+			PRINTFORML （……조금 부끄럽네）
 		CASE 1
-			PRINTFORML 「……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@만, 특별……이야」
+			PRINTFORML 「……\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@만, 특별히…… 해 주는거야」
 		CASEELSE
-			PRINTFORM 「손대고 싶었었지요?　자자……
+			PRINTFORM 「만지고 싶었지?　자, 어서……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -281,7 +281,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;고간뒤진다
+;股間をまさぐる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_34
 CALL EVENT_COUNTER_MESSAGE
@@ -292,31 +292,31 @@ RETURN RESULT
 IF TALENT:MASTER:성별 == 1
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「사랑스러운 반응……후훗,\@ PALAM:MASTER:윤활 >= PALAMLV:3 ?  이렇게 적셔 버려서 # 좀 더 적셔 주지 않으면 \@……」
+			PRINTFORML 「귀여운 반응…… 후훗, \@ PALAM:MASTER:윤활 >= PALAMLV:3 ? 이렇게 적셔서는 # 좀 더 적실 필요가 있겠어 \@……」
 		CASE 1
-			PRINTFORM 「\@ PALAM:MASTER:윤활 >= PALAMLV:3  ?  상당히 흥분하고 있는 것 같구나 # 아직, 그다지 젖지 않네요 \@……걱정하지 않아도, 지금부터 충분히 괴롭혀줘 줄 거예요……
+			PRINTFORM 「\@ PALAM:MASTER:윤활 >= PALAMLV:3  ? 꽤 흥분했나보네 # 아직 별로 젖진 않았네 \@…… 걱정하지 않아도 이제부터 잔뜩 괴롭혀줄게……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「솔직해지세요……이봐, 좀 더 여기에 집중하며……」
+			PRINTFORML 「고분고분하게 말 들어…… 자, 좀 더 이쪽에 집중해……」
 	ENDSELECT
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「남자에게 있어서의 급소군요……후훗,\@ BASE:MASTER:발기 >= 1000 ?  이렇게 크게 해 # 좀 더 크게 해 주지 않으면 \@……」
+			PRINTFORML 「남자에게 있어서 급소…… 후훗, \@ BASE:MASTER:발기 >= 1000 ? 이렇게 크게 만들고 # 좀 더 크게 하지 않으면 \@……」
 		CASE 1
-			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ?  상당히 흥분하고 있는 것 같구나 # 아직, 얌전하네요 \@……걱정하지 않아도, 지금부터 충분히 괴롭혀줘 줄 거예요……
+			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ? 꽤 흥분했나보네 # 아직 얌전하네 \@…… 걱정하지 않아도 이제부터 잔뜩 괴롭혀줄게……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「솔직해지세요……이봐, 좀 더 여기에 집중하며……」
+			PRINTFORML 「고분고분하게 말 들어…… 자, 좀 더 이쪽에 집중해……」
 	ENDSELECT
 ENDIF
 
 RETURN 1
 
 ;==================================================
-;치마안을 보인다
+;スカートの中を見せる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_35
 CALL EVENT_COUNTER_MESSAGE
@@ -324,47 +324,47 @@ CALL M_KOJO_MESSAGE_COUNTER_K68_35_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_35_1
 
-;엣찌 안
+;えっち中
 IF TEQUIP:68:50 == MASTER
 	SELECTCASE RAND:2
 		CASE 0
-			PRINTFORM 「하아,
+			PRINTFORM 「하아, 으으읏
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　이봐 봐줘, 대단히 엣찌지요……
+			PRINTFORM 　자, 이것 봐…… 굉장히 야하지……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「응, 입은 채로 하는 것은, 굉장히 야해 알겠지요……
+			PRINTFORM 「응읏, 입은 채로 하는 건 너무 이상한데……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　이봐, 이것을 보고 싶지요
+			PRINTFORM 　봐, 이걸 보고 싶었던 거지?
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
-;팬티 없음
+;パンツなし
 ELSEIF !EQUIP:하반신속옷2
 	SELECTCASE RAND:2
 		CASE 0
-			PRINTFORM 「넣고 싶어 까……하앗, 아직 안 돼요……
+			PRINTFORM 「넣고 싶어……? 아핫, 아직 안 돼……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「\@ PALAM:68:윤활 >= PALAMLV:3 ?  벌써 이렇게 젖어, 당신의 탓으로 # 당신으로 보여져……나, 지금 대단히 두근 두근 하고 있는 원 \@……
+			PRINTFORM 「\@ PALAM:68:윤활 >= PALAMLV:3 ? 벌써 이렇게 젖었어, 당신 때문에 # 당신에게 보여져서…… 나 엄청 두근두근거려 \@……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
 ELSE
 	SELECTCASE RAND:2
 		CASE 0
-			PRINTFORML 「어떻게, 흥분했어……?」
+			PRINTFORML 「어때, 흥분했어……?」
 		CASEELSE
-			PRINTFORML 「자극이 너무 강한 까 저기, 후훗」
+			PRINTFORML 「자극이 너무 강한가, 후훗」
 	ENDSELECT
 ENDIF
 	
 RETURN 1
 
 ;==================================================
-;뒤로부터 가슴 만지작 만지작
+;後ろから胸もみもみ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_36
 CALL EVENT_COUNTER_MESSAGE
@@ -374,17 +374,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「……꽤 즐겁네요, 이것……」
+			PRINTFORML 「……꽤 재미있는데, 이거……」
 		CASE 1
-			PRINTFORML 「뒤로부터라고, 흥분해 유곽……」
+			PRINTFORML 「뒤에서 하면 흥분되는 걸……」
 		CASEELSE
-			PRINTFORML 「사랑스러운 반응하잖아……후훗」
+			PRINTFORML 「귀여운 반응이잖아…… 킥킥」
 	ENDSELECT
 
 RETURN 1
 
 ;==================================================
-;엿강탈
+;飴強奪
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_39
 CALL EVENT_COUNTER_MESSAGE
@@ -394,10 +394,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;애원
+;おねだり
 ;-------------------------------------------------
 ;==================================================
-;정상위 V 애원
+;정상위Ｖおねだり
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_41
 CALL EVENT_COUNTER_MESSAGE
@@ -407,13 +407,13 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「좋아하게 움직여 좋아요……이봐, 나를 만족 시켜 보세요」
+			PRINTFORML 「원하는 대로 움직여도 좋아…… 자, 나를 만족시켜 봐」
 		CASE 1
-			PRINTFORM 「참을 수 없는 것 같구나……후훗, 좋아요……
+			PRINTFORM 「참을 수 없는 모양이네…… 쿡쿡, 좋아……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「시 비치는 동안의\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 여유 없음 그런 얼굴……견딜 수 없어……
+			PRINTFORM 「하고 있을 때의 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 여유 없는 얼굴…… 참을 수가 없어……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -421,7 +421,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;후배위 V삽입 애원
+;후배위Ｖ挿入おねだり
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_43
 CALL EVENT_COUNTER_MESSAGE
@@ -431,17 +431,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「가끔 씩은 이 모습도 좋을지도……
+			PRINTFORM 「가끔씩은 이 자세도 괜찮네……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　, 빨리 와 ……
+			PRINTFORM 　자, 빨리 와줘……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「착각 하지 말아주세요, 내가 즐기기 위한 적당한 응이니까……
+			PRINTFORM 「착각하지마, 내가 즐기려고 하는 거니까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「자, 기분 좋게 시켜 주자가 아닌거야……
+			PRINTFORM 「빨리, 기분 좋게 해줘……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -449,7 +449,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;후배위 A 애원
+;후배위Ａおねだり
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_44
 CALL EVENT_COUNTER_MESSAGE
@@ -459,14 +459,14 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM (이 모습으로 여기로 하는 것, 굉장히 배덕적이어 흥분해요……
+			PRINTFORM （이 모습으로 이쪽에서 하는 거, 굉장히 배덕적이고 흥분되네……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML )
+			PRINTFORML ）
 		CASE 1
-			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@에는 여기로 충분해요……후훗」
+			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@에게는 이쪽으로 충분해…… 쿡쿡」
 		CASEELSE
-			PRINTFORML 「여기로 느끼게 되었던 것도,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@태우고 좋은 응이니까」
-			PRINTFORM 「책임 가져, 기분 좋고 했겠지요……
+			PRINTFORML 「이쪽으로 느끼게 된 것도 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 탓이니까」
+			PRINTFORM 「책임지고 기분 좋게 만들어 줘……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -474,10 +474,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;애무
+;愛撫
 ;-------------------------------------------------
 ;==================================================
-;수음
+;手淫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_50
 CALL EVENT_COUNTER_MESSAGE
@@ -486,16 +486,16 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_50_1
 
 IF TALENT:MASTER:성별 == 1
-	;지삽
+	;指挿れ
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「어디까지 들어가는 건가 해들……하앗, 상당히 깊게까지, 들어가면 원이군요……?」
+			PRINTFORML 「어디까지 들어갈까…… 아핫, 꽤 깊숙히 들어가 버렸네……?」
 		CASE 1
-			PRINTFORM 「응……당신의 여기, 대단히 조이는 것 ……
+			PRINTFORM 「응…… 당신의 이곳, 굉장히 조여오네……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「이봐, 여기는 기쁜듯이 벌렁 벌렁 하고 있는 원이야?　당신은 자각하고 있지 않을지도 모르는데……
+			PRINTFORM 「봐, 여기가 기쁜 듯이 움찔움찔거리고 있어.　당신은 자각하지 못할지도 모르지만……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -503,28 +503,28 @@ ELSE
 	IF TCVAR:PLAYER:12
 		SELECTCASE RAND:3
 			CASE 0
-				PRINTFORM 「아하하,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@대단한 얼굴 하고 있는 원이야?　그렇게 이 오고 싶으면, 이나 키라고 줄까요……
+				PRINTFORM 「아하핫, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@ 무서운 얼굴을 하고 있어.　그렇게 가고 싶다면 가게 해줄까……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			CASE 1
-				PRINTFORM 「……대단히 싫은 것 같은 소리 해……이제(벌써) 이 나무 그런가 해들
+				PRINTFORM 「……굉장히 야한 소리를 내고 있네…… 벌써 갈 것 같은 거야?
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
-				PRINTFORML 「내 손을 이렇게 더럽혀, 이번에는 제멋대로에 정자를 털어 놓을 생각 이군요 ……」
+				PRINTFORML 「내 손을 이렇게 더럽히고 이번에는 자기 마음대로 아기씨를 쏟아부을 생각이구나……」
 			CASEELSE
-				PRINTFORML 「지금부터 나의 손으로 이 빌려주어지는 것이지만……어떤 기분?」
-				PRINTFORML 「손가락과 섹스 하는 것, 그렇게 기분이 좋은거야?　조금은 부끄러우면 생각하지 않는 거야 해들……」
+				PRINTFORML 「이제 내 손으로 가버릴 텐데…… 기분이 어때?」
+				PRINTFORML 「손가락이랑 섹스하는 게 그렇게 기분 좋아?　조금은 부끄럽다고 생각하지 않는거야……?」
 		ENDSELECT
 	ELSE
 		SELECTCASE RAND:3
 			CASE 0
-				PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 이 정도 강하게 코스는 하지 않으면 쌀 수 없는 원이군요?　후훗……
+				PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 이 정도로 세게 흔들지 않으면 안 돼.　쿡쿡……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			CASE 1
-				PRINTFORML 「\@ BASE:MASTER:발기 >= 1000 ?  당신의, 대단히 딱딱하네요……후훗, 흥분해?  # 아직 작은 이것이, 점점 커져 가는 것, 매우 엣찌하네요…… \@」
+				PRINTFORML 「\@ BASE:MASTER:발기 >= 1000 ? 당신, 굉장히 딱딱해졌어…… 후훗, 흥분하고 있는 거지? # 아직 자그마한 이게 점점 커져가는 거, 굉장히 엣찌하다고 생각해…… \@」
 			CASEELSE
-				PRINTFORML 「손가락은 불만일까?　스스로 하는 것과 같다 것이군요……네, 달라?」
+				PRINTFORML 「손가락으론 불만이야?　스스로 하는 거랑 마찬가지니까…… 뭐, 달라?」
 		ENDSELECT
 	ENDIF
 ENDIF
@@ -532,7 +532,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;펠라티오
+;口淫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_51
 CALL EVENT_COUNTER_MESSAGE
@@ -541,40 +541,40 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_51_1
 
 IF TALENT:MASTER:성별 == 1
-	;쿠니
+	;クンニ
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하앗, 꿈틀 꿈틀 해 버려서, 정말로 사랑스럽네요……
+			PRINTFORM 「아핫, 움찔거리는거 정말 귀여워……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 　얼마나 유지하는 것일까……」
+			PRINTFORML 　얼마나 참을 수 있을까……」
 		CASE 1
-			PRINTFORM 「여자끼리니까, 부끄러워할 필요도, 소리를 참을 필요도 없어……
+			PRINTFORM 「여자끼리니까 부끄러워할 필요도 목소리를 참을 필요도 없어……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML ?」
+			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「여기는 여자가 제일 느끼는 장소……이니까, 좀 더 솔직하게 느껴 버려서 괜찮아요?　후훗……
+			PRINTFORM 「여기는 여자가 제일 많이 느끼는 곳……그러니까 더 솔직하게 느껴도 돼.　킥킥……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 무섭지 않은 건가 해들?　천천히 포식 되도록(듯이), 남자의 급소를 빨아져……후훗
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 무섭지 않아?　서서히 잡아 먹히듯이 남자의 급소를 핥아지는 거…… 후훗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
-			PRINTFORM 「나는 대단히 흥분해버리는……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 모두를 맛보고 있는 것 같은 생각이 들어……
+			PRINTFORM 「나는 굉장히 흥분되네…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 모든 걸 다 맛보고 있는 것 같아……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「후훗……여기를 괴롭혀줘 때의\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 표정, 정말로 견딜 수 없어요……
+			PRINTFORM 「쿡쿡…… 여길 괴롭힐 때 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 표정, 정말 참을 수 없어……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
-			PRINTFORM 「나를 즐겁게 하기 위해서(때문에)도, 한계까지 참고 보여……할 수 있는 것이라면
+			PRINTFORM 「나를 즐겁게 해주기 위해서라도 한계까지 참아 봐…… 할 수 있다면 말이지
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「그럼,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 언제까지 참을 수 있는 것일까요……」
-			PRINTFORM 「날름, ?, ……하앗, 1빨 것에 허리를 여차저차 시키고 있는 것 같지만……
+			PRINTFORML 「그럼, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 언제까지 참을 수 있을까……?」
+			PRINTFORM 「낼름… 츄릅… 쥬픗…… 아핫, 핥을 때마다 허리를 꿈틀대는 것 같은데……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -583,7 +583,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;가랑이
+;素股
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_52
 CALL EVENT_COUNTER_MESSAGE
@@ -592,20 +592,20 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_52_1
 
 IF TALENT:MASTER:성별 == 1
-	;조개 맞댐
+	;貝合せ
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하아, 하앗, 진정한 섹스같아, 흥분해요……
+			PRINTFORM 「하아, 하앗, 진짜 섹스 같아서 흥분되네……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML ?」
 		CASE 1
-			PRINTFORM 「후우 , 하아
+			PRINTFORM 「후으읏, 하아
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　어떨까나, 당신은 기분이 좋다……
+			PRINTFORM 　어때, 당신은 기분 좋아……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「참지 않아도 괜찮아요……이봐 , 이있으세요……
+			PRINTFORM 「참지 않아도 돼…… 자, 가 버려……엇
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 			
@@ -613,22 +613,22 @@ IF TALENT:MASTER:성별 == 1
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ?  이렇게 딱딱하게 해……아이 소매치기가 겉껍데기 있군요 # 빨리 발 더할 수 있는 없음 있어라……커질 때까지, 넣어 하지 않아요 \@……
+			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ? 이렇게 딱딱하게 하고…… 문질러 준 보람이 있었네 # 빨리 세워…… 커질 때까지 넣어줄 생각 없으니까 \@……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「하앗, 삽까지 참을 수 있을까……\@ TCVAR:PLAYER:12 ?  벌써 이렇게 꿈틀 꿈틀 시켜, 무리인 것 같다지만 # 그렇지 않으면, 헛됨 공격해 해 버릴까 \@……
+			PRINTFORM 「아핫, 넣을 때까지 참을 수 있을까……? \@ TCVAR:PLAYER:12 ? 이렇게 움찔거리는 걸 보니 무리겠는데 # 쓸데없이 낭비해버리는 걸지도 \@……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「넣어 갖고 싶어?　그렇지만 ……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@같은 변태는, 아슬아슬한 곳까지 초조하게 해 주는 편이 흥분 하겠지요……?」
+			PRINTFORML 「넣어줬으면 해?　하지만…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@같은 변태는 아슬아슬할 때까지 애태워주는 편이 흥분하잖아……?」
 	ENDSELECT
 ENDIF
 
 RETURN 1
 
 ;==================================================
-;파이즈리
+;パイズリ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_53
 CALL EVENT_COUNTER_MESSAGE
@@ -638,19 +638,19 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  남자는 여기서 코스는 하면 일살(日殺)인걸 ……후훗, 허리가 떠있는 원이야 # 젖가슴으로 코스의, 어떤 기분일까 \@……
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 남자는 여길 문질러 주면 한 방이라고 하던데……  후훗, 허리가 떠있는 걸 # 젖으로 문질러지는 건 어떤 느낌이야 \@……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASE 1
-			PRINTFORML 「응, 점점\@ BASE:MASTER:발기 >= 1000 ?  국물이 나와요 # 커져 올게요 \@……섹스 하고 있다고(면) 나무보다 흥분하고 있는 것이 아닌거야……?」
+			PRINTFORML 「으읏, 점점 \@ BASE:MASTER:발기 >= 1000 ? 즙이 나오고 있네 # 커지고 있네 \@…… 섹스할 때보다 흥분했잖아……?」
 		CASEELSE
-			PRINTFORML 「언제까지 견딜 수 있을까 볼만하구나……\@ TCVAR:PLAYER:12 ?  무슨, 이제(벌써) 안 돼?  # 움직이지 말아줘?　이인가 다툴지 어떨지는 내가 결정하기 때문에 \@」
+			PRINTFORML 「언제까지 버틸 수 있을지 볼 만하겠네…… \@ TCVAR:PLAYER:12 ? 뭐야, 벌써 한계야? # 움직이지 마.　갈지 안 갈지는 내가 정할테니까 \@」
 	ENDSELECT
 
 RETURN 1
 
 ;==================================================
-;풋잡
+;足コキ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_54
 CALL EVENT_COUNTER_MESSAGE
@@ -660,21 +660,21 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「이런 건에서도 느끼군요 ……이 변태
+			PRINTFORM 「이런 걸로도 느끼는구나…… 이 변태
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「아파?　기분이 좋아?　\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 그 얼굴, 정말로 견딜 수 없어요……
+			PRINTFORM 「아파?　아니면 기분 좋아?　\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 얼굴 정말 참을 수가 없어……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「후훗……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@,\@ !EQUIP:하반신속옷2 ?  보류 당하고 있는 기분은 어떻게  # 다리와의 섹스, 기분이 좋은 \@까」
+			PRINTFORML 「쿡쿡…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@, \@ !EQUIP:하반신속옷2 ? 사정이 늦어지는 기분은 어때 # 발이랑 섹스하는 건 기분 좋아 \@?」
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;애널애무
+;アナル愛撫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_55
 CALL EVENT_COUNTER_MESSAGE
@@ -685,24 +685,24 @@ RETURN RESULT
 	SELECTCASE RAND:3
 		CASE 0
 			IF TALENT:MASTER:성별 == 2
-				PRINTFORM 「\@ ABL:MASTER:A감각 >= 3 ?  상당히 느끼게 된 원이군요……이봐, 여자아이 같이 허덕여 보세요 # 아직 아플까……괜찮아요, 곧 여자아이 같이 가라 같게 되기 때문에 \@……
+				PRINTFORM 「\@ ABL:MASTER:A감각 >= 3 ? 꽤 느끼게 되었네…… 자, 여자애처럼 헐떡거려 봐 # 아직 아픈가 보네…… 괜찮아, 금방 여자아이처럼 가버리게 될거야 \@……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			ELSE
-				PRINTFORM 「\@ ABL:MASTER:A감각 >= 3 ?  상당히 느끼게 된 원이군요……이봐, 좀 더 솔직하게 허덕여 보세요 # 아직 아플까……괜찮아요, 곧 여기에서도 가라 같게 되기 때문에 \@……
+				PRINTFORM 「\@ ABL:MASTER:A감각 >= 3 ? 꽤 느끼게 되었네…… 자, 좀 더 솔직하게 헐떡여봐 # 아직 아픈가 보네…… 괜찮아, 금방 이곳으로 갈 수 있게 될거야 \@……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			ENDIF
 		CASE 1
-			PRINTFORML 「정말로 여기와 연결되어……후훗, 꿈틀 꿈틀 하고 있다」
+			PRINTFORML 「정말 여기랑 연결되어 있구나…… 후훗, 움찔거리고 있어」
 		CASEELSE
-			PRINTFORML 「후훗……\@ TALENT:MASTER:성별 == 2 ?  남자 지만 #  \@부끄러워하지 않아 괜찮아요……」
+			PRINTFORML 「킥킥…… \@ TALENT:MASTER:성별 == 2 ? 남자라면 #  \@ 부끄러워하지 않아도 돼……」
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;애널빨기
+;アナル舐め
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_56
 CALL EVENT_COUNTER_MESSAGE
@@ -712,11 +712,11 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 부끄러운 곳, 전부 나에게 알려져 버렸다 원이군요……?　후훗……」
+			PRINTFORML 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 부끄러운 곳, 전부 나에게 알려져 버렸네……?　큭큭……」
 		CASE 1
-			PRINTFORML 「아아,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 부끄러운 것 같은 그 표정, 좋아요……」
+			PRINTFORML 「아아, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 부끄러워하는 표정…… 정말 좋아……」
 		CASEELSE
-			PRINTFORM 「허리를 띄워 도망치려고 해도 쓸데없어요……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 나에게, 엉덩이로 이 빌려주어져……
+			PRINTFORM 「허리를 띄우면서 도망치려 해도 소용 없어…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 나에게 뒷구멍으로 가버리는 거야……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -724,7 +724,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;손가락 삽입
+;指挿入
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_57
 CALL EVENT_COUNTER_MESSAGE
@@ -734,15 +734,15 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「내 손가락에 견딜 수 있는 것일까. 우후훗……
+			PRINTFORM 「내 손가락을 견딜 수 있을까? 우후훗……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「당신의 사랑스러운 이키소리, 듣고 싶은거야……
+			PRINTFORM 「당신의 귀여운 목소리, 나에게 들려줘……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「기분 좋고 가운데 이키 시켜 줄 테니까……당신도, 참지 않아도 괜찮아요……후훗
+			PRINTFORM 「기분 좋게 안쪽으로 가게 해 줄게…… 당신도 참지 않아도 괜찮아…… 킥킥
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -750,7 +750,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;가슴애무
+;胸愛撫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_58
 CALL EVENT_COUNTER_MESSAGE
@@ -761,17 +761,17 @@ RETURN RESULT
 IF TALENT:MASTER:성별 == 1 || TALENT:MASTER:성별 == 3
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「후훗……엣찌한 기분이 되었다지요?」
+			PRINTFORML 「후훗…… 엣찌한 기분이 되어버렸어?」
 		CASE 1
 			IF TALENT:MASTER:가슴사이즈 > 1
-				PRINTFORML (……나보다 크다……!)
+				PRINTFORML （……나보다 크잖아……!!）
 			ELSEIF TALENT:MASTER:가슴사이즈 == 1
-				PRINTFORML 「나와 같은 정도일까……비비어 마음도」
+				PRINTFORML 「나랑 거의 비슷하네…… 주무르는 느낌도」
 			ELSE
-				PRINTFORML 「뭐, 사랑스러운 사이즈로 좋지 않을 테니까」
+				PRINTFORML 「뭐, 예쁜 사이즈니까 괜찮지 않아?」
 			ENDIF
 		CASEELSE
-			PRINTFORM 「소리가 새고 있는 원이야?　느껴……후훗
+			PRINTFORM 「목소리가 새어 나오잖아.　느끼고 있구나…… 큭큭
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 			
@@ -779,20 +779,20 @@ IF TALENT:MASTER:성별 == 1 || TALENT:MASTER:성별 == 3
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「눈치채고 있어?　내가 여기를 만지작거릴 때, 당신 대단히 기분이야 유혹한데 얼굴 하는 거야……후훗
+			PRINTFORM 「눈치 챘어?　내가 여길 만질때 당신, 정말 기분 좋아보이는 얼굴을 하고 있어…… 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORML 「남자라도, 여기서 기분 좋게 될 수 있군요 ……」
+			PRINTFORML 「남자도 여기로 기분 좋아질 수 있구나……」
 		CASEELSE
-			PRINTFORML 「여자아이의 기분, 맛봐……?」
+			PRINTFORML 「여자아이의 기분, 느껴 볼래……?」
 	ENDSELECT
 ENDIF
 
 RETURN 1
 
 ;==================================================
-;유두빨기
+;乳首吸い
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_59
 CALL EVENT_COUNTER_MESSAGE
@@ -803,24 +803,24 @@ RETURN RESULT
 IF TALENT:MASTER:성별 == 1 || TALENT:MASTER:성별 == 3
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「응……후아, 입 떼어 놓으면(자), 당신의 유두 곧 외로운 듯 하기 때문에……
+			PRINTFORM 「응…… 푸하앗… 입을 떼면 당신의 젖꼭지가 금새 외로워한다니까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORML 「혀 중(안)에서 굴려지는 것이 좋아?　그렇지 않으면, 들이마셔지는 것이 제일일까」
+			PRINTFORML 「혓바닥으로 굴리는 게 좋아?　아니면 빨리는 게 제일 좋아?」
 		CASEELSE
-			PRINTFORML 「강할 정도로 꼭 좋을 것입니다?　갖고 싶어해니까……」
+			PRINTFORML 「세기가 딱 좋지?　욕심쟁이라니까……」
 	ENDSELECT
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「부끄러워?　그렇지만, 기분이 좋겠지요……?」
+			PRINTFORML 「창피해?　하지만 기분 좋지……?」
 		CASE 1
-			PRINTFORM 「강하게 들이마셔 주자, 곧 소리를 높여……후훗
+			PRINTFORM 「강하게 빨아주면 금방 소리를 질러버리네…… 후훗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「소리 내어도 괜찮아요?　남자라도, 기분이 좋으면 어쩔 수 없는 것……
+			PRINTFORM 「소리 내도 괜찮아.　남자도 기분 좋다면 어쩔 수 없는거야……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -829,7 +829,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;딥키스
+;ディープキス
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_60
 CALL EVENT_COUNTER_MESSAGE
@@ -839,25 +839,25 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「응……쑤욱, 은……우후, 범하고 있는 것 같아 흥분해요……
+			PRINTFORM 「응…… 쥬붓, 하앗…… 으흡, 범하고 있는 것 같아서 흥분해버려……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 모두를, 나에게 나비다있고……날름, 쭙……
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 모든 걸… 나에게 줘…… 할짝, 츄웃……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「잘 키스 할 수 있으면(자), 기분 좋게 시켜 줄 거예요……후훗
+			PRINTFORM 「제대로 키스해 준다면 기분 좋게 해 줄게…… 큭큭
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
 	
 RETURN 1
 ;-------------------------------------------------
-;봉사
+;奉仕
 ;-------------------------------------------------
 ;==================================================
-;커닐링구스강제
+;クンニ強制
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_70
 CALL EVENT_COUNTER_MESSAGE
@@ -867,13 +867,13 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「이봐, 빨리 빠세요……말하지만,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@에 거부권은 없으니까」
+			PRINTFORML 「자, 빨리 핥아…… 말해 두겠는데 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@에게 거부권따위는 없으니까」
 		CASE 1
-			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ?  당신만 크게 하고 있는 불공평하지 않다. 나에게도 # 잘 나오면(자) 포상 주어 버리자 까…… \@봉사 하는 거야, 열심히……후훗
+			PRINTFORM 「\@ BASE:MASTER:발기 >= 1000 ? 당신만 크게 하다니 불공평하잖아. 나에게도 # 제대로 하면 상을 줄 수도 있어…… \@ 봉사하는 거야, 열심히 말이지…… 후훗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@같은 변태에게는, 오히려 포상이지요?　후훗
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@같은 변태에게는 오히려 포상이잖아?　쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -881,7 +881,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;펠라치오 강제
+;フェラチオ強制
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_71
 CALL EVENT_COUNTER_MESSAGE
@@ -892,22 +892,22 @@ RETURN RESULT
 IF TALENT:MASTER:성별 == 1 || TALENT:MASTER:성별 == 3
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하앗, 당신의 목을 범하는 것, 대단히 기분이 좋아요……
+			PRINTFORM 「아하핫, 당신 목을 범하는거 정말 기분 좋아앗……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「좀 더 열심히 봉사 없음 좋은……하지 않으면……이봐 , 이렇게 , 당신의 입 범해버리는 원이야
+			PRINTFORM 「더 열심히 봉사해…… 아니면…… 아니면, 이렇게 당신 입을 범해버릴거야
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「하앗, 당신의 고통 그런 그 얼굴, 그 만큼으로 봉사시키는 보람이 있어요……」
+			PRINTFORML 「하아… 당신의 고통스러워하는 그 얼굴, 그것만 봐도 봉사시키는 보람이 있는 걸……」
 	ENDSELECT
 ENDIF
 
 RETURN 1
 
 ;==================================================
-;애널 봉사
+;アナル奉仕
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_72
 CALL EVENT_COUNTER_MESSAGE
@@ -917,13 +917,13 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「자, 분명하게 깨끗이 하는 거야……」
+			PRINTFORML 「자아, 착실하게 청소하는거야……」
 		CASE 1
-			PRINTFORM 「싫어 해도 그만두지 않으니까?　후훗……
+			PRINTFORM 「싫다고 해도 그만둘 생각 없으니까.　후훗……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「억지로 하는 것은, 어째서 이렇게 흥분할까……
+			PRINTFORM 「억지로 하는 건 왜 이렇게 흥분되는 걸까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -931,7 +931,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;
+;ぱふぱふ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_73
 CALL EVENT_COUNTER_MESSAGE
@@ -941,17 +941,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「응실마리……후훗, 이렇게 하자마자 얌전해지기 때문에」
+			PRINTFORML 「영차…… 후훗, 이렇게 하면 금방 얌전해진다니까」
 		CASE 1
-			PRINTFORML 「아, 상당히 제대로 사이에 둘 수 있군요……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@, 너무 흥분해요」
+			PRINTFORML 「어라, 꽤 잘 들어왔네……\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@, 너무 흥분했어」
 		CASEELSE
-			PRINTFORML 「역시,\@ TALENT:MASTER:성별 == 2 ?  남자는 #  \@큰 편이 좋아하는가 해들 」
+			PRINTFORML 「역시, \@ TALENT:MASTER:성별 == 2 ? 남자는 #  \@ 큰 쪽이 더 좋은가보네」
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;젖 맞추어라
+;乳合わせ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_74
 CALL EVENT_COUNTER_MESSAGE
@@ -962,36 +962,36 @@ RETURN RESULT
 IF TALENT:MASTER:성별 == 1 || TALENT:MASTER:성별 == 3
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하앗, 유두로 함께 기분 좋게 될 수 있는 것일까……
+			PRINTFORM 「하앗, 젖꼭지로 동시에 기분 좋아질 수 있을까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「응, 이대로 코스계속하면(자), 당신과 함께 가라 까……
+			PRINTFORM 「응읏, 이대로 계속 비비면 당신하고 같이 갈 수 있을까……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「이런 일, 여자끼리가 아니면 할 수 없어요……후훗
+			PRINTFORM 「이런 일은 여자끼리가 아니면 할 수 없어…… 후훗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「당신, 언제나 내 가슴(뿐)만 보며……」
-			PRINTFORML 「눈치채?　후훗, 이렇게 되고 싶다고 생각하고 있는 지요……?」
+			PRINTFORML 「당신은 항상 내 가슴만 보고……」
+			PRINTFORML 「모를 줄 알았어?　후훗, 이렇게 되고 싶다고 생각했지……?」
 		CASE 1
-			PRINTFORM 「이봐, 당신의 정말 좋아하는 젖가슴이야……?　참을 수 있는 것일까……후훗
+			PRINTFORM 「봐, 당신이 정말 좋아하는 가슴이야……?　참을 수 있을까…… 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORML 「당신 나름으로는, 사이에 두어 주어도 괜찮지만 ……」
+			PRINTFORML 「당신이 하는 걸 봐서, 끼워줄 수도 있는데……」
 	ENDSELECT
 ENDIF
 	
 RETURN 1
 
 ;==================================================
-;타와시 세탁
+;タワシ洗い
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_75
 CALL EVENT_COUNTER_MESSAGE
@@ -1001,11 +1001,11 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「기분 좋게 시켜 줄까」
+			PRINTFORML 「기분 좋게 해 줄 수 있겠지?」
 		CASE 1
-			PRINTFORML 「후훗……\@ PALAM:68:윤활 >= PALAMLV:3 ?  팔, 끈적끈적이 되어 버려요……?  # 삽전의 준비 운동이라는 곳일까…… \@」
+			PRINTFORML 「후훗…… \@ PALAM:68:윤활 >= PALAMLV:3 ? 팔이 끈적끈적해져 버렸네……? # 넣기 전의 준비운동 같은 걸까…… \@」
 		CASEELSE
-			PRINTFORM 「\@ PALAM:68:윤활 >= PALAMLV:3 ?  이렇게 젖고 있다면 빨리 입인생 행로, 라든지 생각해 # 흠뻑 젖음이 된 나의 여기를, 상상해 \@까……
+			PRINTFORM 「\@ PALAM:68:윤활 >= PALAMLV:3 ? 이렇게 젖어있다면 빨리 넣게 해줘, 라고 생각하고 있는거야 # 흠뻑 젖은 내 이곳을 상상하고 있어 \@……?
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1013,7 +1013,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;강제 보지 애무
+;強制アソコ愛撫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_76
 CALL EVENT_COUNTER_MESSAGE
@@ -1025,17 +1025,17 @@ RETURN RESULT
 		CASE 0
 			PRINTFORM 「하앗……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 　이렇게 기분이 좋다니, 자신의 손가락이란 무엇이 다르겠지요……?」
+			PRINTFORML 　이렇게 기분이 좋다니, 자기 손가락과는 뭐가 다른 걸까……?」
 		CASE 1
-			PRINTFORML 「\@ PALAM:68:윤활 >= PALAMLV:3 ?  벌써 이렇게 젖어……기대해, # 당신의 손가락, 갖고 싶어하고 있는 것을 \@아는 것일까……?」
+			PRINTFORML 「\@ PALAM:68:윤활 >= PALAMLV:3 ? 벌써 이렇게 젖었어…… 기대하고 있어, # 당신의 손가락을 원하는 게 \@ 느껴져……?」
 		CASEELSE
-			PRINTFORML 「속상할까……후훗, 당황하지 않아……」
+			PRINTFORML 「초조해……? 후훗, 서두르지 마……」
 	ENDSELECT
 	
 RETURN 1
 
 ;==================================================
-;젖을 들이마시게 한다
+;乳を吸わせる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_77
 CALL EVENT_COUNTER_MESSAGE
@@ -1045,15 +1045,15 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「봐요,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 정말 좋아하는 젖가슴이에요∼……후훗,\@ TALENT:MASTER:체형 < 0 ?  아기 보고 싶은 # 큰 아기 \@응……
+			PRINTFORM 「자, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@이 제일 좋아하는 가슴이야～……후훗, \@ TALENT:MASTER:체형 < 0 ? 아기 같아 # 커다란 아기같아 \@……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「아기같이 달라붙어도 괜찮아요?　\@ TALENT:MASTER:성별 == 2 ?  남자로서의 자존심이 허락하는지 모르지만 # 여자아이니까 \@……후훗
+			PRINTFORM 「아기처럼 꽉 달라붙고 싶어?　\@ TALENT:MASTER:성별 == 2 ? 남자로서의 자존심이 허락할지 모르겠지만 # 여자 아이니까 \@…… 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「쪽 쪽은 해 보세요?　능숙하게 할 수 있으면(자), 착한 아이 착한 아이 해 주어요……후훗
+			PRINTFORM 「쪽ー쪽ー하고 빨아 볼래?　잘 하면 옳지옳지 해 줄게…… 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1061,10 +1061,10 @@ RETURN RESULT
 RETURN 1
 
 ;-------------------------------------------------
-;성교
+;性交
 ;-------------------------------------------------
 ;==================================================
-;삽입된다(MASTER 받고)
+;挿入される（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_80
 CALL EVENT_COUNTER_MESSAGE
@@ -1073,24 +1073,24 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_80_1
 
 IF TALENT:MASTER:처녀 && TALENT:2 >= 1 && TALENT:PLAYER:처녀 != -1
-	PRINTFORM 「하앗, 당신의 처음으로, 받아 버렸다……
+	PRINTFORM 「아핫, 당신의 처음 받아버렸어……
 	CALL HEARTCB_K68(0xD02830)
 	PRINTFORML 」
-	PRINTFORML 「아파?　그렇지만, 곧바로 기분 좋게 시켜 줄 테니까……」
+	PRINTFORML 「아파?　그래도 금방 기분좋게 해줄게……」
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「아~하아
+			PRINTFORM 「하아
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 　당신이 솔직하게 요가같게 될 때까지, 확실히 조교해 주지 않으면……」
+			PRINTFORML 　당신이 순순히 기뻐할 때까지 확실히 조련해 줘야겠지……?」
 		CASE 1
-			PRINTFORM 「언제까지 참을 수 있는 것일까……하앗, 얼굴, 숨기면 안 돼요……
+			PRINTFORM 「언제까지 참을 수 있을까…… 아핫, 얼굴은 가리면 안 돼……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
 			PRINTFORM 「응, 아앗, 하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　이렇게 , 강하게 찌르면(자), 억지로 하고 있는 것 같아 흥분해요……
+			PRINTFORM 　이렇게… 세게 찌르면… 억지로 하는 것 같아서 흥분 되네……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1099,7 +1099,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;후배위 V삽입된다(MASTER 받고)
+;후배위Ｖ挿入される（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_83
 CALL EVENT_COUNTER_MESSAGE
@@ -1108,26 +1108,26 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K68_83_1
 
 IF TALENT:MASTER:처녀 && TALENT:2 >= 1 && TALENT:PLAYER:처녀 != -1
-	PRINTFORM 「하앗, 당신의 처음으로, 받아 버렸다……
+	PRINTFORM 「아핫, 당신의 처음 받아버렸네……
 	CALL HEARTCB_K68(0xD02830)
 	PRINTFORML 」
-	PRINTFORML 「해 절의 부엌 풀어 줄 테니까……당신은 아무것도 하지 않아 좋아요……」
+	PRINTFORML 「천천히 풀어줄게…… 당신은 아무것도 안 해도 괜찮아……」
 ELSE
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「웃,  하아, 하앗
+			PRINTFORM 「읏, 하아, 하아앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　당신의 안, 굉장히 기분이 좋은……
+			PRINTFORM 　당신의 안쪽… 무척 기분 좋아……앗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「짐승의 교제군요……이성은 버려, 나와 함께 이 합니다……
+			PRINTFORM 「짐승처럼 교미하고 있어…… 이성은 버리고 나랑 함께 가는거야……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「하아
+			PRINTFORM 「하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　\@ TALENT:68:2 & 2 ?  이대로 안으로 이도 참, 어떻게 될까…… # 조금 전부터 요가없음이군요……후훗 \@
+			PRINTFORM 　\@ TALENT:68:2 & 2 ? 이대로 안에서 가버리면 어떻게 될까……? # 아까부터 정말 기뻐하잖아…… 후훗 \@
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1136,7 +1136,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;밀어 올리고(MASTER 받고)
+;突き上げ（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_84
 CALL EVENT_COUNTER_MESSAGE
@@ -1146,24 +1146,24 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「이봐 , 이봐
+			PRINTFORM 「자아, 자아
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　솔직하게 허덕이세요……기분이 좋지요
+			PRINTFORM 　솔직하게 헐떡여 봐…… 기분 좋지
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML !」
 		CASE 1
-			PRINTFORM 「이렇게 , 찔러 주면(자) , 소리, 참을 수 없구나
+			PRINTFORM 「이렇게… 쿡쿡 찌르니까… 목소리 참을 수 없는 거지
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「아무것도 생각하지 않아 괜찮아요……움직임에 맞추어, 소리만 올리고 있으면 좋은거야……
+			PRINTFORM 「아무 생각 안 해도 돼…… 움직임에 맞춰서 소리만 지르고 있으면 돼……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
 
 RETURN 1
 ;==================================================
-;V삽입하는 기승위(TARGET 받고)
+;Ｖ挿入する騎乗位（TARGET受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_85
 CALL EVENT_COUNTER_MESSAGE
@@ -1173,21 +1173,21 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하아, 후우
+			PRINTFORM 「하앗, 후읏
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　나보다 먼저 이 고난이라고, 절대 용서(허락)하지 않아요……
+			PRINTFORM 　나보다 먼저 가면, 절대 용서 못 해……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「아, 하아
+			PRINTFORM 「아앗, 하아
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의\@ TCVAR:PLAYER:12 ?  이구의 것을 인내 # 하반신에 집중 \@하려고 필사적인 얼굴, 최고군요
+			PRINTFORM 　\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 \@ TCVAR:PLAYER:12 ? 가는 걸 참으려고 # 하반신에 집중 \@하는 얼굴 최고야앗
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「하앗
+			PRINTFORM 「아하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　이렇게 안으로 괴롭혀줘 하면(자), 반응이 바로 느껴져 즐겁네요
+			PRINTFORM 　이렇게 안에서 괴롭혀주니까 반응이 직설적으로 느껴지네
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1195,7 +1195,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;다이스키 홀드
+;だいしゅきホールド
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_86
 CALL EVENT_COUNTER_MESSAGE
@@ -1205,18 +1205,18 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「후훗,\@ TCVAR:PLAYER:콘돔 == 1 ?  이것으로 이제(벌써) 도망칠 수 없어?　후훗 # 이대로 안으로 내게 해 줄 테니까……싫어 해도 놓지 않아요 \@
+			PRINTFORM 「후훗, \@ TCVAR:PLAYER:콘돔 == 1 ? 이걸로 더 이상 도망갈 수 없겠네?　쿡쿡 # 이대로 안에서 싸게 해 줄게…… 싫다고 해도 놔주지 않을 거야 \@
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「아하하,\@ TCVAR:PLAYER:콘돔 == 1 ?  좀 더 필사적으로 허리 거절하세요……놓아 주지 않아요 # 가운데에 내고 싶어?　좋아요……나중에, 전부 토해내세요 \@
+			PRINTFORM 「아하핫, \@ TCVAR:PLAYER:콘돔 == 1 ? 좀 더 필사적으로 허리 흔들어 봐…… 풀어주지 않을 거야 # 안에 싸고싶어?　좋아…… 내 안에다 전부 쏟아넣도록 해 \@
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「한심한 소리 올려, 원숭이같이 허리를 여차저차 시켜……그렇게 기분이 좋구나
+			PRINTFORM 「한심한 소리나 지르면서 원숭이마냥 허리를 움직이고…… 그 정도로 기분 좋은가 보네
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
-			PRINTFORM 「좋아요, 내가 한 방울도 남김없이 짜 취해 주는……
+			PRINTFORM 「괜찮아, 내가 한 방울도 남김없이 짜내줄게……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1224,7 +1224,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;A삽입한다(TARGET 받고)
+;Ａ挿入する（TARGET受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_87
 CALL EVENT_COUNTER_MESSAGE
@@ -1234,19 +1234,19 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하아,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@, 구멍이라면 뭐든지 기분 좋게 될 수 있군요 ……
+			PRINTFORM 「하앗, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@, 구멍이라면 어디든지 기분 좋은가 보네……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　이 변태……응
+			PRINTFORM 　이 변태…… 으읏
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 여기의 구멍에서 충분해요 ……
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@같은 건 이쪽 구멍으로도 충분해……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　불만일까, 후훗
+			PRINTFORM 　불만있어? 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「이런 곳\@ TCVAR:PLAYER:콘돔 == 1 ?  그리고 # 에 \@내 버렸다들 , 남자로서의 존엄이고 뭐고 없네요?　후훗……
+			PRINTFORM 「이런 곳\@ TCVAR:PLAYER:콘돔 == 1 ? 으로 # 에 \@ 싸버리면 남자로서의 존엄은 아무것도 남지 않겠네?　후훗……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1254,7 +1254,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;V허리 모습(MASTER 받고)
+;Ｖ腰振り（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_88
 CALL EVENT_COUNTER_MESSAGE
@@ -1266,17 +1266,17 @@ RETURN RESULT
 		CASE 0
 			PRINTFORM 「하아, 하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM !　나안의 열과 조여지며,  느끼고 있어 해들……
+			PRINTFORM !　내 안의 열이랑 조임, 느껴져……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASE 1
-			PRINTFORM 「훗, 핫,은
+			PRINTFORM 「후읏, 핫, 하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　당신의, 안으로 날뛰고 있는 원이야……그렇게 기분이 좋은 것일까
+			PRINTFORM 　당신 것이 안에서 날뛰고 있어…… 그렇게 기분 좋은거야
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「간단하게는 이나 등 상관없어요……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@도, 솔직하게 쾌감을 맛볼 수 있다고는 생각하지 않는 것이군요
+			PRINTFORM 「쉽게 가게하진 않을거야…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@도 쉽게 쾌감을 맛볼 생각은 하지 마
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1284,7 +1284,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;A허리 모습(MASTER 받고)
+;Ａ腰振り（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_89
 CALL EVENT_COUNTER_MESSAGE
@@ -1294,19 +1294,19 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하아……
+			PRINTFORM 「하아……앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　대단한 , 압박받고 있는……
+			PRINTFORM 　굉장해애, 압박받고 있어……엇
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「훗, 핫,은
+			PRINTFORM 「후읏, 핫, 하앗
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　당신의, 안으로 날뛰고 있는 원이야……그렇게 기분이 좋은 것일까
+			PRINTFORM 　당신 것이 안에서 날뛰고 있어…… 그렇게 기분 좋은거야
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「간단하게는 이나 등 상관없어요……\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@도, 솔직하게 쾌감을 맛볼 수 있다고는 생각하지 않는 것이군요
+			PRINTFORM 「쉽게 가게하진 않을거야…… \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@도 쉽게 쾌감을 맛볼 생각은 하지 마
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1314,7 +1314,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;A삽입된다(MASTER 받고)
+;Ａ挿入される（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_90
 CALL EVENT_COUNTER_MESSAGE
@@ -1324,24 +1324,24 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「하앗,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@도 돌아올 수 없는 곳까지 오면 원이군요……
+			PRINTFORM 「아핫, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@도 돌아갈 수 없는 곳까지 와 버렸네……
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　단념해 솔직하게 느끼면(자) 좋아요
+			PRINTFORM 　포기하고 솔직하게 느끼는 게 좋아
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@같은 변태에게는, 이런 처분이 어울려요……후훗
+			PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@같은 변태에는 이런 벌이 어울리네…… 쿡쿡
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
 			IF TALENT:68:2 & 2
-				PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?   # 전보다도 \@힘들어서, 기분이 좋은……
+				PRINTFORM 「\@ TALENT:MASTER:성별 == 2 ?  # 앞쪽 보다 \@ 조여서 기분 좋아아……앗
 				CALL HEARTCB_K68(0xD02830)
-				PRINTFORM 　하아, 길게 유지하지 않을지도……
+				PRINTFORM 　하앗, 오래 못 참을 지도……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			ELSE
-				PRINTFORM 「후훗, 기분이 좋아져서는 안 돼요?　이것은\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@에의 벌이니까……
+				PRINTFORM 「후훗, 기분 좋아지면 안 돼.　이건 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@에게 벌을 주는 거니까……
 				CALL HEARTCB_K68(0xD02830)
 				PRINTFORML 」
 			ENDIF
@@ -1350,7 +1350,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;이라마치오 된다(MASTER 받고)
+;イラマチオされる（MASTER受け）
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_91
 CALL EVENT_COUNTER_MESSAGE
@@ -1360,13 +1360,13 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「정중한 봉사를 기대할 수 없으면……이렇게 할 수밖에 없어요 저기, 후훗」
+			PRINTFORML 「정중한 봉사를 기대할 수 없다면…… 이렇게 할 수 밖에 없겠네, 후훗」
 		CASE 1
-			PRINTFORM 「하앗,\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 존엄마다 파괴하고 있는 것 같아, 최고군요……
+			PRINTFORM 「하앗, \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 존엄성을 통째로 파괴하는 것 같아서 최고야……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASEELSE
-			PRINTFORM 「아파?　괴로워?　그렇구나 ……에서도, 나는 최고에 기분이 좋아요
+			PRINTFORM 「아파?　괴로워?　그렇구나…… 하지만 난 최고로 기분 좋아
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1374,7 +1374,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;애널개발허가를 요구한다
+;アナル開発許可を求める
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_92
 CALL EVENT_COUNTER_MESSAGE
@@ -1384,8 +1384,8 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;허리 모습역A
-;상대 주도로 당신이 A에 삽입된다
+;腰振り逆A
+;相手主導であなたがＡに挿入される
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_93
 CALL EVENT_COUNTER_MESSAGE
@@ -1395,17 +1395,17 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「이봐 , 이봐
+			PRINTFORM 「자아, 자아
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORM 　솔직하게 허덕이세요……이 변태가
+			PRINTFORM 　솔직하게 신음 해…… 이 변태가
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML !」
 		CASE 1
-			PRINTFORM 「하앗, 그렇게 느껴 , 좀 더 힘든 벌이 필요할까
+			PRINTFORM 「하앗, 그렇게 느껴서는…… 좀 더 심한 벌이 필요한걸까
 			CALL HEARTCB_K68(0xD02830)
-			PRINTFORML 」
+			PRINTFORML ?」
 		CASEELSE
-			PRINTFORM 「아무것도 생각하지 않아 괜찮아요……다만, 여기로 느끼는 쾌감에 소리를 높이고 있으면 좋은거야
+			PRINTFORM 「아무 생각 하지 않아도 돼…… 그냥 이쪽으로 느끼는 쾌감에 소리를 지르고 있으면 돼
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 	ENDSELECT
@@ -1413,8 +1413,8 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;정상위 A삽입된다
-;상대 주도로 당신이 A에 삽입된다
+;정상위A挿入される
+;相手主導であなたがＡに挿入される
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K68_94
 CALL EVENT_COUNTER_MESSAGE
@@ -1424,18 +1424,18 @@ RETURN RESULT
 
 	SELECTCASE RAND:3
 		CASE 0
-			PRINTFORM 「아……후훗, 들어가면 원이군요……?　\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@이 여기서 느끼는 것, 계속 보고 있을게 준다……
+			PRINTFORM 「아앗…… 후훗, 들어가 버렸네……?　\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@이 여기로 느끼는 걸 계속 지켜봐줄게……
 			CALL HEARTCB_K68(0xD02830)
 			PRINTFORML 」
 		CASE 1
-			PRINTFORML 「얼굴 숨겨도 쓸데없어요?　\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@은 이제, 벌써 변태가 동료로 하고 있기 때문에……」
+			PRINTFORML 「얼굴을 가려봤자 소용없어.　\@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@은 이미 변태의 무리 안에 끼여버렸으니까……」
 		CASEELSE
-			PRINTFORML 「엉덩이를 범해져 이\@ TALENT:MASTER:성별 == 2 ?  당신 # 당신 \@의 모습, 빨리 보고 싶어요……후훗」
+			PRINTFORML 「엉덩이를 범해져서 가버린 \@ TALENT:MASTER:성별 == 2 ? 당신 # 당신 \@의 모습이 빨리 보고싶어…… 후훗」
 	ENDSELECT
 
 RETURN 1
 
 ;-------------------------------------------------
-;우후후 카운터
+;うふふカウンター
 ;-------------------------------------------------
-;아직
+;まだ
