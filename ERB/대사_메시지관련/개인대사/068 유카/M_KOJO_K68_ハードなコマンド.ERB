@@ -33,15 +33,15 @@ IF LOCAL
 	ELSE
 		SELECTCASE RAND:2
 			CASE 0
-				PRINTFORML 「응……커어억!　, , 가, ……!」
+				PRINTFORML 「응……흑!?　읏, 아, 가, 그읏……!」
 				SIF ABL:68:마조끼 >= 2
-					PRINTFORML (괴로운데, 기분이 좋은……어째서……? )
+					PRINTFORML (괴로운데, 기분 좋아…… 어째서……?)
 			CASEELSE
-				PRINTFORML 「!　응, , 는……!」
+				PRINTFORML 「크읏	!?　응, 아, 찻……!」
 				SIF ABL:68:마조끼 >= 2
-					PRINTFORML (이것 정도로, 는 일 없어요……)
+					PRINTFORML (이런 정도로는, 아무렇지도 않아요……)
 		ENDSELECT
-		PRINTFORMDW 괴로움에 얼굴을 비뚤어지게 하면서, 유카는%마스터를% 예 찾아내 온다
+		PRINTFORMDW 괴로움에 얼굴을 일그러뜨리면서, 유카는 %마스터를% 노려본다.
 	ENDIF
 ENDIF
 
@@ -421,37 +421,37 @@ IF LOCAL
 	IF FLAG:70
 		PRINTL 
 		PRINTFORMDL 유카의 풍만한 가슴은, 마치 그것이 사명인것 같이 %CALLNAME:MASTER%의 페니스를 부드럽게 감싼다
-		PRINTFORMDL 그 안에서 격렬하게 전후에 허리를 움직이면(자), 쪽 개, 쪽 일 말하는 소리와 함께 사정감이 솟구쳐 왔다
-		PRINTFORMDW 타인을 접근하지 않는, 폭력적인 이 요괴의 싫은 것 같은 젖을 성욕이 토할 수 있는 말하고 있다고 생각하면(자), 저절로 허리의 움직임이 앞당겨져 갔다
+		PRINTFORMDL 그 안에서 격렬하게 앞뒤로 허리를 움직이면, 쭈욱, 쭈욱 하는 소리와 함께 사정감이 솟구쳐 왔다
+		PRINTFORMDW 타인을 가까이하지 않는, 폭력적인 이 요괴의 역겨운 젖을 성욕의 배출구로 쓰고 있다 생각하자, 저절로 허리의 움직임이 빨라졌다
 	;수간중
 	ELSEIF CFLAG:MASTER:장난 == 2
 		PRINTL 
-		PRINTFORMDL %마스터는% 유카의 젖을 대면(자), 그 속에 페니스를 사이에 두어 그녀의 잠자는 얼굴의 앞에서 그것을 자극을 주었다
-		PRINTFORMDW 눈앞에서 젖을 범해지고 있는데 계속 자는 유카의 모습에, 마치 성교하고 있는 것 같이 허리가 마음대로 움직였다
+		PRINTFORMDL %마스터는% 유카의 젖을 가까이 대더니, 그 속에 페니스를 사이에 두어 그녀의 잠자는 얼굴 앞에서 그것을 슬쩍 움직였다
+		PRINTFORMDW 눈앞에서 젖을 범해지고 있는데도 계속 잠들어 있는 유카의 모습에, 마치 성교를 하는 듯 허리가 마음대로 움직였다
 	ELSEIF TCVAR:68:만취 == 1
 		
 	;연모 or 연인
 	ELSEIF TALENT:68:연인 || TALENT:68:연모 || TALENT:68:애욕
 		SELECTCASE RAND:2
 			CASE 0
-				PRINTFORM 「응, , 아
+				PRINTFORM 「읏, 아, 앗
 				CALL HEARTCB_K68(0xD02830)
-				PRINTFORML 　이제, 이런 건이 기분이 좋은거야……?」
+				PRINTFORML 　정말, 이런 게 기분이 좋은거야……?」
 			CASEELSE
-				PRINTFORM 「응
+				PRINTFORM 「읏
 				CALL HEARTCB_K68(0xD02830)
-				PRINTFORML !　하아, 가슴과 섹스 하고 있는 작정(생각)……?」
+				PRINTFORML !　하아, 가슴이랑 섹스할 작정인 거야……?」
 		ENDSELECT
-		PRINTFORMDW 가슴으로 쾌감을 탐내는 %CALLNAME:MASTER%에 기가 막히면서도, 유카는 하급자압력에 맞추어 소리를 높이고 있다
+		PRINTFORMDW 가슴으로 쾌감을 탐내는 %CALLNAME:MASTER%에 기가 막히면서도, 유카는 밀어올림에 맞추어 소리를 높이고 있다
 	;그 이외
 	ELSE
 		SELECTCASE RAND:2
 			CASE 0
-				PRINTFORML 「……이런, 부끄러운 것……」
+				PRINTFORML 「으으……이런, 부끄러운 일을……」
 			CASEELSE
-				PRINTFORML 「응……빨리 이 오세요……!」
+				PRINTFORML 「읏……빨리 가버리라고……!」
 		ENDSELECT
-		PRINTFORMDW 가슴의 안으로 성교하고 있는 것 같이 싫은 것 같은 소리를 내는 %CALLNAME:MASTER%의 페니스로부터, 유카는 눈을 떼고 있다
+		PRINTFORMDW 가슴 속에서 성교하고 있는 듯 역겨운 소리를 내는 %CALLNAME:MASTER%의 페니스로부터, 유카는 눈을 돌리고 있다
 	ENDIF
 ENDIF
 
