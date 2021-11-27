@@ -297,7 +297,7 @@ ENDIF
 @K42_HATATE_ATELIER
 ;日常系/RECIPE_DATA.ERBに材料詳細
 ;하타테の조제경험が１以上かつ조제기능が１以下, 연모を取得した状態で, 椛との交流値が１以上아ること
-IF ABL:조제기능 < 2 && EXP:조제경험 >= 1 && TALENT:연모 && CFLAG:1010 >= 1 && CFLAG:1401 == 0
+IF TALENT:조제Lv < 2 && EXP:조제경험 >= 1 && TALENT:연모 && CFLAG:1010 >= 1 && CFLAG:1401 == 0
 	PRINTFORML ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 	PRINTFORML ┃%"이벤트：하타테의 아틀리에",72,LEFT%┃
 	PRINTFORML ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
