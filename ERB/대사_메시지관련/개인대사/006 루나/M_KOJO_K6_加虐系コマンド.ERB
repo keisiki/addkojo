@@ -1,0 +1,430 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;가학계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;100,스팽킹
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_100
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_100_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_100_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;101,채찍
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_101
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_101_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_101_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;102,촛농
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_102
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_102_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_102_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM) && CFLAG:수면
+		PRINTFORML %CALLNAME:MASTER%는 눈 앞의 요정의 사지를 도망치지 못하도록 단단히 묶는다。
+		PRINTFORML 요정이 깨어난다 해도 이 구속을 풀 수는 없다。
+		PRINTFORMW ……%CALLNAME:MASTER%가 무슨 짓을 하더라도 저항조차 할 수 없다。
+		PRINTFORML 
+		PRINTFORML 
+		PRINTFORMW 「새근…… 새근…」
+		PRINTFORML 
+		PRINTFORMW 루나를 어떻게 가지고 놀까 생각할 때마다、%CALLNAME:MASTER%의 천진난만한 미소가 번지고 있었다。
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;103,바늘
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_103
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_103_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_103_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;104,눈가리개
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_104
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_104_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_104_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;장착
+	IF TEQUIP:눈가리개
+		;시간(時姦)중
+		IF FLAG:70
+			PRINTFORMW 
+			RETURN 1
+		;연모
+		ELSEIF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;해제
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;105,밧줄
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_105
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_105_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_105_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;장착
+	IF TEQUIP:밧줄
+		;시간(時姦)중
+		IF FLAG:70
+			PRINTFORMW 
+			RETURN 1
+		;연모
+		ELSEIF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;해제
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;106,볼개그
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_106
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_106_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_106_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;장착
+	IF TEQUIP:볼개그
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;해제
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;107,구속플레이
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_107
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_107_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_107_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;장착
+	IF TEQUIP:볼개그
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;해제
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;108,젖스팽킹
+;==================================================
+@M_KOJO_MESSAGE_COM_K6_108
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K6_108_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K6_108_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
