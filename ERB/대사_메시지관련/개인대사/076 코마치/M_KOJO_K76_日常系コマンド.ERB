@@ -1,0 +1,4721 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;일상계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;300, 회화
+;TFLAG:193(1=대성공 0=성공 -1=실패 -2=대실패(TARGET가 MASTER보다 교양이 4이상 높다)
+;TCVAR:302(0=회화 가능 1>= 비연모시 회화 불능)
+;MARK:반발각인(3이상=회화 불능)(4이상은 버그
+;TCVAR:만취(1=통상 성공 or대실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_300
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_300
+;커맨드 공통 메세지(TRAIN_MESSAGE) 
+;삭제하면 「~이야기를 했다.」든지가 사라집니다. 또, 삭제했을 경우는 자동으로 말색이 붙지 않습니다.
+CALL TRAIN_MESSAGE
+;말메인 호출
+CALL M_KOJO_MESSAGE_COM_K76_300_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_300_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모
+		;조금 달콤한 회화가 증가하거나 증가하지 않거나
+		IF TALENT:연인
+			IF CFLAG: 임신자각상태 == 1
+				SELECTCASE RAND:100
+				;임신 시한정의 회화가 50%의 확률로 나온다
+				CASE 0 TO 49
+					SELECTCASE RAND:6
+					CASE 0
+						PRINTFORML 「임신중인 여자의 기분을 헤아려 주라고 얘기는 하지만」
+						PRINTFORML 「남자는 기본적으로 둔하기 때문에 그런 거 알 리가 없어. 남의 일이고」
+						PRINTFORML 「굳이 배려해줄 필요 없으니까, 도움이 필요할 때 도와준다면 고맙겠어」
+						PRINTW 
+						PRINTFORML 「그러니까, 뭔가 속이 이상하니 등좀 문질러 줘……」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「최근 뭐랄까, 시키님이 괜시리 나한테 상냥해진 것 같아」
+						PRINTFORML 「아니 뭐, 이전부터 상냥하지 않은 사람은 아니었지만 말야. 어려운 사람이었긴 해도」
+						PRINTFORML 「『무리 하지마』 『몸을 차게 하지마』 『무거운 건 들지마』…… 라며, 잔소리가 는 것 같아」
+						PRINTW 
+						PRINTFORML 「그래그래, 전에 몸이 안좋아서 조금 쉬고 있을때, 도와줄 사람이 올 때까지 등을 어루만져 주셨었지」
+						PRINTFORML 「대신할 사람이 왔을땐 일하러 돌아가 버렸지만, 쭉 손잡고 있어 주셔서 기뻤어」
+						PRINTFORML 「아아, 그리고 그거 말고도……」
+						PRINTW 
+					CASE 2
+						PRINTFORML 「임신하면 시큼한 것이 먹고 싶어지거나 특정한 냄새로 기분이 나빠지거나 한대」
+						PRINTFORML 「사람마다 상당히 차이가 있는 것 같아」
+						PRINTFORML 「나? 일거리를 보면 기분이 나빠져」
+						PRINTW 
+					CASE 3
+						PRINTFORML 「아아, 술 마시고 싶닷」
+						PRINTFORML 「적어도 차라도 달라고 해봤지만 대나무숲의 의사가 그것도 안된대」
+						PRINTFORML 「그러니까 %CALLNAME:MASTER%, 보리차 가져와 줄래」
+					CASE 4
+						PRINTFORML 
+					CASEELSE
+						PRINTFORML 「갓난아기가 사랑스러운 이유는, 둥글고, 포동포동하고, 연약해 보이기 때문에,
+						PRINTFORML 　그것을 지켜 주려는 의욕이 생기기 때문이래」
+						PRINTFORML 「염라의 심판을 받는 도깨비불이 둥근 것도, 시키님으로부터 온정을 받고 싶은 방위 본능에서 생겨난 업인 것일지도」
+						PRINTW 
+						PRINTFORML 「내가 말하긴 했지만, 엉망인 얘기네」
+						PRINTW 
+					ENDSELECT
+				CASEELSE
+					SELECTCASE RAND:45
+					CASE 0
+						PRINTFORMW 「일은 괜찮냐고? 자, 다른 재밌는 얘기 하자」
+					CASE 1
+						PRINTFORMW 「아니, 전에 큰일 난 적이 있었는데. 낮잠자고 있다가 시키님에게 호되게 혼나버렸지…」
+					CASE 2
+						PRINTFORML 「내 업무는 삼도천의 사공이라는 건 전에 이야기했지만 말야」
+						PRINTFORMW 「사신들 사이에서 그다지 선호되지 않아. 역시 최고로 인기 있는 건 영혼을 베어 내는 일」
+						PRINTL
+						PRINTFORML 그래도 말야, 라고 코마치는 말을 이어갔다
+						PRINTFORMW 「나는 내 일이 마음에 들어. 보람 있기도 하고」
+					CASE 3
+						PRINTFORML 「이 낫? 보이는 대로 실용성은 없어」
+						PRINTFORMW 「그렇지만, 이게 의외로 죽은자들에게 인기 있더라고. 『사신은 정말로 있었구나!』라고」
+					CASE 4
+						PRINTFORML 「나는 사신이지만, 별로 사람을 죽이진 않아」
+						PRINTFORMW 「원래 관할 밖이기도 하고」
+					CASE 5
+						PRINTFORML 「나는 이 사신의 눈으로 타인의 수명이 보이지만」
+						PRINTFORMW 「만약 수명 반과 교환에 준다 라고 하면, 당신은 가지고 싶어?」
+					CASE 6
+						PRINTFORML 「인간은 누구든지 사후엔 지옥에 가고 싶지 않다고 생각하겠지만」
+						PRINTFORMW 「그렇다면, 사후에는 극락이 기다리고 있다고 생각하고 정직하게 살아야지」
+					CASE 7
+						PRINTFORML 「너무 일만 하는건 별로 관심 없어」
+						PRINTFORMW 「그 당시엔 보람이 있어도, 직장을 잃거나 하면, 사는 보람을 잃는 것과 같을 테니까」
+						PRINTFORMW 「나는 너무 농땡이 친다고? 시키님 같은 이야긴 하지말아줘」
+					CASE 8
+						PRINTFORML 「다른 사람을 부러워하거나 동경하는 것은 자연스러운 거야」
+						PRINTFORMW 「그렇지만, 남을 비하하고 험담하는 건 그만둬야해」
+						PRINTFORMW 「그런 일을 정당화 하는 녀석은 더는 어찌할 도리가 없어」
+					CASE 9
+						PRINTFORML 「나랑 하쿠레이의 무녀가 비슷하다는 녀석이 있던데」
+						PRINTFORMW 「공통점이 아무것도 없다고 생각하지만. 당신은 어떻게 생각해?」
+					CASE 10
+						PRINTFORML 「틀어박혀 있으면 몸속에 음의 기분이 가득 차버려」
+						PRINTFORMW 「가끔 씩은 밖에 나와, 볕 잘 드는 곳에서 낮잠 자는 것도 좋은 일이야」
+					CASE 11
+						PRINTFORML 「타인과의 연결을 소중히 해」
+						PRINTFORMW 「자신이 고립되어 있음을 깨달았을 때에는 벌써 늦을거야」
+					CASE 12
+						PRINTFORML 「밖의 세계에는 이름과 사인을 적는 것만으로 사람을 죽일 수 있는 장부가 있다든가?」
+						PRINTFORMW 「일은 편해질 것 같지만, 뭔가 따분하네」
+					CASE 13
+						PRINTFORML 「뭐라던가 스키마 요괴의 식신이 삼도천의 폭을 계산했다고?」
+						PRINTFORMW 「재미있는 생각을 하네. 지적 호기심이라고 하는 것은, 마음을 풍부하게 해 주지」
+					CASE 14
+						PRINTFORML 「마중 나온 사신에게 이기면 수명을 늘릴수 있어. 알고 있어?」
+						PRINTFORMW 「그런 거 가르쳐줘도 되냐고? 원래, 사신에게 이길 수 있는 시점에서 그 녀석은 인간 그만두고 있는 녀석 인거지」
+						PRINTFORMW 「당신은 인간을 그만두면서까지 장수 하고 싶어?」
+					CASE 15
+						PRINTFORML 「휴식도 중요한 일의 하나. 능률적으로 일하기 위해 중요한 것이야」
+						PRINTFORMW 「그래서, 이렇게 당신과 이야기를 주고 받고 있는 것도 소중한 일이라는 것」
+					CASE 16
+						PRINTFORML 「유령의 수는 너무 많아도, 너무 적어도 안 돼」
+						PRINTFORMW 「너무 많으면 지상에서 일어난 이변과 다름없고, 너무 적으면 대지에 사람이 넘쳐나 버리니까」
+						PRINTFORMW 「뭐어, 무엇이든 적당한 것이 제일이라는 거야」
+					CASE 17
+						PRINTFORML 「가끔 씩은 빈둥거리는 것도 좋네」
+						PRINTFORMW 「……그 이상한 얼굴은 뭐야」
+					CASE 18
+						PRINTFORML 「그러고 보면 과자가게에 새로운 물건을 들여왔다고 하던데」
+						PRINTFORMW 「궁금하니까 데려가 줘」
+					CASE 19
+						PRINTFORML 「%CALLNAME:MASTER% 평상시엔 뭐 하고 있어?」
+						PRINTFORMW 「괜찮다면 얘기해줘」
+					CASE 20
+						PRINTFORML 「농담 중에 그런 이야기가 있잖아? 거짓말로 감쪽같이 만두를 가로채는 이야기」」
+						PRINTFORML 「나도, 시키님에게 『일 게으름 피우는 것이 무섭습니다』라고 해봤다」
+						PRINTFORML 「그랬더니, 주 3일의 업무가, 주 6일로 늘어나 버렸어」
+						PRINTW 
+						PRINTFORML 「……무섭지?」
+						PRINTW 
+					CASE 21
+						PRINTFORML 「남자는 등으로 말한다고들 하지」
+						PRINTFORML 「그리고, 눈은 입만큼 말을 한다던가,」
+						PRINTFORML 「그렇지만 역시, 나는 입으로 직접 말해주면 좋겠어」
+						PRINTW 
+						PRINTFORML 「그러니까, 나를 좋아한다고 말해줘」
+					CASE 22
+						PRINTFORML 「혼자였을 땐 잘 가지 않던 과자가게에 자주 가게 됐다고?」
+						PRINTFORML 「혼자서는 할 생각 없던 일도, 두명이라면 체험해 볼 수도 있겠지」
+						PRINTFORML 「연인이 된다는 게, 나쁜 건 아니잖아?」
+						PRINTW 
+						PRINTFORML 「뭐, 그 만큼 독신일 때와 달리 제약도 늘어나버리지만, 애교로 봐줘」
+					CASE 23
+						PRINTFORML 「예전에 『노력은 배반하지 않는다』라는 말이 유행하고」
+						PRINTFORML 「그 뒤에는 『노력이 결실을 맺는다고는 할 수 없지만, 성공한 사람은 모두 노력했다』라는 말이 유행했지」
+						PRINTFORML 「또 그 다음에는 『노력은 조심하지 않으면 금방 거짓말을 한다』라는 말이 유행했다던가」
+						PRINTW 
+						PRINTFORML 「『노력』의 진화속도는 생물의 그것을 능가하고 있지 않을까」
+						PRINTFORML 「나는 거기에 덧붙여 『노력은 자주 방향치가 된다』라고 만들어 봤는데, 어때?」
+						PRINTFORML 「엣, 그것도 어디서 들어본 적 있다고? 노력의 진화속도 너무하잖아!」
+						PRINTW 
+					CASE 24
+						PRINT 「코마치는 뭐라고 오늘
+						IF TALENT:기분 > -1
+							PRINTFORML 매우 기분이 좋다」
+						ELSE
+							PRINTFORML 기분이 나쁘다」
+						ENDIF
+							PRINTFORML 「그러니까 %CALLNAME:MASTER%, 뭔가 맛있는 것이라도 한턱 내 줘」
+							PRINTW 
+					CASE 25
+						PRINTFORML 「뭐랄까, 해야 할 일이 있을때 꼭 딴짓하고 싶지 않아?」
+						PRINTFORML 「내가 요즘 마음에 드는 건 이거야」
+						PRINTFORML 「의미는 없지만, 뽁뽁 눌러 터뜨리고 싶어져」
+						PRINTW 
+					CASE 26
+						PRINTFORMW 「　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　」
+						PRINTFORML 「지금의 공란에, 내가 말해줬으면 하는 말을 넣어줘」
+						PRINTFORML 「응, 누구랑 이야기하고 있냐고?……누구일까」
+					CASE 27
+						PRINTFORML 「와카[和歌]에는 말야, 일정한 수식어라는 것이 있잖아」
+						PRINTFORML 「『히사카타노~』라든가 『치와야후루~』든가
+						PRINTFORML 「나도 자주, 얘기할때 비슷한 수식어를 사용하지. 노래에 재능 있는지도」
+						PRINTW 
+						PRINTFORML 「『그렇게는 말합니다만 시키님』이든지 『말씀하시는 바는 압니다만~』(이)든지」
+						PRINTFORML 「그리고 『노력은 하고 있습니다만 말이죠」든지』
+						PRINTFORML 「에? 미묘하게 다른 것 같다고? 그런가」
+						PRINTW 
+					CASE 28
+						PRINTFORML 「요즘, 아카베코를 열심히 수집중이야」
+						PRINTFORML 「맞아, 목이 흔들흔들하는 빨간 소 나무인형」
+						PRINTFORML 「이거 머리가 여러개 달려 귀여운 것도 있어. 『케루베코』라던가」
+						PRINTW 
+					CASE 29
+						PRINTFORML 「최근 향림당에 『가챠가챠』라는 게 생긴 것 같아」
+						PRINTFORML 「동전을 넣고 손잡이를 돌리면, 경품이 한 개 나오는거야」
+						PRINTFORML 「그 통이 텅 빌때까지 돌리면 『아아, 이번달에 엄청 일했구나』같은 기분이 드는거야」
+						PRINTW 
+					CASE 30
+						PRINTFORML 「죽고 싶다고 생각한 적 있어?」
+						PRINTFORML 「그렇지만 베이거나 찌르면 아프고 불은 뜨겁지. 물속이나 밧줄은 괴롭고, 약은 실패할 수도 있고 여러가지 위험해」
+						PRINTFORML 「뭔가 기분나빠지지? 죽고 싶어지면 지금의 기분을 떠올려」
+						PRINTW 
+						PRINTFORML 「뭐, 그 전에 내 가슴에 꼬옥 안겨」
+						PRINTFORML 「해결법은 제시해 주지 못해도 기분이 풀릴 때까지 껴안고 머리를 쓰다듬어 줄게」
+						PRINTW 
+					CASE 31
+						PRINTFORML 「내가 게으름 피워서 시키님에게 야단맞는 꼴을 보고, 자신은 아직 괜찮은 놈이라고 느끼는 녀석이 있겠지」
+						PRINTFORML 「그런 녀석도 있으리라고 생각하면 나는 버틸 수 있어」
+						PRINTFORML 「세상은 잘 돌아가고 있는 거지」
+						PRINTW 
+					CASE 32
+						PRINTFORML 「배 저어 삼도천을 오가는 것도 꽤 힘들어. 이야기하는 건 즐겁지만」
+						PRINTW 
+						PRINTFORML 「어딘가의 캇파가, 이런거 만들어 주지 않을까.
+						PRINTFORML 돈을 내면 강이 두갈래로 갈라지고, 자동으로 건너편 물가까지 옮겨 주는 장치」
+						PRINTW 
+						PRINTFORML 「만들어준다면 나한테도 몇개 없는 육문전을 주겠어」
+						PRINTFORML 「부족하다면 마음에 드는 『케루베코』도 얹어 줘도 괜찮아」
+						PRINTW 
+					CASE 33
+						PRINTFORML 「팔방미인이라는 평가를, 나쁜 쪽으로 받아들이는 사람도 없진 않지만」
+						PRINTFORML 「저건 저것대로, 주변과 자기 나름대로 조화를 유지하기 위한 방법이라고 생각해」
+						PRINTW 
+						PRINTFORML 「그것보다, 팔방으로 『추함』을 뿌리는 것이 훨씬 문제라고 봐」
+						PRINTFORML 「그러다간 사면초가 되어 버리고 말겠지?」
+						PRINTW 
+					CASE 34
+						PRINTFORML 「같은 『올바름』에도, 『적절』과 『적당』은, 인상이 꽤 다르지」
+						PRINTFORML 「이해 하기 어려워? 『적절』이 시키님, 『적당』이 나라고 말하면 약간 알것 같아?」
+						PRINTFORML 「우와, 굉장히 이해한 듯한 얼굴이야. 화나는데」
+						PRINTW 
+					CASE 35
+						PRINTFORML 「『내일이야말로는 노력하자』」
+						PRINTFORML 「우선 이렇게 말하는 것만으로 당장은 견딜 수 있기 때문에, 곤란할 때 읊어봐」
+						PRINTFORML 「반동도 굉장하지만 말야」
+						PRINTW 
+					CASE 36
+						PRINTFORML 「그러고 보면 전에, 비슷한 인생의 유령을 태웠었지」
+						PRINTFORML 「한쪽은, 자신이 웃음거리가 되는 것으로, 타인을 웃기는 사람」
+						PRINTFORML 「다른 한쪽은, 타인을 웃음거리로 하는 것으로, 그 외의 사람을 웃기는 사람」
+						PRINTW 
+						PRINTFORML 「타인을 웃게 하는 일이라는 점에서는 똑같지만 말야」
+						PRINTFORML 「과정이 조금 다른 것만으로, 인상이 상당히 바뀌는구나 하고 생각했어」
+						PRINTFORML 「나중에 시키님에게 들었지만, 전자는 평소에 많은 사람에게 존경받았다고 해」
+						PRINTW 
+					CASE 37
+						PRINTFORML 「전에 시키님과 『성애』과 『상애』의 차이는 무엇인가 잡담을 한 적이 있는데」
+						PRINTFORML 「『하반신으로 생각하는 것이 성애고, 상반신으로 생각하는 것이 상애가 아닙니까』라고 말했더니, 굉장히 혼났었어」
+						PRINTFORML 「그럴듯 한 얘기라고 생각했는데…… 에, 전혀 아니야? 그럴수가」
+						PRINTW 
+					CASE 38
+						PRINTFORML 「언젠가 한번은 나도 하면 할 수 있는 여자란 걸 보여주려고, 한달 정도 성실하게 일했었지」
+						PRINTFORML 「그러자, 시키님이 진귀한 짐승이라도 보는 듯한 눈빛으로 보시길래 금방 그만두었어」
+						PRINTFORML 「그러니까, 다시 『아아, 이 사람은……』같은 눈으로 봐 주셔서, 안심한 거야」
+						PRINTW 
+					CASE 39
+						PRINTFORML 「『나는 아직 전력을 다하지 않은 것뿐』이라는 말은, 쓰기 편하지」
+						PRINTFORML 「『내일부터 노력하자』 『내년부터 진심으로 간다』도 더해서, 코마치의 삼종신기야」
+						PRINTW 
+						PRINTFORML 「『지금 안하면 언제 할거야!』같은 소리를 하는 마을의 인간이 있었지만」
+						PRINTFORML 「내가 재판장이라면 곧바로 지옥행 선고야」
+						PRINTW 
+					CASE 40
+						PRINTFORML 「요전에 글쎄, 땡땡이 쳤던 것을 시키님에게 문책당했을 때 말이야」
+						PRINTFORML 「『따로 게으름 피우고 있는게 아니다. 하루 일을 일년 단위로 배분하고 있을 뿐이다.
+						PRINTFORML 　그날만 보고 판정을 내리기에는 너무 성급하다』라고 말씀드렸지」
+						PRINTW 
+						PRINTFORML 「회개봉으로 맞았어. 아팠다」
+						PRINTFORML 「응, 아까 땡땡이 칠거라고 말하지 않았냐고? 시키님에게는 얘기한게 아니니까 괜찮아괜찮아」
+						PRINTW 
+					CASE 41
+						IF ABL:요리기능 >=  5
+							PRINTFORML 「전에, 시키님이 집에 놀러오셔서, 요리를 대접했었지」
+							PRINTFORML 「그 때 우연히 신선한 네시를 구해서」
+							PRINTFORML 「시키님도 좋아하셔서 다행이었어」
+							PRINTW 
+							;즌도코베론초가 뭐야?
+							PRINTFORML 「응, 네시가 뭐냐니?」
+							PRINTFORML 「네시는 네시지. 그 이상이도 그 이하도 아니고?」
+							PRINTW 
+						ELSEIF ABL:요리기능 >=  3
+							PRINTFORML 「뭐든지 맛있다고 느끼는 쪽이 좋은가, 맛에 까다로운 쪽이 좋은가」
+							PRINTFORMW 「결국 그런건, 자신의 위치에 따라 달라지는구나라고 생각해」
+							PRINTFORML 「먹는 쪽이라면 전자가 행복할 것이고, 만들어 주는 쪽이라면 먹는 상대를 만족시켜줘야 하겠지?」
+							PRINTFORML 「뭐든지 단순하게 생각해 버리면, 반대로 까다로워지는 상황이 생긴다, 라는 이야기」
+							PRINTW 
+						ELSEIF ABL:요리기능 >=  1
+							PRINTFORML 「전에, 문득 생각나서 낫토에 참기름 두르고, 소금 뿌려봤어」
+							PRINTFORML 「밥을 끊임없이 먹게돼, 그것 때문에. 터무니 없는 음식이야. 이 세상에 내서는 안돼」
+							PRINTFORML 「그래서, 시키님에게도 권해 보았어」
+							PRINTW 
+						;밥 맛없어 난처하면
+						ELSE
+							PRINTFORML 「요리에는 5대 장이란 것이 있지」
+							PRINTFORML 「춘장, 마장, 비지장, 두반장, 해선장, , 이였던가」
+							PRINTFORMW 「어라, 아니야?」
+							PRINTFORML 애초에 「5대 장」이라는 말은 없던 것 같다
+							PRINTW 
+						ENDIF
+					CASE 42
+						PRINTFORML 「욕망이 있는 건 나쁜 것이 아니야. 욕망은 누구에게나 있는 것이지. 염라님에게도 말이야」
+						PRINTFORML 「욕망에 충실한 것 까지는 괜찮아. 욕망에 빠지거나 억지로 떼내려 하는 것이 위험한 것」
+						PRINTFORML 「그러니, 내가 향림당의 가챠가챠에 열중하고 있는 건 나쁜 일이 아니야」
+						PRINTW 
+					CASE 43
+						PRINTFORML 「시키님이 코마치를 설교하는 모습을 보고, 염라님은 무섭다고 주위 사람이 생각하게 되겠지」
+						PRINTFORML 「즉 나는, 염라님의 위엄을 유지하는데 한 역할 하고 있다는 거야!」
+						PRINTW 
+					CASEELSE
+						PRINTFORML 「내가 %CALLNAME:MASTER%을 좋아하냐고?」
+						PRINTFORML 「물론 좋아하고있지. 매일 말하고 있잖아」
+						PRINTFORML 「언젠가 전할 수 없는 날이 와서 후회하는 것보다, 지금 말해 두고 싶어, 나는」
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			;임신하고 있지 않다
+			ELSE
+				SELECTCASE RAND:45
+				CASE 0
+					PRINTFORMW 「일은 괜찮냐고? 자, 다른 재밌는 얘기 하자」
+				CASE 1
+					PRINTFORMW 「아니, 전에 큰일 난 적이 있었는데. 낮잠자고 있다가 시키님에게 호되게 혼나버렸지…」
+				CASE 2
+					PRINTFORML 「내 업무는 삼도천의 사공이라는 건 전에 이야기했지만 말야」
+					PRINTFORMW 「사신들 사이에서 그다지 선호되진 않아. 역시 최고로 인기 있는 건 영혼을 베어 내는 일」
+					PRINTL
+					PRINTFORML 그래도 말야, 라고 코마치는 말을 이어갔다
+					PRINTFORMW 「나는 내 일이 마음에 들어. 보람 있기도 하고」
+				CASE 3
+					PRINTFORML 「이 낫? 보이는 대로 실용성은 없어」
+					PRINTFORMW 「그렇지만, 이게 의외로 죽은자들에게 인기 있더라고. 『사신은 정말로 있었구나!』라고」
+				CASE 4
+					PRINTFORML 「나는 사신이지만, 별로 사람을 죽이진 않아」
+					PRINTFORMW 「원래 관할 밖이기도 하고」
+				CASE 5
+					PRINTFORML 「나는 이 사신의 눈으로 타인의 수명이 보이지만」
+					PRINTFORMW 「만약 수명 반과 교환에 준다 라고 하면, 당신은 가지고 싶어?」
+				CASE 6
+					PRINTFORML 「인간은 누구든지 사후엔 지옥에 가고 싶지 않다고 생각하겠지만」
+					PRINTFORMW 「그렇다면, 사후에는 극락이 기다리고 있다고 생각하고 정직하게 살아야지」
+				CASE 7
+					PRINTFORML 「너무 일만 하는건 별로 관심 없어」
+					PRINTFORMW 「그 당시엔 보람이 있어도, 직장을 잃거나 하면, 사는 보람을 잃는 것과 같을 테니까」
+					PRINTFORMW 「나는 너무 농땡이 친다고? 시키님 같은 이야긴 하지말아줘」
+				CASE 8
+					PRINTFORML 「다른 사람을 부러워하거나 동경하는 것은 자연스러운 거야」
+					PRINTFORMW 「그렇지만, 남을 비하하고 험담하는 건 그만둬야해」
+					PRINTFORMW 「그런 일을 정당화 하는 녀석은 더는 어찌할 도리가 없어」
+				CASE 9
+					PRINTFORML 「나랑 하쿠레이의 무녀가 비슷하다는 녀석이 있던데」
+					PRINTFORMW 「공통점이 아무것도 없다고 생각하지만. 당신은 어떻게 생각해?」
+				CASE 10
+					PRINTFORML 「틀어박혀 있으면 몸속에 음의 기분이 가득 차버려」
+					PRINTFORMW 「가끔 씩은 밖에 나와, 볕 잘 드는 곳에서 낮잠 자는 것도 좋은 일이야」
+				CASE 11
+					PRINTFORML 「타인과의 연결을 소중히 해」
+					PRINTFORMW 「자신이 고립되어 있음을 깨달았을 때에는 벌써 늦을거야」
+				CASE 12
+					PRINTFORML 「밖의 세계에는 이름과 사인을 적는 것만으로 사람을 죽일 수 있는 장부가 있다든가?」
+					PRINTFORMW 「일은 편해질 것 같지만, 뭔가 따분하네」
+				CASE 13
+					PRINTFORML 「뭐라던가 스키마 요괴의 식신이 삼도천의 폭을 계산했다고?」
+					PRINTFORMW 「재미있는 생각을 하네. 지적 호기심이라고 하는 것은, 마음을 풍부하게 해 주지」
+				CASE 14
+					PRINTFORML 「마중 나온 사신에게 이기면 수명을 늘릴수 있어. 알고 있어?」
+					PRINTFORMW 「그런 거 가르쳐줘도 되냐고? 원래, 사신에게 이길 수 있는 시점에서 그 녀석은 인간 그만두고 있는 녀석 인거지」
+					PRINTFORMW 「당신은 인간을 그만두면서까지 장수 하고 싶어?」
+				CASE 15
+					PRINTFORML 「휴식도 중요한 일의 하나. 능률적으로 일하기 위해 중요한 것이야」
+					PRINTFORMW 「그래서, 이렇게 당신과 이야기를 주고 받고 있는 것도 소중한 일이라는 것」
+				CASE 16
+					PRINTFORML 「유령의 수는 너무 많아도, 너무 적어서도 안 돼」
+					PRINTFORMW 「너무 많으면 지상에서 일어난 이변과 다름없고, 너무 적으면 대지에 사람이 넘쳐나 버리니까」
+					PRINTFORMW 「뭐어, 무엇이든 적당한 것이 제일이라는 거야」
+				CASE 17
+					PRINTFORML 「가끔 씩은 빈둥거리는 것도 좋네」
+					PRINTFORMW 「……그 이상한 얼굴은 뭐야」
+				CASE 18
+					PRINTFORML 「그러고 보면 과자가게에 새로운 물건을 들여왔다고 하던데」
+					PRINTFORMW 「궁금하니까 데려가 줘」
+				CASE 19
+					PRINTFORML 「%CALLNAME:MASTER% 평상시엔 뭐 하고 있어?」
+					PRINTFORMW 「괜찮다면 얘기해줘」
+				CASE 20
+					PRINTFORML 「농담 중에 그런 이야기가 있잖아? 거짓말해서, 감쪽같이 만두를 가로채는 이야기」」
+					PRINTFORML 「나도, 시키님에게 『일 게으름 피우는 것이 무섭습니다』라고 해봤다」
+					PRINTFORML 「그랬더니, 주 3일의 업무가, 주 6일로 늘어나 버렸어」
+					PRINTW 
+					PRINTFORML 「……무섭지?」
+					PRINTW 
+				CASE 21
+					PRINTFORML 「남자는 등으로 말한다고들 하지」
+					PRINTFORML 「그리고, 눈은 입만큼 말을 한다던가,」
+					PRINTFORML 「그렇지만 역시, 나는 입으로 직접 말해주면 좋겠어」
+					PRINTW 
+					PRINTFORML 「그러니까, 나를 좋아한다고 말해줘」
+				CASE 22
+					PRINTFORML 「혼자였을 땐 잘 가지 않던 과자가게에 자주 가게 됐다고?」
+					PRINTFORML 「혼자서는 할 생각 없던 일도, 두명이라면 체험해 볼 수도 있겠지」
+					PRINTFORML 「연인이 된다는 게, 나쁜 건 아니잖아?」
+					PRINTW 
+					PRINTFORML 「뭐, 그 만큼 독신일 때와 달리 제약도 늘어나버리지만, 애교로 봐줘」
+				CASE 23
+					PRINTFORML 「예전에 『노력은 배반하지 않는다』라는 말이 유행하고」
+					PRINTFORML 「그 뒤에는 『노력이 결실을 맺는다고는 할 수 없지만, 성공한 사람은 모두 노력했다』라는 말이 유행했지」
+					PRINTFORML 「또  그 다음에는 『노력은 조심하지 않으면 금방 거짓말을 한다』라는 말이 유행했다던가」
+					PRINTW 
+					PRINTFORML 「『노력』의 진화속도는 생물의 그것을 능가하고 있지 않을까」
+					PRINTFORML 「나는 거기에 덧붙여 『노력은 자주 방향치가 된다』라고 만들어 봤는데, 어때?」
+					PRINTFORML 「엣, 그것도 어디서 들어본 적 있다고? 노력의 진화속도 너무하잖아!」
+					PRINTW 
+				CASE 24
+					PRINT 「나는 무려 오늘
+					IF TALENT:기분 > -1
+						PRINTFORML 매우 기분이 좋다」
+					ELSE
+						PRINTFORML 기분이 나쁘다」
+					ENDIF
+						PRINTFORML 「그러니까 %CALLNAME:MASTER%, 뭔가 술이라도 한턱 내 줘」
+						PRINTW 
+				CASE 25
+					PRINTFORML 「뭐랄까, 해야 할 일이 있을때 꼭 딴짓하고 싶지 않아?」
+					PRINTFORML 「내가 요즘 마음에 드는 건 이거야」
+					PRINTFORML 「의미는 없지만, 뽁뽁 눌러 터뜨리고 싶어져」
+					PRINTW 
+				CASE 26
+					PRINTFORMW 「　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　」
+					PRINTFORML 「지금의 공란에, 내가 해줬으면 하는 말을 넣어줘」
+					PRINTFORML 「응, 누구랑 이야기하고 있냐고?……누구일까」
+				CASE 27
+					PRINTFORML 「와카[和歌]에는 말야, 일정한 수식어라는 것이 있잖아」
+					PRINTFORML 「『히사카타노~』라든가 『치와야후루~』든가
+					PRINTFORML 「나도, 얘기할때 자주 비슷한 수식어를 사용하지. 노래에 재능 있는지도」
+					PRINTW 
+					PRINTFORML 「『그렇게는 말합니다만 시키님』이라든지 『말씀하시는 바는 압니다만~』이나」
+					PRINTFORML 「그리고 『노력은 하고 있습니다만 말이죠」라든지』
+					PRINTFORML 「에? 미묘하게 다른 것 같다고? 그런가」
+					PRINTW 
+				CASE 28
+					PRINTFORML 「요즘, 아카베코를 열심히 수집중이야」
+					PRINTFORML 「맞아, 목이 흔들흔들하는 빨간 소 나무인형」
+					PRINTFORML 「이거 머리가 여러개 달려 귀여운 것도 있어. 『케루베코』라던가」
+					PRINTW 
+				CASE 29
+					PRINTFORML 「최근 향림당에 『가챠가챠』라는 게 생긴 것 같아」
+					PRINTFORML 「동전을 넣고 손잡이를 돌리면, 경품이 한 개 나와」
+					PRINTFORML 「그 통이 텅 빌때까지 돌리면 『아아, 이번달에 엄청 일했구나』같은 기분이 드는거야」
+					PRINTW 
+				CASE 30
+					PRINTFORML 「죽고 싶다고 생각한 적 있어?」
+					PRINTFORML 「그렇지만 베이거나 찌르면 아프고 불은 뜨겁지. 물속이나 밧줄은 괴롭고, 약은 실패할 수도 있고 여러가지 위험해」
+					PRINTFORML 「뭔가 기분나빠지지? 죽고 싶어지면 지금의 기분을 떠올려」
+					PRINTW 
+					PRINTFORML 「뭐, 그 전에 내 가슴에 꼬옥 안겨」
+					PRINTFORML 「해결법은 제시해 주지 못해도 기분이 풀릴 때까지 껴안고 머리를 쓰다듬어 줄게」
+					PRINTW 
+				CASE 31
+					PRINTFORML 「내가 게으름 피워서 시키님에게 야단맞는 꼴을 보고, 자신은 아직 괜찮은 놈이라고 느끼는 녀석이 있겠지」
+					PRINTFORML 「그런 녀석도 있으리라고 생각하면 나는 나를 칭찬 해 주지」
+					PRINTFORML 「세상은 잘 돌아가고 있는 거야」
+					PRINTW 
+				CASE 32
+					PRINTFORML 「노 저어서 삼도천을 오가는 것도 꽤 힘들어. 이야기하는 건 즐겁지만」
+					PRINTW 
+					PRINTFORML 「어딘가의 캇파가, 이런거 만들어 주지 않을까.
+					PRINTFORML 돈을 내면 강이 두갈래로 갈라지고, 자동으로 건너편 물가까지 옮겨 주는 장치」
+					PRINTW 
+					PRINTFORML 「만들어준다면 나한테도 몇개 없는 육문전을 주겠어」
+					PRINTFORML 「부족하다면 마음에 드는 『케루베코』도 얹어 줘도 괜찮아」
+					PRINTW 
+				CASE 33
+					PRINTFORML 「팔방미인이라는 평가를, 나쁜 쪽으로 받아들이는 사람도 없진 않지만」
+					PRINTFORML 「저건 저것대로, 주변과 자기 나름대로 조화를 유지하기 위한 방법이라고 생각해」
+					PRINTW 
+					PRINTFORML 「그것보다, 팔방으로 『추함』을 뿌리는 것이 훨씬 문제라고 봐」
+					PRINTFORML 「그러다간 사면초가 되어 버리고 말겠지?」
+					PRINTW 
+				CASE 34
+					PRINTFORML 「같은 『올바름』에도, 『적절』과 『적당』은, 인상이 꽤 다르지」
+					PRINTFORML 「이해 하기 어려워? 『적절』이 시키님, 『적당』이 나라고 말하면 약간 알것 같아?」
+					PRINTFORML 「우와, 굉장히 이해한 듯한 얼굴이야. 화나는데」
+					PRINTW 
+				CASE 35
+					PRINTFORML 「『내일이야말로 노력하자』」
+					PRINTFORML 「우선 이렇게 말하는 것만으로 당장은 견딜 수 있기 때문에, 곤란할 때 읊어봐」
+					PRINTFORML 「반동도 굉장하지만 말야」
+					PRINTW 
+				CASE 36
+					PRINTFORML 「그러고 보면 전에, 비슷한 인생의 유령을 태웠었지」
+					PRINTFORML 「한쪽은, 자신이 웃음거리가 되는 것으로, 타인을 웃기는 사람」
+					PRINTFORML 「다른 한쪽은, 타인을 웃음거리로 하는 것으로, 그 외의 사람을 웃기는 사람」
+					PRINTW 
+					PRINTFORML 「타인을 웃게 하는 일이라는 점에서는 똑같지만 말야」
+					PRINTFORML 「과정이 조금 다른 것만으로, 인상이 상당히 바뀌는구나 하고 생각했어」
+					PRINTFORML 「나중에 시키님에게 들었지만, 전자는 평소에 많은 사람에게 존경받았다고 해」
+					PRINTW 
+				CASE 37
+					PRINTFORML 「전에 시키님과 『성애』과 『상애』의 차이는 무엇인가 잡담을 한 적이 있는데」
+					PRINTFORML 「『하반신으로 생각하는 것이 성애고, 상반신으로 생각하는 것이 상애가 아닙니까』라고 말했더니, 굉장히 혼났었어」
+					PRINTFORML 「그럴듯 한 얘기라고 생각했는데…… 에, 전혀 아니야? 그럴수가」
+					PRINTW 
+				CASE 38
+					PRINTFORML 「언젠가 한번은 나도 하면 할 수 있는 여자란 걸 보여주려고, 한달 정도 성실하게 일했었지」
+					PRINTFORML 「그러자, 시키님이 진귀한 짐승이라도 보는 듯한 눈빛으로 보시길래 금방 그만두었어」
+					PRINTFORML 「그러니까, 다시 『아아, 이 사람은……』같은 눈으로 봐 주셔서, 안심한 거야」
+					PRINTW 
+				CASE 39
+					PRINTFORML 「『나는 아직 전력을 다하지 않은 것뿐』이라는 말은, 쓰기 편하지」
+					PRINTFORML 「『내일부터 노력하자』 『내년부터 진심으로 간다』도 더해서, 코마치의 삼종신기야」
+					PRINTW 
+					PRINTFORML 「『지금 안하면 언제 할거야!』같은 소리를 하는 마을의 인간이 있었지만」
+					PRINTFORML 「내가 재판장이라면 곧바로 지옥행 선고야」
+					PRINTW 
+				CASE 40
+					PRINTFORML 「요전에 글쎄, 땡땡이 쳤던 것을 시키님에게 문책당했을 때 말이야」
+					PRINTFORML 「『따로 게으름 피우고 있는게 아니다. 하루 일을 일년 단위로 배분하고 있을 뿐이다.
+					PRINTFORML 　그날만 보고 판정을 내리기에는 너무 성급하다』라고 말씀드렸지」
+					PRINTW 
+					PRINTFORML 「회개봉으로 맞았어. 아팠다」
+					PRINTFORML 「응, 아까 땡땡이 칠거라고 말하지 않았냐고? 시키님에게는 얘기한게 아니니까 괜찮아괜찮아」
+					PRINTW 
+				CASE 41
+					IF ABL:요리기능 >=  5
+						PRINTFORML 「전에, 시키님이 집에 놀러오셔서, 요리를 대접했었지」
+						PRINTFORML 「그 때 우연히 신선한 네시를 구해서」
+						PRINTFORML 「시키님도 좋아하셔서 다행이었어」
+						PRINTW 
+						;즌드코베론쵸는, 무엇?
+						PRINTFORML 「응, 네시가 뭐냐니?」
+						PRINTFORML 「네시는 네시지. 그 이상이도 그 이하도 아니고?」
+						PRINTW 
+					ELSEIF ABL:요리기능 >=  3
+						PRINTFORML 「뭐든지 맛있다고 느끼는 쪽이 좋은가, 맛에 까다로운 쪽이 좋은가」
+						PRINTFORMW 「결국 그런건, 자신의 위치에 따라 달라지는구나라고 생각해」
+						PRINTFORML 「먹는 쪽이라면 전자가 행복할 것이고, 만들어 주는 쪽이라면 먹는 상대를 만족시켜줘야 하겠지?」
+						PRINTFORML 「뭐든지 단순하게 생각해 버리면, 반대로 까다로워지는 상황이 생긴다, 라는 이야기」
+						PRINTW 
+					ELSEIF ABL:요리기능 >=  1
+						PRINTFORML 「전에, 문득 생각나서 낫토에 참기름 두르고, 소금 뿌려봤어」
+						PRINTFORML 「밥을 끊임없이 먹게돼, 그것 때문에. 터무니 없는 음식이야. 이 세상에 내서는 안돼」
+						PRINTFORML 「그래서, 시키님에게도 권해 보았어」
+						PRINTW 
+					;밥 맛없어 난처하면
+					ELSE
+						PRINTFORML 「요리에는 5대 장이란 것이 있지」
+						PRINTFORML 「춘장, 마장, 비지장, 두반장, 해선장, , 이였던가」
+						PRINTFORMW 「어라, 아니야?」
+						PRINTFORML 애초에 「5대 장」이라는 말은 없던 것 같다
+						PRINTW 
+					ENDIF
+				CASE 42
+					PRINTFORML 「욕망이 있는 건 나쁜 것이 아니야. 욕망은 누구에게나 있는 것이지. 염라님에게도 말이야」
+					PRINTFORML 「욕망에 충실한 것 까지는 괜찮아. 욕망에 빠지거나 억지로 떼내려 하는 것이 위험한 것」
+					PRINTFORML 「그러니, 내가 향림당의 가챠가챠에 열중하고 있는 건 나쁜 일이 아니야」
+					PRINTW 
+				CASE 43
+					PRINTFORML 「시키님이 코마치를 설교하는 모습을 보고, 염라님은 무섭다고 주위 사람이 생각하게 되겠지」
+					PRINTFORML 「즉 나는, 염라님의 위엄을 유지하는데 한 역할 하고 있다는 거야!」
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「내가 %CALLNAME:MASTER%을 좋아하냐고?」
+					PRINTFORML 「물론 좋아하고있지. 매일 말하고 있잖아」
+					PRINTFORML 「언젠가 전할 수 없는 날이 와서 후회하는 것보다, 지금 말해 두고 싶어, 나는」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		;연인은 아니다
+		ELSE
+			SELECTCASE RAND:44
+			CASE 0
+				PRINTFORMW 「일은 괜찮냐고? 자, 다른 재밌는 얘기 하자」
+			CASE 1
+				PRINTFORMW 「아니, 전에 큰일 난 적이 있었는데. 낮잠자고 있다가 시키님에게 호되게 혼나버렸지…」
+			CASE 2
+				PRINTFORML 「나의 일은 삼도천의 사공이라는 건 전에 이야기했지만 말야」
+				PRINTFORMW 「사신들 사이에선 그다지 인기 없는거야. 역시 최고로 인기 있는 건 영혼을 베어 내는 일」
+				PRINTL
+				PRINTFORML 그래도 말야, 라고 코마치는 계속했다
+				PRINTFORMW 「나는 내 일에 자부심을 가지고 있어. 보람 있기도 하고」
+			CASE 3
+				PRINTFORML 「이 낫? 보다시피 무딘거야」
+				PRINTFORMW 「그렇지만, 이게 의외로 죽은자들에게 인기 있더라고. 『사신은 정말로 있었구나!』라고」
+			CASE 4
+				PRINTFORML 「나는 사신이지만, 별로 사람을 죽이진 않아」
+				PRINTFORMW 「원래 관할 밖이기도 하고」
+			CASE 5
+				PRINTFORML 「나는 이 사신의 눈으로 타인의 수명이 보이지만」
+				PRINTFORMW 「만약 수명 반과 교환에 준다 라고 하면, 당신은 가지고 싶어?」
+			CASE 6
+				PRINTFORML 「인간은 누구든지 사후엔 지옥에 가고 싶지 않다고 생각하겠지만」
+				PRINTFORMW 「그렇다면, 사후에는 극락이 기다리고 있다고 생각하고 성실하게 살아야지」
+			CASE 7
+				PRINTFORML 「너무 일만 하는건 별로 관심 없는데」
+				PRINTFORMW 「그 때는 좋아도, 일을 잃어 버리면, 사는 보람을 잃는 것과 같으니까」
+				PRINTFORMW 「나는 너무 농땡이 친다고? 뭐 딱딱한 얘기 말라고」
+			CASE 8
+				PRINTFORML 「다른 사람을 부러워하거나 동경하는 것은 자연스러운 거야」
+				PRINTFORMW 「그렇지만, 자신을 비하 하고 험담을 해대는건 그만둬」
+				PRINTFORMW 「그런 일에 정당성까지 요구한다면 더는 어찌할 도리가 없어」
+			CASE 9
+				PRINTFORML 「나랑 하쿠레이의 무녀가 비슷하다는 녀석이 있던데」
+				PRINTFORMW 「공통점이 아무것도 없다고 생각하지만. 당신은 어떻게 생각해?」
+			CASE 10
+				PRINTFORML 「틀어박혀 있으면 몸속에 음의 기분이 가득 차버려」
+				PRINTFORMW 「가끔 씩은 밖에 나와, 볕 잘드는 곳에서 낮잠을 자는 것도 좋은 일이야」
+			CASE 11
+				PRINTFORML 「타인과의 연결을 소중히 해」
+				PRINTFORMW 「자신이 고립되어 있음을 깨달았을 때에는 벌써 늦을거야」
+			CASE 12
+				PRINTFORML 「밖의 세계에는 이름과 사인을 적는 것으로 사람을 죽일 수 있는 장부가 있다든가?」
+				PRINTFORMW 「일은 편해질 것 같지만, 뭔가 따분하네」
+			CASE 13
+				PRINTFORML 「뭐라던가 스키마 요괴의 식신이 삼도천의 폭을 계산했다고?」
+				PRINTFORMW 「재미있는 생각을 하네. 지적 호기심이라고 하는 것은, 마음을 풍부하게 해 주지」
+			CASE 14
+				PRINTFORML 「마중 나온 사신에게 이기면 수명을 늘릴수 있어. 알고 있었어?」
+				PRINTFORMW 「그런 거 가르쳐줘도 되냐고? 원래, 사신에게 이길 수 있는 시점에서 그 녀석은 인간 그만두고 있는 녀석 인거야」
+				PRINTFORMW 「당신은 인간을 그만두면서까지 장수 하고 싶어?」
+			CASE 15
+				PRINTFORML 「휴식도 중요한 일의 하나. 능률적으로 일하기 위해 중요한 것이야」
+				PRINTFORMW 「그래서, 이렇게 당신과 이야기를 주고 받고 있는 것도 소중한 일이라는 것」
+			CASE 16
+				PRINTFORML 「유령의 수는 너무 많아도, 너무 적어도 안 돼」
+				PRINTFORMW 「너무 많으면 지상에서 일어난 이변과 다름없고, 너무 적으면 대지에 사람이 넘쳐나 버리니까」
+				PRINTFORMW 「뭐어, 무엇이든 적당한 것이 제일이라는 거야」
+			CASE 17
+				PRINTFORML 「가끔 씩은 빈둥거리는 것도 좋네」
+				PRINTFORMW 「……그 이상한 얼굴은 뭐야」
+			CASE 18
+				PRINTFORML 「그러고 보면 과자가게에 새로운 물건을 들여왔다고 하던데」
+				PRINTFORMW 「궁금하니까 데려가 줘」
+			CASE 19
+				PRINTFORML 「%CALLNAME:MASTER% 평상시엔 뭐 하고 있어?」
+				PRINTFORMW 「괜찮다면 들려줄래」
+			CASE 20
+				PRINTFORML 「농담 중에 그런 이야기가 있잖아? 거짓말해서, 감쪽같이 만두를 가로채는 이야기」」
+				PRINTFORML 「나도, 시키님에게 『일 게으름 피우는 것이 무섭습니다』라고 해봤다」
+				PRINTFORML 「그랬더니, 주 3일의 업무가, 주 6일로 늘어나 버렸어」
+				PRINTW 
+				PRINTFORML 「……무섭지?」
+				PRINTW 
+			CASE 21
+				PRINTFORML 「우리 보스는 휴일이 되면 환상향에 가서, 만나는 사람마다 설교하며 돌아다니는 거야」
+				PRINTFORML 「설교라고 하면 뭔가 싫은 이미지가 있지만 말야」
+				PRINTFORML 「그 사람에게 중요하지만 잊어버리고 있는 걸 조언 해 주시는 경우도 많아」
+				PRINTW 
+				PRINTFORML 「그러니까, 만약 시키님이 설교해주실 때는, 확실히 들어 둬」
+				PRINTFORML 「당신 사후의 알찬 인생에 있어서 뭔가 양식이 될 거라고 생각해」
+				PRINTFORML 「내 농땡이? 그건 확고하고 강철같은 의사로 게으름 피우는 거니까 괜찮아」
+				PRINTW 
+			CASE 22
+				PRINTFORML 「실은 나, 시키님에게 해고당할 뻔 한 적이 있어. 농땡이 때문에」
+				PRINTFORML 「하마터면 염라님의 심판까지 받게 될 뻔 했지」
+				PRINTW 
+				PRINTFORML 「만약 해고당하면? 응, 안개의호수의 사공이라도 될까」
+				PRINTFORML 「일반인은 그렇게 가까이 가지 않으니까, 원하는 만큼 게으름 피워도 괜찮을 것 같고」
+				PRINTW 
+			CASE 23
+				PRINTFORML 「예전에 『노력은 배반하지 않는다』라는 말이 유행하고」
+				PRINTFORML 「그 뒤에는 『노력이 결실을 맺는다고는 할 수 없지만, 성공한 사람은 모두 노력했다』라는 말이 유행했지」
+				PRINTFORML 「또 그 다음에는 『노력은 조심하지 않으면 금방 거짓말을 한다』라는 말이 유행했다던가」
+				PRINTW 
+				PRINTFORML 「『노력』의 진화속도는 생물의 그것을 능가하고 있지 않을까」
+				PRINTFORML 「나는 거기에 덧붙여 『노력은 자주 방향치가 된다』라고 만들어 봤는데, 어때?」
+				PRINTFORML 「엣, 그것도 어디서 들어본 적 있다고? 노력의 진화속도 너무하잖아!」
+				PRINTW 
+			CASE 24
+				PRINT 「나는 무려 오늘
+				IF TALENT:기분 > -1
+					PRINTFORML 매우 기분이 좋다」
+				ELSE
+					PRINTFORML 기분이 나쁘다」
+				ENDIF
+					PRINTFORML 「그러니까 %CALLNAME:MASTER%, 뭔가 술이라도 한턱 내 줘」
+					PRINTW 
+			CASE 25
+				PRINTFORML 「뭐랄까, 해야 할 일이 있을때 꼭 딴짓하고 싶지 않아?」
+				PRINTFORML 「내가 요즘 마음에 드는 건 이거야」
+				PRINTFORML 「의미는 없지만, 뽁뽁 눌러 터뜨리고 싶어져」
+				PRINTW 
+			CASE 26
+				PRINTFORMW 「　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　」
+				PRINTFORML 「지금의 공란에, 내가 해줬으면 하는 말을 넣어줘」
+				PRINTFORML 「응, 누구랑 이야기하고 있냐고?……누구일까」
+			CASE 27
+				PRINTFORML 「와카[和歌]에는 말야, 일정한 수식어라는 것이 있잖아」
+				PRINTFORML 「『히사카타노~』라든가 『치와야후루~』든가
+				PRINTFORML 「나도, 얘기할때 자주 비슷한 수식어를 사용하지. 노래에 재능 있는지도」
+				PRINTW 
+				PRINTFORML 「『그렇게는 말합니다만 시키님』이라든지 『말씀하시는 바는 압니다만~』이나」
+				PRINTFORML 「그리고 『노력은 하고 있습니다만 말이죠」든지』
+				PRINTFORML 「에? 미묘하게 다른 것 같다고? 그런가」
+				PRINTW 
+			CASE 28
+				PRINTFORML 「요즘, 아카베코를 열심히 수집중이야」
+				PRINTFORML 「맞아, 목이 흔들흔들하는 빨간 소 나무인형」
+				PRINTFORML 「이거 머리가 여러개 달려 귀여운 것도 있어. 『케루베코』라던가」
+				PRINTW 
+			CASE 29
+				PRINTFORML 「최근 향림당에 『가챠가챠』라는 게 생긴 것 같아」
+				PRINTFORML 「동전을 넣고 손잡이를 돌리면, 경품이 한 개 나오는거야」
+				PRINTFORML 「그 통이 텅 빌때까지 돌리면 『아아, 이번달에 엄청 일했구나』같은 기분이 드는거야」
+				PRINTW 
+			CASE 30
+				PRINTFORML 「죽고 싶다고 생각한 적 있어?」
+				PRINTFORML 「그렇지만 베이거나 찌르면 아프고 불은 뜨겁지. 물속이나 밧줄은 괴롭고, 약은 실패할 수도 있고 여러가지 위험해」
+				PRINTFORML 「뭔가 기분나빠지지? 죽고 싶어지면 지금의 기분을 떠올려」
+				PRINTW 
+			CASE 31
+				PRINTFORML 「내가 게으름 피워서 시키님에게 야단맞는 꼴을 보고, 자신은 아직 괜찮은 놈이라고 느끼는 녀석이 있겠지」
+				PRINTFORML 「그런 녀석도 있으리라고 생각하면 나는 버틸 수 있어」
+				PRINTFORML 「세상은 잘 돌아가고 있는 거지」
+				PRINTW 
+			CASE 32
+				PRINTFORML 「노 저어 삼도천을 오가는 것도 꽤 힘들어. 이야기하는 건 즐겁지만」
+				PRINTW 
+				PRINTFORML 「어딘가의 캇파가, 이런거 만들어 주지 않을까.
+				PRINTFORML 돈을 내면 강이 두갈래로 갈라지고, 자동으로 건너편 물가까지 옮겨 주는 장치」
+				PRINTW 
+				PRINTFORML 「만들어준다면 나한테도 몇개 없는 육문전을 주겠어」
+				PRINTFORML 「부족하다면 마음에 드는 『케루베코』도 얹어 줘도 괜찮아」
+				PRINTW 
+			CASE 33
+				PRINTFORML 「팔방미인이라는 평가를, 나쁜 쪽으로 받아들이는 사람도 없진 않지만」
+				PRINTFORML 「저건 저것대로, 자기 나름대로 주변과 조화를 유지하기 위한 방법이라고 생각해」
+				PRINTW 
+				PRINTFORML 「그것보다, 팔방으로 『추함』을 뿌리는 것이 훨씬 문제라고 봐」
+				PRINTFORML 「그러다간 사면초가 되어 버리고 말겠지?」
+				PRINTW 
+			CASE 34
+				PRINTFORML 「같은 『올바름』에도, 『적절』과 『적당』은, 인상이 꽤 다르지」
+				PRINTFORML 「이해 하기 어려워? 『적절』이 시키님, 『적당』이 나라고 말하면 약간 알것 같아?」
+				PRINTFORML 「우와, 굉장히 이해한 듯한 얼굴이야. 화나는데」
+				PRINTW 
+			CASE 35
+				PRINTFORML 「『내일이야말로 노력하자』」
+				PRINTFORML 「우선 이렇게 말하는 것만으로 당장은 견딜 수 있기 때문에, 곤란할 때 읊어봐」
+				PRINTFORML 「반동도 굉장하지만 말야」
+				PRINTW 
+			CASE 36
+				PRINTFORML 「그러고 보면 전에, 비슷한 인생의 유령을 태웠었지」
+				PRINTFORML 「한쪽은, 자신이 웃음거리가 되는 것으로, 타인을 웃기는 사람」
+				PRINTFORML 「다른 한쪽은, 타인을 웃음거리로 하는 것으로, 그 외의 사람을 웃기는 사람」
+				PRINTW 
+				PRINTFORML 「타인을 웃게 하는 일이라는 점에서는 똑같지만 말야」
+				PRINTFORML 「과정이 조금 다른 것만으로, 인상이 상당히 바뀌는구나 하고 생각했어」
+				PRINTFORML 「나중에 시키님에게 들었지만, 전자는 평소에 많은 사람에게 존경받았다고 해」
+				PRINTW 
+			CASE 37
+				PRINTFORML 「전에 시키님과 『성애』과 『상애』의 차이는 무엇인가 잡담을 한 적이 있는데」
+				PRINTFORML 「『하반신으로 생각하는 것이 성애고, 상반신으로 생각하는 것이 상애가 아닙니까』라고 말했더니, 굉장히 혼났었어」
+				PRINTFORML 「그럴듯 한 얘기라고 생각했는데…… 에, 전혀 아니야? 그럴수가」
+				PRINTW 
+			CASE 38
+				PRINTFORML 「언젠가 한번은 나도 하면 할 수 있는 여자란 걸 보여주려고, 한달 정도 성실하게 일했었지」
+				PRINTFORML 「그러자, 시키님이 진귀한 짐승이라도 보는 듯한 눈빛으로 보시길래 금방 그만두었어」
+				PRINTFORML 「그러니까, 다시 『아아, 이 사람은……』같은 눈으로 봐 주셔서, 안심한 거야」
+				PRINTW 
+			CASE 39
+				PRINTFORML 「『나는 아직 전력을 다하지 않은 것뿐』이라는 말은, 쓰기 편하지」
+				PRINTFORML 「『내일부터 노력하자』 『내년부터 진심으로 간다』도 더해서, 코마치의 삼종신기야」
+				PRINTW 
+				PRINTFORML 「『지금 안하면 언제 할거야!』같은 소리를 하는 마을의 인간이 있었지만」
+				PRINTFORML 「내가 재판장이라면 곧바로 지옥행 선고야」
+				PRINTW 
+			CASE 40
+				PRINTFORML 「요전에 글쎄, 땡땡이 쳤던 것을 시키님에게 문책당했을 때 말이야」
+				PRINTFORML 「『따로 게으름 피우고 있는게 아니다. 하루 일을 일년 단위로 배분하고 있을 뿐이다.
+				PRINTFORML 　그날만 보고 판정을 내리기에는 너무 성급하다』라고 말씀드렸지」
+				PRINTW 
+				PRINTFORML 「회개봉으로 맞았어. 아팠다」
+				PRINTFORML 「응, 아까 땡땡이 칠거라고 말하지 않았냐고? 시키님에게는 얘기한게 아니니까 괜찮아괜찮아」
+				PRINTW 
+			CASE 41
+				IF ABL:요리기능 >=  5
+					PRINTFORML 「전에, 시키님이 집에 놀러오셔서, 요리를 대접했었지」
+					PRINTFORML 「그 때 우연히 신선한 네시를 구해서」
+					PRINTFORML 「시키님도 좋아하셔서 다행이었어」
+					PRINTW 
+					;즌드코베론쵸는, 무엇?
+					PRINTFORML 「응, 네시가 뭐냐니?」
+					PRINTFORML 「네시는 네시지. 그 이상이도 그 이하도 아니고?」
+					PRINTW 
+				ELSEIF ABL:요리기능 >=  3
+					PRINTFORML 「뭐든지 맛있다고 느끼는 쪽이 좋은가, 맛에 까다로운 쪽이 좋은가」
+					PRINTFORMW 「결국 그런건, 자신의 위치에 따라 달라지는구나라고 생각해」
+					PRINTFORML 「먹는 쪽이라면 전자가 행복할 것이고, 만들어 주는 쪽이라면 먹는 상대를 만족시켜줘야 하겠지?」
+					PRINTFORML 「뭐든지 단순하게 생각해 버리면, 반대로 까다로워지는 상황이 생긴다, 라는 이야기」
+					PRINTW 
+				ELSEIF ABL:요리기능 >=  1
+					PRINTFORML 「전에, 문득 생각나서 낫토에 참기름 두르고, 소금 뿌려봤어」
+					PRINTFORML 「밥을 끊임없이 먹게돼, 그것 때문에. 터무니 없는 음식이야. 이 세상에 내서는 안돼」
+					PRINTFORML 「그래서, 시키님에게도 권해 보았어」
+					PRINTW 
+				;밥 맛없어 난처하면
+				ELSE
+					PRINTFORML 「요리에는 5대 장이란 것이 있지」
+					PRINTFORML 「춘장, 마장, 비지장, 두반장, 해선장, , 이였던가」
+					PRINTFORMW 「어라, 아니야?」
+					PRINTFORML 애초에 「5대 장」이라는 말은 없던 것 같다
+					PRINTW 
+				ENDIF
+			CASE 42
+				PRINTFORML 「욕망이 있는 건 나쁜 것이 아니야. 욕망은 누구에게나 있는 것이지. 염라님에게도 말이야」
+				PRINTFORML 「욕망에 충실한 것 까지는 괜찮아. 욕망에 빠지거나 억지로 떼내려 하는 것이 위험한 것」
+				PRINTFORML 「그러니, 내가 향림당의 가챠가챠에 열중하고 있는 건 나쁜 일이 아니야」
+				PRINTW 
+			CASE 43
+				PRINTFORML 「시키님이 코마치를 설교하는 모습을 보고, 염라님은 무섭다고 주위 사람이 생각하게 되겠지」
+				PRINTFORML 「즉 나는, 염라님의 위엄을 유지하는데 한 역할 하고 있다는 거야!」
+				PRINTW 
+			ENDSELECT
+		ENDIF
+	ELSEIF TALENT:사모
+		SELECTCASE RAND:5
+		CASE 0
+			PRINTFORMW 「일은 괜찮냐고? 당신과 말하고 있는게 즐거우니까」
+		CASE 1
+			PRINTFORMW 「아니, 전에 큰일 난 적이 있었는데. 낮잠자고 있다가 시키님에게 호되게 혼나버렸지……」
+		CASE 2
+			PRINTFORML 「삼도천 부근에는, 환상향의 밖에서부터 흘러들어온 것이 이것 저것 굴러다녀」
+			PRINTFORMW 「라고 생각하면, 갑자기 사라져 있어. 이상하다」
+		CASE 3
+			PRINTFORMW 「헤에, %CALLNAME:MASTER% 박식하네, 좀 더 가르쳐 줘」
+		CASE 4
+			PRINTFORML 「나도 일단 사신이니까, 인간의 수명이 보이는 거야」
+			PRINTFORMW 「뭐, 그렇다고 해서 본인에게 알려주는 일은 없지만 말야」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「일은 괜찮냐고? 자, 다른 재밌는 얘기 하자」
+		CASE 1
+			PRINTFORMW 「아니, 전에 큰일 난 적이 있었는데. 낮잠자고 있다가 시키님에게 호되게 혼나버렸지……」
+		CASE 2
+			PRINTFORMW 「그래그래, 전에 이런 일이 있었어……」
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;301, 차를 끓인다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_301
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_301
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_301_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_301_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:193 == 1
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「헤에, 이거 맛있다」
+				PRINTFORMW 「잘 끓였네. 내가 딱 좋아하는 온도와 진함이야」
+			CASE 1
+				PRINTFORMW 「아~, 스며든다……」
+				PRINTFORMW 코마치는 따끈따끈한 표정으로 차를 홀짝이고 있다
+			CASE 2
+				PRINTFORMW 「차 타는 거 능숙하네. 요령이라도 있어?」
+		ENDSELECT
+	ELSEIF TFLAG:193 == 0
+		SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「헤에, 맛있어」
+				PRINTFORMW 「훌륭한 다도라고, 라고 하는 건가. 이런 때엔」
+			CASE 1
+				PRINTFORMW 「응, 당신, 꽤 떫은 걸 좋아하는구나」
+			CASE 2
+				PRINTFORMW 「아~, 스며든다……」
+			CASE 3
+				PRINTFORMW 「응, 당신, 꽤 떫은 걸 좋아하는구나」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:4
+			CASE 0
+				PRINTFORMW 「아뜨읏, 당신, 뜨거운 쪽이 좋아?」
+			CASE 1
+				PRINTFORMW 「응, 당신, 꽤 떫은 걸 좋아하는구나」
+			CASE 2
+				PRINTFORMW 「밍밍해…… 이거, 여러번 우린거야?」
+			CASE 3
+				PRINTFORMW 「이거, 미지근하지 않아? 좋은 찻잎 사용하고 있다면 아는데」
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;302, 스킨십
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_302
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_302
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_302_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_302_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF BATHROOM()
+		;에이키님과 3명(이상으로) 욕실
+		;두 사람 모두 연모 전제로 쓰고 있으므로, 섹스프렌드라든지라고 위화감 느낄지도
+		;난처하면 는 친밀 5이상이라면 수치심 업슴의 것으로 연모없이도 보통으로 들어갈 수 있다. 몰랐다……
+		;
+		IF K76_FIND_AROUND() == 30
+			;난처하면 가 연인
+			IF TALENT:연인
+				;에이키님과의 바람기 공인
+				IF GET_UWAKI_HISTORY(TARGET, 30) == 2
+					PRINTFORML 「%CALLNAME:MASTER%. 씻어 주기 때문에 와」
+					PRINTFORML 「자, 다리 벌려봐. 언제 봐도 씩씩하네…… 엄청 건강해%UNICODE(0x2665) *1%」
+					PRINTFORML 「여기는 확실히 씻어줘야 해……♪」
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 등에 밀착하면서, 음경을 씻기 시작했다
+					PRINTW 
+					IF CFLAG:1100 == 1
+						PRINTFORML 「자ㅡ아, 지걱지걱, 만질만질♪」
+						PRINTFORML 「%CALLNAME:MASTER%, 어때? 기분 좋아지지?」
+						PRINTW 
+						PRINTFORML 「무슨 말이에요 시키님. 연인이라면 여기는 씻어 주는 게 당연해요♪」
+						PRINTFORML 「왜냐하면, 코마치의 보지를 기분 좋게 해 주는, 소중한 소중한 자지이니까%UNICODE(0x2665) *1%」
+						PRINTFORML 「이렇게, 혀로 귀두도 확ㅡ실히 씻어 줘야 하는 거예요 %UNICODE(0x2665) *1%」
+						PRINTW 
+					ELSE
+					ENDIF
+						PRINTFORML 「시키님도, %CALLNAME:MASTER%을 씻겨 주는게 어떨까요?」
+						PRINTW 
+					PRINTFORML 「시키님, 정성스럽게 씻겨주네요. %CALLNAME:MASTER%, 기분 좋은거 같아 보이는데요?」
+					IF ! TALENT:30:키스미경험 && ! TALENT:30:처녀 && EXP:30:키스경험 > 100 && ABL:30:욕망 >=  5
+						PRINTFORML 「앗, 시키님, 뭘 몰래 틈을 노려 키스 하고 있어요」
+						PRINTFORML 「정말이지, 그런 행복한 얼굴 하며 코마치의 연인에게 키스 하지 말아 주세요」
+						PRINTFORML 「제가 아니었다면, 큰일났으니까요」
+					ELSE
+						PRINTFORML 「%CALLNAME:MASTER%, 시키님의 피부, 기분이 좋아?」
+						PRINTFORML 「앞뒤로, 여자의 몸에 비벼지고 행운아라니깐 %UNICODE(0x2665) *1%」
+					ENDIF
+					PRINTW 
+				ELSE
+					SELECTCASE RAND:3
+					CASE 0
+						PRINTFORML 「%CALLNAME:MASTER%. 씻겨 줄 테니 이리와」
+						PRINTFORML 「자아, 여기는 확실히 깨끗하게 해 둬야지……♪」
+						PRINTFORML 「무슨 말이에요 시키님. 연인이라면 여기는 씻어 주는 것 당연해요♪」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「%CALLNAME:MASTER%, 여기 씻겨줘%UNICODE(0x2665) *1%」
+						PRINTFORML 「그래 그렇게, 손바닥으로…… 읏, 능숙해%UNICODE(0x2665) *1%」
+						PRINTFORML 「무슨 말이에요 시키님. 연인끼리라면 별로 문제 없잖아요%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASEELSE
+						PRINTFORML 「저기 %CALLNAME:MASTER%, 좁으니까 좀 더 이쪽으로 와」
+						PRINTFORML 「나의 몸, 기분좋아? 그럼 다행이네%UNICODE(0x2665) *1%」
+						PRINTFORML 「뭔가요 시키님. 그렇게 노려보지 말아 주세요」
+						PRINTW 
+					ENDSELECT
+				ENDIF
+			;에이키님이 연인
+			ELSEIF TALENT:(NO:30):연인
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML (우와─, 시키님, 얼굴 빨간 주제에 %CALLNAME:MASTER%의 저런 곳까지 씻어 주고 있다)
+					PRINTFORML (평상시의 시키님 밖에 모르는 녀석이 보면, 어떤 표정 지으려나……)
+					PRINTFORML (라고 할까, 둘이 너무 붙어있어서 있기 힘들어……!)
+					PRINTW 
+				CASE 1
+					PRINTFORML (시키님, 얼굴 새빨갛게 하곤 %CALLNAME:MASTER%에 몸을 씻기게 하고 있네요)
+					PRINTFORML (나도 그런 곳 까지 씻겨 드린 적은 없는데)
+					PRINTFORML (아─그래도, 지금의 시키님, 내가 봐도 사랑스럽네……)
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「%CALLNAME:MASTER%, 시키님과 변함 없이 사이가 좋네」
+					PRINTFORML 코마치는 두 사람 사이를 방해하지 않으려고 생각하면서도, 복잡한 미소를 띄우고 있다
+					PRINTW 
+				ENDSELECT
+			;두 사람 모두 연인이 아니다
+			ELSE
+				PRINTFORML 「시키님, 이제 돌아가서 일 보셔야죠?」
+				PRINTFORML 「저요? 저는 아직 탕에 들어가 있고 싶으니까. 슬슬 올라가지 않으시면 늦어요?」
+				PRINTFORML %CALLNAME:MASTER%을 사이에 두고 코마치와 에이키가 웃는 얼굴로 서로 견제 하며
+				PRINTFORML 양팔에는 각각 큰쪽과 작은쪽의 가슴에 꽉 눌려지고 있는 최고의 상황임에도 불구하고,
+				PRINTFORML %CALLNAME:MASTER%은 수수께끼의 긴장감에 휩싸여졌다
+				PRINTW 
+			ENDIF
+		ELSE
+			IF CFLAG:1100 == 1
+				PRINTFORML 「욕실에서 달라붙어 있는 것은, 평범하게 안기는 것보다 두근두근해」
+				PRINTFORML 「이런 곳에서도 흥분하냐고? 어쩔 수 없잖아……%UNICODE(0x2665) *1%」
+				PRINTW 
+				PRINTFORML 코마치는 %CALLNAME:MASTER%의 음경을 잡아, 상냥하게 잡아당긴다
+				PRINTFORML 「%CALLNAME:MASTER%도, 자지 빵빵하게 하고 있잖아……%UNICODE(0x2665) *1%」
+				PRINTW 
+				PRINTFORML 「여기서 할까? 코마치는, 언제라도, 좋아……♪」
+				PRINTW 
+			ELSE
+				SELECTCASE RAND:5
+				CASE 0
+					PRINTFORMW 「욕실에서 엉겨붙는 건 기분이 좋아……♪」
+				CASE 1
+					PRINTFORMW 「저기, 허벅지의 사이에서 뭔가 자라는것 같은데……색마%UNICODE(0x2665) *1%」
+				CASE 2
+					PRINTFORMW 「엉덩이에 닿고 있는 건 뭘까나……♪」
+				CASE 3
+					PRINTFORML 코마치와 밀착하면서 서로 애무한다
+					PRINTFORMW 빵빵한 가슴을 쥐어짜듯이 주물러 매우 기분 좋다
+				CASE 4
+					PRINTFORML 「저기, 여기도 씻겨 줘……%UNICODE(0x2665) *1%」
+					PRINTFORMW 코마치는 살그머니 양다리를 벌려, 음부를 드러내 유혹했다
+				ENDSELECT
+			ENDIF
+		ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:16
+			CASE 0
+				PRINTFORML 코마치의 허리에 손을 둘러, 몸을 끌어 당겼다
+				PRINTFORMW 「꽤 익숙해진 손놀림이네」
+			CASE 1
+				PRINTFORML 코마치의 트윈테일 끝을 집어 보았다
+				PRINTFORMW 「저기─, 여자의 머리카락은 장난감이 아니야」
+			CASE 2
+				PRINTFORML 코마치의 어깨에 손을 둘렀다
+				PRINTFORMW 「응? 권유하는 거야?」
+			CASE 3
+				PRINTFORML 코마치의 얼굴을 양 손 사이에 두고 꾹 눌렀다
+				PRINTFORMW 「애이러흔거야」
+			CASE 4
+				PRINTFORML 코마치의 팔뚝을 문질러 보았다
+				PRINTFORMW 「팔뚝은 가슴이랑 비슷한 감촉이라고 하던데, 진짜로 그런가?」
+			CASE 5
+				PRINTFORML 코마치의 사타구니를 살랑살랑 쓰다듬었다
+				PRINTFORMW 「저기, 손놀림이 추잡해 %UNICODE(0x2665) *1%」
+			CASE 6
+				PRINTFORML 코마치의 목덜미에 손가락을 기게 했다
+				PRINTFORMW 「햐앗!? 그거, 소름끼쳐……%UNICODE(0x2665) *1%」
+			CASE 7
+				PRINTFORML 코마치의 목덜미에 얼굴을 가까이 해, 몇번이나 쪼듯이 입맞춤 했다
+				PRINTFORMW 「%UNICODE(0x2665) *1% 그거, 간지러워……%UNICODE(0x2665) *1% 으응%UNICODE(0x2665) *1%」
+			CASE 8
+				PRINTFORML 코마치의 허벅지와 종아리를 부드럽게 주물러 주었다
+				PRINTFORMW 「니아아아아……%UNICODE(0x2665) *1% 뭔가 와아아아아%UNICODE(0x2665) *1%」
+			CASE 9
+				PRINTFORML 코마치의 손가락에 자신의 손가락을 걸고, 마주보았다
+				PRINTFORMW 「우후후, 이런 게, 좋아 %UNICODE(0x2665) *1%」
+			CASE 10
+				PRINTFORML 코마치의 포근한 가슴에 얼굴을 묻고 부비부비 했다
+				PRINTFORMW 「피곤해? 코마치의 가슴으로 치유해줄게」
+			CASE 11
+				PRINTFORML 코마치의 어깨를 주물러 주었다
+				PRINTFORMW 「아아~, 극락~%UNICODE(0x2665) *1%」
+			CASE 12
+				PRINTFORML 코마치의 머리카락을 끌어당겨, 살그머니 입맞추었다
+				PRINTFORMW 「좋은 향기야? 후후, 기뻐」
+			CASE 13
+				PRINTFORML 코마치의 쇄골과 유방의 사이를 상냥하게 여러 번 더듬었다
+				PRINTFORMW 「꺄으응%UNICODE(0x2665) *1% 그거, 약하단말야……%UNICODE(0x2665) *1%」
+			CASE 14
+				PRINTFORML 코마치의 빵빵한 유방의 주위를 살그머니 훑듯이 더듬었다
+				PRINTFORMW 「읏, 후응…… 그 손놀림, 좀 야한것 같아……%UNICODE(0x2665) *1%」
+			CASE 15
+				PRINTFORML 코마치의 등을 손가락으로 훑었다
+				PRINTFORMW 「히양%UNICODE(0x2665) *1% 그 손놀림, 소름끼쳐……%UNICODE(0x2665) *1%」
+			ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:6
+			CASE 0
+				PRINTFORML 코마치의 어깨를 팡팡 두드렸다
+				PRINTFORMW 「응? 어깨에 뭔가 붙어 있어?」
+			CASE 1
+				PRINTFORML 코마치의 트윈테일 끝을 집어 보았다
+				PRINTFORMW 「저기─, 여자의 머리카락은 장난감이 아니야」
+			CASE 2
+				PRINTFORML 코마치의 어깨에 손을 둘렀다
+				PRINTFORMW 「응? 취했어?」
+			CASE 3
+				PRINTFORML 코마치의 얼굴을 양 손 사이에 두고 꾹 눌렀다
+				PRINTFORMW 「애이러흔거야」
+			CASE 4
+				PRINTFORML 코마치의 팔뚝을 문질러 보았다
+				PRINTFORMW 「그렇게 살 찌지 않았다고 생각하는데…… 찌지 않았겠지?」
+			CASE 5
+				PRINTFORML 코마치의 손을 자신의 손으로 살짝 샌드위치처럼 덮었다
+				PRINTFORMW 「따뜻하다, 왠지 차분해져」
+			CASE 6
+				PRINTFORML 코마치의 볼을 손가락으로 츤츤 해 보았다
+				PRINTFORMW 「햐지마―」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:5
+			CASE 0
+				PRINTFORML 코마치의 어깨를 팡팡 두드렸다
+				PRINTFORMW 「응? 어깨에 뭔가 붙어 있어?」
+			CASE 1
+				PRINTFORML 코마치의 트윈테일 끝을 집어 보았다
+				PRINTFORMW 「저기─, 여자의 머리카락은 장난감이 아니야」
+			CASE 2
+				PRINTFORML 코마치의 어깨에 손을 둘렀다
+				PRINTFORMW 「응? 취했어?」
+			CASE 3
+				PRINTFORML 코마치의 얼굴을 양 손 사이에 두고 꾹 눌렀다
+				PRINTFORMW 「애이러흔거야」
+			CASE 4
+				PRINTFORML 코마치의 팔뚝을 문질러 보았다
+				PRINTFORMW 「그렇게 살 찌지 않았다고 생각하는데…… 찌지 않았겠지?」
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;303, 사과한다
+;TFLAG:193(2=과자때성공 1=대성공 0=성공 -1=실패 -2=과자때실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_303
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_303
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_303_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_303_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+SELECTCASE TFLAG:193 
+	CASE 0, 1, 2
+		IF TALENT:연모
+			PRINTFORML 「……용서해 줄게」
+			PRINTFORMW 코마치는 한숨을 쉬며 %CALLNAME:MASTER%의 사죄를 받아들였다.
+			PRINTFORMW 「잊지 않도록 해. 마음에도 없는 사과는 상대방을 더욱 화나게 할 뿐인거야」」
+		ELSE
+			PRINTFORML 무례를 사과하면, 코마치는 마지못해 고개를 끄덕였다
+			PRINTFORMW 「진심으로 반성하고 있는 것 같으니까. 두 번 다신 그러지 마」
+		ENDIF
+	CASEELSE
+		IF TALENT:연모
+			PRINTFORML 「반성에 마음이 담겨있지 않으면 상대의 마음은 완전히 닫히는 거야. 명심해둬」
+			PRINTFORMW 코마치는 아직 용서해 주지 않는 것 같다.
+		ELSE
+			PRINTFORML 「반성이란, 문자 그대로 당신의 행동을 되돌아보는 거다」
+			PRINTFORMW 「하지만, 당신에게선 그런 모습이 보이지 않는데. 그런 사람을, 나는 용서할 수 없어」
+			PRINTFORMW 고함치고 있는 것도 아닌 코마치의 침착한 말에 %CALLNAME:MASTER%은 몸을 움츠렸다
+		ENDIF
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;304, 일을 돕는다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;CFLAG:350(일내용(JOB_일내용. ERB 참조의 일
+;TCVAR:도울 수 없다(= 2도와도 빨리는 끝나지 않는, 시간정지중 불가 에이린의 진찰등)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_304
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_304
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_304_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_304_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간정지중
+	IF FLAG:70
+	;통상
+	ELSE
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「덕분에 편했어. 괜찮다면 다음에도 부탁할게」
+		CASE 1
+			PRINTFORML 「응, 이쪽? 오늘부터 임시로 도선 안내 조수로 일하는 사람이야」
+			PRINTFORMW 어느새인가 조수 취급으로 되고 있었다
+		CASE 2
+			PRINTFORML 「이 환상향에는 요괴만 있는 것이 아니라, 신이나 선인도 있어……」
+			PRINTFORMW 코마치는 끝없이 계속 이야기하고 있다. 배는 한가롭게 나아가고 있다
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;305, 무릎 베개해 받는다
+;TFLAG:193(-5=MASTER가 TARGET보다 거체의 경우(TALENT:MASTER:체형 > TALENT:체형 + 2) 1=대성공 0=성공 -1=실패)(-5이외는 지문 분기 없음)
+;ABL:친밀(6이상=얼굴을 들여다 보면서 머리를 어루만져 주는 3이상=다만 머리를 어루만져 주는 2 이하=움츠러들고 있다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_305
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_305
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_305_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_305_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		SELECTCASE RAND:10
+		CASE 0
+			PRINTFORML 「%CALLNAME:MASTER% 응석쟁이구나 %UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 머리위로 상냥한 미소를 띄우고 있다
+			PRINTFORMW 계속 이러고 있고 싶은 기분이다
+		CASE 1
+			PRINTFORML 「후후, 행복해」
+			PRINTFORMW 코마치는 자애로운 미소를 띠고, %CALLNAME:MASTER%의 머리카락을 빗고 있다
+		CASE 2
+			PRINTFORML 「기분 좋아?」
+			PRINTFORMW 대답 대신에 얼굴을 허벅지에 비볐다
+		CASE 3
+			PRINTFORML 손을 뻗어, 허벅지의 안쪽을 어루만졌다
+			PRINTFORMW 「이, 변태%UNICODE(0x2665) *1%」
+		CASE 4
+			PRINTFORML 「기분 좋아?」
+			PRINTFORMW 「아아, 그런 데 냄새 맡지 마, 정말」
+		CASE 5
+			PRINTFORML 손을 뻗어, 허벅지의 안쪽을 어루만졌다
+			PRINTFORMW 「이, 변태%UNICODE(0x2665) *1%」
+		CASE 6
+			PRINTFORML 「꼼질꼼질 왜 그러는 거야?」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 목덜미나 가슴팍을 애무하면서 히죽히죽거리고 있다
+		CASE 7
+			PRINTFORML 손을 뻗어, 허벅지의 안쪽을 어루만졌다
+			PRINTFORMW 「이, 변태%UNICODE(0x2665) *1%」
+		CASE 8
+			PRINTFORML 「이봐요, %CALLNAME:MASTER%이 좋아하는 무릎베개야. 이리와」
+			PRINTFORMW 코마치는 스커트를 넘기고, 드러난 허벅지를 팡팡 두드렸다
+			PRINTL
+			PRINTFORML 「베고있으면 기분이 어때? 라니, 물어볼 것까지도 없나보네」
+			PRINTFORMW 코마치의 알맞게 포동포동한 허벅지는, %CALLNAME:MASTER%을 극상의 잠자리로 인도했다
+		CASE 9
+			PRINTFORML 허벅지 위가 아니고, 허벅지의 사이에 얼굴을 묻고 부비부비 했다
+			IF EQUIP:TARGET:하반신속옷1 || EQUIP:TARGET:하반신속옷2
+				PRINTFORMW 「어디에 얼굴을 밀어넣고 있는거야…… 아아앙%UNICODE(0x2665) *1%」
+				PRINTFORMW 속옷 너머로 코마치의 민감한 부분을 손가락으로 훑으면, 코마치는 사랑스러운 소리를 냈다
+			ELSE
+				PRINTFORML 「앗, 저깃, 그런 곳에 얼굴 찔러 넣지……먀읏……%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 속옷을 입지 않아, 사타구니가 뻔히 보여져 있다
+				PRINTFORMW 민감한 부분에 입김을 내뱉어 주니, 코마치는 전신을 진동시켰다
+			ENDIF
+		ENDSELECT
+	ELSEIF TALENT:사모
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「%CALLNAME:MASTER% 응석쟁이구나」
+			PRINTFORMW 코마치는 허벅지를 팡팡 두드려, %CALLNAME:MASTER%에게 권했다
+			PRINTFORMW 「베고있으면 기분이 어때? 라니, 물어볼 것까지도 없나보네」
+		CASE 1
+			PRINTFORML 「자, 누워」
+			PRINTFORMW 코마치의 손짓에 %CALLNAME:MASTER%은 망설이지 않고 허벅지에 머리를 맡겼다
+		CASE 2
+			PRINTFORML 「읏, 그 잠깐 사이에 스커트에 손 넣지마」
+			PRINTFORMW 코마치의 은밀한 곳을 만지작거리다 핑거펀치를 먹었다
+		ENDSELECT
+	ELSEIF ABL:친밀 > 2
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「나라도 좋다면, 자 누워봐」
+			PRINTFORMW 코마치는 허벅지를 팡팡 두드려, %CALLNAME:MASTER%에게 권했다
+			PRINTFORMW 「베고있는 느낌은 어때? 나쁘지 않아? 그럼 다행이네」
+		CASE 1
+			PRINTFORML 「쿠아~, 졸려……」
+			PRINTFORMW 머리위에선 코마치가 큰 하품을 내뱉고 있었다
+		CASE 2
+			PRINTFORML 「뭐야, 이상한 얼굴 하곤」
+			PRINTFORMW 코마치는 이상한 듯이 웃고 있다
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「쿠아~, 졸려……」
+			PRINTFORMW 머리위에선 코마치가 큰 하품을 내뱉고 있었다
+		CASE 1
+			PRINTFORML 「뭐야, 이상한 얼굴 하곤」
+			PRINTFORMW 코마치는 이상한 듯이 웃고 있다
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;306, 배를 어루만진다
+;TFLAG:193(1=ABL:친밀 6이상 또한 임신시 0=성공 -1=ABL:친밀 5 이하)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_306
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_306_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_306_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간정지중
+	IF FLAG:70
+	;통상
+	ELSE
+		IF TFLAG:193 == 1
+			IF CFLAG:38:무자각임신
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「이상하네. 내가 아이가 생기다니」
+					PRINTFORMW 코마치는 %CALLNAME:MASTER%의 손에 자신의 손을 겹치고 이상하게 여기고 있다
+				CASE 1
+					PRINTFORML 「솔직히 아빠가 누군진 모르지만 말야, 이 아이는 낳아 기를거야」
+					PRINTFORMW 코마치는 벌써 어머니의 얼굴이 되어 있었다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「기분이 이상해. 여기에 당신과의 아이가 있다니」
+					PRINTFORMW 코마치는 %CALLNAME:MASTER%의 손에 자신의 손을 겹쳐 미소짓고 있다
+				CASE 1
+					PRINTFORML 「아가야, 아빠가 만나고 싶다고 하네~%UNICODE(0x2665) *1%」
+					PRINTFORMW 코마치는 뱃속의 아이에게 상냥하게 말을 걸고 있다
+				CASE 2
+					PRINTFORMW 「사내 아이라도 여자 아이라도 좋으니까, 무사히 태어났으면 좋겠어」
+				ENDSELECT
+			ENDIF
+		ELSEIF TFLAG:193 == 0
+			IF CFLAG:1100 == 1
+				;시간중의 정액에도 반응해 버린다고 생각하지만 능숙한 일 생각해내지 못했다
+				IF EX:TARGET:질내정액 > 0
+					PRINTFORML 「알겠어? 지금, 여기에 당신이 뿌린 자식이, 날뛰고 있는 거야……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 손에 자신의 손을 겹쳐 하복부로 이끌었다
+					SELECTCASE CFLAG:생리주기
+					CASE 7
+						PRINTFORML 「지금쯤, 나의 씨를 정복 해 버리고 있는 걸까……」
+						IF TALENT:MASTER:연인
+							IF TALENT:연인
+								PRINTFORMW 「나, 엄청 행복해. 당신에게 많이 사랑받아서」
+								PRINTFORML 「그러니까, 확실히 임신할 때까지 많이, 내 자궁에 쏟아내 줘……%UNICODE(0x2665) *1%」
+								PRINTW 
+							ELSE
+								IF TALENT:(NO:30):연인
+									PRINT 「시키님이라는 분이 있으면서,
+								ELSE
+									PRINT 「다른 좋은 사람이 있으면서,
+								ENDIF
+								PRINTFORML 나에게 교배하다니 당신도 지독한 사람이구나」
+								PRINTFORML 「알고 있어 당신을 받아들인 나도 같은 죄니깐 말야」
+								PRINTW 
+							ENDIF
+						ELSE
+							PRINTFORML 「연인도 아닌데 이렇게 많이 싸버리면, 뭐랄까」
+							PRINTFORML 「싫냐고? 싫으면, 절대 이렇게 받아들이지 않아 %UNICODE(0x2665) *1%」
+							PRINTFORML 「뭐, 깊은 사이가 되고 싶은 건 본심이지만 말야……%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					CASE 1, 2
+						PRINTFORML 「오늘은 안전한 날이니까 적중 하진 않겠지만 말야」
+						PRINTFORML 「가능 한 날에도 날에도 많이, 쏟아내 주면 좋겠어……%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASEELSE
+						PRINTFORML 「어쩌면, 적중했지도 모르겠네……%UNICODE(0x2665) *1%」
+						PRINTFORML 「당신은 어느 쪽이 좋아? 코마치가 임신한 것과 임신하지 않는 것」
+						PRINTW 
+					ENDSELECT
+				ELSE
+					PRINTFORML 「배 어루만지면, 이쪽이 갖고 싶어지는데……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 양물을 손바닥으로 더듬고 있다
+					PRINTFORML 「아니 혹시, 그럴 목적으로 쓰다듬은 거야?」
+					PRINTFORML 「그렇게 완곡하게 표현하지 않아도, 언제든지 넣어줘도 괜찮은데 말야……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDIF
+			ELSEIF TALENT:연모 || TALENT:연인
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「야한 손놀림이네. 그렇지만 말야」
+					PRINTFORMW 코마치는 %CALLNAME:MASTER%의 손을 잡아, 하복부로 이끌었다
+					PRINTFORMW 「여기도 어루만져 주지 않을래……♪」
+				CASE 1
+					PRINTFORML 「손, 따뜻해. 읏, 어디에 손을 넣으려는 거야」
+					PRINTFORMW 혼잡한 틈을 노려 하복부에 손을 대려다 찰싹 얻어맞았다
+				CASE 2
+					PRINTFORML 「만질만질하지. 그거 잘됐네」
+					PRINTFORMW 코마치는 옷아래에 손을 넣어 배를 어루만지게 해 주었다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:3
+				CASE 0
+					PRINTFORML 「그 손놀림, 뭔가 추잡한데」
+					PRINTFORMW 원을 그리듯이 배를 쓰다듬으니, 코마치는 곁눈질을 보냈다
+				CASE 1
+					PRINTFORMW 「아, 뭐야, 찝지마」
+				CASE 2
+					PRINTFORMW 「읏, 별로 배아픈거 없어」
+				ENDSELECT
+			ENDIF
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「여자의 배에 손을대다니, 섬세함이 없네」
+			CASE 1
+				PRINTFORMW 「저기말야, 배 같은데 만지면 여자는 보통 좋아하지 않아」
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;307, 뺨을 집는다
+;TFLAG:193(1=대성공 0=성공 -1=실패)(지문 분기 없음
+	;이하는 먼저 쓴 조건이 우선된다
+	;TALENT:연모(받아들이면서 웃는 얼굴로 다시한다
+	;ABL:친밀(6이상=흠칫흠칫 다시한다
+	;ABL:순종(5이상=되는 대로
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_307
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패(주, 껴안아 모드중은 자동 성공), 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_307
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_307_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_307_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간정지중
+	IF FLAG:70
+	;수면중
+	ELSEIF CFLAG:수면
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「우응, 히키니…… 요셔해주셰……」
+			PRINTFORMW 코마치는 염마에게 벌받는 꿈이라도 꾸는지, 괴로운 표정을 띠고 있다
+		CASE 1
+			PRINTFORML 「니에에……」
+			PRINTFORMW 뺨을 꼬집히고 있음에도 불구하고, 코마치는 칠칠치 못한 표정을 띠고 있다
+		ENDSELECT
+	;통상
+	ELSE
+		IF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 코마치와 서로 뺨을 팽팽하게 당겼다
+			CASE 1
+				PRINTFORMW 「아하하, %CALLNAME:MASTER%의 볼 되게 잘 늘어나네」
+			ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「자, 답례야」
+				PRINTFORMW 코마치는 %CALLNAME:MASTER%의 볼을 가볍게 잡아당겼다
+			CASE 1
+				PRINTFORML 「볼 떨어져, 떨어져」
+				PRINTFORMW 코마치는 눈물고인 눈으로 양의 볼을 문지르고 있다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「그만두어」
+			CASE 1
+				PRINTFORMW 「이거 나아아앗―」
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;308, 뺨을 쿡쿡 찌른다
+;동침중 or수면 중한정
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_308
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패(주, 껴안아 모드중은 자동 성공), 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_308
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_308_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_308_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;수면중
+	IF CFLAG:수면
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「에헤헤……」
+			PRINTFORMW 코마치는 왠지 야무지지 못한 미소를 짓고 있다
+		CASE 1
+			PRINTFORML 「응─……」
+			PRINTFORMW 코마치의 뺨을 말랑말랑 쿡쿡 찌른다. 알맞은 탄력이 기분 좋다
+		ENDSELECT
+	;통상
+	ELSE
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「뭐야?」
+			PRINTFORMW %CALLNAME:MASTER%의 장난에 코마치는 미소를 돌려주었다
+		CASE 1
+			PRINTFORML 「그만두어」
+			PRINTFORMW 너무 끈질기게 쿡쿡 찌른 것 같다. 코마치는 뺨을 부풀리고 있다
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;309, 머리를 어루만진다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;ABL:친밀(6이상=통상 성공 시분기
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_309
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패(주, 껴안아 모드중은 자동 성공), 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_309
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_309_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_309_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간정지중
+	IF FLAG:70
+	;수면중
+	ELSEIF CFLAG:수면
+	;통상
+	ELSE
+		IF CFLAG:1100 == 1
+			PRINTFORML 「아 이제 그렇게 상냥하게 어루만질 수 있으면, 당신에게 좀 더 응석부리고 싶어져 버리지 않은 거야……%UNICODE(0x2665) *1%」
+			PRINTFORML 코마치는 %CALLNAME:MASTER%의 가슴팍에 뺨을 부비부비 대고 있다
+			PRINTW 
+		ELSEIF TALENT:연모 || TALENT:연인
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「응, 이대로, 좀 더」
+				PRINTFORMW 코마치는 %CALLNAME:MASTER%의 가슴에 얼굴을 묻고 응석부리고 있다
+			CASE 1
+				PRINTFORML 「다른사람이 쓰다듬어 주는 것이 이렇게 기분 좋다니」
+				PRINTFORMW 「앙, 아직 그만두지마. 좀 더」
+			CASE 2
+				PRINTFORML 「아 정말, 그렇게 구깃구깃 하면 머리카락이 흐트러지잖아」
+				PRINTFORMW 「내 머리를 어루만지는 거, 그렇게 좋아? 그럼 계속 쓰다듬어도 괜찮아」
+			CASE 3
+				PRINTFORML 「당신의 손, 따뜻해……」
+				PRINTFORMW 머리를 어루만져 져 코마치는 넋을 잃고 있다
+			ENDSELECT
+		ELSEIF TALENT:사모
+			PRINTFORML 「뭔가 아이 취급 받는 것 같은데」
+			PRINTFORMW 「그렇지만 뭔가 이상해. 조금도 싫지 않아」
+		ELSE
+			PRINTFORML 「응─, 좀 쑥스럽네」
+			PRINTFORMW 「아아, 머리 헝클어지게 하지는 말아줘」
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;331, 차를 끓인다(약넣은)
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_331
+;성공 여부 판정
+;TFLAG:192(-2=강제 실패(주, 비커맨드 종료),-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공(주, 수면제 아이스 티는 졸음을 느끼고 있으면 마시지 않는다)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_331
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_331_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_331_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;332, 술을 대접한다
+;TFLAG:193(0=술을 못함 마시는 것 성공 -1=술을 못함 마시는 것 실패 -2=술을 못함 마시는 것대실패 -5=술을 못함 마시는 것 체념)
+;TFLAG:194(51=막걸리 52=청주 53=무서운 살인)
+;ALCOHOL_TASTE(TFLAG:194)(15이상=마음에 드는 9 이하=입맛에 맞지 않는다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_332
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_332_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_332_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:1100 == 1
+		;곤드레만드레
+		IF K76_DRUNK() == 3
+			PRINTFORML 「%CALLNAME:MASTER%~, 이거어어, 하쟈아앙~%UNICODE(0x2665) *1%」
+			PRINTFORML 코마치는 의복을 풀어헤치고, %CALLNAME:MASTER%을 껴안고, 입술을 빼앗아 왔다
+			PRINTW 
+			IF GET_TARGETNUM() > 0
+				PRINTFORML 「사람이 어쨌따구? 그러니까아, %CALLNAME:MASTER%을 갖고 싶어어, 안아줘어~」
+				IF K76_발기() > 0
+					IF K76_발기() == 3
+						PRINTFORML 「그럴 생각 없댜면서, 여기는, 의욕 뺭뺭이네~%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 하의에 손을 넣고, 펄떡펄떡 발기한 페니스를 직접적 훑어 내기 시작했다
+						PRINTW 
+						PRINTFORML 「빨리 싸져엇, 남들 앞에서어, 퓻 퓻해 버린다~♪」
+						PRINTFORML 「
+					ELSEIF K76_발기() == 2
+						PRINTFORML 「앙대애? 근데에, 쟈지쨩, 빨딱빨딱 올라와……%UNICODE(0x2665) *1% 하쟈아아, 으응~%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 옷을 밀어 올리는 페니스를 익숙한 손놀림으로 더듬었다
+					ELSEIF K76_발기() == 1
+						PRINTFORML 「어랏, 뭘 한가로께 뻐더써어, 이봐아~, 일어나아~」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 사타구니에 얼굴을 대고, 비비면서 부르고 있다
+					ENDIF
+				ELSE
+					PRINTFORML 「저녀 저녀 치하지 아났서, 너눈 지장인가아~, 저, 것도, 지장은딱따캐 , 아하하하핫」
+					PRINTFORML %CALLNAME:MASTER%은 수습이 되지 않는 코마치를 달래는데 필사적이었다
+				ENDIF
+				PRINTW 
+			ELSE
+				IF K76_발기() > 0
+					IF K76_발기() == 3
+						PRINTFORML 「응등개도 말해, 여기는, 의욕 그대로응등이야~%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 하의에 손을 돌진해, 펄떡펄떡 발기한 페니스를 직접적으로 훑어 내기 시작했다
+						PRINTW 
+						PRINTFORML 「쟈아, 빨리 싸져엇, 손으로 퓻 퓻 하까나~%UNICODE(0x2665) *1%」
+						PRINTFORML 「코맛찌 보지에, 퓻 퓻하는게, 조으까나~%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINTFORML 「챰지 말고오, 보지에엣, 쟈아아아아아안 뜩, 싸져어어~%UNICODE(0x2665) *1%」
+					ELSEIF K76_발기() == 2
+						PRINTFORML 「앙대애? 근데에, 쟈지쨩, 빨딱빨딱 올라와……%UNICODE(0x2665) *1% 하쟈아아, 으응~%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 옷을 밀어 올리는 페니스를 익숙한 손놀림으로 더듬었다
+					ELSEIF K76_발기() == 1
+						PRINTFORML 「어랏, 멀 한가로께 뻐더써어, 이봐아~, 일어나아~」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 사타구니에 얼굴을 대고, 비비면서 부르고 있다
+					ENDIF
+				ELSE
+					PRINTFORML 「저녀 저녀 치하지 아났서, 너눈 지장인가아~, 저, 것도, 지장은딱따캐 , 아하하하핫」
+					PRINTFORML %CALLNAME:MASTER%은 수습이 되지 않는 코마치를 달래는데 필사적이었다
+				ENDIF
+			ENDIF
+		;주정꾼
+		ELSEIF K76_DRUNK() == 2
+			PRINTFORML 「뜨거어, 몸이 뜨거워……」
+			PRINTFORML 코마치는 의복을 풀어헤치게 해 홍조 한 가슴팍을 푸르다
+			PRINTW 
+		;취기
+		ELSEIF K76_DRUNK() == 1
+			PRINTFORML 「아─, 기분 좋다……♪」
+			PRINTFORML 「좋은 남자와 좋은 술들에 둘러싸여, 행복해……♪」
+			PRINTFORML 코마치는 %CALLNAME:MASTER%에 기대 늘어져, 넋을 잃고 있다
+			PRINTW 
+		ENDIF
+	ELSE
+		SELECTCASE TFLAG:194
+		CASE 51
+			IF ALCOHOL_TASTE(TFLAG:194) >=  15
+				PRINTFORML 「탁한데도 감칠맛이 있다. 마시기 쉬운데」
+			ELSEIF ALCOHOL_TASTE(TFLAG:194) >=  10
+				PRINTFORML 「응. 마시기 쉽고 좋은데?」
+			ELSE
+				PRINTFORML 「내 취향은 아니네. 미안」
+			ENDIF
+		CASE 52
+			IF ALCOHOL_TASTE(TFLAG:194) >=  15
+				PRINTFORML 「아름답네, 청주라는 건. 맛은……응, 달콤하고 좋은 향기가 입안에서 퍼져 가」
+			ELSEIF ALCOHOL_TASTE(TFLAG:194) >=  10
+				PRINTFORML 「조금 강한 맛이구나, 이런 것도 나쁘지 않아」
+			ELSE
+				PRINTFORML 「이거, 싸구려야? 뭐, 마구 취하고 싶다면 이런 것이라도 좋겠지만」
+			ENDIF
+		CASE 53
+			IF ALCOHOL_TASTE(TFLAG:194) >=  15
+				PRINTFORML 「매움과 풍미가 동시에 밀려오네. 응~, 맛이 이상해」
+			ELSEIF ALCOHOL_TASTE(TFLAG:194) >=  10
+				PRINTFORML 「나는 상당히 마실 수 있다고 자부했는데, 꽤 강하네, 이 술은」
+			ELSE
+				PRINTFORML 「이름 대로네. 오니는 커녕 신도 죽일 수 있는 거 아니야? 이거」
+			ENDIF
+		CASEELSE
+			IF ALCOHOL_TASTE(TFLAG:194) >=  15
+				PRINTFORML 「쿠우~, 스며든다♪」
+			ELSEIF ALCOHOL_TASTE(TFLAG:194) >=  10
+				PRINTFORML 「당신, 꽤 좋은 걸 숨기고 있잖아. 한 모금 더 받을 수 있을까?」
+			ELSE
+				PRINTFORML 「동행에게 맡아 달라고 해서 받았는데, 나에겐 조금 모자랄까」
+			ENDIF
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;333, 푸념을 (듣)묻는다
+;TFLAG:193(6=대성공(취기) 5=성공(취기) 4=실패(취기) 3=대성공 2=성공 1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_333
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_333
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_333_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_333_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+		CASE 6
+		;대성공(취기)
+		CASE 5
+		;성공(취기)
+		CASE 4
+		;실패(취기)
+		CASE 3
+		;대성공
+		CASE 2
+		;성공
+		CASE 1
+		;실패
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;334, 잔을 주고 받는다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;CFLAG:임신자각상태(1=식사)
+;TALENT:술내성(-2=식사)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_334
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_334
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_334_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_334_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+		CASE 1
+		;대성공
+		CASE 0
+		;성공
+		CASE -1
+		;실패
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;335, 간호한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_335
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_335
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_335_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_335_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+		CASE 1
+		;대성공
+		CASE 0
+		;성공
+		CASE -1
+		;실패
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;336, 무릎 베개한다
+;ABL:친밀(4 이하=기분악 9 이하=수치않다 기울 수 있는 그 이상=행복한 것 같다
+;TIME_PROGRESS(TFLAG:무릎 베개했다)(44 이하=실패
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_336
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_336
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_336_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_336_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:193 > 0
+	;자 버렸다
+		PRINTFORML 「스으…… 스으……」
+		PRINTFORMW 코마치는 %CALLNAME:MASTER%의 무릎 위에서, 기분 좋은 듯이 숨소리를 내고 있다
+	ELSE
+	;그 이외
+		IF CFLAG:1100 == 1
+			PRINTFORML 「에헤헤에, %CALLNAME:MASTER%의 무릎 베개……♪」
+			PRINTFORML 코마치는 표정을 느슨하게 하고 %CALLNAME:MASTER%의 허벅지에 뺨을 비비고 있다
+			PRINTW 
+			IF K76_발기() >=  2
+				PRINTFORML 「어머나? 이런 곳에, 괴로운 듯한 자지 발~견」
+				PRINTFORML 「무릎 베개의 답례로, 코마치가 진정시켜 줄까?」
+				PRINTFORML 코마치는 입을 열고, 혀로 뭔가를 빠는 듯한 행동을 보였다
+				PRINTW 
+			ELSEIF K76_발기() == 1
+				PRINTFORML 「어? 당신의 여기, 조금 빳빳한 것 같은……」
+				PRINTFORML 「혹시, 불끈 불끈해 버린 거야……%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSE
+			ENDIF
+		ELSE
+			IF ABL:친밀 >=  10
+				SELECTCASE RAND:2
+				CASE 0
+					PRINTFORML 「엣헤헤, %CALLNAME:MASTER%의 무릎 베개……♪」
+					PRINTFORMW 코마치는 표정을 느슨하게 하고 %CALLNAME:MASTER%의 허벅지에 뺨을 비비고 있다
+				CASE 1
+					PRINTFORML 「아아, 남자들이 무릎베개 받고 싶어하는 기분을 잘 알겠어」
+					PRINTFORMW 「이거 못됐어. 사람 망치는거야…… 쿠우」
+				ENDSELECT
+			ELSEIF ABL:친밀 >=  5
+				PRINTFORML 「뭔가 이거, 부끄러워」
+				PRINTFORMW 「그래도, 굉장히 기분 좋아. 이대로 자 버릴 것 같아……」
+			ELSE
+				PRINTFORML 「저기, 이거 계속 해야 돼?」
+				PRINTFORMW 「뭐랄까, 견디기 불편한데……」
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;350, 밀어 넘어뜨린다(시간시 장난 한다
+;TFLAG:194(0=성공 1=남의 눈이 어느 2=야외는 싫어 자리 지금 하는 3=많은 사람플레이는 용서 4=합의가 있어도 무드가 충분하지 않는 100=합의는 있지만 말내 특수 판정에 의해 실패)
+;TCVAR:껴안고첫회 1=보통으로 합의 겟트 2=먼저 키스 정도 해라 3=미약or발정에는 이길 수 없었어요… 4=분한…각인조차 없으면 비크비쿤
+;5=억지로 재촉당하면 거절할 수 없는(소질 겁쟁이 소유 전용) 6=그렇지만도 않은 7=안돼 8=논외 98=말내 특수 판정에 의한 실패 99=말내 특수 판정에 의한 성공
+;말내 특수 판정은 해당하는 CFLAG가 0이라면 무효
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_350
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_350_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_350_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:194
+	;성공
+	CASE 0
+		SELECTCASE TCVAR:TARGET:껴안고첫회
+		CASE 1
+			IF TALENT:연모
+				PRINTFORMW 「꺄앙……%UNICODE(0x2665) *1%」
+				PRINTFORMW 당신이 코마치를 밀어 쓰러뜨리면, 코마치는 소녀처럼 부끄러워했다
+				PRINTL 
+				PRINTFORML 「기뻐, 이제야 그럴 마음이 생겼어」
+				PRINTFORMW 「혹시, 나 색기가 부족한 건가 싶었는데」
+				PRINTL 
+				PRINTFORML 「나, 당신이 좋을대로 해줘」
+				PRINTFORML 「%CALLNAME:MASTER%이 하고 싶은 거라면, 뭐든지 받아들여줄게……%UNICODE(0x2665) *1%」
+				PRINTFORMW 「아아앙%UNICODE(0x2665) *1%」
+			ELSEIF TALENT:사모
+				PRINTFORMW 「꺄읏」
+				PRINTFORMW 당신이 코마치를 밀어 쓰러뜨리면, 코마치는 어이를 상실한 얼굴을 했다
+				PRINTL 
+				PRINTFORML 「아─, 이거, 그런거지?」
+				PRINTFORMW 코마치는 뺨을 붉히고는 있지만, 티나게 얼버무리지는 않았다
+				PRINTL 
+				PRINTFORML 「나도, 이런식으로 될거 기대 안한건 아닌데」
+				PRINTFORMW 「그래도, 아무한테나 안기는 여자라고 생각하지 말아줘. %CALLNAME:MASTER%이니까, 안기고 싶은 거야」
+				PRINTFORML 「앗…… 그렇게 안아주는거 너무 좋아, %CALLNAME:MASTER%이 좋아하는대로 해줘」
+				PRINTFORML 「지금은, 당신의 여자야……%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 양팔을 벌리고, %CALLNAME:MASTER%을 받아들였다
+			ELSE
+				PRINTFORML 「나랑 하고싶어?」
+				PRINTFORML 「좋아, 당신에게 안기는거」
+				PRINTFORMW 「그 대신, 많이 기분 좋게 해 줘야해……♪」
+			ENDIF
+		CASE 2
+			PRINTFORML 「나랑, 하고싶다고?」
+			PRINTFORML 「……아니, 좋긴 한데」
+			PRINTFORMW 「나라도, 조금은 분위기라는 걸 소중히 해줬으면 하는데…… 좋아, 와」
+		CASE 3
+			PRINTFORML 「당신, 나한테 이상한 거 먹였지이……」
+			PRINTFORML 「그런 멍청한 짓 안해돗……으응」
+			PRINTFORMW 「부탁해, 이 뜨거움을 진정시켜 줘어읏」
+		CASE 4
+			PRINTFORML 「앗, 조금 잠깐, 만……응읏%UNICODE(0x2665) *1%」
+			PRINTFORML %CALLNAME:MASTER%에게 몸을 더듬어져, 코마치는 음란한 소리를 질렀다
+			PRINTFORMW 몸에 새겨진 쾌락은, 이 자리에서 벗어나기를 거부한다
+			PRINTL 
+			PRINTFORML (앗, 안돼…… 몸이 %CALLNAME:MASTER%을 찾는 것 같아……)
+			PRINTFORML (자궁이 계속 쑤셔서 못 견디겠어……)
+			PRINTFORMW 「안아, 줘……나 이 간지러움을 풀어줘……」
+		CASE 6
+			PRINTFORML 「날 보고는, 계속 그런 생각 했던 걸까」
+			PRINTFORML 「이대로 몸을 맡기는 것도 나쁘진 않지만……그래도」
+			PRINTFORMW 「좀 더 분위기를 잡아봐」
+		CASE 7
+			PRINTFORML 「안돼. 왠지 지금은 그럴 기분 아니야」
+			PRINTFORMW 「그렇지만, 당신 하는 거 봐서, 내쪽에서 부탁 해 버릴지도?」
+		CASE 8
+			PRINTFORML 「뭐ㅡ야, 발정 난 것 처럼」
+			PRINTFORMW 「기분 좋은 일 싫진 않은데, 지금은 거절」
+		CASEELSE
+			IF OUTROOF(CFLAG:TARGET:현재위치)
+				IF TALENT:연모 || TALENT:연인
+					IF YOUBI_MATCH(DAY, "월수금")
+						IF TIME:0 >420 && TIME:0 < 600
+							PRINTFORML 「자, 잠깐, 이런 곳에서, 하고 싶어졌어?」
+							PRINTFORML 「정말이지, 어쩔 수 없네……%UNICODE(0x2665) *1% 좋아, 할까……%UNICODE(0x2665) *1%」
+							PRINTFORML 「일하러 갈 때 까지 시간이 별로 없으니까……참지 말고 바로 싸줘」
+							PRINTW 
+						ELSEIF TIME:0 >600 && TIME:0 < 960
+							PRINTFORML 「자, 잠깐, 이런 곳에서, 하고 싶어졌어?」
+							PRINTFORML 「정말이지, 어쩔 수 없네……%UNICODE(0x2665) *1% 좋아, 하자……%UNICODE(0x2665) *1%」
+							PRINTFORML 「일은 끝났고, 시간도 널널하니까……♪」
+							PRINTW 
+						ENDIF
+					ELSE
+						PRINTFORML 「이런 곳에서, 하고 싶어졌어?」
+						PRINTFORML 「정말이지, 어쩔 수 없네……%UNICODE(0x2665) *1% 좋아, 할까……%UNICODE(0x2665) *1%」
+						PRINTW 
+					ENDIF
+				ELSEIF TALENT:사모
+					PRINTFORML 「이런 곳에서, 하고 싶어졌어?」
+					PRINTFORML 「자. 날 기분좋게 해줘……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ELSE
+					PRINTFORML 「이런 데서 발정난 것 처럼 굴거야?」
+					PRINTFORML 「뭐어, 나도 흥미없지는 않으니, 좋아, 할까……♪」
+					PRINTW 
+				ENDIF
+				CFLAG:76:1010 += 1
+			;옥내
+			ELSE
+				;에이키님의 방
+				IF CFLAG:MASTER:현재위치 == 615
+					;당신과 에이키님이 동거중
+					IF CFLAG:MASTER:초기위치 == CFLAG:30:초기위치 && CFLAG:MASTER:현재위치 == CFLAG:30:초기위치
+						IF TALENT:연모 || TALENT:연인
+							PRINTFORML 「이런 곳에서, 하고 싶다고?」
+							PRINTFORML 「그치만, 여기, 시키님의……」
+							PRINTFORML (그렇게 말하면, 시키님과 %CALLNAME:MASTER%, 같은 방에 살고 있었던가……)
+							PRINTW 
+							IF TALENT:연인
+								IF CFLAG:1100 == 1
+									PRINTFORML 「좋아. 여기서 왕창 해버릴까%UNICODE(0x2665) *1%」
+									PRINTFORML 「시키님이 돌아올 때까지, 이 방을 야한 냄새로 가득 채우자%UNICODE(0x2665) *1%」
+									PRINTFORML 「들키면, 엄ㅡ청 혼날 것 같은데……%UNICODE(0x2665) *1%」
+									PRINTW 
+								ELSE
+									PRINTFORML (연인은 난데…… 하필이면, 시키님이랑……)
+									PRINTFORML 「……………… 좋아」
+									PRINTFORML 「나도 지금, 엄청 하고 싶어. 가득 기분 좋게 해줘……%UNICODE(0x2665) *1%」
+									PRINTW 
+								ENDIF
+							ELSE
+								;당신과 에이키님이 커플
+								IF TALENT:(NO:30):연인
+									PRINTFORML 「……………… 좋아」
+									PRINTFORML 「그 대신, 너무 큰 소리 내게 하면 안돼? 들키면, 뭐라고 하실지……」
+									PRINTFORML 「그리고, 가능한 한 빨리 끝내 줘?
+									PRINTFORML (미안합니다 시키님. 시키님과 %CALLNAME:MASTER%이 사랑하는 사이인 걸 알면서, 시키님 방에서 %CALLNAME:MASTER%에 안길거에요……)
+									PRINTW 
+								ELSE
+									PRINTFORML 「……………… 좋아」
+									PRINTFORML 「그 대신, 너무 큰 소리 내게 하면 안돼? 들키면, 뭐라고 하실지……」
+									PRINTFORML 「그리고, 가능한 한 빨리 끝내 줘?
+									PRINTW 
+								ENDIF
+							ENDIF
+						ELSEIF TALENT:사모
+							PRINTFORML 「하고 싶어졌어?」
+							PRINTFORMW 「자. 나도 기분좋게 해줘……%UNICODE(0x2665) *1%」
+						ELSE
+							PRINTFORML 「어떻게 하지…… 내가 좋아?」
+							PRINTFORMW 「뭐, 요구받는 것도 괜찮은 기분이고, 이럴 때 할 일은 하나지」
+						ENDIF
+					ELSE
+						IF TALENT:연모 || TALENT:연인
+							PRINTFORML 「이런 곳에서, 하고 싶다고?」
+							PRINTFORML 「그렇지만, 여기, 시키님의……」
+							PRINTFORML 「이제 못 참겠다고? 우으, 알았어, 알았으니까, 빨리 끝내야 해?」
+							PRINTFORML (…… 미안합니다 시키님, 당신의 부하는 상사의 방에서 불끈불끈 해 버리는 녀석이에요……)
+							PRINTW 
+						ELSEIF TALENT:사모
+							PRINTFORML 「이런 곳에서, 하고 싶다고?」
+							PRINTFORML 「아니아니잠깐, 여기, 시키님 방인데?」
+							PRINTFORML 「……빨리 끝낼거지?」
+							PRINTFORML (…… 미안합니다 시키님, 당신의 부하는 상사의 방에서 불끈불끈 해 버리는 녀석이에요……)
+							PRINTW 
+						ELSE
+							PRINTFORML 「이런 곳에서, 하고 싶다고?」
+							PRINTFORML 「아니아니잠깐, 여기, 시키님 방인데?」
+							PRINTFORML 「앗, 잠깐, 그만해, 아 응읏%UNICODE(0x2665) *1%」
+							PRINTW 
+						ENDIF
+					ENDIF
+					CFLAG:76:1020 += 1
+				ELSE
+					IF TALENT:연모 || TALENT:연인
+						PRINTFORML 「나, 안아 줘」
+						PRINTFORMW 「봐봐, 여기, %CALLNAME:MASTER%을 갖고 싶어서 이렇게 돼 버렸어……%UNICODE(0x2665) *1%
+					ELSEIF TALENT:사모
+						PRINTFORML 「하고 싶어졌어?」
+						PRINTFORMW 「자. 나도 기분 좋게 해줘……%UNICODE(0x2665) *1%」
+					ELSE
+						PRINTFORML 「어떻게 하지……나라도 좋아?」
+						PRINTFORMW 「뭐, 요구받는 것도 괜찮은 기분이고, 이럴 때 할 일은 하나지」
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDSELECT
+	;밀어 넘어뜨리기 실패
+	;남의 눈
+	CASE 1
+		PRINTFORML 「남 앞에서 한다는 거야?」
+		PRINTFORMW 「그, 이런 나라도 입장이란게 있잖아, 좋고 싫고가 아니라, 뭐라고 할까……」
+		PRINTFORML (그런거, 한번 해보고 싶긴 한데, 솔직히 얘기했다간 %CALLNAME:MASTER%에게 밀어붙여지겠지……)
+		PRINTFORMW 코마치는 거부했지만, 애매한 대답이었다.
+	;야외
+	CASE 2
+		PRINTFORML 「밖에서, 하고 싶은 거야?」
+		PRINTFORMW 「아니―, 안되긴 하는데, 싫은 건 아니고……오늘 말고 다음에 하면 안돼?」
+		PRINTFORML (아무리 그래도, 여자가 밖에서 해도 괜찮다고 말하는 건 상스러운것 같은데……)
+		PRINTFORMW (아마, 한번 하게되면 빠져 버릴 것 같다는 생각이 들어……)
+		PRINTFORMW 말로는 거부하면서도, 코마치는 야외에서의 정사에 흥미진진한 것 같다
+	;난교
+	CASE 3
+		PRINTFORML 「응─…… 흥미가 없지는 않지만」
+		PRINTFORMW 「지금은 %CALLNAME:MASTER%이랑 단 둘이서 차분히 하고 싶다, 랄까……%UNICODE(0x2665) *1%」
+	;무드 부족하다
+	CASE 4
+		PRINTFORML 「미안, 아직 그럴 기분 아니야」
+		PRINTFORMW 「그런 건, 둘이서 좀 더 꽁냥꽁냥 한 다음에 어때」
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;351, 데리고 나간다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_351
+;데리고 나가에는 TRAIN_MESSAGE가 없다
+CALL M_KOJO_MESSAGE_COM_K76_351_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_351_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;TARGET 데리고 나가
+	IF CFLAG:동행 == 60
+		IF CFLAG:1100 == 1
+			PRINTFORML 「저기, 어디로 데려가는 걸까나……%UNICODE(0x2665) *1%」
+			PRINTFORML 코마치는 뭔가 기대하는 바가 있는지, 끈적한 시선을 보내왔다
+			PRINTW 
+		ELSEIF TALENT:연인 || TALENT:연모
+			PRINTFORML 「응, 같이 가줬으면 해? 좋앗」
+			PRINTFORML 어디로 가는지 확인 하지도 않고, 코마치는 따라 와 주었다
+			PRINTW 
+		ELSEIF TALENT:사모
+			PRINTFORML 「응, 따라와 달라고? 어디로 갈껀데?」
+			PRINTFORML 「으흥, 장소보다 내가 같이 가주는 게 중요한 것 같네. 좋앗」
+			PRINTW 
+		ELSE
+			PRINTFORML 「응, 따라와 달라고? 어디로 갈껀데?」
+			PRINTFORML 「나는 별로 연약하지 않으니 괜찮지만, 여자에게 행선지도 말해주지 않는 것은 의심스럽게 여겨질 수 있어」
+			PRINTFORML 「뭐, 서로 깊은 사이라면 반대로 재밌는 서프라이즈를 준비할 수도 있겠지만 말야」
+			PRINTW 
+		ENDIF
+	;TARGET 이외 데리고 나가(TARGET 동행중만
+	ELSE
+		IF TALENT:연인 || TALENT:연모
+			PRINTFORML 「정말이지, 여기 설렁설렁, 저기 설렁설렁 실 끊어진 연같네」
+			PRINTFORML 「용무가 끝나면, 나한테 돌아와 주겠지」
+			PRINTFORML 코마치는 쓴웃음 지으면서 %CALLNAME:MASTER%들을 보내 주었다
+			PRINTW 
+		ELSEIF TALENT:사모
+			PRINTFORML 「좀 더 함께 있고 싶은데……뭐 어쩔 수 없지」
+			PRINTFORML 「용무가 끝나면 다시 나를 만나러 와 줄 거지?」
+			PRINTW 
+		ELSE
+			PRINTFORML 「뭐야, 바쁘신 몸이네. 뭐, 그쪽 일도 제대로 마쳐둬」
+			PRINTFORML 데려와진 곳에서 헤어짐에도 불구하고, 코마치는 손을 흔들며 인사해 주었다
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;352, 고백한다
+;FLAG:생활력무(1=실패)
+;TFLAG:193(1=성공 0=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_352
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_352
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_352_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_352_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORML 「나한테 할 이야기? 뭐야, 정색하고」
+	PRINTFORMW %CALLNAME:MASTER%은 과감히 코마치에게 더없는 마음을 고했다
+	IF TALENT:연모
+	PRINTFORML 「……기뻐. 그 말을 기다리고 있었단 말야」
+	PRINTFORML 코마치는 눈에 물기를 띠고 %CALLNAME:MASTER%의 말을 곱씹고 있다
+	PRINTW
+	PRINTFORML 「하하, 모양 안사네. 서로 같은 생각이었는데 혼자 신경쓰고 있었다니」
+	PRINTFORMW 「그래. 나도 당신을 좋아해」
+	PRINTFORMW 「분명, 당신이 나를 좋아하기 전부터」
+	PRINTW
+	ELSEIF TALENT:사모
+		PRINTFORML 「정말? 내가 좋아?」
+		PRINTFORML 「
+	ELSE
+		PRINTFORML 「연인이 돼 주었으면 한다고? 내가?」
+		PRINTFORML 「다른 좋은 여자도 있을 것 같은데……그래도 내가 좋아?」
+		PRINTW 
+		PRINTFORML 「아니, 난처한데, 이런 경험 없었으니까」
+		PRINTFORML 「후후, 그렇게 까지 말해주는데 거절해서야 여자도 체면이 서지않지. 좋아, 당신이랑 사귀어볼게」
+		PRINTW 
+	ENDIF
+	PRINTFORMW 「그렇다 치더라도, 당신도 참 괴짜구나. 사신과 사귀고 싶다니」
+	PRINTFORML 「뭐, 그렇게 말하면 나도 괴짜라고 해야하나」
+	PRINTFORML 「당신과 사랑하고 싶다고 하니까」
+	PRINTW
+	PRINTFORML 「그렇지만, 좋아한다는 말이 이렇게 기쁘다니」
+	PRINTFORML 「봐봐, 아직도 가슴이 두근두근 해」
+	PRINTFORMW 그렇게 말하고 코마치는 %CALLNAME:MASTER%의 손을 잡아, 자신의 풍만한 가슴에 꽉 눌렀다
+	PRINTFORML 「어때, 진짜지? 앗, 당신도 굉장히 떨리는 것 같은데. 똑같네」
+	PRINTFORMW 코마치는 대담한 짓을 하고도 깔깔거리며 웃고 있다
+	PRINTFORMW 「괴짜들끼리, 앞으로 잘 부탁해 %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+ENDIF
+RETURN 1
+;==================================================
+;353, 장난 한다
+;FLAG:생활력무(1=실패)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_353
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_353_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_353_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;354, 동침 한다(상대는 일어나 이불에 부르는 느낌)
+;CFLAG:쇠약(1이상=일어나지 않는다
+;CFLAG:초대( 0이외=일어나지 않는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_354
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_354_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_354_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:초대 == 0
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「%CALLNAME:MASTER%도 들어와」
+			PRINTFORMW 「후후, 따뜻해」
+		CASE 1
+			PRINTFORML 「%CALLNAME:MASTER%도 들어올래?」
+			PRINTFORMW 코마치에게 다가가자 이불의 빈 곳을 팡팡 두드렸다
+		CASE 2
+			PRINTFORML 「혼자 자는건 외로워. 어딘가 같이 자 줄 사람 없을까나」
+			PRINTFORMW 코마치는 이불에서 빼꼼 얼굴을 내밀고, %CALLNAME:MASTER%을 힐끔힐끔 보고 있다
+		ENDSELECT
+	ELSE
+		PRINTFORML 코마치는 잘 자고 있는 것 같다
+		PRINTFORMW 일으키지 않게 살그머니 이불에 기어들어가, 코마치에게 바짝 다가가 붙었다
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;355, 때 멈추고(지문의 개변 정도로 두어야 함
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_355
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_355_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_355_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;360, 몸을 맡긴다
+;TCVAR:20(27=골짜기를 보이는 32=전부터 껴안는 35=스커트안을 보이는 53=파이즈리 73=파후파후 77=젖을 들이마시게 하는 85=V삽입하는 86=정말좋아 hold 87=A삽입하는 88=허리 흔들기 V 89=허리 흔들기 A
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_360
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_360_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_360_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TCVAR:20
+	CASE 20
+	;골짜기를 보인다
+	CASE 27
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「내 가슴, 그렇게 신경쓰여?」
+			CASE 1
+				PRINTFORML 「%CALLNAME:MASTER%, 머리카락에 실밥이 붙어 있네」
+				PRINTFORML %CALLNAME:MASTER%의 눈앞에는, 압도적인 질량을 가진 유방이 당장 옷에서 넘칠 것처럼 보인다
+				PRINTFORMW 코마치가 움직일 때마다, 연분홍색의 돌기가 힐끔힐끔 보일듯 말듯 한다
+			CASE 2
+				PRINTFORML 「어디 보고 있어?」
+				PRINTFORMW 벌어진 옷의 사이로, 출렁출렁 풍만한 가슴이 흔들리는 것이 보인다
+		ENDSELECT
+	;앞에서 껴안는다
+	CASE 32
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「%CALLNAME:MASTER%, 따뜻해」
+			CASEELSE
+				PRINTFORMW 「이렇게 몸을 밀착시키는 거, 좋지않아?」
+		ENDSELECT
+	;스커트안을 보인다
+	CASE 35
+		;입지 않았다
+		IF EQUIP:TARGET:하반신속옷1 || EQUIP:TARGET:하반신속옷2
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「나, 지금 안에 아무것도 안입었어……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORMW 「봐 줘, 내 보지……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORMW 「자아, 봐봐……여기, 이렇게 되어 버렸어%UNICODE(0x2665) *1%」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「이봐요, 속옷 위로도 알 것 같지……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORMW 「아아, 나 정말 음란한가봐……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORMW 「자아, 봐봐……여기, 이렇게 되어 버렸어%UNICODE(0x2665) *1%」
+			ENDSELECT
+		ENDIF
+	;V삽입 졸라댐
+	;정상위
+	CASE 41
+		IF PALAM:윤활 >=  PALAMLV:3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「자, 코마치의 질에 빨리 넣어줘. 이미, 준비 끝났으니까……%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 양다리를 벌리고, 애액으로 질퍽거리는 비부를 보였다
+			CASE 1
+				PRINTFORML 「보여? 코마치의 보지」
+				PRINTFORMW 「당신의 자지 달라고%UNICODE(0x2665) *1% 졸라대고 있어……%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 스스로 음순을 좌우에 펼쳐, 꿀이 방울져 떨어지고 있는 질구를 보였다
+			CASE 2
+				PRINTFORMW 「자아, 봐봐……내 보지, 이렇게 되어 버렸어%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 사타구니를 당겨, 질척질척해진 음부를 드러내고 있다
+			ENDSELECT
+		ELSE
+			PRINTFORML 「당신 자지, 빨리 내 보지에 넣어줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 가랑이를 벌리고, 손가락으로 음순을 열어 보였다
+			PRINTFORMW 「전희는 그 정도면 충분하니까…… 당신의 것을 넣어줬으면 좋겠어%UNICODE(0x2665) *1%」
+		ENDIF
+	;후배위
+	CASE 43
+		IF PALAM:윤활 >=  PALAMLV:3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「자아, 보이지? 코마치의 여기, 이렇게 돼 버렸어……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「당신의 자지, 안쪽까지 넣어 질거라 생각하니, 이렇게 됐어……%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 엉덩이를 내밀고, 꿀로 흠뻑 젖은 비부를 드러냈다
+				PRINTFORMW 벌어진 꽃잎의 중심에, 수컷을 애타게 기다리는 암컷 구멍이 음란한 꿀을 흘리면서 뻐끔거리고 있다
+			CASE 2
+				PRINTFORMW 「자, 봐줘어…… 코마치의 여기, 이렇게 돼 버려써%UNICODE(0x2665) *1%」
+			ENDSELECT
+			
+		ELSE
+			PRINTFORML 「당신 자지, 빨리 내 보지에 넣어줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 엉덩이를 내밀어, 아직 충분히 젖지 않은 비부를 드러냈다
+			PRINTFORMW 「조금은 아픈 것도 좋아, 빨리 넣어줘……%UNICODE(0x2665) *1%」
+		ENDIF
+	;자위
+	CASE 50
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「%CALLNAME:MASTER%은 사정 하는 데만 집중 해도 괜찮아」
+			PRINTFORML 「내가, 기분 좋게 해 줄게……♪」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 육봉에 뺨을 비비면서 손가락으로 귀두를 공격하고 있다
+		CASE 1
+			PRINTFORML 「이거, 기분 좋아? 아니면, 이렇게 하는 게 좋아?」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 페니스를, 완급을 조절하며 다루고 있다
+		CASE 2
+			PRINTFORML 「츕, 츄밧, 츄, 응하아……! 이거, 나쁘지 않지?」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 페니스를 잡아당기면서, 입안에서 불알을 굴리고 있다
+		ENDSELECT
+	;구음
+	CASE 51
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「츄밧, 츄르르릅, 츕, 츕, 쥬르룻! %CALLNAME:MASTER%, 코마치에 입, 기운 조아?
+			PRINTFORMW 육봉에 달라붙으며 코마치는 %CALLNAME:MASTER%의 불알을 손으로 상냥하게 비비고 있다
+		CASE 1
+			PRINTFORML 「%UNICODE(0x2665) *1% , 할짝할짝 할짝할짝……」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 모습을 살피면서, 집요하게 %CALLNAME:MASTER%의 귀두를 계속 빨고 있다…….
+		ENDSELECT
+	;파이즈리
+	CASE 53
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「자, %CALLNAME:MASTER%의 자지 사이에 껴 버렸다%UNICODE(0x2665) *1%」
+			SELECTCASE TALENT:MASTER:형상
+			CASE 1
+				PRINTFORML 「%CALLNAME:MASTER%의 자지, 가슴으로 옳지 옳지 해줄게에 %UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 귀중품이라도 다루는 것 같이, 가슴으로 상냥하게 %CALLNAME:MASTER%의 페니스를 싸고 있다
+			CASE 2
+				PRINTFORML 「%CALLNAME:MASTER%의 자지, 가슴에 파묻혀 버렸어%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 %CALLNAME:MASTER%의 허술한 페니스를 가슴으로 상냥하게 애무하고 있다
+			CASE 3
+				PRINTFORML 「%CALLNAME:MASTER%후, 젖가슴에 끼워지고 있는 것 알까?」
+				PRINTFORMW 코마치는 풍만한 가슴으로 끼우고, 열심히 %CALLNAME:MASTER%의 음경을 훑고 있다
+			CASE 4
+				PRINTFORML 「%CALLNAME:MASTER%의 자지때문에, 내 가슴도 빛나고 있는 것 같아%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 풍만한 가슴으로 끼우고, 열심히 %CALLNAME:MASTER%의 음경을 훑고 있다
+			CASE 5
+				PRINTFORML 「자지의 돌기가 닿아서, 가슴의 느낌이 이상해 %UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 풍만한 가슴으로 끼우고, 열심히 %CALLNAME:MASTER%의 음경을 훑고 있다
+			CASE 6
+				PRINTFORML 「굉장햇……내 가슴으로도 훌륭한 자지님을 숨길 수가 없어……%UNICODE(0x2665) *1%」
+				PRINTFORML 「아앗, 저기, 난폭하게 굴지 말아줘%UNICODE(0x2665) *1%」
+				PRINTFORMW 코마치는 열심히 양 유방을 출렁출렁 흔들면서 장대 부분을 애무하고 있다
+			ENDSELECT
+		CASEELSE
+			PRINTFORMW 「후훗…… 기분 좋아? 나한테 맡기고, 아무것도 하지 않아도 괜찮아」
+		ENDSELECT
+	;애널 애무
+	CASE 55
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「%CALLNAME:MASTER%, 사랑스러운 소리로 우는데 %UNICODE(0x2665) *1% 그렇게 기분이 좋아?」
+		CASE 1
+			PRINTFORMW 「자아, 내 손가락이 들어가고 있어……느껴져?」
+		CASE 2
+			PRINTFORMW 「아프진 않아?」
+		ENDSELECT
+	;애널 봉사
+	CASE 72
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「아앗, 뭔가 느낌이 이상해」
+		CASE 1
+			PRINTFORMW 「나, 엉덩이의, 아아읏, 앗, 그만둬, 하아읏」
+		CASE 2
+			PRINTFORMW 「꺄읏, 엉덩이, 혀가 움직여엇, 아앗, 응 아 %UNICODE(0x2665) *1%」
+		ENDSELECT
+	;파후파후
+	CASE 73
+		SELECTCASE RAND:5
+		CASE 0
+			PRINTFORMW 「자, %CALLNAME:MASTER%이 진짜 좋아하는 가슴이야%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORML 「이렇ㅡ게, 파후파후~%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 큰 가슴으로 %CALLNAME:MASTER%의 얼굴을 왕복으로 쳐대고 있다
+		CASE 2
+			SELECTCASE TALENT:MASTER:연령
+			CASE -1
+				PRINTFORML 「아직도 엄마 젖이 그리운 거야?
+				PRINTFORMW 나라도 괜찮다면, 엄마 대신이 되어 줄게%UNICODE(0x2665) *1%」
+			CASE 0, 1
+				PRINTFORML 「다큰 어른이, 젖을 그리워한다니」
+				PRINTFORMW 「뭐, 그 부분이 사랑스럽지만 %UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORML 「몇살이 돼도 가슴은 좋아하는 걸까」
+				PRINTFORMW 「이런 걸로 극락이라고 한다면 싼거지%UNICODE(0x2665) *1%」
+			ENDSELECT
+		CASE 3
+			PRINTFORML 「자, 기다리고 기다리던 가슴이야%UNICODE(0x2665) *1%」
+			PRINTFORMW 「후훗, 거짓말 해도 여기는 정직한데%UNICODE(0x2665) *1%」
+		CASEELSE
+			PRINTFORMW 「%CALLNAME:MASTER%은 응석꾸러기구나 %UNICODE(0x2665) *1%」
+		ENDSELECT
+	;젖을 들이마시게 한다
+	CASE 77
+		SELECTCASE TALENT:MASTER:연령
+		CASE -1
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「읏, 그렇게 가슴이 고팠어? 사랑스러워 %UNICODE(0x2665) *1%」
+				PRINTFORMW (뭔가…… 이 아이 껴안아 주고 싶어)
+			CASE 1
+				PRINTFORMW 「응%UNICODE(0x2665) *1% 좋아, 좀 더 빨아 줘……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORML 「후훗, 나를 엄마라고 불러 볼래?」
+				PRINTFORMW (열중해서 가슴 빨고있어…… 사랑스러워 %UNICODE(0x2665) *1%)
+			CASEELSE
+				PRINTFORMW 「마치 아기같아 %UNICODE(0x2665) *1%」
+			ENDSELECT
+		CASEELSE
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORMW 「읏, 그렇게 가슴이 고팠어? 사랑스러워」
+			CASE 1
+				PRINTFORMW 「응%UNICODE(0x2665) *1% 좋아, 좀 더 빨아 줘……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORMW 「변태같은 아기네……%UNICODE(0x2665) *1% 진짜는 그렇게 빨지 않을 것 같은데……%UNICODE(0x2665) *1%」
+			CASEELSE
+				PRINTFORMW 「마치 아기같아 %UNICODE(0x2665) *1%」
+			ENDSELECT
+		ENDSELECT
+	;V삽입한다
+	CASE 85
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「아앗 %UNICODE(0x2665) *1% 좋아, 좀 더 찔러줘%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORMW 「아앙%UNICODE(0x2665) *1% 미안, 나만%UNICODE(0x2665) *1% 기분 좋아 서엇 %UNICODE(0x2665) *1%」
+		CASE 2
+			PRINTFORMW 「아 %UNICODE(0x2665) *1% 단단해 %UNICODE(0x2665) *1% 이런, 여자를 울리는 응으윽 %UNICODE(0x2665) *1%」
+		CASEELSE
+			PRINTFORMW 「옹옥%UNICODE(0x2665) *1% 거기%UNICODE(0x2665) *1% 흐오오옥%UNICODE(0x2665) *1%」
+		ENDSELECT
+	;정말좋아 hold
+	CASE 86
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORMW 「아읏, 하아, 하앗, 좋앗, 좋아해, %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORMW 「좀 더, 좀 더 터질 것 처럼 끌어안아 줘 %UNICODE(0x2665) *1%」
+		ENDSELECT
+	;A삽입한다 	
+	CASE 87
+		PRINTFORMW 「들어, 왓%UNICODE(0x2665) *1% 엉덩이에, 당신 것이, 들어왔, 어어……%UNICODE(0x2665) *1%」
+	;허리 흔들기 V
+	CASE 88
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORMW 「아읏, 하아, 하앗, 거기, 좋아, %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORMW 「아앗, 이런 거, 계속 삽입되어있고 싶은 게 으읏 당연하잖아 %UNICODE(0x2665) *1% 아 흐으응%UNICODE(0x2665) *1%」
+		ENDSELECT
+	;허리 흔들기 A
+	CASE 89
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORMW 「아읏, 하아, 하앗, 엉덩이, 지릿지릿 햇, 응아앗!」
+		CASE 1
+			PRINTFORMW 「앗, 안됏, 엉덩이, 뽑힐, 것, 같아」
+		ENDSELECT
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;361, 저항 한다
+;TCVAR:20(27=골짜기를 보이는 32=전부터 껴안는 35=스커트안을 보이는 53=파이즈리 73=파후파후 77=젖을 들이마시게 하는 85=V삽입하는 86=정말좋아 hold 87=A삽입하는 88=허리 흔들기 V 89=허리 흔들기 A
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_361
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_361_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_361_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;==================================================
+;363, 읽어 들려주고([유치]소유 전용)
+;TFLAG:193(1=대성공 0=성공 -1=실패)(지문 분기 없음
+;CFLAG:동침중(1=이불 or침대 중(안)에서 책을 읽는다
+;MASTER가 TARGET보다 큰 몸집의 경우, 무릎 위에 TARGET를 싣는다
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_363
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_363
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_363_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_363_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;364, 콩장작(스이카, 유우기, 스칼렛 자매용
+;TFLAG:193(콩 뿌려에 참가하고 있는 인원수
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_364
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_364_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_364_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;365, 모리야신사에 이동(사나에, 카나코, 스와코용
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_365
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_365_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_365_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;402, 취침
+;TFLAG:193(0=통상 1=아이와 함께 川 글자로 잔다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_402
+;취침에 TRAIN_MESSAGE는 없다
+CALL M_KOJO_MESSAGE_COM_K76_402_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_402_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+	;통상
+	CASE 0
+		PRINTFORML 「혼자 잔다고 외로워서 베게를 적시는 성격은 아니지만」
+		PRINTFORML 「혼자보다 둘이서 자는 편이 행복하다는 건 실감하게 되네」
+		PRINTFORML 「오늘 하루도 수고했어. 잘자, %CALLNAME:MASTER%……%UNICODE(0x2665) *1%」
+	;부모와 자식강의 글자
+	;조건으로서 코마치가 먼저 자고 있는 것은 있을 수 없기 때문에 이 쓰는 법으로 괜찮을 것
+	CASE 1
+		PRINTFORML 「자ㅡ, 이제 잘까요―. 이불에서 고로롱 하는거야―」
+		PRINTFORML 「내일은 뭐 하고 놀까. 구슬치기? 공기?」
+		PRINTFORML 「아빠가 목마태워서 높이높이 해주는게 좋아? 당신은 좋겠네 %UNICODE(0x2665) *1%」
+		PRINTW 
+		PRINTFORML 「세 가족이 함께 잔다. 단지 그것 뿐인데, 행복해」
+		PRINTFORML 「당신도 오늘 하루 수고했어. 잘자……%UNICODE(0x2665) *1%」
+		PRINTW 
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;403, 휴식
+;CFLAG:TARGET:수면(1=TARGET가 자고 있는 근처에서 휴식
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_403
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_403_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_403_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;405, 나간다(동행시 데이트
+;조건이 귀찮은 것으로, COMF405 나간다. ERB를 참조의 일
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_405
+;나가는 것에 TRAIN_MESSAGE는 없다
+CALL M_KOJO_MESSAGE_COM_K76_405_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_405_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;TARGET와 데이트
+	IF CFLAG:동행
+	;TARGET 의외로 데이트
+	ELSEIF CFLAG:MASTER:동행
+	;외출 전송
+	ELSE
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;410, 청소
+;FLAG:70(1=시간정지중
+;TFLAG:193(0=보고 있을 뿐 1=함께 청소)
+;TFLAG:194(3=더러운고 2=더러운중 1=더러운저 0=더러운 최소
+;OUTROOF(CFLAG:현재위치)(야외 청소(겨울은 눈치우기
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_410
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_410_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_410_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSE
+		;옥외 청소
+		IF OUTROOF(CFLAG:TARGET:현재위치)
+			;계절
+			SELECTCASE DAY:2
+			;봄은 여명
+			CASE 1
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「우햐아, 꽃잎이 굉장히 많아. 쓸어도 쓸어도 계속 떨어져 내리네」
+						PRINTFORML 확실히 쓸어도 쓸어도 끝이 없다
+						PRINTFORML 쓸고 있는 건 나 혼자이지만
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「오늘은 꽃잎이 그렇게 많지 않네. 청소하는 사람은 그쪽이 좋겠지만」
+						PRINTFORML 코마치가 도와 주면 더 좋겠는데
+						PRINTW 
+					ENDSELECT
+					PRINTFORML 마치 자기가 청소하고 있는 것 같이 말하며, 코마치는 돌 위에 걸터앉아 있다
+					PRINTW 
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「우햐아, 꽃잎이 굉장히 많아. 쓸어도 쓸어도 계속 떨어져 내리네」
+						PRINTFORML 그렇게 말하면서도, 코마치는 봄 꽃잎의 비에 웃음을 띠고 있다
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「오늘은 꽃잎이 그렇게 많지 않네. 우리는 청소하는 쪽이니 그게 편하지만」
+					ENDSELECT
+				ENDSELECT
+			;여름은 코니시키
+			CASE 2
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「더워~……」
+						PRINTFORML 풀뽑기나 쓰레기 줍기를 %CALLNAME:MASTER%에게 부탁하고,
+						PRINTFORML 코마치는 옷 앞섬으로 팔랑팔랑 바람을 일으키고 하고 있다
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「%CALLNAME:MASTER%, 얼마 안남았으니 빨리 끝내 버리자」
+						PRINTFORML 「끝나면, 빙수 먹으러 가자. 내가 살게」
+						PRINTW 
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「덥다고 하면 할수록 더워진다지만, 덥다고 말하지 않으면 못견디겠어……」
+						PRINTFORML 「%CALLNAME:MASTER%~, 이제 그만하고 빙수 먹으러 가자아」
+						PRINTFORML 가고 싶으면 입보다 손을 움직이라고 코마치를 타일렀다
+						PRINTW 
+						PRINTFORML 「우우, %CALLNAME:MASTER%이 시키님 같은 소리를 해……」
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「힘냈다, 노력했어 나. 이 더위속에서 청소 해냈다!」
+						PRINTFORML 「그러니까 %CALLNAME:MASTER%, 다음에 빙수라도 한 턱 내줘」
+						PRINTFORML 「찬 술도 좋지만 말야♪」
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			;가을은 약귀
+			CASE 3
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「우햐아, 낙엽이 엄청나. 쓸어도 쓸어도 계속 떨어져 내리네」
+						PRINTFORML 쓸고 있는 건 나 혼자이지만
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「오늘은 낙엽이 그렇게 많지 않네. 청소하는 사람은 편해서 좋지만」
+						PRINTFORML 코마치가 도와 주면 더 좋겠는데
+						PRINTW 
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「우햐아, 낙엽이 엄청나. 쓸어도 쓸어도 계속 떨어져 내리네」
+						PRINTFORML 「%CALLNAME:MASTER%, 모은 낙엽으로 군고구마 구워 먹을까?」
+						PRINTFORML 방귀뀌겠다고 조롱하면, 코마치는 혀를 삐죽 내밀었다
+						PRINTW 
+						PRINTFORML 「유감, 사신은 방귀를 뀌지 않습니다」
+						PRINTFORML 사신은 아이돌인가 뭔가인가
+						PRINTW 
+						PRINTFORML 그럼, 염라님은 어떤가라고 물었다
+						PRINTFORML 「아, 그것은 노 코멘트」
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「오늘은 낙엽이 그렇게 많지 않네. 청소하는 사람은 그쪽이 편하지만」
+						PRINTFORML 이래서야 군고구마는 못 굽겠는걸, 하고 코마치는 애석해 했다
+						PRINTW 
+						PRINTFORML 「앗, 다음에 군고구마 사 준다고? 야호―!」
+						PRINTFORML 코마치의 기뻐하는 모습이 어린아이 같아서, %CALLNAME:MASTER%은 무심코 웃어 버렸다
+						PRINTW
+					ENDSELECT
+				ENDSELECT
+			;겨울은 괴황
+			CASE 4
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「오늘도 또 상당히 쌓였네. 추워」
+						PRINTFORML 눈치우기를 %CALLNAME:MASTER%에 맡겨, 코마치는 달군 돌을 천으로 감싼 것으로 몸을 녹이고 있다
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「생각했던 것보다 쌓이지 않아서 다행이야. 곧 끝날 것 같네」
+						PRINTFORML 「자 %CALLNAME:MASTER%, 재빨리 끝내 버리자」
+						PRINTFORML 코마치가 도와 준다면 좀 더 빨리 끝나지만
+						PRINTW 
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「오늘도 또 상당히 쌓였네. 추워」
+						PRINTFORML 코마치는 흰 숨을 양손에 내뿜었다
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「생각했던 것보다 쌓이지 않아서 다행이야. 곧 끝날 것 같네」
+						PRINTFORML 혼자였으면 힘들었겠지만, 코마치가 도와 주어서 상당히 도움받았다
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			ENDSELECT
+		;옥내 청소
+		ELSE
+			;난처하면의 방
+			IF CFLAG:MASTER:현재위치 == 616
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「이야, 미안, 어지럽혀져 있네」
+						PRINTFORML 코마치는 미안하다곤 했지만, 방 주인인 주제에 정리를 도울 생각은 전혀 없는 것 같다
+						PRINTW 
+						PRINTFORML 코마치의 지시 대로 청소하고 있다가, 다다미 위에 천 쪼가리가 떨어져 있는것을 깨달았다
+						PRINT 주워보니, 그것은 코마치의
+							;능력 정보의 것과는 정합성이 없습니다
+							SELECTCASE RAND:9
+							CASE 0 
+								PRINT 드로워즈
+							CASE 1
+								PRINT 섬섬팬츠
+							CASE 2
+								PRINT 곤
+							CASE 3
+								PRINT 롤러 이즈
+							CASE 4
+								PRINT 드로워즈
+							CASE 5
+								PRINT T백
+							CASE 6
+								PRINT 오픈 쇼츠
+							CASE 7
+								PRINT 끈팬티
+							CASE 8
+								PRINT G스트링
+							ENDSELECT
+							PRINTFORML 였다
+							PRINTW 
+							PRINTFORML 「%CALLNAME:MASTER%, 왜그래? 앗……」
+							PRINTFORML 「부끄럽네. 속옷 정리하는 것, 무심코 잊고 있었어」
+							PRINTFORML 「아아, 걱정하지 않아도 확실히 세탁은 하고 있으니까」
+							PRINTW 
+							PRINTFORML 「뭐 갖고 싶어할 이유는 없겠지만, 가져가지는 말아줘」
+							PRINTFORML 「의외로 여자의 속옷은 비싸」
+							PRINTW 
+					CASE 1, 0
+						PRINTFORML 「미안하네. 청소까지 해주고」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%에게 사과했지만, 그녀의 방은 그다지 흐트러진 부분이 없었다
+						PRINTFORML 겨우 먼지가 쌓인 곳을 분 정도다
+						PRINTW 
+						PRINTFORML 「내 방이 깨끗해서 의외야? 뭐, 평상시에 시키님께 자주 잔소리 듣고 있어서 말야」
+						PRINTFORML 코마치는 쓴웃음 지으면서 뺨을 긁었다
+						PRINTW 
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「이야, 미안, 어지럽혀져 있네」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%과 분담 해서 방을 청소하고 있다
+						PRINTFORML 더러운물이 고여 있거나 하진 않았지만, 세탁해 건조한 후 그대로의
+						PRINTFORML 의류가 아무렇게나 방석이나 다른 곳에 내던져지고 있다
+						PRINTW 
+						PRINTFORML 「이걸 보고 믿지는 못하겠지만, 평상시엔 좀 더 정리 해 두고 있다고?」
+						PRINTFORML 확실히, 소품을 놓아 두는 곳은 깔끔하게 정돈되어 있고,
+						PRINTFORML 밥상에 먼지가 앉아 있는 것도 아니니 눈에 띄는 곳은 청소해두고 있는 것 같다
+						PRINTW 
+						PRINTFORML 「뭐, 시키님은 매일 바쁘면서도 내 방보다 잘 정돈되어 있지만 말야」
+						PRINTFORML 그것은 쉽게 상상할 수 있었지만, 반대로 흐트러진 에이키의 방도 보고 싶다, 라며 둘이 함께 웃었다
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「미안하네. 청소까지 해주고」
+						PRINTFORML 코마치는 %CALLNAME:MASTER%에게 사과했지만, 그녀의 방은 그다지 흐트러진 부분이 없었다
+						PRINTFORML 겨우 창가나 방의 구석의 먼지가 쌓인 부분을 쓸 정도다
+						PRINTW 
+						PRINTFORML 「내 방이 깨끗해서 의외야? 뭐, 평상시에 시키님께 자주 잔소리 듣고 있어서 말야」
+						PRINTFORML 코마치는 쓴웃음 지으면서 뺨을 긁었다
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			;에이키님의 방
+			;에이키님과 동거중이라면 뭔가가 여러가지 흩날려 더러워진다든가 끓어오르네요(에이키님 말보다)
+			ELSEIF CFLAG:MASTER:현재위치 == 615
+				;당신과 에이키님이 동거중, 즉 연모 소유
+				IF CFLAG:MASTER:초기위치 == CFLAG:30:초기위치 && CFLAG:MASTER:현재위치 == CFLAG:30:초기위치
+					SELECTCASE TFLAG:193
+					;보고 있을 뿐
+					CASE 0
+						;더러워지는 상태
+						SELECTCASE TFLAG:194
+						;쓰레기의 산
+						CASE 3, 2
+							PRINTFORML 「우와, 시키님의 방, 상당히 더러워져 있는데」
+							PRINTFORML 「좀더 깔끔하다는 이미지가 있었지만……바쁘신 편이니까」
+							PRINTFORML (무언가, 냄새난다 라고 할까……마루에 뭔가 이상한게 달라붙어 있는데?)
+							PRINTFORML (쓰레기통에도 쓸데없이 휴지가 많이 들어있고……)
+							PRINTFORML (그러고 보면, %CALLNAME:MASTER%이 자주 시키님의 방에 출입하는 걸 봤는데, 저거 혹시……)
+							PRINTW 
+						;청결도:중 이상
+						CASE 1, 0
+							PRINTFORML 「뭐라고 할까, 이미지 그대로구나」
+							PRINTFORML 「어지럽혀진 시키님의 방이라는 것도 그것대로 보고싶은걸」
+							PRINTFORML 「%CALLNAME:MASTER%, 속옷 같은거 슬쩍하면 안돼」
+							PRINTW 
+						ENDSELECT
+					;함께 청소
+					CASE 1
+						;더러워지는 상태
+						SELECTCASE TFLAG:194
+						;쓰레기의 산
+						CASE 3, 2
+							PRINTFORML 「우와, 시키님의 방, 상당히 더러워져 있는데」
+							PRINTFORML 「좀더 깔끔하다는 이미지가 있었지만……바쁘신 편이니까」
+								;도구 사용해 자위해도 도구 사용 경험 증가하지 않았기 때문에, 우선 개통하고 있으면 사용하고 있는 이미지로
+								IF EXP:(NO:30):V성교경험 > 0 || EXP:(NO:30):A성교경험 > 0
+									PRINTFORML 「우와─…… 이거 일이 꽤 많…… 응? 이건……」
+									PRINTFORML 「! 아아─, 아냐, 아무것도 아냐, 아무것도 아니야! 그쪽의 청소 부탁해!」
+									PRINT (이것은,
+										IF EXP:(NO:30):V성교경험 > 0 && EXP:(NO:30):A성교경험 > 0
+											PRINTFORM 여기가 「바이브」로, 여기가 「애널바이브」는
+										ELSEIF EXP:(NO:30):V성교경험 > 0
+											PRINTFORM 「바이브」는
+										ELSEIF EXP:(NO:30):A성교경험 > 0
+											PRINTFORM 「애널바이브」는
+										ENDIF
+											PRINTFORML 라는 건가……)
+									PRINTW 
+									PRINTFORML (뭔가 이상한 냄새 나는데, 설마 이미 사용한……?)
+									PRINTFORML (휴지에도, 뭔가 오징어 냄새나고…… 정액의 냄새?)
+									PRINTFORML (시키님, 그런 것 흥미없을 거라고 생각했는데)
+									PRINTFORML (…… 역시, 그렇게 보이지 않을 뿐 스트레스 쌓여 있는 걸까)
+									PRINTW 
+								ELSE
+									PRINTFORML 「우와─, 이거 일이 꽤 많겠는데……」
+									PRINTFORML 「응? 이거……」
+									PRINTFORML (남자옷? 속옷도……)
+									PRINTFORML (시키님, 남자를 방에 들이고 있다……)
+									PRINTW 
+									PRINTFORML (구석의 쓰레기통안에 대량의 휴지, 냄새도 나고…… 정액의 냄새?)
+									PRINTFORML (이 방에서, 시키님과 누군가가 서로 사랑을 나누고 있다……)
+									PRINTFORML 「……핫! 아, 아니, 아무것도 아니야, 조금 멍─하니 하고 있었을 뿐! 아하, 아하하」
+									PRINTW 
+								ENDIF
+							PRINTW 
+						;청결도:중 이상
+						CASE 1, 0
+							PRINTFORML 「뭐라고 할까, 너무 깔끔해서 별로 재미없는걸」
+							PRINTFORML 「모처럼이니까, 시키님은 어떤 속옷을 입고 있을까나~♪」
+							PRINTFORML 「오옷, 이건, 꽤 대담……」
+							PRINTW 
+						ENDSELECT
+					ENDSELECT
+				;에이키님과 당신이 동거중이 아니다
+				ELSE
+					SELECTCASE TFLAG:193
+					;보고 있을 뿐
+					CASE 0
+						;더러워지는 상태
+						SELECTCASE TFLAG:194
+						;쓰레기의 산
+						CASE 3, 2
+							PRINTFORML 「우와, 시키님의 방, 상당히 더러워져 있는데」
+							PRINTFORML 「좀더 깔끔하다는 이미지가 있었지만……바쁘신 편이니까」
+							PRINTFORML 「일단, 서투르게 정리했다간 곤란할지도 모르니까, 옷만 모아서 개어 둘까?」
+							PRINTW 
+						;청결도:중 이상
+						CASE 1, 0
+							PRINTFORML 「뭐라고 할까, 이미지 그대로구나」
+							PRINTFORML 「어지럽혀진 시키님의 방이라는 것도 그것대로 보고싶은걸」
+							PRINTFORML 「%CALLNAME:MASTER%, 속옷 같은거 슬쩍하면 안돼」
+							PRINTW 
+						ENDSELECT
+					;함께 청소
+					CASE 1
+						;더러워지는 상태
+						SELECTCASE TFLAG:194
+						;쓰레기의 산
+						CASE 3, 2
+							PRINTFORML 「우와, 시키님의 방, 상당히 더러워져 있는데」
+							PRINTFORML 「좀더 깔끔하다는 이미지가 있었지만……바쁘신 편이니까」
+							PRINTFORML 「와~앗, 이렇게 속옷까지 팽개쳐놓고……」
+							PRINTW 
+						;청결도:중 이상
+						CASE 1, 0
+							PRINTFORML 「뭐라고 할까, 너무 아담해 재미있지 않다」
+							PRINTFORML 「모처럼이니까, 시키님은 어떤 속옷을 입고 있을까나~♪」
+							PRINTFORML 「오옷, 이건, 꽤 대담……」
+							PRINTW 
+						ENDSELECT
+					ENDSELECT
+				ENDIF
+			;목욕탕
+			;히나나위 텐시 말작자님의 「옷 벗어 목욕탕 청소」라고 하는 시추에이션에 격분했다
+			;친밀 5이상이라면 함께 목욕탕에 들어가 주므로, 알몸을 볼 수 있어도 괜찮아, 라는 것으로 한다
+			ELSEIF CFLAG:MASTER:현재위치 == 617
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					;쓰레기의 산
+					CASE 3, 2
+						PRINTFORML 「때가 엄청 꼈잖아. 청소 게을리 한거 누구야」
+						PRINTFORML 「나였다!」
+						PRINTW 
+					;청결도:중 이상
+					CASE 1, 0
+						PRINTFORML 「%CALLNAME:MASTER%, 거기도 확실히 닦아줘. 아아, 그리고 여기도」
+						PRINTFORML 자신이 청소 당번임에도 불구하고, 코마치는 입구에서 팔짱 끼고 지시를 내리고 있다
+						PRINTFORML 「괜찮아괜찮아, 나랑 당신 사이잖아♪」
+						PRINTW 
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					PRINTFORML 「자ㅡ아, 빨리 끝내버리자구」
+					;속옷을 신고 있다
+					;자주(잘) 생각하면 목욕탕에 따라 가면 자동적으로 전라가 되는 것이 아닙니까……
+					IF EQUIP:TARGET:하반신속옷1 || EQUIP:TARGET:하반신속옷2
+						PRINTFORML 코마치는 재빠르게 옷을 벗어 던지고, 속옷 바람으로 청소에 착수했다
+						PRINTW 
+						PRINTFORMW 「흥흥♪ 엣, 왜 옷을 벗었냐고? 옷이 젖는게 싫어서」
+						PRINT 코마치가 목욕탕 마루를 닦는 움직임에 맞춰,
+						PRINTFORML 속옷이 딱 달라붙은 순산형의 엉덩이가 살랑살랑 흔들리고 있다
+						PRINTW 
+					;팬츠가 없다
+					ELSE
+						;할 것 하고 있으므로 이제 와서 숨기는 것도 귀찮음
+						IF CFLAG:기정사실 & 합의_우후후
+							PRINTFORML 코마치는 재빠르게 옷을 벗어 던지고, 가슴만 속옷을 입고 청소에 착수했다
+							PRINTFORML %CALLNAME:MASTER%이 눈앞에 있음에도 불구하고, 코마치는 하반신을 노출 하고 있다
+							PRINTW 
+							PRINTFORML 「응? 옷이 젖는 것은 싫고, 이제 와서 몸을 가릴 사이도 아니잖아?」
+							PRINT 라고는 해도, 눈앞에서, 달라붙고 싶어지는 것 같은 엉덩이와
+								IF EX:TARGET:질내정액 > 0
+									PRINT 방금전 싸준지 얼마 안된 정액이 흘러 나오는
+								ELSE
+								ENDIF
+								PRINTFORML 성기를 씰룩 해서는, 청소에 집중할 수 있을 리가 없었다
+								PRINTW 
+						;일단 형태만 숨긴다
+						ELSE
+							PRINTFORML 코마치는 재빠르게 옷을 벗어 던지고, 허리에 타올을 감고 청소에 착수했다
+							PRINTW 
+							PRINTFORML 「흥흥♪」
+							PRINTFORML 무릎을 꿇어 욕실의 마루를 닦고 있는 코마치의 모습을 슬쩍 보았다
+							PRINTW 
+							PRINTFORML 타올을 감고 있었으니 깨닫지 못했지만, 코마치는 속옷을 입지 않았었다
+							PRINTFORML 노출된 엉덩이와
+								IF EX:TARGET:질내정액 > 0
+									PRINT 방금전 싸준지 얼마 안된 정액이 흘러 나오는
+								ELSE
+								ENDIF
+							PRINTFORML 여성기가, %CALLNAME:MASTER%의 눈앞에서 흔들리고 있다
+							PRINTW 
+						ENDIF
+					ENDIF
+				ENDSELECT
+			;옥내 범용
+			ELSE
+				SELECTCASE TFLAG:193
+				;보고 있을 뿐
+				CASE 0
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「우햐아, 상당히 지저분하네. 정리할 보람이 있겠어」
+						PRINTFORML 그렇게 말하고선, 코마치는 그 자로에서 한 걸음도 움직이지 않고 왜일까 의기양양한 얼굴을 띄우고 있다
+					CASE 1, 0
+						PRINTFORML 「조그마한 더러움이나 쓰레기도, 쌓이면 산이 되니까. 청소는 중요한 일이야」
+						PRINTFORML 그렇게 조그마한 곳을 알아차릴 수 있다면, 거들어 주었으면 한다
+					ENDSELECT
+				;함께 청소
+				CASE 1
+					;더러워지는 상태
+					SELECTCASE TFLAG:194
+					CASE 3, 2
+						PRINTFORML 「이런 곳에 쓰레기를 버리는 건 마음에 들지 않네」
+						PRINTFORML 「남에게 보이지 않았으니 괜찮아, 라고 버린 사람은 생각했겠지만 말이야」
+						PRINTFORML 「그런 습관들은, 언젠가 다른 형태로 나타나기 마련이야」
+						PRINTW 
+					CASE 1, 0
+						PRINTFORML 「크게 더러운 느낌도 아니고, 빨리 끝내 버리자」
+						PRINTW 
+					ENDSELECT
+				ENDSELECT
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;411, 전투훈련
+;TFLAG:194(3=여름의 낮 2=위험한 날씨 1=악천후 0=옥내 or통상 날씨
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_411
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_411_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_411_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;첫회
+	IF FIRSTTIME(411)
+		PRINTFORML 「탄막놀이라고 해도 맞으면 아프고, 잘못 맞으면 크게 다칠 수도 있어」
+		PRINTFORML 「그렇게 되지 않게 당신을 조금씩 단련해 줄게」
+		PRINTW 
+		;전투력의 비교는 어디까지나 게임내 파라미터(parameter)로서입니다. 나쁘게 생각하지 마시고
+		;최고 클래스, 레이무, 에이키등…… 보다 높다(레이무, 에이키는 5)
+		IF ABL:MASTER:전투능력 > 5
+			PRINTFORML 「……라고 하긴 했는데 말야」
+			PRINTFORML 「당신, 내 판단이 틀리지 않았다면 꽤 할줄 아는 사람인것 같은데」
+			PRINTFORML 「억누르고 있을 생각이겠지만 말야, 전신으로부터 아지랑이 같은 것이 솟아오르고 있어」
+			PRINTW 
+		;코마치, 케이네등…… 보다 높다(코마치는 3)
+		ELSEIF ABL:MASTER:전투능력 > 3
+			PRINTFORML 「……라고 햇는데」
+			PRINTFORML 「당신, 내 판단이 틀리지 않다면 나보다 강한데」
+			PRINTFORML 「모처럼이니, 나랑 단련해 줘」
+			PRINTW 
+		;릴리 W, 리글등… 보다 높다
+		ELSEIF ABL:MASTER:전투능력 > 1
+			PRINTFORML 「조금은 할 수 있는 것 같지만, 반대로 그럴 때가 가장 위험해」
+			PRINTFORML 「이 환상향은, 겉모습은 아이같아 보여도, 강함은 문자 그대로 괴물인 것들이 우글우글 하니까」」
+			PRINTFORML 「내가 단련시켜서, 힘의 차이를 측정할 수 있을 정도로는 만들어 줄게」
+			PRINTW 
+		;요정 레벨
+		ELSEIF ABL:MASTER:전투능력 > 0
+			PRINTFORML 「완전히 아마추어는 아닌 것 같네」
+			PRINTFORML 「좀 더 강해지고 싶다면, 내가 발벗고 나서주지」
+			PRINTFORML 「아니, 왜 내 옷에 손을 대는 거야. 벗는다는 얘기만 골라듣지 말라고」
+			PRINTW 
+		;는─진짜 걸려 그만두면? 탄막 승부
+		ELSE
+			PRINTFORML 「당신, 거친 일 잘 못할 것 같은데」
+			PRINTFORML 「안심해. 새싹에 갑자기 물을 확 끼얹어 봤자 시드는 것이 고작이지」
+			PRINTFORML 「내가, 상냥하게 차분히 단련시켜 줄게♪」
+			PRINTW 
+		ENDIF
+	ELSE
+		;스페카는 주로 비상천칙을 참고로 했습니다
+		IF ABL:MASTER:전투능력 > 0
+			SELECTCASE RAND:8
+			CASE 0
+				PRINTFORML 「주부 『강의 흐름대로』」
+				PRINT 코마치의 배를 소환해 올라타서 들이박는 공격을
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML 쉽게 피했다
+					PRINTFORML 「역시, 직선 공격으론 쉽지않네」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORML 간신히 피했다
+					PRINTFORML 「오, 좋은 느낌이 아닌가」
+					PRINTW 
+				ELSE
+					PRINTFORML 정면으로 맞고, %CALLNAME:MASTER%은 날아갔다
+					PRINTFORML 「앗차─, 미안해」
+				ENDIF
+			CASE 1
+				PRINTFORML 「영부 『어디에나 있는 부유령』」
+				PRINTFORML 코마치는 %CALLNAME:MASTER%의 주위에 유령을 흩뿌렸다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML 순간 궁지에 몰린 것 처럼 보였던 %CALLNAME:MASTER%이지만,
+					PRINTFORML 코마치의 낫의 추격을 종이 한 장 차이로 피해, 포위망을 빠져나갔다
+					PRINTFORML 「지금꺼, 꽤 자신 있는 거였는데」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORML 궁지에 몰렸던 %CALLNAME:MASTER%이지만,
+					PRINTFORML 코마치의 낫의 추격을 주저앉아 버려서 우연히 피할 수 있었다
+					PRINTFORML 「하하, 우연일지도 모르지만 그걸 피했다니 굉장해」
+					PRINTW 
+				ELSE
+					PRINTFORML 궁지에 몰려 당황한 %CALLNAME:MASTER%은 코마치의 추격을 그대로 맞았다
+					PRINTFORML 「유령에 너무 정신을 빼앗기는데」
+					PRINTW 
+				ENDIF
+			CASE 2
+				PRINTFORML 「사가 『첩첩이 낀 안개 건너기』」
+				PRINTFORML 코마치의 뒤에서 무수한 부유령이 나타나, 배를 탄 코마치와 함께 돌진해 왔다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML %CALLNAME:MASTER%은 피하지도 않고 코마치의 배를 맨손으로 세웠다
+					PRINTFORML %CALLNAME:MASTER%의 흉행에 당황한 부유영혼들은, 엉뚱한 방향에 도망쳐 버렸다
+					PRINTFORML 「나도 도망가고 싶다……」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORMW 박력에 압도된 %CALLNAME:MASTER%이지만, 코마치의 배를 뛰어서 피했다
+					PRINTFORML 그러나, 피한 곳에는 부유령이 밀어닥쳐
+					PRINTFORML 몇 발이나 직격을 먹었다
+					PRINTFORML 「1격을 피해도 2격이 오는거야. 주의해야해」」
+					PRINTW 
+				ELSE
+					PRINTFORML 박력에 압도된 %CALLNAME:MASTER%은 배의 일격을 먹고,
+					PRINTFORML 날아가면서 부유령에 차례차례로 명중당했다
+					PRINTFORML 「기세에 삼켜지면 안돼. 다소의 피탄은 각오 해야해」
+					PRINTW 
+				ENDIF
+			CASE 3
+				PRINTFORML 「한부 『미련이 남은 긴박령』」
+				PRINTFORML 코마치가 부른 원령은, %CALLNAME:MASTER%에 착 달라붙어 왔다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML %CALLNAME:MASTER%이 동요하지 않고 기를 폭발시키니,
+					PRINTFORML 원령은 순식간에 사라져버렸다
+					PRINTFORML 「하아!? 당신, 터무니없어!」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORMW 왠지 모르게 싫은 것을 느낀 %CALLNAME:MASTER%은, 원령과 거리를 두었다
+					PRINTFORML 그러나, 원령에 정신을 빼앗기고 있는 틈에 거리를 좁힌 코마치의 일격을 먹어 버렸다
+					PRINTFORML 「원령을 경계한 것은 감이 좋네. 그렇지만, 너무 정신을 빼앗겼어」
+					PRINTW 
+				ELSE
+					PRINTFORML 원령을 벗기려고 발버둥 치지만, 아무런 반응이 없다
+					PRINTFORML 「소용없어. 애초에, 그 녀석은 당하면 안되는 기술이야」
+					PRINTFORML 코마치가 낫을 대지에 꽂으니, 원령이 갑자기 폭발했다
+					PRINTW 
+				ENDIF
+			CASE 4
+				PRINTFORML 「지옥 『무간의 틈』」
+				PRINTFORML 코마치는 거리를 붙여, %CALLNAME:MASTER%에 낫으로 베어 들어 왔다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML 「!?」
+					PRINTFORML 낫이 닿기 직전, %CALLNAME:MASTER%은 두개의 손가락으로 낫을 사이에 끼워, 기세를 죽였다
+					PRINTFORML 「그렇게 막을 수 있는건, 아마 당신 정도일 거야……」
+					PRINTW 
+				;방은 옆이동만 저해되는 것 같습니다만
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORMW 직격은 피했지만, %CALLNAME:MASTER%에 낫이 스쳐 지나갔다
+					PRINTFORML 직후, %CALLNAME:MASTER%은 수수깨끼의 벽에 꼼짝할 수 없게 되어 버렸다
+					PRINTFORML 「자ㅡ아, 삶아줄까? 구워줄까?」
+					PRINTW 
+				ELSE
+					PRINTFORML 낫의 일격을 먹은 %CALLNAME:MASTER%은, 수수께끼의 장벽에 의해 움직임이 봉쇄되었다
+					PRINTFORML 「그러면, 어떻게 요리해 줄까」
+					PRINTFORML 코마치의 뒤에는, 무수한 부유령이 맴돌고 있었다
+					PRINTW 
+				ENDIF
+			CASE 5
+				PRINTFORML 「사부 『죽은 자를 선별하는 낫』」
+				PRINTFORML 코마치는 지면에 낫을 꽂았다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML %CALLNAME:MASTER%은 팔짱을 낀 채로, 그 자리에서 잠깐사이에 멀어졌다
+					PRINTFORML 직후, 거대한 탄막이 %CALLNAME:MASTER%이 있던 장소에 떨어져 튕겼다
+					PRINTFORML 「그걸 피해 버리는 건가…… 어떻게 하지」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORMW 코마치가 아무 의미도 없이 낫을 휘두를 리가 없다
+					PRINTFORMW 앞에서 오지는 않는다. 뒤에도 탄막은 없다. 발밑도 아니다. 그러면, 위──
+					PRINTFORML 다가오는 거대한 탄막. %CALLNAME:MASTER%은 꼴사나운 모양이지만, 간발의 차로 피했다
+					PRINTW 
+					PRINTFORML 「좋아. 용케 눈치챘네」
+					PRINTFORML 코마치는 당신이 탄막을 피해 버렸지만 그럼에도 기쁜 듯하다
+					PRINTW 
+				ELSE
+					PRINTFORML 절대로 맞을 리가 없는 거리. 코마치가 거리를 잘못 잰 것이다
+					PRINTFORML 「라고 생각하고 있는 것 같은데. 얼굴에 쓰여 있어」
+					PRINTFORML 머리 위의 거대한 탄막을 알아차린 직후, 시야가 암전했다
+					PRINTW 
+				ENDIF
+			CASE 6
+				PRINTFORML 탄막을 빠져 나가면서, %CALLNAME:MASTER%은 코마치에 육박 한다
+				PRINTFORML 「혼부 『생혼유리의 낫』!」
+				PRINTFORML 코마치는 낫을 회전시켜, 힘차게 치켜들었다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML 거의 맞닿은 %CALLNAME:MASTER%이 동요하지 않고 기를 폭발시키니
+					PRINTFORML 원령은 순식간에 사라졌다
+					PRINTFORML 「하아!? 당신, 터무니없어!」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORML 초근거리의 일섬. %CALLNAME:MASTER%이 피할 수 있던 것은 우연히 동일했다
+					PRINTFORML 그러나, 몸의 자세를 되돌릴 여유가 없음에, 무수한 부유령이 돌진해온다
+					PRINTFORML 굉장한 충격과 함께 %CALLNAME:MASTER%은 후방의 지면에 내던져 졌다
+					PRINTW 
+					PRINTFORML 「비장의 카드는 끝까지 숨겨두는 거야, 사신이니까. 라는건 뻥이야」
+					PRINTFORML 코마치의 농담은 %CALLNAME:MASTER%에겐 닿지 않았다
+					PRINTW 
+				ELSE
+					PRINTFORML 초근거리의 일섬. 피할 수 있을 리도 없고 %CALLNAME:MASTER%은 휙 날려진다
+					PRINTFORMW 거기에, 무수한 부유령이 밀어닥쳐, 굉장한 충격과 함께 %CALLNAME:MASTER%은 크게 날아가 후방의 지면에 내던져 졌다
+					PRINTFORML 「자, 너의 죄를 세어라. 랄까나」
+					PRINTW 
+				ENDIF
+			CASE 7
+				;공식의 스페카의 설정을 마음대로 바꾸고 있습니다
+				PRINTFORML 「사신 『피안 르투르』」
+				PRINTFORML 코마치는 금전, 은전, 동전을 흩뿌렸다
+				PRINTW 
+				IF ABL:MASTER:전투능력 > 4
+					PRINTFORML %CALLNAME:MASTER%은 피하면서 동전만 회수하고 있다
+					PRINTFORML 「잠깐, 룰 무시하지 말아 줘!」
+					PRINTW 
+				ELSEIF ABL:MASTER:전투능력 > 2
+					PRINTFORML 여러 가지 색의 앞에서 탄막의 아름다움에, 일순간 마음이 사로잡힌다
+					PRINTFORML 확산탄, 탄속은 빠르지만, 어떻게든 피할 수 있다
+					PRINTFORMW 집중탄, 밀도는 진하지만 탄속은 늦다. 앞으로 나가, 반격을──
+					PRINTFORML %CALLNAME:MASTER%의 사고는, 2파를 넘는 눈앞의 압도적인 질량의 탄막에 의해 방해받아 버렸다
+					PRINTFORML 「빈틈 없는 삼단 구조 , 라는 거?」
+					PRINTFORML 코마치는 힐쭉 웃었다
+					PRINTW 
+				ELSE
+					PRINTFORML 속도도 간격도 다른 탄막에 희롱당해 %CALLNAME:MASTER%은 첫격을 피하는 것이 겨우였다
+					PRINTFORML 가드조차 용서되지 않고, %CALLNAME:MASTER%은 전부 얻어맞는 처지가 되었다
+					PRINTFORML 「이게 나의 필살기야」
+					PRINTW 
+				ENDIF
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:5
+			CASE 0
+				PRINTFORML 「안돼, 그쪽으로 움직이면 내가 설치한 탄막에…… 아─, 맞아 버렸네」
+				PRINTFORML %CALLNAME:MASTER%이 얼굴에 탄막을 부딪치는 모습을 보고, 코마치는 긁적긁적 머리를 긁었다
+				PRINTW 
+			CASE 1
+				PRINTFORML 「왼쪽에서 탄막, 오른쪽에서도 탄막, 자 어떻게 할까?」
+				PRINTFORML 「그래, 두려워하지 말고 앞으로 나오는 것도 중요한 거야」
+				PRINTW 
+			CASE 2
+				PRINTFORML 「이봐요, 이봐요, 이봐요」
+				PRINTFORML 코마치가 던지는 육문전은, 재밌는 듯이 %CALLNAME:MASTER%에 명중했다
+				PRINTW 
+			CASE 3
+				PRINTFORML 「자아 자아, 더 열심히 하지 않으면 아프게 만들어 줄거야―」
+				PRINTFORML 「엣, 응원해 주면 좀 더 노력 할 거야? 뭐라고 말해주는게 좋을까」
+				PRINTW 
+				PRINTFORML 「……하아, 알았어. 말해줄게」
+				PRINTFORML 「힘내라%UNICODE(0x2665) *1% 힘내라%UNICODE(0x2665) *1%」
+				PRINTFORML 「……정말 이걸로 괜찮아?」
+				PRINTW 
+				PRINTFORMW %CALLNAME:MASTER%의 텐션이 20올랐다
+				PRINTFORML 같은 기분이 들었다
+				PRINTW 
+			CASEELSE
+				PRINTFORML 「직선적인 탄막 만으론, 상대에게 곧 움직임을 읽혀 버려」
+				PRINTFORML 「흑백의 마법사만한 대화력이라면 이야기는 다르겠지만 말야」
+				PRINTW 
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;412, 공부
+;ABL:교양(ABL:MASTER:교양보다 대=MASTER가 가르쳐 받는 ABL:MASTER:교양보다 소=TARGET가 가르쳐 받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_412
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_412_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_412_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+M = ABL:MASTER:교양
+K = ABL:TARGET:교양
+IF LOCAL
+	IF M > K
+		PRINTFORML 「%CALLNAME:MASTER% 박식하네. 이것저것 더 가르쳐 줘」
+		PRINTFORML 코마치는 %CALLNAME:MASTER%의 설명에 눈을 반짝반짝 빛내고 있다
+		PRINTFORML 이야기를 좋아하는 성격 때문인지, 지식을 얻는 것도 좋아하는 것 같다
+		PRINTW 
+	ELSEIF K < M
+		PRINTFORML 「여기가 잘 모르겠어? 아아, 그건 말야……」
+		PRINTFORML 코마치는, %CALLNAME:MASTER%이 알기 쉽게 설명해 주고 있다
+		PRINTW 
+	ELSE
+		PRINTFORML 「배움이라는 것은, 나이를 얼마나 먹든지 재밌는거야」
+		PRINTFORML 「몇살이냐고? 여자한테 그런 거 물어보는거 아니야」
+		PRINTW 
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;413, 요리
+;TFLAG:194(100이상=금단의 메뉴 3=디저트 2=주식 1=경식
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_413
+;TFLAG:194가 100이상의 경우만
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_413_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_413_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+ENDIF
+RETURN 1
+;==================================================
+;414, 식사를 취한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;TFLAG:194(1=노 팬츠 샤브샤브 2=금단의 메뉴 31=도핑 콩소메 스프 30=모짜렐라 치즈와 토마토의 샐러드 34=긴기 요리
+;TCVAR:MASTER:308(bit0=진한 맛 bit1=담백한 맛 bit3=격신[激辛] bit4=격감 bit5=와사비 bit6=격산
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_414
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료(비TARGET시 강제 실패),-1=강제 실패, 0=COM 의존(비TARGET시 강제 성공), 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_414
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_414_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_414_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;415, 식사를 행동한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;TCVAR:MASTER:308(bit0=진한 맛 bit1=담백한 맛 bit3=격신[激辛] bit4=격감 bit5=와사비 bit6=격산
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_415
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_415
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_415_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_415_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;416, 연주한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;TFLAG:사용 악기(1=키보드 2=피아노 3=기타 4=트럼펫 5=바이올린)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_416
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_416
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_416_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_416_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;417, 낮잠을 잔다
+;TFLAG:193(0=MASTER를 껴안는 베게[抱き枕]로 해 자고 있는 1=MASTER의 무릎을 베개로 해 자고 있는 2=잠자는 얼굴에 키스 된 3=잠자는 얼굴을 들여다 보여진 4=MASTER가 무릎 베개되고 있는 5=비처[秘處] or페니스 비비어
+;CFLAG:동침중(1=함께 자고 있다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_417
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_417_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_417_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+	CASE 0
+	CASE 1
+	CASE 2
+	CASE 3
+	CASE 4
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;421, 발원 한다
+;조건이 복잡한 것으로, COMF421 발원. ERB 및, EVENT_MESSAGE_COM400.ERB의 발원 하는 것 항을 참조의 일
+;미노리코 말님의 발원을 참고에 하도록 해 받았습니다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_421
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_421_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_421_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:1100 == 1
+		PRINTFORML 「무슨 일이야, 당신」
+		PRINTFORML 「역시, 예전의 내가 좋은거야?」
+			PRINTFORML [0] 그렇다
+			PRINTFORML [1] 지금 그대로 좋다
+				$INPUT_LOOP_onegai3
+				INPUT
+				IF RESULT == 0
+					PRINTFORML 「그런가, 별로, 이런 거 좋아하지 않아?」
+					PRINTFORML 「그렇지만, %CALLNAME:MASTER%이 그렇게 하고 싶으면, 코마치가 언제라도 하게 해줄테니까……%UNICODE(0x2665) *1%」
+					PRINTW 
+					CFLAG:1100 = 0
+				ELSEIF RESULT == 1
+					PRINTFORML 「%CALLNAME:MASTER%, 그런거, 좋아하는 걸 %UNICODE(0x2665) *1%」
+					PRINTW 
+				ELSE
+					GOTO INPUT_LOOP_onegai3
+				ENDIF
+	ELSE
+		IF TALENT:연모 || TALENT:연인 && CFLAG:76:1010 >=  50 && CFLAG:76:1020 >=  50 && CFLAG:생해금 == 2 && EXP:C절정경험 >=  30 && EXP:V절정경험 >=  30 && EXP:A절정경험 >=  30 && EXP:B절정경험 >=  30 && EXP:M절정경험 >=  30
+			PRINTFORMW 코마치가 무언가 말하고 싶어 하는 것 같은데……
+			PRINTFORML [0] 이야기를 듣는다
+			PRINTFORML [1] 다음에 듣기로 하자
+				$INPUT_LOOP_onegai
+				INPUT
+				IF RESULT == 0
+					PRINTFORML 「저기, %CALLNAME:MASTER%……」
+					PRINTFORML 코마치에겐 드물게, 무언가 막히는 듯한 느낌으로 이야기를 꺼내 왔다
+					PRINTW 
+					PRINTFORML 「나, 엣치한 일은 약간 경험은 있었고, 흥미도 있었지만, 여러 가지 일 해 왔던건 당신뿐이었던 거야」
+					PRINTFORML 「내 몸, 어디로도 가버리게 되어 버렸고, 밖에서도 가득 했고……%UNICODE(0x2665) *1%」
+					PRINTFORML 「시키님의 방에서도 해 버렸고……」
+					PRINTW 
+					PRINTFORML 「당신이 그런 일만 가르쳐줘서, 나, 엣치해져 버린 것 같아」
+					PRINTFORML 「만약, 당신이 바란다면, 나, 좀 더 음란한 여자가 될테니까……」
+					PRINTFORML 「당신은, 어떻게 해줬으면 좋겠어?」
+					PRINTW 
+						PRINTFORML [0] 참지 않아도 괜찮다
+						PRINTFORML [1] 지금까지 대로의 너로 있어
+							$INPUT_LOOP_onegai2
+							INPUT
+							IF RESULT == 0
+								PRINTFORML 「……%UNICODE(0x2665) *1%」
+								PRINTFORML 「알았어. 나, 좀 더 음란한 여자가 될게……%UNICODE(0x2665) *1%」
+								PRINTW 
+								IF ! TALENT:연인
+									PRINTFORML 「연인이 해 주지 않는 것도 나는 해 줄테니까……♪」
+									PRINTFORML 「뭐든지 할 수 있어 말해 줘……%UNICODE(0x2665) *1%」
+									PRINTFORML 「나는, 당신이라면 뭐든지 해 줄게%UNICODE(0x2665) *1%」
+									PRINTW 
+								ELSE
+									PRINTFORML 「다른 여자에게는 부탁할 수 없는 것도, 나에에 말해 줘……%UNICODE(0x2665) *1%」
+									PRINTFORML 「코마치는, %CALLNAME:MASTER%의 여자니까, 뭐든지 해 줄게%UNICODE(0x2665) *1%」
+									PRINTW 
+								ENDIF
+								PRINTFORML 코마치가 남의 앞에서 조금 대담하게 됩니다
+								PRINTFORML 바탕으로 되돌리고 싶을 때는 다시 발원을 실행해 주세요
+								PRINTW 
+								;색골 플래그 ON
+								CFLAG:1100 += 1
+							ELSEIF RESULT == 1
+								PRINTFORML 「그, 그래……」
+								PRINTFORML 「여, 역시, 자신의 여자가 색골이라면 싫겠지……」
+								PRINTFORML 코마치는 분명하게 유감스러운 얼굴을 하고 있다
+								PRINTW 
+							ELSE
+								GOTO INPUT_LOOP_onegai2
+							ENDIF
+				ELSEIF RESULT == 1
+					PRINTFORML 「아, 아, 알았어. %CALLNAME:MASTER%, 바쁜거구나」
+					PRINTFORML 코마치는 가장된 웃음을 띄우고 있지만, 분명히 평상시와 다르게 모습이 이상하다
+					PRINTW 
+				ELSE
+					GOTO INPUT_LOOP_onegai
+				ENDIF
+		ELSE
+			PRINTFORML 「뭘 빌었어?」
+			PRINTFORML 「앗, 알았다. 『여자애의 팬티 주세요―』 맞지? 어라, 틀려?」
+			PRINTW 
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;422~430은, 특수 커맨드인 것으로 텐프레에서는 대응하지 않습니다
+;==================================================
+
+;==================================================
+;431, 욕실로 느긋하게 쉰다
+;TFLAG:209(4=마을의 목욕탕에서 접수대짱을 화나게 하고 있는 1=목욕탕에 들어갔다
+;TFLAG:211(4=지저의 온천에서 접수대 요괴를 화나게 하고 있는 1=온천에 들어갔다
+;TFLAG:194(1=연속 입욕 불가(표시하지 않을 가능성 있어?
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_431
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_431_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_431_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;432, 욕실로 느긋하게 쉰다
+;표시 타이밍은 입욕 후인 것으로, 욕실 오름에서의
+;TFLAG:209(4=마을의 목욕탕에서 접수대짱을 화나게 하고 있는 1=목욕탕에 들어갔다
+;TFLAG:211(4=지저의 온천에서 접수대 요괴를 화나게 하고 있는 1=온천에 들어갔다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_432
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_432_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_432_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORML 「아아, 시원해……♪」
+	PRINTFORML 「그쪽은 어땠어? 여기는……」
+	PRINTW 
+ENDIF
+RETURN 1
+;==================================================
+;436, 독서
+;TFLAG:193(선택지아야학(1=인살(아야학?) 2=실패 3=아야학), 선택지 실용서(4=실패 5=실용서), 선택지 엣치한 책(6=싱거운 높은 본 7=보건 체육 8=카마수트라))
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_436
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_436_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_436_1
+;==================================================
+;440, 기다린다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_440
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_440_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_440_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;441, 수업을 받는다(케이네 전용
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_441
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_441_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_441_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;442, 벌채한다(미실장
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_442
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_442_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_442_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;==================================================
+;442이후의 커맨드는, 실행해도 말은 아마 표시되지 않기 때문에 텐프레에서도 스르
+;==================================================
+
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;데이트계 커맨드
+;데이트계 말은 문자 그대로 외출처에서 발생
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+[SKIPSTART]
+;현상미실장
+;==================================================
+;600, 데이트 회화
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_600
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_600_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_600_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;==================================================
+;601, 데이트 스킨십
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_601
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_601_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_601_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	CALL M_KOJO_MESSAGE_COM_K76_302_1
+ENDIF
+RETURN 1
+
+;==================================================
+;602, 데이트 키스
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_602
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_602_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_602_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모
+		PRINTFORMW 「%UNICODE(0x2665) *1% 주위에 보여주고 싶어?」
+		PRINTFORMW 코마치와 서로 장난하듯이 몇번이나 입맞춤을 주고 받았다
+	ELSEIF TALENT:사모
+		PRINTFORMW 「엄청 적극적인데. 나도 해 줄까?」
+		PRINTFORMW 코마치는 답례로 뺨에 입맞춤했다
+	ELSE
+		PRINTFORMW 「설마 아무한테나 이러는건 아니겠지?」
+		PRINTFORMW 코마치는 %CALLNAME:MASTER%의 이마를 손가락으로 눌렀다
+	ENDIF
+ENDIF
+RETURN 1
+[SKIPEND]
+;==================================================
+;603, 손을 잡는다
+;TFLAG:193(1=대성공 0=성공 -1=실패)(실패에서도 거절해 풀어지거나는 하지 않습니다
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_603
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_603
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_603_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_603_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML 「에헤헤. 그야말로 연인이라는 느낌인데」
+			PRINTFORML 손가락과 손가락을 서로 걸어, 코마치는 부끄러워하고 있다
+			PRINTW 
+		CASE 1
+			PRINTFORML 「그다지 이런 것 해볼 기회 없었으니까. 기뻐」
+			PRINTFORML 코마치는 잡은 손을 아이처럼 붕붕 털고 있다
+			PRINTW 
+		CASEELSE
+			PRINTFORML 「%CALLNAME:MASTER%♪에헤헤, 아무것도 아니야」
+			PRINTFORML 코마치는 행복하게 웃고 있다
+			PRINTW 
+		ENDSELECT
+	ELSEIF TALENT:연모
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「이렇게 잡는 거 좋아. 두근두근 해」
+			PRINTFORMW 코마치와 %CALLNAME:MASTER%은 손깍지를 꼈다
+		CASE 1
+			PRINTFORML 「이런 거, 한 번 해 보고 싶었어」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%이 내민 팔에 스스로의 팔을 걸고, 가볍게 기댔다
+		ENDSELECT
+	ELSEIF TALENT:사모
+		PRINTFORMW 「손? 아아, 그정도는 괜찮아」
+		PRINTFORMW 잡은 손에 힘을 약간 넣으면, 코마치도 같이 힘을 실어 주었다
+	ELSE
+		PRINTFORMW 「으응, 왜 잡는거야?」
+		PRINTFORMW 잡은 코마치의 손가락끝은, 약간 싸늘했다
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;604, 산책한다
+;데이트중의 경우, CFLAG:현재위치에 이동처의 장소가 이미 들어가 있다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_604
+;산책하려면 TRAIN_MESSAGE가 없다
+CALL M_KOJO_MESSAGE_COM_K76_604_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_604_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;605, 들러가기 한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)(지문 없음
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_605
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_605
+;들러가기 하려면 TRAIN_MESSAGE가 없다
+CALL M_KOJO_MESSAGE_COM_K76_605_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_605_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;==================================================
+;610, 식사 제의를 한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_610
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_610
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_610_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_610_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;==================================================
+;613, 돈 벌어 한다(생략 되었습니다
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_613
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_613
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_613_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_613_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;614, 식품 재료의 직매
+;TFLAG:193(1=구입＆데이트 경험 업 0=구입 -1=비구입)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_614
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_614_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_614_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;615, 도시락을 먹는다
+;실행 가능 장소지장 대로, 축 늘어지고 야나기아래, 안개의호수, 현무의 늪, 대두꺼비의 연못, 절경의 언덕, 산의 호수, 천계
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;ABL:요리기능(2 미만=미묘한 성과 4 미만=적당히 맛있는 4이상=절품)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_615
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_615_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_615_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:요리기능 >=  4
+		IF TALENT:연인
+			PRINTFORML 「자, %CALLNAME:MASTER%. 아ㅡ앙」
+			PRINTFORML 코마치는 입을 벌린 %CALLNAME:MASTER%의 입에 음식을 넣어 주었다
+			PRINTW 
+			PRINTFORML 「맛있어? 다행이다. 노력해서 만든 보람이 있네」
+			PRINTFORML 「아직 많이 있어. 다음은, 어떤 것이 좋아?」
+			PRINTW 
+		ELSE
+			PRINTFORML 「어때? 괜찮아? 읏, 그렇게 맛있었어?」
+			PRINTFORML 「자 여기, 차. 누가 안훔쳐 가니까 천천히 맛있게 먹어줘」
+			PRINTFORMW 코마치는 상냥하게 %CALLNAME:MASTER%의 등을 문지르며, 차를 내며 주었다
+		ENDIF
+	ELSEIF ABL:요리기능 >=  2
+		PRINTFORML 「어때? 이번엔 열심히 노력해서 만들어 봤어」
+		PRINTFORML 「맛있어? 다행이다」
+		PRINTFORMW 코마치는 매우 기쁜 듯하다
+	ELSE
+		PRINTFORML 「도시락 같은건 제대로 만들어 본 적 없는데, 맛은 어때?」
+		PRINTFORML 「아─, 무리하는 것 같은 얼굴인데. 당신, 상냥하네」
+		PRINTFORMW 코마치는 곤란한 것 같은 미소를 띄우고 있다
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;617, 전통다과점으로 이끈다
+;TFLAG:193(1=대성공 0=성공 -1=실패)(지문 분기는 대성공만 추가
+;==================================================
+@M_KOJO_SUCCESS_COM_K76_617
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K76_617
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_617_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_617_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:1100 == 1
+		IF ABL:노출벽 >=  3
+			IF ABL:정액중독 >=  3
+				PRINTFORML 「주문하신 것 나왔습니다. 어, 일행분은…… 아아, 화장실이신가요」
+				PRINTFORML 「이쪽에 놓아두겠습니다. 그러면, 좋은 시간 되세요~」
+				PRINTW 
+				PRINTFORML 종업원이 멀어진 것을 보고, %CALLNAME:MASTER%은 테이블아래를 들여다 봤다
+				PRINTFORML 「응붓, 푸앗…… 츕, 쥬루루웃……%UNICODE(0x2665) *1%」
+				PRINTW 
+				PRINTFORML 테이블아래에서는, 코마치가 넋을 잃은 얼굴로 %CALLNAME:MASTER%의 페니스에 달라붙어서 놓지 않고 있었다
+				PRINTFORML 일단은 멈추라고 주의했지만, 코마치는 신경쓰지않고 귀두에 혀를 기거나 육봉을 입안에 물고 있다
+				PRINTFORML 억지로 떼어내니, 코마치는 얼굴을 올려, 불만스러운 표정을 띄웠다
+				PRINTW 
+				PRINTFORML 「뭐야, 모처럼 맛보고 있었는데. 좀 더, 빨게 해 줘……」
+				PRINTFORML 빠는 것은 멈추었지만, 이번엔 오른손으로 딱딱해진 육봉을 질꺽질꺽 훑기 시작했다
+				PRINTFORML 「자, 빨게 해 주지 않으면, 손으로 사정시켜 버린다」
+				PRINTFORML 「그러면, 가게가 %CALLNAME:MASTER%의 정액으로 더러워져 버릴텐데……♪」
+				PRINTW 
+				PRINTFORML 「어때, 그렇게 되면 큰 일 날테니까, 내 입 안에 싸버리라구……♪」
+				PRINTFORML 허가도 없었는데, 코마치는 다시 귀두를 혀로 주르륵 괴롭히기 시작한다
+				PRINTFORML 「괜찮아, 확실하게, 전부 마셔 줄……테니까, 괜찮지이? 괜찮다고 말 해줘어%UNICODE(0x2665) *1% 빠알리이……%UNICODE(0x2665) *1%」
+				PRINTW 
+				PRINTFORML 이대로라면 정말로 바닥이나 물건들을 자신의 정액으로 더럽혀 버릴 수도 있다
+				PRINTFORML 주위의 손님도 신경이 쓰이고, 큰 소리로 주의를 줄 수도 없어서, %CALLNAME:MASTER%은 어쩔 수 없이 행위의 재개를 허가했다
+				PRINTW 
+				PRINTFORML 「아핫 %UNICODE(0x2665) *1% 기뻣. 자, 내 가슴 보여 줄 테니까, 빨리 싸줘……%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 옷을 풀어헤치고 터질 것 같은 가슴을 훌렁 노출시켰다
+				PRINTW 
+				PRINTFORML 「날름, 응붓, 웃, 웃, 웃…… 가고 싶어지면, 원할때 언제든지 싸도 좋아%UNICODE(0x2665) *1%」
+				PRINTFORML 「내 입은, %CALLNAME:MASTER%의 정액이라면 언제라도 마셔 줄 테니까……%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSE
+				PRINTFORML 「주위에, 아무도 보지 않겠지…… 앗, 지금 저 사람, 나, 본거 아니야? 괜찮아?」
+				PRINTFORML 「발견되면, 곤란해…… 우리, 출입 금지 당할거야……」
+				PRINTW 
+				PRINTFORML 코마치는 주위를 신경 쓰면서도, %CALLNAME:MASTER%에 향해 가슴팍을 열어 보였다
+				PRINTFORML 터질듯한 크기의 유방이 바깥 공기에 노출되어 코마치는 부르르릇 몸을 떨고 있다
+				PRINTFORML 그러나, 그 표정엔 수치 뿐 아니라, 환희도 적게나마 섞여 있었다
+				PRINTW 
+				PRINTFORML 「나……사람이 있는 가게에서, 가슴 노출 해 버리고……변태같아」
+				PRINTFORML 「아, 아래, 도……? 그, 그건……」
+				PRINTW 
+				PRINTFORML 코마치는 당황해서, 시선을 주위로 돌렸다
+				PRINTFORML 그러나, %CALLNAME:MASTER%을 무언으로 응시하다가 이윽고, 작게 끄덕여 수긍했다
+				PRINTW 
+				PRINTFORML (아무도, 아무도, 오지 말아줘……)
+				PRINTFORML 코마치는 옷안에 손을 넣고, 속옷을 슬슬 내려 간다
+				PRINTFORML 발목에서 속옷을 빼내고, 코마치는 눈앞에 펼쳐 보였다
+				PRINTFORML 게다가 긴 의자의 위에 다리를 실어, 아래에 아무것도 입지 않은 것을 증명하듯이 다리를 벌렸다
+				PRINTW 
+				PRINTFORML 「자, 자아…… 이걸로, 괜찮지……♪」
+				PRINTFORML 속옷을 펼친 코마치의 손은 조금씩 흔들리고 있다
+				PRINTW 
+				PRINTFORML [0] 여기서 자위해
+				PRINTFORML [1] 종업원을 부른다
+					$INPUT_LOOP_kanmi
+					INPUT
+					IF RESULT == 0
+						PRINTFORML 「무, 무리야,…… 소리, 나와 버릴 거야」
+						PRINTFORML 「그렇지만, %CALLNAME:MASTER%이, 그래도 하라고 한다면……%UNICODE(0x2665) *1%」
+						PRINTFORML %CALLNAME:MASTER%을 구실로 삼아, 코마치는 손가락을 가랑이에 기게 하기 시작했다
+						PRINTW 
+						PRINTFORML 「읏…… 흐읏……」
+						PRINTFORML 처음은 허벅지 안쪽을 더듬으며, 서서히 중심부로 가까워져 간다
+						PRINTFORML 허벅지에서 대음순과의 경계선, 대음순, 소음순으로, 원을 그리듯이 더듬어, 코마치는 성감을 높여 간다
+						PRINTW 
+						PRINTFORML 「쿠, 읏, 후우……」
+						PRINTFORML 이번은 두 개의 손가락을 소음순에 꽉 눌러, 위아래로 몇번이나 천천히 비빈다
+						PRINTFORML 그러는 동안에, 코마치의 대음순이 벌려지기 시작하기 시작해, 질구로부터 애액이 주륵 새기 시작했다
+						PRINTW 
+						PRINTFORML 「앗…… 얏……%UNICODE(0x2665) *1%」
+						PRINTFORML 새어나온 애액을 손가락으로 건져 올려, 포피에 휩싸여진 클리토리스에 바른다
+						PRINTFORML 알맞게 미끄러지는 것을 확인하고, 코마치는 음핵을 두 개의 손가락 사이에 둬, 아래에서 위로 몇번이나 훑었다
+						PRINTW 
+						PRINTFORML 「앗, 쿠웃,,, %UNICODE(0x2665) *1%」
+						PRINTFORML 처음은 흠칫흠칫 이어가던 움직임이, 점차 대담하게 되어 간다
+						PRINTFORML 어루만지는 것 만이 아니고, 음핵을 집어 눌러 돌리거나 손가락 안쪽으로 쿡쿡 자극하거나 하고 있다
+						PRINTW 
+						PRINTFORML 「앗, 야, 얏, 아, 아앗……%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치의 손가락은 질구에 가까스로 도착해, 그 뻐끔 열린 입구로 침입해 갔다
+						PRINTFORML 찔꺽, 하는 소리를 내며, 코마치의 손가락은 순조롭게 안쪽에 매몰 해 나간다
+						PRINTW 
+						PRINTFORML 「앗, 좋앗, 아읏, 응, 힛, 잇, 쿠웃……」
+						PRINTFORML 코마치는 완전하게 스위치가 들어가 버렸는지, 여기가 어디인 지도 잊고, 자위행위에 열중하고 있다
+						PRINTFORML 행위도 대범해져, 한 개였던 손가락은 두 개에, 입구 부근에서 단번에 질 안쪽까지 피스톤을 반복하게 되었다
+						PRINTW 
+						PRINTFORML 「저─, 손님」
+						;PRINTFORML ＜Φ＞!Π＜?Φ＞uu!?
+						PRINTFORML 「!!!!????」
+						PRINTW 
+						PRINTFORML 뒤에서 말이 걸려와 코마치의 의식은 순간적으로 각성 했다
+						PRINTFORML 당황해 손사레치려 하지만, 불안정한 자세로 자위를 하고 있었기 때문에, 코마치는 밸런스가 무너져 의자에서 떨어져 버렸다
+						PRINTW 
+						PRINTFORML 「! 손님, 괜찮으신가요!?」
+						PRINTFORML 「아, 아하하…… 괘, 괜찮아, 괜찮으니까……」
+						PRINTFORML 코마치는 이런저런, 다양하게 보여서는 안 되는 곳이 보여져 버렸다
+						PRINTW 
+						PRINTFORML 「그…… 말씀드리기 어렵습니다만…… 저희 가게는 식사을 위한 가게이므로, 그……저속한 행위는……」
+						PRINTFORML 「!!!! 아, 아하, 아하하하하…… 미안합니다……」
+						PRINTFORML 파렴치한 행위가 종업원에게 그대로 발각되어, 코마치는 새하얗게 타 버렸다
+						PRINTW 
+					ELSEIF RESULT == 1
+						PRINTFORML 「!!!?? 잠, ……!」
+						PRINTFORML 코마치는 패닉에 빠져, 당황해 속옷을 다시 입으려고 했 잘 되지 않는다
+						PRINTFORML 스커트를 내려 버리면 들키지 않는다고 생각하지만, 혼란한 머리로는 거기까지 생각이 미치지 않는 것 같다
+						PRINTW 
+						PRINTFORML 「네, 주문 있으신가요~…… 저기, 일행분, 숨이 차신 것 같은데……불편한 곳이라도 있으신가요?」
+						PRINTFORML 종업원은 상냥한 미소를 띄우고 있었지만, 코마치의 모습이 이상한 것을 깨닫고, 의아한 표정을 지었다
+						PRINTW 
+						PRINTFORML 「아…… 미안…… 조금, 사레가 들려서, 기침이 나와가지고……」
+						PRINTFORML 테이블에 상반신을 기댄 코마치는, 어색한 웃는 얼굴로 종업원에게 대답했다
+						PRINTW 
+						PRINTFORML 「아, 그러셨군요. 그럼, 물 좀더 준비 해 드릴게요~」
+						PRINTFORML 종업원은 생긋 웃고, 주방으로 돌아 갔다
+						PRINTW 
+						PRINTFORML 「%CALLNAME:MASTER%~, 너무해~」
+						PRINTFORML 종업원의 모습이 멀어지는 것을 확인하고, 코마치는 크게 한숨 돌렸다
+						PRINTFORML 그리고, 눈물고인 눈으로 %CALLNAME:MASTER%을 노려본다
+						PRINTW 
+						PRINTFORML 가슴팍은 테이블에 푹 엎드리는 것으로 숨기고 있었지만, 속옷은 꽉 쥔 손바닥에서 삐져나오고 있었다
+						PRINTFORML 스커트도 허벅지까지 넘겨, 평범하게 식사하는 모습이라고는 도저히 생각되지 않는다
+						PRINTFORML 어쩌면, 종업원은 코마치의 행위를 알아차리고 있었을지도 모른다
+						PRINTFORML 「우우, 나…… 다음부터 이 가게에 오지 못할거야……」
+						PRINTW 
+						PRINTFORML 평상시는 여기까지 당황 한 적이 없는 코마치의 진기한 모습을 볼 수 있어, %CALLNAME:MASTER%은 만족감에 잠겼다
+						PRINTW 
+					ELSE
+						GOTO INPUT_LOOP_kanmi
+					ENDIF
+			ENDIF
+		ELSE
+			IF ABL:정액중독 >=  3
+				PRINTFORML 「읏…… 훗, 읏……」
+				PRINTFORML %CALLNAME:MASTER%에 부탁받은 코마치는, %CALLNAME:MASTER%의 페니스를 입으로 봉사하고 있다
+				PRINTFORML 부드럽고 따듯한 감촉이 귀두를 감싸, %CALLNAME:MASTER%은 무심코 야무지지 못한 표정을 띠고 있다
+				PRINTW 
+				PRINTFORML 「읏…… 츄부, 응웃……」
+				PRINTFORML 주위에 발각되지 않게, 코마치는 조용하게 목을 움직이고 있다
+				PRINTFORML 격렬하게 움직일 수 없는 만큼, 교묘하게 혀로 애무하는 것으로 커버하고 있다
+				PRINTW 
+				PRINTFORML 「즈쥿, 츄폿, 읏! 응읏, 날름」
+				PRINTFORML 코마치는 흐린 소리를 흘리면서, 귀두로에서 장대에 걸쳐 점막으로 애무한다
+				PRINTFORML 입속에선, 끊임없이 꿈틀거리는 혀가 귀두목과 귀두를 계속 핥아대, 쾌락을 증폭시키고 있다
+				PRINTW 
+				PRINTFORML 이윽고, 간지러운 감각과 함께 %조교자는% 한계에 이르렀다
+				PRINTFORML , 뷰루루룻!
+				PRINTFORML 진한 정액이, 코마치의 목 안을 몇번이나 두드린다
+				PRINTW 
+				PRINTFORML 「응읏! 무그, 읏…… 응츗……」
+				PRINTFORML 대량으로 방출된 정액을 흘리지 않고, 코마치는 목을 울려 삼켜 나간다
+				PRINTW 
+				PRINTFORML 「손님, 접시 치워드릴까요?」
+				PRINTFORML 코마치가 정액을 다 마셔, 옷차림을 정돈한 것과 거의 동시에, 종업원이 말을 걸어 왔다
+				PRINTW 
+				PRINTFORML 「아아, 부탁해요. 잘 먹었습니다. 매우 맛있었어요……♪」
+				PRINTFORML 「맛있었다」를 새삼스럽게 강조하면서, 코마치는 점원에게 미소지었다
+				PRINTFORML 테이블 아래에는, 사정해 딱딱함을 잃은 %CALLNAME:MASTER%의 페니스가, 코마치의 손에 의해 희롱되고 있었다
+				PRINTW 
+			ELSE
+				PRINTFORML 「정말이지, %CALLNAME:MASTER%, 이래서야, 제대로 먹을 수가 없잖아……%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치와 %CALLNAME:MASTER%은, 서로 마주보지 않고 옆으로 붙어 앉아 있다
+				PRINTW 
+				PRINTFORML 언뜻 보기에는, 음식을 서로의 입에 떠먹여 주는 흐뭇한 광경이다
+				PRINTFORML 그러나, 테이블 아래에선, 서로 상대의 성기를 만지작거리는 추잡한 행위가 전개되고 있었다
+				PRINTW 
+				PRINTFORML 「아아읏, 그렇게, 보지 만지작거리면, 흘려 버려 %UNICODE(0x2665) *1%」
+				PRINTFORML 점내임에도 불구하고 용서없는 애무를 받아, 코마치는 색에 젖은 소리를 흘린다
+				PRINTW 
+				PRINTFORML 「못된 짓 하는 %CALLNAME:MASTER%에는, 복수야 %UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 심술궂게 웃으며, %CALLNAME:MASTER%의 귀두를 손바닥으로 싸, 격렬하게 애무하며 돌렸다
+				PRINTW 
+				PRINTFORML 강렬한 쾌감과 귀두 끝이 저려오는 감각에, %CALLNAME:MASTER%은 무심코 허리를 띄운다
+				PRINTFORML 「%CALLNAME:MASTER%, 자, 아─앙 하지 않으면, 의심받아 버려……%UNICODE(0x2665) *1%」
+				PRINTFORML 쿠퍼액 투성이가 된 귀두를 괴롭히는 손을 쉬지 않으며, 코마치는 스푼으로 뜬 음식을 %CALLNAME:MASTER%의 입가로 옮겼다
+				PRINTW 
+				PRINTFORML 「우리들, 이런 곳에서 이런 일 해 버려……%UNICODE(0x2665) *1%」
+				PRINTFORML 「그래도, 어쩔 수 없어. 기분이 너무 좋아……%UNICODE(0x2665) *1%」
+				PRINTFORML 서로의 그릇이 빌 때까지, 두 명의 추잡한 행위는 계속되었다……
+				PRINTW 
+			ENDIF
+		ENDIF
+	ELSE
+		SELECTCASE RAND:22
+		CASE 0
+			PRINTFORML 「응~%UNICODE(0x2665) *1% 이 쑥경단 맛있다」
+			PRINTFORMW 「쑥향이 독특해서 괜찮은 것 같아」
+		CASE 1
+			PRINTFORML 「이 단팥죽, 단맛이 딱 맞아」
+			PRINTFORMW 「엄청 단 것도 싫진 않지만, 이 정도가 적당해」
+		CASE 2
+			PRINTFORML 「이 만두, 만두피에 술지게미를 넣었다는데?」
+			PRINTFORMW 「어렴풋이 술의 향기가 맴도는 것이 괜찮네」
+		CASE 3
+			PRINTFORML 코마치는 별사탕을 입에 던져 넣어 맛보고 있다
+			PRINTFORMW 「단순한 설탕 덩어리인데, 이렇게 여러 가지 색을 입힌 것만으로 가슴이 뛰게 되는 게 신기해」
+			PRINTFORMW 「자, 당신한테도 줄게」
+		CASE 4
+			PRINTFORML 「개인적으로는 은근하게 달콤한 것을 좋아하지만」
+			PRINTFORMW 「양갱은 다르지♪ 약간 진한 맛의 차와 같이 먹으면 행복해」
+		CASE 5
+			PRINTFORML 「『녹차파르페』라고 했지? 이거」
+			PRINTFORMW 「단맛과 쓴 맛 양쪽 모두 느낄 수 있어서 좋아. 꽤 맛있어, 이거」
+		CASE 6
+			PRINTFORML 「이 도라야키, 빵 부분이 촉촉해」
+			PRINTFORMW 「뭘 섞어서 만드는 걸까. 아아, 맛있어」
+		CASE 7
+			PRINTFORML 「이 빙수, 너무 많이 담아준 거 아냐?」
+			PRINTFORMW 「당신 얼굴이 안보일 정도야」
+		CASE 8
+			PRINTFORML 「응~, 빙수, 마시쎠」
+			PRINTFORMW 「앗하하, 허겁지겁 먹으니까 머리에 키ㅡ잉하고 오는거라구」
+		CASE 9
+			PRINTFORML 「예로부터 붉은 팥에는 나쁜 기운을 물리치는 힘이 있다고 하던데」
+			PRINTFORMW 「그런 이유로 피안에는 인절미를 먹게 되었다고 해」
+			PRINTFORMW 「뭐, 유래같은 건 관계없이 인절미는 언제 먹어도 맛있어」
+		CASE 10
+			PRINTFORML 「이 만두…… 겉모습이 꾀꼬리같아, 먹는 게 아까워」
+			PRINTFORMW 「뭐, 먹지 않는 건 더 아까우니까. 응, 맛있어」
+		CASE 11
+			PRINTFORML 「뭔가 굉장히 독살스러운 색의 과자인걸…… 먹을 수 있는 걸까 이거」
+			PRINTFORMW 「응─…… 아─, 뭐, 못 먹을 건 없지, 못 먹을 건」
+		CASE 12
+			PRINTFORML 「『하이포션』? 바깥 세계 약품의 이름이라고 들은 것 같은데」
+			PRINTFORMW 「몸이 좋아지기는 커녕, 반대로 나빠질 것 같은 색인데, 이거」
+		CASE 13
+			PRINTFORML 「카스테라는, 재료도 겉모습도 단순한데, 어딘가 기품 있는 것 같아」
+			PRINTFORMW 「이상하거나 화려하게 꾸미지 않고, 의미없는 부분이 없는게 좋을지도 몰라」
+		CASE 14
+			PRINTFORML 「『이름은 실체를 나타낸다』라고 하지만」
+			PRINTFORMW 「『푸딩』에는 수긍하지 않을 수 없네」
+		CASE 15
+			PRINTFORML 「이거, 『얼음과자』가 아니고 『아이스크림』이라고 하는거래?」
+			PRINTFORMW 「부드러워서 먹기 쉽네」
+		CASE 16
+			PRINTFORML 「조금 신나서 『아이스크림』너무 사 버렸어」
+			PRINTFORMW 「당신, 먹는 거 도와 줘. 자, 아ㅡ앙」
+		CASE 17
+			PRINTFORML 「아이스 먹고 싶은데, 전부 다는 못먹겠어」
+			PRINTFORMW 「%CALLNAME:MASTER%, 반 나눠줄게. 자, 아─앙 해봐」
+		CASE 18
+			PRINTFORML 「이것이 소문에 듣고 있던 『타피오카 드링크』……」
+			PRINTFORMW 「뭔가 개구…… 아니, 아무것도 아니야. 혼잣말」
+		CASE 19
+			PRINTFORML 「뭔가 『타피오카 드링크』에는 『타피오카 챌린지』라는 마시는 방법이 있다 라고 들었는데」
+			PRINTFORMW 「당신, 어떻게 하는지 알아? 알고 있으면 가르쳐 줘」
+		CASE 20
+			PRINTFORML 「뭐야 이것. 찹쌀떡 안에, 밤이나 딸기같은게 들어가 있어」
+			PRINTFORMW 「이거, 의외로 나쁘지 않아. 조잡한 맛일것 같았는데, 제대로 생각해서 만드는 거구나」
+		CASE 21
+			PRINTFORML 「아하하, 이것봐」
+			PRINTFORMW 「과자가 전부 둥근 동물의 형태 하고 있다. 사랑스럽다」
+			PRINTFORMW 「선물로 사가면 시키님 기뻐할까나」
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;618, 꽃집(말은 표시되지 않는 모양?
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_618
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_618_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_618_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;620, 령나암
+;TFLAG:193(1=대출 OK 0=대출 불가
+;ITEM:10X (X=1 전술 지도서 X=2 조리 지도서 X=3 사전 X=4 단편 소설
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_620
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_620_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_620_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;621, 낚시를 한다
+;TFLAG:193(0=잡히지 않는 1~4=물고기 11~15=능숙한 물고기 610=목재 131=모리야인 수찰 21=로터 609=얼음의 비늘 606=용의 손톱)
+;TFLAG:194(1000이상이라면 TARGET가 낚시했다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_621
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_621_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_621_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:194 >=  1000
+		PRINTFORML 「옷, 잡혔다 잡혔다」
+	ELSE
+		SELECTCASE TFLAG:193
+			CASE 0
+				PRINTFORML 「뭐 그런 일도 있는거야. 잡히지 않는 것도 또, 낚시의 참된 맛이네」
+			CASE 1 TO 4
+				PRINTFORML 「오, 잡혔다 잡혔다. 능숙하지 않은가」
+			CASE 11 TO 15
+				PRINTFORML 「오오, 굉장하지 않은가. 이 크기는 좀처럼 보이지 않아」
+			CASE 610
+				PRINTFORML 「무겁다고 생각하면 이것이야. 유감이다」
+			CASE 131
+				PRINTFORML 「뭐야 이건. 산신씨도 필사적이다」
+			CASE 21
+				PRINTFORML 「아─…… 이것은……」
+				PRINTFORML 「돌려주는 것도 저것이고, 가지고 돌아갈까…… 는 사용하지 않으니까!」
+			CASE 609
+				PRINTFORML 「헤에, 이건 드물다」
+				PRINTFORML 「코마치도 보는 것은 처음이야」
+			CASE 606
+				PRINTFORML 「아니아니, 설마 이런 것이 잡힌다고는」
+				PRINTFORML 「소중하게 라고 하는거야. 다음에 뭔가 좋은 일이 있을지도 몰라」
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;660, 독서
+;TFLAG:193(선택지아야학(1=인살(아야학?) 2=실패 3=아야학), 선택지 실용서(4=실패 5=실용서), 선택지 엣치한 책(6=싱거운 높은 본 7=보건 체육 8=카마수트라))
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_660
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_660_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_660_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE TFLAG:193
+	CASE 1
+		PRINTFORML 「뭐야 이건. 『아이에에에! 닌쟈뭐야!?』 무슨 뜻인지 모르겠어」
+		PRINTFORMW 「인살어? 세상에는 내가 모르는 말이 많구나」
+	CASE 2
+		PRINTFORMW 「응─, 나는 이런건 별로」
+	CASE 3
+		PRINTFORML 「역시 인간은 재미있어. 사신인 나의 마음을 흔들 수 있는 문장을 쓰는 녀석이 있다니」
+		PRINTFORMW 「문자 그대로, 영혼을 담아서 썼다는 걸까」
+	CASE 4
+		PRINTFORML 「『집에서도 할 수 있는 로터 키우는 법』…… 아니, 자라지 않잖아」
+		PRINTFORMW 「엣, 자라는 거야? 아니 당신 왜 그런 거 알고 있어?」
+	CASE 5
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORMW 「제철 식품이네. 내가 만들 일은 적어도, 제철을 알아 두면 손해는 없지」
+		CASE 1
+			PRINTFORML 「쾌적한 수면방법 이라. 땡땡이 치고 잘 때 써먹어 볼까」
+			PRINTFORMW 「앗, 지금 것은 시키님에게는 비밀이야」
+		CASE 2
+			PRINTFORML 「간단하게 할 수 있는 도시락 만들기, 라. 이거라면 나라도 할 수 있을 것 같은데 해 볼까」
+			PRINTFORMW 「당신, 내가 도시락 만들어 주면 기쁠거 같아?」
+		ENDSELECT
+	CASE 6
+		SELECTCASE RAND:3
+		CASE 0
+			IF CFLAG:1100 == 1
+				PRINTFORML 「저기, %CALLNAME:MASTER%…… 이 책에 그려진 여자, 시키님 닮은것 같지 않아?」
+				PRINTFORML 「게다가 상대 역할이 자지가 난 여자 사신이래」
+				PRINTFORML 「나도 그런 거 생기면 좋을텐데……♪」
+				PRINTW 
+			ELSE
+				PRINTFORML 「저기, %CALLNAME:MASTER%…… 이 책에 그려진 여자, 시키님 닮은것 같지 않아?」
+				PRINTFORML 「머리 모양이라든지 복장이라든지…… 아니, 그림 쪽이 가슴 크지만」
+				PRINTFORML 「기분탓인가…… 그럴까……」
+			ENDIF
+		CASE 1
+			IF CFLAG:1100 == 1
+				PRINTFORML 「엣, 그 책에 나오는 여자 나를 닮았다고?」
+				PRINTFORML 「확실히……얼굴이라든지 머리 모양이라든지, 비슷할지도……」
+				PRINTW 
+				PRINTFORML 「이왕이면, %CALLNAME:MASTER%」
+				PRINTFORML 「이 책안의 코마치가 당하고 있는 거, 나한테도 해 줘……%UNICODE(0x2665) *1%」
+				PRINTW 
+			ELSE
+				PRINTFORML 「엣, 그 책에 나오는 여자 나를 닮았다고?」
+				PRINTFORML 「확실히…… 얼굴이라든지 머리 모양이라든지, 닮은 것 같긴 한데……」
+				PRINTFORMW 「근데, 왜…… 이 책의 나, 심한 일 당하고 있어」
+				PRINTFORML 「이게 망자들의 소문으로 들었던 『에로 동인지』라는 녀석인건가」
+				PRINTW 
+			ENDIF
+		CASEELSE
+			PRINTFORML 「이게, 망자들에게 들었던 『얇은 책』이라는 녀석이야」
+			PRINTFORML 「진짜 얇다. 이런게 밖의 세계는 고가로 거래되고 있다고?」
+			PRINTFORMW 「뭐, 기호품이라든가 수집품이라든가 하는 것들은, 본인이 납득하기만 하면 가격이야 얼마든지 상관없는 거겠지?」
+			PRINTL 
+			PRINTFORML 「……우왓, 이런 곳까지, 우햐─……」
+			PRINTFORMW 「얇은 주제에, 상당히 진한 내용이었네……」
+		ENDSELECT
+	CASE 7
+		PRINTFORML 「어린이용의 성교육 책인가. 당연하긴한데, 꽤 성실히 쓰여져 있네 이거」
+		PRINTFORMW 「당신, 상당히 진지하게 보잖아. 그렇게 공부가 돼?」
+	CASE 8
+		PRINTFORML 「바깥 세계의 사랑의 경전…… 이것은…… 도대체 어떻게 되어…… 헤에─……」
+		IF TALENT:연모
+			PRINTFORMW 「응 %CALLNAME:MASTER%, 다음에 이거, 시험해 보자……%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 얼굴을 붉게 물들이곤, 남녀가 복잡한 체위로 교접하고 있는 페이지를 열어 보였다
+		ELSEIF TALENT:사모
+			PRINTFORMW 「%CALLNAME:MASTER%은, 좋아하는 여자가 이런 거 해주면, 기쁠 것 같아?」
+			PRINTFORMW 코마치는 얼굴을 붉게 물들이곤, 남녀가 얽혀있는 페이지를 열어 보였다
+		ELSE
+			PRINTFORMW 「……핫, 무심코 열중해 버렸어, 에헤헤」
+			PRINTFORMW 코마치는 수줍음을 감추려고 머리를 긁으면서 책을 원래 장소에 돌려놨다
+		ENDIF
+	ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;698, 방에 들어간다
+;TARGET의 방에 들어가는 경우만 표시
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_698
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_698_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_698_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	CALL M_KOJO_COLOR_K70
+	PRINTFORML 「자. 올라와」
+	PRINTFORML 코마치의 방은 상상했던 것보다 잘 정리되어 있었다
+	PRINTFORMW 여성으로는 검소할지도 모르지만, 군데군데에 사랑스러운 소품이 장식돼 있다
+	PRINTL 
+	PRINTW 
+	PRINTFORML 「앗, 생각했던 것보다 깨끗하네 라는 얼굴. 무례해. 나도 여자라고」
+	PRINTFORML 말은 탓하고 있는 것 같지만, 코마치의 얼굴은 웃고 있다
+	PRINTFORMW 「뭐, 서서 이야기하기도 그런데, 거기에 앉아 있어. 차 내올게」
+ENDIF
+RETURN 1
+;==================================================
+;699, 밖에 나온다
+;==================================================
+@M_KOJO_MESSAGE_COM_K76_699
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K76_699_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K76_699_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;파생 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;60, 귀이개
+;전턴 무릎 베개 후 스킨십 커맨드
+;TFLAG:193(1=대성공 0=성공 -1=실패)(실패하는 것은 TARGET
+;==================================================
+@M_KOJO_SUCCESS_SCOM_K76_60
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_SCOM_K76_60
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K76_60_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K76_60_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:192 >=  0
+		IF TALENT:연모
+			PRINTFORML 「이렇게, 당신한테 무릎 베개해주고, 귀 청소해 주는 것도 참 좋네」
+			PRINTFORMW 「네, 여기는 끝. 자, 반대로 누워」
+		ELSEIF TALENT:사모
+			PRINTFORML 「엄청 모아놨네」
+			PRINTFORMW 「가만히 있어. 안쪽에 큰게…… 좋아, 꺼냈다♪」
+			PRINTFORMW 코마치는 큰 귀지를 꺼낸 것에 만족감을 얻은 것 같다
+		ELSE
+			PRINTFORML 「정말이지, 귀 정도는 직접 청소해」
+			PRINTFORMW 「뭐, 해달라는데 굳이 싫다고는 안할게」
+			PRINTFORMW 코마치는 투덜대면서도 정중하게 귀청소를 해 주었다
+		ENDIF
+	ELSE
+		IF TALENT:연모
+			PRINTFORMW 「이렇게, 당신한테 무릎 베개해주고, 귀 청소해 주는 것도 참 좋네」
+			PRINTFORML 가릭
+			PRINTFORMW 「아아아아아, 미안해, 아팠지?」
+			PRINTFORMW 코마치는 무심코 귀안을 세게 긁어 버린 것을 사과해 %CALLNAME:MASTER%의 머리를 가슴에 껴안았다
+		ELSEIF TALENT:사모
+			PRINTFORML 「엄청 모아놨네」
+			PRINTFORMW 「가만히 해. 안쪽에 거물이…… 앗, 놓쳤어」
+		ELSE
+			PRINTFORML 「앗, 미안, 아팠어?」
+			PRINTFORMW 「다른 사람의 귀청소 해본적 없으니, 서툴러도 이해해줘」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;61, 안아 베개
+;(TARGET 수면시간 or쇠약) 동침중, 전턴 껴안는 후 취침 커맨드
+;분기 없음
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K76_61
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K76_61_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K76_61_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 「%CALLNAME:MASTER%, 따뜻해……♪잘 자……」
+	PRINTFORMW %CALLNAME:MASTER%의 온기에 휩싸이면서, 코마치는 행복한 표정으로 잠들었다
+ENDIF
+RETURN 1
+;==================================================
+;62, 데코―
+;전턴두 어루만지고 후 키스 한다
+;TFLAG:193(1=대성공 0=성공 -1=실패)(지문 분기 없음
+;ABL:욕망(5이상=어딘지 부족하다
+;ABL:친밀(5이상=수줍다
+;==================================================
+@M_KOJO_SUCCESS_SCOM_K76_62
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_SCOM_K76_62
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K76_62_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K76_62_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:욕망 >=  5
+		SELECTCASE RAND:2
+		CASE 0
+			PRINTFORML 「이마만? 여긴 안 해줄꺼야?」
+			PRINTFORMW 코마치는 포동포동한 입술을 손가락으로 톡톡 하고 가리켰다
+		CASE 1
+			PRINTFORML 「거기 말고, 더 키스 해 줬으면 하는 곳이 있는데……%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 눈을 감고 입술을 내밀어 왔다
+		ENDSELECT
+	ELSE
+		IF ABL:친밀 >=  5
+			PRINTFORML 「에헤헤, 뭔가 낯간지럽네」
+		ELSE
+			PRINTFORML 「이마에 뽀뽀라니, 건방져」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;63, 좀 더 키스 한다
+;전턴 키스 하는 후 키스 한다
+;분기 조건은 EVENT_MESSAGE_COM500.ERB 참조
+;==================================================
+@M_KOJO_SUCCESS_SCOM_K76_63
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_SCOM_K76_63
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K76_63_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K76_63_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSE
+		IF TALENT:연모
+			PRINTFORML 「저기, 좀 더. 좀 더 해줘」
+			PRINTFORMW 코마치는 %CALLNAME:MASTER%의 목에 팔을 두르고, 몇번이나 입맞춤을 졸라 왔다
+		ELSEIF TALENT:사모
+			PRINTFORML 「응, 츄…… 당신이 입맞춤, 나쁘지 않아」
+			PRINTFORMW 코마치는 눈동자에 물기를 띠게 하면서 미소짓고 있다
+		ELSE
+			PRINTFORML 「응…… 하아…… 아직 깊은 사이도 아닌데」
+			PRINTFORMW 「당신 키스가 능숙한 탓이야」
+		ENDIF
+		
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;80, 손을 잡아 당긴다
+;데이트 출발 후 목적지에 도착할 때까지의 사이
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;==================================================
+@M_KOJO_SUCCESS_SCOM_K76_80
+;성공 여부 판정
+;TFLAG:192(-2=커맨드 종료,-1=강제 실패, 0=COM 의존, 1=강제 성공 or대성공
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_SCOM_K76_80
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K76_80_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K76_80_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	SELECTCASE RAND:3
+	CASE 0
+		PRINTFORMW 「이봐 이봐, 그렇게 끌고 어디로 데려가려고?」
+	CASE 1
+		PRINTFORMW 「네네, 그렇게 재촉하지 않아도 잘 따라갈게」
+	CASE 2
+		PRINTFORMW 「네네, 제대로 손 잡고 있어」
+	ENDSELECT
+ENDIF
+RETURN 1

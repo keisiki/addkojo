@@ -1,0 +1,1227 @@
+﻿;~
+;분기 만들기에 유용할 것 같은 변수 따위의 메모
+;~
+;NOWEX:C절정 NOWEX:V절정 NOWEX:B절정 NOWEX:A절정 NOWEX:M절정
+;각 부위의절정 강도. 우선 0~3을 할당할 수 있어 다중절정에 의해 최대 16배 된다. 즉 단부위라면 최대 3, 5겹절정에서 최대 48
+;NOWEX:TotalEX
+;다중절정 보정을 받기 전의 각 부위절정 강도의 합계치. 1~15. 이 텐프레에 있어서의 분기의 기준.
+
+;TEQUIP:50
+;V에 누구의 장대가 들어가 있을까. TEQUIP:50 = MASTER로 당신이 삽입중이 된다.
+;TEQUIP:51
+;A에 누구의 장대가 들어가 있을까. TEQUIP:51 = MASTER로 당신이 삽입중이 된다.
+;NOWEX:사정
+;사정량, 최대 3. 예를 들어 IF NOWEX:MASTER:사정 > 1이라고, 당신이 대량 사정 이상 했을 경우가 된다.
+;SYNCED_ORGASM(TARGET)
+;상대와 당신이 동시에절정 했을 경우진이 된다.절정의 부위는 묻지 않는다.
+
+;-------------------------------------------------
+;절정시의 말
+;-------------------------------------------------
+@M_KOJO_MESSAGE_PALAMCNG_B_K76
+#DIM TotalEX
+CALL PALAM_MESSAGE_B
+;-------------------------------------------------
+;분유
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:분유
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;사정했다
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:사정
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;방뇨
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:방뇨
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;절정
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+;합계절정수로 분기
+;이것만으로는 어느 부위가절정 했는가는 구별되지 않기 때문에, 나누어 쓰고 싶으면 임의로 분기가 가필되었고.
+IF LOCAL
+	SELECTCASE NOWEX:TotalEX
+		;강
+		CASE 5 TO 15
+			PRINTFORMW 
+		;안
+		CASE 2 TO 4
+			PRINTFORMW 
+		;약
+		CASE 1
+			PRINTFORMW 
+	ENDSELECT
+ENDIF
+
+;-------------------------------------------------
+;노예의 수면절정시의 말
+;-------------------------------------------------
+@M_KOJO_MESSAGE_PALAMCNG_B2_K76
+CALL PALAM_MESSAGE_B
+;-------------------------------------------------
+;수면분유
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:분유
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;수면 사정했다
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:사정
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;수면 방뇨
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:방뇨
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;수면절정
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+;합계절정수로 분기
+;이것만으로는 어느 부위가절정 했는가는 구별되지 않기 때문에, 나누어 쓰고 싶으면 임의로 분기가 가필되었고.
+IF LOCAL
+	SELECTCASE NOWEX:TotalEX
+		;강
+		CASE 5 TO 15
+			PRINTFORMW 
+		;안
+		CASE 2 TO 4
+			PRINTFORMW 
+		;약
+		CASE 1
+			PRINTFORMW 
+	ENDSELECT
+ENDIF
+
+
+;-------------------------------------------------
+;당신이 사정했을 때에 관한 말의 표시
+;일시적으로 TARGET를 말 주로 설정해 있다
+;CFLAG:생해금 = 2라면 위험 일본생명보험 하메 합의, = 1이라면 위험일 이외 생 하메 합의
+;IF TCVAR:TARGET:피임약 == 1 피임약을 마시고 있다
+;IF TEQUIP:MASTER:콘돔 콘돔 장착
+;-------------------------------------------------
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_00(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;TARGET의 손에 의한 사정으로, 사정 대상이 비TARGET
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_0(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;콘돔
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF CFLAG:1100 == 1
+			IF CFLAG:76:생리주기 == 7
+				SELECTCASE CFLAG:생해금
+				;위험 일본생명보험 하메
+				CASE 2
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+						PRINTW 
+						PRINTFORML 「그렇지만 말야~, %CALLNAME:MASTER%」
+						PRINTFORML 「나를 소중하게 여겨 주는 건 알지만……」
+						PRINTFORML 「역시, 콘돔없이 해줬으면……%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINTFORML 코마치는 %CALLNAME:MASTER%의 가슴팍에 손가락끝으로 빙글빙글 원을 그리며, 응석부리고 있다
+						PRINTFORML 「%CALLNAME:MASTER%, 보지 안에 사정하고 싶지 않아?」
+						PRINTFORML 「생으로 하는 쪽이, 비교할 수 없이, 기분 좋을거라고 생각하는데……%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「읏, 으응…… %UNICODE(0x2665) *1% …… 앗」
+						PRINTFORML 질에서 페니스를 뽑아 내니, 코마치는 얼빠진 소리를 흘렸다
+						PRINTW 
+						PRINTFORML 「콘돔, 질에 껴 버렸다……」
+						PRINTFORML 「읏, 당신이 너무 많이 내서, 안에 걸려 버렸잖아……%UNICODE(0x2665) *1%」
+						PRINTFORML 「빨리 뽑지 않으면, 정액이 안으로 새버려……%UNICODE(0x2665) *1%」
+						PRINTW 
+						;어쩐지 이것은 다르다
+						;PRINTFORML 「%CALLNAME:MASTER%, 나아 당신의 아기 가지고 싶다고 하면 어떡할거야?」
+						;PRINTFORML 「이대로, 질내에 이거 다시 넣어버리면……」
+						;PRINTW 
+						;PRINTFORML 「메ㅡ롱, 그래도 나는, 제대로 질내에 내주는 쪽이 좋아%UNICODE(0x2665) *1%」」
+						;PRINTW 
+					ENDSELECT
+				;위험일 이외 생 하메
+				CASE 1
+					SELECTCASE RAND:2
+					CASE 0
+						PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+						PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+						PRINTW 
+						PRINTFORML 「피임해 두길 잘했다, %CALLNAME:MASTER%」
+						PRINTFORML 「그게, 이런 양의 정액, 질안에 내 버리면, 한방에 임신해 버릴거야……%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINTFORML 「%CALLNAME:MASTER%, 위험일 보지 안에 사정하고 싶어?」
+						PRINTFORML 「생으로 하는 게, 기분 좋겠지……%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINTFORML 「그렇지만, 임신하면 안 되니까, 싼다면 안전일에만……%UNICODE(0x2665) *1%」
+						PRINTW 
+					CASE 1
+						PRINTFORML 「아읏, 콘돔, 질내에 남아 버렸어……%UNICODE(0x2665) *1%」
+						PRINTFORML 「내가 너무 조여서 그렇다구? 아아~, 남탓 해버리기나 하고……%UNICODE(0x2665) *1%」
+						PRINTFORML 「자, 제대로 뽑아 주지 않으면, 안에 정액, 들어가 버릴거야……%UNICODE(0x2665) *1%」
+					ENDSELECT
+				;안전 일본생명보험 하메
+				CASEELSE
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「피임해 두길 잘했네, %CALLNAME:MASTER%」
+					PRINTFORML 「그게, 이런 양의 정액, 질안에 내 버리면, 한방에 임신해 버릴거야……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「%CALLNAME:MASTER%, 위험일 보지 안에 그렇게 사정하고 싶어?」
+					PRINTFORML 「생으로 하는 게, 기분 좋겠지……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「그렇지만, 임신하면 안 되니까, 낸다면 안전일이나, 약을 먹고 나서……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDSELECT
+			;위험일 이외
+			ELSE
+				SELECTCASE CFLAG:생해금
+				CASE 2
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「그렇지만 말야~, %CALLNAME:MASTER%」
+					PRINTFORML 「나를 소중하게 여겨 주는 건 알지만……」
+					PRINTFORML 「나 오늘은 안전한 날이라 괜찮을거야? 생으로 해줘……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 가슴팍에 손가락끝으로 빙글빙글 원을 그리며, 응석부리고 있다
+					PRINTFORML 「%CALLNAME:MASTER%, 보지 안에 사정하고 싶지 않아?」
+					PRINTFORML 「생으로 하는 쪽이, 비교할 수 없이, 기분 좋을 거라고 생각해……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「당신의 정자로, 코마치의 자궁 정복 해 보고 싶지 않아?」
+					PRINTFORML 「『너는 나의 여자다』라는 증거를, 나의 뱃속에, 심어 줘……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치가 귓속에 열정적인 말을 속삭여서 %CALLNAME:MASTER%의 페니스는 빳빳하게 고개를 쳐들기 시작했다……
+					PRINTW 
+				CASE 1
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「오늘은 안전일이라 생으로 해도 괜찮다니까~?」
+					PRINTFORML 「나도, 생으로 할 생각에 자궁 근질근질 했는데, 심술쟁이야」
+					PRINTW 
+					PRINTFORML 코마치는 뺨을 부풀려 %CALLNAME:MASTER%의 뺨을 찌르고 있다
+					PRINTFORML 「자궁이 빵빵해지면, 『아, 나는 이 사람의 여자구나』라는 걸 실감하는 거야」
+					PRINTFORML 「그러니까, 질내에 내주길 바랬는데, 뭐야 정말」
+					PRINTW 
+					PRINTFORML 「위험일 이외에도 안에 싸면 임신할 때가 있어? 누구 입으로 그런 말 하는 걸까나」
+					PRINTFORML 코마치는 웃으며, %CALLNAME:MASTER%의 코를 가볍게 손가락으로 튕겼다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「피임해 두길 잘했네, %CALLNAME:MASTER%」
+					PRINTFORML 「그게, 이런 양의 정액, 질안에 내 버리면, 한방에 임신해 버릴거야……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「위험일이 아니어도, 임신할 때는 임신해 버리니까」
+					PRINTFORML 「자궁이 묵직한 감각 좋아하지만, 역시, 피임은 확실히 하지 않으면……♪」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「앗…… 고무 꼈는데도 엄청나게 싸고 있는게 느껴져……♪」
+				PRINTFORML 「코마치의 보지, 엄청 기분 좋았구나, 기뻐어……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「왓…… 굉장한 양이야%UNICODE(0x2665) *1%」
+				PRINTFORML 「그대로 안에 냈으면, 임신해 버렸을지도 몰라」
+			CASE 2
+				PRINTFORML 「읏…… 훗…… 앗, 고무, 빠졌다」
+				PRINTFORML 「질내에 남아 버렸어……%CALLNAME:MASTER%, 빼줘」
+				PRINTFORML 「잘 뽑아내지 않으면, 임신해 버려」
+			ENDSELECT
+			PRINTW 
+		ENDIF
+	;연모, 연인은 아니다
+	ELSE
+		IF CFLAG:1100 == 1
+			IF CFLAG:76:생리주기 == 7
+				SELECTCASE CFLAG:생해금
+				CASE 2
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「그렇지만 말야~, %CALLNAME:MASTER%」
+					PRINTFORML 「소중히 여겨 주는 것은 잘 알겠지만 말야……」
+					PRINTFORML 「나는 임신해도 괜찮은데? 질내에 사정해줘……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 가슴팍에 손가락끝으로 빙글빙글 원을 그리며, 응석부리고 있다
+					PRINTFORML 「%CALLNAME:MASTER%, 보지 안에 사정하고 싶지 않아?」
+					PRINTFORML 「생으로 하는 게, 비교할 수 없이, 기분 좋을 거라고 생각해……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「연인도 아닌 상대를 임신시키는 것은 좀 그래?」
+					PRINTFORML 「그렇지만 말야, 당신의 정자로, 코마치의 자궁 정복 해 보고 싶지 않아?」
+					PRINTFORML 「『너는 나의 여자다』는 증거를, 나의 뱃속에, 심어 줘……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치가 귓속에 열정적인 말을 속삭여서 %CALLNAME:MASTER%의 페니스는 빳빳하게 고개를 쳐들기 시작했다……
+					PRINTW 
+				CASE 1
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「오늘은 위험일 이니까, 일단 피임은 해야해」
+					PRINTFORML 「위험일이 아니었으면, 충분히 질내에 사정하게 해 주는데 %UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「뭐, 생겨버리면 그 때는 그 때네. 당신에게 각오해 달라고 할까나♪」
+					PRINTFORML 의외로 무서운 소리를 코마치는 선뜻 말해 버렸다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「피임해 두길 잘했네, %CALLNAME:MASTER%」
+					PRINTFORML 「그게, 이런 양의 정액, 질안에 내 버리면, 한방에 임신해 버릴거야……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「위험일이 아니어도, 임신할 때는 임신해 버리니까」
+					PRINTFORML 「자궁이 묵직한 감각 좋아하지만, 역시, 피임은 확실히 하지 않으면……♪」
+					PRINTW 
+				ENDSELECT
+			ELSE
+				SELECTCASE CFLAG:생해금
+				CASE 2
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직 정액이 모인 콘돔에, 눈을 크게 열고 있다
+					PRINTW 
+					PRINTFORML 「그렇지만 말야~, %CALLNAME:MASTER%」
+					PRINTFORML 「나를 소중하게 여겨 주는 건 알지만……」
+					PRINTFORML 「오늘은 안전한 날이라 괜찮을거야? 생으로 해줘……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 코마치는 %CALLNAME:MASTER%의 가슴팍에 손가락끝으로 빙글빙글 원을 그리며, 응석부리고 있다
+					PRINTFORML 「%CALLNAME:MASTER%, 보지 안에 사정하고 싶지 않아?」
+					PRINTFORML 「생으로 하는 쪽이, 비교할 수 없이, 기분 좋을 거라고 생각해……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「연인도 아닌 상대에게 만에 하나라도 하고 생각하는게 싫어?」
+					PRINTFORML 「그렇지만 말야, 당신의 정자로, 코마치의 자궁 정복 해 보고 싶지 않아?」
+					PRINTFORML 「『너는 나의 여자다』는 증거를, 나의 뱃속에, 심어 줘……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치가 귓속에 열정적인 말을 속삭여서 %CALLNAME:MASTER%의 페니스는 빳빳하게 고개를 쳐들기 시작했다……
+					PRINTW 
+				CASE 1
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「오늘은 안전일이라 생으로 해도 괜찮다니까~?」
+					PRINTFORML 「나도, 생으로 할 생각에 자궁 근질근질 했는데, 심술쟁이야」
+					PRINTW 
+					PRINTFORML 코마치는 뺨을 부풀려 %CALLNAME:MASTER%의 뺨을 찌르고 있다
+					PRINTFORML 「자궁이 빵빵해지면, 『아, 나는 이 사람의 여자구나』라는 걸 실감하는 거야」
+					PRINTFORML 「그러니까, 질내에 내주길 바랬는데, 뭐야 정말」
+					PRINTW 
+					PRINTFORML 「위험일 이외에도 안에 싸면 임신할 때가 있어? 누구 입으로 그런 말 하는 걸까나」
+					PRINTFORML 코마치는 웃으며, %CALLNAME:MASTER%의 코를 가볍게 손가락으로 튕겼다
+					PRINTW 
+				CASEELSE
+					PRINTFORML 「우와, 굉장해……%UNICODE(0x2665) *1%」
+					PRINTFORML 코마치는 묵직하게 정액이 모인 콘돔을 보고 넋을 잃고 있다
+					PRINTW 
+					PRINTFORML 「피임해 두길 잘했네, %CALLNAME:MASTER%」
+					PRINTFORML 「그게, 이런 양의 정액, 질안에 내 버리면, 한방에 임신해 버릴거야……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「위험일이 아니어도, 임신할 때는 임신해 버리니까」
+					PRINTFORML 「자궁이 묵직한 감각 좋아하지만, 역시, 피임은 확실히 하지 않으면……♪」
+					PRINTW 
+				ENDSELECT
+			ENDIF
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「앗…… 고무 꼈는데도 엄청나게 싸고 있는게 느껴져……♪」
+				PRINTFORML 「코마치의 보지, 엄청 기분 좋았구나, 기뻐어……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「왓…… 굉장한 양이네%UNICODE(0x2665) *1%」
+				PRINTFORML 「생으로 하는 것 보다 기분 좋지 않을지도 모르지만, 이런 건 확실히 해 둬야해」
+			ENDSELECT
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_23(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;이라마치오
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF CFLAG:1100 == 1
+			PRINTFORML 「읏! , 읏, 옷……%UNICODE(0x2665) *1%」
+			PRINTFORML 「! 쿨럭! 쿨럭! 하아, 하앗……%UNICODE(0x2665) *1%」
+			PRINTW 
+			PRINTFORML 「목 안까지 자지로 범해져 버려, 깜짝 놀랐어……%UNICODE(0x2665) *1%」
+			PRINTFORML 「괜찮아, 나의 몸은 어느 곳이던, %CALLNAME:MASTER%의 것이야」
+			PRINTFORML 「지금 처럼 격렬하게 당하면, 너는 나의 것이라고 주장하는 느낌이 들어서……기쁘달까%UNICODE(0x2665) *1%」
+			PRINTW 
+		ELSE
+		ENDIF
+	ELSE
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_22(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;식스나인
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;동시 사정
+	IF NOWEX:사정 && NOWEX:MASTER:사정
+		PRINTFORMW 
+		RETURN 1
+	;TARGET만 사정
+	ELSEIF NOWEX:사정
+		;PLAYER에 대하고 있다
+		IF GETBIT(TALENT:PLAYER:성별, 1)
+			PRINTFORMW 
+			RETURN 1
+		;붙지 않았다
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;PLAYER만 사정
+	ELSE
+		;TARGET에 대하고 있다
+		IF GETBIT(TALENT:성별, 1)
+			PRINTFORMW 
+			RETURN 1
+		;붙지 않았다
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_26(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;수유플레이
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_21(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리페라
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF CFLAG:1100 == 1
+			;삼켰다
+			IF ABL:정액중독 > 2
+				PRINTFORML 「응~%UNICODE(0x2665) *1% 응, 읏, 응읏…… 하아……%UNICODE(0x2665) *1%」
+				PRINTFORML 「에헤헤, %CALLNAME:MASTER%의 정액, 제대로 전부 마셨어%UNICODE(0x2665) *1%」
+				PRINTW 
+					IF TALENT:MASTER:농후정액
+						PRINTFORML 「굉장히 진해서, 아직도 목에 들러붙고 있어…… 상당히 모여 있던 거구나……%UNICODE(0x2665) *1%」
+						PRINTFORML 「불알 안에서 숙성된 농후한 정액, 목이 임신해 버릴 것 같아……%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINTFORML 「이 상태라면, 세발 네발 뺐다고, 진정 되지 않겠지……%UNICODE(0x2665) *1%」
+						PRINTFORML 「이것 봐, 불알, 아직도 팽팽하게 괴로워괴로워 하고 자기주장 하고 있어……%UNICODE(0x2665) *1%」
+						PRINTW 
+						PRINT 「
+						IF TALENT:연인
+							PRINT 연인인
+						ELSE
+						ENDIF
+						PRINTFORML 내가, 어떻게든 해 주지 않으면 안 되겠네……%UNICODE(0x2665) *1%」
+					ELSE
+						PRINTFORML 「그래도, 아직도 성에 차지 않지……%UNICODE(0x2665) *1%」
+						PRINTFORML 「또, 가슴 사이에 끼우고 싶어? 아니면, 보지에 넣고 싶어졌어?」
+						PRINTFORML 「원하는 쪽을, 마음대로 사용해 줘……%UNICODE(0x2665) *1%」
+					ENDIF
+			;토해냈다
+			ELSE
+				PRINTFORML 「응~, 읏, 읏, 응읏, 쿨럭, 쿨럭!」
+				PRINTFORML 「아아, 미안, 당신의 정액, 흘려 버렸어……아깝다」
+				PRINTW 
+				PRINTFORML 코마치는 손바닥에 토해낸 정액을 혀로 훑어, 천천히 마시고 있다
+				PRINTFORML 「다음엔 토해내지 않고 마실테니까, 또 입에 내 줘……%UNICODE(0x2665) *1%」
+				PRINTFORML 「내 입은, %CALLNAME:MASTER%전용 보지니까……%UNICODE(0x2665) *1%」
+				PRINTFORML 「언제든지 원하는대로 써서, 마음대로 뽑아도 좋아%UNICODE(0x2665) *1%」
+				PRINTW 
+			ENDIF
+		ELSE
+			IF ABL:정액중독 > 2
+			PRINTFORML 「응~%UNICODE(0x2665) *1% 응, 읏, 응읏…… 하아……」
+			PRINTFORML 「에헤헤, %CALLNAME:MASTER%의 정액, 전부 마셔 버렸어%UNICODE(0x2665) *1%」
+			PRINTW 
+			PRINTFORML 「남자는, 정액 마셔주면 기쁘지?」
+			PRINTFORML 「게다가, %CALLNAME:MASTER%의 정액이라면, 정말 좋아……%UNICODE(0x2665) *1%」
+			PRINTW 
+				IF TALENT:MASTER:농후정액
+					PRINTFORML 「무엇인가, 목이 뜨끔뜨끔해…… 혹시, 쭉 참고 있었어?」
+					PRINTFORML 「미안해, 내가, 눈치채지 못해서」
+					PRINTFORML 「그렇지만, 오늘은 나를 써서 잔뜩, 기분 좋아지면 돼……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ELSE
+					PRINTFORML 「아직 가슴이랑 입으로 하고 싶어?」
+					PRINTFORML 「내가, 당신을 기분 좋게 해 줄테니까……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDIF
+			ELSE
+			ENDIF
+		ENDIF
+	ELSE
+		IF ABL:정액중독 > 2
+			PRINTFORML 「! 응, 응응~, 응…… 하아」
+			PRINTFORML 「정말, 쌀때는 말이라도 해줘. 입에서 넘쳐 버리잖아」
+			PRINTFORML 「에헤헤, 남자는, 마시게 하는게 기쁘잖아? 그러니,까 ♪」
+			PRINTW 
+		ELSE
+			PRINTFORML 「! 응응~!!」
+			PRINTFORML 「콜록, 코흠, 저기, 싼다면 말정도는 해 줘~」
+			PRINTFORML 코마치는 콜록거리면서, 눈물고인 눈으로 항의했다
+			PRINTW 
+			PRINTFORML 「그렇지만, 내 가슴이랑 입으로 가버린 거니까, 용서해 줄게♪」
+			PRINTFORML 「다시 한번, 해 줬으면 해? 그게 아니면, 다른 거 해 줄까……♪」
+			PRINTW 
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_20(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;자위 페라
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_9(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널 봉사
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF CFLAG:1100 == 1
+			PRINTFORML 「아핫, 엉덩이로 가 버려 %UNICODE(0x2665) *1%」
+			PRINTFORML 「갈 때의 %CALLNAME:MASTER%의 얼굴과 목소리, 사랑스러웠어 %UNICODE(0x2665) *1%」
+			PRINTW 
+			PRINTFORML 「엉덩이, 그렇게 기분이 좋아? 응쿠, 츗……츄릇츄릇……」
+			PRINTFORML 「아핫……%UNICODE(0x2665) *1% 이거, 당신 자지, 또 발딱발딱해……%UNICODE(0x2665) *1%」
+			PRINTW 
+		ELSE
+			PRINTFORML 「후훗, 엉덩이, 기분 좋아?」
+			PRINTFORML 「이런 얘기 하면 이상한 것 시킬지도 모르지만……」
+			PRINTFORML 「나, %CALLNAME:MASTER%의 엉덩이 구멍 빨아주는 거, 싫지 않을지도……%UNICODE(0x2665) *1%」
+			PRINTW 
+		ENDIF
+	ELSE
+		PRINTFORML 「왓, 혹시, 엉덩이로 가 버렸는지?」
+		PRINTFORML 「헤에─, 이런 곳으로도 갈 수 있는 것이구나」
+		PRINTFORML (좀, 재미있을지도……♪)
+		PRINTW 
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_8(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;거품 춤
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;동시 사정
+	IF NOWEX:사정 && NOWEX:MASTER:사정
+		PRINTFORMW 
+		RETURN 1
+	;TARGET만 사정
+	ELSEIF NOWEX:사정
+		;PLAYER에 대하고 있다
+		IF GETBIT(TALENT:PLAYER:성별, 1)
+			PRINTFORMW 
+			RETURN 1
+		;붙지 않았다
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;PLAYER만 사정
+	ELSE
+		;TARGET에 대하고 있다
+		IF GETBIT(TALENT:성별, 1)
+			PRINTFORMW 
+			RETURN 1
+		;붙지 않았다
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_7(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;풋잡
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_6(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;가랑이
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF CFLAG:1100 == 1
+			PRINTFORML 「아%UNICODE(0x2665) *1% 밖에 사정하면 아깝잖아 %UNICODE(0x2665) *1%」
+			PRINTFORML 코마치는, 사정의 순간 귀두를 질구에 대었다
+			PRINTW 
+			PRINTFORML 「앗, 흐으~%UNICODE(0x2665) *1% 보지가, 뜨거워……%UNICODE(0x2665) *1%」
+			PRINTFORML 「전부, 냈어? 그러면, 보지 입구로 쓱싹쓱싹 해 줘야겠네 %UNICODE(0x2665) *1%」
+			PRINTW 
+			PRINTFORML 「읏……%UNICODE(0x2665) *1% 이렇게, 깨끗해졌지?」
+			PRINTFORML 「앗…… 질에서 새 버렸어…… 굉장한 양이네……%UNICODE(0x2665) *1%」
+			PRINTFORML 「열심히 닦아 주었는데, 자지 또 더러워져 버렸어」
+			PRINTW 
+			IF CFLAG:76:생리주기 == 7
+				PRINTFORMW 「그러고 보면 오늘 위험일이니까, 당신의 정자가 만약 노력해준다면……」
+				PRINTFORML 「생겨버리려나, 위험 할 지도 몰라……%UNICODE(0x2665) *1%」
+				IF CFLAG:TARGET:생해금 == 2
+					PRINTFORML 「그렇지만, %CALLNAME:MASTER%의 아이라면, 나, 임신해도 좋아……%UNICODE(0x2665) *1%」
+					PRINTFORML 「우응, 핑계가 아니라, 내 자궁이, 당신의 아이를 임신하고 싶어해……%UNICODE(0x2665) *1%」
+					PRINTW 
+					PRINTFORML 「……아핫, 방금 얘기로 , 또 자지 딱딱 해졌네……%UNICODE(0x2665) *1%」
+					PRINTFORML 「좋아, 이대로, 정액 묻은 자지, 넣어 버릴까?」
+					PRINTFORML 「더 안쪽에서 사정해서, 확실히 착상 시켜 볼래?」
+					PRINTW 
+					PRINTFORML 「자, 귀두, 들어가 버렸네? 빼고 싶어? 그만 했으면 좋겠어?」
+					PRINTFORML 「그게 아니면, 사신 보지 굴복시켜 줘……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ELSE
+					PRINTFORML 「그렇지만, 임신해 버리면, 조금 곤란할까나」
+					PRINTFORML 「왜냐면, 당신과 매일 엣치 할 수가 없어지잖아……%UNICODE(0x2665) *1%」
+					PRINTW 
+				ENDIF
+			ELSE
+				PRINTFORML 「오늘은 위험한 날이 아니니까, 아마 괜찮아 %UNICODE(0x2665) *1%」
+				PRINTFORML 
+			ENDIF
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「와, 와왓」
+				PRINTFORML 「뭔가, 내가 사정하고 있는 것 같아……」
+				PRINTFORML 「남자의 사정은, 굉장하네」
+				PRINTW 
+			CASE 1
+				IF TCVAR:TARGET:피임약 == 1
+					PRINTFORML 「앗, 사정한지 얼마 안됐는데 넣으면……」
+					PRINTFORML 「읏, 약, 먹어 뒀었지. 그럼, 괜찮을까……」
+					PRINTFORML 「응, 그대로, 넣어도, 좋아」
+					PRINTW 
+				ELSE
+					IF CFLAG:TARGET:생해금 == 2
+						PRINTFORML 「아읏, 사정한지 얼마 안된 자지, 보지에 문지르면……」
+						PRINTFORML 「그런 걸로도 생겨버릴 수 있으니까?」
+						PRINTFORML 「뭐, 나는 벌써 당신의 아이 낳을 생각 가득이지만 말야……%UNICODE(0x2665) *1%」
+						PRINTFORML 「사정할땐, 확실히 임신할 수 있게, 보지 가장 깊은 곳에 내줬으면 좋겠어……%UNICODE(0x2665) *1%」
+						PRINTW 
+					ELSEIF CFLAG:TARGET:생해금 == 1
+						IF CFLAG:76:생리주기 == 7
+							PRINTFORML 「앗, 이, 잠깐! 오늘은 위험한 날이라고 말했잖아!」
+							PRINTFORML 「아 진짜, 방심하고 있으니까 방금 사정한걸 바로 넣으려고 하고……」
+							PRINTFORML 「그런 짓 해도 괜찮은건 안전한 날에만, 분명 말했었지?」
+							PRINTW 
+						ELSE
+							PRINTFORML 「앗, 싸고 나서 바로, 넣어 버리는거야?」
+							PRINTFORML 「아니 뭐, 위험일 외에는 생으로 해도 괜찮다고 내가 그러긴 했는데……」
+							PRINTFORML 「그정도로도 생겨 버릴 수도 있다고 얘기는 해 둘게」
+							PRINTW 
+						ENDIF
+					ELSE
+						PRINTFORML 「앗, 이, 잠깐! 싸고 나서 바로 넣으려고 하면 어떡해!」
+						PRINTFORML 「지금, 은근슬쩍 생으로 하려고 했지, 안돼」
+						PRINTW 
+					ENDIF
+				ENDIF
+			ENDSELECT
+		ENDIF
+	ELSE
+		PRINTFORML 「와, 왓!?」
+		PRINTFORML 「엄청 멀리 튀었어…… 뭐랄까, 내가 사정한 것 같아」
+		PRINTW 
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_5(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모
+		SELECTCASE RAND:7
+		CASE 0
+			PRINTFORML 「아하아……%UNICODE(0x2665)%」
+			PRINTFORMW 「내 가슴, %CALLNAME:MASTER%의 정액으로 끈적끈적해……%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORML 「꺙%UNICODE(0x2665)% 나왔따%UNICODE(0x2665) *1%」
+			PRINTFORMW 「후아…… 굉장한 냄새……%UNICODE(0x2665) *1%」
+		CASE 2
+			PRINTFORML 「엄청 많이 쌌네 %UNICODE(0x2665) *1% 훌륭해 훌륭해%UNICODE(0x2665) *1%」
+			PRINTFORMW 「챳%UNICODE(0x2665) *1% 챳%UNICODE(0x2665) *1% 가─버려, 가ㅡ버려%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「──읏%UNICODE(0x2665) *4%」
+			PRINTFORMW 「아%UNICODE(0x2665) *1% 우으%UNICODE(0x2665) *1% 오옥%UNICODE(0x2665) *2%
+			PRINTFORMW 「아, 아, 안돼, 나, 저속해져버려……%UNICODE(0x2665) *1%」
+		CASE 4
+			PRINTFORML 「아%UNICODE(0x2665) *3% 아앗%UNICODE(0x2665) *2% 아아앗……%UNICODE(0x2665) *1%」
+			PRINTFORMW 「젖보지, 임신할 것 같애……%UNICODE(0x2665) *1%」
+		CASE 5
+			PRINTFORML 「응%UNICODE(0x2665) *3% 응″응″%UNICODE(0x2665) *2% 응″응″응″~%UNICODE(0x2665) *1%」
+			PRINTFORMW 「정액의 냄새로 머리가 어질어질해……%UNICODE(0x2665) *1%」
+		CASE 6
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 싸 버려라 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「수고했어요%UNICODE(0x2665) *1% 노력해줬구나%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 풍만한 양 가슴으로 %CALLNAME:MASTER%의 음경을 상냥하게 껴안았다
+		ENDSELECT
+	ELSEIF TALENT:사모
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장한 양이야……%UNICODE(0x2665)%」
+			PRINTFORMW 「내 가슴으로, 불알이 텅 빌 때까지 싸 버려%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 싸 버려라 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「수고했어요%UNICODE(0x2665) *1% 노력해줬구나%UNICODE(0x2665) *1%」
+			PRINTFORMW 코마치는 풍만한 양 가슴으로 %CALLNAME:MASTER%의 음경을 상냥하게 껴안았다
+		CASE 2
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 가 버려라%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가슴 안에 싸줘%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 가버렷%UNICODE(0x2665) *1%」
+			PRINTFORMW 「그대로 참지 말고 내줘%UNICODE(0x2665) *1%」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장한 양이야……%UNICODE(0x2665)%」
+			PRINTFORMW 「내 가슴으로, 불알이 텅 빌 때까지 싸 버려%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「아핫, 나왔다%UNICODE(0x2665) *1%」
+			PRINTFORMW 「내 가슴, 그렇게 기분 좋았어?」
+		CASE 2
+			PRINTFORML 「옷, 참을 수 없었어?」
+			PRINTFORMW 「상당한 양이네, 훌륭해 %UNICODE(0x2665) *1%」
+		ENDSELECT
+	ENDIF 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_4(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;펠라치오
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모 || TALENT:연인
+		IF TALENT:정애미각
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「읏, 응읏, 응긋, 으응~~~~읏%UNICODE(0x2665) *1%」
+				PRINTFORML (%CALLNAME:MASTER%의 정액, 맛있어엇%UNICODE(0x2665) *1% 좀 더, 좀 더 냄새나는거 마시고 싶엇%UNICODE(0x2665) *1%)
+			CASE 1
+				PRINTFORML 「저기, 좀 더 줘 %UNICODE(0x2665) *1% 당신의 『정액』, 목보지 임신할 정도로 벌컥벌컥 마시게 해줘 %UNICODE(0x2665) *1%」
+			CASEELSE
+				PRINTFORML 「응붓! 후긋! 쿨럭, 콜록, 엄청, 쌌네……%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 눈동자에 하트 마크를 띠고, 입에 남은 정액의 맛의 여운에 잠겨 있다
+				PRINTW 
+				PRINTFORML 「에헤헤, 잘 먹었습니다……%UNICODE(0x2665) *1% 그렇지만, 좀 더 줬으면 하는데……%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치와 혀를 내밀어 정액을 다 마신 것을 과시하고는, %CALLNAME:MASTER%의 페니스를 훑어 내기 시작했다
+				PRINTW 
+			ENDSELECT
+		;더─얕봐도 괜찮아. 이 기간이 제일 길테니까, 할 수 있으면 분기를 많이 하고 싶다
+		ELSEIF CFLAG:누계정음 >=  20
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「찐득한 자지와 정액의 냄새나…… 나, 어질어질해……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「후~~읏, 후~%UNICODE(0x2665) *1% 쥬붑 쥬붑, 쮸우~~~~~읏, 하아%UNICODE(0x2665) *1% 맛있다……%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 한 방울도 흘리지 않고, 요도에 남은 정액까지 다 빨아내곤, 만족스럽게 페니스로부터 입을 떼어 놓았다
+			CASE 2
+				PRINTFORML (앙……%CALLNAME:MASTER%의 사정…… 양이 엄청나……%UNICODE(0x2661)%)
+				PRINTFORML 입안을 두드리는 정액은, 맛도 냄새도 진해서, 코마치의 의식을 미치게 한다
+				PRINTW 
+				PRINTFORML 「후으읏, 읏, 읏, 쥬루룻……%UNICODE(0x2665) *1%」
+				PRINTFORML 농후한 정자를 혀로 만끽하면서, 코마치는 한 방울도 남김없이 삼켜버렸다
+				PRINTW 
+				PRINTFORML 코마치는 육봉을 몇번이나 손가락으로 짜내 마지막 한 방울까지 다 빨아내고, 귀두로부터 입술을 떼어, 하아 하고 한숨을 쉬었다.
+				PRINTFORML 「잘 먹었어. 아핫, 굉장한 양이네, %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+			CASE 3
+				PRINTFORML 「후긋! 응긋, 응″응″응″,, %UNICODE(0x2665) *1% 후~, 하아, 하아…… 아아, 농후했어%UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 조금 입 끝으로부터 정액을 흘리면서도, 대부분을 다 마시곤 넋을 잃고 있다
+			CASEELSE
+				PRINTFORML 「응쿳, 응쿳…… 응─, ……%UNICODE(0x2665) *1% 아핫, 굉장해 %UNICODE(0x2665) *1%」
+				PRINTFORML 코마치는 구강내의 정액을 모은 손 위에 토해내 보였다
+				PRINTW 
+				PRINTFORML 「그러면, 잘 먹겠습니닷. 응구, 읏, 응…… 하아~%UNICODE(0x2665) *1% 자, 없어졌다%UNICODE(0x2665) *1%」
+				PRINTW 
+			ENDSELECT
+		;아직 토해낸다
+		ELSEIF CFLAG:누계정음 > 20
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「응~, 읏, 쿨럭, 콜록! 우엣, 카핫…… 하앗, 하앗……」
+				PRINTFORML 「미안……%CALLNAME:MASTER%이 내 준 정액, 제대로 마셔주지 못해서……」
+				PRINTW 
+				PRINTFORML 비릿한 정액의 맛에 참지 못하고, 입안에 모은 정액을 토해낸 코마치는, 시무룩 하고 있다
+				PRINTFORML 「다음엔, 다음엔 더 노력해서. 제대로 꿀꺽꿀꺽 해줄게」
+				PRINTW 
+			CASE 1
+				PRINTFORML 「읏, 응읏, 응긋, 응윽~~~~우엑…… 하아, 하아」
+				PRINTFORML 1, 2회 삼킬 때 까지는 참았지만, 그 이상 버틸 수 없었던 코마치는, 펼친 손 위에 정액을 토해냈다
+				PRINTW 
+				PRINTFORML 「조금이라면, 마실 수 있게 됐어. 그렇지만, 아직은
+				PRINTFORML 「나, %CALLNAME:MASTER%의 정액, 더 마실 수 있게 노력할 테니까」
+				PRINTW 
+			ENDSELECT
+		;바로 입을 떼어 놓아 버린다
+		ELSEIF CFLAG:누계정음 == 0
+			PRINTFORML 「응긋!? 카핫, 우왓, 우엑! 햐읏!!」
+			PRINTFORML 돌연히 목을 찌른 정액에 놀라, 코마치는 무심코 페니스에서 입을 떼어 놓았다.
+			PRINTFORML 정액은 힘차게 흩뿌려져, 코마치의 안면을 몇번이나 더럽혔다
+			PRINTW 
+			PRINTFORML 「앗, 미, 미안! 깜짝 놀랐어」
+			PRINTFORML 「사실 마셔주길 바랬지? 그렇지만, 나, 처음 이어서……」
+			PRINTFORML 코마치는 사랑하는 상대의 정액을 마셔 주지 못한 것에 낙담하고 있는 것 같다
+			PRINTW 
+		ENDIF
+	ELSE
+		IF CFLAG:누계정음 > 100
+			PRINTFORMW %CALLNAME:MASTER%이 신음하면, 말하지 않아도 코마치는 입을 벌리고, 혀를 내밀어 받아들이는 태세를 하고 있다
+			PRINTFORMW 완전히 정액이 버릇이 되어버린 코마치의 입을 노려 %CALLNAME:MASTER%은 정액을 발사했다
+			PRINTFORMW 정액의 대부분은 코마치의 입안으로 삼켜지고 일부는 얼굴이나 머리카락에 쏟아진다
+			PRINTFORMW 「이런, 아까워라」
+			PRINTFORMW 코마치는 정액을 삼키며, 얼굴에 붙은 것을 손가락으로 닦아, 코에 대고 냄새를 맡았다
+			PRINTFORMW 「연인도 아닌 남자의 정액인데, 완전히 버릇이 되어 버렸어……%UNICODE(0x2665) *1%」
+			PRINTFORMW 황홀한 표정으로, 코마치는 정액이 들러붙은 손가락을 하나 하나 빨고 있다…
+			PRINTW 
+		ELSEIF CFLAG:누계정음 > 20
+			PRINTFORML 「하아…… 굉장해……」
+			PRINTFORML 코마치는 입으로 받아내지 못하고 가슴에 흘러 떨어진 정액을 손가락으로 떠냈다
+			PRINTFORML 맛보듯이 혀로 빨아내곤, 그다지 맛있지 않았던 것일까, 미묘한 표정을 띄우고 있다
+			PRINTFORML 「이상한 맛이야…… 당신, 혹시, 아직 덜 낸거야? 절륜하네……」
+			PRINTW 
+		ELSEIF CFLAG:누계정음 == 0
+			PRINTFORML 「응긋!? 카핫, 우왓, 우엑! 햐읏!!」
+			PRINTFORML 돌연히 목을 찌른 정액에 놀라, 코마치는 무심코 페니스에서 입을 떼어 놓았다.
+			PRINTFORML 「조금, 쌀 것 같으면 말은 해줘, 콜록, 콜록」
+			PRINTW 
+		ENDIF
+	ENDIF 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_3(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;자위
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모
+		SELECTCASE RAND:6
+		CASE 0
+			PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+			PRINTFORMW 「당신의 뜨거운 정액이 엉덩이에 스며들어……%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+			PRINTFORMW 「나의 엉덩이 보지, 화상 입어 버릴 것 같아……%UNICODE(0x2665) *1%」
+		CASE 2
+			PRINTFORML 「아%UNICODE(0x2665) *3% 앗%UNICODE(0x2665) *2% 아앙……%UNICODE(0x2665) *1%」
+			PRINTFORMW 「여기가 보지였으면 임신 확정이야……%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「──읏%UNICODE(0x2665) *4%」
+			PRINTFORMW 「앗%UNICODE(0x2665) *1% 웃%UNICODE(0x2665) *1% 오옥%UNICODE(0x2665) *2%
+			PRINTFORMW 「아, 아, 안돼, 나, 저속해져버려……%UNICODE(0x2665) *1%」
+		CASE 4
+			PRINTFORML 「아%UNICODE(0x2665) *3% 앗%UNICODE(0x2665) *2% 아앙……%UNICODE(0x2665) *1%」
+			PRINTFORMW 「엉덩이 보지, 임신해 버린 것 같은 느낌……%UNICODE(0x2665) *1%」
+		CASE 5
+			PRINTFORML 「응%UNICODE(0x2665) *3% 응″응″%UNICODE(0x2665) *2% 응″응″응″~%UNICODE(0x2665) *1%」
+			PRINTFORMW 「머릿속 녹을 것 같아……%UNICODE(0x2665) *1%」
+		ENDSELECT
+	ELSEIF TALENT:사모
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장해……%UNICODE(0x2665)%」
+			PRINTFORMW 「코마치의 엉덩이로, 불알이 텅 빌 때까지 내 보내줘%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 와줘 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「자궁안에 전부 사정해 줘%UNICODE(0x2665) *3%
+			PRINTFORMW 한계를 맞이한 정액이 코마치의 뱃속에서 토해내져 질의 가장 안쪽에 침입해 간다,
+		CASE 2
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 와줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가득 뒷보지 안에 사정해 줘%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 가버려%UNICODE(0x2665) *1%」
+			PRINTFORMW 「그대로 뽑지 말고 싸줘%UNICODE(0x2665) *1%」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장해……%UNICODE(0x2665)%」
+			PRINTFORMW 「코마치의 엉덩이로, 불알이 텅 빌 때까지 내 보내줘%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「좋앗 %UNICODE(0x2665) *1% 와줘 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「참지 말고 전부 내줘어%UNICODE(0x2665) *3%
+			PRINTFORMW 코마치는 완전히 풀려버린 얼굴을 하고 장내에 정액을 받아 들이고 있다
+		CASE 2
+			PRINTFORML 「아아, 엉덩이 안에 뭔가 꿀렁꿀렁 해」
+			PRINTFORMW 「내 엉덩이, 그렇게 기분 좋았어?」
+		CASE 3
+			PRINTFORML 「우웃, 엉덩이에 쌌네……」
+			PRINTFORMW 「뭔가, 느낌이 이상해……」
+		ENDSELECT
+	ENDIF 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_2(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:음호
+		SELECTCASE RAND:6
+		CASE 0
+			PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+			PRINTFORMW 「당신의 뜨거운 정액이 엉덩이에 스며들어……%UNICODE(0x2665) *1%」
+		CASE 1
+			PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+			PRINTFORMW 「나의 엉덩이 보지, 화상 입어 버릴 것 같아……%UNICODE(0x2665) *1%」
+		CASE 2
+			PRINTFORML 「아%UNICODE(0x2665) *3% 앗%UNICODE(0x2665) *2% 아앙……%UNICODE(0x2665) *1%」
+			PRINTFORMW 「여기가 보지였으면 임신 확정이야……%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「──읏%UNICODE(0x2665) *4%」
+			PRINTFORMW 「앗%UNICODE(0x2665) *1% 웃%UNICODE(0x2665) *1% 오옥%UNICODE(0x2665) *2%
+			PRINTFORMW 「아, 아, 안돼, 나, 저속해져버려……%UNICODE(0x2665) *1%」
+		CASE 4
+			PRINTFORML 「아%UNICODE(0x2665) *3% 앗%UNICODE(0x2665) *2% 아앙……%UNICODE(0x2665) *1%」
+			PRINTFORMW 「엉덩이 보지, 임신해 버린 것 같은 느낌……%UNICODE(0x2665) *1%」
+		CASE 5
+			PRINTFORML 「응%UNICODE(0x2665) *3% 응″응″%UNICODE(0x2665) *2% 응″응″응″~%UNICODE(0x2665) *1%」
+			PRINTFORMW 「머릿속 녹을 것 같아……%UNICODE(0x2665) *1%」
+		ENDSELECT
+	ELSEIF EXP:A경험 >=  100
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장해……%UNICODE(0x2665)%」
+			PRINTFORMW 「코마치의 엉덩이로, 불알이 텅 빌 때까지 내 보내줘%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 와줘 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「자궁안에 전부 사정해 줘%UNICODE(0x2665) *3%
+			PRINTFORMW 한계를 맞이한 정액이 코마치의 뱃속에서 토해내져 질의 가장 안쪽에 침입해 간다,
+		CASE 2
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 와줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가득 뒷보지 안에 사정해 줘%UNICODE(0x2665) *1%」
+		CASE 3
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 가버려%UNICODE(0x2665) *1%」
+			PRINTFORMW 「그대로 뽑지 말고 싸줘%UNICODE(0x2665) *1%」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아아, 굉장해……%UNICODE(0x2665)%」
+			PRINTFORMW 「코마치의 엉덩이로, 불알이 텅 빌 때까지 내 보내줘%UNICODE(0x2665)%」
+		CASE 1
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 와줘 %UNICODE(0x2665) *1%」
+			PRINTFORMW 「참지 말고 전부 내줘어%UNICODE(0x2665) *3%
+			PRINTFORMW 코마치는 완전히 풀려버린 얼굴을 하고 장내에 정액을 받아 들이고 있다
+		CASE 2
+			PRINTFORML 「아아, 엉덩이 안에 뭔가 꿀렁꿀렁 해」
+			PRINTFORMW 「내 엉덩이, 그렇게 기분 좋았어?」
+		CASE 3
+			PRINTFORML 「우웃, 엉덩이에 쌌네……」
+			PRINTFORMW 「뭔가, 느낌이 이상해……」
+		ENDSELECT
+	ENDIF 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K76_1(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;질내
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;연모
+	IF TALENT:연모 ||  TALENT:연인
+		;안전일
+		IF CFLAG:900 == 1 || CFLAG:900 == 2
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+				PRINTFORMW 「당신의 뜨거운 정액이 질내에 스며들고 있어……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「뜨, 거워……%UNICODE(0x2665)%」
+				PRINTFORMW 「내 보지, 녹아 버려……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORML 「굉장해……%UNICODE(0x2665)%」
+				PRINTFORMW 「안전일이 아니었으면, 임신 확정이야……%UNICODE(0x2665) *1%」
+			ENDSELECT
+		;위험일
+		ELSEIF CFLAG:900 == 7
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「아%UNICODE(0x2665) *3% 앗%UNICODE(0x2665) *2% 아앗……%UNICODE(0x2665) *1%」
+				PRINTFORMW 「위험일 보지에 질내사정, 최고야……%UNICODE(0x2665) *1%」
+			CASE 1
+				PRINTFORML 「──읏%UNICODE(0x2665) *4%」
+				PRINTFORMW 「앗%UNICODE(0x2665) *1% 웃%UNICODE(0x2665) *1% 오옥%UNICODE(0x2665) *2%
+				PRINTFORMW 「아, 아, 안돼, 교배당해서, 나도 가버려……%UNICODE(0x2665) *1%」
+			CASE 2
+				PRINTFORML 「%UNICODE(0x2665) *4%」
+				PRINTFORMW 「좀 더%UNICODE(0x2665) *1% 좀 더 줘%UNICODE(0x2665) *1% %CALLNAME:MASTER%의 정자%UNICODE(0x2665) *2%
+				PRINTFORMW 「나를 임신시킬 기세로 오고있어%UNICODE(0x2665) *1%」
+			ENDSELECT
+		;그 이외
+		ELSE
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「아아, 굉장해……%UNICODE(0x2665)%」
+				PRINTFORMW 「코마치의 보지에, 불알이 텅 빌 때까지 내 보내줘%UNICODE(0x2665)%」
+			CASE 1
+				PRINTFORML 「좋아 %UNICODE(0x2665) *1% 와줘 %UNICODE(0x2665) *1%」
+				PRINTFORMW 「자궁안에 전부 사정해 줘%UNICODE(0x2665) *3%
+				PRINTFORMW 한계를 맞이한 정액이 코마치의 뱃속에서 토해내져 질의 가장 안쪽에 침입해 간다
+			CASE 2
+				PRINTFORML 「아아, 굉장해……」
+				PRINTFORMW (이건, 임신해 버렸을지도 몰라……%UNICODE(0x2665) *1%)
+			CASE 3
+				PRINTFORML 「아아, 굉장해……」
+				PRINTFORMW 「질내사정, 빠져버렸네, 이거……%UNICODE(0x2665) *1%」
+			ENDSELECT
+		ENDIF
+	ELSE
+		IF RAND:2 == 0 
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 와줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가득 질내에서 사정해 줘%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORML 「좋아 %UNICODE(0x2665) *1% 가버렷%UNICODE(0x2665) *1%」
+			PRINTFORMW 「그대로 뽑지 않고 싸줘%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;면간사정에 관한 말의 표시
+;일시적으로 TARGET를 말 주로 설정해 있다
+;-------------------------------------------------
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_0(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;콘돔
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_23(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;이라마치오
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_7(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;풋잡
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_5(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_4(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;펠라치오
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_3(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;자위
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_2(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K76_1(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;질내
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	RETURN 1
+ENDIF
+RETURN 1
+
+
+@M_KOJO_MESSAGE_PALAMCNG_F_K76(ARG)
+CALL PALAM_MESSAGE_F
+;-------------------------------------------------
+;초조하게 함
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
