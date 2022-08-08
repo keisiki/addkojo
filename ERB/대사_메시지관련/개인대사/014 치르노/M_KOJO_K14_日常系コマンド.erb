@@ -1704,51 +1704,51 @@ SETCOLOR C_AQUA
 		ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORML 「ふん, このぐらいのゴミがなんだい」
-					PRINTFORMW 「이 몸にかかればへのへのにとりさ」
+					PRINTFORML 「흥, 고작 이 정도의 쓰레기라면」
+					PRINTFORMW 「이 몸이 한 방에 얼려서 없애버려주지!」
 				CASE 0
-					PRINTFORML 「あっちに行ってもこっちに行ってもゴミだらけ」
-					PRINTFORMW 「キリがないよ...やめていい?」
-					CALL COLORMESSAGE14("　ここだけ掃除したら終わりだからがんばろ?",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「ぶぅ...」",C_AQUA,2,0)
+					PRINTFORML 「여길 치워도 저길 치워도 온통 쓰레기로 가득찼어」
+					PRINTFORMW 「끝이 없어...그만해도 돼?」
+					CALL COLORMESSAGE14("　여기만 청소하면 끝이니까 힘내?",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「후우...」",C_AQUA,2,0)
 				CASEELSE
-					CALL COLORMESSAGE14("　...ふぅ, とってもキレイになったね치르노짱.",C_GREEN,1,0)
+					CALL COLORMESSAGE14("　...후우, 꽤나 깔끔해졌네, 치르노짱.",C_GREEN,1,0)
 					PRINTFORML 「...」
 					CALL COLORMESSAGE14("　...치르노짱?",C_GREEN,1,0)
-					PRINTFORML 「こんなに部屋が綺麗じゃ,  気分が高揚するってもんよ!」
-					PRINTFORMW 「さあ, 弾幕を手に取れい!」
+					PRINTFORML 「이렇게 주변이 깨끗하니까, 최고로 HIGH한 기분이야!」
+					PRINTFORMW 「자, 꺼내라...네녀석의 TANMAK을!」
 					CALL COLORMESSAGE14("　...치르노짱.",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「じょ, 冗談だってば」",C_AQUA,2,0)
+					CALL COLORMESSAGE14("「뭐, 장난이야」",C_AQUA,2,0)
 			ENDSELECT
 		ELSEIF TFLAG:193 == 1
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORMW 「こんなの一人でもやれるって!이 몸を誰だと思ってるんだ!」
-					CALL COLORMESSAGE14("　二人でやればすぐ終わりますよ.あと少しです.",C_GREEN,2,0)
+					PRINTFORMW 「이 정도는 혼자서도 할 수 있다고! 이 몸을 뭐라고 생각하는 거야!」
+					CALL COLORMESSAGE14("　그래도 두 명이서 같이 하면 더 빨리 끝나니까요. 빨리 끝내고 더 많이 놀아요.",C_GREEN,2,0)
 				CASE 0
-					PRINTFORML 「赤い大きな家じゃ妖精がメイドになってずーっと掃除させられてるんだってさ」
-					PRINTFORMW 「紅茶やお菓子が食べ放題でも, 私はあんな家で働きたくないよね」
-					CALL COLORMESSAGE14("　お菓子ぐらいなら私も作れますしね.",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「掃除終わったらお菓子作ってよ」",C_AQUA,2,0)
+					PRINTFORML 「빨갛고 커다란 집에선 요정에게 청소와 요리를 시킨다고 해」
+					PRINTFORMW 「홍차나 과자를 무제한으로 준다고 해도, 나는 부려먹혀지긴 싫은걸」
+					CALL COLORMESSAGE14("　과자 정도는 저도 만들 수 있어요.",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「자, 빨리 끝내고 과자 만들어줘!」",C_AQUA,2,0)
 				CASEELSE
-					PRINTFORML 「掃除なんて巫女の仕事なのにー, やる必要ないって」
-					CALL COLORMESSAGE14("　部屋はキレイな方がキモチいいですよ?",C_GREEN,1,0)
-					PRINTFORML 「...そうだ!面白いこと思いついたよ!」
+					PRINTFORML 「청소 따위는 무녀가 할 일이지, 우리가 굳이 할 이유는 없잖아」
+					CALL COLORMESSAGE14("　그래도 주변이 깔끔하면 기분이 좋다구요?",C_GREEN,1,0)
+					PRINTFORML 「...그래! 좋은 생각이 났어!」
 					CALL COLORMESSAGE14("　?",C_GREEN,1,0)
-					PRINTFORMW 「全部凍らせてダイヤモンドダストにすれば一気に終わる!凍符『パーフェクト...」
-					CALL COLORMESSAGE14("　...え?...え!?...きゃああぁぁ!",C_GREEN,2,0)
+					PRINTFORMW 「주변을 한번에 얼려서 다이아몬드 더스트로 처리하면 한번에 끝나잖아! 동부『퍼펙트 프리ㅈ...」
+					CALL COLORMESSAGE14("　...에?...에!?...꺄아아아아악!",C_GREEN,2,0)
 			ENDSELECT
 		ELSE
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORMW 「何やってるんだ?」
-					CALL COLORMESSAGE14("　汚いから掃除しようと思って....",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「ふーん」",C_AQUA,2,0)
+					PRINTFORMW 「뭐 하는 거야?」
+					CALL COLORMESSAGE14("　주변이 더러워서 청소를 하고 있었어요.",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「흐응-」",C_AQUA,2,0)
 				CASE 0
-					PRINTFORMW 「ここなら変な奴は居ないかな?ちょっと遊ぼうっと」
-					CALL COLORMESSAGE14("　や, やめて...お掃除してるんです.",C_GREEN,2,0)
+					PRINTFORMW 「여기라면 이상한 녀석은 없겠지? 그러면 같이 놀자-!」
+					CALL COLORMESSAGE14("　파, 팔을 잡아당기는 건 그만둬요...지금 여기 쓸고 있는데...",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORMW 「掃除はゴブリンにやらせればいいのにさ」
+					PRINTFORMW 「청소는 고블린에게 시키면 되는 거 아냐?」
 			ENDSELECT
 		ENDIF
 ENDIF
@@ -1838,57 +1838,48 @@ SETCOLOR C_AQUA
 		ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 			SELECTCASE RAND:3
 				CASE 1
-					CALL COLORMESSAGE14("　치르노짱が黙々と新聞読んでる.",C_GREEN,1,0)
-					CALL COLORMESSAGE14("　活字妖精に目覚めたのかな...?",C_GREEN,1,0)
-					PRINTFORML 「新聞の4コマ漫画だけはいつ見ても面白いわね」
-					PRINTFORMW 「次の号はどこかな～」
-					CALL COLORMESSAGE14("(ちがったみたい）",C_GREEN,2,0)
+					CALL COLORMESSAGE14("　치르노짱이 묵묵히 신문을 읽고 있어.",C_GREEN,1,0)
+					CALL COLORMESSAGE14("　설마, 한자를 읽을 수 있는거야?!",C_GREEN,1,0)
+					PRINTFORML 「역시 신문의 4컷만화는 역시 재밌다니까」
+					PRINTFORMW 「다음 호는 없으려나-」
+					CALL COLORMESSAGE14("(그건 아니었나 보네）",C_GREEN,2,0)
 				CASE 0
 					SETCOLOR C_WHITE
-					PRINTFORML 　だんご　が　６こありました.
-					PRINTFORML 　ようせい　は　３にんいます.
-					PRINTFORMW 　おなじかずずつ　わけると　１人　何このだんごをもらえますか?					
+					PRINTFORML 　홍마관에서 버스가 나와 처음에 세 명이 탔습니다
+					PRINTFORML 　백옥루에서 한 명이 내리고 반 명만 탔습니다
+					PRINTFORMW 　야쿠모 씨 집에서 두 명 내리면 결국 남은 승객은 몇 명인가요?
 					RESETCOLOR
 					PRINTFORML 
 					PRINTFORML 
-					PRINTFORML 「...ふむ」
-					;PRINTFORML 「何人...死ぬんだよ...!」
-					PRINTFORML 「이 몸が氷のニセ団子を他の２人にわたす」
-					PRINTFORML 「そうすれば残りの団子は全て総どりだ!」
-					CALL COLORMESSAGE14("「んで다이짱と一緒においしくいただくよ」",C_AQUA,1,0)
-					CALL COLORMESSAGE14("　あ, ありがと....",C_GREEN,2,0)
+					PRINTFORMW 「흐음...」
+					PRINTFORML 「...알았다! 정답은 0명이야!」
+					PRINTFORML 「환상향에 버스 같은 게 있을 리가 없잖아!」
+					CALL COLORMESSAGE14("　와, 정답이야! 대단해, 치르노짱!",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORML 「幻想郷縁起書いてるアキューって妖精なんでしょ?」
-					CALL COLORMESSAGE14("　阿求さんは人間だよ.どうしてそう思ったの?",C_GREEN,1,0)
-					PRINTFORML 「だって死んでも復活してるもん」
-					CALL COLORMESSAGE14("　あ, そっか.",C_GREEN,1,0)
-					PRINTFORMW 「今は何人目だっけ?えーと, いち, にー......確か三人目だ!」
+					PRINTFORML 「환상향연기를 쓰는 저 재수없는 아큐라는 녀석도 요정이지?」
+					CALL COLORMESSAGE14("　아큐씨는 인간 아닌가요? 왜 그렇게 생각하셨죠?",C_GREEN,1,0)
+					PRINTFORML 「왜냐면 죽어도 다시 부활하잖아」
+					CALL COLORMESSAGE14("　아하, 그렇네요.",C_GREEN,1,0)
+					PRINTFORMW 「지금까지 몇번 죽었더라? 그러니까, 하나, 둘......3번 죽었었네!」
 			ENDSELECT
 		ELSE
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORML 「この絵本の兄妹みたいに目印を落としながら進めばもう道に迷うこともないな」
-					PRINTFORMW 「今度から氷の粒を落としながら遊びに行こう」
-					CALL COLORMESSAGE14("「それならキレイな小石を凍らせると見つけやすいですよ」",C_GREEN,2,0)
+					PRINTFORML 「이 그림책의 남매처럼 무언가를 가는 길에 버려놓고 가면 길을 잃을 걱정은 없겠네」
+					PRINTFORMW 「대신 얼음 조각을 버려놓으면 되겠지?」
+					CALL COLORMESSAGE14("...제 생각인데, 얼음이 녹아버릴 것 같아요",C_GREEN,2,0)
 				CASE 0
 					PRINTDATA
-						DATAFORM 「カエルに爆竹いれて遊ぶ...!これは為になるな!」
-						DATAFORM 「蟻の巣に水を入れる...!閃いた!」
-						DATAFORM 「湖の中にダイナイマイト...!この設定は使えるぞ!」
-						DATAFORM 「外でおしっこをすると氷柱になる....よし!」
+						DATAFORM 「개구리에 폭죽을 넣고 터뜨린다...이건 도움이 되지 않아!」
+						DATAFORM 「개미집에 물을 붓고 얼려버린다...이거다!」
+						DATAFORM 「호수 안에 다이너마이트...이 설정은 쓸 수 없어!」
+						DATAFORM 「바깥에서 오줌을 싸면 얼음 기둥이 된다....좋아!」
 					ENDDATA
 					PRINTFORML 
-					CALL COLORMESSAGE14("(...私はとんでもないことを勉強させてしまったかもしれません）",C_GREEN,2,0)
+					CALL COLORMESSAGE14("(...제가 이상한 걸 가르쳤던 모양이네요...）",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORML 「이 몸ったら『SAYKYO』ね」
-					CALL COLORMESSAGE14("　ちがう気がします....",C_GREEN,1,0)
-					PRINTFORML 「じゃあ, 이 몸ったら『西京』ね」
-					CALL COLORMESSAGE14("　あってるけどやっぱり違います....",C_GREEN,1,0)
-					PRINTFORML 「これでどうだ!」
-					PRINTFORML 「이 몸ったら  日   コム
-					PRINTFORMW                 取   フ虫  ね!」
-					CALL COLORMESSAGE14("　あ, あってるのかな...?",C_GREEN,2,0)
-					
+					PRINTFORML 「이 몸은『SAYKYOO』야」
+					CALL COLORMESSAGE14("『SAYKYOO』가 아니라 『SAIKYOU』랍니다",C_GREEN,2,0)
 			ENDSELECT
 		ENDIF
 ENDIF
@@ -2478,25 +2469,24 @@ SETCOLOR C_AQUA
 	ELSE
 		SELECTCASE RAND:3
 			CASE 2
-				PRINTFORMW 「ここの景色, なんか前に見た事がある気がするなぁ.デジャブってやつ?」
-				CALL COLORMESSAGE14("　前に来たことがあるのかもしれませんね.",C_GREEN,2,0)
+				PRINTFORMW 「이 경치, 전에 본 적이 있었던 것 같은데. 이게 데쟈뷰라는 건가?」
+				CALL COLORMESSAGE14("　전에 와봤던 적이 있는 거 아닐까요?",C_GREEN,2,0)
 			CASE 1
-				PRINTFORML 「よっ, はっ, ほっ」
-				PRINTFORML 「どうよ이 몸のお手玉さばき」
-				CALL COLORMESSAGE14("（치르노さん, 凍らせたカエルをお手玉にして遊んでるけど...）",C_GREEN,1,0)
-				PRINTFORML 「おっとと!」
-				CALL COLORMESSAGE14("（今にも落としそうで見ててハラハラしちゃう...）",C_GREEN,2,0)
+				PRINTFORML 「흣, 핫, 하아」
+				PRINTFORML 「역시 이 몸의 손은 날렵하네」
+				CALL COLORMESSAGE14("（치르노씨, 얼린 개구리로 공기놀이를 하고 있어...）",C_GREEN,1,0)
+				PRINTFORML 「어이쿠!」
+				CALL COLORMESSAGE14("（...얼음이 깨지지는 않을까 걱정되는데）",C_GREEN,2,0)
 				SIF RAND:3 == 1
-					PRINTFORMW 「あ」ｶﾞﾁｬｰﾝ!
+					PRINTFORMW 「아」쨍그랑-!
 			CASE 0
 				PRINTFORML 「Zzzzz...」
-				PRINTFORMW 「Zzz...ンガッ!?誰かが이 몸を読んでる声がする!」
+				PRINTFORMW 「Zzz...즈으앗!? 누군가가 이 몸을 부르는 소리가 들려!」
 			CASEELSE
-				CALL COLORMESSAGE14("（치르노さんがカエルを凍らせたり溶かしたりして遊んでる）",C_GREEN,1,0)
-				CALL COLORMESSAGE14("...どこから捕まえてきたんだろ?",C_GREEN,1,0)
-				PRINTFORML 「よし, 3匹目解凍成功!」
-				PRINTFORMW 「次はこのでっかいカエルを凍らせてやる!」
-				
+				CALL COLORMESSAGE14("（치르노씨가 개구리를 얼렸다가 녹였다가 반복하고 있어）",C_GREEN,1,0)
+				CALL COLORMESSAGE14("...어디서 잡아왔지?",C_GREEN,1,0)
+				PRINTFORML 「좋아, 3마리째 해동 성공!」
+				PRINTFORMW 「다음번에는 이 커다란 개구리를 해동해야지!」
 		ENDSELECT
 	ENDIF
 ENDIF
@@ -2631,14 +2621,14 @@ SETCOLOR C_AQUA
 		ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORML 「にへへー温かいけど嫌いじゃないよ.むしろ好き!」
+					PRINTFORML 「헤헤, 따뜻하지만 기분나쁘지는 않아. 오히려 기분이 좋은 걸!」
 					PRINTFORMW 
 				CASE 0
-					PRINTFORML 「よっしゃ, しゅっぱつしんこー!」
-					CALL COLORMESSAGE14("　おー!",C_GREEN,2,0)
+					PRINTFORML 「좋아, 오늘도 재밌게 놀아보자고!」
+					CALL COLORMESSAGE14("　오-!",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORML 「これで이 몸と一心同体だな」
-					PRINTFORMW 「怖いものなしさ.大ぞりに乗ったつもりでいな!」
+					PRINTFORML 「이것으로 너도 이 몸과 일심동체구나」
+					PRINTFORMW 「자, 함께 퓨전이야-!」
 			ENDSELECT
 		ELSE
 			SELECTCASE RAND:3
@@ -2648,7 +2638,7 @@ SETCOLOR C_AQUA
 				;CASE 0
 					;PRINTFORML 
 				CASEELSE
-					PRINTFORML 「迷子防止?迷子になるのは이 몸じゃなくあんたの方だろ?」
+					PRINTFORML 「미아방지? 미아가 되는 건 이 몸이 아니라 너잖아?」
 			ENDSELECT
 		ENDIF
 ENDIF
@@ -2692,7 +2682,6 @@ RETURN RESULT
 ;기입체크 (=0, 비표시, 1, 표시)
 LOCAL = 1
 ;-------------------------------------------------
-[SKIPSTART]
 IF LOCAL
 SETCOLOR C_AQUA
 	IF FLAG:시간정지
@@ -2703,47 +2692,45 @@ SETCOLOR C_AQUA
 	ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 		SELECTCASE RAND:3
 			CASE 1
-				PRINTFORML 「お, 野良猫だー.」
-				PRINTFORMW 「捕まえた!思う存分モフってやるー!」
-				CALL COLORMESSAGE14("　ひ, 引っ掻かれないかな....",C_GREEN,1,0)
-				CALL COLORMESSAGE14("「こいつ結構大人しいよ.ほら다이짱も」",C_AQUA,1,0)
-				CALL COLORMESSAGE14("　わ...柔らかくてカワイイ....",C_GREEN,2,0)
+				PRINTFORML 「오, 길고양이다.」
+				PRINTFORMW 「잡았다! 마구 쓰다듬어주마-!」
+				CALL COLORMESSAGE14("　저, 발톱으로 할퀴거나 그러진 않을까....",C_GREEN,1,0)
+				CALL COLORMESSAGE14("「이 녀석은 얌전한 녀석이야. 여기, 다이짱도 만져봐」",C_AQUA,1,0)
+				CALL COLORMESSAGE14("　와...부드럽고 귀여워....",C_GREEN,2,0)
 			CASE 0
-				PRINTFORML 「じゃーんけんぽんっ!이 몸の勝ち」
-				PRINTFORML 「チョ・コ・レ・－・ト!」
-				PRINTFORMW 「じゃーんけんぽんっ!이 몸の負け...」
-				CALL COLORMESSAGE14("　私の勝ちだね.パ・イ・ナ・ッ・プ・ル.",C_GREEN,2,0)
+				PRINTFORML 「가위-바위-보! 이 몸의 승리!」
+				PRINTFORML 「포・테・토・칩!」
+				PRINTFORMW 「하하! 또 이 몸의 승리다...」
+				CALL COLORMESSAGE14("　대단해...단 한번도 지지 않았어.",C_GREEN,2,0)
 			CASEELSE
-				PRINTFORMW 「お, こんなところにおいしい実がなる木が」
-				CALL COLORMESSAGE14("　今日は出かけるから, 帰るときに実をとろう?",C_GREEN,2,0)
+				PRINTFORMW 「오, 이런 곳에 맛있는 나무열매가」
+				CALL COLORMESSAGE14("　지금은 나가는 길이니까, 이따가 돌아올 때 따자?",C_GREEN,2,0)
 				
 		ENDSELECT
 	ELSE
 		SELECTCASE RAND:3
 			CASE 1
-				PRINTFORML 「あはは!弾幕を凍らせる事などぞうさも無い!」
-				CALL COLORMESSAGE14("　あっという間に凍って...치르노さんってカッコイイ....",C_GREEN,1,0)
-				PRINTFORMW 「...ところで이 몸達, 何しに出かけてたんだっけ......?」
-				CALL COLORMESSAGE14("　...あ.",C_GREEN,2,0)
+				PRINTFORML 「아하하! 주변의 탄막을 모두 얼려주지!」
+				CALL COLORMESSAGE14("　탄막을 전부 다 얼렸어...치르노씨 대단해....",C_GREEN,1,0)
+				PRINTFORMW 「...그런데 우리들, 뭐 하려고 했더라......?」
+				CALL COLORMESSAGE14("　...아.",C_GREEN,2,0)
 			CASE 0
-				CALL COLORMESSAGE14("　わぁ, 花が白く凍ってとてもキレイです.",C_GREEN,1,0)
-				PRINTFORML 「花を摘む手が花を凍らすわ～, 楽しい」
-				CALL COLORMESSAGE14("　......あれ?あれれ?",C_GREEN,1,0)
-				PRINTFORML 「知らないの?凍った花を摘むと気持ちの良い音がするの」
-				CALL COLORMESSAGE14("　私達ってこれから他の場所に遊びに行く筈でしたよね?",C_GREEN,1,0)
-				PRINTFORMW 「あ, そういえば遊びに行くんだった..........ちょっとの間, 忘れてただけだよぉ」
+				CALL COLORMESSAGE14("　와, 꽃이 하얗게 얼어서 너무 아름다워요.",C_GREEN,1,0)
+				PRINTFORML 「꽃을 따는 손이 차가워~. 이거 기분 좋은걸」
+				CALL COLORMESSAGE14("　......어라? 어라라?",C_GREEN,1,0)
+				PRINTFORML 「몰랐어? 얼어붙은 꽃을 따면 기분 좋은 소리가 나는걸」
+				CALL COLORMESSAGE14("　근데 저희 지금 놀러나가고 있었던 거 아니였나요?",C_GREEN,1,0)
+				PRINTFORMW 「아, 맞다 참. 잠깐 사이에 생각이 다른 데로 새어버렸네」
 			CASEELSE
-				PRINTFORML 「この辺じゃなかったかなぁ」
-				CALL COLORMESSAGE14("　遊びに行く場所って, こんな場所にあるんですか?",C_GREEN,1,0)
-				PRINTFORMW 「まあ, 全ての道は이 몸に通じるもん.迷ったって問題ない」
-				CALL COLORMESSAGE14("(だ, 大丈夫かな...）",C_GREEN,2,0)
+				PRINTFORML 「여기가 지름길이야」
+				CALL COLORMESSAGE14("　저, 정말로 지름길 맞죠?",C_GREEN,1,0)
+				PRINTFORMW 「뭐, 모든 길은 다 하나로 통하는 걸! 이 몸을 믿어보라고」
+				CALL COLORMESSAGE14("(괘, 괜찮은 걸까...?）",C_GREEN,2,0)
 		ENDSELECT
 	ENDIF
 ENDIF
 RESETCOLOR
-[SKIPEND]
 RETURN 1
-;귀찮아서 생략
 ;==================================================
 ;610,식사를 권유한다
 ;TFLAG:193 (1=대성공 0=성공 -1=실패)
@@ -2763,10 +2750,11 @@ RETURN RESULT
 ;기입체크 (=0, 비표시, 1, 표시)
 LOCAL = 1
 ;-------------------------------------------------
-[SKIPSTART]
+;씨발 루나 구상 그대로 복붙해놓고 끝냈노, 양심 ㅇㄷ?
 IF LOCAL
 SETCOLOR C_AQUA
 	IF FLAG:시간정지
+	[SKIPSTART]
 	ELSEIF CFLAG:318 == 1
 		PRINTFORML ルナは%CALLNAME:MASTER%には目もくれず淡々と目の前の料理を処理している.
 		PRINTFORMW 「フンッ」ﾓｸﾞﾓｸﾞ
@@ -2788,53 +2776,54 @@ SETCOLOR C_AQUA
 				PRINTFORML 「そんなに音を立てちゃみっともないわ.짱と口を閉じて食べて」
 				PRINTFORMW %CALLNAME:MASTER%はルナにマナーを注意されながらもそもそと食事を続けた....
 		ENDSELECT
+	[SKIPEND]
 	ELSE
 	;自分用メモ.食べ物共通口上後に恋慕等の口上に移行
 		SELECTCASE RAND:10
 			CASE 8
-				PRINTFORML 「カレーライス....辛さはもちろん最強の辛さ９倍dモガッ」
-				CALL COLORMESSAGE14("　甘口２人前でお願いしますっ!",C_GREEN,1,0)
-				PRINTFORMW 「...ブハッ!止めないでよ.最強の名が疼くんだ!」
-				CALL COLORMESSAGE14("　あんな真っ赤なカレー食べたら死んじゃうよぉ....",C_GREEN,2,0)
+				PRINTFORML 「카레라이스....최고로 매운 맛의 ９배나 더 매운맛으로」
+				CALL COLORMESSAGE14("　저는 단 맛으로 부탁드려요!",C_GREEN,1,0)
+				PRINTFORMW 「후후, 다이짱은 아직 애 입맛이구나. 최강이 되기엔 한참 멀었는걸!」
+				CALL COLORMESSAGE14("　...그걸 먹을 수 있는 치르노 짱이 대단한 거야.",C_GREEN,2,0)
 			CASE 7
-				PRINTFORML 「俺たちゃ山賊♪俺たちゃ山賊♪」
-				PRINTFORMW 「胡椒がピリッと効いてうまいな山賊焼き.これでお酒があれば...」
-				CALL COLORMESSAGE14("　私達だとお酒売ってくれないみたい...」",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　そこらの人間より何十倍も長く生きてるにさ.ちぇ」",C_AQUA,2,0)
+				PRINTFORML 「산적꼬치♪ 산적꼬치♪」
+				PRINTFORMW 「술이랑 같이 먹으면 정말 끝내주겠는데」
+				CALL COLORMESSAGE14("　우리에겐 안 파는 것 같아...」",C_GREEN,1,0)
+				CALL COLORMESSAGE14("　뭐야 그게! 우린 인간들보다 수십배나 더 오래 살아왔는데」",C_AQUA,2,0)
 			CASE 6
-				PRINTFORMW 「이 몸はミートボールスパゲティ!大盛ね!」
-				CALL COLORMESSAGE14("　私は...パスタサラダでお願いします.",C_GREEN,2,0)
+				PRINTFORMW 「이 몸은 미트볼 스파게티! 곱빼기로!」
+				CALL COLORMESSAGE14("　저는...파스타와 샐러드로 주세요.",C_GREEN,2,0)
 			CASE 5
-				PRINTFORML 「ガツガツガツガツ!」
-				PRINTFORMW 「ムグムグ...うな重食べると元気がムクムク湧いてくる気がする」
-				CALL COLORMESSAGE14("モクモク......ケプッ.食べきれるかな.",C_GREEN,2,0)
+				PRINTFORML 「와구와구와구와구!」
+				PRINTFORMW 「우물우물...장어를 먹으면 왠지 기운이 샘솟는 것 같아」
+				CALL COLORMESSAGE14("우물우물......우웁, 근데 우리가 이걸 다 먹을 수 있을까...?",C_GREEN,2,0)
 			CASE 4
-				PRINTFORML 「寿司食べたい!」
-				CALL COLORMESSAGE14("　今注文したからもうちょっと待っててね.",C_GREEN,1,0)
-				PRINTFORML 「ピザ食べたい!」
-				CALL COLORMESSAGE14("　ええ!?もうお寿司頼んじゃったよ!",C_GREEN,1,0)
-				PRINTFORMW 「でもやっぱり寿司食べたい!」
+				PRINTFORML 「스시가 먹고 싶어!」
+				CALL COLORMESSAGE14("　지금 주문했으니까 조금만 기다려 줘.",C_GREEN,1,0)
+				PRINTFORML 「피자가 먹고 싶어!」
+				CALL COLORMESSAGE14("　뭐어!? 방금 스시를 시켰는데?",C_GREEN,1,0)
+				PRINTFORMW 「역시 스시가 먹고 싶어!」
 				CALL COLORMESSAGE14("　???",C_GREEN,2,0)
 			CASE 3
-				PRINTFORML 「けっこういけるね, この冷たいラーメン」
-				CALL COLORMESSAGE14("　ﾁｭﾙﾁｭﾙ....のど越しもツルツルして食べやすいよ.",C_GREEN,1,0)
-				PRINTFORMW 「むぅ, 冷やしおでんの次は冷やしラーメンが流行ると見た」
+				PRINTFORML 「꽤 괜찮은데, 이 차가운 라면」
+				CALL COLORMESSAGE14("　후루루룩....목 넘김이 부드럽고, 국물 맛이 깔끔해.",C_GREEN,1,0)
+				PRINTFORMW 「냉오뎅도 괜찮았으니 냉라면도 괜찮을 거라고 생각했는데, 역시 이 몸의 감은」
 			CASE 2
-				PRINTFORML 「ヘヘー.オムライスにケチャップで이 몸の顔を描いてみた.どうよ!」
-				CALL COLORMESSAGE14("　わ, わー....そ, そっくり!",C_GREEN,1,0)
-				PRINTFORMW 「すごいでしょー.えっへん!」
-				CALL COLORMESSAGE14("（毛玉かな?と思っちゃったなんて口が裂けても言えないよ...）",C_GREEN,2,0)
+				PRINTFORML 「헤헤, 오므라이스에 케첩으로 이 몸의 얼굴을 그려봤어! 어때?」
+				CALL COLORMESSAGE14("　와, 와아....또, 똑같아!",C_GREEN,1,0)
+				PRINTFORMW 「굉장하지? 엣헴!」
+				CALL COLORMESSAGE14("（보풀인가? 라고 생각했었다는 건 입이 찢어져도 말할 수 없어...）",C_GREEN,2,0)
 			CASE 1
-				PRINTFORMW 「飛び散るカレーという弾幕を回避しながらカレーうどんで食べる....これはもう弾幕勝負だ」
-				CALL COLORMESSAGE14("　はい치르노짱, 前掛けつけてあげるね.",C_GREEN,1,0)
-				CALL COLORMESSAGE14("「むぅ..., 惜しくも不戦勝か」",C_AQUA,2,0)
+				PRINTFORMW 「튀는 카레를 피하며 카레 우동을 먹는다...이건 이제 탄막승부야!」
+				CALL COLORMESSAGE14("　네네, 치르노짱. 앞치마 걸어줄게.",C_GREEN,1,0)
+				CALL COLORMESSAGE14("「우우...이번엔 부전승인가」",C_AQUA,2,0)
 			CASE 0
-				PRINTFORMW 「ブリティッシュ妖精はフィッシュ＆チップスがソウルフードなのさ」
-				CALL COLORMESSAGE14("　私達はイギリス生まれだった?",C_GREEN,2,0)
+				PRINTFORMW 「브리티쉬 요정에겐 피쉬 앤 칩스가 소울푸드야」
+				CALL COLORMESSAGE14("　에? 우리 영국 출신이였어?",C_GREEN,2,0)
 			CASEELSE
-				PRINTFORML 「今どきの妖精っ子は盛りそばを一気にたぐるってもんよ」
-				PRINTFORML 「ズズーッ!!」
-				PRINTFORMW 「ごっそさん!お代は置いとくぜぃ!」
+				PRINTFORML 「요즘 요정은 모밀소바를 단숨에 먹는다구」
+				PRINTFORML 「후루룹-!!」
+				PRINTFORMW 「주인장! 돈은 여기 놔두고 간다!」
 		ENDSELECT
 		PRINTFORML 
 		PRINTFORML 
@@ -2843,43 +2832,42 @@ SETCOLOR C_AQUA
 		IF TALENT:사모 || CFLAG:14:1002 == 1
 			SELECTCASE RAND:4
 				CASE 2
-					CALL COLORMESSAGE14("　치르노짱, 私の分もあげる.",C_GREEN,1,0)
-					PRINTFORMW 「え, それ食べていいの?やったー!」
-					CALL COLORMESSAGE14("　いっぱい食べる치르노짱が好きだから....",C_GREEN,2,0)
+					CALL COLORMESSAGE14("　치르노짱, 내 것도 줄게.",C_GREEN,1,0)
+					PRINTFORMW 「에? 정말로 먹어도 돼? 고마워 다이짱!」
+					CALL COLORMESSAGE14("　많이 먹는 치르노짱이 좋아서....",C_GREEN,2,0)
 				CASE 1
-					PRINTFORMW 「そいえばこれってデートなのか?」
-					CALL COLORMESSAGE14("　ええっ!?チ, チチチ치르노짱とデ, デート\/\/\/",C_GREEN,1,0)
-					CALL COLORMESSAGE14("　や, やっぱりそう見えるのかな....",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「なわけないな!女同士だし」",C_AQUA,1,0)
-					CALL COLORMESSAGE14("　シュン...",C_GREEN,2,0)
+					PRINTFORMW 「그러고 보면 이거, 데이트려나?」
+					CALL COLORMESSAGE14("　에엣!? 치, 치치치치르노짱과, 데이트라니...부끄러워...",C_GREEN,1,0)
+					CALL COLORMESSAGE14("　여, 역시 그렇게 보이려나....",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「그럴 리가 없잖아! 우리 둘 다 여자인데」",C_AQUA,1,0)
+					CALL COLORMESSAGE14("　...으으...",C_GREEN,2,0)
 				CASE 0
-					CALL COLORMESSAGE14("「다이짱にも少しあげる!」",C_AQUA,1,0)
-					PRINTFORMW 「はい, あーん」
-					CALL COLORMESSAGE14("　ありがとう치르노짱, おいひいよ.",C_GREEN,2,0)
+					CALL COLORMESSAGE14("「먹여줘, 다이짱」",C_AQUA,1,0)
+					CALL COLORMESSAGE14("알겠어. 자, 아-앙",C_GREEN,1,0)
+					CALL COLORMESSAGE14("　아-앙",AQUA,2,0)
 				CASEELSE
-					PRINTFORML 「人間や妖怪の料理ってうまい!」
-					PRINTFORML 「みんなで食べるともーっとうまい!」
-					CALL COLORMESSAGE14("今度はサニー짱達も誘って食べに行こうね",C_GREEN,2,0)
+					PRINTFORML 「인간의 요리도 요괴의 요리도 전부 다 맛있어!」
+					PRINTFORML 「다 같이 먹으면 더 맛있을 것 같아!」
+					CALL COLORMESSAGE14("다음번에는 써니쪽 요정들도 불러보자",C_GREEN,2,0)
 			ENDSELECT
 		ELSE
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORML 「熱かろうがこんなもの凍らせてしまえば問題ないね」
-					PRINTFORMW 「あんたのも凍らせてやろうか?」
-					CALL COLORMESSAGE14("　え, 遠慮しておきます....",C_GREEN,2,0)
+					PRINTFORML 「뜨겁네. 뭐 얼려버리면 그만이지만」
+					PRINTFORMW 「네 것도 얼려줄까?」
+					CALL COLORMESSAGE14("　사, 사양하겠습니다....",C_GREEN,2,0)
 				CASE 0
-					PRINTFORML 「アイスやかき氷ばかり食べてても身体に悪いもんな」
-					PRINTFORMW 「이 몸は健康優良不良妖精なのさ」
+					PRINTFORML 「아이스나 빙수만 먹으면 건강에 안 좋으니까」
+					PRINTFORMW 「이 몸도 가끔씩은 편식 없이 먹는다고」
 				CASEELSE
-					CALL COLORMESSAGE14("　うう...周り人たちがこっちを見てて怖い....",C_GREEN,1,0)
-					PRINTFORML 「妖精だからって警戒してるのがいるな」
-					PRINTFORMW 「こんなので怖がってたらイタズラなんてできないぜ」
+					CALL COLORMESSAGE14("　으으...주변에서 이쪽을 바라봐...무서워....",C_GREEN,1,0)
+					PRINTFORML 「요정이라고 경계하는 거려나」
+					PRINTFORMW 「이렇게 무서워해서야 장난칠 마음도 안 생기겠는걸」
 			ENDSELECT
 		ENDIF
 	ENDIF
 ENDIF
 RESETCOLOR
-[SKIPEND]
 RETURN 1
 
 ;==================================================
@@ -2916,7 +2904,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K14_614_1
 ;-------------------------------------------------
 ;기입체크 (=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 SETCOLOR C_AQUA
@@ -2928,43 +2916,41 @@ SETCOLOR C_AQUA
 	ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 		SELECTCASE RAND:3
 			CASE 1
-				CALL COLORMESSAGE14("　ジュースでも飲んで一休みしよっか",C_GREEN,1,0)
-				CALL COLORMESSAGE14("「やった!」",C_AQUA,1,0)
-				PRINTFORMW 「お米屋だとなのに色々売ってるのね.이 몸のアイスも卸そうかな」
+				CALL COLORMESSAGE14("　주스라도 마시면서 잠깐 쉴까?",C_GREEN,1,0)
+				CALL COLORMESSAGE14("「좋아!」",C_AQUA,1,0)
+				PRINTFORMW 「쌀가게인데 쌀 말고 여러가지로 팔고 있네. 이 몸의 아이스크림도 여기서 도매할 수 있을까」
 			CASE 0
-				PRINTFORML 「荷物持ちなら任せて」
-				PRINTFORML 「凍らせてボールにすれば持ち運びも楽々だよ!」
-				CALL COLORMESSAGE14("　濡れないようにすれば便利そう.お願いしちゃおうかな.",C_GREEN,2,0)
+				PRINTFORML 「짐은 이 몸에게 맡겨줘!」
+				PRINTFORML 「얼음 공으로 만들면 옮기는 게 편해져!」
+				CALL COLORMESSAGE14("　후후, 내용물이 젖지는 않도록 얼려줘.",C_GREEN,2,0)
 			CASEELSE
 				IF TFLAG:193 > 0
-					PRINTFORML 「どんな料理を作ってくれるか楽しみー」
-					CALL COLORMESSAGE14("　フフ, 期待しててね.",C_GREEN,2,0)
+					PRINTFORML 「어떤 음식을 만들어 줄 지 기대가 되네」
+					CALL COLORMESSAGE14("　후후, 마음껏 기대해.",C_GREEN,2,0)
 				ELSE
-					PRINTFORML 「買い物しないの?」
-					CALL COLORMESSAGE14("　うーん...ちょっと荷物が多くなっちゃうから....",C_GREEN,2,0)
+					PRINTFORML 「쇼핑 안 할거야?」
+					CALL COLORMESSAGE14("　으음...짐이 좀 많아지니까....",C_GREEN,2,0)
 				ENDIF
 		ENDSELECT
 	ELSE
 		SELECTCASE RAND:3
 			CASE 1
 				IF TFLAG:193 > 0
-					CALL COLORMESSAGE14("「米を盗むんじゃなくて買うなんて妖精らしくないな」",C_AQUA,1,0)
-					PRINTFORMW 「妖精と黒い魔法使いにとって米は盗むものって相場は決まってるのさ」
-					CALL COLORMESSAGE14("　買った方がいいこともあるんですよ?",C_GREEN,1,0)
-					CALL COLORMESSAGE14("　お店の人と仲良くなると色々もらえたりしますし....",C_GREEN,2,0)
+					CALL COLORMESSAGE14("「쌀을 훔치지 않고 사다니, 요정답지 않은걸」",C_AQUA,1,0)
+					PRINTFORMW 「요정과 검은 마법사는 무언가를 사지 않고 훔치는 게 당연한 건데」
+					CALL COLORMESSAGE14("　사는 게 더 좋을 수도 있다구요?",C_GREEN,1,0)
+					CALL COLORMESSAGE14("　가게 주인이랑 친해지면 서비스로 물건을 더 준다던가....",C_GREEN,2,0)
 				ELSE
-					CALL COLORMESSAGE14("　結局買わずじまいで冷やかしになっちゃった....",C_GREEN,1,0)
-					PRINTFORML 「ふふん.本当の冷やかしってのを見せてやろうか?」
-					CALL COLORMESSAGE14("　え, 遠慮しておきます....",C_GREEN,2,0)
+					CALL COLORMESSAGE14("　결국 사지도 못한 채 잔뜩 놀림만 받았어....",C_GREEN,1,0)
+					PRINTFORML 「후후후. 놀린다는 게 어떤 의미인지 이 몸이 제대로 알려줄까?」
+					CALL COLORMESSAGE14("　저, 사양하겠습니다....",C_GREEN,2,0)
 				ENDIF
 			CASE 0
-				PRINTFORML 「食べるなら上品な白米じゃなくて野性味ある雑穀だな」
-				PRINTFORMW 「野趣溢れる食べ物を豪快に喰らうこそ이 몸にふさわしい」
-				
+				PRINTFORML 「먹을 거면 백미보다는 잡곡밥이지」
+				PRINTFORMW 「야취 넘치는 음식을 호쾌하게 먹는 게 이 몸에겐 어울리니까」
 			CASEELSE
-				PRINTFORML 「む, 鉄のナイフが置いてある.妖精除けのつもりなのか?」
-				PRINTFORMW 「今どきこんなもので追い払えると思うなんてわかってないなー」			
-				
+				PRINTFORML 「음, 쇠칼이 놓여져 있네. 요정을 쫓아내려고 놔둔 건가?」
+				PRINTFORMW 「요즘 요정들은 고작 이런 거 가지고 쫓아내기 힘들텐데 말이지-」
 		ENDSELECT
 	ENDIF
 ENDIF
@@ -2984,7 +2970,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K14_615_1
 ;-------------------------------------------------
 ;기입체크 (=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 SETCOLOR C_AQUA
@@ -2993,43 +2979,43 @@ SETCOLOR C_AQUA
 	ELSEIF CFLAG:318 == 1
 		RETURN 1
 	ELSEIF ABL:요리기능 > 3
-		CALL COLORMESSAGE14("（치르노짱とお弁当を取り換えっこしました）",C_GREEN,2,0)
+		CALL COLORMESSAGE14("（치르노짱의 도시락을 나눠먹기로 했습니다）",C_GREEN,2,0)
 		SELECTCASE RAND:3
 			CASE 1
-				PRINTFORML 「ちらし寿司とそうめんを合わせて...ちらしそうめん!」
-				CALL COLORMESSAGE14("　お刺身に錦糸卵もはいってキレイ.まるで宝石みたい....",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　味もさっぱりしておいしい.치르노짱は妖精のコックさんだね!",C_GREEN,1,0)
-				PRINTFORMW 「이 몸ったら名シェフね!」
+				PRINTFORML 「치라시스시와 소면을 합쳐서...치라시 소면!」
+				CALL COLORMESSAGE14("　회에 비단실처럼 연어 알이 들어가서 예뻐. 마치 보석같아....",C_GREEN,1,0)
+				CALL COLORMESSAGE14("　게다가 맛도 엄청나! 치르노짱은 요정 요리사네!",C_GREEN,1,0)
+				PRINTFORMW 「엣헴, 이 몸은 최강의 요리사다!」
 				
 			CASE 0
-				PRINTFORML 「今日の弁当はアイス付くし...と見せかけて」
-				PRINTFORML 「アイスバインのアイスプラント添え.カブのアイススープつき.どうだ!」
-				CALL COLORMESSAGE14("　アイスじゃないのに全部アイスなんだ....",C_GREEN,2,0)
+				PRINTFORML 「오늘의 도시락은 아이스 풀코스」
+				PRINTFORML 「아이스 당근에 아이스 순무. 아이스 녹차에 아이스 나무열매. 어때!」
+				CALL COLORMESSAGE14("　왠지 건강해 보이는 아이스야....",C_GREEN,2,0)
 				
 			CASEELSE
-				PRINTFORMW 「이 몸のミネストローネは温めても冷えても美味しいぞ!」
+				PRINTFORMW 「이 몸은 최강의 요리사라구!」
 		ENDSELECT
-		CALL COLORMESSAGE14("（ほっぺが落ちるほど美味しかったです.また食べたいな...）",C_GREEN,2,0)
+		CALL COLORMESSAGE14("（볼이 떨어질 정도로 맛있었어요. 또 먹고 싶다...）",C_GREEN,2,0)
 	ELSEIF ABL:요리기능 > 2
-		CALL COLORMESSAGE14("치르노짱とお弁当を仲良く分け合いました.",C_GREEN,2,0)
+		CALL COLORMESSAGE14("치르노짱, 도시락 나눠 먹지 않을래?",C_GREEN,2,0)
 		SELECTCASE RAND:3
 			CASE 1
-				CALL COLORMESSAGE14("　치르노짱もお弁当持ってきたんだ....雪見弁当?",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　これ, もしかして全部アイスなの?",C_GREEN,1,0)
-				PRINTFORML 「이 몸の弁当はおかずもごはんもアイスさ」
-				PRINTFORMW 「甘いアイスがお弁当にならないと誰が決めたんだ」
+				CALL COLORMESSAGE14("　치르노짱도 도시락 싸왔구나....잠깐, 그거 얼음으로 만든 도시락이야?",C_GREEN,1,0)
+				CALL COLORMESSAGE14("　게다가, 아이스로 가득 차있는데?",C_GREEN,1,0)
+				PRINTFORML 「후훗, 이 몸의 도시락은 반찬도 밥도 아이스라고」
+				PRINTFORMW 「달콤한 아이스크림도 도시락이 되지 말란 법은 없잖아?」
 			CASE 0
-				CALL COLORMESSAGE14("　치르노짱の握ったおにぎり.冷めてても美味しい...!",C_GREEN,1,0)
-				PRINTFORML 「ふふん, お米の炊き方と握り方にコツがいるんだぜ」
-				PRINTFORMW 「이 몸特製おにぎりならどんなに冷たくてもへっちゃらだ!」
+				CALL COLORMESSAGE14("　치르노짱의 주먹밥, 엄청 맛있어...!",C_GREEN,1,0)
+				PRINTFORML 「후훗, 밥을 짓는 법이랑 뭉치는 양이 중요하다고」
+				PRINTFORMW 「게다가 이 몸의 힘 덕분에 상할 걱정도 없이 시원해!」
 				
 			CASEELSE
-				CALL COLORMESSAGE14("　すごい!お刺身の盛り合わせ弁当なんて初めて見た!",C_GREEN,1,0)
-				PRINTFORMW 「お魚は全部ルイベにすればお腹が痛くならない.覚えた!」
+				CALL COLORMESSAGE14("　대단해! 모둠회 도시락은 처음 봐!",C_GREEN,1,0)
+				PRINTFORMW 「이 생선들은 먹어도 배탈이 나지 않는다고. 왜냐하면 외웠거든!」
 		ENDSELECT
 	ELSE
-		CALL COLORMESSAGE14("(今日は치르노짱と一緒に食べるために, お弁当を持ってきました）",C_GREEN,1,0)
-		CALL COLORMESSAGE14("(よろこんでくれるかな...?）",C_GREEN,2,0)
+		CALL COLORMESSAGE14("(오늘은 치르노짱과 같이 먹기 위해, 도시락을 싸왔습니다）",C_GREEN,1,0)
+		CALL COLORMESSAGE14("(...괜찮겠지...?）",C_GREEN,2,0)
 	ENDIF
 ENDIF
 RESETCOLOR
@@ -3051,7 +3037,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K14_617_1
 ;-------------------------------------------------
 ;기입체크 (=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 SETCOLOR C_AQUA
@@ -3061,114 +3047,107 @@ SETCOLOR C_AQUA
 	ELSE
 		SELECTCASE RAND:15
 			CASE 13
-				PRINTFORMW ～大玉飴～
+				PRINTFORMW ～빙수～
 				PRINTFORML 
-				CALL COLORMESSAGE14("　メロンにミルクに...いっぱいあって迷っちゃう.치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱はどれにする # さんはどれにしますか \@.",C_GREEN,1,0)
-				PRINTFORML 「이 몸は全部1個ずつにする!２, ３個だけじゃ満足できないね」
-				CALL COLORMESSAGE14("　お腹壊さないでね....",C_GREEN,2,0)
+				CALL COLORMESSAGE14("　멜론맛으로...시럽 가득 넣어주세요. 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 는 무슨 맛 먹을래? # 씨는 뭐 드실래요? \@.",C_GREEN,1,0)
+				PRINTFORML 「이 몸은 블루 하와이로. 나도 시럽 가득 넣어서!」
 			CASE 12
-				PRINTFORMW ～はじけるキャンディー～
+				PRINTFORMW ～팝핀캔디～
 				PRINTFORML 
-				PRINTFORML 「見てなよ이 몸の雄姿を.はじけるキャンデーを一気喰いしてみせる...」
-				CALL COLORMESSAGE14("　む, ムリしないでね....",C_GREEN,1,0)
-				PRINTFORML 「そりゃ」ﾊﾞﾁﾊﾞﾁﾊﾞﾁ!!
-				PRINTFORML 「ギャァー!!??」
-				CALL COLORMESSAGE14("　ち, 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # さん \@!!",C_GREEN,2,0)
+				PRINTFORML 「뭐야 이게? 터지는 사탕? 설마 탄막은 아니겠지?」
+				CALL COLORMESSAGE14("　아무리 그래도, 탄막을 먹으라고 뿌리지는 않겠지....",C_GREEN,1,0)
+				PRINTFORML 「뭐, 한 입에 털어주지! 으랏챠!」톡톡톡톡톡톡!!
+				PRINTFORML 「?!?!!꺄, 꺄앗-!!??」
+				CALL COLORMESSAGE14("　치, 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # 씨 \@!!",C_GREEN,2,0)
 			CASE 11
-				PRINTFORMW ～キャラメル～
+				PRINTFORMW ～카라멜～
 				PRINTFORML 
-				PRINTFORML 「このキャラメルって甘くてオイシイし, サイコロに入ってるから遊ぶこともできる」
-				PRINTFORML 「これが一粒で二度おいしいって意味かー」
-				CALL COLORMESSAGE14("　そ, そうなのかな?",C_GREEN,2,0)
+				PRINTFORML 「이 카라멜은 끈적해서 기분이 이상해」
+				PRINTFORML 「하지만 달고 맛있어. 아이스로 만들어 볼까」
+				CALL COLORMESSAGE14("　이, 이걸 아이스로?",C_GREEN,2,0)
 			CASE 10
-				PRINTFORMW ～きびだんご～
+				PRINTFORMW ～수수경단～
 				PRINTFORML 
-				PRINTFORML 「きびだんごあげたら犬猿雉が仲間になるって言うじゃん」
-				CALL COLORMESSAGE14("　うんうん.",C_GREEN,1,0)
-				PRINTFORMW 「あれは嘘だな.渡そうとしたら怒って撃ち落そうとしてきた」
-				CALL COLORMESSAGE14("　駄菓子のきびだんごには黍が入ってないから....",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　黍が入ってる吉備団子ならきっと仲間になってくれるかも.",C_GREEN,1,0)
-				CALL COLORMESSAGE14("「キビ違いか.厳しいー...」",C_AQUA,2,0)
+				PRINTFORML 「이거 먹이면 싸우던 애들도 화해한다던데, 정말이려나?」
+				CALL COLORMESSAGE14("　아무리 그래도, 그렇지는 않겠\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 지 # 죠 \@.",C_GREEN,1,0)
+				PRINTFORMW 「혹시 모르니 시험해봐야지. 우선 신사의 새전함을 부수러 간다!」
+				CALL COLORMESSAGE14("　그, 그건 너무 위험해!!!",C_GREEN,2,0)
 			CASE 9
-				PRINTFORMW ～タバコ?～
+				PRINTFORMW ～담배?～
 				PRINTFORML 
-				PRINTFORML 「ふっ...今日の이 몸はハードボイルドさ」
-				CALL COLORMESSAGE14("　치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # さん \@ったらタバコ吸って不良妖精....",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　...って, それチョコシガレット?",C_GREEN,1,0)
-				CALL COLORMESSAGE14("「ばれたか」ﾎﾟﾘﾎﾟﾘ",C_AQUA,2,0)
+				PRINTFORML 「후우...오늘의 이 몸은 하드보일드하다고」
+				CALL COLORMESSAGE14("　치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # 씨 \@, 담배를 피면 몸에 안 좋....",C_GREEN,1,0)
+				CALL COLORMESSAGE14("　...다랄까, 그거 담배 모양 초콜릿?",C_GREEN,1,0)
+				CALL COLORMESSAGE14("「아앗, 들켰어」바삭바삭",C_AQUA,2,0)
 			CASE 8
-				PRINTFORMW ～カルメ焼き～
+				PRINTFORMW ～사과사탕～
 				PRINTFORML 
-				PRINTFORML 「おっ짱!まだいける.まだ膨らませられる!」
-				PRINTFORML ﾓｳﾑﾘﾀﾞﾖｰ.
-				CALL COLORMESSAGE14("　カルメ焼きって, 焼いてるとプクプク膨らんで...見てて面白い\@ TALENT:사모 || CFLAG:14:1002 == 1 ? ね # ですね \@.",C_GREEN,1,0)
-				PRINTFORMW 「이 몸はこの一番でっかいのが欲しい!」
+				PRINTFORML 「사과 사탕은 먹기 힘들어-크기가 한 입에 넣기엔 무척 크니까」
+				PRINTFORML 아삭아삭, 낼름낼름...
+				CALL COLORMESSAGE14("　그러고 보니, 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱은 사과사탕을 어떻게 먹어? # 씨는 사과 사탕을 어떻게 드시나요? \@",C_GREEN,1,0)
+				PRINTFORMW 「이 몸은 그런 거 신경 안 쓰고 먹어!」
 			CASE 7
-				PRINTFORMW ～からからせんべい～
+				PRINTFORMW ～카라카라센베이～
 				PRINTFORML 
-				PRINTFORML パリパリ
-				CALL COLORMESSAGE14("　このおせんべいって中におもちゃが入ってる\@ TALENT:사모 || CFLAG:14:1002 == 1 ? んだって # らしいですよ \@.",C_GREEN,1,0)
-				PRINTFORML パリパリ
-				CALL COLORMESSAGE14("　私のは....あ, 小さな毬のおもちゃでした.치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # さん \@は?",C_GREEN,1,0)
-				PRINTFORML パリパリ...ゴクン.
-				PRINTFORML 「このせんべいうまいな....ん?何か言った?」
-				CALL COLORMESSAGE14("　あ....",C_GREEN,2,0)
+				PRINTFORML 바삭바삭
+				CALL COLORMESSAGE14("　이 집의 센베이에는 장난감이 들어있다고 해\@ TALENT:사모 || CFLAG:14:1002 == 1 ?. 기대가 되네 # 요. 기대가 되네 \@.",C_GREEN,1,0)
+				PRINTFORML 바삭바삭
+				CALL COLORMESSAGE14("　....어, 내 건 작은 공이네. 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱은 # 씨는 \@?",C_GREEN,1,0)
+				PRINTFORML 바삭바삭...꿀꺽.
+				PRINTFORML 「이 집 센베이 맛집이네....응? 뭐라고?」
+				CALL COLORMESSAGE14("　아....",C_GREEN,2,0)
 			CASE 6
-				PRINTFORMW ～ニッキ紙～
+				PRINTFORMW ～초코바나나～
 				PRINTFORML 
-				CALL COLORMESSAGE14("　このお菓子当たりつきなんだって.化け化けの絵だからハズれ....치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # さん \@は",C_GREEN,1,0)
-				PRINTFORMW 「이 몸のは......!?こ, これは紫ババァ!」
+				CALL COLORMESSAGE14("　바나나에 초콜릿이 듬뿍해....여기, 치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # 씨 \@도 한 입",C_GREEN,1,0)
+				PRINTFORMW 「달아서 맛있어!」우물우물
 			CASE 5
-				PRINTFORMW ～棒つきカステラ～
+				PRINTFORMW ～작은 카스테라～
 				PRINTFORML 
-				CALL COLORMESSAGE14("　カステラふわふわしておいしい\@ TALENT:사모 || CFLAG:14:1002 == 1 ? ね # ですね \@.",C_GREEN,1,0)
-				PRINTFORMW 「小さくて丸っこいカステラも好きだけど, 四角いでっかいのをガブリと食べたいなー」
+				CALL COLORMESSAGE14("　부드럽고 달아서 맛있\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 네 # 어요 \@.",C_GREEN,1,0)
+				PRINTFORMW 「작은 것도 좋지만, 이 몸은 크고 네모난 게 먹고 싶네」
 			CASE 4
-				PRINTFORMW ～ペロペロキャンディー～
+				PRINTFORMW ～핥아먹는 사탕～
 				PRINTFORML 
-				CALL COLORMESSAGE14("　치르노さん, 今は何も聞かずにこの棒つき飴を持って.そして何か一言.",C_GREEN,1,0)
-				PRINTFORMW 「이 몸ったら最強ね!」ペロペロ
+				CALL COLORMESSAGE14("　아, 핥아먹는 사탕이다. 여기 2개 주세요.",C_GREEN,1,0)
+				PRINTFORMW 「오, 이 몸 것도 사준거야? 고마워!」낼름낼름
 			CASE 3
-				PRINTFORMW ～金平糖～
+				PRINTFORMW ～안미츠～
 				PRINTFORML 
-				PRINTFORML 「コンペイトウって黒い魔法使いが出す弾幕そっくりだ」
-				PRINTFORML 「はっ!もしかしてあの弾幕も食べると甘いのか?」
-				CALL COLORMESSAGE14("　まさかー..., 弾幕が食べられるわけない\@ TALENT:사모 || CFLAG:14:1002 == 1 ? よ # ですよ \@.",C_GREEN,1,0)
-				CALL COLORMESSAGE14("　いや!やってみる価値はある!星を散らかしながら飛んでたら後ろから喰らいついて見せる!",C_AQUA,1,0)
+				PRINTFORML 「과일이 달고 시원해서 맛있어」
+				PRINTFORML 「그래! 안미츠 아이스 장사를 해보는 건 어떨까?」
+				CALL COLORMESSAGE14("　으음, 아이스는 아이스로서, 안미츠는 안미츠로서 있어야 더 맛있을 것 같\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 아 # 아요 \@.",C_GREEN,1,0)
+				CALL COLORMESSAGE14("　「으으... 듣고 보니 일리가 있네...」",C_AQUA,2,0)
 			CASE 2
-				PRINTFORMW ～カリントウ～
+				PRINTFORMW ～카린토～
 				PRINTFORML 
-				PRINTFORMW 「ウ〇コだー!!!!」
-				CALL COLORMESSAGE14("　ちがうよ!かりんとうだよ!",C_GREEN,2,0)
+				PRINTFORMW 「응X잖아 이거-!!!!」
+				CALL COLORMESSAGE14("　아냐! 카린토라고!",C_GREEN,2,0)
 			CASE 1
-				PRINTFORMW ～ポン菓子～
+				PRINTFORMW ～뻥튀기～
 				PRINTFORML 
-				PRINTFORML ポンッ!
-				PRINTFORML 「おわっ!お米がピチュッた」
-				CALL COLORMESSAGE14("　大きな音でビックリしちゃいました.",C_GREEN,1,0)
+				PRINTFORML 펑!
+				PRINTFORML 「으앗! 깜짝이야!!」
+				CALL COLORMESSAGE14("　갑자기 큰 소리가...깜짝 놀랐어...",C_GREEN,1,0)
 				PRINTFORML 
 				PRINTFORML 
-				PRINTFORML 「あ～～ん」ｻﾞﾗｻﾞﾗｻﾞﾗ...
-				PRINTFORML 「ボリボリボリ」
-				CALL COLORMESSAGE14("　치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # さん \@ホッペパンパンに詰め込んじゃって..., リスみたい.",C_GREEN,2,0)
+				PRINTFORML 「아~앙」
+				PRINTFORML 바삭바삭바삭
+				CALL COLORMESSAGE14("　치르노\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 짱 # 씨 \@, 정말로 맛있게 먹고 있어...다행이네",C_GREEN,2,0)
 			CASE 0
-				PRINTFORMW ～蓬莱豆～
+				PRINTFORMW ～봉래콩～
 				PRINTFORML 
-				PRINTFORML 「すげぇ蓬莱の薬が駄菓子屋で売ってた!」
-				CALL COLORMESSAGE14("　これは...ポリポリ.蓬莱豆\@ TALENT:사모 || CFLAG:14:1002 == 1 ? だね # ですね \@.",C_GREEN,1,0)
-				PRINTFORMW 「おめでたい紅白色してるなんて巫女みたいなお菓子だな」
+				PRINTFORML 「어?! 봉래약을 과자가게에서 팔고 있어! 뭐야?!」
+				CALL COLORMESSAGE14("　이건...우물우물. 콩\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 이네 # 이네요 \@.",C_GREEN,1,0)
+				PRINTFORMW 「뭐?! 콩이라고?!!」
 			CASEELSE
-				PRINTFORMW ～練りアメ～
+				PRINTFORMW ～잉어빵～
 				PRINTFORML 
-				PRINTFORML ねりねりねり...
-				PRINTFORML 「なあ, まだ食べちゃダメなのか?」
-				CALL COLORMESSAGE14("　色が白くなるまで練るみたい\@ TALENT:사모 || CFLAG:14:1002 == 1 ?  # ですね \@.",C_GREEN,1,0)
-				PRINTFORML ねりねりねり...
-				PRINTFORML 「えーいまどろっこしい!もう食べてやる!」
-				CALL COLORMESSAGE14("　あ.",C_GREEN,1,0)
-				PRINTFORML パクッ
-				PRINTFORMW 「ぎゃー!口の中ですっごい粘つくー!」
-				CALL COLORMESSAGE14("　だ, 大丈夫\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 치르노짱? # ですか \@?",C_GREEN,2,0)
+				PRINTFORML 「이거, 언제까지 기다려야 해?」
+				CALL COLORMESSAGE14("　조금만 더 기다려\@ TALENT:사모 || CFLAG:14:1002 == 1 ? 보자 # 봐요 \@...앗, 나왔다",C_GREEN,1,0)
+				PRINTFORML 우물우물우물...
+				PRINTFORML 「단팥이다! 맛있어!」
+				CALL COLORMESSAGE14("　저는 슈크림 맛이네요.",C_GREEN,2,0)
 		ENDSELECT
 	ENDIF
 ENDIF
@@ -3204,7 +3183,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K14_620_1
 ;-------------------------------------------------
 ;기입체크 (=0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 SETCOLOR C_AQUA
@@ -3216,43 +3195,43 @@ SETCOLOR C_AQUA
 		ELSEIF TALENT:사모 || CFLAG:14:1002 == 1
 			SELECTCASE RAND:3
 				CASE 1
-					PRINTFORML 「んー?この本なんて読むんだ?」
+					PRINTFORML 「응? 이건 뭐라고 적혀있는 거지?」
 					CALL COLORMESSAGE14("「다이짱, 이건 도대체 뭐야?」",C_AQUA,1,0)
 					CALL COLORMESSAGE14("　으응, 이건 말야....",C_GREEN,1,0)
 					PRINTFORML 
-					PRINTFORML 『艶本枕言葉』
+					PRINTFORML 『염본침언엽(艶本枕言葉)』※쉽게 말하자면 19금 도서임※
 					PRINTFORMW 
-					CALL COLORMESSAGE14("　.........(ｽﾄﾝ)",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「다이짱怖っ!無言で本棚に戻さないでよ!」",C_AQUA,2,0)
+					CALL COLORMESSAGE14("　.........(슈우우)",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「다이짱 잠깐만! 말 없이 책장에 돌려놓고 오지 마!」",C_AQUA,2,0)
 				CASE 0
-					PRINTFORMW 「寒冷地仕様の耐氷性貸本ってある?」
-					CALL COLORMESSAGE14("　とてもゴツゴツしてそうだね.探してみようか.",C_GREEN,2,0)
+					PRINTFORMW 「한랭지 사양의 내빙성 대여본이 있으려나?」
+					CALL COLORMESSAGE14("　으음, 모르겠네. 같이 찾아보자.",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORML 「げ, 文々.新聞...」
-					PRINTFORMW 「しかもにっくきあの時の掲載号っ!」
-					CALL COLORMESSAGE14("　あれ?その新聞に載ってるの치르노짱?",C_GREEN,1,0)
-					CALL COLORMESSAGE14("　すごーい!天狗さんの新聞に記事になるなんて....見てもいい?",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「こ, こんなの大した記事じゃないね!読む必要なし!ていうか読むな!」",C_AQUA,1,0)
-					CALL COLORMESSAGE14("　えぇー...そんな....",C_GREEN,2,0)
+					PRINTFORML 「윽, 이건, 그 자식의 신문이다!」
+					PRINTFORMW 「게다가 이건...그때 그 신문이...」
+					CALL COLORMESSAGE14("　텐구의 신문에 실리다니, 대단해 치르노짱! 근데 무슨 내용이야?",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「시, 신경쓰지 마! 다른 거나 보러 가자! 빨리!」",C_AQUA,1,0)
+					CALL COLORMESSAGE14("　어? 으..응, 알겠어....",C_GREEN,2,0)
+					;문화첩(서적) 네타임
 			ENDSELECT
 		ELSE
 			SELECTCASE RAND:4
 				CASE 2
-					CALL COLORMESSAGE14("　わぁ, 面白そうな本がいっぱい",C_GREEN,1,0)
-					CALL COLORMESSAGE14("「わぁ, イタズラできそうな本がいっぱい」",C_AQUA,1,0)
-					PRINTFORMW 「よし, まずは手始めにこの探偵小説から犯人の名前を...」
-					CALL COLORMESSAGE14("　ま, まって!追い出されちゃいますよ!",C_GREEN,2,0)
+					CALL COLORMESSAGE14("　와, 재밌어보이는 책이 잔뜩 있어",C_GREEN,1,0)
+					CALL COLORMESSAGE14("「와아, 장난치기 딱 좋은 책이다!」",C_AQUA,1,0)
+					PRINTFORMW 「좋아, 그렇다면 책 맨 앞장에 범인의 이름을...」
+					CALL COLORMESSAGE14("　자, 잠깐! 그랬다간 쫒겨나요!",C_GREEN,2,0)
 				CASE 1
-					PRINTFORML 「なんだあの店員こっちをジロジロ見やがって」
-					PRINTFORMW 「そんなにイタズラして欲しいのならド派手にやってやろうか!」
-					CALL COLORMESSAGE14("　お, 落ち着いて치르노さん....",C_GREEN,2,0)
+					PRINTFORML 「뭐야, 저 점원. 이쪽을 빤히 쳐다보고」
+					PRINTFORMW 「그렇게나 장난이 마려웠냐? 그렇다면 화려하게 해주지!」
+					CALL COLORMESSAGE14("　지, 진정하세요 치르노씨....",C_GREEN,2,0)
 				CASE 0
-					CALL COLORMESSAGE14("　치르노さんの読みたい本ってありそうですか?",C_GREEN,1,0)
-					PRINTFORMW 「レーザーを凍らせる指南書があればと思ったけど, なさそうだ」
+					CALL COLORMESSAGE14("　치르노씨는 관심있는 도서가 있나요?",C_GREEN,1,0)
+					PRINTFORMW 「레이저를 얼리는 실용서가 있을까 했는데, 역시 없나 보네」
 				CASEELSE
-					PRINTFORML 「陰気臭くてジメジメしたところだなぁー」
-					PRINTFORMW 「凍らせてやれば少しはカラッとするかも」
-					CALL COLORMESSAGE14("　ここで暴れちゃダメですよぉ....",C_GREEN,2,0)
+					PRINTFORML 「음침하고 끈적끈적한 곳이네」
+					PRINTFORMW 「얼리면 조금 분위기가 나아지지 않을까」
+					CALL COLORMESSAGE14("　여기선 그러지 마세요, 치르노씨....",C_GREEN,2,0)
 			ENDSELECT
 		ENDIF
 ENDIF
@@ -3271,7 +3250,7 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K14_621_1
 ;-------------------------------------------------
 ;기입체크 (0, 비표시, 1, 표시)
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 SETCOLOR C_AQUA
@@ -3279,50 +3258,51 @@ SETCOLOR C_AQUA
 		IF FLAG:시간정지
 		ELSEIF CFLAG:318 == 1
 			PRINTFORML 
-		ELSEIF LOCALS == "カエル" 
+		ELSEIF LOCALS == "개구리" 
 		;カエルを釣ると치르노が欲しがる.何個もあげると何かもらえる.
-			PRINTFORMW 「あ, カエル!それ欲しい!」
+			PRINTFORMW 「아, 개구리! 이거 나 줘!」
 			PRINTFORML
 			PRINTFORML  
-			PRINTFORMW 　치르노にカエルをあげる?
+			PRINTFORMW 　치르노에게 개구리를 줄까?
 			CALL ASK_YN
 			IF !RESULT
-				CALL LOST_ITEM("カエル",1,2)
-				CALL COLORMESSAGE14("　いいですよ.大事にしてあげてくださいね.",C_GREEN,1,0)
-				PRINTFORMW 「わーい!ありがとう!」
+				CALL LOST_ITEM("개구리",1,2)
+				CALL COLORMESSAGE14("　...소중히 대해준다고 약속한다면.",C_GREEN,1,0)
+				PRINTFORMW 「응! 걱정 마!」
+				PRINTFORMW 「고마워!」
 				CFLAG:14:1003 ++
 				SELECTCASE CFLAG:14:1003
 					CASE 5,10,15
-						PRINTFORML 「いつもカエルくれるから, お礼にこれやるよ」
-						CALL COLORMESSAGE14("　キレイ....本当にもらっていいんですか?",C_GREEN,1,0)
-						CALL COLORMESSAGE14("「いいってことよー」",C_AQUA,1,0)
-						CALL COLORMESSAGE14("　うれしい....大事にしますね.",C_GREEN,2,0)
-						CALL GET_ITEM("氷の鱗",1,2)
+						PRINTFORML 「항상 개구리 주니까, 이 몸도 너에게 이걸 줄게」
+						CALL COLORMESSAGE14("　예쁘다....정말로 받아도 되는 거야?",C_GREEN,1,0)
+						CALL COLORMESSAGE14("「응!」",C_AQUA,1,0)
+						CALL COLORMESSAGE14("　고마워....매우 기뻐.",C_GREEN,2,0)
+						CALL GET_ITEM("얼음의비늘",1,2)
 					CASEELSE
 				ENDSELECT
 			ELSE
-				CALL COLORMESSAGE14("　ごめんなさい.私もカエルが欲しくて....",C_GREEN,1,0)
-				PRINTFORMW 「なんだよーケチ!」
+				CALL COLORMESSAGE14("　미안해. 나도 개구리가 갖고 싶어서....",C_GREEN,1,0)
+				PRINTFORMW 「뭐라고?!...할 수 없지」
 			ENDIF
 		ELSEIF TALENT:연모 || TALENT:사모 || CFLAG:14:1002 == 1
 			IF TFLAG:194 > 1000
 			;치르노が釣った
 				SELECTCASE RAND:3
 					CASE 1
-						PRINTFORML 「이 몸を苦戦させるとは, こいつも中々やるじゃん」
-						CALL COLORMESSAGE14("　치르노짱じゃないときっと釣れなかったね.",C_GREEN,2,0)
+						PRINTFORML 「이 몸을 고생시키다니, 이 놈도 꽤나 하는걸」
+						CALL COLORMESSAGE14("　치르노짱이 아니었다면 분명 낚지 못했을 거야.",C_GREEN,2,0)
 					CASE 0
-						PRINTFORML 「うーん.最強ね.もう何でも釣れる気がする」
-						PRINTFORML 「次から次へと釣れる気がするぜー!」
-						CALL COLORMESSAGE14("　次は何が釣れるかな?",C_GREEN,2,0)
+						PRINTFORML 「으-음, 최고야. 이제 이 몸이 낚지 못하는 건 없어」
+						PRINTFORML 「줄줄이 낚아주지!」
+						CALL COLORMESSAGE14("　다음에는 뭐가 낚일까?",C_GREEN,2,0)
 					CASEELSE
-						PRINTFORML 「お, おおお...?」
-						CALL COLORMESSAGE14("　치르노짱.引いてる引いてる!",C_GREEN,1,0)
-						PRINTFORML 「負けるものか!ぐぬぬぬぬ!」
-						CALL COLORMESSAGE14("　あ, 見えてきた!がんばって!",C_GREEN,1,0)
-						PRINTFORML ﾌｨｰｯｼｭ!
-						PRINTFORMW 「釣れた!どうだ!参ったか!」
-						CALL COLORMESSAGE14("　流石치르노짱!",C_GREEN,2,0)
+						PRINTFORML 「오, 오오오...?」
+						CALL COLORMESSAGE14("　치르노짱, 힘내! 당겨! 계속 당겨!",C_GREEN,1,0)
+						PRINTFORML 「이 몸이 질까보냐! 우오오오오오오오!」
+						CALL COLORMESSAGE14("　아, 보이기 시작했어! 힘 내!",C_GREEN,1,0)
+						PRINTFORML 첨벙-!
+						PRINTFORMW 「잡았다! 어떠냐! 이 몸의 실력이!」
+						CALL COLORMESSAGE14("　최고야, 치르노짱!",C_GREEN,2,0)
 				ENDSELECT
 			ELSE
 				SELECTCASE TFLAG:193
@@ -3330,78 +3310,79 @@ SETCOLOR C_AQUA
 					;何も釣れない
 						SELECTCASE RAND:3
 							CASE 1
-								PRINTFORML 「釣れたらどう食べてやろうか.テンプラもいいけど照り焼きでもいいね」
-								PRINTFORML 「お刺身にしてもうまいよね.よだれでてきた」
-								CALL COLORMESSAGE14("　料理は任せて치르노짱!",C_GREEN,2,0)
+								PRINTFORML 「낚으면 어떻게 요리해야 하나? 튀겨서 텐푸라로 만들까?」
+								PRINTFORML 「소스 발라서 데리야키로 해도 괜찮고...잘 손질해서 회로 떠먹어도 맛있겠네」
+								CALL COLORMESSAGE14("　요리는 맡겨줘, 치르노짱!",C_GREEN,2,0)
 							CASE 0
-								PRINTFORMW 「一匹も釣れやしない.マーブルじゃなくアポロにするべきか」
-								CALL COLORMESSAGE14("　...치르노짱.チョコじゃ魚は...",C_GREEN,1,0)
-								CALL COLORMESSAGE14("「釣れるぜ」",C_AQUA,1,0)
-								CALL COLORMESSAGE14("　そ, そうなんだ....",C_GREEN,2,0)
+								PRINTFORMW 「영 낚이지가 않네. 미끼를 초코 송이 말고 썬더 초코로 해야 하나」
+								CALL COLORMESSAGE14("　...치르노짱. 초콜릿으로 물고기를 낚는 건...",C_GREEN,1,0)
+								CALL COLORMESSAGE14("「잘 낚이는데?」",C_AQUA,1,0)
+								CALL COLORMESSAGE14("　뭐, 뭐야 이거....",C_GREEN,2,0)
 							CASEELSE
-								CALL COLORMESSAGE14("　......釣れないね.",C_GREEN,1,0)
-								PRINTFORMW 「魚のやつ, さてはこちらをおちょくってるな...!」
+								CALL COLORMESSAGE14("　......왜 안 낚이는 거야...",C_GREEN,1,0)
+								PRINTFORMW 「물고기놈, 잘도 다이짱을 우습게 봤겠다...!」
 						ENDSELECT
 					CASE 1 TO 4
 					;魚が釣れた
-						CALL COLORMESSAGE14("「やるじゃん다이짱.よーし이 몸も負けないからな!」",C_AQUA,1,0)
-						CALL COLORMESSAGE14("　치르노짱ならもっと大きな魚が釣れるよ.",C_GREEN,1,0)
-						PRINTFORMW 「이 몸も負けないぐらいすごい魚釣ってやるぜ!目指せ人魚!」
+						CALL COLORMESSAGE14("「꽤 하잖아, 다이짱? 좋았어. 이 몸도 질 수는 없지!」",C_AQUA,1,0)
+						CALL COLORMESSAGE14("　치르노짱이라면 더 굉장한 걸 낚을 수 있을거야!",C_GREEN,1,0)
+						PRINTFORMW 「이 몸의 낚시는! 인어도 낚아버릴 낚시다-!」
+						;얘네 사는 곳이 안개의 호수인 걸 생각해보면, 진짜로 낚는 게 가능할 것 같아서 문제임
 					CASE 11 TO 15
-					;うまい魚が釣れた
-						PRINTFORML 「おーうまそうな魚!」
-						CALL COLORMESSAGE14("　치르노짱お願いしてもいい?",C_GREEN,1,0)
-						CALL COLORMESSAGE("「ふん!任せといて.どんな魚だってコチンコチンだよ!」",C_AQUA,1,0)
-						CALL COLORMESSAGE14("　치르노짱がいればお魚も新鮮に食べられるね.",C_GREEN,2,0)
+					;맛있는 물고기가 잡혔다
+						PRINTFORML 「오-우, 맛있어 보이는 물고기다!」
+						CALL COLORMESSAGE14("　치르노짱, 부탁해도 돼?",C_GREEN,1,0)
+						CALL COLORMESSAGE("「물론이지! 어떤 물고기도 신선하게 냉동보관해주지!」",C_AQUA,1,0)
+						CALL COLORMESSAGE14("　후후, 치르노짱이 있으면 언제나 생선을 신선하게 먹을 수 있겠네.",C_GREEN,2,0)
 					CASE 610
 					;木材が釣れた
-						CALL COLORMESSAGE14("　はぁはぁ...大物だと思ったのに釣れたのは木材だったね.",C_GREEN,1,0)
-						PRINTFORMW 「振り回してチャンバラ遊びにも使えなそう.残念だ」
+						CALL COLORMESSAGE14("　하하...큰 놈이 잡히긴 했네. 목재지만",C_GREEN,1,0)
+						PRINTFORMW 「이거, 쓸 곳이 없을 것 같은데?」
 					CASE 131
 					;守矢の守札が釣れた
-						PRINTFORML 「なにこの紙切れ?」
-						PRINTFORML 「こんな濡れてちゃ鼻かむ紙にもなりゃしない」
-						CALL COLORMESSAGE14("　くじの引換券...かな?5回集めると1回くじが引けるみたいだよ.",C_GREEN,1,0)
-						CALL COLORMESSAGE14("「まどろっこしいな.5枚じゃなくて1枚にすればいいのに」",C_AQUA,2,0)
+						PRINTFORML 「뭐야 이 종이쪼가리는?」
+						PRINTFORML 「이렇게 젖으면 이면지로도 못 쓴다고~」
+						CALL COLORMESSAGE14("　뽑기 교환권...이려나? 5개 모으면 1번 뽑을 수 있게 해준다고 하네.",C_GREEN,1,0)
+						CALL COLORMESSAGE14("「뭐야, 그게. 5개가 아니라 1개로 하는 게 더 나을텐데」",C_AQUA,2,0)
 					CASE 21
 					;ローターが釣れた
-						PRINTFORML 「ブルブル震えてる.なんじゃこりゃあ」
-						CALL COLORMESSAGE14("　こ, これってまさか!?",C_GREEN,1,0)
-						PRINTFORML 「ん?これって何か知ってるの?」
-						CALL COLORMESSAGE14("　あの...これはね치르노짱.お, 女の人が....",C_GREEN,1,0)
-						PRINTFORMW 「はやくはやく!おしえて!」
-						CALL COLORMESSAGE14("　～～やっぱりダメ.教えられない!",C_GREEN,1,0)
-						CALL COLORMESSAGE14("「ブー...다이짱のけちんぼ」",C_AQUA,2,0)
+						PRINTFORML 「부들부들 떨려. 이게 뭐야?」
+						CALL COLORMESSAGE14("　어, 어라!? 왜 이게 여기에?!",C_GREEN,1,0)
+						PRINTFORML 「응? 이게 뭐길래 그래?」
+						CALL COLORMESSAGE14("　그...그러니까 치르노짱. 여, 여자가....",C_GREEN,1,0)
+						PRINTFORMW 「빨리빨리! 가르쳐줘!」
+						CALL COLORMESSAGE14("　....역시 안 돼! 못 가르쳐줘!",C_GREEN,1,0)
+						CALL COLORMESSAGE14("「우우...다이짱 구두쇠...」",C_AQUA,2,0)
 					CASE 609
 					;氷の鱗が釣れた
-						PRINTFORMW 「これ, 이 몸がこの前捨てたやつじゃん」
-						CALL COLORMESSAGE14("　え?",C_GREEN,2,0)
+						PRINTFORMW 「이거, 이 몸이 전에 버렸던 건데」
+						CALL COLORMESSAGE14("　네?",C_GREEN,2,0)
 					CASE 606
 					;龍の爪が釣れた
-						PRINTFORML 「なんだこりゃあ.すげーでっかい爪?牙?妖怪のか?」
-						CALL COLORMESSAGE14("　するどくて怖い....大きい妖怪が生やしてたのかもしれないね.",C_GREEN,1,0)
-						PRINTFORML 「近くにいないかなー.手懐けてペットにすれば怖いもん無しだ!」
-						CALL COLORMESSAGE14("　ひぇっ, どうか出会いませんように....",C_GREEN,2,0)
+						PRINTFORML 「뭐야 이거! 굉장해! 뭔가의 손톱인가?」
+						CALL COLORMESSAGE14("　우와...엄청 커....거대한 요괴나 동물의 발톱인가 봐.",C_GREEN,1,0)
+						PRINTFORML 「가까이 있지 않을까? 길들이면 재밌겠는데!」
+						CALL COLORMESSAGE14("　히익...우리 그러지 말자....",C_GREEN,2,0)
 					CASEELSE
-						PRINTFORMW 「何が釣れたの?」
+						PRINTFORMW 「뭐라도 낚였어?」
 				ENDSELECT
 			ENDIF
 
 		ELSE
 			SELECTCASE RAND:4
 				CASE 2
-					PRINTFORML 「ボーッと待ってるだけなんて退屈じゃん」
-					CALL COLORMESSAGE14("　待つのも釣りの醍醐味...らしいですよ.",C_GREEN,1,0)
-					PRINTFORMW 「あっちで遊んでよーっと」
+					PRINTFORML 「가만히 앉아만 있으면 재미없잖아」
+					CALL COLORMESSAGE14("　기다리는 것도 낚시의 묘미...라고 하니까요.",C_GREEN,1,0)
+					PRINTFORMW 「계속 기다리지만 말고 저쪽에서 놀자, 응?」
 				CASE 1
-					PRINTFORMW 「カエルが釣れたら이 몸にちょうだい!」
-					CALL COLORMESSAGE14("　お魚用の針で釣れるかな....がんばりますね.",C_GREEN,2,0)
+					PRINTFORMW 「개구리 잡히면 이 몸에게 줘!」
+					CALL COLORMESSAGE14("　개구리가 이 낚싯바늘로 잡힐까요?...힘내볼게요.",C_GREEN,2,0)
 				CASE 0
 					PRINTFORMW 「Zzzz...」
-					CALL COLORMESSAGE14("　(치르노さん待ちくたびれて寝ちゃってる.起こさないようにしなくちゃ）",C_GREEN,2,0)
+					CALL COLORMESSAGE14("　(치르노씨 기다리다가 잠들어버렸네. 깨우지 말아야지）",C_GREEN,2,0)
 				CASEELSE
-					PRINTFORMW 「出てこい魚ヤロー!.三枚におろしてやる!」
-					CALL COLORMESSAGE14("　大声だしたら魚が逃げちゃいますよぉ....",C_GREEN,2,0)
+					PRINTFORMW 「어서 나와라 물고기 녀서-억!」
+					CALL COLORMESSAGE14("　소리를 치면 물고기가 도망가요....",C_GREEN,2,0)
 			ENDSELECT
 		ENDIF
 ENDIF
