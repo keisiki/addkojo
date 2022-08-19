@@ -1,0 +1,1024 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;파생 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;1,식스나인 
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_1
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_1_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_1_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;싸기 직전
+	ELSEIF BASE:PLAYER:2 > 8000
+		PRINTFORMW 「읏… 쯉 쥬룹…… 흣 으읏…%UNICODE(0x2665) *1%」
+		PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 눈치채고는, 머리를 앞뒤로 움직이면서 당신의 자지로부터 정액을 짜내려고 했다.
+		PRINTFORMW 당신도 이에 질세라 유유코의 단 맛 나는 질에 달라붙어 유유코에게서 쾌락을 끌어내려 했다.
+		PRINTFORMW 「으읏~~~ 읏……%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+	;연모
+	;ELSEIF TALENT:연모
+	;굴복3
+	;ELSEIF MARK:괘씸각인 == 3
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「읏… 응… 쥬르릅… 흣…… 쥽…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「읏… 응… 츄르릅…… 쥬르릅… 핥짝… 맛있어…%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「쥬룹~%UNICODE(0x2665) *1%　퐁！ …응읏…%UNICODE(0x2665) *1% 후후훗… 읍 쥬르~읍…%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;2,석간수
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_2
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_2_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_2_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;3,G스팟 자극
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_3
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_3_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_3_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;4,흐트러진 모란
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_4
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_4_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_4_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;5,수음 펠라
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_5
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_5_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_5_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;싸기 직전
+	ELSEIF BASE:PLAYER:2 > 8000
+		IF RAND:3 == 0
+			PRINTFORMW 「쌸겨가햐~？（쌀거같아~？）%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 눈치채고는 확인을 위해 말한 다음, 당신에게 또다른 쾌락을 선사했다.
+			PRINTFORMW 「쥬릅 즈즈읍…%UNICODE(0x2665) *1% 응후훗 이샹안 얼걸~（이상한 얼굴~）읍%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 자지를 천천히 쓰다듬으면서… 유유코는 득의양양하게, 그리고 조금 가학적으로 미소지었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹 쥬르르… 읏 흠칫흠칫 놀라네%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 유유코는 당신의 자지에 볼을 비비면서 사정을 유도했다.
+			PRINTFORMW 「도퓻… 도퓨도퓻%UNICODE(0x2665) *1% 참지 말고 싸버리면 기분 좋다구~？」
+			PRINTFORMW 「네엣. 문질문질, 문질문질%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「…츗… 문질문질… 츗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 눈치채고는 일부러 얕은 쾌감만 주려는 듯 버드키스를 계속했다.
+			PRINTFORMW 「…왜 그래~ 우후훗 귀여워~엇%UNICODE(0x2665) *1%」
+		ENDIF
+	;연모
+	;ELSEIF TALENT:연모
+	;굴복3
+	;ELSEIF MARK:괘씸각인 == 3
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응… 핥짝~%UNICODE(0x2665) *1%　응~ 짜고 진한 고기 맛이라 맛있어~%UNICODE(0x2665) *1% 응후훗 후훙♪」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「문질문질 쓰윽쓰윽%UNICODE(0x2665) *1%　우후훗 굉장한 얼굴…%UNICODE(0x2665) *1%　슬슬 먹어버릴까？」
+			PRINTFORMW 「아앙~ 하읍%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「……흐ー읏%UNICODE(0x2665) *1%… 흐ー읏%UNICODE(0x2665) *1　네에, 문질문질%UNICODE(0x2665) *1%」라며 유유코는 당신의 자지에 입김을 불었다.
+		ENDIF
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;6,삽입 Ｇ스팟 고문
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_6
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_6_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_6_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	;그 이외
+	ELSE
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;7,삽입 자궁구 고문
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_7
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_7_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_7_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	ELSEIF NOWEX:PLAYER:11 && TEQUIP:체위 == 1
+		IF RAND:6 == 0
+			PRINTFORMW 「하앗 앗 아아아읏%UNICODE(0x2661) *1% 가버렷%UNICODE(0x2661) *1% 가버려어어엇…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「흐앗%UNICODE(0x2661) *1% 흣 으읏 안쪽에 닿아섯%UNICODE(0x2661) *1% 안대앳%UNICODE(0x2665) *1% 앗… 큐우우웃%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「으긋%UNICODE(0x2661) *1% 앗%UNICODE(0x2661) *1% 갈거같아%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「아앗%UNICODE(0x2661) *1% 응 흐으%UNICODE(0x2665) *1% 꺄앗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흣… 흐ｰ읏%UNICODE(0x2661) *1% 읏%UNICODE(0x2661) *1% 응흣… 흐흣%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「아흣%UNICODE(0x2661) *1% 아학%UNICODE(0x2661) *1% 안쪽에 닿아서… 흣 으읏%UNICODE(0x2665) *1%」
+		ENDIF
+	;연모
+	ELSEIF TALENT:연모
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	;그 이외
+	ELSE
+		CALL YUYUKOHANYOUAEGI1
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;8,６９파이즈리
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_8
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_8_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_8_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;9,더블펠라
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_9
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_9_1
+;반환값과 TARGET을 보존, TARGET을 두 명째와 일시적으로 교대하여 두 번째 구상을 호출한 후, TARGET을 되돌려 보존한 반환값으로 RETURN한다
+;두 명째가 필요 없는 경우에는 여기서 처리
+;두 명째
+LOCAL = MASTER_POSE(4,1,1)
+LOCAL:1 = RESULT
+LOCAL:2 = TARGET
+TARGET = LOCAL
+TRYCALLFORM M_KOJO_MESSAGE_SCOM_K{TARGET}_9_2
+TARGET = LOCAL:2
+RETURN LOCAL:1
+
+;두 명째 구상
+@M_KOJO_MESSAGE_SCOM_K66_9_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;두 명째 구상
+@M_KOJO_MESSAGE_SCOM_K66_9_2
+VARSET LOCAL
+;두 명째
+LOCAL:101 = MASTER_POSE(4,1)
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;10,더블 스마타
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_10
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_10_1
+;반환값과 TARGET을 보존, TARGET을 두 명째와 일시적으로 교대하여 두 번째 구상을 호출한 후, TARGET을 되돌려 보존한 반환값으로 RETURN한다
+;두 명째가 필요 없는 경우에는 여기서 처리
+;두 명째
+LOCAL = MASTER_POSE(2,1,1)
+LOCAL:1 = RESULT
+LOCAL:2 = TARGET
+TARGET = LOCAL
+TRYCALLFORM M_KOJO_MESSAGE_SCOM_K{TARGET}_10_2
+TARGET = LOCAL:2
+RETURN LOCAL:1
+
+@M_KOJO_MESSAGE_SCOM_K66_10_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+@M_KOJO_MESSAGE_SCOM_K66_10_2
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;11,더블 파이즈리
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_11
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_11_1
+;반환값과 TARGET을 보존, TARGET을 두 명째와 일시적으로 교대하여 두 번째 구상을 호출한 후, TARGET을 되돌려 보존한 반환값으로 RETURN한다
+;두 명째가 필요 없는 경우에는 여기서 처리
+;두 명째
+LOCAL = MASTER_POSE(5,1,1)
+LOCAL:1 = RESULT
+LOCAL:2 = TARGET
+TARGET = LOCAL
+TRYCALLFORM M_KOJO_MESSAGE_SCOM_K{TARGET}_11_2
+TARGET = LOCAL:2
+RETURN LOCAL:1
+
+@M_KOJO_MESSAGE_SCOM_K66_11_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+@M_KOJO_MESSAGE_SCOM_K66_11_2
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;12,파이즈리펠라
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_12
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_12_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_12_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		IF RAND:5 == 0
+			PRINTFORMW 「네, 주물~주물… 주물주물~%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 당신의 육봉을 끼운 후, 빙글빙글하고 자신의 가슴을 이리저리 돌리면서 당신의 사정을 부추겼다.
+			PRINTFORMW 주어지는 격렬한 쾌감에… 당신의 육봉은 위에서부터 액을 뒤집어쓰게 됐다.
+			PRINTFORMW 「핥짝쥬룹…… 응후훗%UNICODE(0x2665) *1%  이대로… 결정타 꽂아줄게…%UNICODE(0x2665) *1% 츗 쥬릅%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「응후훗♪　쥬릅… 쥬릅쥬룹%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 의자에 걸터 앉아 유유코가 봉사하는 단순한 파이즈리펠라를 즐겼다…
+			PRINTFORMW 단순하기에 좋은 점도 있다. 단순하기 때문에 %마스터는% 유유코가 주는 쾌락으로 몸을 떨었다.
+			PRINTFORMW 「쥬풉… 푸핫%UNICODE(0x2665) *1%  역시, 심플한게 베스트네~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「쥬풉 응후우…… 으읏…%UNICODE(0x2665) *1%　읏…%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 무거운 젖가슴을 젖꼭지를 잡고 들면서, 그 가슴골과 입을 범했다……
+			PRINTFORMW 유유코도 당신에게 젖꼭지를 잡히면서, 날카로운 쾌감에 가슴 전체가 예민해져, 당신의 자지를 가슴으로, 입으로 평소보다 더 느껴버렸다…
+			PRINTFORMW 「응읏… 흐ー읏…%UNICODE(0x2665) *1%　흣ー%UNICODE(0x2665) *1%…%UNICODE(0x2665) *1%　…읏  후훗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「으흣… 우후훗  마치 말같네%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 위에 올라타서 필사적으로 허리를 움직였다… 깔고 앉은 파이즈리는 당신의 주도이기에 이루어지는 것.
+			PRINTFORMW 쾌락에 지배당하고 있어서는 아직 유유코의 손바닥 위에서 허리를 흔드는 격이었지만.
+			PRINTFORMW 「앗 까먹고 있었다… 후훗 쥬릅 츗 응읏…… %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+			PRINTFORMW 더욱 더 추격하듯이, %CALLNAME:MASTER%의 자지는 교묘하게 핥아졌다.
+		ELSE
+			PRINTFORMW 「쥽 쥬루룹…… 쥬루루루루룹%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신이 당한 것은 파이즈리펠라…… 당신의 자지를 끼운 채 귀두 주변을 집중적으로 괴롭히며 짜내듯이 요도를 빨아댔다…
+			PRINTFORMW 요도로부터 정액을 짜내기 위해 계속된 쾌락에, %마스터는% 눈 앞이 점멸했다.
+			PRINTFORMW 「……쥽 츗 푸핫~%UNICODE(0x2665) *1% …참아낸 거, 새어나온 거…… 둘 다 짜서 맛있네… 쥬붑쥬폽%UNICODE(0x2665) *1%」
+		ENDIF
+	;굴복3
+	;ELSEIF MARK:괘씸각인 == 3
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「네, 주물~주물… 주물주물~%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 당신의 육봉을 끼운 후, 빙글빙글하고 자신의 가슴을 이리저리 돌리면서 당신의 사정을 부추겼다.
+			PRINTFORMW 주어지는 격렬한 쾌감에… 당신의 육봉은 위에서부터 액을 뒤집어쓰게 됐다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「응후훗♪　쥬릅… 쥬릅쥬룹%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 의자에 걸터 앉아 유유코가 봉사하는 단순한 파이즈리펠라를 즐겼다…
+			PRINTFORMW 단순하기에 좋은 점도 있다. 단순하기 때문에 %마스터는% 유유코가 주는 쾌락으로 몸을 떨었다.
+		ELSE
+			PRINTFORMW 「쥽 쥬루룹…… 쥬루루루루룹%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신이 당한 것은 파이즈리펠라…… 당신의 자지를 끼운 채 귀두 주변을 집중적으로 괴롭히며 짜내듯이 요도를 빨아댔다…
+			PRINTFORMW 요도로부터 정액을 짜내기 위해 계속된 쾌락에, %마스터는% 눈 앞이 점멸했다.
+			PRINTFORMW 「……쥽 츗 푸핫~%UNICODE(0x2665) *1% …참아낸 거, 새어나온 거…… 둘 다 짜서 맛있네… 우후훗%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;13,교호 삽입
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_13
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_13_1
+;반환값과 TARGET을 보존, TARGET을 두 명째와 일시적으로 교대하여 두 번째 구상을 호출한 후, TARGET을 되돌려 보존한 반환값으로 RETURN한다
+;두 명째가 필요 없는 경우에는 여기서 처리
+;두 명째
+LOCAL = MASTER_POSE(6,1,1)
+LOCAL:1 = RESULT
+LOCAL:2 = TARGET
+TARGET = LOCAL
+TRYCALLFORM M_KOJO_MESSAGE_SCOM_K{TARGET}_13_2
+TARGET = LOCAL:2
+RETURN LOCAL:1
+
+@M_KOJO_MESSAGE_SCOM_K66_13_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+@M_KOJO_MESSAGE_SCOM_K66_13_2
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;14,Ｓ상 결장 고문
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_14
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_14_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_14_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	;그 이외
+	ELSE
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+;==================================================
+;15,질내 고문
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_15
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_15_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_15_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	;그 이외
+	ELSE
+		CALL YUYUKOHANYOUAEGI2
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1
+
+;==================================================
+;17,유두 동시 빨기
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K66_17
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K66_17_1
+RETURN 1
+@M_KOJO_MESSAGE_SCOM_K66_17_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+;미기입
+;CALLFORM M_KOJO_MESSAGE_COM_K66_{SELECTCOM}_1
+RETURN 1

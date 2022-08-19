@@ -1,0 +1,1254 @@
+﻿;-------------------------------------------------
+;노예가 절정할 때의 구상
+;NOWEX:0～4 CVABM절정
+;NOWEX:6 이중절정
+;NOWEX:7 삼중절정
+;NOWEX:8 사중절정
+;NOWEX:9 오중절정
+;NOWEX:10 분유
+;NOWEX:11 사정
+;NOWEX:12 방뇨
+;적당히 조합해서 사용해 주세요
+;-------------------------------------------------
+@M_KOJO_MESSAGE_PALAMCNG_B_K66
+CALL PALAM_MESSAGE_B
+;-------------------------------------------------
+;분유
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && NOWEX:분유
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 유유코는 격렬하게 절정했다.
+	ELSE
+		PRINTFORMW 「꺄아아읏%UNICODE(0x2665) *1%！！　하ー앗… 하ー앗……%UNICODE(0x2665) *1%」
+		IF RAND:3 == 0
+			PRINTFORMW 「아~ 아앗… 모처럼의 %CALLNAME:MASTER% 전용 밀크였는데 아까워엇~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「네에 우유에요오~ 우훗 우후훗… 읏%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「내 우유 어때？ …맛있어？　그래… 다행이다%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;사정
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:사정
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;방뇨
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:방뇨
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;절정
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;오중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:오중절정
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 다섯 겹으로 겹친 절정을 했다.
+		ELSE
+			PRINTFORMW 「~~읏%UNICODE(0x2665) *1% ~~읏읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1% 깃%UNICODE(0x2665) *1% 이゛으……읏%UNICODE(0x2665) *1% ……읏%UNICODE(0x2665) *1% 아゛읏%UNICODE(0x2665) *1% 히으゛으으゛우……읏%UNICODE(0x2665) *1% ――읏, 갸버려어어엇……%UNICODE(0x2665) *1%%UNICODE(0x2665) *1% 응긋%UNICODE(0x2665) *1% 크으%UNICODE(0x2665) *1% 크으으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 온몸을 경련시키면서, 몸을 마음껏 뒤로 젖혔다.
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;사중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:사중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+			IF FLAG:70
+				PRINTFORMW 얼어붙은 시간 속에서 유유코는 네 겹으로 겹친 절정을 했다.
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「읏~~~ 읏%UNICODE(0x2665) *1%　대단ㅎ%UNICODE(0x2665) *1% 흐으응읏 으응읏%UNICODE(0x2665) *1% 뭐얏 이거어%UNICODE(0x2665) *1%」
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「하아, 아읏%UNICODE(0x2665) *1% 대단해애애앳 너무 기분 좋아서%UNICODE(0x2665) *1%머리가 이상해져버려어엇%UNICODE(0x2665) *1% 요오무우웃~%UNICODE(0x2665) *1%」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「흐아아…앗%UNICODE(0x2665) *1% 아아아아아앗 아아앗…%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「흣 으으읏%UNICODE(0x2665) *1%… 으응읏…%UNICODE(0x2665) *1% 읏… 하아앗 응읏%UNICODE(0x2665) *1% 전부 기분좋아앗%UNICODE(0x2665) *1%」
+			ELSE
+				PRINTFORMW 「…으 흣 아하아…%UNICODE(0x2665) *1%　굉장… 머리가 이상해져버려%UNICODE(0x2665) *1%… 유카리이잇%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			ENDIF
+		[SKIPSTART]
+		SELECTCASE NOWEX:사중절정
+			;C＆V＆A＆B절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆A＆M절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆B＆M절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆A＆B＆M절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;V＆A＆B＆M절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		[SKIPEND]
+	ENDIF
+	;-------------------------------------------------
+	;삼중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF NOWEX:삼중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+			IF FLAG:70
+				PRINTFORMW 얼어붙은 시간 속에서 유유코는 세 겹으로 겹친 절정을 했다.
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「읏~~~ 읏%UNICODE(0x2665) *1%　대단ㅎ%UNICODE(0x2665) *1% 기분조아앗%UNICODE(0x2665) *1%」
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「하아, 아읏%UNICODE(0x2665) *1% 대단해앳%UNICODE(0x2665) *1% 요오무웃~%UNICODE(0x2665) *1%」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「흐아아… 읏%UNICODE(0x2665) *1% 응읏 아아아앗%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「흐읏 으으읏%UNICODE(0x2665) *1%… 으응읏…%UNICODE(0x2665) *1% 읏… 하앗 응읏%UNICODE(0x2665) *1%」
+			ELSE
+				PRINTFORMW 「…으 흣 아하아…%UNICODE(0x2665) *1%　굉장…%UNICODE(0x2665) *1% 우후훗%UNICODE(0x2665) *1%」
+			ENDIF
+		[SKIPSTART]
+		SELECTCASE NOWEX:삼중절정
+			;C＆V＆A절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;B＆V＆A절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;C＆B＆A절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆B절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆M절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+			;B＆V＆M절정
+			CASE 6
+				PRINTFORMW 
+				RETURN 1
+			;A＆V＆M절정
+			CASE 7
+				PRINTFORMW 
+				RETURN 1
+			;C＆B＆M절정
+			CASE 8
+				PRINTFORMW 
+				RETURN 1
+			;A＆B＆M절정
+			CASE 9
+				PRINTFORMW 
+				RETURN 1
+			;C＆A＆M절정
+			CASE 10
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		[SKIPEND]
+	ENDIF
+	;-------------------------------------------------
+	;이중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF NOWEX:이중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+			IF FLAG:70
+				PRINTFORMW 얼어붙은 시간 속에서 유유코는 절정했다.
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「읏~~~ 읏%UNICODE(0x2665) *1% 기분조아아%UNICODE(0x2665) *1%」
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「하아, 아읏%UNICODE(0x2665) *1% 우후훗%UNICODE(0x2665) *1%」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「흐아아… 읏%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「흐읏 으으읏%UNICODE(0x2665) *1%… 하앗 응읏%UNICODE(0x2665) *1%」
+			ELSE
+				PRINTFORMW 「…으 흣 아하아…%UNICODE(0x2665) *1% 우후훗%UNICODE(0x2665) *1%」
+			ENDIF
+		[SKIPSTART]
+		SELECTCASE NOWEX:이중절정
+			;C＆V절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;C＆A절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;V＆A절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆B절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;V＆B절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+			;A＆B절정
+			CASE 6
+				PRINTFORMW 
+				RETURN 1
+			;A＆M절정
+			CASE 7
+				PRINTFORMW 
+				RETURN 1
+			;V＆M절정
+			CASE 8
+				PRINTFORMW 
+				RETURN 1
+			;C＆M절정
+			CASE 9
+				PRINTFORMW 
+				RETURN 1
+			;B＆M절정
+			CASE 10
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		[SKIPEND]
+	ENDIF
+	IF NOWEX:C절정
+		;시간 중
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 클리토리스로 절정했다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「응읏~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「흐아아앗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「콩알로 가버렸어%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「콩알로 가버리다닛%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「시러엇%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+	IF NOWEX:V절정
+		;시간 중
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 질내로 절정했다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「후웃 응읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「좀 더 도려내듯이 해줘어… 우후훗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「질 안쪽이… 기분 좋아앗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흐아앗 이거 기분 좋아앗%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「응읏 흐읏…%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+	IF NOWEX:A절정
+		;시간 중
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 애널로 절정했다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「옷 호옥%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「흐앗, 아응%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「애널 기분 좋아앗… 꺄아%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흐으 앗%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「더 더 도려내듯이…%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+	IF NOWEX:B절정
+		;시간 중
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 그 중량감 듬뿍의 가슴으로 절정했다.
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「쥐어짜는 느낌 굉장하네에%UNICODE(0x2665) *1%」
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「핫 아앗… 으응읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「그런… 가슴으로마안%UNICODE(0x2665) *1%」
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「히야앗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「응읏 흐으읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「가슴, 대단해앳%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「가슴, 괴롭히는거 좋아하는거지잇%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흐아아…앗%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「젖꼭지 좋아아… 좀 더 꼬집어줘어엇%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+	IF NOWEX:M절정
+		;시간 중
+		IF FLAG:70
+			PRINTFORMW 얼어붙은 시간 속에서 유유코는 벚꽃 맛의 입 안으로 절정했다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「~~~~읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「쥬룹 응읏 흐으…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「응읏… 흣… 푸하아~~~앗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「힛 아앗 응으읏%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「응읏 쥬룹 푸하아…앗%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;노예의 수면절정 시의 구상
+;-------------------------------------------------
+@M_KOJO_MESSAGE_PALAMCNG_B2_K66
+CALL PALAM_MESSAGE_B
+;-------------------------------------------------
+;분유
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:분유
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;사정
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:사정
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;방뇨
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL && NOWEX:방뇨
+	PRINTFORMW 
+ENDIF
+;-------------------------------------------------
+;절정
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;오중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:오중절정
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;사중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:사중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+		;[SKIPSTART]
+		SELECTCASE NOWEX:사중절정
+			;C＆V＆A＆B절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆A＆M절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆B＆M절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆A＆B＆M절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;V＆A＆B＆M절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		;[SKIPEND]
+	ENDIF
+	;-------------------------------------------------
+	;삼중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:삼중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+		;[SKIPSTART]
+		SELECTCASE NOWEX:삼중절정
+			;C＆V＆A절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;B＆V＆A절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;C＆B＆A절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆B절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;C＆V＆M절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+			;B＆V＆M절정
+			CASE 6
+				PRINTFORMW 
+				RETURN 1
+			;A＆V＆M절정
+			CASE 7
+				PRINTFORMW 
+				RETURN 1
+			;C＆B＆M절정
+			CASE 8
+				PRINTFORMW 
+				RETURN 1
+			;A＆B＆M절정
+			CASE 9
+				PRINTFORMW 
+				RETURN 1
+			;C＆A＆M절정
+			CASE 10
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		;[SKIPEND]
+	ENDIF
+	;-------------------------------------------------
+	;이중절정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF NOWEX:이중절정
+		;부위를 지정하지 않고 간편하게 쓸 경우 [SKIPSTART] & [SKIPEND]의 코멘트 아웃을 제거하고 [SKIPSTART] 와 이 코멘트 사이에 적어주세요
+		;[SKIPSTART]
+		SELECTCASE NOWEX:이중절정
+			;C＆V절정
+			CASE 1
+				PRINTFORMW 
+				RETURN 1
+			;C＆A절정
+			CASE 2
+				PRINTFORMW 
+				RETURN 1
+			;V＆A절정
+			CASE 3
+				PRINTFORMW 
+				RETURN 1
+			;C＆B절정
+			CASE 4
+				PRINTFORMW 
+				RETURN 1
+			;V＆B절정
+			CASE 5
+				PRINTFORMW 
+				RETURN 1
+			;A＆B절정
+			CASE 6
+				PRINTFORMW 
+				RETURN 1
+			;A＆M절정
+			CASE 7
+				PRINTFORMW 
+				RETURN 1
+			;V＆M절정
+			CASE 8
+				PRINTFORMW 
+				RETURN 1
+			;C＆M절정
+			CASE 9
+				PRINTFORMW 
+				RETURN 1
+			;B＆M절정
+			CASE 10
+				PRINTFORMW 
+				RETURN 1
+		ENDSELECT
+		;[SKIPEND]
+	ENDIF
+	IF NOWEX:C절정
+		;초강절정C
+		IF NOWEX:C절정 == 3
+			PRINTFORMW 
+		;강절정C
+		ELSEIF NOWEX:C절정 == 2
+			PRINTFORMW 
+		;절정C
+		ELSE
+			PRINTFORMW 
+		ENDIF
+	ENDIF
+	IF NOWEX:V절정
+		;초강절정V
+		IF NOWEX:V절정 == 3
+			PRINTFORMW 
+		;강절정V
+		ELSEIF NOWEX:V절정 == 2
+			PRINTFORMW 
+		;절정V
+		ELSE
+			PRINTFORMW 
+		ENDIF
+	ENDIF
+	IF NOWEX:A절정
+		;초강절정A
+		IF NOWEX:A절정 == 3
+			PRINTFORMW 
+		;강절정A
+		ELSEIF NOWEX:A절정 == 2
+			PRINTFORMW 
+		;절정A
+		ELSE
+			PRINTFORMW 
+		ENDIF
+	ENDIF
+	IF NOWEX:B절정
+		;강절정B
+		IF NOWEX:B절정 == 3
+			PRINTFORMW 
+		;강절정B
+		ELSEIF NOWEX:B절정 == 2
+			PRINTFORMW 
+		;절정B
+		ELSE
+			PRINTFORMW 
+		ENDIF
+	ENDIF
+	IF NOWEX:M절정
+		;초강절정M
+		IF NOWEX:M절정 == 3
+			PRINTFORMW 
+		;강절정M
+		ELSEIF NOWEX:M절정 == 2
+			PRINTFORMW 
+		;절정M
+		ELSE
+			PRINTFORMW 
+		ENDIF
+	ENDIF
+ENDIF
+
+
+;-------------------------------------------------
+;사정에 관한 구상의 표시
+;일시적으로 TARGET을 구상의 주인으로 설정합니다
+;-------------------------------------------------
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_00(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;TARGET의 손에 의한 사정으로, 사정 대상이 TARGET 아님
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_0(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;콘돔
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 콘돔에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:3 == 0
+			PRINTFORMW 「헤에~엣 엄청 진해~… 우후훗%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「고무가 이렇게나 달라붙다니 굉장해…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「스~읏…%UNICODE(0x2665) *1% 수컷의 향기… 맛있을거 같아%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응… 이만큼이나 싸다니~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「고무가 빵빵하네에…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「…스읍스읍…… 좋은 냄새애%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_23(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;이라마치오
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 입 안에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐으읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫… 진해%UNICODE(0x2665) *1%　케풉%UNICODE(0x2665) *1% 후훗, 잘 먹었습니다%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿… 푸하아…%UNICODE(0x2665) *1%　（목에 걸려있어엇%UNICODE(0x2665) *1%）응읏 꿀꺽 읏…%UNICODE(0x2665) *1%　쟐 머것슙니다핫%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「후으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「……꿀꺽 응읏%UNICODE(0x2665) *1% 우훗… 농후한 밀크 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐으읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫…%UNICODE(0x2665) *1%　우후훗 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿…%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　푸핫%UNICODE(0x2665) *1% 잘 먹었습니다」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「후으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「%CALLNAME:MASTER%의 밀크, 잘 먹었습니다%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_22(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;식스나인
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;동시사정
+	IF NOWEX:사정 && NOWEX:MASTER:사정
+		PRINTFORMW
+		RETURN 1
+	;TARGET만 사정
+	ELSEIF NOWEX:사정
+		;PLAYER에 달려있다
+		IF GETBIT(TALENT:PLAYER:성별,1)
+			PRINTFORMW
+			RETURN 1
+		;달리지 않았다
+		ELSE
+			PRINTFORMW
+			RETURN 1
+		ENDIF
+	;PLAYER만 사정
+	ELSE
+		;TARGET에 달려있다
+		IF GETBIT(TALENT:성별,1)
+			PRINTFORMW
+			RETURN 1
+		;달리지 않았다
+		ELSE
+			PRINTFORMW
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_21(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리펠라
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 입 안에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫… 진해%UNICODE(0x2665) *1%　케풉  후훗, 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			PRINTFORMW 「우후훗, 가슴 기분 좋았어~？」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿… 푸하아…%UNICODE(0x2665) *1%　（목에 걸려있어엇%UNICODE(0x2665) *1%）응읏 꿀꺽 읏…%UNICODE(0x2665) *1%　쟐 머것슙니다핫%UNICODE(0x2665) *1%」
+			PRINTFORMW 「우후훗 가슴에도 늘어져서… 엄청나네에…%UNICODE(0x2665) *1%　쥬룹 츄르릅…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「흐으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「…………꿀꺽 응읏%UNICODE(0x2665) *1% 우훗… 농후한 밀크 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			PRINTFORMW 「……내 농후 파이즈리도 맛있었을까나？　그래？ 후훗♪」
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫…%UNICODE(0x2665) *1%　우후훗 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가슴 반죽하듯이 하면서, 요도에 남은 것도 쥐어 짜내줄게에~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿…%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　푸핫%UNICODE(0x2665) *1% 잘 먹었습니다」
+			PRINTFORMW 「아앙 가슴에까지 늘어지고 아깝다… 핥짝… 핥짝%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「흐으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「%CALLNAME:MASTER%의 밀크, 잘 먹었습니다%UNICODE(0x2665) *1%」
+			PRINTFORMW 「가슴으로 하는 봉사는 자신 있다구♪」
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_20(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;수음펠라
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 입 안에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫… 진해%UNICODE(0x2665) *1%　케풉  후훗, 잘 먹었습니닷%UNICODE(0x2665) *1%　내 손 기분 좋았어？」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿… 푸하아…%UNICODE(0x2665) *1%　（목에 걸려있어엇%UNICODE(0x2665) *1%）응읏 꿀꺽 읏…%UNICODE(0x2665) *1%　쟐 머것슙니다핫%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며, 막 농후한 사정을 마친 %CALLNAME:MASTER%의 육봉을 손으로 쓰다듬었다.
+			RETURN 1
+		ELSE
+			PRINTFORMW 「흐으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「……꿀꺽 응읏%UNICODE(0x2665) *1% 우훗… 농후한 밀크 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며, %CALLNAME:MASTER%의 자지를 빨대마냥 손에 들고 빨았다.
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 흐읏~… 응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫…%UNICODE(0x2665) *1%　우후훗 잘 먹었습니닷%UNICODE(0x2665) *1%　기분 좋았지 내 손」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹… 쥬루룹… 읏 응긋%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿…%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　푸핫%UNICODE(0x2665) *1% 잘 먹었습니다」
+			PRINTFORMW 라고 말하며, 막 사정한 %CALLNAME:MASTER%의 육봉을 손으로 쓰다듬었다.
+			RETURN 1
+		ELSE
+			PRINTFORMW 「흐으… 쥬루%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　으베에…엣%UNICODE(0x2665) *1%」
+			PRINTFORMW 「%CALLNAME:MASTER%의 밀크, 잘 먹었습니다%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며, %CALLNAME:MASTER%の의 자지를 빨대마냥 손에 들고 빨았다.
+			RETURN 1
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_9(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널봉사
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_8(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;거품 춤
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;동시사정
+	IF NOWEX:사정 && NOWEX:MASTER:사정
+		PRINTFORMW
+		RETURN 1
+	;TARGET만 사정
+	ELSEIF NOWEX:사정
+		;PLAYER에 달려있다
+		IF GETBIT(TALENT:PLAYER:성별,1)
+			PRINTFORMW
+			RETURN 1
+		;달리지 않았다
+		ELSE
+			PRINTFORMW
+			RETURN 1
+		ENDIF
+	;PLAYER만 사정
+	ELSE
+		;TARGET에 달려있다
+		IF GETBIT(TALENT:성별,1)
+			PRINTFORMW
+			RETURN 1
+		;달리지 않았다
+		ELSE
+			PRINTFORMW
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_7(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;풋잡
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 발에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		PRINTFORMW 「흐응~%UNICODE(0x2665) *1%」
+		PRINTFORMW 「이렇게나 진한 거 싸버린거네~%UNICODE(0x2665) *1%」
+		RETURN 1
+	ELSE
+		PRINTFORMW 「…이런걸로 싸버리다니… 의외로 %마스터는% 괴롭혀지는거 좋아하는걸까~」
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_6(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;스마타
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_5(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터%는 유유코의 가슴에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:10 == 0
+			PRINTFORMW 「읏~%UNICODE(0x2665) *1% 넷, 흐물흐물하네에%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「가슴에다 흐물흐물한 농후정액 뷰쿠뷰쿠 싸버린 가슴성인%UNICODE(0x2665) *1%　게다가 난 그런 가슴성인을 먹어버리는 파이즈리 요괴입니닷~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「농후한 정액이 유두에서 늘어지니까… 모유… 아니 연유 뿌린거같아…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「따뜻해… 우후훗 마치 용암처럼 뜨거운데다 거품까지 일고 있네~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「우와아… 엄청나… 봐봐… 가슴 사이 벌리면… 끈적끈적해서…%UNICODE(0x2665) *1%　젤리같은 것도 섞여있네에%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「가슴을 임신시킨다는 느낌으로, 우훗… 가슴에 울리는거 기분 좋아…%UNICODE(0x2665) *1%　 꺗！ 넘쳐 버렸어…」
+			RETURN 1
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「응읏~~~~~%UNICODE(0x2665) *1%　꽈악ー하고 누르면……… 우훗 후훗%UNICODE(0x2665) *1% 뷰쿠뷰쿠뷰쿠… 뷰쿠뷰쿠뷰쿠… 뷰쿠뷰쿠뷰쿠…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「읏~…… 마지막으론 손 안쓰고 압박감만으로, 흐물흐물한거 사정해버렸네~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「네~, 우후훗. 내 가슴에다 이만큼이나 싸버리다니… 굉장하네에~%UNICODE(0x2665) *1%　따뜻해애…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「%CALLNAME:MASTER%의 진한거로 가슴이 임신해버리겠어~%UNICODE(0x2665) *1% 우훗 변태라니까%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:10 == 0
+			PRINTFORMW 「읏~%UNICODE(0x2665) *1% 넷, 흐물흐물하네에%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「가슴에다 흐물흐물한 정액 뷰쿠뷰쿠 싸버린 가슴성인%UNICODE(0x2665) *1%　게다가 난 그런 가슴성인을 포식하는 파이즈리성인이얏~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「정액이 유두에서 늘어지니까… 모유같아…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「따뜻해… 우후훗 신선한 정액은 좋네에%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「우와아… 엄청나… 봐봐… 가슴 사이 벌리면… 끈적끈적해…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「가슴을 임신시킨다는 느낌으로, 우훗… 가슴에 울리는거 기분 좋아…」
+			RETURN 1
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「응읏~~~~~%UNICODE(0x2665) *1%　꽈악ー하고 누르면……… 우훗 후훗%UNICODE(0x2665) *1% 뷰쿠뷰쿠뷰쿠…%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「읏~…… 마지막으론 손 안쓰고 압박감만으로 사정해버렸네~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「네~, 우후훗. 내 가슴에다 이만큼이나 싸버리다니… 굉장하네에~%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「%CALLNAME:MASTER% 걸로 가슴 임신해버리겠어~%UNICODE(0x2665) *1% 우훗 변태라니까%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_4(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;펠라치오
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 입 안에 정액을 싸질렀다.
+	ELSEIF TALENT:MASTER:농후정액
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 핥짝 흣 으읏… 쥬룹… 읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫… 진해%UNICODE(0x2665) *1%　케풉%UNICODE(0x2665) *1%  후훗, 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹 츗 응읏 핥짝… 응읏읏 흐으…%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「꺗…%UNICODE(0x2665) *1%　흘러 넘치고 있어%UNICODE(0x2665) *1%　응읏 꿀꺽 읏…%UNICODE(0x2665) *1%　응큿… 쟐 머것슙니다핫%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「응~ 응읏 핥짝%UNICODE(0x2665) *1% 읏 기분죠아？%UNICODE(0x2665) *1%　응…읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「……응후훗♪ 꿀꺽%UNICODE(0x2665) *1%　우훗… 농후 밀크 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「응읏 핥짝 흣 으읏… 쥬룹… 읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「푸핫…%UNICODE(0x2665) *1%　우후훗 잘 먹었습니닷%UNICODE(0x2665) *1%」
+			RETURN 1
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹 츗 응읏 핥짝… 응읏읏 흐으…%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 「응큿 응큿응큿…%UNICODE(0x2665) *1% 응읏%UNICODE(0x2665) *1%　푸핫%UNICODE(0x2665) *1% 잘 먹었습니다」
+			RETURN 1
+		ELSE
+			PRINTFORMW 「응~ 응읏 핥짝%UNICODE(0x2665) *1% 읏 기분죠아？%UNICODE(0x2665) *1%　응…읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「%CALLNAME:MASTER%의 밀크, 잘 먹었습니다%UNICODE(0x2665) *1%」
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_3(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;수음
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 %마스터는% 유유코의 손 안에 사정했다.
+	ELSEIF TALENT:MASTER:농후정액
+		PRINTFORMW 「흐응, 진하네에%UNICODE(0x2665) *1%」
+		RETURN 1
+	ELSE
+		PRINTFORMW 「우훗 네, 뷰루뷰룻%UNICODE(0x2665) *1%」
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_2(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF RAND:3 == 0
+		PRINTFORMW 「%마스터가%… 따뜻해애%UNICODE(0x2665) *1%」
+		RETURN 1
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「엉덩이… 기분 좋네에%UNICODE(0x2665) *1%」
+		RETURN 1
+	ELSE
+		PRINTFORMW 「우후훗, 임신할거같아%UNICODE(0x2665) *1%」
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A_K66_1(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;질 안
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연모
+		IF TALENT:MASTER:농후정액
+			IF RAND:5 == 0
+				PRINTFORMW 「흣 아앗… %CALLNAME:MASTER% 고무 같은거에 싸버리면 안돼앳%UNICODE(0x2665) *1%… 전부 전부 줘엇%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「………~~~~~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　두근두근… 맥박치는 것도 기분 좋아%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「흐물흐물한거어… 전부 전부 내 안에 싸버린거네에… 잘 되면… 낳아줄테니까… 응읏%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「핫 아아앗…… 너무 진해서… 굉장해%UNICODE(0x2665) *1% 안쪽… 만족해버려어…%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSE
+				PRINTFORMW 「아핫%UNICODE(0x2665) *1% 흐읏… 임신, 할때까지 받아줄까…%UNICODE(0x2665) *1%」
+				RETURN 1
+			ENDIF
+		ELSE
+			IF RAND:3 == 0
+				PRINTFORMW 「흣 아앗… %CALLNAME:MASTER% 고무 같은거에 싸버리면 안돼앳%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「…~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　두근두근… 맥박치는 것도 기분 좋아%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「우훗 전부 전부 내 안에 싸버린거네에… 잘 되면… 낳아줄테니까… 응읏%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「핫 아아앗……%UNICODE(0x2665) *1% 안쪽… 만족해버려어…%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSE
+				PRINTFORMW 「우훗%UNICODE(0x2665) *1% 흐읏… 이대로 흘러넣어줄까%UNICODE(0x2665) *1%」
+				RETURN 1
+			ENDIF
+		ENDIF
+	ELSE
+		IF TALENT:MASTER:농후정액
+			IF RAND:3 == 0
+				PRINTFORMW 「우후훗 이렇게나 농후한거 부어져버리면, 아기… 생겨버릴지도… 응읏%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「우후훗 꿀꺽꿀꺽하고 자궁이 %CALLNAME:MASTER%의 진한거 마시고 있어…%UNICODE(0x2665) *1%　~~~~읏  잘 먹었습니닷…%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSE
+				PRINTFORMW 「우훗%UNICODE(0x2665) *1%　하앗 흣…%UNICODE(0x2665) *1% 농후한게 배 안까지 벌컥벌컥 올라와서… 기분 좋앗%UNICODE(0x2665) *1%」
+				RETURN 1
+			ENDIF
+		ELSE
+			IF RAND:3 == 0
+				PRINTFORMW 「괜찮다구~%UNICODE(0x2665) *1% 유령이니까 좋아하는대로… %마스터가% 원하는대로 부어줘%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「네에, 두근두근두근두근… 우훗, 아직도 싸고 있네에%UNICODE(0x2665) *1%」
+				RETURN 1
+			ELSE
+				PRINTFORMW 「우훗%UNICODE(0x2665) *1%　하앗 흣…？　에~ 이게 끝이야？　좀 더어~%UNICODE(0x2665) *1%」
+				RETURN 1
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;면간 사정에 관한 구상의 표시
+;일시적으로 TARGET을 구상의 주인으로 한다
+;-------------------------------------------------
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_0(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;콘돔
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_23(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;이라마치오
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_7(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;풋잡
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_5(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;파이즈리
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_4(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;펠라치오
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_3(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;수음
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_2(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;애널
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+@M_KOJO_MESSAGE_PALAMCNG_A2_K66_1(ARG)
+CALL PALAM_MESSAGE_A
+;-------------------------------------------------
+;질 안
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1
+
+
+@M_KOJO_MESSAGE_PALAMCNG_F_K66(ARG)
+CALL PALAM_MESSAGE_F
+;-------------------------------------------------
+;애태우기
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORMW 
+	RETURN 1
+ENDIF
+RETURN 1

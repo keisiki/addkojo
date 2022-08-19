@@ -1,0 +1,553 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;봉사계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;80,수음
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_80
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_80_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_80_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「우후훗 훌륭하네에… 냄새도 정말 맛있을 거 같고 포만감도 좋을 거 같아…%UNICODE(0x2665) *1%」
+		PRINTFORMW 라고 말하면서 유유코 님은 싱글벙글 웃으며 당신의 육봉을 사랑스럽다는 듯이 어루만진다.
+		PRINTFORMW 「우훗…♪ 잔뜩 쓰다듬어줄테니깟~♪」
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;싸기 직전
+	ELSEIF BASE:PLAYER:2 > 8000
+		IF RAND:3 == 0
+			PRINTFORMW 「어머？ 이제 쌀거같아%UNICODE(0x2665) *1%　좋아~ 원하는 곳에 싸버려도…♪」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「후훙~%UNICODE(0x2665) *1%　의외로 잘하지~%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「도퓨도퓻%UNICODE(0x2665) *1%　잔뜩 싸버리자~♪」
+		ENDIF
+	;연모
+	ELSEIF TALENT:연모
+		IF RAND:5 == 0
+			PRINTFORMW 「빨고 싶어… 빨고 싶어어… 저기 괜찮은거지%UNICODE(0x2665) *1%　아앙ー 허락받아야 먹게 됐어… 후훗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「응후훗%UNICODE(0x2665) *1%　네 스윽스윽%UNICODE(0x2665) *1%… 문질문질…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「착하지… 우후훗 귀두 애무당해서 괴로워하는 얼굴~ 재밌어… 후훗」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「……스ー읍… 읏…%UNICODE(0x2665) *1%　좋은 냄새… 흐ー읏… 우후훗%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「꺄읏%UNICODE(0x2665) *1%　우후훗 날뛰고 있으니까 마치 다른 생물 같아%UNICODE(0x2665) *1%」
+		ENDIF
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		IF RAND:3 == 0
+			PRINTFORMW （핥고 싶어… 핥고싶어핥고싶어…%UNICODE(0x2665) *1%  자지 빨고싶어）
+			PRINTFORMW 「우후훗 왜 그래？ 읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「씩씩하네에… 우후훗%UNICODE(0x2665) *1% 스ー읍… 스ー읍…%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「빨리이… 싸줘？ 빨리 싸줘어… 우후훗%UNICODE(0x2665) *1%」
+		ENDIF
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「기분 좋아？　우후훗 참지 않아도 괜찮다굿%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흠칫흠칫 맥박 뛰고 있네. 괜찮아… 참지 않아도 돼. 전부 받아줄게%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「후ー웃… 우후후, 입김만 불어줘도 흠칫흠칫해서 귀엽네%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;81,펠라치오
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_81
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_81_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_81_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「그~럼~… 잘 먹겠습니다~… 앙%UNICODE(0x2665) *1%」
+		PRINTFORMW 라고 말한 유유코 님은 싱글벙글 웃으면서 당신의 육봉을 사랑스럽다는 듯이 어루만진 다음, 기세 좋게 덥썩 물어왔다.
+		PRINTFORMW 너무 잘 달라붙어와서 진짜로 먹는건가 생각했지만…
+		PRINTFORMW 「응흐읏… 쥬룹… 응읏…… 후훗……%UNICODE(0x2665) *1%」
+		PRINTFORMW 의외로, 유유코는 맛있다고 빨고 있었다.
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;싸기 직전
+	ELSEIF BASE:PLAYER:2 > 8000
+		IF RAND:3 == 0
+			PRINTFORMW 「쌸겨가햐~？（쌀거같아~？）%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 눈치채고는 확인을 위해 말한 다음, 당신에게 또다른 쾌락을 선사했다.
+			PRINTFORMW 「쥬릅 즈즈읍…%UNICODE(0x2665) *1% 응후훗 이샹안 얼걸~（이상한 얼굴~）읍%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹 쥬르르… 읏 흠칫흠칫 따끈따끈%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 유유코는 당신의 자지에 볼을 비비면서 사정을 유도했다.
+			PRINTFORMW 「도퓻… 도퓨도퓻%UNICODE(0x2665) *1% 참지 말고 싸버리면 기분 좋다구~？」
+		ELSE
+			PRINTFORMW 「…츗…… 츗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 눈치채고는 일부러 얕은 쾌감만 주려는 듯 버드키스를 계속했다.
+			PRINTFORMW 「……왜 그래~ 우후훗 귀여워~엇%UNICODE(0x2665) *1%」
+		ENDIF
+	;연모
+	ELSEIF TALENT:연모
+		IF RAND:5 == 0
+			PRINTFORMW 「응… 핥짝~%UNICODE(0x2665) *1%　응~ 짜고 진한 고기 맛이라 맛있어~%UNICODE(0x2665) *1% 응후훗 후훙♪」
+			PRINTFORMW 「응… 읏%UNICODE(0x2665) *1%　푸핫 더는 안대앳~ …이거 없이는 살 수 없어…%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 육봉의 맛을 충분히 즐기면서 자지를 계속 빠는 유유코…… 그녀는 행복해하는 표정을 지었다.
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「쥬룹~%UNICODE(0x2665) *1%　퐁！ …응읏…%UNICODE(0x2665) *1% 후훗 읍 쥬르읍…%UNICODE(0x2665) *1%」
+			PRINTFORMW 뿌리까지 삼키고는… 단숨에 뽑아내려는 듯한 움직임으로 당신의 자지를 괴롭히는 유유코 님.
+			PRINTFORMW 1스트로크만으로도 엄청난 쾌락을 안겨줘서 당신은 견디느라 벅찼지만……
+			PRINTFORMW 「……흐ー읏… 흐ー읏… 응흣…%UNICODE(0x2665) *1%」라며 유유코도 조금 괴로운 듯이 땀을 흘렸다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「싸버려, 싸버렷%UNICODE(0x2665) *1%　우후훗…%UNICODE(0x2665) *1%　아앙~ 하읍%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 자지를 격렬하게 춤추는 것처럼 먹어버리듯, 격렬하게 빠는 것을 계속했다.
+			PRINTFORMW 「섀어나오는거 마시혀~%UNICODE(0x2665) *1%　쥬룹쥬룹 응읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「읏… 응… 츄르르…… 쥬릅 응 핥짝 맛있어…%UNICODE(0x2665) *1%」
+			PRINTFORMW 「…기분 좋지… 좋아 %CALLNAME:MASTER%도 기분 좋아졌으면 하니까%UNICODE(0x2665) *1%」
+			PRINTFORMW 그녀는 그렇게 말하고는 당신의 자지를 즐기면서도, 애정 듬뿍 담긴 봉사를 계속했다.
+		ELSE
+			PRINTFORMW 「…응읏 으응응읏~%UNICODE(0x2665) *1%　응후훗… 푸하앗… 어때？ 내 볼 부드럽지~？ 응읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「……읏%UNICODE(0x2665) *1% 응읏… 흣…%UNICODE(0x2665) *1%…%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 귀두를 뺨에 밀어넣고 듬뿍… 시간을 들여 즐겼다……
+		ENDIF
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		IF RAND:3 == 0
+			PRINTFORMW 「응… 핥짝~%UNICODE(0x2665) *1%　응~ 짜고 진한 고기 맛이라 맛있어~%UNICODE(0x2665) *1% 응후훗 후훙♪」
+			PRINTFORMW 유유코는 당신의 육봉을 잔뜩 맛보면서 당신과의 행위를 즐겼다… 떨어져버린거지？
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「쥬룹~%UNICODE(0x2665) *1%　퐁！ …응읏…%UNICODE(0x2665) *1% 후후훗… 읍 쥬르~읍…%UNICODE(0x2665) *1%」
+			PRINTFORMW 뿌리까지 삼키고는… 단숨에 뽑아내려는 듯한 움직임으로 당신의 자지를 괴롭히는 유유코 님.
+			PRINTFORMW 1스트로크만으로도 엄청난 쾌락을 안겨줘서 당신은 견디는 것 만으로도 벅찼다.
+		ELSE
+			PRINTFORMW 「싸버려, 싸버렷%UNICODE(0x2665) *1%　우후훗…%UNICODE(0x2665) *1%　아앙~ 하읍%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 자지를 격렬하게 춤추는 것처럼 먹어버리듯, 격렬하게 빠는 것을 계속했다.
+			PRINTFORMW 엄청난 쾌락에 소리가 새어나왔지만 어떻게든 참아내고 있었다.
+			PRINTFORMW 「섀어나오는거 마시혀~%UNICODE(0x2665) *1%　쥬룹쥬룹 응읏%UNICODE(0x2665) *1%」
+		ENDIF
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「읏… 응… 츄르르…… 쥬릅 응 핥짝 맛있어…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「우후훗… 응읏 핥짝… 어때애~？　기분 좋은걸까~%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「…응읏 으응응읏~%UNICODE(0x2665) *1%　응후훗… 푸하앗… 어때？ 내 볼 부드럽지~？ 응읏%UNICODE(0x2665) *1%」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;82,파이즈리
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_82
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_82_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_82_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「네에, 우후훗 가슴으로 서비스. 어서 오세요~♪」
+		PRINTFORMW 라고 말하며 유유코는 히죽히죽 웃으면서 당신의 자지 앞에 그 압도적인 중량감의 가슴을 드러냈고, 땀으로 약간 젖은 가슴골을 해방시켰다.
+		PRINTFORMW 가슴 사이에서는 땀으로 이루어진 김이 나오고 있었고, 망자인데도 남자를 유혹하는 페로몬을 뿜어내고 있었다.
+		PRINTFORMW 당신은 그저 침을 삼키면서…… 고동을 치고 있었다.
+		PRINTFORMW 「왜 그래애？　귀신을 본듯한 얼굴을 하고…%UNICODE(0x2665) *1%」
+		PRINTFORMW ……당신의 눈 앞에 있는 것은 유령이 아니라, 『여자』… 당신의 정을 바라면서, 음란하게 웃는다。
+		PRINTFORMW 「우훗, 귀여워엇…」
+		PRINTFORMW 당신의 육봉을 천천히 가슴으로 감쌌다… 따뜻하고…… 따뜻해서, 육봉을 통해 몸이 기쁨으로 떨렸다.
+		PRINTFORMW 녹아버릴듯한 감각… 당신의 신체는 자기 방어적으로 당신을 쾌락에서 벗어나게 하려 해도……
+		PRINTFORMW 최대치로 쏟아지는 쾌락이 당신을 덮친다…
+		PRINTFORMW 「……우후후훗 귀여워엇…♪」
+		PRINTFORMW 유유코의 가슴은… 위험물이었다……
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		IF RAND:15 == 0
+			PRINTFORMW 「~읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 처음에는 마주보며 서로를 쳐다보는 상태였다… 그런데 거기서 유유코는 슬금슬금 내려가더니……
+			PRINTFORMW 주인님의 자지를 끼워넣고는… 올려다보는 눈으로 당신을 바라봤다…
+			PRINTFORMW 「좋을대로 움직여… 천천히… 천천히 기분 좋아지자%UNICODE(0x2665) *1%」
+		ELSEIF RAND:14 == 0
+			PRINTFORMW 「우훗… %CALLNAME:MASTER%의 좋을대로 사용하는 가슴 장난감 돼버렸다%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%에게 가슴을 바쳐, 파이즈리의 주도권을 모두 넘겨주었다.
+			PRINTFORMW 그런 당신이 선택한 것은 마음껏 가슴을 만지작거리고, 휘젓는 듯한 파이즈리…
+			PRINTFORMW 당신이 쾌락에 이르기까지 주물러지는 가슴… 유유코는 그 쾌감을 충분히 즐겼다.
+			PRINTFORMW 「응읏 응흐읏…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:13 == 0
+			PRINTFORMW 「응읏 그렇게 젖꼭지에 밀어붙이면… 이게 파이즈리？　응아앗%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 유두에 귀두를 들이대고는, 빙글빙글 계속해서 쾌락을 선사했다……
+			PRINTFORMW 유유코를 기분 좋게 하는 것에 집중했지만… %CALLNAME:MASTER%도 유유코의 유두로부터 예기치 못한 반격을 받았다……
+			PRINTFORMW 「앗, 응읏 후훗…… 안된다구？ 괴롭혀주려（고문하려）했는데 그런 얼굴 해버리면」
+		ELSEIF RAND:12 == 0
+			PRINTFORMW 「앗 으읏 흐읏%UNICODE(0x2665) *1%　핫 격렬해… 격렬해앳%UNICODE(0x2665) *1% %CALLNAME:MASTER%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW %CALLNAME:MASTER%에게 가슴을 마치 엉덩이처럼 붙잡혀서… 진심 피스톤질 당하는 유유코.
+			PRINTFORMW 가슴을 쓰는 진심교미. 유유코는 그 감각과 당신을 여기까지 오게 하는 자신의 가슴에 더 깊은 자부심을 가지게 되었다.
+			PRINTFORMW 「가슴… 임신시키자~ 으응~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:11 == 0
+			PRINTFORMW 「으읏 칫 젖꼭지 잡아당기면… 응흐읏…%UNICODE(0x2665) *1%　이거 엄청 야하네에%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 무거운 가슴을 젖꼭지를 잡고 들어올리면서, 그 가슴골 사이를 범했다……
+			PRINTFORMW 유유코도 당신에게 유두를 잡혀서, 날카로운 쾌락에 가슴 전체가 예민해져 당신의 자지를 평소보다 더 느껴버렸다…
+			PRINTFORMW 「응읏……%UNICODE(0x2665) *1%　이런 약점이 있었다니 말이야… 우후훗……%UNICODE(0x2665) *1%」
+		ELSEIF RAND:10 == 0
+			PRINTFORMW 「우후훗♪　파이즈리즈리즈릿%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 의자에 걸터 앉아 유유코가 봉사하는 단순한 파이즈리를 즐겼다…
+			PRINTFORMW 단순하기에 좋은 점도 있다. 단순하기 때문에 %마스터는% 유유코가 주는 쾌락으로 몸을 떨었다.
+			PRINTFORMW 「역시, 심플한게 베스트네~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW %CALLNAME:MASTER%의 자지를 허리에서부터 압박하는 파이즈리… 손은 쓰지 않고… 신체의 작은 움직임, 그리고 가슴의 무게로 당신을 몰아세웠다.
+			PRINTFORMW 유령의 신체긴 하지만, 분명한 중량감이 있는 유유코를 최고로 즐길 수 있는 체위였고, 그 무게는 안정감 있었다.
+			PRINTFORMW 「……딱히 무겁다고 해서 기쁘지는 않지만… 기분이 좋아보이는건 좋네에」
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「으훗… 우후훗  마치 말같네~%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 위에 올라타서 필사적으로 허리를 움직였다… 깔고 앉은 파이즈리는 당신의 주도이기에 이루어지는 것.
+			PRINTFORMW 쾌락에 지배당하고 있어서는 아직 유유코의 손바닥 위에서 허리를 흔드는 격이었지만.
+			PRINTFORMW 「힘내랏, 힘내라 %CALLNAME:MASTER%%UNICODE(0x2665) *1%」
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「우후훗 저기, 아래부터랑은 어떻게 다른거야%UNICODE(0x2665) *1%？　가르쳐줘？」
+			PRINTFORMW 푸욱… %마스터는% 밀어올려진 가슴골을 범하려는 듯이 위에서부터 자지를 꽂았다.
+			PRINTFORMW 아래부터와는, 완전히 다른 압박감. 그러나 말로는 표현할 수 없는 쾌락이 거기에 있었고… %마스터는% 숨을 헐떡이면서 끝까지 삽입했다.
+			PRINTFORMW 「응？ 윗쪽으로만 얻을 수 있는 정복감이 있다？　그렇구나… 동감%UNICODE(0x2665) *1%」
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「자지 씨의 머리만 괴롭혀줄겟…%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 자지를 밑가슴에 끼우고… 마치 티슈나 수건에 문지르는 듯한 느낌으로 몰아붙였다.
+			PRINTFORMW 그러나 티슈와는 전혀 다르게도, 당신의 자지는 따뜻한 살결의 베개에 싸여 하늘에라도 뜨는 듯한 쾌락에 휩싸였다.
+			PRINTFORMW 「이번에 자지 더러워지면 써볼래？　후훗 그러네 더 더러워질 뿐이겠지%UNICODE(0x2665) *1%」
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「네, 늘 입던 옷으로… 이거 꽤나 브래지어 꽉 조인다구~%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 착의 파이즈리의 적당한 압박감에 숨을 흐트러뜨리며…… 팔과는 다른 무기질적이고 컨트롤 없는 조임을 만끽했다.
+			PRINTFORMW 유유코는 자유로워진 양손으로 %CALLNAME:MASTER%의 몸을 꼭 껴안고는 가슴에 귀를 갖다 댔다.
+			PRINTFORMW 「……~읏%UNICODE(0x2665) *1% 이 자세… 안심되네…♡」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「네, 주물~주물… 주물주물%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 당신의 육봉을 끼운 후, 빙글빙글하고 자신의 가슴을 이리저리 돌리면서 당신의 사정을 부추겼다.
+			PRINTFORMW 주어지는 격렬한 쾌감에 굴복할 것만 같았다.
+			PRINTFORMW 「가슴 아프지 않냐고？　후훗 걱정하지마. 내 몸은 부드러우니까… 물론 가슴은 남들의 몇 배는 더%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「츗… 츗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 이번엔 파이즈리펠라… 가 아니라… 파이즈리키스였다… 당신의 자지를 끼운 채 귀두 주변을 집중적으로 괴롭히는…
+			PRINTFORMW 요도에 키스를 계속하는 쾌락에, %마스터는% 눈 앞이 점멸했다.
+			PRINTFORMW 「……츗… 참아낸 거, 새어나온 거…… 짜서 맛있어… 우후훗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「왜 그래？　다리가 후들후들 떨리고 있는데에~%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신을 세우고 유유코는 무릎을 꿇고 자지를 쓰다듬어 올렸고… 올려다보는 눈으로 당신을 바라봤다……
+			PRINTFORMW 놀리지도 않고 진심으로 여자의 얼굴을 한 채 당신을 몰아세웠다…
+			PRINTFORMW 「이렇게나 했는데도… 전혀 무릎을 꿇진 않네에… 우훗%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「하나・두울・세엣%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 거유만이 할 수 있는 대담한 기술… 반듯이 누운 당신을 향해… 귀두가 있는 곳까지 가슴을 들어올려서……
+			PRINTFORMW 「에ー잇%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 가슴을 자지 뿌리까지 쓸어내리고는… 격렬한 쾌락을 선사한다. 그것은 망령인 유유코의 사악한 기술… 그로 인한 쾌락은 말로는 표현 불가능.
+			PRINTFORMW 「네… 하나%UNICODE(0x2665) *1% 두울%UNICODE(0x2665) *1%……」
+			PRINTFORMW 그리고 이 기술의 두려운 점은… 연속공격이 가능하다는 것이다…
+			BASE:PLAYER:2 += 8000
+			PRINTFORMW 「……우훗, 정말로 더는 참을 수 없게 돼서… 좋아%UNICODE(0x2665) *1%」
+		ENDIF
+	;굴복3
+	;ELSEIF MARK:괘씸각인 == 3
+	;그 이외
+	ELSE
+		IF RAND:10 == 0
+			PRINTFORMW 「우후훗♪　파이즈리즈리즈릿%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 의자에 걸터 앉아 유유코가 봉사하는 단순한 파이즈리를 즐겼다…
+			PRINTFORMW 단순하기에 좋은 점도 있다. 단순하기 때문에 %마스터는% 유유코가 주는 쾌락으로 몸을 떨었다.
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW %CALLNAME:MASTER%의 자지를 허리에서부터 압박하는 파이즈리… 손은 쓰지 않고… 신체의 작은 움직임, 그리고 가슴의 무게로 당신을 몰아세웠다.
+			PRINTFORMW 유령의 신체긴 하지만, 분명한 중량감이 있는 유유코를 최고로 즐길 수 있는 체위였고, 그 무게는 안정감 있었다.
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「으훗… 우후훗  마치 말같네~%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 위에 올라타서 필사적으로 허리를 움직였다… 깔고 앉은 파이즈리는 당신의 주도이기에 이루어지는 것.
+			PRINTFORMW 쾌락에 지배당하고 있어서는 아직 유유코의 손바닥 위에서 허리를 흔드는 격이었지만.
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「우후훗 저기, 아래부터랑은 어떻게 다른거야%UNICODE(0x2665) *1%？　가르쳐줘？」
+			PRINTFORMW 푸욱… %마스터는% 밀어올려진 가슴골을 범하려는 듯이 위에서부터 자지를 꽂았다.
+			PRINTFORMW 아래부터와는, 완전히 다른 압박감. 그러나 말로는 표현할 수 없는 쾌락이 거기에 있었고… %마스터는% 숨을 헐떡이면서 끝까지 삽입했다.
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「자지 씨의 머리만 괴롭혀줄겟…%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신의 자지를 밑가슴에 끼우고… 마치 티슈나 수건에 문지르는 듯한 느낌으로 몰아붙였다.
+			PRINTFORMW 그러나 티슈와는 전혀 다르게도, 당신의 자지는 따뜻한 살결의 베개에 싸여 하늘에라도 뜨는 듯한 쾌락에 휩싸였다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「네, 늘 입던 옷으로… 이거 꽤나 브래지어 꽉 조인다구~%UNICODE(0x2665) *1%」
+			PRINTFORMW %마스터는% 유유코의 착의 파이즈리의 적당한 압박감에 숨을 흐트러뜨리며…… 팔과는 다른 무기질적이고 컨트롤 없는 조임을 만끽했다.
+			PRINTFORMW 유유코는 자유로워진 양손으로 %CALLNAME:MASTER%의 몸을 꼭 껴안고는 가슴에 귀를 갖다 댔다.
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「네, 주물~주물… 주물주물%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말하며 당신의 육봉을 끼운 후, 빙글빙글하고 자신의 가슴을 이리저리 돌리면서 당신의 사정을 부추겼다.
+			PRINTFORMW 주어지는 격렬한 쾌감에 굴복할 것만 같았다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「체험판입니다~…… 츗… 츗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 이번엔 파이즈리펠라… 가 아니라… 파이즈리키스였다… 당신의 자지를 끼운 채 귀두 주변을 집중적으로 괴롭히는…
+			PRINTFORMW 요도에 키스를 계속하는 쾌락에, %마스터는% 눈 앞이 점멸했다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「왜 그래？　다리가 후들후들 떨리고 있는데에~%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신을 세우고 유유코는 무릎을 꿇고 자지를 쓰다듬어 올렸고… 올려다보는 눈으로 당신을 바라봤다……
+			PRINTFORMW 놀리지도 않고 진심으로 여자의 얼굴을 한 채 당신을 몰아세웠다…
+		ELSE
+			PRINTFORMW 「하나・두울・세엣%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 거유만이 할 수 있는 대담한 기술… 반듯이 누운 당신을 향해… 귀두가 있는 곳까지 가슴을 들어올려서……
+			PRINTFORMW 「에ー잇%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 가슴을 자지 뿌리까지 쓸어내리고는… 격렬한 쾌락을 선사한다. 그것은 망령인 유유코의 사악한 기술… 그로 인한 쾌락은 말로는 표현 불가능.
+			PRINTFORMW 「네… 하나%UNICODE(0x2665) *1% 두울%UNICODE(0x2665) *1%……」
+			PRINTFORMW 그리고 이 기술의 두려운 점은… 연속공격이 가능하다는 것이다…
+			BASE:PLAYER:2 += 5000
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;83,스마타
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_83
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_83_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_83_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;84,거품무용
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_84
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_84_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_84_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;85,발로 밟아주기
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_85
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_85_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_85_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「발~ 흐응 좋은 취미네에~%UNICODE(0x2665) *1% 잘 할 수 있을까~%UNICODE(0x2665) *1%」
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		IF RAND:3 == 0
+			PRINTFORMW 「우후훗 어때애%UNICODE(0x2665) *1%　기분 좋아~？　우후훗%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0 
+			PRINTFORMW 「후훗%UNICODE(0x2665) *1% 조금 즐거워져 버렸다~%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「괜찮다구, 자… 망령한테는 없을 발에 듬뿍 뿌려줫%UNICODE(0x2665) *1%」
+		ENDIF
+	;굴복3
+	;그 이외
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「에잇에잇~… 우후훗 재밌네에~」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「발가락도 써줘？　정말, 큰일이네~」
+		ELSE
+			PRINTFORMW 「의외로 미끈미끈하지%UNICODE(0x2665) *1%　잘 안 걸으니까~」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;88,진공펠라
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_88
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_88_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_88_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음부터
+	;기입 체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「쥬루… 응… 응흐읏%UNICODE(0x2665) *1%」
+		PRINTFORMW 당신은 격렬하게 빨아대도 좋다고 유유코한테 명령했지만… 의외로 그녀는 공손한 펠라부터 시작했다.
+		PRINTFORMW 역시 처음에는 당황스러운가… 라고 당신은 생각했다……
+		PRINTFORMW 「응읏 쥬루… 츄~~~~~읍%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+		PRINTFORMW 대식가 아가씨는 곧바로 그 진가를 발휘했다.
+		RETURN 1
+	ENDIF
+	;기본 세트
+	;시간 중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+		;싸기 직전
+	ELSEIF BASE:PLAYER:2 > 8000
+		PRINTFORMW 「응읏 쥬루~~~읍 흐~읏 읏…… 츄%UNICODE(0x2665) *1% 응~읏 읏 흐읏…%UNICODE(0x2665) *1%」
+		PRINTFORMW 유유코는 %CALLNAME:MASTER%의 사정감을 알아채고는 한번에 당신의 정액을 짜내기 위해, 더욱 더 세게 상스러운 소리를 내며 빨아댔다.
+		PRINTFORMW 「츄룹%UNICODE(0x2665) *1% 응읏 쥬릅… 쥬루루루루룹%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+		PRINTFORMW 당신은 참을 수 없는 쾌락에 목소리도 억제하지 못했고… 망령은 당신의 정자를 빼앗기 위해 달라붙었다.
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 「응읏 쥬루… 츄~~~~~읍%UNICODE(0x2665) *1%%UNICODE(0x2665) *1% 응흣……%UNICODE(0x2665) *1% 쥬웁 쥽…%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+		PRINTFORMW 격렬하게 당신의 자지에 달라붙어서, 정자와 함께 당신의 영혼까지 빨아가려는 망령. 그녀는 한쪽 눈만 뜨면서 당신을 바라보았다.
+	;굴복3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 「…응읏… 쥽… 쥬릅… 즈즈읍… 응흐읏 쥽… 쥬룹…%UNICODE(0x2665) *1%」
+		PRINTFORMW 격렬하게 물소리를 내면서 유유코는 당신의 자지를 계속해서 빨아댔다.
+	;그 이외
+	ELSE
+		PRINTFORMW 「쥽 흐읏 응읏으 우훗…… 흐츗…%UNICODE(0x2665) *1%」
+		PRINTFORMW 라고 상스러운 소리를 내면서, 유유코는 당신의 자지를 인간의 것이 아닌 폐활량으로 빨아댔다.
+	ENDIF
+ENDIF
+RETURN 1

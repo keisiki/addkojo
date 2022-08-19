@@ -1,0 +1,579 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;성희롱계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;310,엉덩이를 쓰다듬었다
+;TFLAG:193(1=불쾌(TALENT:겁쟁이면 눈물) 2&&3=부끄러워하는(TALENT:남성기피 겸 MASTER가 남자라면, 몸을 움츠린다) 4=되는 대로)
+;CFLAG:우후후==2&&TCVAR:20(팬티 없음 안면 기승위(70=커널 강제 71=펠라치오 강제 72=애널 봉사) 35=스커트 안쪽 보여주기 52=스마타)
+;CFLAG:우후후==2&&TEQUIP:식스나인(팬티 있음TCVAR:20(70～72)는 이쪽)
+;PREVCOM(305=무릎베개
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_310
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_310_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_310_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF CFLAG:318 == 1
+		PRINTFORMW 「흐응~, 나 화났는데~？」
+		PRINTFORMW 유유코는 되는대로 엉덩이를 만지게 해줬지만… 째릿ー하고%CALLNAME:MASTER%의 얼굴을 노려보았다.
+	ELSEIF TALENT:연인
+		IF RAND:5 == 0
+			PRINTFORMW 「꺄아~ 우후훗%UNICODE(0x2665) *1%, 이런 짓을 하다니 진짜 변태네에~…♪」
+			PRINTFORMW 「좀 더 주물러도 괜찮다구？ 그야 연인이잖아」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%에게 엉덩이를 주물러지는 것에 대해 순순히 기뻐하는 눈치였다.
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…읏~ 정말 엉덩이 만으로도 좋은거야？　여기도… 당신껀데~？」
+			PRINTFORMW 유유코는 가슴을 당신에게 밀어붙이곤, 히죽히죽 당신을 바라봤다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…꺄응%UNICODE(0x2665) *1%！？　우후훗！ 정말… 때리는 건 좀 다르잖아~？」
+			PRINTFORMW 유유코는 실없이 웃으면서 얻어맞은 엉덩이를 문질렀다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…~읏… 손이 끈질기게 달라붙어… 그런 느낌에 닿아버리면 스위치 들어간다구%UNICODE(0x2665) *1%？」
+			PRINTFORMW 유유코는 그렇게 말하고는 당신의 허리에 기대서… 몸을 밀착시켰다.
+		ELSE
+			PRINTFORMW 「…당신의 부풀어 오른 혈관을 문질러 버리면… 성희롱의 영역을 넘어버렸네~ 우후훗%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 말한 유유코는 얼굴을 붉게 물들이면서 당신이 하는 대로 자지를 엉덩이에 문질렀다.
+		ENDIF
+	ELSEIF TALENT:연모
+		IF RAND:4 == 0
+			PRINTFORMW 「이쪽이 끝나면 다음은 가슴이네~%UNICODE(0x2665) *1%　괜찮다구, 자랑스러운 가슴인걸」
+			PRINTFORMW  유유코는 가슴을 당신에게 밀어붙이곤, 히죽히죽 당신을 바라봤다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「우훗… 엉덩이 만지기나 하고… 유혹하는걸까앗~%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 엉덩이를 주물러지면서 아주 싫지만은 않은듯이 그렇게 중얼거렸다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…갑자기 주물러대다니, 정말 절조가 없네~. 응？ 딱히 그만두지 않아도 괜찮아~♪」
+			PRINTFORMW 유유코는 여유로운 표정을 지으면서 계속 당신에게 엉덩이를 주무르게 했다.
+		ELSE
+			PRINTFORMW 「꺄아~앗, 엉덩이 만져져버렸다~♪　우후훗 농담이고… 언제라도 좋아… %마스터는% 친구니까♪」
+			PRINTFORMW 유유코는 얼굴을 붉게 물들이면서 당신을 말리지 않고 계속 주무르게 했다.
+		ENDIF
+	ELSEIF TALENT:사모
+		IF RAND:3 == 0
+			PRINTFORMW 「…응읏~%UNICODE(0x2665) *1%？　왜 그래？ 딱히 괜찮다구 주무르는거 계속해도？」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흐~응？　커다란 가슴보다 엉덩이 쪽이 더 좋은거야？ 이해할 수가 없네」
+		ELSE
+			PRINTFORMW 「…이쪽도 자랑스러워해도 좋을지 모르겠네~♪」
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「…욕망에 솔직하네에, 우후훗…」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…운동은 조금 하고 있으니까 그렇게까지 큰 자신은 없지만 말야~」
+		ELSE
+			PRINTFORMW 「%마스터는% 대담한데다 변태기까지 하네~」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;311,껴안는다
+;TFLAG:193(1=대성공 0=성공 -1=실패)
+;CFLAG:우후후==2&&TCVAR:20(32=앞에서 끌어안았다 60=딥키스 73=파후파후 74=가슴 맞대기 77=가슴을 빨게한다 ＶＡ성교(85=Ｖ삽입한다 87=Ａ삽입한다 88=허리흔들기Ｖ 89=허리흔들기Ａ) 86=다이스키홀드)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_311
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_311_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_311_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 유유코의 몸을 껴안았다.
+		PRINTFORMW %마스터는% 잠시 유유코의 낮은 체온을 느끼고 있었다.
+;	ELSEIF CHK_DATENOW(CFLAG:LOCAL:데이트중)
+	ELSEIF CFLAG:수면
+		IF TALENT:연인
+			PRINTFORMW 「…응읏… 우후훗 뭐어야 %CALLNAME:MASTER%？」
+			PRINTFORMW 유유코는 반쯤 뜬 눈으로 당신에게 상냥한 미소를 보였다.
+		ELSE
+			PRINTFORMW 「…응읏… 유카리……」
+			PRINTFORMW 유유코는 당신을 친한 친구와 착각하고 있는 것 같다.
+		ENDIF
+	ELSEIF TALENT:연인
+		IF RAND:5 == 0
+			PRINTFORMW 「뭔가 단단한게 닿는거 같은…%UNICODE(0x2665) *1%　어수선한 틈을 타다니 정말…」
+			PRINTFORMW 유유코는 얼굴을 붉게 물들이면서 %CALLNAME:MASTER%의 부풀어 오른 혈관을 배와 발로 감쌌다.
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…우후훗 엉덩이 만지기나 하고… 읏%UNICODE(0x2665) *1%　변태같다니까~…」
+			PRINTFORMW 유유코는 껴안음과 동시에 엉덩이를 어루만져져서, %CALLNAME:MASTER%에게 돌려주듯 등을 음란하게 비볐다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「………읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 얼굴을 붉게 물들이면서 %마스터를% 껴안아 돌려주었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「우후훗, 어짜피… 가슴에 얼굴 파묻을거지？　좋아… 연인이잖아？」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 얼굴을 가슴골 사이에 묻었다.
+		ELSE
+			PRINTFORMW 「갑자기 끌어안다니…… 정말… 꼭 어렸을 때의 요우무같네…」
+			PRINTFORMW 유유코는 한숨을 내쉬면서 당신의 등을 문질렀다.
+		ENDIF
+	ELSEIF TALENT:연모
+		IF RAND:3 == 0
+			PRINTFORMW 「………읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 얼굴을 붉게 물들이면서 %마스터를% 껴안아 돌려주었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「우후훗, 어짜피… 가슴에 얼굴 파묻을거지？　좋아… 연인이잖아？」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%의 얼굴을 가슴골 사이에 묻었다.
+		ELSE
+			PRINTFORMW 「갑자기 끌어안다니…… 정말… 꼭 어렸을 때의 요우무같네…」
+			PRINTFORMW 유유코는 한숨을 내쉬면서 당신의 등을 문질렀다.
+		ENDIF
+	ELSEIF TALENT:사모
+		IF RAND:3 == 0
+			PRINTFORMW 「…우후훗 응석받이 씨♪」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「친구 사이잖아？ 벗기는 정도라면 괜찮다구？ 우후훗」
+		ELSE
+			PRINTFORMW 「…뭔가 딱딱한게 닿고 있다구？　변태 씨♪」
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「…네네 여기요」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「당신의 체온 따뜻해… 그렇네… 온열 베개로 만들고 싶을 정도로」
+		ELSE
+			PRINTFORMW 「……왜 그래… 가슴~？ 닿고 있다구~？ 우후훗！」
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;312,키스한다
+;TFLAG:193(99=거절(키스불가) 1=대성공 0=성공 -1=실패)
+;CFLAG:우후후==2&&TCVAR:20(32=앞에서 끌어안았다 50=수음 60=키스 성교(85=Ｖ삽입한다 87=Ａ삽입한다 88=허리흔들기Ｖ 89=허리흔들기Ａ) 86=다이스키홀드)
+;PREVCOM(305=무릎베개
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_312
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_312_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_312_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 유유코의 입술을 빼앗는다.
+		PRINTFORMW 그 입술은 부드럽고 달콤하며 떫은 벚꽃 맛이 났다.
+	ELSEIF CFLAG:수면
+		IF TALENT:연인
+			PRINTFORMW 「…응읏…%UNICODE(0x2665) *1%……… 쥽 츄릅…%UNICODE(0x2665) *1% …흐읏 응읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 반쯤 뜬 눈으로 당신의 키스를 저항감 없이 받아들였다.
+		ELSE
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1%…… 정말… 자는 중이니까아~…」
+			PRINTFORMW 유유코는 몸을 뒤척이며 당신으로부터 얼굴을 멀리했다.
+		ENDIF
+	ELSEIF TALENT:연인
+		IF RAND:7 == 0
+			PRINTFORMW 「흣 응읏… 응으읏…%UNICODE(0x2665) *1% …푸핫 읏… 흐읏 읏…%UNICODE(0x2665) *1%」
+			PRINTFORMW 「…안돼애… 안 놔줘… 응읏…%UNICODE(0x2665) *1%」
+			PRINTFORMW 더… 더 졸라대듯이 유유코는 당신을 원해왔다……
+			PRINTFORMW 「…푸핫%UNICODE(0x2665) *1% 그흡… 잠깐만… 좋아햇…%UNICODE(0x2665) *1%」
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「…~~~읏…… ~~~~읏%UNICODE(0x2665) *1%……♪」
+			PRINTFORMW 「…쪼옥……%UNICODE(0x2665) *1% …잘 먹었습니다… 읏 읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 그리 말하고는 %CALLNAME:MASTER%의 입술에서 입을 때고, 음란하게 미소지었다.
+			PRINTFORMW 「~~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 그 후 밀어 넘어뜨리면서의 정열적인 키스로 머릿 속을 텅 비웠다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「…하움… 하움하움… 응읏%UNICODE(0x2665) *1%…… 쥬룹… 흣 으읏 응~ …읏♡」
+			PRINTFORMW 「…%CALLNAME:MASTER%의 혀… 두툼해서 맛있었어…%UNICODE(0x2665) *1%… 잘 먹었습니다… 읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%！！！！」
+			PRINTFORMW 「…푸핫%UNICODE(0x2665) *1% 그흡… 잠깐만… 격렬해앳~%UNICODE(0x2665) *1%」
+			PRINTFORMW 라고 그녀가 중얼거리는 순간 당신은 그녀의 몸을 끌어안고는… 그대로 짐승처럼 유유코의 입을 탐했다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…쥬룹… 응큿 쥬룹%UNICODE(0x2665) *1%　좀 더… 좀 더 침 마시고 싶어어… 읏 으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「…쪼옥……%UNICODE(0x2665) *1%… 그 쪽의 훌륭한 분께%UNICODE(0x2665) *1%　아~앙…%UNICODE(0x2665) *1%」
+			PRINTFORMW 그런 말을 들으면서 보여주듯이 당신은 유유코를 안아 그녀의 혀에 타액을 흘려 주었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW （딥 이외의 키스 방법이라니… 어떻게 해야 좋을까…… 뭐… 됐나…）
+			PRINTFORMW 「훔 으읍… 후훗%UNICODE(0x2665) *1%　응으읏%UNICODE(0x2665) *1% ……읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%！！！！」
+			PRINTFORMW 유유코는 그리 말하고는 %CALLNAME:MASTER%의 입술에서 입을 때고, 음란한 미소를 지으며… 그대로 게걸스레 먹어버렸다.
+		ELSE
+			PRINTFORMW 「…읏… ~~~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 입술을 빼앗긴 채로 몸을 맡기게 되었다.
+			PRINTFORMW 라고 말하기보다…… 너무 많이 느껴서 엄청나게 깊은 절정을 키워가고 있었다……
+		ENDIF
+	ELSEIF TALENT:연모
+		IF RAND:5 == 0
+			PRINTFORMW 「…하움… 하움하움… 응읏%UNICODE(0x2665) *1%…… 쥬룹… 흣 으읏 응~ …읏♡」
+			PRINTFORMW 「…%CALLNAME:MASTER%의 혀… 두툼해서 맛있었어…%UNICODE(0x2665) *1%… 잘 먹었습니다… 읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%！！！！」
+			PRINTFORMW 「…푸핫%UNICODE(0x2665) *1% 그흡… 잠깐만… 격렬해앳~%UNICODE(0x2665) *1%」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…쥬룹… 응큿 쥬룹%UNICODE(0x2665) *1%　좀 더… 좀 더 침 마시고 싶어어… 읏 으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 「…쪼옥……%UNICODE(0x2665) *1%… 그 쪽의 훌륭한 분께%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「훔 으읍… 후훗%UNICODE(0x2665) *1%　응으읏%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 그리 말하고는 %CALLNAME:MASTER%의 입술에서 입을 때고, 음란하게 미소지었다.
+		ELSE
+			PRINTFORMW 「…읏… ~~~~~읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 입술을 빼앗긴 채로 몸을 맡기게 되었다.
+		ENDIF
+	ELSEIF TALENT:사모
+		IF RAND:3 == 0
+			PRINTFORMW 「헤~ 좀 늘었네~ 그럼 답례… 읏으응 흐흡…%UNICODE(0x2665) *1%　푸하아…%UNICODE(0x2665) *1%　내 승리~」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「읏~%UNICODE(0x2665) *1%　좀처럼 승부가 잘 안 나네~ 우후훗… 응읏%UNICODE(0x2665) *1%」
+		ELSE
+			PRINTFORMW 「응읏 흐으 흐흡… 읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%　푸핫 져버렸다~♪…」
+		ENDIF
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「으읏~♪　안돼 안 놔줘~ 후훗…♪ 그쪽에서 승부를 걸어왔잖아♪ 응읏%UNICODE(0x2665) *1%」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「~~~응으읏 쪼옥 흐읏… 응후훗♪」
+		ELSE
+			PRINTFORMW 「응~%UNICODE(0x2665) *1%　후훗 왜 그래？　야한거에 적극적인건 싫어？」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;313,가슴 애무
+;CFLAG:우후후==2&&TCVAR:20(27=골 사이를 보인다 33=가슴을 주무르다 53=파이즈리(소분기는 지문 EVENT_MESSAGE_COM_セクハラ.ERB 참조) 73=파후파후 77=가슴을 빨게한다 성교(85=Ｖ삽입한다 87=Ａ삽입한다 88=허리흔들기Ｖ 89=허리흔들기Ａ) 86=다이스키홀드)
+;ABL:Ｂ감각(2미만=성적으론 느끼지 않음 5미만=다소 느낌 있음 5이상=쾌감)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;가슴의 크기로도 달라질 수 있으므로, 지문 EVENT_MESSAGE_COM_セクハラ.ERB 참조
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_313
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_313_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_313_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF CFLAG:318 == 1
+		IF RAND:3 == 0
+			PRINTFORMW 「…가슴은 금지 중이야~. 만지는거 엄금이라고 하는데도… 어쩔 수 없으니까…」
+			PRINTFORMW 유유코는 한숨을 내쉬면서도 당신의 손을 뿌리치지 않고 계속 가슴을 만지게 했다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…사과해주면 좋을대로 만져도 되는데？ 응읏… 정말… 사과하지도 않았으면서 가슴 주물러대고 최저네~」
+			PRINTFORMW 유유코는 화가 나기도 했지만 가슴을 주물러지면서도 만만한 상대가 아니라는 표정으로 당신을 계속 쳐다보았다.
+		ELSE
+			PRINTFORMW 「몸으로 사과해봤자 별 의미 없다구~？　차감 0이니까」
+			PRINTFORMW 유유코는 그리 말한 채로 %CALLNAME:MASTER%의 손을 뿌리치지 않고 계속 가슴을 만지게 했다.
+		ENDIF		
+	ELSEIF TALENT:연인
+		IF RAND:15 == 0
+			PRINTFORMW 「…흣 읏… 응읏…%UNICODE(0x2665) *1%　시럿%UNICODE(0x2665) *1%　읏……%UNICODE(0x2665) *1%」
+			PRINTFORMW 격하게 헐떡이는 신음소리를 내면서… 가슴을 움켜쥐인 채로 몸을 들어올리고…… 밀려 들어가듯 가슴이 두 손에 쥐어짜였다.
+			PRINTFORMW 가슴을 사랑하는 방식에 난폭함이 과하긴 하지만, 유유코는 얼굴을 붉게 물들이면서, 음란한 미소를 짓고 있었다……
+			PRINTFORMW 「우훗…%UNICODE(0x2665) *1%　기분조아… 이읏 응긋%UNICODE(0x2665) *1%！？ 우훗… 우후훗%UNICODE(0x2665) *1%」
+			EXP:B절정경험 += 1
+		ELSEIF RAND:14 == 0
+			PRINTFORMW 「…우훗… 이런저런 주무르는 법을 알았구나… 이렇게 기분좋게 해주다니 정말정말 기뻐…」
+			PRINTFORMW 유유코는 기쁜 듯한 표정을 지은 채로, 세로로 가슴을 주물러졌다. 그 동안에도 그녀는 당신을 부드럽게 쳐다보았다.
+			PRINTFORMW 「이번에는… 어떤… 응읏 우후훗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 여유롭게 키스하면서 가슴을 주물러지는 행위를 즐겼다…%UNICODE(0x2665) *1%
+			EXP:키스경험 += 1
+		ELSEIF RAND:13 == 0
+			PRINTFORMW 「응 정말…%UNICODE(0x2665) *1% 더느… 오옥……%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 소를 흉내내라는 당신의 굴욕적인 부탁을 들어주었고, 당신은 가슴을 쥐어짜듯 짜내주었다.
+			PRINTFORMW 마치 진짜로 소가 되어버린 듯한 감각… 유유코는 플레이 중 어느새… 자신이 착유당하는 소라고 순간적으로 믿어버렸다.
+			PRINTFORMW 「……읏 응 정말…%UNICODE(0x2665) *1% 더ㄴ゛오오옥~~~~ 읏%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			EXP:분유경험 += 1
+		ELSEIF RAND:12 == 0
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1%… 응아앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코의 손을 잡고는… 그것을 그녀의 기슴에 대고는 훌륭한 언덕길이 많은 그녀에게 움직임을 가르쳤다.
+			PRINTFORMW 이건 파이즈리의 움직임… 유유코는 당신에게 봉사하는 방법을 그 몸에 새기고 있었다.
+			EXP:파이즈리경험 += 1
+		ELSEIF RAND:11 == 0
+			PRINTFORMW 「그래서 말이야 아앗 응읏%UNICODE(0x2665) *1%　흐ー읏%UNICODE(0x2665) *1% 흐ー읏…… 유카리가… 말야…？」
+			PRINTFORMW 당신은 가슴을 주무르는걸 계속하면서 유유코가 말하는걸 들었다… 이런 식으로 일상회화를 끼워 넣어도 행위는… 어딘가 침략적이어서 흥분을 부추겼다.
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%에게 일상을 바뀌어버린 것을 자각하면서도, 당신에게 계속 몸을 맡겼다.
+			PRINTFORMW 「그랬더니… 요우무갓 아… 앗%UNICODE(0x2665) *1%」
+			EXP:회화경험 += 1
+		ELSEIF RAND:10 == 0
+			PRINTFORMW 「후훗… 역시 이 자랑스런 가슴이 최고지？　갖가지 시선들을 느낀다니깟%UNICODE(0x2665) *1%」
+			PRINTFORMW 「물론, 당신의 변태같은 시선도 잔뜩…… 말야%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%에게 가슴을 시간당하면서 만져지는 것을 기뻐하는 것 같다.
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「…으흣…%UNICODE(0x2665) *1%　우후훗… 응읏%UNICODE(0x2665) *1%… 응아앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신은 유유코의 가슴을 움켜쥐고는 난폭하게 위아래로… 흥분을 따라 괴롭혀 주었다.
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「읏~~~~~~%UNICODE(0x2665) *1% ……흣 으으 아앗%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코의 괴롭힐 보람이 있는 커다란 가슴을 실컷 주물렀다…
+			PRINTFORMW 이 가슴을 원하는대로 할 수 있다… %마스터는% 유유코의 마조 유두를 만족할 때까지 잡아당겼다…
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「…뒤에서 정신없이 주물러대서… 정말 야하다니까…… 우훗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 가슴을 점토 세공처럼 반죽하면서 여유로운 표정으로 당신을 바라봤다…
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「…우훗…%UNICODE(0x2665) *1%　얼굴 파묻어버려서… 아이 같잖아… 이 가슴에라면 좀더 어리광 부려도 좋아…」
+			PRINTFORMW 유유코는 가슴에 얼굴을 묻어버리고는… 어머니와 같은 표정으로 당신의 머리를 쓰다듬어주었다.
+			PRINTFORMW 그녀가 당신에게 얼굴을 묻어버리기에… 잠시 그녀의 온기에 젖었다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「…우후훗 오른쪽 가슴만 집중적으로 주물러대고… 아아 그래도 조금 기분 좋아~ …유두도 빙글빙글 해줘…♪」
+			PRINTFORMW 유유코는 오른쪽 가슴만을 집중적으로 괴롭힘당해도, 기쁜 듯한 표정인 채로 당신에게 가슴을 만져지는 것을 계속했다.
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1%… 앗 흐읏…%UNICODE(0x2665) *1% 다음엔 왼쪽도 부탁해~？」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…우후훗 왼쪽 가슴에만 집중하고, 그렇게나 주무르다니 무슨 생각이야？」
+			PRINTFORMW 유유코는 왼쪽 가슴만을 집중적으로 괴롭힘당해도, 기쁜 듯한 표정인 채로 당신에게 가슴을 만져지는 것을 계속했다.
+			PRINTFORMW 「…앗%UNICODE(0x2665) *1%… 응읏…%UNICODE(0x2665) *1% 다음엔 오른쪽도 부탁해~？」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…으응읏%UNICODE(0x2665) *1% …필사적이네 가만히 가슴에 달라붙어서… 자기 걸로 만들고 싶어서 죽을 거 같아~？」
+			PRINTFORMW 유유코는 가슴에 잇자국을 남겨지고는, 아주 싫지만은 않은 듯한 표정으로 새겨진 각인을 쓰다듬었다……
+			PRINTFORMW 「나도 이 가슴도… 이제 당신 거라구%UNICODE(0x2665) *1%？」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1% …으앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 가슴을 주물러지면서 당신에게 미소지었다.
+		ELSE
+			PRINTFORMW 「남자아이라는건 정말로 가슴을 좋아하네에. 우후훗%UNICODE(0x2665) *1%！」
+			PRINTFORMW 유유코는 그리 말하고는 %CALLNAME:MASTER%의 손에 가슴을 들이댔다.
+			PRINTFORMW 당연히 당신은 자랑스러워하는 그 가슴을 주물렀다… 유유코의 가슴에는… 거역할 수 없어…
+		ENDIF
+	ELSEIF TALENT:연모
+		IF RAND:10 == 0
+			PRINTFORMW 「후훗… 역시 이 자랑스런 가슴이 최고지？　갖가지 시선들을 느낀다니깟%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 %CALLNAME:MASTER%에게 가슴을 시간당하면서 만져지는 것을 기뻐하는 것 같다.
+		ELSEIF RAND:9 == 0
+			PRINTFORMW 「…으흣…%UNICODE(0x2665) *1%　우후훗… 응읏%UNICODE(0x2665) *1%… 응아앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 당신은 유유코의 가슴을 움켜쥐고는 난폭하게 위아래로… 흥분을 따라 괴롭혀 주었다.
+		ELSEIF RAND:8 == 0
+			PRINTFORMW 「읏~~~~~~%UNICODE(0x2665) *1% ……흣 으으 아앗%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코의 괴롭힐 보람이 있는 커다란 가슴을 실컷 주물렀다…
+		ELSEIF RAND:7 == 0
+			PRINTFORMW 「…뒤에서 정신없이 주물러대서… 정말 야하다니까…… 우훗…%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 가슴을 점토 세공처럼 반죽하면서 여유로운 표정으로 당신을 바라봤다…
+		ELSEIF RAND:6 == 0
+			PRINTFORMW 「…우훗…%UNICODE(0x2665) *1%　얼굴 파묻어버려서… 아이 같잖아… 이 가슴에라면 좀더 어리광 부려도 좋아…」
+			PRINTFORMW 유유코는 가슴에 얼굴을 묻어버리고는… 어머니와 같은 표정으로 당신의 머리를 쓰다듬어주었다.
+		ELSEIF RAND:5 == 0
+			PRINTFORMW 「…우후훗 오른쪽 가슴만 집중적으로 주물러대고… 아아 그래도 조금 기분 좋아~ …유두도 빙글빙글 해줘…♪」
+			PRINTFORMW 유유코는 오른쪽 가슴만을 집중적으로 괴롭힘당해도, 기쁜 듯한 표정인 채로 당신에게 가슴을 만져지는 것을 계속했다.
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1%… 앗 흐읏…%UNICODE(0x2665) *1% 다음엔 왼쪽도 부탁해~？」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…우후훗 왼쪽 가슴에만 집중하고, 그렇게나 주무르다니 무슨 생각이야？」
+			PRINTFORMW 유유코는 왼쪽 가슴만을 집중적으로 괴롭힘당해도, 기쁜 듯한 표정인 채로 당신에게 가슴을 만져지는 것을 계속했다.
+			PRINTFORMW 「…앗%UNICODE(0x2665) *1%… 응읏…%UNICODE(0x2665) *1% 다음엔 오른쪽도 부탁해~？」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…으응읏%UNICODE(0x2665) *1% …필사적이네 가만히 가슴에 달라붙어서… 자기 걸로 만들고 싶어서 죽을 거 같아~？」
+			PRINTFORMW 유유코는 가슴에 잇자국을 남겨지고는, 아주 싫지만은 않은 듯한 표정으로 새겨진 각인을 쓰다듬었다……
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1% …으앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 가슴을 주물러지면서 당신에게 미소지었다.
+		ELSE
+			PRINTFORMW 「남자아이라는건 정말로 가슴을 좋아하네에. 우후훗%UNICODE(0x2665) *1%！」
+			PRINTFORMW 유유코는 그리 말하고는 %CALLNAME:MASTER%의 손에 가슴을 들이댔다.
+		ENDIF
+	ELSE
+		IF RAND:5 == 0
+			PRINTFORMW 「…자랑스러운 가슴이라구. 잔뜩 잔뜩 즐겨줘%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 당황하는 당신에게 가슴을 맡기고는… 오히려 주물러 왔다……
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「…우훗… 이런저런 만지는 법을 배워보는거야？　나중에 나를 잔뜩 기분좋게 만드는 법을 배워두지 않으면」
+			PRINTFORMW 유유코는 기쁜 듯한 표정을 지은 채로, 세로로 가슴을 주물러졌다. 그 동안에도 그녀는 당신을 부드럽게 쳐다보았다.
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「…우후훗 오른쪽 가슴만 집중적으로 주물러대고… 왼쪽이 소홀해~？」
+			PRINTFORMW 유유코는 오른쪽 가슴만을 집중적으로 사용당해서 기쁜 듯한 표정인 채로 당신에게 가슴을 만져지는 것을 계속했다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…응읏%UNICODE(0x2665) *1% …으앗%UNICODE(0x2665) *1%」
+			PRINTFORMW 유유코는 가슴을 주물러지면서 당신에게 미소지었다.
+		ELSE
+			PRINTFORMW 「남자아이라는건 정말로 가슴을 좋아하네에. 우후훗%UNICODE(0x2665) *1%！」
+			PRINTFORMW 유유코가 그렇게 말하는 것도 당연하다. %CALLNAME:MASTER%의 손은 유유코의 가슴으로 뻗어 있었다.
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;314,애널 애무
+;CFLAG:우후후==2&&TCVAR:20(72=애널봉사
+;CFLAG:우후후==2&&TEQUIP:식스나인(팬티있음TCVAR:20(70～72)은 이쪽)
+;ABL:Ａ감각(2미만=받아들일 수 없다 4미만=이물감에 농락 4이상=쾌감)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_314
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_314_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_314_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;315,클리 애무
+;CFLAG:우후후==2&&TCVAR:20(35=스커트 안을 보인다 70=커널강제 85=Ｖ삽입한다 86=다이스키홀드 87=Ａ삽입한다 88=허리흔들기Ｖ 89=허리흔들기Ａ
+;ABL:Ｃ감각(4미만=간지러움 6미만=좀 괜찮을지도 6이상=쾌감)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_315
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_315_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_315_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORMW 「필사적인 얼굴로 콩알 괴롭히기는… 정말로 변태네에」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…우후훗…」
+		ELSE
+			PRINTFORMW 「응읏 흐으…%UNICODE(0x2665) *1%　시럿 읏… 읏 아앗… 응 흐읏 흣… 읏%UNICODE(0x2665) *1%♪……」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;316,손가락 삽입
+;CFLAG:우후후==2&&TCVAR:20(35=스커트 안을 보인다 70=커널강제 87=Ａ삽입한다 89=허리흔들기Ａ
+;TALENT:처녀(손가락 삽입 연속시 상실 주의, 기본은 거부하는 느낌)
+;ABL:Ｖ감각(1미만=위화감에 당황한다 5미만=조금 기분좋아 5이상＝쾌감)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_316
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_316_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_316_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF RAND:3 == 0
+		PRINTFORMW 「정말, 거기는 여자아이의 소중한 곳이라구~？」
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「…읏~ 후훗 휘젓고 싶어%UNICODE(0x2665) *1%？」
+	ELSE
+		PRINTFORMW 「으읏 흐으…%UNICODE(0x2665) *1%　야읏… 앗… 응흣 후…읏%UNICODE(0x2665) *1%♪……」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;317,Ｖ허리를 흔든다
+;ABL:Ｖ감각(2미만=아직 기분 좋지않아 5미만=조금 기분좋아 5이상=쾌감)
+;==================================================
+@M_KOJO_MESSAGE_COM_K66_317
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_317_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_317_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF RAND:3 == 0
+		PRINTFORMW 「앗 이놈… 응읏… 정말…%UNICODE(0x2665) *1% …억지라니깐… 우후훗%UNICODE(0x2665) *1%」
+		PRINTFORMW 유유코는 여유로운 표정으로 당신에게 삽입당하면서도 받아주었다.
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「…야한 건 좋아한다구？　우후훗… 안 들키게 해야겠네엣…%UNICODE(0x2665) *1%」
+	ELSE
+		PRINTFORMW 「응읏 흐으…%UNICODE(0x2665) *1%　시럿 읏… 읏 아앗……%UNICODE(0x2665) *1% 응읏…♪……」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;318,Ａ허리를 흔든다（현재 존재하지 않는다
+;==================================================
+;@M_KOJO_MESSAGE_COM_K66_318
+;CALL TRAIN_MESSAGE
+;CALL M_KOJO_MESSAGE_COM_K66_318_1
+;RETURN RESULT
+
+;@M_KOJO_MESSAGE_COM_K66_318_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+;LOCAL = 0
+;-------------------------------------------------
+;IF LOCAL
+
+;ENDIF
+;RETURN 1
+;==================================================
+;330,치마 넘기기
+;TFLAG:193(-5=거절（따귀를 때림） -3=거절（꼬집음） -1=싫어하다 0=싫어하다（기쁜 듯） 1=받아들임)
+;TFLAG:193=1&&ABL:노출벽(5이상=사람들이 보는 장소에서, 스스로 스커트를 걷어올리다 4이하=사람들이 보는 장소에서 넘기는 데에 약간 저항 3이상=사람들이 없는 장소에서 스스로 스커트를 걷어올리다 3미만=약간 저항)
+;TFLAG:400(1=데이트처 or 지저의 모브가 반응한다)
+;뒤에서 훌렁, 이 아니라, 앞에서부터 훌렁 하는 느낌 (그렇지 않다면, 넘기려고 하는 것을 멈추고 즉시 따귀라든지 무리, 걷어 올려진 뒤밖에 안되고 그 상황이라면 따귀를 맞는 것보다 보통 탄막으로 일발ＫＯ가 되지 않는 것이 이상하다.
+@M_KOJO_MESSAGE_COM_K66_330
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K66_330_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K66_330_1
+;-------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		PRINTFORMW 얼어붙은 시간 속에서 유유코의 스커트를 들춰 올렸다.
+		PRINTFORMW %마스터는% 유유코의 풍만한 엉덩이를 보면서 즐겼다.
+	ELSEIF CFLAG:318 == 1
+		PRINTFORMW 「？　저기 지금 그거 시비 거는 거야~？」
+		PRINTFORMW 유유코는 화가 난 나머지 좀 무뢰배같은 모습을 보이고 말았다…
+	ELSEIF TALENT:연인
+		IF RAND:3 == 0
+			PRINTFORMW 「네, 여기욧~ 우후훗」
+			PRINTFORMW 유유코는 스커트를 걷어올리고는… 그 아래의 속옷을 보여주었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…이쪽은 어떨까？」
+			PRINTFORMW 유유코는 팬티 대신 자랑스러워하는 가슴을 가린 브래지어를 보여왔다.
+		ELSE
+			PRINTFORMW 「이제 연인인데도 정말 성가신 성벽이네에~. 그래 여기ー」
+			PRINTFORMW 유유코는 한숨을 내쉬고는, 침착한 모습으로 당신에게 팬티를 보여주었다.
+		ENDIF
+	ELSEIF TALENT:연모
+		IF RAND:3 == 0
+			PRINTFORMW 「그렇게나 보고 싶었어~ 우후훗, 안ー돼…… 힐끗」
+			PRINTFORMW 유유코는 갑자기 스커트를 걷어올리고는… 그 아래의 속옷을 보여주었다.
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「…개인적으로는 이쪽이 자랑스럽긴 한데？」
+			PRINTFORMW 유유코는 팬티 대신 자랑하는 가슴을 가린 브래지어가 아슬아슬하게 보일 정도로 옷을 열었다.
+		ELSE
+			PRINTFORMW 「아직도 팬티에 흥미를 가지다니 성가신 성벽이네에」
+			PRINTFORMW 유유코는 한숨을 내쉬고는, 침착한 모습으로 당신을 바라봤다.
+		ENDIF
+	ELSEIF TALENT:사모
+		PRINTFORMW 「보고싶다면 따로 보여주겠지만？　앗 요금 받을까？」
+		PRINTFORMW 유유코는 그렇게 화난것 같지는 않았고, 오히려 신기해하는 모습으로 당신을 바라봤다.
+	ELSE
+		PRINTFORMW 「응~ 갑자기 뭐야？　회오리바람이라고 생각했어」
+		PRINTFORMW 유유코는 그렇게 화난것 같지는 않았고, 오히려 신기해하는 모습으로 당신을 바라봤다.
+	ENDIF
+ENDIF
+RETURN 1

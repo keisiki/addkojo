@@ -1,0 +1,206 @@
+﻿;==================================================
+;탄막승부
+;==================================================
+;
+@M_KOJO_MESSAGE_COM_K66_DANMAKU(ARGS, 상대잔기)
+#DIM 상대잔기
+;전체의 흐름
+;①【전투 전】→②주사위를 굴리는 걸로 플레이어 선택지, 핸디캡을 붙였을 경우에는【핸디캡 구상】→③대응 스킬이 발동한 경우에는【스킬 구상】→④피탄 판정, 캐릭터가 피탄당했다면【피탄 구상】→
+;어느 쪽이 잔기가 0이 되었다면 ②로 돌아간다 →⑤【전투 후 구상】
+
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+IF LOCAL
+SIF FLAG:대사색깔
+	TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;전투 전
+	HANDICAP_FIXED = 0
+	HANDICAP_RAND = 0
+	;핸디캡을 부여할 수 있고, 수치가 클 수록 당신이 불리해진다. 수치가 음수면 당신이 유리해진다.
+	;캐릭터의 능력에 관계없이 엄청나게 강하게 하거나 약하게 할 수 있다.
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "戦闘前"
+		;분노
+		IF CFLAG:318 == 1
+			PRINTFORMW 「어머어머…… 그렇게나 죽고 싶은 거라면 말해줬으면 좋았을텐데~」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「%CALLNAME:MASTER% 쨩 그거하자 그거? 그거라고 말한다면 그거잖아?」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「그렇게까지 오랜만인건 아니지만, 조금은 진심으로 해볼까~」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「이긴 쪽의 부탁은 뭐든지 들어주는건 어때? 물론 듣는 것 뿐이지만」
+		ELSE
+			PRINTFORMW 「탄막보다 차가 더 좋은데에~」
+		ENDIF
+		RETURN 0
+	ENDIF
+	;-------------------------------------------------
+	;핸디캡
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "ハンデ"
+		;핸디캡을 붙이지 않았다면 표시되지 않으므로 기입하지 않아도 괜찮다.
+		PRINTFORML 
+		RETURN 0
+	ENDIF
+	;-------------------------------------------------
+	;전투 중 TARGET 피탄 시의 구상
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "被弾" 
+		;일률적으로「당했다ー」정도로도 괜찮다.
+		SELECTCASE 상대잔기
+			;남아있는 잔기3이 표시되는 것은【흡람심식】을 가지고 있을 때 뿐
+			CASE 3
+				PRINTFORML 
+			CASE 2
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「앗… 흐응~ 그런 짓을 하는구나~」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아ー앗 지금거 전쟁터였으면 죽었겠지…… 이미 죽었구나」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「방금건 일부러 맞은거라구?　으응 거짓말♪」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「…네 한번! 꽤 하잖아~」
+				ELSE
+					PRINTFORMW 「……방금 오늘 저녁밥 뭐 먹지 하고 생각하고 있었어」
+				ENDIF
+			CASE 1
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「……잠깐, 이쪽 화났는데?」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「헤에~%UNICODE(0x2665) *1% 꽤 하네…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「읏… 우후훗… 요우무 정도 수준일까?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「망령인데도 조금 두근두근해버리네~」
+				ELSE
+					PRINTFORMW 「앞으로 1번… 내몰려버렸네… 우후훗…%UNICODE(0x2665) *1%」
+				ENDIF
+			CASE 0
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「…%CALLNAME:MASTER% 싫어」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아앙~ 당해버렸다…%UNICODE(0x2665) *1% 힐끗…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「읏!?…… 하아… 졌습니다~」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「요우~무~!! 이 사람 대단해!!」
+				ELSE
+					PRINTFORMW 「그러엄… 슬슬 진심으로… 어라? 졌어?」
+				ENDIF
+		ENDSELECT
+	ENDIF
+	;-------------------------------------------------
+	;전투 중
+	;TARGET의【잔인무도】발동 시
+	;ARG는 TARGET의 잔기
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "残忍酷薄"
+
+	ENDIF
+	;-------------------------------------------------
+	;전투 중
+	;TARGETの【건곤일척】발동 시
+	;ARG는 TARGET의 잔기
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "乾坤一擲"
+		
+	ENDIF
+	;-------------------------------------------------
+	;전투 중
+	;TARGETの【괴력난신】발동 시
+	;ARG는 TARGET의 잔기
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "怪力乱神"
+
+	ENDIF
+	
+	;-------------------------------------------------
+	;전투 후
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "戦闘後" 
+		PRINTFORML 
+		;남은 잔기4가 표시되는 것은【흡람심식】을 가지고 있을 때 뿐
+		;잔기가 1이상이라면 당신의 패배, 0의 경우에는 당신의 승리
+		SELECTCASE 상대잔기
+			CASE 4
+				PRINTFORML 
+			CASE 3
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「슬슬 사과할 기분이 들어? 허접~ 송사리~… 빨리 사과하라고~」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「이런 거? 발이 땅에 닿지도 않았다구~?」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「전부터 생각한거지만, 당신 약하네」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「흐음~? 이렇게나 약한 주제에 잘도 살아 있었네~」
+				ELSE
+					PRINTFORMW 「심심풀이 정도는 되었으려나?　안 된거 같은데… 네 유감」
+				ENDIF
+			CASE 2
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「흐응~… 사과도 안하면서 미소녀를 때리려 하는구나~」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「좀 하잖아~ 결국엔 손도 못쓰고 져버렸지만」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「전부터 생각한거지만… 당신 꽤 오래 살아 있네?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「잔기라는 핸디캡이 있는데도 쓰러뜨리질 못한다니~…」
+				ELSE
+					PRINTFORMW 「대충 심심풀이 정도는 된 거 같네~」
+				ENDIF
+			CASE 1
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「당신이 잘못한 거니까 피탄당한거야」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아~아… 앞으로 조금이었는데 안됐네~?」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「전부터 생각한거지만… 당신은 성장하는게 빠르네?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「힌트라도 줄까. 봄은 피탄당하지 않더라도 쓰라구~」
+				ELSE
+					PRINTFORMW 「아~아 유감… 그래도 다음 번이 있으니까 힘내~」
+				ENDIF
+			CASE 0
+				;분노
+				IF CFLAG:318 == 1
+					PRINTFORMW 「………치ー잇… 지금은 화 난데다가 져버려서 삐졌어…… 흥~」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아~아… 이젠 너덜너덜… 져버리면 이래서 싫다니까」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「전부터 생각한거지만… 당신은 진심으로 나오면 강하다니까?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「꽤나 진심이었는데…… 저기, 다음 번에는 요우무도 같이 괜찮을까?」
+				ELSE
+					PRINTFORMW 「배고파서 힘이 안 나와~…」
+				ENDIF
+		ENDSELECT
+	ENDIF
+RESETCOLOR
+ENDIF
+RETURN 1
+
