@@ -1,0 +1,1252 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;"COUNTER"계 구상
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;-------------------------------------------------
+;커뮤니케이션
+;-------------------------------------------------
+;==================================================
+;거리가 가깝다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_1
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_1_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_1_1
+	PRINTFORML 카나코는 %CALLNAME:MASTER%와의 간격을 차츰 줄이기 시작했다
+	PRINTFORML 「엣？　가까워？기분 탓이 아닐까？」
+;키스魔なら分岐入れたい。
+;	PRINTFORML 카나코는 %CALLNAME:MASTER%의 옆으로 이동해 왔다。
+;	PRINTFORML 「엣？　가까워？　뭐가 불편하기라도 해？」
+;	PRINTFORML %CALLNAME:MASTER%가 말을 하기 전에 카나코는 키스로 입을 틀어막았다……。
+RETURN 1
+
+;==================================================
+;슬쩍 봄
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_2
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_2_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_2_1
+;키스魔なら分岐
+;	PRINTFORML 입술에 손가락을 댄 카나코가 %CALLNAME:MASTER%를 가만히 보고 있다。
+;
+;키스魔でなく同じ場所に人がいたら分岐
+;	PRINTFORML 카나코는 사람들과 이야기하면서 가끔 %CALLNAME:MASTER%를 열렬히 바라보고 있다。
+;
+;그외の描写
+	PRINTFORML 카나코는 곁눈질로 힐끔힐끔 %CALLNAME:MASTER%를 보고있다。
+	PRINTFORML 용건이라도 있는걸까？
+;
+RETURN 1
+
+;==================================================
+;이야기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_3
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_3_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_3_1
+
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「갓파들의 실적이 좋지 않군……」
+			;体力が余ってる条件で分岐したい。
+			;PRINTFORML 「이번 휴일은 어떻게 할까、마음껏 운동이라도 할까」
+		CASE 1
+			PRINTFORML 「인간마을의 시장은 매력적이지만 인간들이 산에 너무 가까이 가는것도……으음……」
+			;출산人数-育児人数>0で分岐
+			;PRINTFORML 「저 애는 어떻게 지내고 있을까。사람과 신의 아이、너무 이상하게 보지 않았으면 좋겠는데。」
+			;あなたが人以外のなりきりだとちょっと違和感出るかな
+		CASE 2
+			PRINTFORML 「있잖아、%CALLNAME:MASTER%는 뭔가 갖고싶은 물건 없어？」
+			;연모で分岐
+			;PRINTFORML 「저기……오늘 밤、괜찮을까？　안돼……？」
+			;清い交際をしてたら違和感かな……
+		CASE 3
+			PRINTFORML 「신자의 획득상황、나쁘진 않지만 조금 더 갖고싶군。」
+			PRINTFORML 「이봐、%CALLNAME:MASTER%는 뭔가 좋은 안 없는가？」
+			;키스魔かつ思慕以上で分岐
+			;PRINTFORML 「%CALLNAME:MASTER%、んちゅ……%CALLNAME:MASTER%는、ちゅ……どう……んちゅ……ぷはっ、思う？」
+			;PRINTFORML %CALLNAME:MASTER%は何を話してたかわからないのでもう一回してほしいと頼んだ
+			;これでキス経験を増やすの初回だけ表示して次回以降はサイレント増加でいいかも知れない
+	ENDSELECT
+
+RETURN 1
+
+;==================================================
+;좋은 냄새
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_4
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_4_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_4_1
+
+	PRINT どこからか
+	SELECTCASE RAND:4
+		CASE 0
+		PRINTFORML 나무들의 부드러운 향기가 감돌고 있다……。
+		PRINTFORML 「백단의 향기일세、맘에 드는가？」
+			;夏季限定で出したい
+			;PRINTFORML 火薬の香りがしている！
+			;PRINTFORML 「人里で花火大会でも開こうかなって河童たちの様子見て来たのよ。」
+				;연모限定
+				;PRINTFORML 硝煙の匂いがする。そろそろ夏祭りか。
+				;PRINTFORML 「ねぇ……今度、人里で祭りを開かせるんだけど、その……」
+				;PRINTFORML 「一緒に、行かない？　ダメ……？」
+		CASE 1
+		PRINTFORML 스파이시한 향기가 감돌고 있다……。
+		PRINTFORML 「몰약의 향기네。나는 꽤 좋아하지。」
+			;秋季限定
+			;PRINTFORML 입맛을 돋우는 탄 냄새가 난다。
+			;PRINTFORML 「군고구마에 군밤、가을에는 물건이 불티나게 팔려서 기분이 좋아！」		
+				;연모
+				;PRINTFORML 金木犀の優しい香りがする。
+				;PRINTFORML 「えっと、河童に香水作らせてみたんだけど、どう……？」
+				;PRINTFORML 「%CALLNAME:MASTER%はこの匂い、好き？」
+				;PRINTFORML 「もっと、近くで嗅いでもいいわよ……？」
+		CASE 2
+		PRINTFORML 달콤한 향기가 난다……。
+		PRINTFORML 「엣？　나한테서？　그、그런 농담은 그만 두게。」
+		;甘い体臭って言うと糖尿病っぽいよね。
+			;冬季
+			;PRINTFORML 「으ー、오싹오싹。화롯불만 가지고 있으면 허전하군。」
+			;PRINTFORML 탄 그을음 냄새가 난다。
+			;PRINTFORML 「에어컨이라도 만들게 할까……그치만 아직 전기 인프라는、흐음……」
+				;연모
+				;PRINTFORML카나코의 냄새가 난다。
+				;PRINTFORML 「잠깐！　도대체 뭔가 내 냄새라는게。」
+				;PRINTFORML 「엣？좋은 냄새？　으、으흠？　그、그렇다면 상관없지만서도？」
+				;チョロカワ神奈子様
+		CASE 3
+		PRINTFORML 달콤한 아로마 향기가 감돌고 있다……。
+		PRINTFORML 「유향을 끓이던 까마귀인가、이 훈향은 독특하지。」
+			;春季
+			;PRINTFORML 甘酸っぱい匂いがしている。
+			;PRINTFORML 「春の始めには梅、梅が終わったら桃、そして酒。うふふ……懐があったまって仕方ないわね！」
+				;연모
+				;PRINTFORML 桃の匂いがしている。
+				;PRINTFORML 「……それは私の匂いじゃないから私の匂いを嗅ぎなさい。」
+				;PRINTFORML %CALLNAME:MASTER%は神奈子の胸にギュッと抱きしめられた！
+				;ヤキモチ神奈子様
+	ENDSELECT
+RETURN 1
+;季節限定分岐で恋慕で本文が変化って例えば夏限定なら
+;IF DAY:2 = 2 ;季節が夏
+;	IF TALENT:연모
+;		（恋慕本文）
+;	ELSE
+;	（季節分岐本文）
+;ELSE
+;그외本文
+;とかになるの？わからにゃい……。てか恋慕でいい匂いって発生するのかもわからにゃい……。
+
+;-------------------------------------------------
+;베리소프트
+;-------------------------------------------------
+;==================================================
+;접근해 온다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_11
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_11_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_11_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML ジリ……ジリ……
+			PRINTFORML 카나코는 발을 질질 끌며 %CALLNAME:MASTER%에게 다가왔다
+		CASE 1
+			PRINTFORML 「옆에 있어도 될까？　괜찮지？　그럼。」
+		CASE 2
+			PRINTFORML 「어이、%CALLNAME:MASTER%。내 옆으로 오도록 하게。」
+			PRINTFORML 카나코는 마치 신처럼 %CALLNAME:MASTER%를 억지로 끌어당겼다。
+		CASE 3
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 손을 잡을 수 있도록 옆으로 이동했다。
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;웃는 얼굴을 띠운다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_12
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_12_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_12_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「그래서 ~~라는 일이 있었네、그래서 말이지」
+			PRINTFORML 카나코는 웃는 얼굴로 %CALLNAME:MASTER%와 대화하고 있다。
+		CASE 1
+			PRINTFORML 카나코는 싱글벙글 웃으며 %CALLNAME:MASTER%을 바라보고 있다。
+			PRINTFORML 「음？　아무것도 아니야。그냥 보고 있을 뿐♪」
+		CASE 2
+			PRINTFORML 카나코는 온바시라에 기대어서 %CALLNAME:MASTER%를 응시하고 있다
+			PRINTFORML 「음？　무슨 일인가、편히 있게。내가 허락하지。」
+			;普段あっけらかんとしてるのに思い出したように神様気取りする神奈子様良くない？
+		CASE 3
+			PRINTFORML 눈과 눈이 마주치자 카나코는 빙그레 웃으며 %CALLNAME:MASTER%에게 조용히 미소지었다。
+			PRINTFORML %CALLNAME:MASTER%가 뺨을 느슨하게 풀자 카나코는 눈치채지 못하게 조용히 신나했다 。
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;관계를 원한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_13
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_13_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_13_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 옆구리를 찔러왔다。
+			PRINTFORML 「한가하니까 뭔가 재미난 것 좀 해줘。」
+			;大学にいるアレな先輩系神奈子様
+		CASE 1
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 뺨을 찔러왔다。
+			PRINTFORML 「푸하하、떡처럼 늘어나네。」
+			PRINTFORML %CALLNAME:MASTER%는 딱밤으로 응수했다。
+		CASE 2
+			PRINTFORML 카나코는 힐끔힐끔 %CALLNAME:MASTER%를 보고는 장난의 틈을 엿보고 있다。
+			PRINTFORML 「읏……뭐、뭐야。」
+			PRINTFORML %CALLNAME:MASTER%가 시선으로 견제하자 카나코는 주춤했다
+		CASE 3
+			PRINTFORML 카나코는 쓸데없이 %CALLNAME:MASTER%를 위압해 왔다。
+			PRINTFORML 「어이……신님의 앞이라고？　괜찮은가？　좀 더 이렇게……？」
+			PRINTFORML 「당신은 한번――사나운 신의 분노를 받아 보는 것이 좋다！！！」
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;몸을 문질러댄다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_14
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_14_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_14_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「조、좀 추워진거 같네ー。응、추워 추워。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%에게 몸을 붙혀 왔다。
+			;夏or地底で分岐して追記?
+			;PRINTFORML 「됐으니까 가만히 좀 있게나！」
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%가 더워함에도 아랑곳하지 않고 있다。
+			;冬or妖怪の山山頂で追記？
+			;PRINTFORML 「꺄악、잠깐！　그런 뜬금없이……！」
+			;PRINTFORML %CALLNAME:MASTER%도 추위를 느끼고 껴안자 카나코는 허둥지둥 발버둥쳤다！
+		CASE 1
+			PRINTFORML 「……뭔가？　어찌된 일인가？」
+			PRINTFORML %CALLNAME:MASTER%의 옆에 앉아 있던 카나코는 어느새 손과 손이 맞닿는 거리에 있었다。
+		CASE 2
+			PRINTFORML 「오게、%CALLNAME:MASTER%。거절은 거절하겠네。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 쪽으로 몸을 돌리자 억지로 끌어안아 왔다。
+			PRINTFORML 곤란합니다、그만둬주세요 대관님！
+			;あなたのセリフ載せるの迷った
+			PRINTFORML 「좋지 아니한가、좋지 아니한가～～ッ！」
+			;ノリのいいあなたと同じくらいノリノリな神奈子様もよくない？
+		CASE 3
+			PRINTFORML 「그런데 포교 건으로 할 얘기가 있는데―――――。」
+			PRINTFORML 카나코는 아무 일도 아닌 것처럼 %CALLNAME:MASTER%의 허리로 손을 올려 왔다。
+			PRINTFORML 「으음？　뭔가？　자네、뭔가 하고 싶은 말이 있으면 말해 주게。」
+			PRINTFORML 카나코는 권력을 믿고 마음대로 하고 싶은 기분인 것 같다。
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;응시해 온다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_15
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_15_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_15_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 손을 바라보았다。
+			PRINTFORML 「의외로 탄탄한 걸……。」
+			PRINTFORML %CALLNAME:MASTER%는 잠시간 카나코에게 손을 잡혔다。
+		CASE 1
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 엉덩이를 바라보았다。
+			PRINTFORML 「제법 둥글구나……。」
+			PRINTFORML %CALLNAME:MASTER%는 손을 뻗어 오는 카나코를 나무랐다。
+		CASE 2
+			PRINTFORML 카나코는 뜨거운 시선으로 %CALLNAME:MASTER%의 얼굴을 바라 보았다。
+			PRINTFORML 「ん！？　아、아닐세！　아무것도 아니야！」
+			PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 황급히 얼버무렸다。
+			;키스魔で分岐させたい
+			;PRINTFORML 「입、조금 외로울지도～？……라고 할 뻔。」
+			;PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 얼굴을 붉히며 중얼거렸다。
+		CASE 3
+			PRINTFORML %CALLNAME:MASTER%는 카나코를 바라보고 있는데 갑자기 카나코와 눈이 마주치고 말았다。
+			PRINTFORML 「……뭐、뭔가 얼굴에 묻었을까？」
+			PRINTFORML 카나코는 얼굴을 붉히면서 %CALLNAME:MASTER%에게 물었다。
+			;なんかしらの性的な素質手に入れたら分岐（淫壺とか？）
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%의 사타구니를 바라보았다。
+			;PRINTFORML 「그……오늘 밤、어떤가？　안된다고 하지 않겠지？」
+			;PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 귓가에 대고 속삭여 왔다……。
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;어깨에 턱을 얹어
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_16
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_16_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_16_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「그러고 보니 요즘 우리 측 갓파가 내연기관계에서ー……」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%에게 착 달라붙어 잡담을 하고 있다。
+		CASE 1
+			PRINTFORML 「다음에 설치할 분사 후보지인데ー……」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%에게 착 달라붙어 잡담을 하고 있다。
+		CASE 2
+			PRINTFORML 고양이처럼 행동하는 카나코에게 %CALLNAME:MASTER%는 강아지풀을 꺼내 보았다。
+			PRINTFORML 「야오옹！　근데、신님에게 무슨 일을 시키는 거야。」
+			PRINTFORML 「입장을 반대로 해야지、이봐, 그거 내놓게。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%에게 강아지풀을 흔들어 왔다。……야오옹！
+		CASE 3
+			PRINTFORML %CALLNAME:MASTER%는 청소 준비를 하고 있는데 갑자기 카나코가 어깨에 턱을 얹어 왔다。
+			PRINTFORML 「뭔가、불만있나？」
+			PRINTFORML %CALLNAME:MASTER%는 무시하고 작업을 시작하기로 했다……。
+			PRINTFORML 「뭣……！　그렇게 나오는가……。」
+			;키스魔で分岐
+			;PRINTFORML 茶器の手入れをしている%CALLNAME:MASTER%の肩に神奈子はあごを乗せて来た。
+			;PRINTFORML 「ね、ここに唇があるんだけど？」
+			;PRINTFORML %CALLNAME:MASTER%は神奈子に従う事とした……。
+	ENDSELECT
+RETURN 1
+
+;-------------------------------------------------
+;소프트
+;-------------------------------------------------
+;==================================================
+;요염한 몸짓
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_20
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_20_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_20_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「아ーー、왠지 덥지 않은가……？」
+			PRINTFORML 카나코는 노골적으로 %CALLNAME:MASTER%를 향해 옷을 느슨하게 풀었다。
+		CASE 1
+			PRINTFORML 「…………♥」
+			PRINTFORML 카나코는 입술을 검지로 누르고、지긋이 %CALLNAME:MASTER%를 보고있다。
+			PRINTFORML 서투른 어필보다는 낫지만……。
+		CASE 2
+			PRINTFORML 「우、우웅～～～……？」
+			PRINTFORML 카나코는 어설픈 키스 던지기를 날려왔다。
+			PRINTFORML 윙크가 어색하다……。
+		CASE 3
+			PRINTFORML 카나코는 흐트러진 머리를 다시 묶었다。
+			PRINTFORML 목덜미에서 말하기 어려울 정도의 색기를 뿜어내고 있다……。
+			PRINTFORML 「음？　뭔가？　오늘 뭔가 야하다고？　에、어째서？」
+	ENDSELECT
+	;
+	;아직本分考えてないけど欲望が一定以上で狙って色っぽい仕草ができたらあなた色に染められた感あって良いよね
+	;
+RETURN 1
+
+;==================================================
+;응시한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_21
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_21_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_21_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 손을 바라보았다。
+			PRINTFORML 「의외로 탄탄한 걸……。」
+			PRINTFORML %CALLNAME:MASTER%는 잠시간 카나코에게 손을 잡혔다。
+		CASE 1
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 엉덩이를 바라보았다。
+			PRINTFORML 「제법 둥글구나……。」
+			PRINTFORML %CALLNAME:MASTER%는 손을 뻗어 오는 카나코를 나무랐다。
+		CASE 2
+			PRINTFORML 카나코는 뜨거운 시선으로 %CALLNAME:MASTER%의 얼굴을 바라 보았다。
+			PRINTFORML 「ん！？　아、아닐세！　아무것도 아니야！」
+			PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 황급히 얼버무렸다。
+			;키스魔で分岐させたい
+			;PRINTFORML 「입、조금 외로울지도～？……라고 할 뻔。」
+			;PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 얼굴을 붉히며 중얼거렸다。
+		CASE 3
+			PRINTFORML %CALLNAME:MASTER%는 카나코를 바라보고 있는데 갑자기 카나코와 눈이 마주치고 말았다。
+			PRINTFORML 「……뭐、뭔가 얼굴에 묻었을까？」
+			PRINTFORML 카나코는 얼굴을 붉히면서 %CALLNAME:MASTER%에게 물었다。
+			;なんかしらの性的な素質手に入れたら分岐（淫壺とか？）
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%의 사타구니를 바라보았다。
+			;PRINTFORML 「그……오늘 밤、어떤가？　안된다고 하지 않겠지？」
+			;PRINTFORML %CALLNAME:MASTER%가 시선을 알아차리자 카나코는 귓가에 대고 속삭여 왔다……。
+	ENDSELECT
+RETURN 1
+				;良いの思い付くまで見つめてくると同じでお茶を濁したい。
+
+;==================================================
+;몸을 밀착한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_22
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_22_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_22_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「조、좀 추워진거 같네ー。응、추워 추워。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%에게 몸을 붙혀 왔다。
+			;夏or地底で分岐して追記?
+			;PRINTFORML 「됐으니까 가만히 좀 있게나！」
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%가 더워함에도 아랑곳하지 않고 있다。
+			;冬or妖怪の山山頂で追記？
+			;PRINTFORML 「꺄악、잠깐！　그런 뜬금없이……！」
+			;PRINTFORML %CALLNAME:MASTER%도 추위를 느끼고 껴안자 카나코는 허둥지둥 발버둥쳤다！
+		CASE 1
+			PRINTFORML 「……뭔가？　어찌된 일인가？」
+			PRINTFORML %CALLNAME:MASTER%의 옆에 앉아 있던 카나코는 어느새 손과 손이 맞닿는 거리에 있었다。
+		CASE 2
+			PRINTFORML 「오게、%CALLNAME:MASTER%。거절은 거절하겠네。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 쪽으로 몸을 돌리자 억지로 끌어안아 왔다。
+			PRINTFORML 곤란합니다、그만둬주세요 대관님！
+			;あなたのセリフ載せるの迷った
+			PRINTFORML 「좋지 아니한가、좋지 아니한가～～ッ！」
+			;ノリのいいあなたと同じくらいノリノリな神奈子様もよくない？
+		CASE 3
+			PRINTFORML 「그런데 포교 건으로 할 얘기가 있는데―――――。」
+			PRINTFORML 카나코는 아무 일도 아닌 것처럼 %CALLNAME:MASTER%의 허리로 손을 올려 왔다。
+			PRINTFORML 「으음？　뭔가？　자네、뭔가 하고 싶은 말이 있으면 말해 주게。」
+			PRINTFORML 카나코는 권력을 믿고 마음대로 하고 싶은 기분인 것 같다。
+	ENDSELECT
+RETURN 1
+				;そう、これも暫定的にお茶を濁したい。
+
+;==================================================
+;치마를 넘긴다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_23
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_23_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_23_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「어디보자、 오늘의 팬티는 무엇일까？」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 스커트를 아무렇지도 않게 넘겨왔다。
+			PRINTFORML %CALLNAME:MASTER%는 딱밤으로 타일렀다。
+		CASE 1
+			PRINTFORML 「……스윽」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%가 눈치채지 못하도록 뒤에서 살며시 다가가 스커트를 걷어 올렸다。
+			PRINTFORML 신앙을 모으는 신의 지나친 모습에、%CALLNAME:MASTER%는 못 본 체했다……。
+		CASE 2
+			PRINTFORML 「잠깐 실례합니다～。」
+			PRINTFORML 카나코는 앞에서부터 당당히 스커트를 걷어 올렸다。
+			PRINTFORML %CALLNAME:MASTER%는 언제나 하는 일이라 무시했다。
+			;TWあなたって前からペラッてめくるんだね。口上書いてて初めてしった。
+		CASE 3
+			PRINTFORML 「오늘은 뭘 입었나？　나에게 순순히 보여 주는 것이 좋을거야。」
+			PRINTFORML 카나코는 당당히 성희롱 발언을 해 왔다。
+			PRINTFORML %CALLNAME:MASTER%는 어쩔 수 없이 얼굴을 붉히면서 카나코 말고는 보이지 않게 쭈뼛쭈뼛 스커트를 걷어 올렸다……。
+	ENDSELECT
+	;パンツで反応変えたい。
+		;履いてない
+			;PRINTFORML 「……っっ！！！！」
+			;PRINTFORML %CALLNAME:MASTER%는 스커트 밑에 있는 실오라기 하나 걸치지 않은 성기를 딱 가나코에게 보여지고 말았다……！
+			;PRINTFORML 「네 녀석！　그、그런 것을 보여주지 말게！」
+			;PRINTFORML 카나코는 자기가 한 일을 잊고 %CALLNAME:MASTER%를 비난해 왔다。
+		;盗んだ誰かの
+			;PRINTFORML 「ん……んん？　무언가、이름이……？」
+			;;幻想少女はきっと頻繁に失くすパンツに名前書いてるからあなたは持ち主がわかるんだ……
+			;PRINTFORML 「えっ？　ええ……！？」
+			;PRINTFORML 「シェアが、流行ってるの？　ほ、ほんとぉ……？」
+		;盗んだ 神奈子様の
+			;PRINTFORML 「ﾌﾞﾌｯ！　おま、お前それ私の！！！」
+			;PRINTFORML %CALLNAME:MASTER%は気の所為じゃないかとシラを切ろうと試みた！
+			;PRINTFORML ……なんとか切り抜けた！
+		;普通の
+			;PRINTFORML 「ほーう、（あなたのパンツ）か……。」
+			;PRINTFORML 神奈子は更に%CALLNAME:MASTER%の内腿に手を添えてさすってきた。
+			;PRINTFORML どうやらセクハラはまだまだ続けるつもりらしい。
+			;PRINTFORML %CALLNAME:MASTER%はしばらくされるがままになった……。
+RETURN 1
+
+;==================================================
+;숨결을 내뿜는다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_24
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_24_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_24_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「후우ー……♥」
+			PRINTFORML %CALLNAME:MASTER%가 바지에 손을 넣어 팬티정돈을 하는 틈에、
+			PRINTFORML 카나코는 뒤에서 귀에 입김을 불어왔다。
+			PRINTFORML 「아하하！　놀랐어？　뭔가 정신없이 하고 있는걸 보니 장난치고 싶어져서！」
+			;最終的に色々超人じみたTWあなたでもおパンツ様弄ってる最中は無防備になるだろう……
+		CASE 1
+			PRINTFORML 「있잖아、잠깐 귀 좀 빌려줘！　잠깐이면 돼！」
+			PRINTFORML 무슨 좋은 일이라도 있었던 걸까、%CALLNAME:MASTER%는 걸레를 꿰매는 손을 멈추고、카나코의 말대로 했다。
+			PRINTFORML 「실은 말이야…………후우ーーーー！！！」
+			PRINTFORML %CALLNAME:MASTER%는 카나코에게 갑작스레 귀에 입김이 불어닥쳤다.！
+			PRINTFORML %CALLNAME:MASTER%는 장난이 성공해서 웃고 있는 카나코에게 딱밤을 날렸다。
+		CASE 2
+			PRINTFORML 「이봐、귀에 입김을 불면 기뻐한다던데 정말인가？」
+			PRINTFORML 카나코는 누구한테서 들었는지 신님 모드 전개로 %CALLNAME:MASTER%에게 그렇게 물어왔다。
+			PRINTFORML 아무래도 실제로 해보고 싶은 모양이다……
+			PRINTFORML %CALLNAME:MASTER%는 자기한테 말곤 하면 안되니까요 하고 카나코가 좋아하는 대로 하게 두었다。
+		CASE 3
+			PRINTFORML 「후」
+			PRINTFORML 카나코는 짧게 한눈팔고 있었던 %CALLNAME:MASTER%의 귀에 입김을 불었다。
+			PRINTFORML 갑작스런 감각에 놀란 %CALLNAME:MASTER%는 카나코 쪽을 돌아보았다。
+			PRINTFORML 「저기……한번만 더、해보면 안될까？」
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;엉덩이를 쓰다듬는다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_25
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_25_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_25_1
+	SELECTCASE RAND:4
+	;コメントアウト部分は神奈子様がふたなりで分岐させたい。
+		CASE 0
+			PRINTFORML 꼼질꼼질 카나코는 %CALLNAME:MASTER%의 엉덩이를 움켜쥐어 왔다……！
+			PRINTFORML 「에？　쓰다듬는 것은 좋지만 꽉 잡지는 마라？　……네ー에、쳇。」
+			PRINTFORML 쳇이 아닙니다 라고 %CALLNAME:MASTER%는 야단쳤다。
+			;あなたがA感覚が5以上で分岐してもいいかも知れない。
+			;PRINTFORML 「얍ー！」
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%의 엉덩이를 꽉 움켜쥐어 왔다！
+			;PRINTFORML 갑자기 초래된 쾌락에、%CALLNAME:MASTER%는 교성을 지르고 말았다。
+			;PRINTFORML 「엣？　뭐、뭐야？　미、미안해……？」
+			;PRINTFORML 카나코는 뜻밖의 반응에 놀라고 있다。
+		CASE 1
+			PRINTFORML 안절부절 못하는 카나코는 %CALLNAME:MASTER%의 엉덩이를 쓰다듬어 왔다。
+			PRINTFORML 「램프의 마인 같은 게 나오거나 그러지는 않을까?？」
+			PRINTFORML 그 경우 마인은 방귀가 되지 않을까요？　%CALLNAME:MASTER%는 의아해 했다。
+			;神奈子が童貞じゃなければ分岐？
+			;PRINTFORML 열심히 카나코는 %CALLNAME:MASTER%의 엉덩이를 쓰다듬기 시작했다。
+			;PRINTFORML 「아、안될까……？」
+			;PRINTFORML 카나코는 %CALLNAME:MASTER%의 엉덩이가 가져오는 쾌락에 병이 든 모양이다…。
+		CASE 2
+			PRINTFORML 카나코는 톡톡 두들기면서 %CALLNAME:MASTER%의 엉덩이를 때리고 있다。
+			PRINTFORML 「이야ー언제봐도 이쁜모양이군！　왠지 복숭아 먹고 싶어졌어。」
+			PRINTFORML 그 발상은 뭐랄까……。
+			;神奈子のサドっ気 and あなたのA感覚が一定以上 かつ 神奈子が童貞でない で分岐？
+			;PRINTFORML バシンと一発、神奈子は結構本気で%CALLNAME:MASTER%にスパンキングをしてきた。
+			;PRINTFORML %CALLNAME:MASTER%は思わず嬌声をあげる。
+			;PRINTFORML 「今夜……わかってるわね？」
+		CASE 3
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 허리에 손을 두르고 그대로 엉덩이를 주물러 왔다。
+			PRINTFORML 아무래도 이건 좀……
+			PRINTFORML 「왜 그러나？　……쿠후후。」
+			;神奈子のおちんちんが一定以上大きくなってれば分岐？
+			;PRINTFORML 神奈子は%CALLNAME:MASTER%の尻を揉みながら、くにくにと%CALLNAME:MASTER%の菊門を指で刺激してきた。
+			;PRINTFORML 衣類越しの感覚がもどかしい……。
+			;PRINTFORML 「ふふ、私のが欲しくなってきたんじゃない……？」
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;팔에 달라붙어
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_26
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_26_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_26_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「후우ー、오늘은 너무 춥네。너무 추워。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 팔을 잡아챘다。
+			PRINTFORML 너무나도 의도적인 행동에 %CALLNAME:MASTER%는 쓴웃음을 지었다。
+		CASE 1
+			PRINTFORML 「이봐、내가 외로워하고 있네만？」
+			PRINTFORML 카나코는 거만한 말과 함께 뒤에서 살짝 %CALLNAME:MASTER%의 소매를 잡아당겨 왔다。
+			PRINTFORML %CALLNAME:MASTER%는 카나코와 팔짱을 끼기로 했다。
+		CASE 2
+			PRINTFORML 「에잇！」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 팔에 안기기 시작했다。
+			PRINTFORML 겨드랑이에 여문 멜론 같은 가슴이 닿았다！　우효옷！
+		CASE 3
+			PRINTFORML 카나코는 아무 말도 하지 않고 %CALLNAME:MASTER%의 팔을 끌어안았다。
+			PRINTFORML 「따뜻하네、후훗……」
+			PRINTFORML 카나코는 온화한 미소를 짓고 있다。
+	ENDSELECT
+RETURN 1
+;==================================================
+;골짜기를 과시한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_27
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_27_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_27_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORML 
+		CASE 1
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORML 
+		CASE 2
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORML 
+		CASE 3
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORML 
+	ENDSELECT
+RETURN 1
+
+;-------------------------------------------------
+;성희롱
+;-------------------------------------------------
+;===================================================
+;尻ズリ
+;===================================================
+;CALL EVENT_COUNTER_MESSAGE
+;CALL M_KOJO_MESSAGE_COUNTER_K32_28_1
+;RETURN RESULT
+;@M_KOJO_MESSAGE_COUNTER_K32_28_1
+;	SELECTCASE RAND:4
+;		CASE 0
+;			PRINTFORML 「으음ー……！　으으음ー……！　가만히 있을 수가 없군……！」
+;			PRINTFORM 카나코는 %CALLNAME:MASTER%의 허리를 잡으며
+			;神奈子童貞で分岐
+;			PRINTFORML 영문도 모르고 사타구니를 %CALLNAME:MASTER%의 엉덩이에 밀어붙이기 시작했다.。
+;			PRINTFORML 「잠시동안、이렇게 있도록 해……！」
+			;神奈子非童貞
+;			PRINTFORML 정신없이 사타구니를 %CALLNAME:MASTER%의 엉덩이를 향해 비벼대기 시작했다。
+;			PRINTFORML 「저기、안돼？　안됄까……？」
+;			PRINTFORML 카나코의 인내심도 상당히 한계인 것 같다……。
+;		CASE 1
+;			PRINTFORML 카나코는 %CALLNAME:MASTER%를 그늘에 데리고 들어가자 둥글둥글 페니스를 엉덩이에 들이밀고 왔다。
+;			PRINTFORML 좀 갑갑하다……。
+;			PRINTFORML 「……쿠후후。갚고 싶나？」
+;			PRINTFORML 그런 힘을 갖고 싶은가 같은……
+;		CASE 2
+;			PRINTFORML 카나코는 %CALLNAME:MASTER%를 잡고 억지로 자신의 위에 앉혀 왔다。
+;			PRINTFORML 무언가 크고 딱딱한게、닿고 있다……。
+;			PRINTFORML 「조금이라면 움직여도 된다고……？」
+;		CASE 3
+;			PRINTFORML 카나코는 %CALLNAME:MASTER%를 뒤에서 껴안았다。
+;			PRINTFORML %CALLNAME:MASTER%가 어찌된 일인가 생각하기 시작한 지 얼마 지나지 않아
+;			PRINTFORML 난폭한 움직임으로 무언가가 건드렸다.……。
+;	ENDSELECT
+;RETURN 1
+;
+;ここも追加したいけどこれ動くのかな？　一応コメントアウト付きで記載。
+;
+
+;==================================================
+;키스
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_30
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_30_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_30_1
+
+RETURN 1
+
+;==================================================
+;뒤로부터 안겨든다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_31
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_31_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_31_1
+
+RETURN 1
+
+;==================================================
+;앞에서 안겨든다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_32
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_32_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_32_1
+
+RETURN 1
+
+;==================================================
+;가슴을 비비게 한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_33
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_33_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_33_1
+
+RETURN 1
+
+;==================================================
+;고간을 만지작거린다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_34
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_34_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_34_1
+
+RETURN 1
+
+;==================================================
+;치마 속을 드러낸다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_35
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_35_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_35_1
+
+RETURN 1
+
+;==================================================
+;뒤로부터 가슴을 만지작 만지작
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_36
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_36_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_36_1
+
+RETURN 1
+
+;==================================================
+;엿강탈 ;こう言う事……？
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_39
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_39_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_39_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「여길 보게。」
+			PRINTFORML 카나코의 말에 따라 돌아보니 %CALLNAME:MASTER%의 입에 억지로 혀가 들어왔다。
+			PRINTFORML 그러다보니、어느샌가 %CALLNAME:MASTER%의 입에서 사탕이 없어져 있다。
+			PRINTFORML 카나코에게 사탕을 빼앗겼다！
+			PRINTFORML 「내 앞에서 네가 맛있게 핥고 있는 것이 나쁜게지。」
+		CASE 1
+			PRINTFORML 「오、맛있어 보이는 사탕을 먹고 있네。」
+			PRINTFORML %CALLNAME:MASTER%는 주머니에서 카나코를 위해 사탕을 꺼내려고 했다。
+			PRINTFORML 그러나、턱을 잡히고 억지로 키스를 받아 입에 있던 사탕을 빼앗기고 말았다。
+			PRINTFORML 「후후、이미 받았으니 그 사탕은 됐네。」
+		CASE 2
+			PRINTFORML %CALLNAME:MASTER%가 사탕을 먹고 있자 카나코가 지그시 %CALLNAME:MASTER%를 바라보았다。
+			PRINTFORML 「같이 좀 나눠 먹도록 하지」
+			PRINTFORML %CALLNAME:MASTER%가 의미를 되묻기 전에 카나코는 입을 맞추며、사탕과 %CALLNAME:MASTER%의 혀를 맛 보았다。
+		CASE 3
+			PRINTFORML 「저기、사탕 먹고 싶지 않아？」
+			PRINTFORML 카나코는 그렇게 말하자마자、%CALLNAME:MASTER%의 입에 혀를 들이내밀었다。
+			PRINTFORML 카나코의 입 안에 사탕이 있었다。
+			PRINTFORML 빼앗아보라는 뜻인가……。
+	ENDSELECT
+RETURN 1
+
+;-------------------------------------------------
+;애원
+;-------------------------------------------------
+;==================================================
+;정상위V애원
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_41
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_41_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_41_1
+RETURN 1
+
+;==================================================
+;정상위V애원2
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_43
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_43_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_43_1
+RETURN 1
+
+;==================================================
+;후배위A애원
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_44
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_44_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_44_1
+RETURN 1
+
+;-------------------------------------------------
+;애무
+;-------------------------------------------------
+;==================================================
+;수음
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_50
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_50_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_50_1
+RETURN 1
+
+;==================================================
+;펠라치오
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_51
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_51_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_51_1
+RETURN 1
+
+;==================================================
+;스마타
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_52
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_52_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_52_1
+RETURN 1
+
+;==================================================
+;파이즈리
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_53
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_53_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_53_1
+RETURN 1
+
+;==================================================
+;풋잡
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_54
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_54_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_54_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;애널애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_55
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_55_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_55_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;애널핥기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_56
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_56_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_56_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;손가락挿入
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_57
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_57_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_57_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;가슴애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_58
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_58_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_58_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;유두빨기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_59
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_59_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_59_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;딥키스
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_60
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_60_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_60_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+
+;-------------------------------------------------
+;봉사
+;-------------------------------------------------
+;==================================================
+;커닐링구스강제
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_70
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_70_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_70_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;펠라치오강제
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_71
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_71_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_71_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;애널봉사
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_72
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_72_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_72_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;파후파후
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_73
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_73_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_73_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;젖맞대기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_74
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_74_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_74_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;타와시아라이
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_75
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_75_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_75_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;강제보지애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_76
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_76_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_76_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;젖을 빨게 한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_77
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_77_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_77_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;-------------------------------------------------
+;성교
+;-------------------------------------------------
+;==================================================
+;삽입당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_80
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_80_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_80_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;V삽입한다（TARGET이 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_85
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_85_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_85_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;정말좋아 hold
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_86
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_86_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_86_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;A삽입한다（TARGET이 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_87
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_87_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_87_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;V허리흔들기（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_88
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_88_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_88_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;A허리흔들기（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_89
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_89_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_89_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;A삽입당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_90
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_90_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_90_1
+	SELECTCASE RAND:4
+		CASE 0
+		CASE 1
+		CASE 2
+		CASE 3
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;이라마치오당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_91
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_91_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_91_1
+	SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「이봐、좀 더 정성껏 빨라고。」
+			PRINTFORML 카나코는 %CALLNAME:MASTER%의 목을 오나홀처럼 만들어 자신의 음경을 흔들었다。
+		CASE 1
+			PRINTFORML 「능숙하게 잘 빤다면 상을 주지。자, 힘내라」
+			PRINTFORML 
+		CASE 2
+			PRINTFORML 「능숙히 빨지 못한다면 벌을 주겠다。오랏！오랏！　좀 더 신경써라！」
+			PRINTFORML 
+		CASE 3
+			PRINTFORML 「답답하구먼、좀 더 확실히 목구멍까지 쓰라고。이런 식으로！」
+			PRINTFORML 
+	ENDSELECT
+RETURN 1
+
+;==================================================
+;애널개발허가를 요구한다
+;==================================================
+;ここは無個性版霊夢さんの口上を参考にさせて頂きました。
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K32_92
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K32_92_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K32_92_1
+PRINTFORML 「ふ、ふふふ……なあ、%CALLNAME:MASTER%、可愛いお尻してるな。」
+PRINTFORML 神奈子は%CALLNAME:MASTER%の菊門の近くに指をそっと添えて耳打ちをした。
+PRINTFORMW 「開発してやろうか？」
+	SELECTCASE RESULT
+		CASE 0
+			PRINTFORML 「안돼？　……어떻게든？　그런가……정말로？」
+			PRINTFORMW 카나코는 %CALLNAME:MASTER%를 껴안으면서 계속 고양이 목소리로 물었다……。
+		CASE 1
+			PRINTFORML 「괜찮은가！？　그렇지、내게 맡기게나！」
+			PRINTFORMW 카나코는 금방이라도 폭주할 것 같은 기세다……。
+	ENDSELECT
+RETURN 1
+
+;-------------------------------------------------
+;우후후 카운터
+;-------------------------------------------------
+;아직

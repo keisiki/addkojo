@@ -1,0 +1,88 @@
+﻿;-------------------------------------------
+;각인취득
+;-------------------------------------------
+@M_KOJO_MESSAGE_MARKCNG_K32
+;이대로라면 지문이 표시되지 않습니다
+;지문을 표시하고 싶으신 분은、아래의 주석처리를 삭제해 주세요
+CALL MARK_MESSAGE
+;고통각인 ;苦痛系苦手で書けない。ゴメンね……。
+IF TFLAG:22 == 1
+	PRINTFORML 「이기이잇！！？」
+	PRINTFORML 「이、이렇게까지 아팠던 적은、스와코와 싸웠을 때 이후 처음일까……」
+	PRINTFORMW 카나코는 눈물이 글썽한 눈으로 %CALLNAME:MASTER%를 바라보았다。조금 뒤가 무섭다……。
+ELSEIF TFLAG:22 == 2
+	PRINTFORMW 「――――――ッ！！！！」
+ELSEIF TFLAG:22 == 3
+	PRINTFORMW 「히기이이잇！！？？？」
+ENDIF
+
+;시간각인
+IF TFLAG:시간각인취득 == 1
+	PRINTFORML 
+ELSEIF TFLAG:시간각인취득 == 2
+	PRINTFORML 
+ELSEIF TFLAG:시간각인취득 == 3
+	PRINTFORML 
+ENDIF
+
+;쾌락각인
+IF TFLAG:23 == 1
+	PRINTFORML 「히잇！？　바、방금 뭔가……찌릿하고！」
+	PRINTFORMW 카나코는 아직도 뭔가 어색한 모양이다……
+ELSEIF TFLAG:23 == 2
+	PRINTFORML 「아、안돼！온다！뭔가 온다앗……！」
+	PRINTFORMW %CALLNAME:MASTER%는 무시하고 카나코를 계속 몰아세웠다。
+ELSEIF TFLAG:23 == 3
+	PRINTFORML ;미기입
+ENDIF
+
+;괘씸각인
+;쾌락에 의한 각인
+;LV1
+IF TFLAG:24 == 11
+	PRINTFORML 「기、기분 조아앗……」
+	PRINTFORMW 카나코는 게슴츠레한 표정으로%CALLNAME:MASTER%를 바라봤다……。
+;LV2
+ELSEIF TFLAG:24 == 12
+	PRINTFORML 「히잇……！　뭐、뭐야 방금 전의 감각……」
+	PRINTFORMW 카나코는 허벅지를 비벼대면서 %CALLNAME:MASTER%가 주는 감각에 당혹감을 느끼고 있다。
+;LV3
+ELSEIF TFLAG:24 == 13
+	PRINTFORML 「아히잇……더、더는 안돼……！」
+	PRINTFORMW 카나코는 엉망이 되어 %CALLNAME:MASTER%에 메달리며、열띤 눈으로 %CALLNAME:MASTER%의 얼굴을 응시했다……。
+;굴복, 복종에 의한 각인
+;LV1
+ELSEIF TFLAG:24 == 31
+	PRINTFORML 「……하우。」
+	PRINTFORMW 카나코는 녹은 듯한 얼굴로 %CALLNAME:MASTER%를 바라보고 있다。
+;LV2
+ELSEIF TFLAG:24 == 32
+	PRINTFORML 「%CALLNAME:MASTER%……조아……」
+	PRINTFORMW 카나코는 이제 %CALLNAME:MASTER%에게 푹 빠져버렸다！
+;LV3
+ELSEIF TFLAG:24 == 33
+	PRINTFORML 「이제、뭐든지 말해……무엇이든 할테니까。」
+	PRINTFORMW 카나코의 말에는 정말로 %CALLNAME:MASTER%를 위해서라면 무엇이든 할 각오가 있었다……！
+ENDIF
+
+;반발각인
+IF TFLAG:21 == 1
+	PRINTFORML 「……인간 주제에 꽤나 신이 난 모양이군」
+	PRINTFORMW 카나코는 어깨에 손을 두른 %CALLNAME:MASTER%의 손을 탁 쳐내곤、째려보았다。
+	;ここで天候を雨にしたい。
+	;でも天候弄るのデート中は支障がありそうだし[デート中でない&地底などにいない&変える先の天候でない]を条件にしないといけない？
+	;PRINTFORML 神奈子が軽く舌打ちをしてそっぽを向いた途端、ポツポツと雨粒の音が聞こえ始めた。
+	;PRINTFORML 程なく振り出した小雨はザーザーと大雨へ変化した！
+	;PRINTFORML どうやら%CALLNAME:MASTER%は虎の尾を踏んでしまったようだ。
+	;でもこれって吹雪から大雨になったらデレてない？
+ELSEIF TFLAG:21 == 2
+	PRINTFORMW 「내게 함부로 말을 걸지 마라、 천한 것」
+	;刻印１と３とは違ってこれは天候変化なしか1の現在の天候→雨の流用で。
+ELSEIF TFLAG:21 == 3
+	PRINTFORMW 「감히 신을 두려워 하지 않는가、인간도 꽤나 어리석게 된 모양이군」
+
+	;PRINTFORML 神奈子の黒い怒気が天にまで昇っていく……
+	;PRINTFORML あたり一帯は大嵐となり、雷鳴が轟く。
+	;PRINTFORMW かなり不味い事をしてしまったようだ……。
+	;これ異変として5面ボスに神奈子様、6面であなたがボコられる羽目になりそう。
+ENDIF
