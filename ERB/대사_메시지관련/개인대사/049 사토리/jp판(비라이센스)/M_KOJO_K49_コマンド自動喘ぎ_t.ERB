@@ -233,7 +233,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;연인
 		IF 함락상태() >= 4
 			FOR 루프카운터:2, 0,22
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -254,7 +254,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 21
 						IF !GETBIT(여러차례비표시, 21)
 							PRINTFORM 후아……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -267,7 +267,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 20
 						IF !GETBIT(여러차례비표시, 20)
 							PRINTFORM 으응……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -280,7 +280,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 19
 						IF !GETBIT(여러차례비표시, 19)
 							PRINTFORM 좀 더 ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -293,7 +293,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 18
 						IF !GETBIT(여러차례비표시, 18)
 							PRINTFORM %커맨드부위:0%\@ STRLENSU(사용부위) >= 3 ?  #  \@……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -306,7 +306,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 17
 						IF !GETBIT(여러차례비표시, 17)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -319,7 +319,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 16
 						IF !GETBIT(여러차례비표시, 16)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -332,7 +332,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 15
 						IF !GETBIT(여러차례비표시, 15)
 							PRINTFORM ―,―
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -345,7 +345,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 14
 						IF !GETBIT(여러차례비표시, 14)
 							PRINTFORM ……으음
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -358,7 +358,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 13
 						IF !GETBIT(여러차례비표시, 13)
 							PRINTFORM 이것……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -371,7 +371,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 12
 						IF !GETBIT(여러차례비표시, 12)
 							PRINTFORM %캐릭터호칭%……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -384,7 +384,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 11
 						IF !GETBIT(여러차례비표시, 11)
 							PRINTFORM 정말좋아……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -397,7 +397,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 10
 						IF !GETBIT(여러차례비표시, 10)
 							PRINTFORM 늪……이나……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -410,7 +410,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 9
 						IF !GETBIT(여러차례비표시, 9)
 							PRINTFORM 나……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -423,7 +423,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 8
 						IF !GETBIT(여러차례비표시, 8)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -436,7 +436,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 7
 						IF !GETBIT(여러차례비표시, 7)
 							PRINTFORM 흐응, 으응……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							루프스페이스컷 = 0
@@ -448,7 +448,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 6
 						IF !GETBIT(여러차례비표시, 6)
 							PRINTFORM 아 쪽 있고……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -461,7 +461,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 5
 						IF !GETBIT(여러차례비표시, 5)
 							PRINTFORM 기분―……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -474,7 +474,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 4
 						IF !GETBIT(여러차례비표시, 4)
 							PRINTFORM 좋아……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -487,7 +487,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 3
 						IF !GETBIT(여러차례비표시, 3)
 							PRINTFORM 해……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -500,7 +500,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 2
 						IF !GETBIT(여러차례비표시, 2)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -513,7 +513,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 1
 						IF !GETBIT(여러차례비표시, 1)
 							PRINTFORM 좋아요……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -526,7 +526,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 0
 						IF !GETBIT(여러차례비표시, 0)
 							PRINTFORM 하아, 응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -537,7 +537,7 @@ FOR 루프카운터:0, 0, 루프MAX
 							SETBIT 여러차례비표시, 0
 						ENDIF
 				ENDSELECT
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_COLOR_K49
 				SIF !루프커터 || 루프스페이스컷
 					CONTINUE
@@ -550,7 +550,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;가족에게 시간 되어도, 연모등과 반응 함께(자고 있다고(면) 나무는 기분이 느슨해집니다
 		ELSEIF 함락상태() >= 2
 			FOR 루프카운터:2, 0,21
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -564,7 +564,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 20
 						IF !GETBIT(여러차례비표시, 20)
 							PRINTFORM ……응 응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -575,7 +575,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 19
 						IF !GETBIT(여러차례비표시, 19)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -586,7 +586,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 18
 						IF !GETBIT(여러차례비표시, 18)
 							PRINTFORM 는-는―……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -597,7 +597,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 17
 						IF !GETBIT(여러차례비표시, 17)
 							PRINTFORM 나……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -608,7 +608,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 16
 						IF !GETBIT(여러차례비표시, 16)
 							PRINTFORM %커맨드부위:0%나
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -619,7 +619,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 15
 						IF !GETBIT(여러차례비표시, 15)
 							PRINTFORM 두껍다……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -630,7 +630,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 14
 						IF !GETBIT(여러차례비표시, 14)
 							PRINTFORM 아개……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -641,7 +641,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 13
 						IF !GETBIT(여러차례비표시, 13)
 							PRINTFORM -―……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -652,7 +652,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 12
 						IF !GETBIT(여러차례비표시, 12)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -663,7 +663,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 11
 						IF !GETBIT(여러차례비표시, 11)
 							PRINTFORM 으음?　……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -674,7 +674,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 10
 						IF !GETBIT(여러차례비표시, 10)
 							PRINTFORM ―……―……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -685,7 +685,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 9
 						IF !GETBIT(여러차례비표시, 9)
 							PRINTFORM 아 흥……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -696,7 +696,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 8
 						IF !GETBIT(여러차례비표시, 8)
 							PRINTFORM 도 ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -707,7 +707,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 7
 						IF !GETBIT(여러차례비표시, 7)
 							PRINTFORM 하아……응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -718,7 +718,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 6
 						IF !GETBIT(여러차례비표시, 6)
 							PRINTFORM 새근……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -729,7 +729,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 5
 						IF !GETBIT(여러차례비표시, 5)
 							PRINTFORM 응 ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -740,7 +740,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 4
 						IF !GETBIT(여러차례비표시, 4)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -751,7 +751,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 3
 						IF !GETBIT(여러차례비표시, 3)
 							PRINTFORM 쿨쿨……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -762,7 +762,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 2
 						IF !GETBIT(여러차례비표시, 2)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -773,7 +773,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 1
 						IF !GETBIT(여러차례비표시, 1)
 							PRINTFORM 으응 ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -784,7 +784,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 0
 						IF !GETBIT(여러차례비표시, 0)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -793,7 +793,7 @@ FOR 루프카운터:0, 0, 루프MAX
 							SETBIT 여러차례비표시, 0
 						ENDIF
 				ENDSELECT
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_COLOR_K49
 				SIF !루프커터 || 루프스페이스컷
 					CONTINUE
@@ -805,7 +805,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;비함락
 		ELSE
 			FOR 루프카운터:2, 0,22
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -981,7 +981,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;완전 함락중
 		IF 함락상태() >= 4
 			FOR 루프카운터:2, 0,20
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -1000,7 +1000,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 19
 						IF !GETBIT(여러차례비표시, 19)
 							PRINTFORM 좋은 맛히-
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1013,7 +1013,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 18
 						IF !GETBIT(여러차례비표시, 18)
 							PRINTFORM 응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1026,7 +1026,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 17
 						IF !GETBIT(여러차례비표시, 17)
 							PRINTFORM ,
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1039,7 +1039,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 16
 						IF !GETBIT(여러차례비표시, 16)
 							PRINTFORM 응 응″
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1052,7 +1052,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 15
 						IF !GETBIT(여러차례비표시, 15)
 							PRINTFORM ……쭈욱
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1065,7 +1065,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 14
 						IF !GETBIT(여러차례비표시, 14)
 							PRINTFORM 쿨럭 쿠웃
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1078,7 +1078,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 13
 						IF !GETBIT(여러차례비표시, 13)
 							PRINTFORM 히……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1091,7 +1091,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 12
 						IF !GETBIT(여러차례비표시, 12)
 							PRINTFORM 쯉 루루루
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1104,7 +1104,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 11
 						IF !GETBIT(여러차례비표시, 11)
 							PRINTFORM 쭙
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1117,7 +1117,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 10
 						IF !GETBIT(여러차례비표시, 10)
 							PRINTFORM 자만……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1130,7 +1130,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 9
 						IF !GETBIT(여러차례비표시, 9)
 							PRINTFORM 오는 히……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1143,7 +1143,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 8
 						IF !GETBIT(여러차례비표시, 8)
 							PRINTFORM 
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1156,7 +1156,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 7
 						IF !GETBIT(여러차례비표시, 7)
 							PRINTFORM 이렇게, 인가
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1169,7 +1169,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 6
 						IF !GETBIT(여러차례비표시, 6)
 							PRINTFORM 히는은, ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1182,7 +1182,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 5
 						IF !GETBIT(여러차례비표시, 5)
 							PRINTFORM ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1195,7 +1195,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 4
 						IF !GETBIT(여러차례비표시, 4)
 							PRINTFORM 우훅……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1208,7 +1208,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 3
 						IF !GETBIT(여러차례비표시, 3)
 							PRINTFORM ……″
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1221,7 +1221,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 2
 						IF !GETBIT(여러차례비표시, 2)
 							PRINTFORM 으음……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1234,7 +1234,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 1
 						IF !GETBIT(여러차례비표시, 1)
 							PRINTFORM 응 응……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1247,7 +1247,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 0
 						IF !GETBIT(여러차례비표시, 0)
 							PRINTFORM ~~~
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1258,7 +1258,7 @@ FOR 루프카운터:0, 0, 루프MAX
 							SETBIT 여러차례비표시, 0
 						ENDIF
 				ENDSELECT
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_COLOR_K49
 				SIF !루프커터
 					CONTINUE
@@ -1270,7 +1270,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;연모계 or가족시간 후(가족에게 때 범하고 있는 경우는, 억지로 보고
 		ELSEIF 함락상태() >= 2
 			FOR 루프카운터:2, 0,18
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -1282,7 +1282,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 17
 						IF !GETBIT(여러차례비표시, 17)
 							PRINTFORM 쯉 질퍽
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1293,7 +1293,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 16
 						IF !GETBIT(여러차례비표시, 16) && 함락상태() == 2
 							PRINTFORM 이 변태, 날름, 응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1304,7 +1304,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 15
 						IF !GETBIT(여러차례비표시, 15)
 							PRINTFORM 하아, 응, 쯉
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1315,7 +1315,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 14
 						IF !GETBIT(여러차례비표시, 14) && 함락상태() == 2
 							PRINTFORM ″쿨럭……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1326,7 +1326,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 13
 						IF !GETBIT(여러차례비표시, 13)
 							PRINTFORM 쯉 , 흐응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1337,7 +1337,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 12
 						IF !GETBIT(여러차례비표시, 12) && 함락상태() == 2
 							PRINTFORM , 나 째,
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1348,7 +1348,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 11
 						IF !GETBIT(여러차례비표시, 11)
 							PRINTFORM 쭈욱,
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1359,7 +1359,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 10
 						IF !GETBIT(여러차례비표시, 10) && 함락상태() == 2
 							PRINTFORM , ″
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1370,7 +1370,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 9
 						IF !GETBIT(여러차례비표시, 9)
 							PRINTFORM 쯉
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1381,7 +1381,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 8
 						IF !GETBIT(여러차례비표시, 8) && 함락상태() == 2
 							PRINTFORM 부적, 쿨럭, 응
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1392,7 +1392,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 7
 						IF !GETBIT(여러차례비표시, 7)
 							PRINTFORM 쭈욱 쯉 ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1403,7 +1403,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 6
 						IF !GETBIT(여러차례비표시, 6) && 함락상태() == 2
 							PRINTFORM 나 째, , ″커어억
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1414,7 +1414,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 5
 						IF !GETBIT(여러차례비표시, 5)
 							PRINTFORM 쮸욱, ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1425,7 +1425,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 4
 						IF !GETBIT(여러차례비표시, 4) && 함락상태() == 2
 							PRINTFORM 있고 그림자, ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1436,7 +1436,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 3
 						IF !GETBIT(여러차례비표시, 3)
 							PRINTFORM , ……
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1447,7 +1447,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 2
 						IF !GETBIT(여러차례비표시, 2) && 함락상태() == 2
 							PRINTFORM ……,
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1458,7 +1458,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 1
 						IF !GETBIT(여러차례비표시, 1)
 							PRINTFORM ……으음
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1469,7 +1469,7 @@ FOR 루프카운터:0, 0, 루프MAX
 					CASE 0
 						IF !GETBIT(여러차례비표시, 0) && 함락상태() == 2
 							PRINTFORM ……″
-							SIF 마크타입카운터 == 1 && FLAG:대사색깔
+							SIF 마크타입카운터 == 1 && FLAG:구상색
 								SETCOLOR 0xFF0000
 							PRINTFORM %마크타입%
 							RESETCOLOR
@@ -1478,7 +1478,7 @@ FOR 루프카운터:0, 0, 루프MAX
 							SETBIT 여러차례비표시, 0
 						ENDIF
 				ENDSELECT
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_COLOR_K49
 				SIF !루프커터
 					CONTINUE
@@ -1490,7 +1490,7 @@ FOR 루프카운터:0, 0, 루프MAX
 		;비함락
 		ELSE
 			FOR 루프카운터:2, 0,15
-				IF !FLAG:대사색깔
+				IF !FLAG:구상색
 					GETDEFCOLOR
 					SETCOLOR RESULT
 				ENDIF
@@ -1602,7 +1602,7 @@ FOR 루프카운터:0, 0, 루프MAX
 							SETBIT 여러차례비표시, 0
 						ENDIF
 				ENDSELECT
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_COLOR_K49
 				SIF !루프커터
 					CONTINUE
@@ -1615,7 +1615,7 @@ FOR 루프카운터:0, 0, 루프MAX
 	;연인
 	ELSEIF 함락상태() >= 4
 		FOR 루프카운터:2, 0,20
-			IF !FLAG:대사색깔
+			IF !FLAG:구상색
 				GETDEFCOLOR
 				SETCOLOR RESULT
 			ENDIF
@@ -1638,7 +1638,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0% 기분이 좋습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1653,7 +1653,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭% 좀 더 해 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1668,7 +1668,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 를 좋아합니다%캐릭터호칭%
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1683,7 +1683,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM , 으응, 좋습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1698,7 +1698,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 앗, 아핫, 후아
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1713,7 +1713,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0% 부서질 것 같습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1728,7 +1728,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%, 이것, 무섭습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1743,7 +1743,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 좀 더, 해 주었으면 합니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1758,7 +1758,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 하아, 하아, 고례 있고입니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1773,7 +1773,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1788,7 +1788,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0%\@ STRLENSU(사용부위) > 2 ?   # 그런 \@에 만지지 말고
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1803,7 +1803,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%% 커맨드부위:0% 좋습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1818,7 +1818,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM ……%커맨드부위:0% 부서지는
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1833,7 +1833,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0%\@ STRLENSU(사용부위) > 2 ?  에 #  \@기분이 좋습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1848,7 +1848,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%해 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1863,7 +1863,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 이상해질 것 같습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1878,7 +1878,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0%\@ STRLENSU(사용부위) > 2 ?  에 #  \@어리석게 될 것 같습니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1893,7 +1893,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%,%캐릭터호칭%
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1908,7 +1908,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 앙, 으응, 흐으응
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1923,7 +1923,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 응 응 흐응
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1932,7 +1932,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						SETBIT 여러차례비표시, 0
 					ENDIF
 			ENDSELECT
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_COLOR_K49
 			SIF !루프커터 || 루프스페이스컷
 				CONTINUE
@@ -1944,7 +1944,7 @@ FOR 루프카운터:0, 0, 루프MAX
 	;연모계 or가족시간 후
 	ELSEIF 함락상태() >= 2
 		FOR 루프카운터:2, 0,20
-			IF !FLAG:대사색깔
+			IF !FLAG:구상색
 				GETDEFCOLOR
 				SETCOLOR RESULT
 			ENDIF
@@ -1967,7 +1967,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 나, 입니다,%커맨드부위:0% 할 수 있는 새근
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1982,7 +1982,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %커맨드부위:0%,%커맨드부위:0% 뜨거운
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -1997,7 +1997,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 이것, 이것, 이것
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2012,7 +2012,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%그만두어 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2027,7 +2027,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 앙, 아앙, 아앙
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2042,7 +2042,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 기분 있고, 가, 아앙
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2057,7 +2057,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 안 돼,%캐릭터호칭%안 돼요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2072,7 +2072,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 나입니다, 이것이나입니다
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2087,7 +2087,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM , 응 큐, 이것 안 돼요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2102,7 +2102,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%그만두어
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2117,7 +2117,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%손대지 말아 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2132,7 +2132,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 예, 으응……,%캐릭터호칭%멈추어 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2169,7 +2169,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 윽, 흐응, 그만둬, 주세요
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2184,7 +2184,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 「기분이 좋다」, (이)라고, 흐으응
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2199,7 +2199,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 아앙, 히, 응 큐 ……
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2214,7 +2214,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM %캐릭터호칭%\@ 캐릭터호칭 != "" ?  의 # 이제(벌써) \@H\@ 캐릭터호칭 != "" ?  너무 니다 # \@
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2229,7 +2229,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 히 앙, 으응
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2244,7 +2244,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						ELSE
 							PRINTFORM 흐응, 아앗, 아앙
 						ENDIF
-						SIF 마크타입카운터 == 1 && FLAG:대사색깔
+						SIF 마크타입카운터 == 1 && FLAG:구상색
 							SETCOLOR 0xFF0000
 						PRINTFORM %마크타입%
 						RESETCOLOR
@@ -2253,7 +2253,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						SETBIT 여러차례비표시, 0
 					ENDIF
 			ENDSELECT
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_COLOR_K49
 			SIF !루프커터 || 루프스페이스컷
 				CONTINUE
@@ -2265,7 +2265,7 @@ FOR 루프카운터:0, 0, 루프MAX
 	;비함락
 	ELSE
 		FOR 루프카운터:2, 0,20
-			IF !FLAG:대사색깔
+			IF !FLAG:구상색
 				GETDEFCOLOR
 				SETCOLOR RESULT
 			ENDIF
@@ -2413,7 +2413,7 @@ FOR 루프카운터:0, 0, 루프MAX
 						SETBIT 여러차례비표시, 0
 					ENDIF
 			ENDSELECT
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_COLOR_K49
 			SIF !루프커터 || 루프스페이스컷
 				CONTINUE
@@ -2428,7 +2428,7 @@ FOR 루프카운터:0, 0, 루프MAX
 				BREAK
 		NEXT
 	ENDIF
-	IF !FLAG:대사색깔
+	IF !FLAG:구상색
 		GETDEFCOLOR
 		SETCOLOR RESULT
 	ENDIF
@@ -2744,7 +2744,7 @@ ELSE
 			PRINTFORML 꽉 이쪽의 목에 팔을 매운, 열심히 구흡 있고를 계속하고 있다
 		ENDIF
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_COLOR_K49
 		IF TALENT:연인
 			PRINTFORML 「쭙, 날름, 쭈욱……서방님, 좀 더, 쯉……」

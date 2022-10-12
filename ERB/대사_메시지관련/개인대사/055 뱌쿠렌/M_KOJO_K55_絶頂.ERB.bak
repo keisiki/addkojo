@@ -1,91 +1,91 @@
-;-------------------------------------------------
-;�z��̐Ⓒ���̌���
-;NOWEX:0�`4 CVABM�Ⓒ
-;NOWEX:6 ��d�Ⓒ
-;NOWEX:7 �O�d�Ⓒ
-;NOWEX:8 �l�d�Ⓒ
-;NOWEX:9 �܏d�Ⓒ
-;NOWEX:10 ����
-;NOWEX:11 �ː�
-;NOWEX:12 ���A
-;�K���ɑg�ݍ��킹�Ďg���Ă�������
+﻿;-------------------------------------------------
+;奴隷の絶頂時の口上
+;NOWEX:0～4 CVABM絶頂
+;NOWEX:6 二重絶頂
+;NOWEX:7 三重絶頂
+;NOWEX:8 四重絶頂
+;NOWEX:9 五重絶頂
+;NOWEX:10 噴乳
+;NOWEX:11 射精
+;NOWEX:12 放尿
+;適当に組み合わせて使ってください
 ;-------------------------------------------------
 @M_KOJO_MESSAGE_PALAMCNG_B_K55
 CALL PALAM_MESSAGE_B
-;���̌���ł͊e���򂲂Ƃ�CFLAG:1502~1505�����Z���Ă������A�ς킵���̂ōŏ��ɂ܂Ƃ߂Ă��
-SIF NOWEX:�b�Ⓒ
+;元の口上では各分岐ごとにCFLAG:1502~1505を加算していたが、煩わしいので最初にまとめてやる
+SIF NOWEX:Ｃ絶頂
 	CFLAG:1502 ++
-SIF NOWEX:�u�Ⓒ
+SIF NOWEX:Ｖ絶頂
 	CFLAG:1503 ++
-SIF NOWEX:�a�Ⓒ
+SIF NOWEX:Ｂ絶頂
 	CFLAG:1504 ++
-SIF NOWEX:�`�Ⓒ
+SIF NOWEX:Ａ絶頂
 	CFLAG:1505 ++
 ;-------------------------------------------------
-;����
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;噴乳
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:����
+IF LOCAL && NOWEX:噴乳
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;�ː�
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;射精
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:�ː�
+IF LOCAL && NOWEX:射精
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;���A
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;放尿
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:���A
+IF LOCAL && NOWEX:放尿
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;�Ⓒ
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;絶頂
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
 	;-------------------------------------------------
-	;�܏d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;五重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�܏d�Ⓒ
+	IF NOWEX:五重絶頂
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
-	;�l�d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;四重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�l�d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:四重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:�l�d�Ⓒ
-			;�b���u���`���a�Ⓒ
+		SELECTCASE NOWEX:四重絶頂
+			;Ｃ＆Ｖ＆Ａ＆Ｂ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���`���l�Ⓒ
+			;Ｃ＆Ｖ＆Ａ＆Ｍ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���a���l�Ⓒ
+			;Ｃ＆Ｖ＆Ｂ＆Ｍ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���`���a���l�Ⓒ
+			;Ｃ＆Ａ＆Ｂ＆Ｍ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�u���`���a���l�Ⓒ
+			;Ｖ＆Ａ＆Ｂ＆Ｍ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
@@ -93,51 +93,51 @@ IF LOCAL
 		;[SKIPEND]
 	ENDIF
 	;-------------------------------------------------
-	;�O�d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;三重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�O�d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:三重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:�O�d�Ⓒ
-			;�b���u���`�Ⓒ
+		SELECTCASE NOWEX:三重絶頂
+			;Ｃ＆Ｖ＆Ａ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�a���u���`�Ⓒ
+			;Ｂ＆Ｖ＆Ａ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�b���a���`�Ⓒ
+			;Ｃ＆Ｂ＆Ａ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���a�Ⓒ
+			;Ｃ＆Ｖ＆Ｂ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���l�Ⓒ
+			;Ｃ＆Ｖ＆Ｍ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
-			;�a���u���l�Ⓒ
+			;Ｂ＆Ｖ＆Ｍ絶頂
 			CASE 6
 				PRINTFORMW 
 				RETURN 1
-			;�`���u���l�Ⓒ
+			;Ａ＆Ｖ＆Ｍ絶頂
 			CASE 7
 				PRINTFORMW 
 				RETURN 1
-			;�b���a���l�Ⓒ
+			;Ｃ＆Ｂ＆Ｍ絶頂
 			CASE 8
 				PRINTFORMW 
 				RETURN 1
-			;�`���a���l�Ⓒ
+			;Ａ＆Ｂ＆Ｍ絶頂
 			CASE 9
 				PRINTFORMW 
 				RETURN 1
-			;�b���`���l�Ⓒ
+			;Ｃ＆Ａ＆Ｍ絶頂
 			CASE 10
 				PRINTFORMW 
 				RETURN 1
@@ -145,252 +145,252 @@ IF LOCAL
 		;[SKIPEND]
 	ENDIF
 	;-------------------------------------------------
-	;��d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;二重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:��d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:二重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:��d�Ⓒ
-			;�b���u�Ⓒ
+		SELECTCASE NOWEX:二重絶頂
+			;Ｃ＆Ｖ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�b���`�Ⓒ
+			;Ｃ＆Ａ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�u���`�Ⓒ
+			;Ｖ＆Ａ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���a�Ⓒ
+			;Ｃ＆Ｂ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�u���a�Ⓒ
+			;Ｖ＆Ｂ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
-			;�`���a�Ⓒ
+			;Ａ＆Ｂ絶頂
 			CASE 6
 				PRINTFORMW 
 				RETURN 1
-			;�`���l�Ⓒ
+			;Ａ＆Ｍ絶頂
 			CASE 7
 				PRINTFORMW 
 				RETURN 1
-			;�u���l�Ⓒ
+			;Ｖ＆Ｍ絶頂
 			CASE 8
 				PRINTFORMW 
 				RETURN 1
-			;�b���l�Ⓒ
+			;Ｃ＆Ｍ絶頂
 			CASE 9
 				PRINTFORMW 
 				RETURN 1
-			;�a���l�Ⓒ
+			;Ｂ＆Ｍ絶頂
 			CASE 10
 				PRINTFORMW 
 				RETURN 1
 		ENDSELECT
 		;[SKIPEND]
 	ENDIF
-	IF NOWEX:�b�Ⓒ
-		;�����Ⓒ�b
-		IF NOWEX:�b�Ⓒ == 3
+	IF NOWEX:Ｃ絶頂
+		;超強絶頂Ｃ
+		IF NOWEX:Ｃ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�b
-		ELSEIF NOWEX:�b�Ⓒ == 2
+		;強絶頂Ｃ
+		ELSEIF NOWEX:Ｃ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�b
+		;絶頂Ｃ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�u�Ⓒ
-		;�����Ⓒ�u
-		IF NOWEX:�u�Ⓒ == 3
+	IF NOWEX:Ｖ絶頂
+		;超強絶頂Ｖ
+		IF NOWEX:Ｖ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�u
-		ELSEIF NOWEX:�u�Ⓒ == 2
+		;強絶頂Ｖ
+		ELSEIF NOWEX:Ｖ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�u
+		;絶頂Ｖ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�`�Ⓒ
-		;�����Ⓒ�`
-		IF NOWEX:�`�Ⓒ == 3
+	IF NOWEX:Ａ絶頂
+		;超強絶頂Ａ
+		IF NOWEX:Ａ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�`
-		ELSEIF NOWEX:�`�Ⓒ == 2
+		;強絶頂Ａ
+		ELSEIF NOWEX:Ａ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�`
+		;絶頂Ａ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�a�Ⓒ
-		;���Ⓒ�a
-		IF NOWEX:�a�Ⓒ >= 2
-			;�����w�ŘM���ĐⒸ�i�����A�������A�w�ʍ��ʁj
+	IF NOWEX:Ｂ絶頂
+		;強絶頂Ｂ
+		IF NOWEX:Ｂ絶頂 >= 2
+			;胸を指で弄られて絶頂（愛撫、胸愛撫、背面座位）
 			IF SELECTCOM == 0 || SELECTCOM == 313 || SELECTCOM == 6 || SELECTCOM == 68
 				IF RAND:3 == 0 
-					PRINTFORMW �u�͂��A�͂��A�����c�����ς��A�����Ɓc�M���Ă��c%UNICODE(0x2665)%�v
+					PRINTFORMW 「はっ、はっ、あぁ…おっぱい、もっと…弄ってっ…%UNICODE(0x2665)%」
 				ELSEIF RAND:2 == 0 
-					PRINTFORMW �u�_�����A�킽���A���A�ł��c�`�`�`��%UNICODE(0x2665)%�v
+					PRINTFORMW 「ダメっ、わたし、胸、でっ…～～～っ%UNICODE(0x2665)%」
 				ELSE
-					PRINTFORMW �u��A�����A����Ȃɓ���A����������c���c�c%UNICODE(0x2665)%%UNICODE(0x2665)%�v
+					PRINTFORMW 「や、んんっ、そんなに乳首、いじっちゃ…ぁ……%UNICODE(0x2665)%%UNICODE(0x2665)%」
 				ENDIF
-			;�����ŃC�W���ĐⒸ�i���ԁj
+			;自分でイジって絶頂（自慰）
 			ELSEIF SELECTCOM == 9
 				IF RAND:3 == 0
-					PRINTFORMW �u�́c�����c���I���A�����ς��Łc�C�b������c%UNICODE(0x2665)%�v
+					PRINTFORMW 「は…ああ…っ！お、おっぱいで…イッちゃっ…%UNICODE(0x2665)%」
 				ELSEIF RAND:2 == 0
-					PRINTFORMW �i�����c�c����c�����ς������ŃC�b���Ⴄ�c��%UNICODE(0x2665)%�j
+					PRINTFORMW （あっ……これ…おっぱいだけでイッちゃう…っ%UNICODE(0x2665)%）
 				ELSE
-					PRINTFORMW �u�񂟁A�͂��A�ނ˂��A�������́A������c%UNICODE(0x2665)%�v
+					PRINTFORMW 「んぁ、はっ、むねっ、すごいの、くるっ…%UNICODE(0x2665)%」
 				ENDIF
-			;�j�v���L���b�v����
-			ELSEIF TEQUIP:�j�v���L���b�v
+			;ニプルキャップ装着
+			ELSEIF TEQUIP:ニプルキャップ
 				IF RAND:2 == 0
-					PRINTFORMW �u�́[���c�́[���c����A�O���Ă��c�v
-					SIF TALENT:����
-						PRINTFORMW �u���Ȃ��̎w�������̂��c�v
+					PRINTFORMW 「はーっ…はーっ…これ、外してっ…」
+					SIF TALENT:恋慕
+						PRINTFORMW 「あなたの指がいいのっ…」
 				ELSE
-					PRINTFORMW �u����ȁA�����ƁA�Ԃ�Ԃ���A���āc%UNICODE(0x2665)%�v
+					PRINTFORMW 「こんな、ずっと、ぶるぶるっ、って…%UNICODE(0x2665)%」
 				ENDIF
 			ELSE
-				PRINTFORMW �u���c�_���c���A�����A��c������%UNICODE(0x2665)%%UNICODE(0x2665)%�v
+				PRINTFORMW 「あ…ダメ…っ、そこ、弱…っっっ%UNICODE(0x2665)%%UNICODE(0x2665)%」
 			ENDIF
-		;�Ⓒ�a
+		;絶頂Ｂ
 		ELSE
-			;�����w�ŘM���ĐⒸ�i�����A�������A�w�ʍ��ʁj
+			;胸を指で弄られて絶頂（愛撫、胸愛撫、背面座位）
 			IF SELECTCOM == 0 || SELECTCOM == 313 || SELECTCOM == 6 || SELECTCOM == 68
 				IF RAND:3 == 0 
-					PRINTFORMW �u�͂��A�͂��A�����c�����ς��A�����Ɓc�M���Ă��c%UNICODE(0x2665)%�v
+					PRINTFORMW 「はっ、はっ、あぁ…おっぱい、もっと…弄ってっ…%UNICODE(0x2665)%」
 				ELSEIF RAND:2 == 0 
-					PRINTFORMW �u�_�����A�킽���A���A�ł��c�`�`�`��%UNICODE(0x2665)%�v
+					PRINTFORMW 「ダメっ、わたし、胸、でっ…～～～っ%UNICODE(0x2665)%」
 				ELSE
-					PRINTFORMW �u��A�����A����Ȃɓ���A����������c���c�c%UNICODE(0x2665)%%UNICODE(0x2665)%�v
+					PRINTFORMW 「や、んんっ、そんなに乳首、いじっちゃ…ぁ……%UNICODE(0x2665)%%UNICODE(0x2665)%」
 				ENDIF
-			;�����ŃC�W���ĐⒸ�i���ԁj
+			;自分でイジって絶頂（自慰）
 			ELSEIF SELECTCOM == 9
 				IF RAND:3 == 0
-					PRINTFORMW �u�́c�����c���I���A�����ς��Łc�C�b������c%UNICODE(0x2665)%�v
+					PRINTFORMW 「は…ああ…っ！お、おっぱいで…イッちゃっ…%UNICODE(0x2665)%」
 				ELSEIF RAND:2 == 0
-					PRINTFORMW �i�����c�c����c�����ς������ŃC�b���Ⴄ�c��%UNICODE(0x2665)%�j
+					PRINTFORMW （あっ……これ…おっぱいだけでイッちゃう…っ%UNICODE(0x2665)%）
 				ELSE
-					PRINTFORMW �u�񂟁A�͂��A�ނ˂��A������c%UNICODE(0x2665)%�v
+					PRINTFORMW 「んぁ、はっ、むねっ、くるっ…%UNICODE(0x2665)%」
 				ENDIF
-			;�j�v���L���b�v����
-			ELSEIF TEQUIP:�j�v���L���b�v
+			;ニプルキャップ装着
+			ELSEIF TEQUIP:ニプルキャップ
 				IF RAND:2 == 0
-					PRINTFORMW �u�́[���c�́[���c����A�O���Ă��c�v
-					SIF TALENT:����
-						PRINTFORMW �u���Ȃ��̎w�������̂��c�v
+					PRINTFORMW 「はーっ…はーっ…これ、外してっ…」
+					SIF TALENT:恋慕
+						PRINTFORMW 「あなたの指がいいのっ…」
 				ELSE
-					PRINTFORMW �u����ȁA�����ƁA�Ԃ�Ԃ���A���āc%UNICODE(0x2665)%�v
+					PRINTFORMW 「こんな、ずっと、ぶるぶるっ、って…%UNICODE(0x2665)%」
 				ENDIF
 			ELSE
-				PRINTFORMW �u���c�_���c���A�����A��c������%UNICODE(0x2665)%%UNICODE(0x2665)%�v
+				PRINTFORMW 「あ…ダメ…っ、そこ、弱…っっっ%UNICODE(0x2665)%%UNICODE(0x2665)%」
 			ENDIF
 		ENDIF
 	ENDIF
-	IF NOWEX:�l�Ⓒ
-		;�����Ⓒ�l
-		IF NOWEX:�l�Ⓒ == 3
+	IF NOWEX:Ｍ絶頂
+		;超強絶頂Ｍ
+		IF NOWEX:Ｍ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�l
-		ELSEIF NOWEX:�l�Ⓒ == 2
+		;強絶頂Ｍ
+		ELSEIF NOWEX:Ｍ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�l
+		;絶頂Ｍ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
 ENDIF
 ;-------------------------------------------------
-;�z��̐����Ⓒ���̌���
+;奴隷の睡眠絶頂時の口上
 ;-------------------------------------------------
 @M_KOJO_MESSAGE_PALAMCNG_B2_K55
 CALL PALAM_MESSAGE_B
-;���̌���ł͊e���򂲂Ƃ�CFLAG:1502~1505�����Z���Ă������A�ς킵���̂ōŏ��ɂ܂Ƃ߂Ă��
-SIF NOWEX:�b�Ⓒ
+;元の口上では各分岐ごとにCFLAG:1502~1505を加算していたが、煩わしいので最初にまとめてやる
+SIF NOWEX:Ｃ絶頂
 	CFLAG:1502 ++
-SIF NOWEX:�u�Ⓒ
+SIF NOWEX:Ｖ絶頂
 	CFLAG:1503 ++
-SIF NOWEX:�a�Ⓒ
+SIF NOWEX:Ｂ絶頂
 	CFLAG:1504 ++
-SIF NOWEX:�`�Ⓒ
+SIF NOWEX:Ａ絶頂
 	CFLAG:1505 ++
 ;-------------------------------------------------
-;����
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;噴乳
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:����
+IF LOCAL && NOWEX:噴乳
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;�ː�
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;射精
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:�ː�
+IF LOCAL && NOWEX:射精
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;���A
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;放尿
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
-IF LOCAL && NOWEX:���A
+IF LOCAL && NOWEX:放尿
 	PRINTFORMW 
 ENDIF
 ;-------------------------------------------------
-;�Ⓒ
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;絶頂
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
 	;-------------------------------------------------
-	;�܏d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;五重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�܏d�Ⓒ
+	IF NOWEX:五重絶頂
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 	;-------------------------------------------------
-	;�l�d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;四重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�l�d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:四重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:�l�d�Ⓒ
-			;�b���u���`���a�Ⓒ
+		SELECTCASE NOWEX:四重絶頂
+			;Ｃ＆Ｖ＆Ａ＆Ｂ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���`���l�Ⓒ
+			;Ｃ＆Ｖ＆Ａ＆Ｍ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���a���l�Ⓒ
+			;Ｃ＆Ｖ＆Ｂ＆Ｍ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���`���a���l�Ⓒ
+			;Ｃ＆Ａ＆Ｂ＆Ｍ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�u���`���a���l�Ⓒ
+			;Ｖ＆Ａ＆Ｂ＆Ｍ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
@@ -398,51 +398,51 @@ IF LOCAL
 		;[SKIPEND]
 	ENDIF
 	;-------------------------------------------------
-	;�O�d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;三重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:�O�d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:三重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:�O�d�Ⓒ
-			;�b���u���`�Ⓒ
+		SELECTCASE NOWEX:三重絶頂
+			;Ｃ＆Ｖ＆Ａ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�a���u���`�Ⓒ
+			;Ｂ＆Ｖ＆Ａ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�b���a���`�Ⓒ
+			;Ｃ＆Ｂ＆Ａ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���a�Ⓒ
+			;Ｃ＆Ｖ＆Ｂ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�b���u���l�Ⓒ
+			;Ｃ＆Ｖ＆Ｍ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
-			;�a���u���l�Ⓒ
+			;Ｂ＆Ｖ＆Ｍ絶頂
 			CASE 6
 				PRINTFORMW 
 				RETURN 1
-			;�`���u���l�Ⓒ
+			;Ａ＆Ｖ＆Ｍ絶頂
 			CASE 7
 				PRINTFORMW 
 				RETURN 1
-			;�b���a���l�Ⓒ
+			;Ｃ＆Ｂ＆Ｍ絶頂
 			CASE 8
 				PRINTFORMW 
 				RETURN 1
-			;�`���a���l�Ⓒ
+			;Ａ＆Ｂ＆Ｍ絶頂
 			CASE 9
 				PRINTFORMW 
 				RETURN 1
-			;�b���`���l�Ⓒ
+			;Ｃ＆Ａ＆Ｍ絶頂
 			CASE 10
 				PRINTFORMW 
 				RETURN 1
@@ -450,104 +450,104 @@ IF LOCAL
 		;[SKIPEND]
 	ENDIF
 	;-------------------------------------------------
-	;��d�Ⓒ
-	;�L���`�F�b�N�i=0, ��\���A1, �\���j
+	;二重絶頂
+	;記入チェック（=0, 非表示、1, 表示）
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF NOWEX:��d�Ⓒ
-		;���ʂ��w�肹���ȈՓI�ɏ����ꍇ�A[SKIPSTART]&[SKIPEND]�̃R�����g�A�E�g���O���āA[SKIPSTART]�Ƃ��̃R�����g�̊Ԃɏ����Ă�������
+	IF NOWEX:二重絶頂
+		;部位を指定せず簡易的に書く場合、[SKIPSTART]&[SKIPEND]のコメントアウトを外して、[SKIPSTART]とこのコメントの間に書いてください
 		;[SKIPSTART]
-		SELECTCASE NOWEX:��d�Ⓒ
-			;�b���u�Ⓒ
+		SELECTCASE NOWEX:二重絶頂
+			;Ｃ＆Ｖ絶頂
 			CASE 1
 				PRINTFORMW 
 				RETURN 1
-			;�b���`�Ⓒ
+			;Ｃ＆Ａ絶頂
 			CASE 2
 				PRINTFORMW 
 				RETURN 1
-			;�u���`�Ⓒ
+			;Ｖ＆Ａ絶頂
 			CASE 3
 				PRINTFORMW 
 				RETURN 1
-			;�b���a�Ⓒ
+			;Ｃ＆Ｂ絶頂
 			CASE 4
 				PRINTFORMW 
 				RETURN 1
-			;�u���a�Ⓒ
+			;Ｖ＆Ｂ絶頂
 			CASE 5
 				PRINTFORMW 
 				RETURN 1
-			;�`���a�Ⓒ
+			;Ａ＆Ｂ絶頂
 			CASE 6
 				PRINTFORMW 
 				RETURN 1
-			;�`���l�Ⓒ
+			;Ａ＆Ｍ絶頂
 			CASE 7
 				PRINTFORMW 
 				RETURN 1
-			;�u���l�Ⓒ
+			;Ｖ＆Ｍ絶頂
 			CASE 8
 				PRINTFORMW 
 				RETURN 1
-			;�b���l�Ⓒ
+			;Ｃ＆Ｍ絶頂
 			CASE 9
 				PRINTFORMW 
 				RETURN 1
-			;�a���l�Ⓒ
+			;Ｂ＆Ｍ絶頂
 			CASE 10
 				PRINTFORMW 
 				RETURN 1
 		ENDSELECT
 		;[SKIPEND]
 	ENDIF
-	IF NOWEX:�b�Ⓒ
-		;�����Ⓒ�b
-		IF NOWEX:�b�Ⓒ == 3
+	IF NOWEX:Ｃ絶頂
+		;超強絶頂Ｃ
+		IF NOWEX:Ｃ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�b
-		ELSEIF NOWEX:�b�Ⓒ == 2
+		;強絶頂Ｃ
+		ELSEIF NOWEX:Ｃ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�b
+		;絶頂Ｃ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�u�Ⓒ
-		;�����Ⓒ�u
-		IF NOWEX:�u�Ⓒ == 3
+	IF NOWEX:Ｖ絶頂
+		;超強絶頂Ｖ
+		IF NOWEX:Ｖ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�u
-		ELSEIF NOWEX:�u�Ⓒ == 2
+		;強絶頂Ｖ
+		ELSEIF NOWEX:Ｖ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�u
+		;絶頂Ｖ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�`�Ⓒ
-		;�����Ⓒ�`
-		IF NOWEX:�`�Ⓒ == 3
+	IF NOWEX:Ａ絶頂
+		;超強絶頂Ａ
+		IF NOWEX:Ａ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�`
-		ELSEIF NOWEX:�`�Ⓒ == 2
+		;強絶頂Ａ
+		ELSEIF NOWEX:Ａ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�`
+		;絶頂Ａ
 		ELSE
 			PRINTFORMW 
 		ENDIF
 	ENDIF
-	IF NOWEX:�a�Ⓒ
+	IF NOWEX:Ｂ絶頂
 		PRINTFORML 
 	ENDIF
-	IF NOWEX:�l�Ⓒ
-		;�����Ⓒ�l
-		IF NOWEX:�l�Ⓒ == 3
+	IF NOWEX:Ｍ絶頂
+		;超強絶頂Ｍ
+		IF NOWEX:Ｍ絶頂 == 3
 			PRINTFORMW 
-		;���Ⓒ�l
-		ELSEIF NOWEX:�l�Ⓒ == 2
+		;強絶頂Ｍ
+		ELSEIF NOWEX:Ｍ絶頂 == 2
 			PRINTFORMW 
-		;�Ⓒ�l
+		;絶頂Ｍ
 		ELSE
 			PRINTFORMW 
 		ENDIF
@@ -556,15 +556,15 @@ ENDIF
 
 
 ;-------------------------------------------------
-;�ː��Ɋւ������̕\��
-;�ꎞ�I��TARGET�������ɐݒ肵�Ă���
+;射精に関する口上の表示
+;一時的にTARGETを口上主に設定している
 ;-------------------------------------------------
 
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_00(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;TARGET�̎�ɂ��ː��ŁA�ː��Ώۂ���TARGET
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;TARGETの手による射精で、射精対象が非TARGET
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -576,8 +576,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_0(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�R���h�[��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;コンドーム
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -589,8 +589,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_23(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�C���}�`�I
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;イラマチオ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -602,33 +602,33 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_22(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�V�b�N�X�i�C��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;シックスナイン
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
-	;�����ː�
-	IF NOWEX:�ː� && NOWEX:MASTER:�ː�
+	;同時射精
+	IF NOWEX:射精 && NOWEX:MASTER:射精
 		PRINTFORMW
 		RETURN 1
-	;TARGET�����ː�
-	ELSEIF NOWEX:�ː�
-		;PLAYER�ɂ��Ă�
-		IF GETBIT(TALENT:PLAYER:����,1)
+	;TARGETだけ射精
+	ELSEIF NOWEX:射精
+		;PLAYERについてる
+		IF GETBIT(TALENT:PLAYER:性別,1)
 			PRINTFORMW
 			RETURN 1
-		;�t���ĂȂ�
+		;付いてない
 		ELSE
 			PRINTFORMW
 			RETURN 1
 		ENDIF
-	;PLAYER�����ː�
+	;PLAYERだけ射精
 	ELSE
-		;TARGET�ɂ��Ă�
-		IF GETBIT(TALENT:����,1)
+		;TARGETについてる
+		IF GETBIT(TALENT:性別,1)
 			PRINTFORMW
 			RETURN 1
-		;�t���ĂȂ�
+		;付いてない
 		ELSE
 			PRINTFORMW
 			RETURN 1
@@ -640,8 +640,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_21(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�p�C�Y���t�F��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;パイズリフェラ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -653,8 +653,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_20(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;����t�F��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;手淫フェラ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -666,8 +666,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_9(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�A�i����d
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;アナル奉仕
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -679,33 +679,33 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_8(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�A�x��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;泡踊り
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
-	;�����ː�
-	IF NOWEX:�ː� && NOWEX:MASTER:�ː�
+	;同時射精
+	IF NOWEX:射精 && NOWEX:MASTER:射精
 		PRINTFORMW
 		RETURN 1
-	;TARGET�����ː�
-	ELSEIF NOWEX:�ː�
-		;PLAYER�ɂ��Ă�
-		IF GETBIT(TALENT:PLAYER:����,1)
+	;TARGETだけ射精
+	ELSEIF NOWEX:射精
+		;PLAYERについてる
+		IF GETBIT(TALENT:PLAYER:性別,1)
 			PRINTFORMW
 			RETURN 1
-		;�t���ĂȂ�
+		;付いてない
 		ELSE
 			PRINTFORMW
 			RETURN 1
 		ENDIF
-	;PLAYER�����ː�
+	;PLAYERだけ射精
 	ELSE
-		;TARGET�ɂ��Ă�
-		IF GETBIT(TALENT:����,1)
+		;TARGETについてる
+		IF GETBIT(TALENT:性別,1)
 			PRINTFORMW
 			RETURN 1
-		;�t���ĂȂ�
+		;付いてない
 		ELSE
 			PRINTFORMW
 			RETURN 1
@@ -717,8 +717,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_7(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;���R�L
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;足コキ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -730,8 +730,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_6(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�f��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;素股
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -743,8 +743,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_5(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�p�C�Y��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;パイズリ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -756,8 +756,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_4(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�t�F���`�I
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;フェラチオ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -769,8 +769,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_3(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;���
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;手淫
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -782,8 +782,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_2(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�A�i��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;アナル
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -795,8 +795,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A_K55_1(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�S��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;膣内
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -806,15 +806,15 @@ ENDIF
 RETURN 1
 
 ;-------------------------------------------------
-;�����ː��Ɋւ������̕\��
-;�ꎞ�I��TARGET�������ɐݒ肵�Ă���
+;眠姦射精に関する口上の表示
+;一時的にTARGETを口上主に設定している
 ;-------------------------------------------------
 
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_0(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�R���h�[��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;コンドーム
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -826,8 +826,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_23(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�C���}�`�I
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;イラマチオ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -839,8 +839,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_7(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;���R�L
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;足コキ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -853,8 +853,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_5(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�p�C�Y��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;パイズリ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -866,8 +866,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_4(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�t�F���`�I
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;フェラチオ
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -879,8 +879,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_3(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;���
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;手淫
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -892,8 +892,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_2(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�A�i��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;アナル
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -905,8 +905,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_A2_K55_1(ARG)
 CALL PALAM_MESSAGE_A
 ;-------------------------------------------------
-;�S��
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;膣内
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -919,8 +919,8 @@ RETURN 1
 @M_KOJO_MESSAGE_PALAMCNG_F_K55(ARG)
 CALL PALAM_MESSAGE_F
 ;-------------------------------------------------
-;�ł炵
-;�L���`�F�b�N�i=0, ��\���A1, �\���j
+;焦らし
+;記入チェック（=0, 非表示、1, 表示）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL

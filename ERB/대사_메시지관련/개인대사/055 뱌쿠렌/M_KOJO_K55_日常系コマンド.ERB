@@ -111,7 +111,7 @@ IF LOCAL
 		;成功
 		ELSEIF TFLAG:193 == 1
 			IF CFLAG:행동 == 5
-				PRINTFORML 「후후, %CALLNAME:MASTER%(와)과 이야기하는 것은 즐겁네요」
+				PRINTFORML 「후후, %CALLNAME:MASTER%와 이야기하는 것은 즐겁네요」
 				PRINTFORMW 「일하는 중이 아니라면, 이야기를 계속하고 싶습니다만…」
 			ELSE
 				IF RAND:3 == 0
@@ -121,7 +121,7 @@ IF LOCAL
 					PRINTFORML 「아하핫, 그것은 걸작이네요」
 					PRINTFORMW 아무래도 이 농담이 정답이었던 것 같다
 				ELSE
-					PRINTFORMW 「우으ー응, %CALLNAME:MASTER%(와)과 이야기하는 것은 즐겁네요」
+					PRINTFORMW 「우으ー응, %CALLNAME:MASTER%와 이야기하는 것은 즐겁네요」
 				ENDIF
 			ENDIF
 		;失敗
@@ -693,7 +693,7 @@ IF LOCAL
 					ELSE
 						PRINTFORML 뱌쿠렌과 밖의 풍경을 멍하니 바라보았다
 						PRINTFORMW 「이 툇마루에서 보는 경치만으로, 의외로 계절의 변화를 알 수 있습니다」
-						PRINTFORMW 「계속 이렇게, %CALLNAME:MASTER%(와)과 함께 계절의 변화를 즐기고 싶습니다」
+						PRINTFORMW 「계속 이렇게, %CALLNAME:MASTER%와 함께 계절의 변화를 즐기고 싶습니다」
 					ENDIF
 				ELSE
 					IF RAND:7 == 0 
@@ -922,16 +922,24 @@ IF LOCAL
 	IF TFLAG:193  == 1
 		;恋慕
 		IF TALENT:연모
-			IF RAND:3 == 0 
-				PRINTFORMW 「으ー응, 이심전심이라는 느낌이네요」
-				PRINTFORMW 「…궁합이 잘 맞는 것 같아요, 우리」
-			ELSEIF RAND:2 == 0 
-				PRINTFORMW 「와아, 훌륭한 솜씨네요, %CALLNAME:MASTER%」
-				PRINTFORMW 「계속 도와달라고 부탁하고 싶을 정도에요」
-			ELSE
-				PRINTFORMW 「이 스피드라면 상당히 빠르게 정리 될 것같네요」
-				PRINTFORMW 「다음번에도 도와달라고 부탁해도 될까요？」
+			;育児中のお仕事
+			IF TALENT:55:육아중
+				IF CFLAG:55:출산경과일 > CHILD_취학
+					PRINTFORMW 뱌쿠렌 대신 %CHILDNAME:55:(TALENT:55:육아중)%을 달래면서 %CALLNAME:MASTER%는 뱌쿠렌의 일을 도왔다.
+				ELSE
+					PRINTFORMW %CALLNAME:MASTER%는 뱌쿠렌의 일을 도왔다.
+				ENDIF
 			ENDIF
+				IF RAND:3 == 0 
+					PRINTFORMW 「으ー응, 이심전심이라는 느낌이네요」
+					PRINTFORMW 「…궁합이 잘 맞는 것 같아요, 우리」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「와아, 훌륭한 솜씨네요, %CALLNAME:MASTER%」
+					PRINTFORMW 「계속 도와달라고 부탁하고 싶을 정도에요」
+				ELSE
+					PRINTFORMW 「이 스피드라면 상당히 빠르게 정리 될 것같네요」
+					PRINTFORMW 「다음번에도 도와달라고 부탁해도 될까요？」
+				ENDIF
 		ELSE
 			IF RAND:3 == 0 
 				PRINTFORMW 「으ー응, 일하는 모습이 이심전심이라는 느낌이네요」
@@ -956,18 +964,25 @@ IF LOCAL
 		ENDIF
 	;成功
 	ELSE
+		;育児中のお仕事
+			IF TALENT:55:육아중
+				IF CFLAG:55:출산경과일 < CHILD_취학
+					PRINTFORMW 뱌쿠렌 대신 %CHILDNAME:55:(TALENT:55:육아중)%을 달래면서 %CALLNAME:MASTER%는 뱌쿠렌의 일을 도왔다.。
+				ELSE
+					PRINTFORMW %CALLNAME:MASTER%는 뱌쿠렌의 일을 도왔다.。
+				ENDIF
+			ENDIF
 		IF RAND:5 == 0 
-			PRINTFORMW 「꽤나, 골치 아픈 일이네요…」
-			;PRINTFORMW 「なかなか、頭の痛い問題ね…」
+			PRINTFORMW 「꽤나 골치 아픈 일이네요…」
+			;PRINTFORMW 「꽤나 골치 아픈 문제네요…」
 		ELSEIF RAND:4 == 0 
-			PRINTFORMW 뱌쿠렌과 함께 시주를 돌았다.
-			;PRINTFORMW 「色々なものが増えると、供養の仕方もいろいろになるものねえ…」
+			PRINTFORMW 「여러가지가 늘어나면 공양 방법도 늘어나는 법이네요…」
 		ELSEIF RAND:3 == 0 
 			PRINTFORMW 「모처럼의 기회인데, 함께 불경을 외워보지 않겠습니까?」
-			;PRINTFORMW 「こういった大きな企画となると、連絡をつけるべきなのは…」
+			;PRINTFORMW 「이런 큰 기획이 되면 연락을 해야…」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「후훗, 덕분에 많은 사람들에게 이야기를 들려드릴 수 있었습니다.」
-			;PRINTFORMW 「はい。次の書類、お願いします」
+			;PRINTFORMW 「네, 다음 서류 부탁드립니다.」
 		ELSE
 			PRINTFORMW 「으～음, 이건 제가 감당할 수 있을지 어떨지… 뭐, 이대로 기죽어 있을 수 없기도 하니 말이죠」 
 		ENDIF
@@ -1034,13 +1049,38 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K55_306_1
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	;時間停止中
 	IF FLAG:70
 	;通常
+	ELSEIF TALENT:연모
+		IF TALENT:임신
+			PRINTFORML 우리 아이를 잉태한 뱌쿠렌의 배에 손을 얹고 부드럽게 쓰다듬자 뱌쿠렌은 살며시 %CALLNAME:MASTER%에게 손을 얹었다
+			IF EXP:55:출산경험 > 0
+				PRINTFORML 「…당분간 단둘만 있는 시간은 보류네요…」
+				PRINTFORMW 그렇게 말하며 뱌쿠렌은 %CALLNAME:MASTER%의 팔에 안겼다.
+				PRINTFORMW 「그렇게 되기 전에 잔뜩… 꽁냥꽁냥해주실거죠?」
+			ELSE
+				PRINTFORML 「…슬슬 이름이라던가 생각해 두지 않으면 안되겠네요…」
+				PRINTFORMW 첫 임신에 들떠 있는지 뱌쿠렌은 안절부절 못하고 있었다…
+			ENDIF
+		ELSEIF EX:55:자궁내정액 >= 50
+			PRINTFORMW 「…응 아앗…%CALLNAME:MASTER%가… 내 안에……%UNICODE(0x2665)%」
+			PRINTFORMW 질내의 걸죽한 정액의 감촉에 뱌쿠렌은 얼굴을 붉히고 있었다.
+		ELSE
+			PRINTFORMW 「앗、안돼…、그런 곳、만지면……」
+			PRINTFORMW 하복부에 손가락을 미끄러뜨려 자극하듯 문지르자 뱌쿠렌은 얼굴을 붉히며 %CALLNAME:MASTER%를 억제했다.
+		ENDIF
+	ENDIF
+ELSE
+IF TALENT:사모
+		PRINTFORMW 「하앗……아직……안돼요」
+		PRINTFORMW 「아직 이런 일을 해서는 안됩니다」
 	ELSE
+		PRINTFORMW 「……」
+		PRINTFORMW 노려봐졌다.
 	ENDIF
 ENDIF
 RETURN 1
@@ -1934,6 +1974,20 @@ IF LOCAL
 					PRINTFORMW 「정말. 정말이지, 어쩔 수 없는 사람…」
 				ENDIF
 			ENDIF
+			ELSEIF BATHROOM(CFLAG:현재위치)
+			IF TALENT:연인
+					PRINTFORML 「아하, 제 몸매를 보고 흥분했어요?」
+					PRINTFORML 뱌쿠렌은 장난스러운 눈으로 %CALLNAME:MASTER%를 보고 있다.
+					PRINTFORML 「자지 엄청 괴로워 보이고……하아、저도 젖어버렸어요」
+					PRINTFORMW 목욕의 열기에 영향을 받고 있는지 뱌쿠렌은 평소보다 더 음란하게 %CALLNAME:MASTER%에게 기대어 왔다.
+				ELSEIF TALENT:연모
+					PRINTFORML 「……뭐、목욕 권유를 받았을 때부터 이렇게 된다고는 생각하고 있었지만…」
+					PRINTFORMW 「좋아요, 마음대로 해도…」
+				ELSEIF MARK:괘씸각인 == 3
+					PRINTFORMW 「정말、달려들면 안돼. 응, 으응…」
+				ELSE
+					PRINTFORMW 「정말이지、어쩔 수 없는 사람이네요…」
+				ENDIF
 		;外
 		ELSEIF OUTROOF(CFLAG:현재위치)
 			;露出癖4以上
@@ -2081,15 +2135,22 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF RAND:3 == 0
-		PRINTFORML 「으ー응… 곁잠을 자고 싶다, 인가요…」
-		PRINTFORMW 「뭐, 괜찮습니다. 자…」
-	ELSEIF RAND:2 == 0
-		PRINTFORML 「응…… 당신의 냄새가 나네요」
-		PRINTFORMW 이불 속으로 기어들어간, 뱌쿠렌은 불쑥 중얼거렸다…
+	IF TALENT:연인
+		PRINTFORMW 「함께 자는 건가요?」
+		PRINTFORMW 「좋아요. 잠깐 기다리고 있어요. 베개 가져올테니」
+		PRINTFORMW 「곧장 잠드는 건 아까우니까」
+		PRINTFORMW 「좀 더 이야기 하도록 해요.」
 	ELSE
-		PRINTFORML 「알겠습니다, 그럼, 이쪽으로…」
-		PRINTFORMW 뱌쿠렌은 가장자리에 조금 자리를 만들어주었다…
+		IF RAND:3 == 0
+			PRINTFORML 「으ー응… 곁잠을 자고 싶다, 인가요…」
+			PRINTFORMW 「뭐, 괜찮습니다. 자…」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「응…… 당신의 냄새가 나네요」
+			PRINTFORMW 이불 속으로 기어들어간, 뱌쿠렌은 불쑥 중얼거렸다…
+		ELSE
+			PRINTFORML 「알겠습니다, 그럼, 이쪽으로…」
+			PRINTFORMW 뱌쿠렌은 가장자리에 조금 자리를 만들어주었다…
+		ENDIF
 	ENDIF
 ENDIF
 RETURN 1
@@ -2361,7 +2422,7 @@ IF LOCAL
 			PRINTFORML …뱌쿠렌의 커다란 가슴이 출렁거리며 잔잔한 수면에 물보라를 일으키고 있다.
 			PRINTFORML 「으ー응, 여자의 맨살을 빤히 쳐다보는 것은 실례라고요？」
 			PRINTFORMW 뱌쿠렌은 양손으로 풍만한 가슴의 끝을 가렸다.
-			PRINTFORMW  ……누님, 그거 손브라라고 하는 녀석이라고요. 그것이 오히려 더 외설스럽습니다만.
+			PRINTFORMW ……누님, 그거 손브라라고 하는 녀석이라고요. 그것이 오히려 더 외설스럽습니다만.
 		ELSE
 			PRINTFORML …뱌쿠렌의 커다란 가슴이 출렁거리며 잔잔한 수면에 물보라를 일으키고 있다.
 			PRINTFORML 「으ー응, 여자의 맨살을 빤히 쳐다보는 것은 실례라고요？」
@@ -2699,10 +2760,28 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K55_431_1
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-
+	PRINTFORML 「후우…… 오늘 하루도 수고했어요.」
+	PRINTFORML 뱌쿠렌은 %CALLNAME:MASTER%의 무릎사이에 앉아 편안하게 있었다.
+	PRINTFORML 긴 머리는 묶어 올려져 있었고 뱌쿠렌의 나체가 머리부터 엉덩이까지 남김없이 %CALLNAME:MASTER%의 눈 앞에 노출되어 있었다.
+	IF TALENT:연인
+			PRINTFORMW 「으~응. 기분 좋아……」
+			PRINTFORMW 마음이 편안해졌는지 뱌쿠렌은 대담하게 손발을 뻗기 시작했다
+			PRINTFORMW 콧노래를 부르며 다리를 꼬거나 헤엄치듯 버둥거리자 그 모습은 어린아이 같았다.
+			PRINTFORMW 「……%CALLNAME:MASTER%의 앞에서는 조금 풀어져도 괜찮겠죠?」
+		ELSEIF TALENT:연모
+			PRINTFORML …뱌쿠렌의 유방이 수면에 물경을 일으키고 있었다.
+			PRINTFORML 「으~응. 여성의 맨살을 빤히 쳐다보는건 실례에요?」
+			PRINTFORMW 뱌쿠렌은 손바닥으로 풍만한 가슴 끝을 가렸다.
+			PRINTFORMW ……누님, 그건 손브라라는 건데 오히려 더 외설적이야.
+		ELSE
+			PRINTFORML …뱌쿠렌의 유방이 수면에 물경을 일으키고 있었다.
+			PRINTFORML 「으~응. 여성의 맨살을 빤히 쳐다보는건 실례에요?」
+			PRINTFORMW 뱌쿠렌은 팔짱을 끼고 풍만한 가슴 끝을 가렸다.
+			PRINTFORMW ……사이즈가 더 강조되어 오히려 더 음란해보였다.
+		ENDIF
 ENDIF
 RETURN 1
 ;==================================================
@@ -3208,13 +3287,39 @@ LOCAL = 1
 IF LOCAL
 	;恋人
 	IF TALENT:연인
-		IF RAND:3 == 0
-			PRINTFORMW 「후후…이런 것도 , 연인다워서 좋네요」 
-		ELSEIF RAND:2 == 0 
-			PRINTFORMW 「…%CALLNAME:MASTER%…」
+		;裸
+		IF TEQUIP:1 == 0
+			IF RAND:3 == 0
+				PRINTFORML 뱌쿠렌은 이불을 얼굴의 반까지 뒤집어 쓴채 뭔가 부끄러운 것 같았다.
+				PRINTFORML 지금까지 몇 번이나 몸을 거듭했지만 부끄러운 것은 아직 익숙해지지 않은 것 같다.
+				PRINTFORMW 귀여운 뱌쿠렌을 쓰다듬어 주자 뱌쿠렌은 이불을 전부 뒤집어쓰고 말았다.
+			ELSEIF RAND:2 == 0 
+				PRINTFORML 「저기、잠깐 괜찮아?」
+				PRINTFORML 뱌쿠렌은 %CALLNAME:MASTER%의 얼굴을 두손으로 끼고 뚫어지게 바라보았다.
+				PRINTFORMW %CALLNAME:MASTER%의 눈을 떼지 않고 계속 바라보자 슬슬 %CALLNAME:MASTER%가 부끄러워 견딜 수 없게 되었을 쯤에
+				PRINTFORML 「……응, 고마워」
+				PRINTFORMW 드디어 해방시켜 주었다.
+				PRINTFORMW 「%CALLNAME:MASTER%가 꿈에 나올 수 있도록 %CALLNAME:MASTER%의 얼굴을 눈에 새겨놨어♪」
+			ELSE
+				PRINTFORML 「안녕히 주무세요……음냐……」
+				PRINTFORMW 서로 발가벗은 채로 잠을 잔다.
+				PRINTFORML 뱌쿠렌의 피부가 매끄럽고,
+				PRINTFORML 뱌쿠렌의 가슴이 부드러워
+				PRINTFORMW 여러가지고 한계를 넘을 것 같았지만 간신히 버티며 잠든 %CALLNAME:MASTER%였다.
+			ENDIF
 		ELSE
-			PRINTFORML 「…후후, 안녕히 주무세요. %CALLNAME:MASTER%」
-			PRINTFORMW 사랑이 담긴 뱌쿠렌의 손길을 느끼며, 당신은 어느새 잠에 빠졌다…
+			IF RAND:3 == 0
+				PRINTFORMW 「후훗…이런 것도 연인답고 좋네요」 
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 「…%CALLNAME:MASTER%…」
+				PRINTFORML 「지금도 무척 즐겁고、
+				PRINTFORML 　앞으로도 분명 즐거운 날들이 기다리고 있겠지
+				PRINTFORML 　나에게 희망을 준건 %CALLNAME:MASTER%
+				PRINTFORMW 　……사랑해줘서, 고마워♪」
+			ELSE
+				PRINTFORML 「…후후, 안녕히 주무세요. %CALLNAME:MASTER%」
+				PRINTFORMW 사랑이 담긴 뱌쿠렌의 손길을 느끼며, 당신은 어느새 잠에 빠졌다…
+			ENDIF
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:2 == 0

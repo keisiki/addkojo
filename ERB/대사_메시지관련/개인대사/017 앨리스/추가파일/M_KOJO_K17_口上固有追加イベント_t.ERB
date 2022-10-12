@@ -1650,7 +1650,7 @@ ENDIF
 
 ;샹하이 텍스트 컬러
 IF FLAG:구상텍스트설정 > 0
-	IF FLAG:대사색깔
+	IF FLAG:구상색
 		SETCOLOR K17C_샹하이COLOR
 	ELSE
 		RESETCOLOR
@@ -1700,7 +1700,7 @@ IF FIRSTTIME("샹하이 이벤트")
 		CASE 3
 			PRINTFORMDL 바보 같은 생각 좀 그만 하자……
 			IF FLAG:구상텍스트설정 > 0
-				IF FLAG:대사색깔
+				IF FLAG:구상색
 					TRYCALLFORM M_KOJO_COLOR_K{NO:ARG}
 				ELSE
 					RESETCOLOR
@@ -1804,7 +1804,7 @@ ENDIF
 iTmp = RESULT
 ;샹하이 텍스트 컬러
 IF FLAG:구상텍스트설정 > 0
-	IF FLAG:대사색깔
+	IF FLAG:구상색
 		SETCOLOR K17C_샹하이COLOR
 	ELSE
 		RESETCOLOR
@@ -1939,7 +1939,7 @@ SELECTCASE iTmp
 		iTmp = RESULT
 		;샹하이 텍스트 컬러
 		IF FLAG:구상텍스트설정 > 0
-			IF FLAG:대사색깔
+			IF FLAG:구상색
 				SETCOLOR K17C_샹하이COLOR
 			ELSE
 				RESETCOLOR
@@ -2136,7 +2136,7 @@ PRINTFORMDL …………
 PRINTFORMDW ……
 PRINTL
 IF FLAG:구상텍스트설정 > 0
-	IF FLAG:대사색깔
+	IF FLAG:구상색
 		TRYCALLFORM M_KOJO_COLOR_K{NO:ARG}
 	ELSE
 		RESETCOLOR

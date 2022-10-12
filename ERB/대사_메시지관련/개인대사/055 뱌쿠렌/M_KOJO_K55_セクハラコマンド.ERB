@@ -468,6 +468,17 @@ IF LOCAL
 				PRINTFORML 「츄릇, 쥬붓…, 츗, 츄, 츄우… 브웃…… 좀 더…%UNICODE(0x2665)%」
 				PRINTFORMW 뱌쿠렌은 당신과의 키스에 열중하고 있는 듯 하다…
 			ENDIF
+		;挿入系コマンド
+		ELSEIF TCVAR:20 == 85
+			PRINTFORML 「으음…츄릇…후아…%UNICODE(0x2665)%, 읍…푸아…츄읍, 핥짝 %UNICODE(0x2665)%」
+			PRINTFORMW 위와 아래 양쪽 입에서 흘러나오는 성교 소리가 뱌쿠렌과 당신의 키스에 빠져들게 하는 것 같았다…
+		;だいしゅきホールド
+		ELSEIF TCVAR:20 == 86
+			PRINTFORML 「으음…읏!?　읏, 으응, 으음, …응, 응, 으읏…%UNICODE(0x2665)%」
+			PRINTFORMW 뱌쿠렌을 끌어안고 격렬하게 혀를 비틀자 뱌쿠렌은 %CALLNAME:MASTER%의 얼굴에 손을 얹으며 끈적끈적한 입맞춤을 해왔다.
+			PRINTFORML 「츄、츄、츄읍… 푸하앗…… %CALLNAME:MASTER% 읏、나올 것…같아?… 내 줘…읏、내 안에…앗, 잔뜩 내줘엇…%UNICODE(0x2665)%」
+			PRINTFORMW 대답을 기다리지 않고 뱌쿠렌은 다시 %CALLNAME:MASTER%의 입술에 달라붙었다.
+			PRINTFORMW %CALLNAME:MASTER%와 몸을 밀착시키고 양쪽 입으로 연결된 채 절정을 이루는 것에 뱌쿠렌은 더할나위 없이 행복을 느끼는 것 같았다…
 		ELSE
 			IF ABL:욕망 >= 5
 				IF RAND:8 == 0
@@ -752,8 +763,33 @@ RETURN RESULT
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
-
-ENDIF
+IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF TCVAR:20 == 72
+			PRINTFORMW 도망칠 수 없도록 뱌쿠렌의 엉덩이를 잡아 %CALLNAME:MASTER%는 눈 앞에 육벽을 긁어댔다.
+			PRINTFORMW 
+				IF RAND:3 == 0
+					PRINTFORMW 「잠깐…읏! 지금 만지면、싫엇、으응…! 기분이 너무 좋아…서 %UNICODE(0x2665)%」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「하앙, 으응…%UNICODE(0x2665)% 이거 너무 느껴버려… %UNICODE(0x2665)%」
+				ELSE
+					PRINTFORMW 「하앙, 하읏…아앙…당신의 손이 스칠 때마다 뱃속이 쿵쿵거려…」
+					PRINTFORMW 「이런걸 알아버리면 난 이제… 큿, 아아아아앙…%UNICODE(0x2665)%」
+				ENDIF
+			ELSE
+				IF RAND:3 == 0
+					PRINTFORML 「응, 좋아…아, 아앙…%UNICODE(0x2665)% 좀 더、만져줘…%UNICODE(0x2665)%」
+					PRINTFORMW 애무를 받자 뱌쿠렌은 달콤한 신음을 내쉬며 뒤로 졸라댔다…
+				ELSEIF RAND:2 == 0
+					PRINTFORML 정욕에 녹은 눈이 당신을 뜨겁게 바라보고 있다…
+					PRINTFORMW 「크읏, 하앙, 응읏…%UNICODE(0x2665)%… %CALLNAME:MASTER% 읏…」
+				ELSE
+					PRINTFORML 「아하앙、하아…읏! 아앗, 크읏, 좋아…%UNICODE(0x2665)%」
+					PRINTFORMW 끝을 잡듯이 상냥하게 애무하자 뱌쿠렌은 움찔움찔 몸을 떨며 느끼고 있었다…
+				ENDIF
+			ENDIF
+	ENDIF
+;ENDIF
 RETURN 1
 ;==================================================
 ;315,クリ愛撫
@@ -769,15 +805,37 @@ RETURN RESULT
 @M_KOJO_MESSAGE_COM_K55_315_1
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	IF FLAG:70
 	ELSEIF CFLAG:수면
-	ELSE
+	ELSEIF TCVAR:20 == 70
+			PRINTFORMW 逃도망칠 수 없도록 뱌쿠렌의 엉덩이를 잡아 %CALLNAME:MASTER%는 눈 앞에 육벽을 긁어댔다.
+			PRINTFORMW 
+				IF RAND:3 == 0
+					PRINTFORMW 「잠깐…읏! 지금 만지면、싫엇、으응…! 기분이 너무 좋아…서 %UNICODE(0x2665)%」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「하앙, 으응…%UNICODE(0x2665)% 이거 너무 느껴버려… %UNICODE(0x2665)%」
+				ELSE
+					PRINTFORMW 「하앙, 하읏…아앙…당신의 손이 스칠 때마다 뱃속이 쿵쿵거려…」
+					PRINTFORMW 「이런걸 알아버리면 난 이제… 큿, 아아아아앙…%UNICODE(0x2665)%」
+				ENDIF
+			ELSE
+				IF RAND:3 == 0
+					PRINTFORML 「응, 좋아…아, 아앙…%UNICODE(0x2665)% 좀 더、만져줘…%UNICODE(0x2665)%」
+					PRINTFORMW 애무를 받자 뱌쿠렌은 달콤한 신음을 내쉬며 졸라댔다…
+				ELSEIF RAND:2 == 0
+					PRINTFORML 정욕에 녹은 눈이 당신을 뜨겁게 바라보고 있다…
+					PRINTFORMW 「크읏, 하앙, 응읏…%UNICODE(0x2665)%… %CALLNAME:MASTER% 읏…」
+				ELSE
+					PRINTFORML 「아하앙、하아…읏! 아앗, 크읏, 좋아…%UNICODE(0x2665)%」
+					PRINTFORMW 끝을 잡듯이 상냥하게 애무하자 뱌쿠렌은 움찔움찔 몸을 떨며 느끼고 있었다…
+				ENDIF
+			ENDIF
 	ENDIF
 
-ENDIF
+;ENDIF
 RETURN 1
 ;==================================================
 ;316,指挿入れ

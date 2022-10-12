@@ -158,7 +158,7 @@ CFLAG:49:면간구상있음     = 1
 
 RETURN 1
 
-;### 대사색깔판정 ###################################
+;### 구상색판정 ###################################
 @M_KOJO_JP판_COLOR_K49
 SETCOLOR 0xDB7093
 
@@ -196,7 +196,7 @@ IF FLAG:역극
 	ENDIF
 ENDIF
 
-SIF FLAG:대사색깔
+SIF FLAG:구상색
 	CALLFORM M_KOJO_JP판_COLOR_K49
 
 IF FIRSTTIME("UP01", 0,49) && !GETBIT (CFLAG:49:1490, 0)

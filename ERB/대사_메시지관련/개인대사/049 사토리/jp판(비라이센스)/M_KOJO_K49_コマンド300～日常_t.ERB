@@ -26,12 +26,12 @@ LOCAL = 1
 IF LOCAL
 	IF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 		DRAWLINE
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		CALL DRUNKER49()
 	ELSEIF TCVAR:302
 		DRAWLINE
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF 함락상태() >= 4
 			IF 함락상태() == 5
@@ -67,7 +67,7 @@ IF LOCAL
 				PRINTFORML 사토리가 얼굴에 웃음꽃을 피우며 꼭 안겨들었다
 			ENDIF
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			SELECTCASE RAND:2
 				CASE 1
@@ -96,7 +96,7 @@ IF LOCAL
 				PRINTFORML 사토리가 미소를 띠며 팔을 걸어 몸을 맡겨 왔다
 			ENDIF
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			SELECTCASE RAND:3
 				CASE 2
@@ -133,7 +133,7 @@ IF LOCAL
 			PRINTFORML 즐거운 듯한 미소를 띠는 사토리에게 말을 걸었다
 		ENDIF
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		SELECTCASE RAND:3
 			CASE 2
@@ -335,7 +335,7 @@ IF LOCAL
 			IF !RAND:2
 				PRINTFORML %CALLNAME:PLAYER%는 사토리에게 목욕 시중을 받았다
 				PRINTL
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_JP판_COLOR_K49
 				IF 함락상태() == 5
 					PRINTFORML 「서방님의 등, 깨끗하네요」
@@ -359,7 +359,7 @@ IF LOCAL
 			ELSE
 				PRINTFORML %조교자는% 사토리의 등을 밀었다
 				PRINTL
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					CALLFORM M_KOJO_JP판_COLOR_K49
 				IF 함락상태() == 5
 					PRINTFORML 「서방님, 분명하게 서방님의 손으로 구석구석까지 씻겨주세요?」
@@ -500,7 +500,7 @@ ELSE
 	PRINTFORML 그러나 사토리는 아직 화나 있다…
 ENDIF
 PRINTL 
-SIF FLAG:대사색깔
+SIF FLAG:구상색
 	CALLFORM M_KOJO_JP판_COLOR_K49
 CALL M_KOJO_JP판_MESSAGE_COM_K49_303_1
 RESETCOLOR
@@ -746,7 +746,7 @@ LOCAL = 1
 IF LOCAL
 	IF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 		DRAWLINE
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		CALL DRUNKER49()
 	ELSEIF 함락상태() >= 4
@@ -780,7 +780,7 @@ IF LOCAL
 			PRINTFORML 사토리는 불쾌한 듯이 가만히 응시해 왔다…
 		ENDIF
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF ABL:TARGET:친밀 > 5
 			PRINTFORML 「…………바보군요 %마스터는%」
@@ -838,7 +838,7 @@ IF LOCAL
 		CALL SLEEP49
 	ELSEIF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 		DRAWLINE
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		CALL DRUNKER49()
 	ELSEIF 함락상태() >= 4
@@ -897,7 +897,7 @@ IF LOCAL
 			PRINTFORML 사토리는 %CALLNAME:MASTER%의 손의 움직임에 입술만 깨물고 있다
 		ENDIF
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF TFLAG:193 == 1
 			PRINTFORML 「훗, 큭……. 이런 일이 뭐가 재밌습니까」
@@ -970,7 +970,7 @@ IF LOCAL
 	ELSE
 		IF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 			DRAWLINE
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			CALL DRUNKER49()
 		ELSEIF 함락상태() >= 4
@@ -1002,7 +1002,7 @@ IF LOCAL
 				PRINTFORML 불쾌한 표정을 지은 사토리가 손을 밀쳐냈다
 			ENDIF
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			IF ABL:친밀 > 5 || ABL:순종 >= 5
 				PRINTFORML 「이런 게 대체 뭐가 즐겁습니까」
@@ -1129,7 +1129,7 @@ IF LOCAL
 	ELSE
 		IF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 			DRAWLINE
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			CALL DRUNKER49()
 		ELSEIF 함락상태() >= 4
@@ -1194,7 +1194,7 @@ IF LOCAL
 					PRINTFORML …있는 힘껏 손을 떨쳐져 버렸다
 			ENDSELECT
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			IF TFLAG:193 == 1
 				PRINTFORML 「…………하아,  뭡니까?」
@@ -1292,7 +1292,7 @@ IF LOCAL
 			CALL TRAIN_MESSAGE
 		CALL UFUFUTO49()
 	ELSEIF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		CALL DRUNKER49()
 	ELSEIF 함락상태() >= 4
@@ -1303,7 +1303,7 @@ IF LOCAL
 		ENDIF
 		PRINTFORML 사토리는 황홀한 표정으로 스스로 엉덩이를 쑥 내밀어 애원했다
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF 함락상태() == 5
 			PRINTFORML 「하아하아, 응, ……, 기분 좋아―. 좀 더, 서방님 좀 더어」
@@ -1350,7 +1350,7 @@ IF LOCAL
 				PRINTFORML 싫은 듯한 표정을 띄우면서도 %CALLNAME:MASTER%이 하는대로 몸을 맡겼다…
 		ENDSELECT
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF ABL:친밀 >= 10
 			PRINTFORML 「……그러니까……하아……, 바보에게는 무슨 말을 해도 소용없네요」
@@ -1433,7 +1433,7 @@ IF LOCAL
 		CALL UFUFUTO49()
 	ELSEIF (BASE:술기운 > (MAXBASE:술기운 / 10) * 4)
 		DRAWLINE
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		CALL DRUNKER49()
 	ELSEIF 함락상태() >= 4
@@ -1441,7 +1441,7 @@ IF LOCAL
 		PRINTFORML %조교자는%\@ CFLAG:TARGET:동침중 ? 동침 하는 # \@사토리를 꼭 껴안았다
 		PRINTFORML 사토리는 황홀해 하면서 이쪽을 마주안아왔다
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF 함락상태() == 5
 			PRINTFORML 「서방님이 꼭 껴안아 주시면 마음이 따뜻해져요」
@@ -1468,7 +1468,7 @@ IF LOCAL
 		PRINTFORML %마스터는% 등 뒤로부터 사토리를 안아왔다
 		PRINTFORML 사토리는 %CALLNAME:MASTER%의 옆구리를 팔꿈치로 쳤다
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		PRINTFORML 「아파? 그러면 빨리 놓아 주세요」
 		PRINTFORMDW 이번에는 두 팔을 움직일 수 없도록 팔까지 함께 안아왔다
@@ -1502,7 +1502,7 @@ IF EXP:TARGET:키스경험 == 1
 	PRINTFORML 도망치려고 하지 않고 뺨을 붉히며 입술을 살며시 내밀었다
 	PRINTFORML 사토리의 사랑스러운 모습을 잠시 즐긴 다음 사토리와 첫키스를 주고받았다
 	PRINTL
-	SIF FLAG:대사색깔
+	SIF FLAG:구상색
 		CALLFORM M_KOJO_JP판_COLOR_K49
 ENDIF
 CALL M_KOJO_JP판_MESSAGE_COM_K49_312_1
@@ -1531,7 +1531,7 @@ IF LOCAL
 		IF 함락상태() == 2
 			PRINTFORML %조교자가% 키스를 하려고 하자, 사토리는 뒤로 몸을 젖히면서 따귀를 올렸다
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			PRINTFORML 「%CALLNAME:MASTER%같은 사람에게 입술을 허락할 만큼 저는 가벼운 사람이 아닙니다!」
 			PRINTFORMDW 손바닥 모양으로 뺨이 붉어진 %마스터는% 자신의 뺨을 어루만지며 사토리를 응시했다
@@ -1607,7 +1607,7 @@ IF LOCAL
 			LOCAL:1 = 1
 		ENDIF
 		PRINTL
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		SELECTCASE LOCAL:1
 			CASE 6
@@ -1711,7 +1711,7 @@ IF LOCAL
 				LOCAL:1 = 1
 			ENDIF
 			PRINTL
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				CALLFORM M_KOJO_JP판_COLOR_K49
 			SELECTCASE LOCAL:1
 				CASE 3
@@ -1800,7 +1800,7 @@ IF LOCAL
 				PRINTFORML 깜짝 놀라면서 벌레씹은 표정으로 쳐다봤다
 			ENDIF
 		ENDIF
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			CALLFORM M_KOJO_JP판_COLOR_K49
 		IF EXP:TARGET:키스경험 == 1
 			PRINTFORML 「…………하아, 저도 바보네요」

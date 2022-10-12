@@ -51,7 +51,7 @@ IF LOCAL
 	IF CFLAG:장난 && CFLAG:수면
 		IF ABL:V감각 >= 5
 			PRINTFORML 「후… 으읏…%UNICODE(0x2665)%　하앗, 하…」
-			PRINTFORMW 잔 채로 짜 깔린 백련은, 교묘하게 질내를 굽이돌게 해 당신의 페니스를 받아들였다…
+			PRINTFORMW 잔 채로 깔아 눌린 뱌쿠렌은, 교묘하게 질내를 굽이돌게 해 당신의 페니스를 받아들였다…
 		ELSEIF ABL:V감각 >= 3
 			PRINTFORML 「쿠… 읏… 하아… 아, 응…」
 			PRINTFORMW 잠든 채 밑에 깔려 있는 뱌쿠렌은, 희미한 한숨 소리를 내며 질내를 침범당하고 있다…
@@ -359,8 +359,20 @@ IF LOCAL
 		ENDIF
 	;挿入継続でない
 	ELSE
+	;浴場
+		IF BATHROOM(CFLAG:현재위치)
+			IF RAND:2 == 0
+				PRINTFORML 뱌쿠렌의 엉덩이를 잡고 수면으로 허리를 끌어올렸다.
+				PRINTFORMW 천천히 페니스를 밀어넣자 뱌쿠렌은 얼굴을 붉히며 쉴 새 없이 헐떡이기 시작했다…
+				PRINTFORMW 「아읏…%UNICODE(0x2665)% 부끄러워요… 읏%UNICODE(0x2665)%」
+				PRINTFORMW 욕조 안에서 흐트러지는 뱌쿠렌. 묶은 장발이 물 속에서 풀려 꽃처럼 요염하게 번졌다.
+			ELSE
+				PRINTFORML 「으응…%UNICODE(0x2665)% 하으… 아앙…%UNICODE(0x2665)% 응 츄읍…읏,…하앗…읏%UNICODE(0x2665)%」
+				PRINTFORMW 온수의 저항을 느끼며 천천히 허리를 부딪치고 껴안으며 키스를 나눴다.
+				PRINTFORMW 연결되어 있는 뱌쿠렌의 체온과 맞물려 순식간에 흥분하여 정신없이 어울렸다.
+			ENDIF
 		;恋慕
-		IF TALENT:연모
+		ELSEIF TALENT:연모
 			;これでMASTERが射精する
 			IF NOWEX:MASTER:11
 			;「仰向けに寝かせた%CALLNAME:TARGET%に覆いかぶさりながら腰を振り、射精の瞬間にペニスを膣の奥深くまで突き入れた…」
@@ -486,18 +498,12 @@ IF LOCAL
 	;-------------------------------------------------
 	;初めて
 	;記入チェック
-	LOCAL:1 = 1
+	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		;処女
 		IF TCVAR:파과 == 1
-			PRINTFORMW 「뒤…뒤에서… 처음을…」
-                		PRINTFORMW 네발 자세로 엎드리라고 명령하자, 뱌쿠렌은 금세 알아차리고 귀 끝까지 붉어진 얼굴로 %조사처리(CALLNAME:MASTER,"를")% 바라본다
-                		PRINTFORMW 「우우……이쪽이 덜 아픈 건가요?…뭐 %CALLNAME:MASTER% 씨의 뜻이 있는 거니까 화는 내지 않겠지만…」
-                		PRINTFORMW 「살살…해주세요? 처음이니까?」
-                		PRINTFORMW 뱌쿠렌의 소원대로 입구를 두 손으로 잡아 벌리면서, 페니스를 문지르며 안으로 천천히 찔러넣자
-                		PRINTFORMW 몸을 부들부들 떨면서 쾌감에 절은 신음소리를 지른다
-                		PRINTFORMW 「후아, 응, 읏! %CALLNAME:MASTER% 씨가 들어, 으!! 앗, 햐아…어서, 범해…응, 으읏!」
+			PRINTFORMW 
 			RETURN 1
 		ELSE
 			PRINTFORMW 
@@ -511,27 +517,16 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && TCVAR:100 == PLAYER
 		IF RAND:4 == 0
-			PRINTFORML 「후응…아, 앙, 하아, 앗, 아앙!」
-                		PRINTFORMW 뒤에서 뱌쿠렌의 허리를 잡고 강하게 찔러 넣자
-                		PRINTFORMW 금세 그녀의 질은 스스로의 애액으로 음란하게 젖어들어, 움직이기에 편하게 변해간다
-                		PRINTFORMW 「후앙, 앗, 아앙, 읏…후, %CALLNAME:MASTER% 씨…응, 읏!」
+			PRINTFORML 「후앗, 앙…%UNICODE(0x2665)%　아앗…」
+			PRINTFORMW 당신에게 질 속을 계속 찔리자 뱌쿠렌은 다리를 덜덜 떨며 몸부림치고 있었다…
 		ELSEIF RAND:3 == 0
-			PRINTFORML 「「후응, 읏…힛?! %CALLNAME:MASTER% 씨…어, 엉덩이 너무 주무르지마세, 응, 읏!」
-                		PRINTFORMW 후배위로 하는 자세여서 뱌쿠렌의 흰 등과, 아름다운 엉덩이가 그대로 %CALLNAME:MASTER%에게 드러났기에
-                		PRINTFORMW 엉덩이에 손을 가져가, 조금 너무할 정도로 주물렀다
-                		PRINTFORMW 처음에는 뱌쿠렌이 싫어하는 기색을 보였지만 엉덩이를 강하게 움켜쥘 때 마다 이에 따라 질이 조여왔기에, 금세 달콤한 신음소리를 흘리면서 아무런 말도 할 수 없게 되었다
+			PRINTFORML 「시러엇 %UNICODE(0x2665)% 아앙 %UNICODE(0x2665)%기분 좋아…%UNICODE(0x2665)%」
+			PRINTFORMW 무너지지 않도록 최선을 다하는 뱌쿠렌을 당신은 마음껏 희롱하고 있었다…
 		ELSEIF RAND:2 == 0
-			PRINTFORML 「후으…%CALLNAME:MASTER% 씨, 너무 격렬해요」
-                		PRINTFORMW 뱌쿠렌은 힘들게 숨을 내쉬며 말하였지만
-                		PRINTFORMW 그녀 스스로 알 정도로 %CALLNAME:MASTER%의 움직임에 맞추어서 열심히 허리를 움직이고 있었다
-                		PRINTFORMW 「응, 으읏, %CALLNAME:MASTER% 씨, 그런거 말하지말고, 응, 흐읏, 아앙…」
-                		PRINTFORMW 그녀의 오른손을 잡아, 몸을 흔들자 금세 질로 페니스를 조여든다
+			PRINTFORML 「하아, 아아, 으으으으읏 %UNICODE(0x2665)%　하아, 아으… 응앗 %UNICODE(0x2665)%」
+			PRINTFORMW 페니스를 감싸는 질주름이 불규칙하게 조여 강렬한 쾌락을 선사하고 있었다…
 		ELSE
-			PRINTFORMW 「에…아응, 읏, 으응, 읏읏, 햐아, 응, 읏」
-                		PRINTFORMW 뱌쿠렌은 힘들게 신음 소리를 내뱉으면서 힘들게 다리를 세운다
-                		PRINTFORMW 질에서 페니스를 빠지기 직전까지 뽑아낸 뒤, 크게 허리 짓으로 삽입하자
-                		PRINTFORMW 금세 음란한 신음 소리를 내지르며, 이불을 움켜쥔다
-                		PRINTFORMW 「하…아아, 하아……앗?응, 으읏! 읏, 으햐아, 하앙…」
+			PRINTFORMW 「하아, 하아… 으응…제 안은, 어떤, 가요? %CALLNAME:MASTER% 읏……!」
 		ENDIF
 	ENDIF
 	;基本セット
@@ -539,36 +534,36 @@ IF LOCAL
 	IF FLAG:70
 		PRINTFORMW 
 		RETURN 1
+	;浴場
+	ELSEIF BATHROOM(CFLAG:현재위치)
+			IF RAND:2 == 0
+				PRINTFORML %CALLNAME:MASTER%은 뱌쿠렌에게 욕조 가장자리에 손을 대고 네발자세를 취하게 했다.
+				PRINTFORMW 엉덩이를 내미는 듯한 모습에 뱌쿠렌은 부끄러운 듯 뺨을 물들이며 한숨을 내쉬고 %CALLNAME:MASTER%를 바라보았다.
+				PRINTFORMW 그녀의 허리를 잡아 페니스를 갈라진 틈에 밀어 넣고 천천히 비틀자 그것만으로도 가버린 듯 질내는 강하게 조여왔다.
+				PRINTFORMW 잠시 서로 정신없이 허리를 박아 욕실에서 살이 부딪치는 소리와 물 튀기는 소리, 그리고 뱌쿠렌의 헐떡이는 소리가 계속 울려 퍼졌다.
+				
+			ELSE
+				PRINTFORML 뱌쿠렌의 몸을 끌어안고 벽에 꽉 누르자 몸서리와 함께「아읏!!」하는 교성이 울렸다
+				PRINTFORMW 목덜미를 입으로 애무하며 천천히 페니스를 비틀어 넣자 그녀는 목을 떨며 단정치 못한 교성을 흘렸다.
+				PRINTFORMW 이윽고 질속까지 이르러 자궁을 찌르자 유난히 큰 교성을 지르며 몸을 경련시켰다.
+			ENDIF
 	;それ以外
 	ELSE
 		IF RAND:5 == 0
-			PRINTFORMW  「후응…아, 앙, 하아, 앗, 아앙!」
-                		PRINTFORMW 뒤에서 뱌쿠렌의 허리를 잡고 강하게 찔러 넣자
-                		PRINTFORMW 금세 그녀의 질은 스스로의 애액으로 음란하게 젖어들어, 움직이기에 편하게 변해간다
-                		PRINTFORMW 「후앙, 앗, 아앙, 읏…후, %CALLNAME:MASTER% 씨…응, 읏!」
+			PRINTFORML 「응하아아아앗 %UNICODE(0x2665)%　아앗, 아, 아, 아아아앙 %UNICODE(0x2665)% %UNICODE(0x2665)%」
+			PRINTFORMW 상당히 기분이 좋은지 뱌쿠렌도 희미하게 허리를 움직이고 있다……
 		ELSEIF RAND:4 == 0
-			PRINTFORMW 「후응, 읏…힛?! %CALLNAME:MASTER% 씨…어, 엉덩이 너무 주무르지마세, 응, 읏!」
-                		PRINTFORMW 후배위로 하는 자세여서 뱌쿠렌의 흰 등과, 아름다운 엉덩이가 그대로 %CALLNAME:MASTER%에게 드러났기에
-                		PRINTFORMW 엉덩이에 손을 가져가, 조금 너무할 정도로 주물렀다
-                		PRINTFORMW 처음에는 뱌쿠렌이 싫어하는 기색을 보였지만 엉덩이를 강하게 움켜쥘 때 마다 이에 따라 질이 조여왔기에, 금세 달콤한 신음소리를 흘리면서 아무런 말도 할 수 없게 되었다
+			PRINTFORMW 「아읏, 이 모양, 안쪽에 딱 맞아……!　후앗、아앙！」
 		ELSEIF RAND:3 == 0
-			PRINTFORMW 「후으…%CALLNAME:MASTER% 씨, 너무 격렬해요」
-                		PRINTFORMW 뱌쿠렌은 힘들게 숨을 내쉬며 말하였지만
-                		PRINTFORMW 그녀 스스로 알 정도로 %CALLNAME:MASTER%의 움직임에 맞추어서 열심히 허리를 움직이고 있었다
-                		PRINTFORMW 「응, 으읏, %CALLNAME:MASTER% 씨, 그런거 말하지말고, 응, 흐읏, 아앙…」
-                		PRINTFORMW 그녀의 오른손을 잡아, 몸을 흔들자 금세 질로 페니스를 조여든다
+			PRINTFORML 「이렇, 게 안쪽에 찌르는, 거, 이거、좋아아앗♪
+			PRINTFORMW 　흐읏、하아아아앙!! 좋아, 기분 좋아, 조아아아아앗 %UNICODE(0x2665)%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「후응, 하아…아아 읏, 응…우으으 나 변태 같아」
-                		PRINTFORMW 「아앙…햐아…너무, 빨라……」
-                		PRINTFORMW 「(아아…부끄러워, 뒤에서 마음대로 찔러 넣어지고 있어)」
-                		PRINTFORMW 뱌쿠렌은 후배위로 하는 자세가 부끄러운 것인지, 한 손으로 자신의 비소를 어떻게든 가리려고 한다
-                		PRINTFORMW 「햐앙…응, 읏, 우으, 자세를…읏! 바꿔주, 응…」
+			PRINTFORMW 「으응, 흐아앙, 안쪽, 닿아서엇……！」
 		ELSE
-			PRINTFORMW 「에…아응, 읏, 으응, 읏읏, 햐아, 응, 읏」
-                		PRINTFORMW 뱌쿠렌은 힘들게 신음 소리를 내뱉으면서 힘들게 다리를 세운다
-                		PRINTFORMW 질에서 페니스를 빠지기 직전까지 뽑아낸 뒤, 크게 허리 짓으로 삽입하자
-                		PRINTFORMW 금세 음란한 신음 소리를 내지르며, 이불을 움켜쥔다
-                		PRINTFORMW 「하…아아, 하아……앗?응, 으읏! 읏, 으햐아, 하앙…」
+			PRINTFORMW 「하아, 하앗……。저, 더 이상 참을 수 없어요……」
+			PRINTFORMW 「부탁해……빨리, 범해줘요……%UNICODE(0x2665)%」
+			PRINTFORMW 뱌쿠렌은 엉덩이를 내밀며 배후의 %CALLNAME:MASTER%에게 조르는 듯한 시선을 보낸다.
+			PRINTFORMW 엉덩이를 벌리자 눅진하게 젖은 분홍색 꽃잎이 그곳에서 기다리고 있었다.
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -657,17 +652,10 @@ IF LOCAL
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		;アナル処女
 		IF TCVAR:A파과
-			PRINTFORMW 「으응…… 넣으실 거면 처음부터 애널이라고 말씀을…으응, 으으으」
-            		PRINTFORMW 의외로 크게 반항하지 않았기에, 그대로 애널로 페니스를 밀어 넣자
-            		PRINTFORMW 뱌쿠렌은 이불을 움켜잡으며 신음을 낸다
-            		PRINTFORMW 아무래도, 뿌리까지 들어가니 느낌이 다른 것 같다
-            		PRINTFORMW 「우응, 아파… 하아…우응, %CALLNAME:MASTER%, 움직이셔도 돼요… 하아」
+			PRINTFORMW 
 			RETURN 1
 		ELSE
-			PRINTFORMW 「후응, 응, 읏…햐아」
-                		PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                		PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                		PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서… 버릇돼버렸어요… 응」
+			PRINTFORMW 
 			RETURN 1
 		ENDIF
 	ENDIF
@@ -693,18 +681,11 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 「후응, 응, 읏…햐아」
-                	PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                	PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                	PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서…버릇돼버렸어요…응」
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「햐아, 앙, 아아, 응, 으으, 우읏, 으응!」
-                	PRINTFORMW 뱌쿠렌은 콧소리가 섞인 신음 소리를 내면서, %CALLNAME:MASTER%의 물건을 받아들인다
-                	PRINTFORMW 「아아,%CALLNAME:MASTER% 씨, 저 보지보다, 햐앗, 애널이 더 좋아지게, 응, 되어버렸어, 요」
-                	PRINTFORMW 음란한 신음을 내면서도, 자신이 어떤 것을 원하는지 말하는 뱌쿠렌덕분에
-                	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 좀 더 즐겁게 그녀의 장벽을 즐기었다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -796,19 +777,10 @@ IF LOCAL
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		;アナル処女
 		IF TCVAR:A파과
-			PRINTFORMW 「아……저기, 잠깐…너무 위…」
-            		PRINTFORMW 뱌쿠렌을 네발 자세로 엎드리게 하고 페니스를 비소에 비비적거리다가, 그녀의 꽃봉오리로 가져갔더니 금세 짧게 소리를 낸다
-            		PRINTFORMW 「으응…… 넣으실 거면 처음부터 애널이라고 말씀을…으응, 으으으」
-            		PRINTFORMW 의외로 크게 반항하지 않았기에, 그대로 애널로 페니스를 밀어 넣자
-            		PRINTFORMW 뱌쿠렌은 이불을 움켜잡으며 신음을 낸다
-            		PRINTFORMW 아무래도, 뿌리까지 들어가니 느낌이 다른 것 같다
-            		PRINTFORMW 「우응, 아파… 하아…우응, %CALLNAME:MASTER% 씨, 움직이셔도 돼요…하아」
+			PRINTFORMW 
 			RETURN 1
 		ELSE
-			PRINTFORMW 「후응, 응, 읏…햐아」
-                		PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                		PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                		PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서…버릇돼버렸어요…응」
+			PRINTFORMW 
 			RETURN 1
 		ENDIF
 	ENDIF
@@ -834,25 +806,15 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 「후응, 응, 읏…햐아」
-                	PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                	PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                	PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서…버릇돼버렸어요…응」
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「햐아, 앙, 아아, 응, 으으, 우읏, 으응!」
-                	PRINTFORMW 뱌쿠렌은 콧소리가 섞인 신음 소리를 내면서, %CALLNAME:MASTER%의 물건을 받아들인다
-                	PRINTFORMW 「아아,%CALLNAME:MASTER% 씨, 저 보지보다, 햐앗, 애널이 더 좋아지게, 응, 되어버렸어, 요」
-                	PRINTFORMW 음란한 신음을 내면서도, 자신이 어떤 것을 원하는지 말하는 뱌쿠렌덕분에
-                	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 좀 더 즐겁게 그녀의 장벽을 즐기었다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
-		PRINTFORMW 「햐아…응,읏, %CALLNAME:MASTER% 씨, 너무 엉덩이를 벌리지 마세요…햐아, 응…」
-                	PRINTFORMW 꽤나 느끼는 것인지 뱌쿠렌은 비소에서 애액이 흘러내려
-                	PRINTFORMW 어느새 그녀의 허벅지를 상당히 적셨다
-                	PRINTFORMW 그것을 알아차린, %조사처리(CALLNAME:MASTER,"는")% 그녀의 애널을 더욱 더 희롱한다
+		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
@@ -946,19 +908,10 @@ IF LOCAL
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		;処女
 		IF TCVAR:파과 == 1
-			PRINTFORMW 기승위에 대해서 적당히 설명해주자 뱌쿠렌은 멍하니 %CALLNAME:MASTER%의 위에 올라탄 채로 바라본다
-                		PRINTFORMW 「에…싫은 건 아니에요, 그… 저의 처녀를 %CALLNAME:MASTER% 씨에게 줄 수 있는 게 너무…」
-                		PRINTFORMW 「기뻐서…자아, 그럼…각오 단단히 하세요」
-                		PRINTFORMW 뱌쿠렌은 미소를 지은 뒤 그대로 스스로의 입구를 벌리어 %CALLNAME:MASTER%의 페니스를 삽입한다
-                		PRINTFORMW 「응…읏……%CALLNAME:MASTER% 씨, 사랑해요」
-                		PRINTFORMW 순결의 증거인 피가 흘러내림에도 뱌쿠렌은 아픈내색하지않고 미소를 지으며 허리를 움직인다
+			PRINTFORMW 
 			RETURN 1
 		ELSE
-			PRINTFORMW 「후응, 알겠어요, 해드릴게요 %CALLNAME:MASTER% 씨」
-                		PRINTFORMW 뱌쿠렌은 설명을 모두들은 뒤 어딘지 모르게 방긋 웃으며 %CALLNAME:MASTER%의 위로 올라타
-                		PRINTFORMW 스스로 천천히 %CALLNAME:MASTER%의 페니스를 삼키었다
-                		PRINTFORMW 「우으읏…응, 하아, 드, 들어갔다」
-                		PRINTFORMW 「잘 움직이지 못할 것 같으니까… 너무 실망하지 말아주세요」
+			PRINTFORMW 
 			RETURN 1
 		ENDIF
 	ENDIF
@@ -969,33 +922,15 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && TCVAR:100 == PLAYER
 		IF RAND:5 == 0
-			PRINTFORMW 「으응, 읏, 하아…앙…%CALLNAME:MASTER% 씨!」
-                		PRINTFORMW 뱌쿠렌은 허리를 위아래로만 움직이는 것이 아니라
-                		PRINTFORMW 페니스를 뿌리 끝까지 삼킨 상태로 그대로 질을 조여
-                		PRINTFORMW 허리를 사방으로 움직이는 등 쾌감에 어린 표정으로 신음 소리를 내어간다
+			PRINTFORMW 「아흣…%UNICODE(0x2665)% 여, 여기, 기분좋아…읏」
 		ELSEIF RAND:4 == 0
-			PRINTFORMW 「후, 응, 읏…가, 가슴만 너무 보지 말아 주세요」
-                		PRINTFORMW 허리를 위아래로 내릴 때마다 뱌쿠렌의
-                		PRINTFORMW 풍만한 가슴이 그대로 따라 움직이는 것이 너무나도
-                		PRINTFORMW 음란하게 %CALLNAME:MASTER%의 눈에 비추어왔기에 어디에 눈을 두어야 할지 종잡을 수 없었다
+			PRINTFORMW 「후읏, 읏…%UNICODE(0x2665)% 아앙…읏」
 		ELSEIF RAND:3 == 0
-			PRINTFORMW 「으응, 읏, 힘든 자세지만…아앙!, 꽉, 짜내어드릴게요」
-                		PRINTFORMW 뱌쿠렌은 작게 소리 내어 웃은 뒤 일부러 다리를 최대한 벌려
-                		PRINTFORMW 페니스를 삼키어 애액을 음란하게 흘러내는 음순을 내보이며, 허리를 움직인다
-                		PRINTFORMW 「누, 눈으로 자극해드리면서, 허리를 움직이면…아, 아앙」
-                		PRINTFORMW 「순식간이에요, %CALLNAME:MASTER% 씨♡」
+			PRINTFORMW 「크읏, 응, 하아……%UNICODE(0x2665)% 저기, %CALLNAME:MASTER%도 움직여 주세요…」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「으응, 읏…올라타서, 하라고 한거니까, 햐앗!」
-                		PRINTFORMW 「주도권은 저한테 있는 거죠?」
-                		PRINTFORMW 뱌쿠렌은 잔뜩 붉어진 얼굴로 그렇게 스스로에게 타이르듯 말하고는
-                		PRINTFORMW 눈을 감고는 질을 최대한 조인 채로 페니스를 뿌리까지 넣은 뒤
-                		PRINTFORMW 허리를 옆으로 빙글빙글 돌린다
-                		PRINTFORMW 「하아…아아! 아앙! 가, 가버릴 것 같, 좋아, 하아, 아아…♡」
+			PRINTFORMW 페니스를 감싸는 질주름이 불규칙하게 조이며 강렬한 쾌감을 선사한다…
 		ELSE
-			PRINTFORMW 「아아, 앙, 으읏, 아아아, 자지…좋아, 읏!」
-                		PRINTFORMW 뱌쿠렌은 쾌감에 전신이 저릿저릿한 건지 양손을 %CALLNAME:MASTER%의 어깨에 올려둔 상태에서
-                		PRINTFORMW 그대로 빠른 속도로 스스로의 허리를 위아래로 내리 꼽는다
-                		PRINTFORMW 쾌감을 견디지 못해서 자신도 모르게 벌려진 입에서는, 어느새 타액이 흘러내리고 있었다
+			PRINTFORMW 「하아, 하아…으응…제 안은, 어떤, 가요? %CALLNAME:MASTER% 읏……!」
 		ENDIF
 	ENDIF
 	;基本セット
@@ -1006,33 +941,15 @@ IF LOCAL
 	;それ以外
 	ELSE
 		IF RAND:5 == 0
-			PRINTFORMW 「으응, 읏, 하아…앙…%CALLNAME:MASTER% 씨!」
-                		PRINTFORMW 뱌쿠렌은 허리를 위아래로만 움직이는 것이 아니라
-                		PRINTFORMW 페니스를 뿌리 끝까지 삼킨 상태로 그대로 질을 조여
-                		PRINTFORMW 허리를 사방으로 움직이는 등 쾌감에 어린 표정으로 신음 소리를 내어간다
+			PRINTFORMW 「아아, 더이상 못 참겠어요…」
 		ELSEIF RAND:4 == 0
-			PRINTFORMW 「후, 응, 읏…가, 가슴만 너무 보지 말아 주세요」
-                		PRINTFORMW 허리를 위아래로 내릴 때마다 뱌쿠렌의
-                		PRINTFORMW 풍만한 가슴이 그대로 따라 움직이는 것이 너무나도
-                		PRINTFORMW 음란하게 %CALLNAME:MASTER%의 눈에 비추어왔기에 어디에 눈을 두어야 할지 종잡을 수 없었다
+			PRINTFORMW 「넣어버려요…? 읏 하앙, 아아앗…%UNICODE(0x2665)%」
 		ELSEIF RAND:3 == 0
-			PRINTFORMW 「으응, 읏, 힘든 자세지만…아앙!, 꽉, 짜내어드릴게요」
-                		PRINTFORMW 뱌쿠렌은 작게 소리 내어 웃은 뒤 일부러 다리를 최대한 벌려
-                		PRINTFORMW 페니스를 삼키어 애액을 음란하게 흘러내는 음순을 내보이며, 허리를 움직인다
-                		PRINTFORMW 「누, 눈으로 자극해드리면서, 허리를 움직이면…아, 아앙」
-                		PRINTFORMW 「순식간이에요, %CALLNAME:MASTER% 씨♡」
+			PRINTFORMW 「아앙, 하읏 …들어 갔네요…읏%UNICODE(0x2665)%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「으응, 읏…올라타서, 하라고 한거니까, 햐앗!」
-                		PRINTFORMW 「주도권은 저한테 있는 거죠?」
-                		PRINTFORMW 뱌쿠렌은 잔뜩 붉어진 얼굴로 그렇게 스스로에게 타이르듯 말하고는
-                		PRINTFORMW 눈을 감고는 질을 최대한 조인 채로 페니스를 뿌리까지 넣은 뒤
-                		PRINTFORMW 허리를 옆으로 빙글빙글 돌린다
-                		PRINTFORMW 「하아…아아! 아앙! 가, 가버릴 것 같, 좋아, 하아, 아아…♡」
+			PRINTFORMW 「후훗…♪ 저기, 괜찮죠…?」
 		ELSE
-			PRINTFORMW 「아아, 앙, 으읏, 아아아, 자지…좋아, 읏!」
-                		PRINTFORMW 뱌쿠렌은 쾌감에 전신이 저릿저릿한 건지 양손을 %CALLNAME:MASTER%의 어깨에 올려둔 상태에서
-                		PRINTFORMW 그대로 빠른 속도로 스스로의 허리를 위아래로 내리 꼽는다
-                		PRINTFORMW 쾌감을 견디지 못해서 자신도 모르게 벌려진 입에서는, 어느새 타액이 흘러내리고 있었다
+			PRINTFORMW 「하앗, 하앙… 으응… 아… 아아아아앗!」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -1092,16 +1009,11 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 「으응, 읏…후아…후으으…」
-                	PRINTFORMW 뱌쿠렌은 길게 신음소리를 내면서, 자신의 애널을 휘젓는 이물감을 느낀다
-                	PRINTFORMW 그녀 스스로 깨달을 정도로 뜨거운 숨결이 나오고 있었기에, 깊게 찌르자 허리를 크게 휜다
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「후응, 응, 읏…햐아」
-                	PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                	PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                	PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서…버릇돼버렸어요…응」
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -1162,13 +1074,27 @@ IF LOCAL
 	IF FLAG:70
 		PRINTFORMW 
 		RETURN 1
+	;浴場
+	ELSEIF BATHROOM(CFLAG:현재위치)
+			IF RAND:2 == 0
+				PRINTFORML %CALLNAME:MASTER%는 뱌쿠렌과 함께 허리 위로 걸치듯 안아 올렸다.
+				PRINTFORMW 천천히 페니스를 가라앉히자 그녀는 달콤한 한숨을 내쉬며 %CALLNAME:MASTER%의 목에 손을 둘러 입맞춤을 요구했다.
+				PRINTFORMW 질육에 페니스를 흡수시키듯 천천히 움직이면서 혀를 꼬고 위아래 입으로 서로를 찾았다.
+				PRINTFORMW 잠시 서로 정신없이 허리를 박아 욕실에서 살이 부딪치는 소리와 물 튀기는 소리, 그리고 뱌쿠렌의 헐떡이는 소리가 계속 울려 퍼졌다.
+				
+			ELSE
+				PRINTFORML 완전히 달아오른 뱌쿠렌의 몸을 껴안은 %CALLNAME:MASTER%은 욕조의 가장자리에 걸터앉아 그녀의 질에 페니스를 침입시켰다.
+				PRINTFORMW 발이 바닥에서 떨어지며 무게중심인 질내는 평소보다 깊에 페니스를 삼켜갔다.
+				PRINTFORMW 「아읏… %UNICODE(0x2665)% 아앙…%UNICODE(0x2665)%깊어… 좋아앗…%UNICODE(0x2665)%」
+				PRINTFORMW 이윽고 질속까지 이르러 자궁을 찌르자 유난히 큰 교성을 지르며 몸을 경련시켰다.
+			ENDIF
 	;それ以外
 	ELSE
 		IF RAND:5 == 0
 			PRINTFORML 「응읏, 앗…… 히앗, 응아앗！」
 			PRINTFORMW 깨끗하고 반듯한 가슴을 애무하자, 뱌쿠렌은 몸을 활처럼 젖히며 반응해 주었다
 		ELSEIF RAND:4 == 0
-			PRINTFORMW %CALLNAME:MASTER%(와)과 뱌쿠렌은 끈적하게 혀를 날름거리며 성교를 계속했다…
+			PRINTFORMW %CALLNAME:MASTER%와 뱌쿠렌은 끈적하게 혀를 날름거리며 성교를 계속했다…
 			PRINTFORMW 「응읏, 하믓, 쥬르릇, 하앗！」
 			PRINTFORMW 「핫, 아믓…, 레룻, 아앙…♪」
 		ELSEIF RAND:3 == 0
@@ -1238,7 +1164,19 @@ IF LOCAL
 	;基本セット
 	;恋慕
 	IF TALENT:연모
-		PRINTFORMW 
+		IF RAND:3 == 0
+			PRINTFORMW %CALLNAME:MASTER%는 뱌쿠렌을 끌어안듯이 껴안아 허리를 흔들었다.
+			PRINTFORMW 「응아아앗、아앙! 아, 아아앗!」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW %CALLNAME:MASTER%는 뱌쿠렌의 가슴을 뒤에서 애무하면서 허리를 움직였다.
+			PRINTFORMW 「아아아앙、그런、한꺼번에, 만지면!」
+			PRINTFORMW 「아앙、안 돼、너무、너무 느껴버려!」
+		ELSE
+			PRINTFORMW 「야아아앙、아아앙!、안까지、안쪽까지!」
+			PRINTFORMW %CALLNAME:MASTER%는 뱌쿠렌의 목덜미에 입술을 갖다댔다…
+			PRINTFORMW 「햐아앙!? 그, 그만…읏、흐아아아앙!?」
+			PRINTFORMW 역시 목덜미가 민감한 것 같다……
+		ENDIF
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
@@ -1313,18 +1251,11 @@ IF LOCAL
 	;基本セット
 	;恋慕
 	IF TALENT:연모
-		PRINTFORMW 「후응, 응, 읏…햐아」
-                	PRINTFORMW 엉덩이로 느끼는 것이 그다지 부끄럽지 않은 것인지
-                	PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 추삽질에 리듬을 맞춰 적당히 허리를 흔든다
-                	PRINTFORMW 「으응, 이거, 햐아… 너무 기분 좋아서…버릇돼버렸어요…응」
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「햐아, 앙, 아아, 응, 으으, 우읏, 으응!」
-                	PRINTFORMW 뱌쿠렌은 콧소리가 섞인 신음 소리를 내면서, %CALLNAME:MASTER%의 물건을 받아들인다
-                	PRINTFORMW 「아아,%CALLNAME:MASTER% 씨, 저 보지보다, 햐앗, 애널이 더 좋아지게, 응, 되어버렸어, 요」
-                	PRINTFORMW 음란한 신음을 내면서도, 자신이 어떤 것을 원하는지 말하는 뱌쿠렌덕분에
-                	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 좀 더 즐겁게 그녀의 장벽을 즐기었다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -1383,18 +1314,11 @@ IF LOCAL
 	;基本セット
 	;恋慕
 	IF TALENT:연모
-		PRINTFORMW 「햐아, 앙, 아아, 응, 으으, 우읏, 으응!」
-                	PRINTFORMW 뱌쿠렌은 콧소리가 섞인 신음 소리를 내면서, %CALLNAME:MASTER%의 물건을 받아들인다
-                	PRINTFORMW 「아아,%CALLNAME:MASTER% 씨, 저 보지보다, 햐앗, 애널이 더 좋아지게, 응, 되어버렸어, 요」
-                	PRINTFORMW 음란한 신음을 내면서도, 자신이 어떤 것을 원하는지 말하는 뱌쿠렌덕분에
-                	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 좀 더 즐겁게 그녀의 장벽을 즐기었다
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「햐아…응,읏, %CALLNAME:MASTER% 씨, 너무 엉덩이를 벌리지 마세요…햐아, 응…」
-                	PRINTFORMW 꽤나 느끼는 것인지 뱌쿠렌은 비소에서 애액이 흘러내려
-                	PRINTFORMW 어느새 그녀의 허벅지를 상당히 적셨다
-                	PRINTFORMW 그것을 알아차린, %조사처리(CALLNAME:MASTER,"는")% 그녀의 애널을 더욱 더 희롱한다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -1586,15 +1510,11 @@ IF LOCAL
 	;基本セット
 	;恋慕
 	IF TALENT:연모
-		PRINTFORMW 「으응, 읏…후아…후으으…」
-                	PRINTFORMW 뱌쿠렌은 길게 신음소리를 내면서, 자신의 애널을 휘젓는 이물감을 느낀다
-                	PRINTFORMW 그녀 스스로 깨달을 정도로 뜨거운 숨결이 나오고 있었기에, 깊게 찌르자 허리를 크게 휜다
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「으응, 읏…후아…후으으…」
-                	PRINTFORMW 뱌쿠렌은 길게 신음소리를 내면서, 자신의 애널을 휘젓는 이물감을 느낀다
-                	PRINTFORMW 그녀 스스로 깨달을 정도로 뜨거운 숨결이 나오고 있었기에, 깊게 찌르자 허리를 크게 휜다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -1644,17 +1564,11 @@ IF LOCAL
 	;基本セット
 	;恋慕
 	IF TALENT:연모
-		PRINTFORMW 「후응, 응…읏…자, 잠깐, 벌리지 마세요…거기」
-                	PRINTFORMW 애널에 페니스를 넣던 와중, 뱌쿠렌이 머리를 절레절레 흔드는 것이 보였기에
-                	PRINTFORMW 그대로 그녀의 보지를 벌리자, 음란하게 끈적이는 애액이 흘러내린다
-                	PRINTFORMW 확실하게 보지로 느낀다는 것이 들킨, 뱌쿠렌은 얼굴이 붉어져서는 아무런 말도 하지 않고 조용히 장벽을 조인다
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「후응, 응…읏…자, 잠깐, 벌리지 마세요…거기」
-                	PRINTFORMW 애널에 페니스를 넣던 와중, 뱌쿠렌이 머리를 절레절레 흔드는 것이 보였기에
-                	PRINTFORMW 그대로 그녀의 보지를 벌리자, 음란하게 끈적이는 애액이 흘러내린다
-                	PRINTFORMW 확실하게 보지로 느낀다는 것이 들킨, 뱌쿠렌은 얼굴이 붉어져서는 아무런 말도 하지 않고 조용히 장벽을 조인다
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE

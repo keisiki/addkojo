@@ -12,6 +12,8 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_1_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_1_1
+		PRINTFORMW 어느샌가 뱌쿠렌은 %CALLNAME:MASTER%를 접할 수 있을 정도로 접근해 있었다.
+		PRINTFORMW 뱌쿠렌의 체온과 독특한 냄새를 가까이서 느낄 수 있는 상황에 %CALLNAME:MASTER%는 우월감을 느겼다.
 RETURN 1
 
 ;==================================================
@@ -32,6 +34,14 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_3_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_3_1
+	IF TALENT:연인
+		PRINTFORMW 「저기, %CALLNAME:MASTER%. 딴데만 보지 말고 신경 좀 써주실래요…?」
+		PRINTFORMW 「%CALLNAME:MASTER%가 없으면, 외로워서 울어 버릴 것 같아요.」
+	ELSEIF TALENT:연모
+		PRINTFORMW 「그러고보니, %CALLNAME:MASTER%는 이 이야기 알고 계시나요? 실은 말이죠…」
+	ELSE
+		PRINTFORMW 「그…좀 더, 같이 얘기 나누지 않으실래요?」
+	ENDIF
 RETURN 1
 
 ;==================================================
@@ -42,6 +52,8 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_4_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_4_1
+	PRINTFORMW 뱌쿠렌의 옷과 머리카락에서 향 냄새가 나고 있다.
+	PRINTFORMW 달콤하고 부드러운 향기에 %CALLNAME:MASTER%는 조금 그리움을 느겼다.
 RETURN 1
 
 ;-------------------------------------------------
@@ -65,6 +77,12 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_12_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_12_1
+	PRINTFORMW 「후훗…」
+	IF TALENT:연모
+		PRINTFORMW 「%CALLNAME:MASTER%의 얼굴을 보고 있으면 행복한 기분이 들어요」
+	ELSE
+		PRINTFORMW 「아뇨, 아무것도 아니에요…」
+	ENDIF
 RETURN 1
 
 ;==================================================
@@ -85,6 +103,13 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_14_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_14_1
+	IF TALENT:연모
+		PRINTFORMW 「우후훗…」
+		PRINTFORMW 뱌쿠렌은 더욱 %CALLNAME:MASTER%의 팔을 잡아 자신의 가슴에 팔을 꽉 눌러왔다.
+		PRINTFORMW 「마음에 번뇌가 느껴져요. 평상심을 유지하는 것도 훌륭한 수행이랍니다.」
+	ELSE
+		PRINTFORMW 「헉, 미안해요. 제가 무슨 짓을…」
+	ENDIF
 RETURN 1
 
 ;==================================================
@@ -95,6 +120,11 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_15_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_15_1
+	IF TALENT:연모
+		PRINTFORMW 「%CALLNAME:MASTER%의 얼굴을 보고 있으면 행복한 기분이 들어요」
+	ELSE
+		PRINTFORMW 「헉, 미안해요. 제가 무슨 짓을…」
+	ENDIF
 RETURN 1
 
 ;==================================================
@@ -105,6 +135,11 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_16_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_16_1
+	IF TALENT:연모
+		PRINTFORMW 「후우…진정되네요…」
+	ELSE
+		PRINTFORMW 「헉, 미안해요. 제가 무슨 짓을…」
+	ENDIF
 RETURN 1
 
 ;-------------------------------------------------
@@ -156,6 +191,12 @@ ELSE
 	IF SELECTCOM == 312 && TALENT:연모 && RAND:2 == 0
 		PRINTFORMW 「…저기, 다시 한번 부탁할 수 있을까요…%UNICODE(0x2665)%」
 	ELSE
+		PRINTFORMW 服越しに伝わる柔らかな感触に、心臓の鼓動が高まるのを感じた。
+			IF TALENT:연모
+				PRINTFORMW 「……%UNICODE(0x2665)%」
+			ELSE
+				PRINTFORMW 「헉, 미안해요. 제가 무슨 짓을…」
+			ENDIF
 	ENDIF
 ENDIF
 RETURN 1
@@ -188,6 +229,7 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_25_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_25_1
+
 RETURN 1
 
 ;==================================================
@@ -207,6 +249,7 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_27_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_27_1
+	
 RETURN 1
 
 ;-------------------------------------------------
@@ -804,17 +847,20 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_70_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_70_1
-IF RAND:5 == 0
-	PRINTFORMW 「아앗…%UNICODE(0x2665)%　%CALLNAME:MASTER%의 숨결이…%UNICODE(0x2665)%」
-ELSEIF RAND:4 == 0
-	PRINTFORMW 「저기, %CALLNAME:MASTER%… 빨아 주지 않으시겠습니까…%UNICODE(0x2665)%」
-ELSEIF RAND:3 == 0
-	PRINTFORMW 「하아, 아아……%UNICODE(0x2665)%」
-ELSEIF RAND:2 == 0
-	PRINTFORMW 「응, 후읏……%UNICODE(0x2665)%」
-ELSE
-	PRINTFORMW 「…%UNICODE(0x2665)%」
-ENDIF
+PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 얼굴을 허벅지에 끼우고 애액으로 젖은 비소를 눌러왔다.
+PRINTFORMW 하얗고 매끈하며 탱탱한 피부가 닿자 기분이 좋아진 %CALLNAME:MASTER%는 어리광을 부리듯 얼굴을 문지르는 것으로 대답했다.
+	IF RAND:5 == 0
+		PRINTFORMW 「아앗…%UNICODE(0x2665)%　%CALLNAME:MASTER%의 숨결이…%UNICODE(0x2665)%」
+	ELSEIF RAND:4 == 0
+		PRINTFORMW 「저기, %CALLNAME:MASTER%… 빨아 주지 않으시겠습니까…%UNICODE(0x2665)%」
+	ELSEIF RAND:3 == 0
+		PRINTFORMW 「하아, 아아……%UNICODE(0x2665)%」
+	ELSEIF RAND:2 == 0
+		PRINTFORMW 「응, 후읏……%UNICODE(0x2665)%」
+	ELSE
+		PRINTFORMW 「…%UNICODE(0x2665)%」
+	ENDIF
+
 RETURN 1
 
 ;==================================================
@@ -835,6 +881,8 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_72_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_72_1
+PRINTFORMW 뱌쿠렌은 %CALLNAME:MASTER%의 얼굴을 허벅지에 끼우고 형태가 예쁜 엉덩이로 눌러왔다.
+PRINTFORMW 떡처럼 달라붙는 아름다운 엉덩이는 닿고 있으면 기분이 좋아져 국문을 넓히듯 엉덩이살을 밀어 헤쳤다.
 RETURN 1
 
 ;==================================================
@@ -918,6 +966,8 @@ CALL EVENT_COUNTER_MESSAGE
 CALL M_KOJO_MESSAGE_COUNTER_K55_86_1
 RETURN RESULT
 @M_KOJO_MESSAGE_COUNTER_K55_86_1
+PRINTFORMW 「하아앙、아앗、빼면, 안 돼…엣」
+PRINTFORMW 「질내 에…읏、안에 내주세요오오%UNICODE(0x2665)%」
 RETURN 1
 
 ;==================================================

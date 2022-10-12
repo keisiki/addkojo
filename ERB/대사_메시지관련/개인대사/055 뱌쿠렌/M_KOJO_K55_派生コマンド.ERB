@@ -12,7 +12,7 @@ RETURN 1
 @M_KOJO_MESSAGE_SCOM_K55_1_1
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	;-------------------------------------------------
@@ -23,8 +23,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
-		PRINTFORMW 「후~…… 함께……?」
-            	PRINTFORMW 「……응응, ……!」
+		PRINTFORMW 
 		RETURN 1
 	ENDIF
 	;基本セット
@@ -34,13 +33,29 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 「응……좀 더」
-            	PRINTFORMW  자신의 보지가 애무당하면서도 뱌쿠렌은 열심히 페니스를 빨았다.
+		A = RAND:3
+			IF A == 0
+				PRINTFORML 「함께……기분 좋아집시다」
+				PRINTFORML 식스나인의 형태가 되어 서로의 성기를 핥는다.
+				PRINTFORML 「응……페로、츄읍、쥬르릅……읏」
+				PRINTFORML 육봉이 뱌쿠렌의 입속으로 삼켜진다.
+				PRINTFORMW %CALLNAME:MASTER%도 뱌쿠렌의 흠칫흠칫 움직이는 비소를 혀로 핥았다.
+			ELSEIF A == 1
+				PRINTFORML 「으읏、으으으응、츄읍、츄릅、츄으으읍!!」
+				PRINTFORML 점점 두사람의 움직임은 히트업 되어 간다.
+				PRINTFORML 일심불란으로 서로를 애무하며 절정으로 향해 갔다.
+				PRINTFORMW 「응、응앗、츄、츄릅、츄으읍!　후아、아아아앙」
+			ELSE
+				PRINTFORML 「앙、아、앙、아、아아아앙♪」
+				PRINTFORML 뱌쿠렌의 스트로크가 빨라졌다.
+				PRINTFORML %CALLNAME:MASTER%도 비소에 손가락을 삽입하여 혀로 클리토리스를 굴렸다.
+				PRINTFORML 「으으으으으응!! 츄、츄으읍!!
+				PRINTFORMW 　츄、츄릅、핥짝핥짝、하、하아앙、으읍、쥬릅!」
+			ENDIF
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「응……좀 더」
-            	PRINTFORMW  자신의 보지가 애무당하면서도 뱌쿠렌은 열심히 페니스를 빨았다.
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -73,11 +88,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
-		PRINTFORMW 「밑에서… 핥는다고요?!」
-            	PRINTFORMW 뱌쿠렌은 놀라서 앉으려고 하지만, %조사처리(CALLNAME:MASTER,"는")% 설득을 시작하며, 어떻게든 서있게 만든다
-            	PRINTFORMW 「으으…씹거나 하면 안 돼요? …어쨌든 빠, 빨리해요!」
-            	PRINTFORMW 자신의 음모마저도 부끄러워진 것인지 뱌쿠렌은 귀 끝까지 빨개져서는 소리친다
-            	PRINTFORMW 그 덕분일까, 그녀의 음부 주변은 이미 젖어 있었다
+		PRINTFORMW 
 		RETURN 1
 	ENDIF
 	;基本セット
@@ -87,18 +98,11 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 「저… 이게 상당히 좋아요♡」
-                	PRINTFORMW 뱌쿠렌은 미소를 지으며 스스로 자신의 비소를 펄친다
-                	PRINTFORMW 「콩이 핥아질 때라던가… 음란한  %CALLNAME:MASTER% 씨의 표정을 볼 때라던가…후응♡」
-                	PRINTFORMW 뱌쿠렌은 자신의 비소가 빨리는 것이 기분 좋은 것인지 음란한 미소를 짓는다
-                	PRINTFORMW 「그러니까- 충분히…」
+		PRINTFORMW 
 		RETURN 1
 	;屈服3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「으응… 콩을 좀더… 네, 넷! 으응!」
-                	PRINTFORMW 원하는 대로 깨물듯이 음핵을 핥아주자, 뱌쿠렌은 하복부를 진동시키며 신음을 낸다
-                	PRINTFORMW 「후우…밑에서 빨아올리는 거, 음란하네요…… 하아…」
-                	PRINTFORMW 마조끼가 있는 걸지도...
+		PRINTFORMW 
 		RETURN 1
 	;それ以外
 	ELSE
@@ -277,30 +281,92 @@ IF LOCAL
 		PRINTFORML 「거깃%UNICODE(0x2764)% 기분 좋앗%UNICODE(0x2764)% 안대애앳 머리가앗 이상해져버려어엇%UNICODE(0x2764)%%UNICODE(0x2764)%」
 		RETURN 1
 	ENDIF
-	LOCAL:1 = 1
-	;-------------------------------------------------
-	IF LOCAL:1 && TCVAR:101 == PLAYER
-		;前回射精した
-		IF TCVAR:104
-			PRINTFORML 「방금%UNICODE(0x2764)% 사정 했을 텐데엣%UNICODE(0x2764)%」
-			PRINTFORML 「거깃 좋아앗%UNICODE(0x2764)% 안대애앳%UNICODE(0x2764)% 괴롭히면 안대애앳%UNICODE(0x2764)%%UNICODE(0x2764)%」
-			RETURN 1
-		ELSE
-			PRINTFORMW 
-			RETURN 1
-		ENDIF
-	ENDIF
 	;基本セット
-	IF TCVAR:140
-		PRINTFORML 「햐웃%UNICODE(0x2764)% 거기 죠하아앗%UNICODE(0x2764)% 좀 더 해줘어엇%UNICODE(0x2764)%%UNICODE(0x2764)%」
-	ELSE
+	;時姦中
+	IF FLAG:70
+	
+	;媚薬フラグ有
+	ELSEIF TCVAR:140
 		SELECTCASE RAND:2
-		CASE 0
-			PRINTFORML 「읏%UNICODE(0x2764)% 거긴 약하니까아%UNICODE(0x2764)% 안대애앳%UNICODE(0x2764)%」
-		CASE 1
-			PRINTFORML 「기분 좋아앗 아깃 만들고 싶어엇%UNICODE(0x2764)% 이상하게 되어버려어엇%UNICODE(0x2764)%」
+			CASE 0
+				PRINTFORML 「햐웃%UNICODE(0x2764)% 거기 죠하아앗%UNICODE(0x2764)% 좀 더 해줘어엇%UNICODE(0x2764)%%UNICODE(0x2764)%」
+			CASE 1
+				PRINTFORML 「응야아아앗%UNICODE(0x2764)%굉장해애애앳%UNICODE(0x2764)%안쪽 빙글빙글%UNICODE(0x2764)%굉장해애애앳%UNICODE(0x2764)%」
+				PRINTFORMW 미약의 강렬한 효과에 빠져 뱌쿠렌은 단정치 못한 소리를 높이며 좋아하고 있었다…
 		ENDSELECT
-		RETURN 1
+	;前回射精した
+	ELSEIF TCVAR:102
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「그, 그런… 지금 막 사정했는데 %UNICODE(0x2764)%응아아앗%UNICODE(0x2764)%아아앗…%UNICODE(0x2764)%」
+				PRINTFORML 육봉을 뱌쿠렌의 질 안에 넣은 채 방금 쏟은 정액을 그녀의 약점에 바른다.
+				PRINTFORML 어디를 어떻게 하면 느끼는지 육욕의 기억을 아름답게 부풀어 오른 극상의 여체에 새겨 간다.
+				PRINTFORMW 「히윽、그、아아앙%UNICODE(0x2764)% 안돼、안돼요…응오옥%UNICODE(0x2764)%우응、으으응%UNICODE(0x2764)%%CALLNAME:MASTER%읏…%UNICODE(0x2764)%」
+			CASE 1
+				PRINTFORML 「아윽、하앙…%UNICODE(0x2764)% 그、그런 소리 내지 말아줘…」
+				PRINTFORML 허리를 살짝 당겨 뱌쿠렌의 입구를 끝부분으로 집요하게 뭉그러뜨리고 귀두가 질벽을 쭉쭉 펴넓혀가자
+				PRINTFORMW 질내사정한 정액을 조금씩 긁어내어 질척질척하는 외설적인 물소리를 낸다.
+				PRINTFORML 
+				PRINTFORML 「으으으응…아으、시、시러……엇!～～～～～…%UNICODE(0x2764)%」
+				PRINTFORMW %CALLNAME:MASTER%는 풍만한 엉덩이를 흔들며 공격에서 벗어나려는 뱌쿠렌의 허리를 잡고 단숨에 안쪽까지 꿰뚫었다.
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「으응 %UNICODE(0x2764)% 크읏 %UNICODE(0x2764)% 후우읏 %UNICODE(0x2764)%…이거、으으읏… 이건、안돼…%UNICODE(0x2764)%으으응%UNICODE(0x2764)%」
+				PRINTFORMW 음핵 뒤의 신경을 눌러 풀어주는 것 같이 얕은 삽입질에 뱌쿠렌은 자신의 손가락을 물면서 필사적으로 버티고 있었다.
+				;これで絶頂する
+				IF NOWEX:TARGET:V절정
+					PRINTFORML 
+					PRINTFORML 「하아、후으읏………가는걸 참는 모습이 귀여워…? 정말、무슨 말 하는거야…」
+					PRINTFORML 「읏 %UNICODE(0x2764)%～～～～응 %UNICODE(0x2764)%」
+					PRINTFORMW 부끄러워하는 틈을 타 허리를 굽히자 뱌쿠렌은 사랑스러운 소리를 높여 몸부림쳤다…
+				ENDIF
+			CASE 1
+				PRINTFORML 「아앗… 아아아앙…%UNICODE(0x2764)% 거기, 대단해애앳…%UNICODE(0x2764)% 이런거 못버텨…」
+				PRINTFORML 입구에 가까운 곳을 둥글게 밀어주자 뱌쿠렌은 참을 수 없다는 듯 어깨를 들썩였다.
+				PRINTFORML 「%CALLNAME:MASTER%…%CALLNAME:MASTER%…%UNICODE(0x2764)%…좀 더、부탁해요…」
+			CASE 2
+				PRINTFORML 「하아앙 %UNICODE(0x2764)% 아응、응、아앙 %UNICODE(0x2764)%으응…%UNICODE(0x2764)%」
+				PRINTFORML 약점을 찔리는 것이 참을 수 없는지 뱌쿠렌은 스스로도 허리를 작게 흔들면서 %CALLNAME:MASTER%의 삽입질에 응하고 있었다.
+				PRINTFORMW 「안쪽, 굉장, 해요…%UNICODE(0x2764)%아하아앙、조아앗 …%UNICODE(0x2764)%이상해져버려어어엇…%UNICODE(0x2764)%」
+				;長いし頻出しないように　女の子の方から乱れてくれるのが嬉しいというご意見がありましたので
+				IF ABL:V감각 >= 5 && RAND:3 == 0 && (TALENT:연모 || TALENT:애욕)
+					PRINTFORML 
+					PRINTFORML 「하아앙、아앙、앙%UNICODE(0x2764)%응, 아으읏…?」
+					PRINTFORML 서로의 타이밍이 맞지 않았던건지 결합부가 떨어져버렸다.
+					PRINTFORMW 입을 벌린 뱌쿠렌의 꿀구멍에서는 \@ 충전율(TARGET,1) >=100 ? 거품이 난 정액이 백탁과 섞여 # 흠뻑 흘러넘치는 이슬이 \@ 늘어져 떨어지려고 하고 있었다.
+					PRINTFORML
+					PRINTFORML 「……저기、%CALLNAME:MASTER%?」
+					PRINTFORML %CALLNAME:MASTER%가 비소를 관찰하고 있자 뱌쿠렌은 조금 곤란한 얼굴로 이쪽을 바라봤다.
+					PRINTFORMW …조금 장난기가 들어 그녀가 어떻게 하는지 이대로 관찰하기로 했다.
+					PRINTFORML 
+					PRINTFORML 「…후응. 그런거였네」
+					PRINTFORML 뱌쿠렌은 뭔가 납득한 듯 가볍게 고개를 끄덕이며 당신의 페니스를 살짝 건드렸다.
+					PRINTFORMW 「후훗、매우 뜨겁고 딱딱하고 씩씩한 나의 사랑스러운 사람」
+					PRINTFORML
+					PRINTFORML 육봉을 부드럽게 움켜쥐어 쿠츗, 하고 약간의 물소리를 내며 끝부분과 질구를 입맞춤시켰다.
+					PRINTFORML 그대로 뱌쿠렌은 허리를 천천히 상하시켜 서로의 점액을 친숙해지게 하고 나서 푸욱하고 삼켜 갔다.
+					PRINTFORMW 「…으읏 %UNICODE(0x2764)%」
+					PRINTFORML
+					PRINTFORML 「나…완전히、당신의 자지에 사로잡혀버렸어」
+					PRINTFORM 「이렇게 입구를 비비는 것만으로도
+					SIF ABL:정액중독 > 3
+						PRINTFORM 、마시게 하는 것도…
+					SIF ABL:항내사정중독 > 3
+						PRINTFORM 、엉덩이에 쏟아지는 것도…
+					IF ABL:질내사정중독 > 3
+						PRINTFORML 、질내를 채워지는 것도…
+					ELSE
+						PRINTFORML 、안쪽을 괴롭혀 주는 것도…
+					ENDIF
+					PRINTFORML 당신이 해주는 모든걸 좋아해」
+					PRINTFORMW 열띤 가락을 담으면서 사랑의 말을 하고 느긋하게 허리를 움직이며 당신에게 아첨하는 뱌쿠렌
+					PRINTFORML 
+					PRINTFORML 권해진 대로, %CALLNAME:MASTER%는 허리를 찔러 넣으며 그녀를 기쁘게 했다.
+					PRINTFORMW 「그래、그런가야…아아앙, 으응! 당신과 이러는게, 정말 좋아…%UNICODE(0x2764)%%CALLNAME:MASTER%、%CALLNAME:MASTER%읏…%UNICODE(0x2764)%」
+				ENDIF
+		ENDSELECT
 	ENDIF
 ENDIF
 ;未記入
@@ -360,10 +426,11 @@ IF LOCAL
 	ELSEIF TALENT:78
 		SELECTCASE RAND:3
 		CASE 0
-			PRINTFORML 「하으 응읏%UNICODE(0x2764)% 하아아앗, 앗, 아앗, %CALLNAME:MASTER%～～%UNICODE(0x2764)%」
-			PRINTFORMW 꼼꼼하게 개발된 덕분에 뱌쿠렌의 자궁구는 부드러워지고, 때때로 수축하며 %CALLNAME:MASTER%의 귀두를 부드럽게 받아들이고 있다.
-			PRINTFORML 「앗 아앗, 아아아앗～%UNICODE(0x2764)% 기분이 너무 죠하써엇, 하앗%UNICODE(0x2764)% 임신, 해버려어어엇～～%UNICODE(0x2764)%」
-			PRINTFORMW 뱌쿠렌의 뇌리에『임신』이라는 단어가 번뜩이며, 뱌쿠렌의 흥분은 더더욱 고조되어 갔다…….
+			PRINTFORML 「하아아앙、앙、앗、아……아아아아앙%UNICODE(0x2764)%」
+			PRINTFORML 「크으읏……조아아앗……자궁에 큥큥 울리고 있어……읏%UNICODE(0x2764)%」
+			PRINTFORMW 「하으으읏……이제、머리가、새하얘져서어……엇%UNICODE(0x2764)%」
+			PRINTFORML 「응아앗、앙……당신의, 자지에…보지……질척질척 해지는 생각 밖에 안나아앗 %UNICODE(0x2764)%」
+			PRINTFORMW 뱌쿠렌의 입에서 외설적인 단어가 새어나와 뱌쿠렌과 %CALLNAME:MASTER%의 흥분은 더욱 더욱 고조되어갔다…….
 		CASE 1
 			PRINTFORML 「안쪼옥, 스쳐서엇…… 굉장… 해앳！ 응읏, 아아아앗───！」
 			PRINTFORMW 뱌쿠렌의 자궁구를 %CALLNAME:MASTER%의 귀두로 노크하자, 뱌쿠렌은 전신을 부들부들 떨면서 쾌락에 농락당하였다…….
@@ -488,12 +555,12 @@ IF LOCAL
 		RETURN 1
 	;それ以外
 	ELSE
-		PRINTFORMW 
+		PRINTFORMW
 		RETURN 1
 	ENDIF
 ENDIF
 ;未記入
-;CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
+CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
 RETURN 1
 
 ;二人目口上
@@ -503,9 +570,14 @@ VARSET LOCAL
 LOCAL:101 = MASTER_POSE(4,1)
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
+	;一人目のID＠口で,MASTERのペニスを,このターンに占有中のキャラ
+	;上ですでにLOCAL:101に一人目のIDを代入してもらっているものの、
+	;行儀悪いけど楽なのでLOCALに代入
+	;一人目口上の後に呼び出されるため、台詞は『』でくくるようにしています
+	LOCAL =  MASTER_POSE(4,1)
 	;-------------------------------------------------
 	;小分岐
 	;-------------------------------------------------
@@ -522,17 +594,25 @@ IF LOCAL
 	IF FLAG:70
 		PRINTFORMW 
 		RETURN 1
-	;恋慕
-	ELSEIF TALENT:연모
-		PRINTFORMW 
-		RETURN 1
-	;屈服3
-	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 
-		RETURN 1
 	;それ以外
 	ELSE
-		PRINTFORMW 
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 『응、핥짝핥짝、츄르르릅……으읍、츄으으읍…』
+				PRINTFORML 뱌쿠렌은 따뜻한 혀로 음낭을 빨라올리면서도 %CALLNAME:MASTER%의 다리에 풍만한 유방을 문질러 흥분을 부추겼다.
+				PRINTFORMW 한가지만으로도 충분했던 뱌쿠렌의 자극은 %CALLNAME:LOCAL%의 구음의 쾌락을 증폭시켜, 한층 더 %CALLNAME:MASTER%을 도취시켰다…
+			CASE 1
+				PRINTFORML 『으븝、츄릅… 저기 %CALLNAME:MASTER%、손을 잡아도 괜찮을까?』
+				PRINTFORML 『…후훗、고마워. 이렇게 하는 것만으로도 네 온기에 더 가까워지는 것 같아. 신기하네.』
+				PRINTFORMW 뱌쿠렌은 생긋 미소지으면서 눈을 흘기며 이쪽을 바라보고 위로하듯 페니스를 핥으며 빨기 시작했다…
+			CASE 2
+				PRINTFORML 『핥짝、츄읍、츄르르릅…후훗、이쪽도 즐길게…』
+				PRINTFORML 뱌쿠렌은 %CALLNAME:MASTER%의 손을 잡고 자신의 %OPPAI_DESCRIPTION(TARGET,1)%에 꾹꾹 눌러준다.
+				PRINTFORMW 이쪽을 가만히 올려다보며 도발하는 눈동자에 응하듯 그것을 잡자 뱌쿠렌은 달콤한 한숨을 내쉬었다.
+				PRINTFORML 『츄읍…아까보다 더 커졌으려나…♪ 후훗、마음대로 해도 괜찮은거야? 아음、핥짝핥짝』
+				PRINTFORML 부드러운 육유에 손가락을 담글수록 뱌쿠렌의 흡수가 강해지며 녹는 듯한 헐떡거림이 쏟아진다.
+				PRINTFORMW %CALLNAME:LOCAL%의 %OPPAI_DESCRIPTION(LOCAL,1)%에도 손을 뻗으면서、%CALLNAME:MASTER%는 고기의 쾌락에 떨었다…
+		ENDSELECT
 		RETURN 1
 	ENDIF
 ENDIF
@@ -634,7 +714,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;11,ダブルパイズリ
+;11,
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K55_11
 CALL TRAIN_MESSAGE
@@ -687,15 +767,19 @@ IF LOCAL
 	ENDIF
 ENDIF
 ;未記入
-;CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
+CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
 RETURN 1
 
 @M_KOJO_MESSAGE_SCOM_K55_11_2
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
+	;一人目のID＠胸で,MASTERのペニスを,このターンに占有中のキャラ
+	;行儀悪いけど楽なのでLOCALに代入
+	;一人目口上の後に呼び出されるため、台詞は『』でくくるようにしています
+	LOCAL = MASTER_POSE(5,1)
 	;-------------------------------------------------
 	;小分岐
 	;-------------------------------------------------
@@ -712,17 +796,40 @@ IF LOCAL
 	IF FLAG:70
 		PRINTFORMW 
 		RETURN 1
-	;恋慕
-	ELSEIF TALENT:연모
-		PRINTFORMW 
-		RETURN 1
-	;屈服3
-	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 
-		RETURN 1
 	;それ以外
 	ELSE
-		PRINTFORMW 
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 『응、차、후우…아핫 %UNICODE(0x2665)%…둘이서 하니 못견디나 보네』
+				PRINTFORML 가슴살을 희마하게 적시는 땀이 앞다퉈 섞이고 질척질척 추잡한 소리를 내며 %CALLNAME:MASTER%의 귀를 즐겁게 한다.
+				PRINTFORMW 『좀 더 격렬하게 해볼까요…%CALLNAME:MASTER%의 귀여운 목소리 더 들려줘?』
+			CASE 1
+				PRINTFORML 『후으읏… 큿、후읏、하아앗、하아앗…』
+				;一人目がカウンター行動でパイフェラしている
+				IF CUP:LOCAL:쾌M
+					PRINTFORML 뱌쿠렌의 살짝 들뜬 한숨이 %CALLNAME:LOCAL%의 혀가 귀두를 간지럽히고 가슴에 끼이는 쾌감을 끝없이 배가시켜 나갔다.
+					PRINTFORMW 『가슴에 끼인 데다 입으로도 봉사받다니、얼마나 음란한 건가요…』
+					PRINTFORML 뱌쿠렌은 땀에 젖은 이마에 붙은 머리를 쓸어 올리면서 가늘고 새하얀 목덜미가 살짝 들여다보이며 시각적으로도 정욕을 부추긴다.
+					PRINTFORMW 『후훗. 나중에 저도 핥게 해주세요♪』
+				;それ以外
+				ELSE
+					PRINTFORML 뱌쿠렌의 살짝 들뜬 한숨이 %CALLNAME:LOCAL%의 혀가 귀두를 간지럽히고 가슴에 끼이는 쾌감을 끝없이 배가시켜 나갔다.
+					PRINTFORMW 『아아, 우리의 가슴이 %CALLNAME:MASTER%의 모양으로 움푹 패여 있어요』
+					PRINTFORML 『무척 기분 좋아 보이네요… 이대로 핥거나 하면 당신은 어떤 반응을 보일까요』
+					PRINTFORMW 정욕에 젖은 눈동자를 요염하게 빛내며 뱌쿠렌은 붉은 혀를 내밀어 보였다…
+				ENDIF
+			CASE 2
+				PRINTFORML 『으응、하아、하아아…%UNICODE(0x2665)% 어때? 기분 좋을까…?』
+				;一人目が並乳以下(聖はデフォルトで爆乳)
+				IF TALENT:55:가슴사이즈 - TALENT:LOCAL:가슴사이즈 >= 2
+				PRINTFORML 뱌쿠렌은 %CALLNAME:LOCAL%의 가슴이 %CALLNAME:MASTER%의 페니스에 맞도록 배려하면서 %OPPAI_DESCRIPTION(TARGET,1)%를 흔들고 있었다…
+				;それ以外
+				ELSE
+				PRINTFORML 묵직하게 여문 4개의 요염한 유방이 %CALLNAME:MASTER%의 아랫배에 기분좋은 하중을 가했다.
+				ENDIF
+				PRINTFORML 가슴은 단단하고 매끄러운 물건을 부드럽게 받아들이면서도 확실한 탄력으로 되받아치며 %CALLNAME:MASTER%을 사정에 향해 고조시켜갔다.
+				PRINTFORMW 『……대답할 여유도 없다. 후훗, 좋아…원하는 만큼、우리의 가슴을 만끽해 주세요』
+		ENDSELECT
 		RETURN 1
 	ENDIF
 ENDIF
@@ -738,7 +845,7 @@ RETURN 1
 @M_KOJO_MESSAGE_SCOM_K55_12_1
 ;-------------------------------------------------
 ;記入チェック（=0, 非表示、1, 表示）
-LOCAL = 0
+LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	;-------------------------------------------------
@@ -759,20 +866,29 @@ IF LOCAL
 		RETURN 1
 	;恋慕
 	ELSEIF TALENT:연모
-		PRINTFORMW 
-		RETURN 1
-	;屈服3
-	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 
+		SELECTCASE RAND:3
+		CASE 2
+			PRINTFORML 「하아、으응……핥짝핥짝……%UNICODE(0x2665)%」
+			PRINTFORML %OPPAI_DESCRIPTION(TARGET)%의 위에서 꽂힌 혀끝이 자지의 끝을 간질였다
+			PRINTFORMW 「응……? 후읏、응……음……핥짝핥짝……」
+			PRINTFORML 허리를 비틀어도 덮여있는 젖가슴에 사로잡혀 간지러운 쾌락에서 벗어나는 것이 허용되지 않는다…
+			PRINTFORML 「응、후훗……레로、핥짝핥짝핥짝……%UNICODE(0x2665)%」
+			PRINTFORMW 아무래도 이 고문은 그녀의 마음에 든 것 같다.
+		CASE 1
+			PRINTFORML 「츄、츄읍……하앗、츄、츄으읍……」
+			PRINTFORML 따듯한 유괴에 휩싸여진 페니스의 끝에 쪼아드는 키스비가 내린다.
+			PRINTFORML 「……후훗、귀여워. ……츄읍、츄읏……%UNICODE(0x2665)%」
+			PRINTFORMW 어린아이를 달래는 것 같은 자애로 가득 찬 음색으로 속삭이면서, 뱌쿠렌은 음미로운 봉사를 계속하고 있다. 
+		CASEELSE
+			CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
+		ENDSELECT
 		RETURN 1
 	;それ以外
 	ELSE
-		PRINTFORMW 
+		CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1 
 		RETURN 1
 	ENDIF
 ENDIF
-;未記入
-;CALLFORM M_KOJO_MESSAGE_COM_K55_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================

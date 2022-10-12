@@ -12,7 +12,7 @@
 LOCAL = 1
 ;-------------
 IF LOCAL
-SIF FLAG:대사색깔
+SIF FLAG:구상색
 	TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 	;-------------------------------------------------
 	;소분기
@@ -40,7 +40,7 @@ SIF FLAG:대사색깔
 		RESETCOLOR
 		CALL ASK_M("역시 그만둔다", 1, "돈(반)", 1, "카리스마(반)", 1, "아이", 1, "동정", TALENT:MASTER:비동정 == 0 && TALENT:MASTER:성별 == 2)
 		LOCAL:2 = RESULT
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 		SELECTCASE LOCAL:2
 			CASE 0
@@ -94,7 +94,7 @@ SIF FLAG:대사색깔
 					RESETCOLOR
 					CALL ASK_M("마시는", 1, "마시지 않는", 1)
 					LOCAL:3 = RESULT
-					SIF FLAG:대사색깔
+					SIF FLAG:구상색
 						TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 					SELECTCASE LOCAL:3
 						CASE 0
@@ -298,7 +298,7 @@ SIF FLAG:대사색깔
 			RESETCOLOR
 			CALL ASK_M("참을 수 없는……", 1, "참는", 1)
 			LOCAL:2 = RESULT
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 			SELECTCASE LOCAL:2
 				CASE 0
@@ -321,7 +321,7 @@ SIF FLAG:대사색깔
 					RESETCOLOR
 					CALL ASK_M("참을 수 없는……", 1, "참는", 1)
 					LOCAL:3 = RESULT
-					SIF FLAG:대사색깔
+					SIF FLAG:구상색
 						TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 					SELECTCASE LOCAL:3
 						CASE 0
@@ -352,7 +352,7 @@ SIF FLAG:대사색깔
 							RESETCOLOR
 							CALL ASK_M("참을 수 없는……", 1, "참는", 1)
 							LOCAL:4 = RESULT
-							SIF FLAG:대사색깔
+							SIF FLAG:구상색
 								TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 							SELECTCASE LOCAL:4
 								CASE 0
@@ -552,7 +552,7 @@ SIF FLAG:대사색깔
 					PRINTFORMW 동정상실
 					FONTREGULAR
 					RESETCOLOR
-					SIF FLAG:대사색깔
+					SIF FLAG:구상색
 						TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 					TALENT:MASTER:비동정 = 1
 					LOCAL:2 = 1
@@ -573,7 +573,7 @@ SIF FLAG:대사색깔
 					SETCOLOR 247,171,166
 					PRINTFORMW 처녀상실
 					RESETCOLOR
-					SIF FLAG:대사색깔
+					SIF FLAG:구상색
 						TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 				ENDIF
 				PRINTFORM 「아
@@ -735,7 +735,7 @@ SIF FLAG:대사색깔
 			PRINTFORMW 동정상실
 			FONTREGULAR
 			RESETCOLOR
-			SIF FLAG:대사색깔
+			SIF FLAG:구상색
 				TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 			TALENT:MASTER:비동정 = 1
 			IF TALENT:68:처녀 == 1
@@ -754,7 +754,7 @@ SIF FLAG:대사색깔
 				SETCOLOR 247,171,166
 				PRINTFORMW 처녀상실
 				RESETCOLOR
-				SIF FLAG:대사색깔
+				SIF FLAG:구상색
 					TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 			ENDIF
 			PRINTFORM 「아
@@ -823,7 +823,7 @@ SIF FLAG:대사색깔
 		RESETCOLOR
 		CALL ASK_M("위험일 나고 치노 허가", CFLAG:68:생해금 < 2 && TALENT:MASTER:성별 != 1, "팬티 덩이", EQUIP:68:하반신속옷2, "모종 주세요", CFLAG:68:1899 != 1, "사이좋게 지내", 1, "돈", 1, "섹스!", 1)
 		LOCAL:2 = RESULT
-		SIF FLAG:대사색깔
+		SIF FLAG:구상색
 			TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 		SELECTCASE LOCAL:2
 			CASE 0
@@ -1056,7 +1056,7 @@ SIF FLAG:대사색깔
 								PRINTFORMW 동정상실
 								FONTREGULAR
 								RESETCOLOR
-								SIF FLAG:대사색깔
+								SIF FLAG:구상색
 									TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 								TALENT:MASTER:비동정 = 1
 							ENDIF
@@ -1076,7 +1076,7 @@ SIF FLAG:대사색깔
 								SETCOLOR 247,171,166
 								PRINTFORMW 처녀상실
 								RESETCOLOR
-								SIF FLAG:대사색깔
+								SIF FLAG:구상색
 									TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 							ENDIF
 							PRINTFORM 「있고, 나아아아아
@@ -1192,7 +1192,7 @@ SIF FLAG:대사색깔
 								PRINTFORMW 동정상실
 								FONTREGULAR
 								RESETCOLOR
-								SIF FLAG:대사색깔
+								SIF FLAG:구상색
 									TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 								TALENT:MASTER:비동정 = 1
 							ENDIF
@@ -1212,7 +1212,7 @@ SIF FLAG:대사색깔
 								SETCOLOR 247,171,166
 								PRINTFORMW 처녀상실
 								RESETCOLOR
-								SIF FLAG:대사색깔
+								SIF FLAG:구상색
 									TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
 							ENDIF
 							PRINTFORMDW 페니스를 애타게 기다려 흠뻑 젖고 있던 유카의 질은, 대망의 페니스에 열중하며 달라붙어 온다
