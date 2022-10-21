@@ -1,0 +1,2257 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;성희롱계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;310,엉덩이를 쓰다듬는다
+;TFLAG:193 (1=불쾌(TALENT:겁쟁이라면 울상) 2&&3=부끄러워한다(TALENT:남성기피 MASTER가 남성이면, 몸을 움츠린다) 4=해지는 대로)
+;CFLAG:우후후 == 2 && TCVAR:20 (팬티 없이 안면기승(70=커닐링구스강제 71=펠라치오강제 72=애널봉사) 35=치마 속을 드러낸다 52=스마타)
+;CFLAG:우후후 == 2 && TEQUIP:식스나인 (팬티 있음 TCVAR:20(70～72)은 이쪽)
+;PREVCOM (305=무릎베개)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_310
+;성공실패 판정
+;TFLAG:192 (-2=커맨드 종료, -1＝강제실패, 0=COM의존, 1=강제성공or대성공)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_310
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_310_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_310_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;PRINTFORMW 「」
+	IF FLAG:70
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 사토리의 부드러운 엉덩이 살을 마음껏 탐했다
+			CASE 1
+				PRINTFORMW 한 손에 잡히는 아담하고 귀여운 엉덩이를 마구 주물러 주었다
+			CASE 2
+				PRINTFORMW 반항 못하는 틈을 타 사토리의 엉덩이 감촉을 마음껏 즐겼다
+		ENDSELECT
+	ELSEIF CFLAG:수면
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「으응...하지마...」
+					PRINTFORMW 사토리는 귀찮다는듯이 몸을 뒤척였다
+				CASE 1
+					PRINTFORMW 「으으응...」
+				CASE 2
+					PRINTFORMW 「응...코이시니...?」
+					PRINTFORMW 사토리는 몇 마디 더 중얼거리더니 이내 도로 잠들었다
+			ENDSELECT
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「아으응...♥」
+					PRINTFORMW 잠든 채로도 달콤한 소리를 흘려주었다
+				CASE 1
+					PRINTFORMW 「응...코이시니...?」
+					PRINTFORMW 사토리는 몇 마디 더 중얼거리더니 이내 도로 잠들었다
+			ENDSELECT
+		ELSEIF TALENT:섹프
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「으응...」
+				CASE 1
+					PRINTFORMW 「응...코이시니...?」
+					PRINTFORMW 사토리는 몇 마디 더 중얼거리더니 이내 도로 잠들었다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「으으응...」
+				CASE 1
+					PRINTFORMW 「응...코이시니...?」
+					PRINTFORMW 사토리는 몇 마디 더 중얼거리더니 이내 도로 잠들었다
+			ENDSELECT
+		ENDIF
+	ELSE
+		SELECTCASE TFLAG:193
+			CASE 1
+				;실패
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「...뭘 멋대로 만지는거야」
+							PRINTFORMW 사토리는 짜증난다는 듯이 쏘아붙였다
+							TALENT:기분 = -1
+						CASE 1
+							PRINTFORMW 「변태」
+							PRINTFORMW 사토리는 짧게 쏘아붙이고는 경멸 가득한 표정으로 %마스터를% 바라볼 뿐이었다
+							TALENT:기분 = -1
+					ENDSELECT
+					SIF !RAND:2
+						CFLAG:3101 ++
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					SELECTCASE RAND:3
+						CASE 0
+							PRINTFORMW 「뭐하는 건가요...」
+							PRINTFORMW 「이런 변태같은 짓, 즐거운가요?」
+							PRINTFORMW 사토리는 기분이 별론지 매정하게 쏘아붙였다
+						CASE 1
+							PRINTFORMW 「...그만두세요」
+							PRINTFORMW 차갑게 쏘아붙이는 한 마디에 %마스터는% 손을 떼지 않을 수 없었다
+							PRINTFORMW 아무래도 만지게 해줄 기분이 아닌 모양이다
+						CASE 2
+							PRINTFORMW 「%사마스터라고% 해도 이런건 안되는거예요」
+							PRINTFORMW 「그런 변태같은 짓은 아무도 좋아하지 않아」
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「뭘 멋대로 남을 더듬는건가요...」
+							PRINTFORMW 사토리는 짜증섞인 목소리로 쏘아붙였다
+							TALENT:기분 = -1
+						CASE 1
+							PRINTFORMW 「...변태」
+							PRINTFORMW 사토리는 경멸하는 눈빛으로 %마스터를% 쏘아보았다
+					ENDSELECT
+					SIF !RAND:3
+						CFLAG:3101 ++
+				ENDIF
+			CASE 2,3
+				;PRINTFORMW 「」
+				IF CFLAG:우후후
+					;야스중
+					IF MARK:반발각인 == 3 && !TALENT:연인
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「읏...어, 엉덩이 만지지 맛...」
+							CASE 1
+								PRINTFORMW 「이...이런게 뭐가 좋다고...」
+								PRINTFORMW 사토리는 얼굴을 붉혔다
+						ENDSELECT
+					ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「으응♥」
+								PRINTFORMW 「그, 그렇게 만지면 부끄러워요...」
+							CASE 1
+								PRINTFORMW 「어...엉덩이...그렇게 만지면 안돼...♥」
+								PRINTFORMW 「부끄러워...감상 생각하지 마아...♥」
+								PRINTFORMW 사토리의 얼굴이 홍당무처럼 새빨게졌다
+						ENDSELECT
+					ELSEIF TALENT:섹프||TALENT:애욕
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「안대에♥ 만지지 마♥」
+								PRINTFORMW 말과는 달리 좀 더 만져줬음 하는 눈치다
+							CASE 1
+								PRINTFORMW 「어...엉덩이...그렇게 만지면 안돼...♥」
+								PRINTFORMW 「부끄러워...감상 생각하지 마아...♥」
+								PRINTFORMW 사토리의 얼굴이 홍당무처럼 새빨게졌다
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「어, 엉덩이 주무르지 마세요...」
+								PRINTFORMW 「부끄럽단 말야...」
+							CASE 1
+								PRINTFORMW 「그렇게 조물딱 거릴 필요는 없잖아요...그만...」
+								PRINTFORMW 사토리의 얼굴이 새빨게졌다
+						ENDSELECT
+					ENDIF
+				ELSEIF OTOKOGIRAI(TARGET)
+					;통상 이쪽일것
+					;연모 애욕으로 무효
+					IF MARK:반발각인 == 3
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「읏...」
+								PRINTFORMW 사토리는 주춤거렸지만 별다른 말은 하지 않았다
+							CASE 1
+								PRINTFORMW 「힛...이, 이런거 해서 즐거운가요...」
+								PRINTFORMW 「...하기사, 이런 사람이긴 했지만」
+						ENDSELECT
+					ELSEIF TALENT:사모||TALENT:섹프
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「힛...」
+								PRINTFORMW 「아, 아뇨, 싫은건 아닌데...조금 놀라서...」
+							CASE 1
+								PRINTFORMW 「윽...」
+								PRINTFORMW 사토리는 잠시 움츠러들었으나 이내 무덤덤한 표정으로 되돌아 왔다
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「힛...」
+								PRINTFORMW 「가, 갑자기 무슨...?」
+								PRINTFORMW 사토리는 당황한 눈치다
+							CASE 1
+								PRINTFORMW 「하, 하지 마세요...」
+								PRINTFORMW 사토리는 곤혹스러운듯한 표정이다
+						ENDSELECT
+					ENDIF
+				ELSE
+					;혐오 안 붙음, 연모, 애욕, 여아나타의 경우
+					;남자로 만들어버린 사토리는 고려하지 않는다, 분기짜기 귀찮아
+					IF MARK:반발각인 == 3 && !TALENT:연인
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「...변태」
+								PRINTFORMW 「이딴게 뭐가 좋다고 하는건가요」
+							CASE 1
+								PRINTFORMW 「같은 여자끼리라 해도...이런건 그만 뒀음 좋겠는데」
+								PRINTFORMW 「...기분 나쁠 뿐이니깐」
+						ENDSELECT
+					ELSEIF TALENT:연인||TALENT:연모||TALENT:애욕
+						SELECTCASE RAND:3
+							CASE 0
+								PRINTFORMW 「아, 안된다니깐...」
+								PRINTFORMW 말은 그렇게 하지만 사토리의 표정에선 약간의 기쁨이 느껴졌다
+							CASE 1
+								PRINTFORMW 「저, 정마알...안된다니깐요...」
+								PRINTFORMW 서드아이가 왠지 웃고 있다
+							CASE 2
+								PRINTFORMW 「어, 엉덩이가 그렇게 좋은건가요...」
+								PRINTFORMW 「...그래도 부끄러우니까 안돼요」
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「아무리 여자끼리라 해도...」
+								PRINTFORMW 「이런건 조금 아니지 않을까요?」
+							CASE 1
+								PRINTFORMW 「...이런건 역시 곤란한걸요」
+								PRINTFORMW 「그만 해줬음 하는데...」
+						ENDSELECT
+					ENDIF
+				ENDIF
+			CASE 4
+				IF CFLAG:우후후
+					IF MARK:반발각인 == 3 && !TALENT:연인
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「읏...어, 엉덩이...」
+								PRINTFORMW 「그런거 만지는게 뭐가 좋다는 건지...」
+								PRINTFORMW 투덜거리면서도 별다른 저항은 없었다
+							CASE 1
+								PRINTFORMW 「꼬, 꼭 만져야 하는거야...?」
+								PRINTFORMW 「...으으」
+								PRINTFORMW 사토리는 얼굴을 붉혔다
+						ENDSELECT
+					ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「아아...안돼요...그렇게 만지면...♥」
+								PRINTFORMW 「정말, 응큼하다니깐...♥」
+								PRINTFORMW 말은 그렇게 해도 사토리의 표정은 마치 더 해달라는듯한 느낌이 들었다
+							CASE 1
+								PRINTFORMW 「어, 엉덩이 만지는게 그렇게 좋은건가요...」
+								PRINTFORMW 「변태...그치만, 기분 좋으니까 상관 없으려나...」
+						ENDSELECT
+					ELSEIF TALENT:섹프||TALENT:애욕
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「아아...그렇게 주무르면, 달아오른단 말야...♥」
+								PRINTFORMW 사토리는 거칠게 숨을 몰아쉬고 있다
+							CASE 1
+								PRINTFORMW 「아앙♥」
+								PRINTFORMW 엉덩이를 움켜쥐자 과장된 콧소리를 내며 아양을 떨었다
+								PRINTFORMW 「보통은 그러는 편이 더 흥분된다고 생각하는데요」
+								PRINTFORMW 그새 생각을 읽었는지 약간 뾰로통한 표정으로 핀잔주는 사토리였다
+						ENDSELECT
+					ELSE
+						;볼일 있을까
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「그, 그렇게 주무르면 부끄러워...」
+								PRINTFORMW 사토리는 얼굴을 붉혔지만 싫어하는 기색은 없었다
+							CASE 1
+								PRINTFORMW 「엉덩이 만지는게 그렇게 기쁜건가요...」
+								PRINTFORMW 「으으...그래도 왠지 부끄러워...」
+						ENDSELECT
+					ENDIF
+				ELSE
+					IF MARK:반발각인 == 3 && !TALENT:연인
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「하지 말라 해도 소용 없겠지...」
+								PRINTFORMW 「그러니, 그냥 하고 싶은대로 하시던가요」
+								PRINTFORMW 사토리는 무덤덤하게 엉덩이를 만져지고 있다
+							CASE 1
+								PRINTFORMW 「그런걸 주무르는게 기쁜걸까나」
+								PRINTFORMW 「그거로 족한다면야 얼마든지 해주겠지만...」
+								PRINTFORMW 「...이거만 하고 그만둬 줄 리는 없겠죠」
+								PRINTFORMW 사토리는 한숨을 쉬었다
+						ENDSELECT
+					ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+						IF TFLAG:400
+							SELECTCASE RAND:2
+								CASE 0
+									PRINTFORMW 「여, 여긴 보는 눈도 있는데...」
+									PRINTFORMW 「다들 이상하게 볼텐데...으으...♥」
+									PRINTFORMW 엉덩이를 주무르는 손길에 맞춰 사토리의 몸이 움찔움찔 떨리고 있다
+								CASE 1
+									PRINTFORMW 「바, 밖에서 이런거 하면 안되는데에...♥」
+									PRINTFORMW 「짖궃어...부끄러운 짓 자꾸 하지 마세요...♥」
+									PRINTFORMW 사토리의 얼굴이 새빨게졌다
+							ENDSELECT
+						ELSE
+							SELECTCASE RAND:2
+								CASE 0
+									PRINTFORMW 「부...부끄러워요...」
+									PRINTFORMW 「그치만...왠지 두근거리는게...♥」
+									PRINTFORMW 사토리는 얼굴을 새빨갛게 물들인 채 엉덩이를 주물러지고 있다
+								CASE 1
+									PRINTFORMW 「으응♥ 그, 그렇게 주무르면 기분이 이상해져 버려...♥」
+									PRINTFORMW 「그만, 그마안♥ 이 이상하면, 스위치 켜져버려...♥」
+									PRINTFORMW 사토리는 촉촉해진 눈가를 이쪽에 향해오고 있다
+									BASE:무드 = MIN(1000,BASE:무드 + 100)
+							ENDSELECT
+						ENDIF
+					ELSEIF TALENT:섹프||TALENT:애욕
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「아...엉덩이...」
+								PRINTFORMW 「응큼하다니깐요, 그 점이 좋지만」
+								PRINTFORMW 사토리는 엷게 웃었다
+							CASE 1
+								PRINTFORMW 「어라라...하고 싶어 지신 건가요?」
+								IF TFLAG:400
+									PRINTFORMW 「여기서는 보는 눈도 있으니, 어딘가 으슥한데로 가버릴까요?」
+								ELSE
+									PRINTFORMW 「...지금, 해버릴까요? 후후후♥」
+								ENDIF
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「......」
+								PRINTFORMW 사토리는 아무 말 없이 그저 행위가 끝나기를 기다리고 있다
+							CASE 1
+								PRINTFORMW 「엉덩이 만지면, 그렇게 기쁜가요...」
+								PRINTFORMW 「...아무리 생각해도 이상하지만 뭐...」
+						ENDSELECT
+					ENDIF
+				ENDIF
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;311,끌어안는다
+;TFLAG:193 (1=대성공 0=성공 -1=실패)
+;CFLAG:우후후 == 2 && TCVAR:20 (32=앞에서 안겨든다 60=딥키스 73=파후파후 74=젖맞대기 77=젖을 빨게 한다 VA성교(85=V삽입한다 87=A삽입한다 88=V허리흔들기 89=A허리흔들기) 86=정말좋아 hold)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_311
+;성공실패 판정
+;TFLAG:192 (-2=커맨드 종료, -1＝강제실패, 0=COM의존, 1=강제성공or대성공)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_311
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_311_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_311_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;PRINTFORMW 「」
+	IF FLAG:70
+		SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 미동조차 않는 사토리를 하염없이 껴안았다
+				PRINTFORMW ...서드아이가 방해된다
+			CASE 1
+				PRINTFORMW 가녀린 사토리의 몸을 끌어안아봐도, 본인은 아무런 반응이 없다
+			CASE 2
+				PRINTFORMW 서드아이의 코드가 방해된다...
+		ENDSELECT
+	ELSEIF CHK_DATENOW(CFLAG:데이트중)
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			IF TALENT:연모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「정말...부끄럽게...」
+						PRINTFORMW 사토리는 얼굴을 붉히면서도 %마스터의% 품에 가만히 안겨 있었다
+					CASE 1
+						PRINTFORMW 「...안기는건, 싫어하지 않으니까요」
+						PRINTFORMW 사토리는 %마스터를% 가만히 안은채 중얼거렸다
+				ENDSELECT
+			ELSEIF TALENT:사모 || ABL:친밀 > 5
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...갑자기, 이런걸 하셔도 말이죠」
+						PRINTFORMW 「기쁘진 않다고요...아마도」
+						PRINTFORMW 사토리는 어쩐지 말끝을 흐렸다
+					CASE 1
+						PRINTFORMW 「...정말, 하지 마세요」
+						PRINTFORMW 사토리는 살며시 %마스터를% 밀어냈다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「...갑자기 그런건 하지 말아줬음 하는데요」
+				PRINTFORMW 사토리는 차갑게 쏘아붙였다
+			ENDIF
+		ELSEIF TALENT:연모||TALENT:연인||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「부, 부끄럽게...」
+					PRINTFORMW 「그러면 저도...」
+				CASE 1
+					IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+						PRINTFORMW 「아...어디선가 느껴지는 남의 시선, 부끄럽지만...조금 기쁘기도 한걸요」
+						PRINTFORMW 「후후후...좀 더, 과시할까요?」
+						PRINTFORMW 사토리는 살며시 %마스터를% 끌어안았다
+					ELSE
+						PRINTFORMW 「...포근해서, 기분 좋아요」
+						PRINTFORMW 「이대로 가만히 있어도 행복할 것 같아」
+					ENDIF
+				CASE 2
+					IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+						PRINTFORMW 「아- 보여지고 있어, 보고 있어...후후후...」
+						PRINTFORMW 「좋은 커플 이라고 생각되고 있다니, 왠지 기쁜걸요...」
+					ELSE
+						PRINTFORMW 「...좋은 냄새네요」
+						PRINTFORMW 사토리는 %마스터의% 품에 얼굴을 박았다
+					ENDIF
+			ENDSELECT
+		ELSEIF TALENT:사모 || ABL:친밀 > 5
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「부, 부끄럽게 갑자기...」
+					PRINTFORMW 「그래도...싫지만은 않을지도」
+				CASE 1
+					IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+						PRINTFORMW 「여, 여긴 보는 눈이 있다구요...」
+						PRINTFORMW 「역시 부끄러워...으으...」
+					ELSE
+						PRINTFORMW 「아...이거, 왠지 기분 좋아...」
+						PRINTFORMW 사토리는 얼굴을 붉히면서도 %마스터의% 품에 안겨왔다
+					ENDIF
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「가, 갑자기 안다니...」
+					PRINTFORMW 사토리는 약간 놀란듯한 눈치다
+				CASE 1
+					IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+						PRINTFORMW 「하, 하지 마세요...」
+						PRINTFORMW 「남들 오해할 짓을...」
+						PRINTFORMW 사토리는 주위 눈치를 살폈다
+					ELSE
+						PRINTFORMW 「읏...! 가, 갑자기 뭘 하는 건가요...!」
+						PRINTFORMW 사토리는 살짝 거리를 벌렸다
+					ENDIF
+			ENDSELECT
+		ENDIF
+	ELSEIF CFLAG:수면
+		IF MARK:반발각인 == 3 && !TALENT:연인 && !TALENT:연모 && !TALENT:사모 && !TALENT:애욕
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「으...」
+					PRINTFORMW 자면서도 얼굴을 찌푸리고 있다
+				CASE 1
+					PRINTFORMW 「으응...하, 하지마...」
+					PRINTFORMW 사토리는 자면서도 바둥바둥 저항했지만 깰 기색은 없었다
+			ENDSELECT
+		ELSEIF TALENT:연모||TALENT:연인||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「...♥」
+					PRINTFORMW 자면서도 배시시 웃으며 %마스터의% 품에 파고 들었다
+				CASE 1
+					PRINTFORMW 「아...%MASTERNAME:49%...♥」
+					PRINTFORMW 자면서도 %마스터의% 이름을 불렀지만, 깰 기색은 없었다
+				CASE 2
+					PRINTFORMW 「...후후♥」
+					PRINTFORMW 뭐가 좋은지 자면서도 실실 웃고 있다
+			ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「응...코이시니...?」
+					PRINTFORMW 아무래도 깰 기색은 없었다
+				CASE 1
+					PRINTFORMW 「으으응...」
+					PRINTFORMW 사토리는 품에 안은 %마스터를% 부드럽게 쓰다듬고 있다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「으으응...」
+					PRINTFORMW 사토리는 귀찮은듯이 몸을 비틀었다
+				CASE 1
+					PRINTFORMW 「으응...코이시...?」
+					PRINTFORMW 사토리는 몇마디 중얼거리고는 이내 다시 잠들어 버렸다
+			ENDSELECT
+		ENDIF
+	ELSE
+		IF CFLAG:우후후 == 2
+			;TCVAR:20 (32=앞에서 안겨든다 60=딥키스 73=파후파후 74=젖맞대기 77=젖을 빨게 한다 VA성교(85=V삽입한다 87=A삽입한다 88=V허리흔들기 89=A허리흔들기) 86=정말좋아 hold)
+			SELECTCASE TCVAR:20
+				;CASE 32 ;앞에서 안겨든다
+
+				;CASE 60 ; 딥키스
+
+				;CASE 73 ; 파후파후
+
+				;CASE 74 ; 젖맞대기
+
+				CASE 77 ; 젖빨리기
+					IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「이러고 있으니까, 마치 커다란 아기 같네요...」
+								PRINTFORMW 사토리는 느슨한 미소를 지어보이고 있다
+							CASE 1
+								PRINTFORMW 「그렇게 매달리지 않아도, 도망가지 않는답니다」
+								PRINTFORMW 「느긋하게 핥짝핥짝 해주세요♥」
+						ENDSELECT
+					ELSE
+						PRINTFORMW 「이거, 왠지 커다란 아이를 품는거 같네요」
+						PRINTFORMW 「기분이 묘하게...후후후...」
+						PRINTFORMW 사토리는 부드럽게 %마스터의% 머리를 쓰다듬었다
+					ENDIF
+				CASE 86 ; 다이스키 홀드
+					IF BASE:MASTER:2 >= 10000
+						IF MARK:반발각인 == 3 && !TALENT:연인
+							;별로 안 뜰것
+							PRINTFORMW 「아♥ 아아♥ 정액♥ 정액 올라오는게 느껴져♥」
+							PRINTFORMW 「싸줘, 안쪽에 가득♥ %사마스터의% 정액 싸줫♥」
+							PRINTFORMW 평소에 보이던 혐오감은 쾌락에 전부 녹아 단순히 정액을 원하는 암컷이 되어버렸다
+						ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:섹프||TALENT:애욕
+							SELECTCASE RAND:2
+								CASE 0
+									PRINTFORMW 「아♥ 정액♥ 정액 올라오는거 느껴져♥」
+									PRINTFORMW 「싸줘♥ 안쪽에 한가득♥ %사마스터의% 정액 원햇♥」
+									PRINTFORMW 사토리와 서로 강하게 껴안으며 한계에 다다른 자지를 최대한 안쪽으로 밀어넣었다
+								CASE 1
+									PRINTFORMW 「슬슬 나올것 같아? 네♥ 그대로, 안에 해주세요♥」
+									PRINTFORMW 사토리는 황홀한 표정으로 %마스터를% 바라보고 있다
+							ENDSELECT
+						ELSE
+							PRINTFORMW 「끝까지 빼지 말아줘...좀 더, 좀 더 넣은채로...♥」
+							PRINTFORMW 사토리는 황홀한듯한 표정으로 %마스터를% 바라보고 있다
+						ENDIF
+					ELSE
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + 3)
+						PRINTFORML 」
+					ENDIF
+				CASE 87,88,89,85 ;박는다
+					IF MARK:반발각인 == 3 && !TALENT:연인 && !TALENT:애욕
+						SELECTCASE RAND:3
+							CASE 0
+								PRINTFORMW 「하, 하지맛... 가만히 있으란 말야...」
+								PRINTFORMW 사토리는 싫은 소리를 하면서도 천천히 허리를 움직이고 있다
+							CASE 1
+								PRINTFORMW 「잠, 그렇게 허리 쓰면...읏♥」
+								PRINTFORMW 갑작스런 반격에 사토리의 숨결이 거칠어졌다
+							CASE 2
+								PRINTFORMW 「가, 가만히...있으란 말야...♥」
+								PRINTFORMW 「지금은, 내가 움직일거니깐」
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「자, 잠깐♥ 지금 허리 튕기며언♥」
+								PRINTFORMW 갑작스런 반격에 사토리는 새된 교성을 흘렸다
+							CASE 1
+								PRINTFORMW 「히얏♥ 그, 그거 안댓♥ 찔러 올리지 마앗♥」
+								PRINTFORMW 사토리는 쾌감에 허덕이면서 간신히 허리를 움직이고 있다
+						ENDSELECT
+					ENDIF
+				CASEELSE
+					GOTO 통상안기
+			ENDSELECT
+		ELSE
+			$통상안기
+			IF TALENT:연모||TALENT:연인||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「후후후...왠지 기쁜걸요」
+						PRINTFORMW 「좀 더 이러고 있을까요?」
+						PRINTFORMW 사토리는 헤실헤실 웃고 있다
+					CASE 1
+						PRINTFORMW 「...따스해, 기분 좋아요」
+						PRINTFORMW 사토리는 부드러운 미소를 지어보이고 있다
+					CASE 2
+						PRINTFORMW 「응...」
+						PRINTFORMW 사토리는 행복해 보이는 미소를 지으며 %마스터의% 품에 안겨 있다
+				ENDSELECT
+			ELSEIF TALENT:사모
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아...♥」
+						PRINTFORMW 사토리는 어쩐지 기쁜듯한 표정을 짓고 있다
+					CASE 1
+						PRINTFORMW 「왜, 왠지 부끄럽네...」
+						PRINTFORMW 「싫은건 아니지만...으으...」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+					CASE 2
+						PRINTFORMW 「...%사마스터의% 품은, 굉장히 기분 좋네요」
+						PRINTFORMW 사토리는 희미하게 웃어보였다
+				ENDSELECT
+			ELSEIF TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그냥 안을뿐? 으음...」
+						PRINTFORMW 「평소에 살을 맞대는것랑은 또 다른 느낌이네요」
+					CASE 1
+						PRINTFORMW 「음...포근한 느낌은 싫지 않지만...」
+						PRINTFORMW 「어째 이거, 부끄러운걸요」
+						PRINTFORMW 사토리는 멋쩍게 웃어보였다
+				ENDSELECT
+			ELSE
+				IF CFLAG:3000
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「...이거 놔」
+							PRINTFORMW 사토리는 냉담히 쏘아붙이곤 몸을 떼어냈다
+						CASE 1
+							PRINTFORMW 「...뭐하는 건가요?」
+							PRINTFORMW 사토리는 %마스터를% 밀어냈다
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「하, 하지 마세요...」
+							PRINTFORMW 사토리는 떨떠름한 표정으로 %마스터를% 밀어냈다
+						CASE 1
+							PRINTFORMW 「그, 이런건 조금...곤란한데」
+							PRINTFORMW 사토리는 약간 불편한듯한 표정이다
+					ENDSELECT
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;312,키스한다
+;TFLAG:193 (99=거절(키스불가) 1=대성공 0=성공 -1=실패)
+;CFLAG:우후후 == 2 && TCVAR:20 (32=앞에서 안겨든다 50=수음 60=키스 성교(85=V삽입한다 87=A삽입한다 88=V허리흔들기 89=A허리흔들기) 86=정말좋아 hold)
+;PREVCOM (305=무릎베개)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_312
+;성공실패 판정
+;TFLAG:192 (-2=커맨드 종료, -1＝강제실패, 0=COM의존, 1=강제성공or대성공)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_312
+IF !TCVAR:FK상실
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_312_1
+ELSE
+	CALL M_KOJO_MESSAGE_COM_K49_312_1
+	;CALL TRAIN_MESSAGE
+ENDIF
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_312_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;PRINTFORMW 「」
+	IF TFLAG:193 == 99
+		;거절당함
+		IF TALENT:키스미경험
+			IF TALENT:연인
+				;연인은 패스 아닌가?
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아, 아직은 좀...」
+						PRINTFORMW 「다음에, 다음에 하죠」
+						PRINTFORMW 사토리는 황급히 말해왔다
+					CASE 1
+						PRINTFORMW 「그...지금은 안되는데...」
+						PRINTFORMW 「다음번에 하면...안될까요」
+				ENDSELECT
+			ELSEIF TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「키스라...우리 사이가 아무리 그래도 그건 조금」
+						PRINTFORMW 「첫키스엔 누구나 약간의 로망이 있는 거니까요, 아직은 아끼고 싶어」
+					CASE 1
+						PRINTFORMW 「키스...으음, 아직은 하고 싶지 않은걸」
+						PRINTFORMW 「그래도 첫 키스에는 로망이 있으니깐, 나중으로 미루고 싶네요」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그런걸, 허락할 리가 없잖아요」
+						PRINTFORMW 사토리는 %마스터가% 뭘 하려고 하기도 전에 쌀쌀맞게 퇴짜놓고 말았다
+					CASE 1
+						PRINTFORMW %마스터가% 뭘 하려고 하기도 전에 사토리는 몸을 저만치 빼 두었다
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 사토리는 말없이 거리를 벌렸다
+					CASE 1
+						PRINTFORMW 「키스라니, 그런거 해 줄까봐요」
+						PRINTFORMW 사토리는 퉁명스레 쏘아붙였다
+				ENDSELECT
+			ELSEIF TALENT:연인
+				;패스 아닌가?
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그...지금은 별로...」
+						PRINTFORMW 「나중에 하면...안될까요」
+					CASE 1
+						PRINTFORMW 「지금은 별로 할 기분이 아닌데...」
+				ENDSELECT
+			ELSEIF TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「지금은 그럴 기분 아닌데」
+						PRINTFORMW 「나중에 하면 안될까요?」
+					CASE 1
+						PRINTFORMW 「지금은 하고 그다지 싶지 않은걸」
+						PRINTFORMW 「나중에 해 드릴테니까요」
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「안 해드릴 거니까, 꿈 깨세요」
+				PRINTFORMW 「...전에 \@EXP:키스경험 == 1 ? 한 번# 몇 번\@ 했다고 매번 해 드린다 생각하지 마세요」
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+
+	IF FLAG:70
+
+	ELSEIF CFLAG:수면
+
+	ELSEIF CFLAG:우후후 == 2
+		;상대 주도일때만 312번 키스가 가능하다, 이외엔 20번 커맨드이기에
+		;애무계 커맨드의 20. 키스를 복붙, 즉, 날먹!
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:4 + 2)% 아으...♥」
+					PRINTFORMW 키스가 계속될수록 사토리의 숨결이 점점 더 거칠어져만 갔다
+				CASE 1
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:5 + 3)%」
+					PRINTFORMW 사토리는 얌전히 %마스터의% 혀를 받아들이고 있다
+				CASE 2
+					IF TALENT:연모
+						PRINTFORMW 「하으...♥」
+						PRINTFORMW 사토리는 본인도 모르게 황홀한 표정으로 키스를 받아들이고 있었다
+					ELSE
+						PRINTFORMW 「응...」
+						PRINTFORMW 사토리는 조심조심 혀를 얽어왔다
+					ENDIF
+			ENDSELECT
+		ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:4 + 4)%」
+					PRINTFORMW 사토리는 무척이나 행복해 보이는 표정으로 혀를 얽어왔다
+				CASE 1
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:4 + 4)% 하으으...♥」
+					PRINTFORMW 사토리는 입 안에 들어온 %마스터의% 혀를 조심히 맛보고 있다
+				CASE 2
+					PRINTFORMW 「아...♥」
+					PRINTFORMW 사토리는 황홀해 보이는 표정으로 키스를 받아들이고 있었다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:4 + 3)%」
+					PRINTFORMW 사토리는 황홀한듯한 표정으로 키스에 열중하고 있었다
+				CASE 1
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:4 + 3)% 아으으...♥ %ST_KISS_MAIN(RAND:4 + 3)%」
+					PRINTFORMW 혀와 혀가 스칠때마다 사토리의 몸이 움찔움찔 떨렸다
+				CASE 2
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:5 + 4)%」
+					PRINTFORMW 사토리는 적극적으로 혀를 얽어왔다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:3 + 3)%」
+					PRINTFORMW 사토리는 조심조심 혀를 얽어오고 있다
+				CASE 1
+					PRINTFORMW 「%ST_KISS_MAIN(RAND:3 + 2)% 아아...♥」
+					PRINTFORMW 사토리의 숨결이 조금씩 흐트러지고 있었다
+			ENDSELECT
+		ENDIF
+	ELSE
+		IF TCVAR:FK상실
+			;첫키스
+			;반발 3 부분은 나중에 따로 쓰자
+			;IF MARK:반발각인 == 3
+			;	IF TALENT:연인
+			;		
+			;	ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+			;
+			;	ELSE
+			;		
+			;	ENDIF
+			;ELSE
+			IF TALENT:연인
+				PRINTFORMW 「키스...인가요」
+				IF CFLAG:6000
+					PRINTFORMW 「최소한 이번의 전 아직 한번도 못 해봤었죠」
+					PRINTFORMW 「저번의 저는 얼마나 키스 했었던가요? 조금 질투나니 그거보다는 많이 하고 싶은걸요」
+					PRINTFORMW 「그러니까, 앞으로 잔뜩 키스해달라고 조를거예요, 각오해두세요」
+					PRINTFORMW 사토리는 빙그레 웃으며 %마스터의% 입술을 받아들였다
+				ELSE
+					PRINTFORMW 「그러고보니, 아직 안해봤었죠...」
+					PRINTFORMW 「연인이 되면 해야지- 하는 생각은 줄곧 했었는데, 막상 하게 되니 뭔가 부끄럽네요...」
+					PRINTFORMW 사토리는 얼굴을 붉혔다
+					PRINTFORMW 「뭐어, 연인이니깐 부끄러운짓 해도 상관없겠죠...좋아요, 얼른 하죠, 키스」
+					PRINTFORMW 「대신에 앞으로는 잔뜩 해달라고 조를거니깐, 각오해 주세요?」
+					PRINTFORMW 사토리는 빙그레 웃으며 %마스터의% 입술을 받아들였다
+				ENDIF
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+				;메인일 것
+				IF CFLAG:6000
+					PRINTFORMW 「키스라...」
+					PRINTFORMW 「왠지, 예전이랑 똑같아지는거 같네요」
+					PRINTFORMW 「...잊기로 한거 같지만」
+					PRINTFORMW 사토리는 자조적으로 웃어보였다
+					PRINTFORMW 그 얼굴엔 약간의 슬픔도 섞여 있는듯 했다
+					PRINTFORMW 「결말을 알고 있는데도 멈출수가 없다니...참 바보 같죠」
+					PRINTFORMW 「이번에는 다른 결말이 일어날거란 얕은 희망에 걸고」
+					PRINTFORMW 「...아아, 잠깐 감상이 길어졌네요, 그러니까...키스, 합시다」
+					PRINTFORMW 사토리는 %마스터를% 붙잡고 스스로 키스를 해왔다
+					PRINTFORMW 불안한 미래를 잊고 싶은건지 그 움직임은 무척이나 열렬한 것이었다
+				ELSE
+					PRINTFORMW 「키스, 인가요...」
+					PRINTFORMW 「시, 싫은거는 아닌데, 역시 조금 부끄러워서...그으...처음, 이니깐」
+					PRINTFORMW 사토리는 살짝 긴장한듯한 표정으로 %마스터를% 바라보고 있다
+					PRINTFORMW 「...네, 좋아요, 와주세요」
+					PRINTFORMW 「어짜피, 저도 원하고 있었으니깐」
+					PRINTFORMW 사토리는 긴장과 기대가 섞인 표정으로 %마스터의% 혀를 받아들였다
+				ENDIF
+			ELSEIF TALENT:섹프
+				PRINTFORMW 「키스...그러고보니 그건 아직이었었지」
+				PRINTFORMW 「솔직히 궁금하기도 했고, 남들 보면 부럽기도 했으니...」
+				PRINTFORMW 「게다가 더한것도 하면서 이것만은 안 한것도 이상하긴 하고...」
+				PRINTFORMW 「어쩐지 싸구려 관능 소설의 여주인공 같은 느낌인걸요, 마음만은 허락 안한다는...」
+				IF ABL:친밀 > 3
+					PRINTFORMW 「...저는 마음도, 허락하라면 할 수 있지만」
+				ELSE
+					PRINTFORMW 「저는 별 상관 없지만요」
+				ENDIF
+				PRINTFORMW 「그러면 해볼까요, 키스」
+				PRINTFORMW 사토리는 살짝 기대하는 듯한 표정으로 %마스터의% 입술을 받아들였다
+			ELSE
+				;볼 일 있을까?
+				PRINTFORMW 「키스...말인가요」
+				IF CFLAG:6000
+					PRINTFORMW 「결국, 또 해버리겠단 거군요」
+					PRINTFORMW 「...잊기로 했다곤 했지만, 그렇다고 이렇게 또 다시」
+					PRINTFORMW 「어짜피 또 헤어질게 뻔한데...」
+					PRINTFORMW 「그런 결말이라면 최소한 이런 두근거림은 주지 않았음 좋을것을...」
+					PRINTFORMW 사토리는 잠시 묵묵히 %마스터를% 바라보았다
+					PRINTFORMW 「...그래도, 바보같이 한 번만 더 믿어볼래요」
+					PRINTFORMW 「이번엔, 도망치지 않고, 끝까지 가 주세요」
+					CFLAG:호감도 += 250
+				ELSE
+					;이런경우 대체로 호감도 30000이상이던가 걸레 모드던가 할 것
+					PRINTFORMW 「해본적은 없는데...그렇다고 당신이랑...?」
+					PRINTFORMW 「...뭐, 별 상관 없겠죠, %사마스터라%면」
+				ENDIF
+				PRINTFORMW 사토리는 담담한 표정으로 %마스터의% 입술을 받아들였다
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:애욕||TALENT:사모
+					SELECTCASE RAND:4
+						CASE 0
+							PRINTFORM 「
+							CALL ST_KISS(RAND:3 + 4)
+							PRINTFORMW 」
+							PRINTFORMW 사토리는 황홀한 듯한 표정으로 키스를 받아들이고 있다
+						CASE 1
+							PRINTFORM 「
+							CALL ST_KISS(RAND:3 + 4) 
+							PRINTFORMW  아아...♥」
+							PRINTFORMW 사토리는 멍한 표정으로 %마스터를% 응시하고 있다
+						CASE 2
+							PRINTFORM 「
+							CALL ST_KISS(RAND:3 + 4)
+							PRINTFORMW 」
+							PRINTFORMW 사토리는 말 없이 키스에 열중하고 있다
+						CASE 3
+							PRINTFORM 「
+							CALL ST_KISS(RAND:3 + 4) 
+							PRINTFORMW  아...? 벌써 끝...?」
+							PRINTFORMW 「저기, 조금만 더...」
+							PRINTFORMW 사토리는 어쩐지 아쉬운듯 매달려왔다
+					ENDSELECT
+				ELSE
+					;가능성 희박
+					PRINTFORM 「
+					CALL ST_KISS(RAND:3 + 4)
+					PRINTFORMW 」
+					PRINTFORMW 「...푸하, 이, 이걸로 끝인거지...」
+					PRINTFORMW 사토리는 기분 나쁘다는듯이 쏘아붙였다
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+				SELECTCASE RAND:4
+					CASE 0
+						PRINTFORM 「
+						CALL ST_KISS(RAND:4 + 5)
+						PRINTFORMW 」
+						PRINTFORMW 「후아...♥ 뭔가 부끄러워...」
+						PRINTFORMW 사토리는 새빨게진 얼굴로 %마스터를% 바라보고 있다
+					CASE 1
+						PRINTFORM 「앗...갑자기...응읏♥ 
+						CALL ST_KISS(RAND:4 + 5)
+						PRINTFORMW 」
+						PRINTFORMW 「후아아...♥ 저기, 조금 더 할까요?」
+						PRINTFORMW 사토리는 %마스터를% 붙잡고 도로 혀를 얽어들어왔다
+						EXP:키스경험++
+						EXP:MASTER:키스경험++
+					CASE 2
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							PRINTFORM 「보, 보는 눈도 있는데...응♥ 
+							CALL ST_KISS(RAND:4 + 5)
+							PRINTFORMW 」
+							PRINTFORMW 「우으으...부끄럽게...」
+							IF RAND:2 == 0
+								PRINTFORMW 사토리의 얼굴이 새빨갛게 물들었다
+							ELSE
+								PRINTFORMW 사토리의 서드아이가 당황한듯이 주위를 살피고 있다
+							ENDIF
+						ELSE
+							PRINTFORM 「
+							CALL ST_KISS(RAND:4 + 6)
+							PRINTFORMW 」
+							PRINTFORMW 사토리는 홀린듯이 키스에 열중하고 있다
+						ENDIF
+					CASE 3
+						PRINTFORM 「
+						CALL ST_KISS(RAND:3 + 3)
+						PRINT 아아...♥ 
+						CALL ST_KISS(RAND:3 + 3)
+						PRINTFORMW 」
+						PRINTFORMW 사토리는 황홀한 듯한 표정으로 키스를 즐기고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORM 「키, 키스? 앗♥ 
+						CALL ST_KISS(RAND:4 + 6)
+						PRINTFORMW 」
+						PRINTFORMW 「후아...♥ 뭔가, 달아오르는걸」
+						BASE:무드 = MIN(1000,BASE:무드 + 100)
+					CASE 1
+						PRINTFORM 「
+						CALL ST_KISS(RAND:4 + 6)
+						PRINTFORMW 」
+						PRINTFORMW 「푸하...벌써 끝? 이게 전부인가요?」
+						PRINTFORMW 「이 다음것도 기대하고 있었는데...」
+						PRINTFORMW 사토리는 촉촉해진 눈가를 이쪽에 향해오고 있다
+					CASE 2
+						PRINTFORM 「응읍? 응♥ 
+						CALL ST_KISS(RAND:3 + 3)
+						PRINTFORMW 」
+						PRINTFORMW 사토리는 요염하게 혀를 얽어왔다
+				ENDSELECT
+			ELSE
+				PRINTFORM 「
+				CALL ST_KISS(RAND:3 + 3)
+				PRINTFORMW 」
+				PRINTFORMW 사토리는 얌전히 혀를 얽어왔다
+			ENDIF
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;313,가슴애무
+;CFLAG:우후후 == 2 && TCVAR:20 (27=골짜기를 과시한다 33=가슴을 비비게 한다 53=파이즈리(소분기는 지문 EVENT_MESSAGE_COM_セクハラ.ERB 참조) 73=파후피후 77=젖을 빨게 한다 성교(85=V삽입한다 87=A삽입한다 88=V허리흔들기 89=A허리흔들기) 86=정말좋아 hold)
+;ABL:B감각 (2미만=성적으로는 느끼지 않음 5미만=다소 느낌 있음 5이상=쾌감)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;젖의 크기로도 달라질 수 있으므로, 지문 EVENT_MESSAGE_COM_セクハラ.ERB 참조
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_313
+;성공실패 판정
+;TFLAG:192 (-1＝강제실패)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_313
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_313_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_313_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;PRINTFORMW 「」
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSE
+		IF ABL:B감각 > 4
+			IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「히이잇♥ 가, 가슴...♥ 그만, 그마안...♥」
+						PRINTFORMW 민감해진 유두로부터 몰려오는 쾌감의 파도에 사토리는 목소리를 참지 못하고 말았다
+					CASE 1
+						PRINTFORMW 「지, 지금 만지면...히잇♥ 안대엣♥」
+						PRINTFORMW 가슴으로부터의 쾌감에 사토리는 다리를 후들후들 떨었다
+					CASE 2
+						PRINTFORMW 「자, 잠깐♥ 안댓♥ 목소리 나와버렷...♥」
+						PRINTFORMW 가슴을 쓰다듬을 때마다 사토리의 입에서 가쁜 숨소리가 새어나왔다 
+				ENDSELECT
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「하...지마...♥ 가슴 문지르지 마아...♥」
+							PRINTFORMW 사토리는 바둥바둥 저항했지만 쾌감때문인지 그 팔엔 힘이 실리지 않았다
+						CASE 1
+							PRINTFORMW 「아♥ 아아♥ 가슴♥ 가슴 안댓♥」
+							PRINTFORMW 유두로 느껴지는 강렬한 쾌감에 사토리의 다리가 후들후들 떨렸다
+					ENDSELECT
+				ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+					IF BASE:무드 >= 550 && BASE:이성 < 500
+						SELECTCASE RAND:3
+							CASE 0
+								PRINTFORMW 「아...♥ 그거♥ 그거 기분 좋아아...♥」
+								PRINTFORMW 사토리는 쾌락에 녹은 표정으로 %마스터를% 바라보고 있다
+							CASE 1
+								PRINTFORMW 「가, 가스음♥ 그렇게 주물주물하는거 안대에♥」
+								PRINTFORMW 「아앗♥ 안댄다니깐...♥」
+								PRINTFORMW 말랑한 가슴을 주무를때마다 사토리의 입에서 달콤한 한숨이 흘렀다
+							CASE 2
+								PRINTFORM 「
+								CALL ST_CLIMAX(RAND:5 + 3)
+								PRINTFORMW 」
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+							CASE 0
+								PRINTFORMW 「읏...♥ 이, 이거, 너무 자극이 세요...♥」
+								PRINTFORMW 사토리는 다리를 후들후들 떨고 있다
+							CASE 1
+								PRINTFORMW 「아아...♥ 그만...♥ 젖꼭지 문질문질 너무 기분 좋아...♥」
+								PRINTFORMW 사토리의 입에서 달콤한 한숨이 새어나왔다
+						ENDSELECT
+					ENDIF
+				ELSEIF TALENT:섹프||TALENT:애욕
+					SELECTCASE RAND:3
+						CASE 0
+							PRINTFORMW 「아...♥ 가스음...♥ 조...좀 더 주물주물 해줘...♥」
+							PRINTFORMW 「아아아♥ 이거 좋아♥ 너무 기분 좋아아♥」
+						CASE 1
+							PRINTFORMW 「아흣...♥ 이거 좋아...♥ 가슴 만지는거 좋아아...♥」
+							PRINTFORMW 가슴을 부드럽게 쓰다듬자 사토리의 몸이 쾌락으로 살짝 떨리는게 느껴졌다
+						CASE 2
+							PRINTFORM 「
+							CALL ST_CLIMAX(RAND:5 + 3)
+							PRINTFORMW 」
+					ENDSELECT
+					BASE:무드 = MIN(1000,BASE:무드 + 100)
+				ELSE
+					PRINTFORMW 「힛♥ 그만♥ 가슴 하지마앗♥」
+				ENDIF
+			ENDIF
+		ELSEIF ABL:B감각 > 1
+			IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+				;누가 본다
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「자, 잠깐♥ 여기선 안댓♥」
+							PRINTFORMW 「흣♥ 적어도...남들 앞에서는 하지마...♥」
+							PRINTFORMW 사토리는 떨리는 목소리로 항의해왔다
+						CASE 1
+							PRINTFORMW 「흣...♥ 가, 가슴 주무르지 맛...」
+							PRINTFORMW 「그만, 그만햇...♥ 목소리 나와버려어...♥」
+							PRINTFORMW 사토리는 입을 앙다문채 신음소리를 참고 있다
+					ENDSELECT
+				ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							IF 지령전안()
+								PRINTFORMW 「아...정말...♥ 얘네들 앞에서 이런건...♥」
+								PRINTFORMW 「으으응...♥ 안된다니깐요...♥ 이상한 주인으로 생각되어 버려♥」
+								PRINTFORMW 사토리는 새빨게진 얼굴로 %마스터를% 바라보았다
+							ELSE
+								PRINTFORMW 「아...정말...♥ 남들 앞에서 이런건...♥」
+								PRINTFORMW 「으으응...♥ 안된다니깐요...♥ 목소리 나와버려...♥」
+								PRINTFORMW 사토리는 얼굴을 새빨갛게 물들인 채 %마스터를% 바라보았다
+							ENDIF
+						CASE 1
+							PRINTFORMW 「그, 그만...♥ 목소리, 새어나와요...♥」
+							PRINTFORMW 「나중이라면 상관 없으니깐...」
+							PRINTFORMW 사토리는 얼굴을 붉혔다
+					ENDSELECT
+				ELSEIF TALENT:섹프||TALENT:애욕
+					SELECTCASE RAND:2
+						CASE 0
+							IF 지령전안()
+								PRINTFORMW 「아...정말...♥ 얘네들 앞에서 이런건...♥」
+								PRINTFORMW 「으으응...♥ 안된다니깐요...♥ 이상한 주인으로 생각되어 버려♥」
+								PRINTFORMW 사토리는 야릇한 미소를 띄며 %마스터를% 바라보았다
+							ELSE
+								PRINTFORMW 「아...정말...♥ 남들 앞에서 이런건...♥」
+								PRINTFORMW 「으으응...♥ 안된다니깐요...♥ 이러면, 스위치 올라가버려♥」
+								PRINTFORMW 사토리는 야릇한 미소를 띄며 %마스터를% 바라보았다
+							ENDIF
+						CASE 1
+							PRINTFORMW 「그, 그만...♥ 목소리, 새어나와요...♥」
+							PRINTFORMW 「나중이라면 상관 없으니깐...」
+							PRINTFORMW 사토리는 얼굴을 붉혔다
+					ENDSELECT
+				ELSE
+					PRINTFORMW 「자, 잠깐♥ 그만햇♥」
+				ENDIF
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「흐읏...♥ 그, 그렇게 만지지 마아...」
+							PRINTFORMW 사토리의 유두가 살짝 단단해졌다
+						CASE 1
+							PRINTFORMW 「아♥ 거, 거긴♥」
+							PRINTFORMW 「잠깐♥ 그만♥」
+							PRINTFORMW 사토리는 열띤 한숨을 몰아쉬고 있다
+					ENDSELECT
+				ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「가, 가슴...♥ 그렇게 만지시면...으읏♥」
+							PRINTFORMW 사토리는 흠칫흠칫 떨었다
+						CASE 1
+							PRINTFORMW 「흐읏...♥」
+							PRINTFORMW 사토리의 유두가 살짝 단단해지고 있다
+					ENDSELECT
+				ELSEIF TALENT:섹프||TALENT:애욕
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「하으...♥ 가슴만 그렇게...안달나게 하지 마세요...♥」
+							PRINTFORMW 「...이대로, 해버릴까나」
+							BASE:무드 = MIN(1000,BASE:무드 + 100)
+						CASE 1
+							PRINTFORMW 「아읏♥ 가, 가슴♥」
+							PRINTFORMW 「정말이지...그렇게 계속 만져대면, 덮쳐버릴지도 몰라요...?」
+					ENDSELECT
+				ELSE
+					PRINTFORMW 「자, 잠깐♥ 그만햇♥」
+				ENDIF
+			ENDIF
+		ELSE
+			IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+				;지령전 안 아님
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「...일부러 이러는건가요?」
+							PRINTFORMW 「별로 부끄러운 일도 아닌걸요, 억지로 당하는게 뭐가 부끄러워」
+						CASE 1
+							PRINTFORMW 「굳이 남들 앞에서 그리 만져야 성이 차나요?」
+							PRINTFORMW 「...상관없어요, 별 감흥도 없고...나쁜건 %사마스터잖%아요, 제가 왜 부끄러워해야 하죠」
+					ENDSELECT
+				ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「꼬, 꼭 여기서 해야 하는건가요...」
+							PRINTFORMW 「보여져버려...으으...이상한 생각 하겠지...」
+						CASE 1
+							PRINTFORMW 「여...역시 부끄러운걸요...」
+							IF 지령전안()
+								PRINTFORMW 「펫이라 괜찮다고 생각하지 마요, 저 아이들도...이상한 생각하는건 똑같으니깐」
+							ELSE
+								PRINTFORMW 「분명히 변태라고 생각하겠지...」
+							ENDIF
+					ENDSELECT
+				ELSEIF TALENT:섹프||TALENT:애욕
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「안돼요, 여기는...」
+							IF 지령전안()
+								PRINTFORMW 「그, 저 아이들 한테 보여진다구요...?」
+								PRINTFORMW 사토리는 펫들을 가리켰다
+							ELSE
+								PRINTFORMW 「남들 앞에서 그런거 해선 안된다구요」
+							ENDIF
+						CASE 1
+							IF 지령전안()
+								PRINTFORMW 「아, 아무리 펫들이라 해도...」
+								PRINTFORMW 「역시 보는 눈도 있는데 이런건...」
+							ELSE
+								PRINTFORMW 「여긴 보는 눈도 있다구요...?」
+								PRINTFORMW 「그렇게 하고 싶으면 어디 으슥한 곳에서 상대해 드릴테니깐...」
+							ENDIF
+					ENDSELECT
+				ELSE
+					;볼일 없다
+					PRINTFORMW 「잠깐...어딜 만지는 건가요...」
+				ENDIF
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「간지럽기만 하고, 뭐가 좋은건지 모르겠네」
+							PRINTFORMW 사토리는 연신 투덜거렸다
+						CASE 1
+							PRINTFORMW 「...가슴 같은거 만져서 즐거운가요?」
+							PRINTFORMW 「그래, 그걸로 만족한다면야, 내키는대로 만지시던가요」
+							PRINTFORMW 사토리는 시큰둥하게 말했다
+					ENDSELECT
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「간지러워요...」
+							PRINTFORMW 「...기분 좋냐니, 그저 그럴 뿐인걸요」
+						CASE 1
+							PRINTFORMW 「그렇게 만지셔도...」
+							PRINTFORMW 「...만지는게 기분 좋은거라면야 상관 없지만」
+					ENDSELECT
+				ELSEIF TALENT:섹프||TALENT:애욕
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「갑자기 가슴을...」
+							PRINTFORMW 「그래도 가슴보다는 다른데 만져주는게 더 좋은데...」
+						CASE 1
+							PRINTFORMW 「아...가슴 말고, 다른 데는...」
+							PRINTFORMW 「가슴만 그리 간지럽혀도, 감질나기만 한다구요...」
+					ENDSELECT
+				ELSE
+					;볼일 없다
+					PRINTFORMW 「잠깐...어딜 만지는 건가요...」
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;314,애널애무
+;CFLAG:우후후 == 2 && TCVAR:20 (72=애널봉사)
+;CFLAG:우후후 == 2 && TEQUIP:식스나인 (팬티 있음 TCVAR:20(70～72)은 이쪽)
+;ABL:A감각 (2미만=받아들여지지 않음 4미만=이물감에 농락 4이상=쾌감)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_314
+;성공실패 판정
+;TFLAG:192 (-1＝강제실패)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_314
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_314_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_314_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70 || CFLAG:수면
+	ELSEIF CFLAG:우후후 == 2
+		;애무계 A애무 복붙
+		IF ABL:A감각 * (EXP:A경험/2) > 50
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아, 안대♥ 지금 엉덩이 괴롭히며언♥」
+						PRINTFORMW 사토리는 쾌락을 참지 못하고 바들바들 떨었다
+					CASE 1
+						PRINTFORMW 「시럿♥ 그거 너무 좋아서 이상해져어♥」
+						PRINTFORMW 사토리의 애널이 %마스터의% 손가락을 꾸욱 조여왔다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아♥ 문질문질 하면 안대에♥ 그거 너무 좋아서 이상해져 버려♥」
+						PRINTFORMW 「그, 그마안♥ 안댄다니까한♥」
+					CASE 1
+						PRINTFORMW 「어, 엉덩이인데도♥ 기분 좋은거 참을수가 없어♥」
+						PRINTFORMW 사토리의 애널이 %마스터의% 손가락을 꾹꾹 조여왔다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아흣♥ 거, 거기 기분 좋아아...♥」
+						PRINTFORMW 「엉덩이 너무 좋아...더 만져줘...기분 좋은거 좀 더 원해...♥」
+					CASE 1
+						PRINTFORMW 「아♥ 이거 너무 좋아아♥ 너무 기분 좋아♥♥」
+						PRINTFORMW %마스터의% 손가락 움직임에 따라 사토리의 애널이 연신 움찔거렸다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어♥ 엉덩이 찌르면 안돼에♥」
+						PRINTFORMW 급작스런 자극에 사토리의 애널이 %마스터의% 손가락을 강하게 조여왔다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「그, 그런데 만지지 마아...」
+					CASE 1
+						PRINTFORMW 「아...아팟...!」
+						PRINTFORMW 아직은 고통이 앞선 모양인지 사토리의 얼굴이 잔뜩 구겨졌다
+					CASE 2
+						PRINTFORMW 「거, 거긴 엉덩이...윽...아파...」
+						PRINTFORMW 여기로 느끼려면 조금 더 개발해줘야 할 것 같다
+						PRINTFORMW 「개발은 무슨...!」
+				ENDSELECT
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아팟...거긴 아냐...!」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 아직은 고통이 앞서는지 사토리는 인상을 쓰며 행위를 견딜 뿐이었다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「흣...거, 거긴 엉덩이...」
+					CASE 1
+						PRINTFORMW 「아팟...이건...영 익숙해지질 않아...」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아읏...거, 거긴 아니라니깐...」
+						PRINTFORMW 아직 익숙하진 않은 모양이다
+					CASE 1
+						PRINTFORMW 「흐잇?! 엉덩이 찌르면 안돼...!」
+				ENDSELECT
+			ENDIF
+		ENDIF
+	ELSE
+		;PRINTFORMW 「」
+		IF ABL:A감각 > 3
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그, 그마안...♥ 엉덩이 하지맛...♥ 엉덩이 괴롭히는거 안대...♥」
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							IF 지령전안()
+								PRINTFORMW 사토리는 다리를 후들후들 떨었다
+							ELSE
+								PRINTFORMW 「시럿...♥ 목소리, 새어나와...♥」
+								PRINTFORMW 사토리는 필사적으로 입을 막고 신음을 참았지만, 그것만으로도 주위의 시선을 받기 충분했다
+							ENDIF
+						ELSE
+							PRINTFORMW 사토리는 다리를 후들후들 떨었다
+						ENDIF
+					CASE 1
+						PRINTFORMW 「아...엉덩이...♥ 녹아내릴거 같아...♥」
+						PRINTFORMW 약간 어루만진 것 만으로도 사토리는 달콤한 한숨을 흘려주고 있다
+						PALAM:욕정 += 100
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕||TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그, 그만...♥ 이 이상 엉덩이 괴롭히면...히잇♥」
+						PRINTFORMW 사토리는 열락에 녹아내린 3개의 눈으로 %마스터를% 응시하고 있다
+					CASE 1
+						PRINTFORMW 「아...엉덩이...♥ 녹아내릴거 같아...♥」
+						PRINTFORMW 약간 어루만진 것 만으로도 사토리는 달콤한 한숨을 흘려주고 있다
+						PALAM:욕정 += 100
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「히잇...♥ 시럿♥ 엉덩이 괴롭히면 안대에♥」
+			ENDIF
+		ELSEIF ABL:A감각 > 2
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「잠깐, 하지맛♥ 손가락 넣지 마아...♥」
+						PRINTFORMW 「힛♥ 도, 돌리지 맛...! 그만♥ 그만해에♥」
+						PRINTFORMW 손가락으로 엉덩이를 휘적이자 사토리의 목소리가 쾌감에 흐트러져갔다
+					CASE 1
+						PRINTFORMW 「잠깐, 어딜 만지는 거야...!」
+						PRINTFORMW 사토리는 화를 내 왔지만 그 표정에서는 약간의 쾌감이 엿보였다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕||TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「히잇♥」
+						PRINTFORMW 「자, 장난치지 마세요...」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「저, 정말...만지지 마세요...」
+								PRINTFORMW 「이 애들이 보는 앞에서는...부끄럽단 말야」
+								PRINTFORMW 「말 못하는 동물이라 해도, 이상한 생각은 한다고요」
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서 그런거 하면 안되요...」
+								PRINTFORMW 「목소리 나와버린단 말야...」
+							ENDIF
+							PRINTFORMW 사토리는 얼굴을 붉혔다
+						ELSE
+							PRINTFORMW 「시, 싫어...만지지 맛...♥」
+							PRINTFORMW 사토리는 손을 쳐냈지만 그 목소리에서 약간의 쾌감이 느껴지고 있는걸 알 수 있었다
+						ENDIF
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「힛♥ 하, 하지맛...거긴...♥」
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「애, 애도 아니고...그런 장난이 재미 있는거야?」
+						PRINTFORMW 사토리는 어이없다는 듯이 쏘아붙였다
+					CASE 1
+						PRINTFORMW 「아, 아팟...쑤시지 마...!」
+						PRINTFORMW 사토리는 엉덩이의 고통에 눈물짓고 있다
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「애, 애도 아니고...그런 장난, 재미 있어요?」
+						PRINTFORMW 사토리는 어이없다는 듯이 말했다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							PRINTFORMW 「자, 잠깐?!」
+							IF 지령전안()
+								PRINTFORMW 「아프다고요...엉덩이에 장난치지 마...」
+								PRINTFORMW 아직 이물감만 느껴지는 불모지같은 애널이다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서 이게 뭐하는거예요...」
+								PRINTFORMW 사토리는 얼굴을 붉혔다
+							ENDIF
+						ELSE
+							PRINTFORMW 「그렇게 쑤셔도 아프기만 할 뿐이라고요...」
+							PRINTFORMW 「기분 좋아질리 없잖아...」
+						ENDIF
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아, 아팟...!」
+						PRINTFORMW 「거긴 장난치는 데가 아니야...!」
+						PRINTFORMW 사토리는 이물감에 눈물짓고 있다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							PRINTFORMW 「히끗?!」
+							IF 지령전안()
+								PRINTFORMW 「거...거긴 건들지 마...」
+								PRINTFORMW 아직 이물감만 느껴지는 불모지같은 애널이다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서 뭘 하는건가요...」
+								PRINTFORMW 사토리는 불만 가득한 얼굴로 투덜거렸다
+							ENDIF
+						ELSE
+							PRINTFORMW 「읏...어, 엉덩이로 장난치지 마세요...」
+							PRINTFORMW 「이런거 하나도 기분 좋지 않아...」
+						ENDIF
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「어, 어디에 손 대는거야...!」
+				PRINTFORMW 사토리는 화들짝 놀란듯 말했다
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;315,클리애무
+;CFLAG:우후후 == 2 && TCVAR:20 (35=치마 속을 드러낸다 70=커닐링구스강제 85=V삽입한다 86=정말좋아 hold 87=A삽입한다 88=V허리흔들기 89=A허리흔들기)
+;ABL:C감각 (4미만=간지러움 6미만=좀 괜찮을지도 6이상=쾌감)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_315
+;성공실패 판정
+;TFLAG:192 (-1＝강제실패)
+TFLAG:192 =0
+
+@M_KOJO_MESSAGE_COM_K49_315
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_315_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_315_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSEIF CFLAG:수면
+	ELSEIF CFLAG:우후후 == 2
+		;애무계의 클리 애무 복붙
+		IF ABL:C감각 > 2
+			IF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「부, 불날거 같아...♥ 거기가 뜨거워...♥」
+						PRINTFORMW 계속된 자극에 사토리의 숨소리가 점점 더 거칠어져 갔다
+					CASE 1
+						PRINTFORMW 「히잇...♥ 그렇게 세게 문지르면...♥」
+						PRINTFORMW 사토리는 거친숨을 몰아쉬며 쏟아지는 쾌감을 견디고 있다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:5 + 3)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「흐아앗♥ 크, 클리 기분 좋아아...♥」
+						PRINTFORMW 「아앗♥ 그렇게 문질문질까지 하며언♥ 안대에♥ 너무 기분 좋아♥♥」
+					CASE 1
+						PRINTFORMW 「히잇♥ 그, 그거 좋아...♥」
+						PRINTFORMW 「좀 더 만져줘...♥ 더 세게...♥」
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:5 + 3)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「크, 클리♥ 떨어져버려♥ 그만♥」
+						PRINTFORMW 사토리는 밀려오는 쾌감에 파들파들 떨고 있다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:5 + 3)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			;C감각 낮음
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「으응...」
+						PRINTFORMW 사토리는 작게 신음했다
+					CASE 1
+						PRINTFORMW 「읏...」
+						PRINTFORMW 사토리는 잠시 움찔했지만, 그것뿐이었다
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「으응...♥」
+						PRINTFORMW 사토리는 작게 신음했다
+					CASE 1
+						PRINTFORMW 「하으...♥ 거기...♥ 좀 더...♥」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「으응...좀 더...♥」
+						PRINTFORMW 사토리는 부족하다는듯한 눈빛이다
+					CASE 1
+						PRINTFORMW 「흐으...♥」
+						PRINTFORMW 사토리는 야릇한 한숨을 내쉬며 %마스터의% 애무를 받아들이고 있다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「으응...」
+						PRINTFORMW 사토리는 작게 신음했다
+					CASE 1
+						PRINTFORMW 「읏...」
+						PRINTFORMW 사토리는 잠시 움찔했지만, 그것뿐이었다
+				ENDSELECT
+			ENDIF
+		ENDIF
+	ELSE
+		;PRINTFORMW 「」
+		;우후후 아닐때
+		IF ABL:C감각 > 5
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「힛♥ 안대♥ 그마안♥ 클리 안대에♥」
+					PRINTFORMW 민감한 클리로부터 느껴지는 강렬한 쾌감에 사토리는 온 몸을 경련했다
+				CASE 1
+					PRINTFORMW 「히잇♥ 거, 거기 그렇게 하지맛♥ 불날거 같아아♥」
+					IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+						;모브 반응
+						PRINTFORMW 사토리는 보여지고 있단것도 잊은채 쾌감에 신음했다
+					ELSE
+						PRINTFORMW 사토리는 계속된 자극에 다리를 후들후들 떨었다
+					ENDIF
+				CASE 2
+					PRINTFORM 「
+					CALL ST_CLIMAX(RAND:5 + 3)
+					PRINTFORMW 」
+			ENDSELECT
+		ELSEIF ABL:C감각 > 3
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「하...지맛 거기 만지지 마앗」
+						PRINTFORMW 사토리는 쾌감에 허덕이며 말해왔다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「저...적어도 다른 곳에서...♥」
+								PRINTFORMW 「저 애들, 이상하게 보고 있단 말야...」
+								PRINTFORMW 사토리는 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서엇...♥ 시럿♥ 목소리 새나와버려...♥」
+								PRINTFORMW 사토리는 숨을 헐떡였다
+							ENDIF
+						ELSE
+							PRINTFORMW 「그♥ 그만♥ 클리 불날거 같아아♥」
+							PRINTFORMW 사토리는 계속된 자극에 다리를 후들후들 떨었다
+						ENDIF
+				ENDSELECT
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아♥ 안대에...♥ 멈춰어♥」
+						PRINTFORMW 사토리의 파르르 떨며 쾌감을 참고 있다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「으읏...♥ 지, 지금은 안돼...♥」
+								PRINTFORMW 「저 애들, 이상하게 보고 있잖아...」
+								PRINTFORMW 사토리는 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서엇...♥ 이거 안댓♥」
+								PRINTFORMW 사토리는 숨을 헐떡였다
+							ENDIF
+						ELSE
+							PRINTFORMW 「아♥ 거기 좋앗♥ 좀 더어♥」
+							PRINTFORMW %마스터의% 손놀림에 맞춰 달콤한 신음이 흘러나오고 있다
+						ENDIF
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「자, 잠까안...그렇게 만져대지 마세요...」
+						PRINTFORMW 사토리는 곤란하다는듯이 말했다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「으읏...♥ 지, 지금은 안돼...♥」
+								PRINTFORMW 「저 애들, 이상하게 보고 있잖아...」
+								PRINTFORMW 사토리는 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서엇...♥ 이거 안댓♥」
+								PRINTFORMW 사토리는 숨을 헐떡였다
+							ENDIF
+						ELSE
+							PRINTFORMW 「아♥ 거기 좋앗♥ 좀 더어♥」
+							PRINTFORMW %마스터의% 손놀림에 맞춰 달콤한 신음이 흘러나오고 있다
+						ENDIF
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「하, 하지 마세요...」
+				PRINTFORMW 사토리는 몸을 움츠렸다
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이런곳 만져서 즐거운가요?」
+						PRINTFORMW 「...변태」
+						PRINTFORMW 사토리는 얼굴을 살짝 붉힌채 %마스터를% 째려봤다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「...얘네가 보고 배우지나 않았으면 좋겠네」
+								PRINTFORMW 사토리는 주위의 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「...치한짓 당하는걸 보인다고 부끄럽진 않아」
+								PRINTFORMW 「나는 아무 잘못 안 했는걸」
+							ENDIF
+						ELSE
+							PRINTFORMW 「...이런거로 기분 좋지도 않고, 재미도 없으니까」
+							PRINTFORMW 「그만 했으면 좋겠는걸요...」
+						ENDIF
+				ENDSELECT
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「아...지금은 하지 말아 주세요...」
+								PRINTFORMW 「저 애들이 보고 있단 말야...」
+								PRINTFORMW 사토리는 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서는 하지 마세요...」
+								PRINTFORMW 사토리는 곤란하다는 듯이 말했다
+							ENDIF
+						ELSE
+							PRINTFORMW 「정말...하지마요...」
+							PRINTFORMW 사토리는 간지럽다는듯이 %마스터의% 손을 밀어냈다
+						ENDIF
+					CASE 1
+						PRINTFORMW 「읏...벼, 변태...그런 곳 만지지 마요...」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「아...지금은 하지 말아 주세요...」
+								PRINTFORMW 「저 애들이 보고 있단 말야...」
+								PRINTFORMW 사토리는 펫들을 흘끔흘끔 바라보고 있다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서는 하지 마세요...」
+								PRINTFORMW 사토리는 곤란하다는 듯이 말했다
+							ENDIF
+						ELSE
+							PRINTFORMW 「정말...하지마요...」
+							PRINTFORMW 사토리는 간지럽다는듯이 %마스터의% 손을 밀어냈다
+						ENDIF
+					CASE 1
+						PRINTFORMW 「간지러워요...」
+						PRINTFORMW 「장난치지 마세요...」
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「어, 어딜 만지는 거야...!」
+				PRINTFORMW 사토리는 화들짝 놀란 표정으로 %마스터를% 노려보고 있다
+			ENDIF
+		ENDIF
+	ENDIF
+
+ENDIF
+RETURN 1
+;==================================================
+;316,손가락삽입
+;CFLAG:우후후 == 2 && TCVAR:20 (35=치마 속을 드러낸다 70=커닐링구스강제 87=A삽입한다 89=A허리흔들기)
+;TALENT:처녀 (손가락삽입 연속시 상실 주의, 기본은 거부하는 느낌)
+;ABL:V감각 (1미만=위화감에 당황한다 5미만=조금 기분좋다 5以上＝쾌감)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;==================================================
+@M_KOJO_SUCCESS_COM_K49_316
+;성공실패 판정
+;TFLAG:192 (-1＝강제실패)
+TFLAG:192 =0
+IF !TALENT:연인 && !TALENT:연모 && !TALENT:애욕 && !TALENT:섹프 && !CFLAG:우후후
+	TFLAG:192 = -1
+ENDIF
+
+@M_KOJO_MESSAGE_COM_K49_316
+SIF TFLAG:192 != -1
+	CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_316_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_316_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:192 == -1
+		;읽고 피한다
+		IF !TALENT:연인 && MARK:반발각인 == 3
+			PRINTFORMW 사토리는 다가오는 %마스터의% 손을 쳐냈다
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「...어딜 만지려는 건가요?」
+					PRINTFORMW 그 표정엔 약간의 경멸이 섞여있었다
+				CASE 1
+					PRINTFORMW 「...변태」
+					PRINTFORMW 사토리는 싸늘한 눈빛으로 쳐다볼 뿐이었다
+				CASE 2
+					PRINTFORMW 「......」
+					PRINTFORMW 사토리는 말없이 %마스터를% 노려보고 있다...
+			ENDSELECT
+			PALAM:반감 += 200
+		ELSE
+			PRINTFORMW 사토리는 재빨리 몸을 빼 %마스터의% 손을 피했다
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「...뭘 하려 한건가요」
+					PRINTFORMW 「...변태」
+				CASE 1
+					PRINTFORMW 「어, 어딜 만지려 하는건가요...!」
+					PRINTFORMW 사토리는 얼굴을 붉힌채 %마스터를% 노려보고 있다...
+					PALAM:반감 += 200
+			ENDSELECT
+		ENDIF
+		RETURN 1
+	ENDIF
+
+	IF CFLAG:우후후 == 2
+		;애무계의 3, 손가락 삽입을 복붙
+		IF ABL:V감각 + ((ABL:MASTER:기교) + (ABL:MASTER:손가락 / 2)) >= 3
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「하으으...그, 그만...그렇게 거칠게 쑤시면 금방 가버려...」
+						PRINTFORMW 사토리는 헐떡이면서 간신히 말했다
+					CASE 1
+						PRINTFORMW 「아...아아...♥ 손가락 기분 좋아...♥」
+						PRINTFORMW 사토리는 황홀한듯한 표정으로 %마스터의% 애무를 받아들이고 잇다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:4
+					CASE 0
+						PRINTFORMW 「히이...♥ 그렇게 마구 쑤시면...♥」
+						PRINTFORMW 사토리의 질 내를 왕복하는 손가락에 끈적한 액체가 휘감겨 들기 시작했다
+					CASE 1
+						IF HAS_PENIS(MASTER)
+							PRINTFORMW 「아아♥ 기, 기분좋아아♥」
+							PRINTFORMW 「그치만, 그치만 이런거 말고오♥ 그거♥ 그거 원해에♥」
+							PRINTFORMW 사토리는 애타는 눈길로 %마스터의% 고간을 응시하고 있다
+						ELSE
+							PRINTFORMW 「아아♥ 이거 너무 기분좋아♥」
+							PRINTFORMW 사토리는 쾌락에 녹은 표정으로 %마스터를% 응시해오고 있다
+						ENDIF
+					CASE 2,3
+						;확률이 높다
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						IF HAS_PENIS(MASTER)
+							PRINTFORMW 「아아♥ 이런거 말고오♥」
+							PRINTFORMW 「자지♥ 자지 원해♥」
+							PRINTFORMW 사토리는 헐떡이는 목소리로 삽입을 졸라왔다
+						ELSE
+							PRINTFORMW 「아아...♥ 그거, 그거 너무 좋아아...♥」
+							PRINTFORMW 사토리는 쾌락에 녹아내린 표정으로 %마스터를% 응시해오고 있다
+						ENDIF
+					CASE 1
+						PRINTFORMW 「그, 그렇게 거칠게 쑤시면...♥」
+						PRINTFORMW 사토리는 거칠게 숨을 몰아쉬며 아래로부터 올라오는 쾌락의 파도를 견디고 있다
+					CASE 2
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「하아아...♥ 그, 그렇게 푹푹 찌르면...♥」
+						PRINTFORMW 사토리는 열띤 한숨을 쉬고 있다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:4 + 4)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「응...으응...」
+					PRINTFORMW 들릴락말락한 신음소리 외의 반응을 들을순 없었다
+				CASE 1
+					IF MARK:반발각인 == 3 && !TALENT:연인
+						PRINTFORMW 「아파...그렇게 찌르지 마...」
+					ELSEIF TALENT:연인
+						PRINTFORMW 「아...거기, 거기 좀 더...」
+					ELSEIF TALENT:연모||TALENT:사모
+						PRINTFORMW 「읏...! 응응...으으응...」
+						PRINTFORMW 뭔가 기분좋은 스팟이 있던건지 사토리의 몸이 잠시 쾌락에 떨렸다
+					ELSEIF TALENT:섹프||TALENT:애욕
+						PRINTFORMW 「소, 손가락 말고오...」
+						PRINTFORMW 「좀 더 좋은거, 해줘...」
+						PRINTFORMW 사토리는 열띤 한숨을 쉬며 %마스터를% 바라보고 있다
+					ELSE
+						PRINTFORMW 「이상한...느낌이야...」
+						PRINTFORMW 아직 제대로 느낄만큼 개발되진 않은것 같다
+					ENDIF
+			ENDSELECT
+		ENDIF
+	ELSE
+		;야스중 아님
+		;PRINTFORMW 「」
+		IF ABL:V감각 >= 5
+			PRINTFORM 「
+			CALL ST_CLIMAX(RAND:5 + 4)
+			PRINTFORMW 」
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 사토리는 지나친 쾌감에 어쩔줄 몰라 하고 있다
+				CASE 1
+					PRINTFORMW 민감한 질내는 몇번 건든것 만으로도 전신을 떨게 할 만큼의 강렬한 쾌감을 선사해 주었다
+				CASE 2
+					PRINTFORMW 사토리는 강렬한 쾌감에 목소리를 참지 못하고 말았다
+			ENDSELECT
+		ELSEIF ABL:V감각 >= 2
+			IF TALENT:섹프||TALENT:애욕||TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그, 그만...♥ 쑤시는거 안돼엣...♥」
+						PRINTFORMW 안된다고 말하는 목소리에 점차 달콤한 신음이 섞여들고 있다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「자, 잠깐♥ 이거 보여버려...저 애들, 보고 있단 말야...♥」
+								PRINTFORMW 「앗♥ 여기서 손가락 더 넣으면♥ 힛♥」
+								PRINTFORMW 사토리는 펫들에게 보여지는게 부끄러운지 얼굴을 새빨갛게 물들였다
+							ELSE
+								PRINTFORMW 「아, 안대엣♥ 남들 앞인데♥ 목소리♥ 참을수갓...♥」
+								PRINTFORMW 사토리는 입을 틀어막고 필사적으로 쾌감을 참고 있다
+							ENDIF
+						ELSE
+							PRINTFORMW 「아♥ 그거 너무 쎄♥ 조금만 살살♥」
+							PRINTFORMW 말과는 달리 굉장히 기뻐보이는 표정인 사토리였다
+						ENDIF
+				ENDSELECT
+			ELSE
+				;위에서 실패처리 하기에 가능성 없다
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...그만, 그만 해...」
+						PRINTFORMW 사토리는 얼굴을 붉힌채 %마스터를% 노려보고 있으나, 그 이상의 저항은 하지 않았다
+					CASE 1
+						PRINTFORMW 「기, 기분 좋을리 없잖아...아플 뿐이야...」
+						PRINTFORMW 사토리는 싫은듯한 표정을 짓고 있다
+				ENDSELECT
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「기, 기분 좋냐니...그럴리가...」
+						PRINTFORMW 「아프기만 하다구요...」
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「...저 애들이 보고 있다구요, %사마스터는% 모르겠지만」
+								PRINTFORMW 「부끄러우니까, 그만둬...」
+								PRINTFORMW 사토리는 얼굴을 붉혔다
+							ELSE
+								PRINTFORMW 「나, 남들 앞에서 이런건...!」
+								PRINTFORMW 사토리는 화들짝 놀라며 %마스터의% 손을 쳐냈다
+								PRINTFORMW 「...때와 장소정도는, 가려주세요」
+							ENDIF
+						ELSE
+							PRINTFORMW 「정말...하지 마세요...」
+							PRINTFORMW 사토리는 간지럽다는듯이 %마스터의% 손을 밀어냈다
+						ENDIF
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「자, 잠깐, 어디에 손을...!」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+					CASE 1
+						IF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+							;모브 반응
+							IF 지령전안()
+								PRINTFORMW 「...이거, 별로 기분 좋지도 않지만...」
+								PRINTFORMW 「것보다도 저 애들이 보고 있으니까, 그만둬줬음 하는데...」
+								PRINTFORMW 사토리는 주위의 펫들을 살피고 있다
+							ELSE
+								PRINTFORMW 「힛?! 지금 뭐하는...」
+								PRINTFORMW 사토리는 남들의 시선을 의식했는지 얼굴을 새빨갛게 물들일 뿐이었다
+							ENDIF
+						ELSE
+							PRINTFORMW 「정말...하지마요...」
+							PRINTFORMW 사토리는 간지럽다는듯이 %마스터의% 손을 밀어냈다
+						ENDIF
+				ENDSELECT
+			ELSE
+				;위에서 실패처리 하기에 가능성 없다
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;317,허리를 움직인다(V)
+;ABL:V감각 (2미만=아직 기분좋지 않다 5미만=조금 기분좋다 5이상=쾌감)
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_317
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_317_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_317_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:V감각 >= 5 || (PREVCOM == 317 && RAND:2 == 0)
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:(ABL:V감각 + 1) + 5)
+		PRINTFORMW 」
+	ELSE
+		PRINTFORM 「
+		CALL ST_CLIMAX(RAND:(ABL:V감각 + 1) + 5)
+		PRINTFORMW 」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;318,허리를 움직인다(A)
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_318
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_318_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_318_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:A감각 >= 5 || (PREVCOM == 318 && RAND:2 == 0)
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:(ABL:A감각 + 1) + 5)
+		PRINTFORMW 」
+	ELSE
+		PRINTFORM 「
+		CALL ST_CLIMAX(RAND:(ABL:A감각 + 1) + 5)
+		PRINTFORMW 」
+	ENDIF
+ENDIF
+RETURN 1
+
+;====================================================================================================
+;320,상대주도정상위
+;====================================================================================================
+@M_KOJO_MESSAGE_COM_K49_320
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_320_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_320_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:V감각 >= 5 || (PREVCOM == 320 && RAND:2 == 0)
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:(ABL:V감각 + 1) + 5)
+		PRINTFORMW 」
+	ELSE
+		PRINTFORM 「
+		CALL ST_CLIMAX(RAND:(ABL:V감각 + 1) + 5)
+		PRINTFORMW 」
+	ENDIF
+ENDIF
+RETURN 1
+;====================================================================================================
+;322,상대주도후배위
+;====================================================================================================
+@M_KOJO_MESSAGE_COM_K49_322
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_322_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_322_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF ABL:A감각 >= 5 || (PREVCOM == 322 && RAND:2 == 0)
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:(ABL:A감각 + 1) + 5)
+		PRINTFORMW 」
+	ELSE
+		PRINTFORM 「
+		CALL ST_CLIMAX(RAND:(ABL:A감각 + 1) + 5)
+		PRINTFORMW 」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;330,치마를 넘긴다
+;TFLAG:193 (-5=거절 (따귀) -3=거절 (꼬집는다) -1=싫어함 0=싫어함 (기쁜 듯) 1=받아들임)
+;TFLAG:193=1 && ABL:노출벽 (5이상=남의 눈에 띄는 장소에서, 스스로 스커트를 걷어 올린다 4이하=남의 눈에 띄는 장소에서 넘길 때 약한 저항 3이상=남의 눈에 띄지 않는 장소에서 스스로 스커트를 걷어 올린다 3미만=약한 저항)
+;TFLAG:400 (1=데이트처or지저의 모브가 반응한다)
+;뒤에서 훌렁, 이 아니라, 앞에서부터 훌렁 하는 느낌 (그렇지 않다면, 넘기려고 하는 것을 멈추고 즉시 따귀라든지 무리, 걷어 올려진 뒤밖에 안되고 그 상황이라면 따귀를 맞는 것보다 보통 탄막으로 일발KO가 되지 않는 것이 이상하다.
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_330
+SIF !GROUPMATCH(TFLAG:193,-5,-3,-1)
+	CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_330_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_330_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+	ELSE
+		;PRINTFORMW 「」
+		IF TFLAG:193 ==  -5
+			IF MARK:반발각인 == 2
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 사토리는 %마스터의% 손을 쳐낸뒤 몸을 빼 거리를 두었다
+						PRINTFORMW 「추잡해, 이런게 즐겁단 거야?」
+						PRINTFORMW 「하기사 원래 그 정도 수준의 사람이었지만」
+						PRINTFORMW 사토리는 경멸섞인 시선을 보내오고 있다
+					CASE 1
+						PRINTFORMW %마스터가% 손을 뻗기도 전에 사토리는 이미 저만치 몸을 뺀 뒤였다
+						PRINTFORMW 「...가까이 오지 마」
+						PRINTFORMW 사토리는 혐오스럽다는 듯이 %마스터를% 바라보고 있다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 사토리는 %마스터가% 손을 뻗기도 전에 재빨리 물러섰다
+						PRINTFORMW 「가끔 비슷한 생각 하는 사람들은 더러 봤지만...」
+						PRINTFORMW 「진짜로 하려고 하는건 당황스럽네」
+						PRINTFORMW 사토리는 께름칙 하다는 듯이 %마스터를% 바라보고 있다
+					CASE 1
+						PRINTFORMW 사토리는 살며시 치마를 누른채 %마스터를% 바라보고 있다
+						PRINTFORMW 「...생각만으로 그만둬 줬으면 좋겠는걸요」
+						PRINTFORMW 아무래도 들추게 해 줄 마음은 없는 것 같다
+				ENDSELECT
+			ENDIF
+		ELSEIF TFLAG:193 <=  -1
+			IF MARK:반발각인 == 3
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 사토리는 %마스터의% 손을 쳐낸뒤 몸을 빼 거리를 두었다
+						PRINTFORMW 「애도 아니고, 이런게 뭐가 재밌다고...」
+						PRINTFORMW 「...하기사, %사마스터는% 그런 수준의 변태였긴 하지」
+						PRINTFORMW 사토리는 경멸섞인 시선을 보내오고 있다
+					CASE 1
+						PRINTFORMW %마스터가% 손을 뻗기도 전에 사토리는 이미 저만치 몸을 뺀 뒤였다
+						PRINTFORMW 「...가까이 오지 마」
+						PRINTFORMW 사토리는 혐오스럽다는 듯이 %마스터를% 바라보고 있다
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW %마스터가% 치마를 들추는 상상을 하자 사토리는 얼굴을 붉히며 살며시 거리를 두었다
+						PRINTFORMW 「...변태, 야한 생각 좀 그만 해주세요」
+						PRINTFORMW 「아무리 %사마스터라%고 해도 그런건...부끄럽단 말야」
+					CASE 1
+						PRINTFORMW %마스터의% 생각을 읽은건지 사토리는 얼굴을 붉힌채 치마를 누르고 있다
+						PRINTFORMW 「...그런건 부디 머릿속으로만 해주세요」
+						PRINTFORMW 「그것만으로도 충분히 부끄러우니깐...」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 사토리는 %마스터가% 손을 뻗기도 전에 재빨리 물러섰다
+						PRINTFORMW 「가끔 비슷한 생각 하는 사람들은 더러 봤지만...」
+						PRINTFORMW 「진짜로 하려고 하는건 당황스럽네」
+						PRINTFORMW 사토리는 어이 없다는 듯이 %마스터를% 바라보고 있다
+					CASE 1
+						PRINTFORMW 사토리는 살며시 치마를 누른채 %마스터를% 바라보고 있다
+						PRINTFORMW 「...그런건 생각만으로 그만둬 주세요」
+						PRINTFORMW 아무래도 들추게 해 줄 마음은 없는 것 같다
+				ENDSELECT
+			ENDIF
+		ELSEIF TFLAG:193 == 0
+			;기쁜듯 항의
+			IF MARK:반발각인 == 3
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「이런게 뭐가 재밌다는 건지...부끄러우니 그만해줬음 하는데」
+						PRINTFORMW 「...이렇게 말해도 그만 둘 생각도 없어보이고, 하아...」
+					CASE 1
+						PRINTFORMW 「...남의 치마 들추는게 뭐 그리 좋다는 거야 정말...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아무리 %사마스터라%고 해도 이건 조금...」
+						PRINTFORMW 「...저도 부끄러운건 있는걸요」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+					CASE 1
+						PRINTFORMW 「...야한 생각 하지 마세요...부끄럽단 말야」
+						PRINTFORMW 「남이라면 모를까, %사마스터가% 하는건...왠지 더 부끄러워」
+						PRINTFORMW 사토리는 얼굴을 살짝 붉혔다
+				ENDSELECT
+			ELSE
+				;설마 호감도 3천 초과 상태로 미함락일 리가
+				PRINTFORMW 「잠깐...장난이 심하다구요?」
+				PRINTFORMW 「얼른 내려주세요」
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이런게 즐겁다니, 변태가 따로 없군요」
+						PRINTFORMW 「...그래서, 이러고 있으면 만족 하나요?」
+						PRINTFORMW 사토리는 볼멘소리를 해 왔다
+					CASE 1
+						PRINTFORMW 「하아...보여줄테니깐, 얼른 놔줬음 좋겠네」
+						PRINTFORMW 사토리는 한숨을 쉬면서도 순순히 치마 속을 보여주고 있다
+				ENDSELECT	
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「...변태」
+						PRINTFORMW 「...그러고보면 이게 점점 좋아지고 있는 나도 변태려나」
+					CASE 1
+						PRINTFORMW 「왠지 이거, 조금씩 익숙해지고 있다는게 무서운걸...」
+						PRINTFORMW 사토리는 얼굴을 붉혔다
+					CASE 2
+						PRINTFORMW 「남들한테 이걸 보여주고 싶은 건가요?」
+						PRINTFORMW 「그치만, 이런건 %MASTERNAME:49%니까 보여주는 거라구요?」
+						PRINTFORMW 「다른 사람한텐 보이고 싶지 않아」
+				ENDSELECT	
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...보기만 하는거로 괜찮은거려나~」
+						PRINTFORMW 사토리는 능글맞게 웃어보였다
+					CASE 1
+						PRINTFORMW 「남들한테 이걸 보여주고 싶은 건가요?」
+						PRINTFORMW 「그치만, 이런건 %MASTERNAME:49%니까 보여주는 거라구요?」
+						PRINTFORMW 「다른 사람한텐 보이고 싶지 않아」
+				ENDSELECT	
+			ELSE
+				PRINTFORMW 「...하아, 정말이지...」
+				PRINTFORMW 사토리는 한숨을 쉬었지만 저항하는 모습은 보이지 않았다
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1

@@ -1,0 +1,1102 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;역애널계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;90,애널애무받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_90
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_90_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_90_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;91,애널핥기받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_91
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_91_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_91_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;92,A정상위받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_92
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_92_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_92_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;93,A후배위받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_93
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_93_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_93_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;94,A기승위한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_94
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_94_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_94_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		PRINTFORMW 
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;조수에 의한 커맨드, 및 레즈플레이
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;120,커닐링구스강제
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_120
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_120_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_120_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;121,보지비비기
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_121
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_121_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_121_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;123,풋잡한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_123
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_123_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_123_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;124,수음한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_124
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_124_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_124_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;125,애무받는다, 레즈플 전용
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_125
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_125_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_125_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;126,젖비비기
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_126
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_126_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_126_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;=================================================
+;특수 커맨드
+;=================================================
+;-------------------------------------------------
+;180,로션
+;-------------------------------------------------
+@M_KOJO_MESSAGE_COM_K49_180
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_180_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_180_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;PRINTFORMW 「」
+		GETBIT STAIN:1, 7
+		IF RESULT
+			PRINTFORMW 「...먹는거로 장난치다간 작열 지옥에 굴러 떨어질지도 모르겠네요」
+			PRINTFORMW 「게다가 이거, 윤활유로써로는 전혀 쓸모 없어 보이는걸」
+			PRINTFORMW 「...보기 좋으니 됐다는 건가요? 그러시다면야 더 할 말은 없지만」
+		ELSE
+			IF MARK:반발각인 == 3&&!TALENT:연인
+				PRINTFORMW 「차가워...뭘 짜고 있는거야...?」
+				PRINTFORMW 「...야한 짓 할 때 쓰는 윤활유? 별 쓰잘데기 없는걸 잔뜩 구비해놓고 있네」
+				PRINTFORMW 사토리는 로션의 차가움이 불편한듯 몸을 베베 꼬고 있다
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「뭐어, 배려해 주시는건 기쁘지만서도」
+				PRINTFORMW 「좀 더 느긋히 즐긴다면 이런건 필요 없는게 아닐까나...싶기도 하네요」
+				PRINTFORMW 사토리는 어딘가 아쉽다는듯한 표정이다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「미끌미끌...이거로 바로 준비 끝이란 걸까」
+				PRINTFORMW 「뭐어 나쁘진 않겠지, 그렇다면 시간도 아까우니 얼른 본방으로 가볼까요」
+				PRINTFORMW 사토리는 농염한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				PRINTFORMW 「안에 뭘 짜넣고 있는건가요...?」
+				PRINTFORMW 「...야한 짓에 쓰는 윤활유라, 세상엔 별 희한한 물건이 다 있군요」	
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	;그 이외
+	ELSE
+		GETBIT STAIN:1, 7
+		IF RESULT
+			PRINTFORMW 「정말이지...먹을거로 이런 장난을...」
+		ELSE
+			IF MARK:반발각인 == 3&&!TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이런것까지 쓸 정도로 빨리 하고 싶은거야?」
+						PRINTFORMW 「조금 정도는 여유를 가지고 하는게 어떨까나」
+					CASE 1
+						PRINTFORMW 「또 이거...전희도 귀찮을거면 차라리 혼자서 자위나 하는게 더 편하지 않아?」
+						PRINTFORMW 「구태여 나한테 싸야만 직성이 풀리는걸까나」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이런거까지 쓸 정도로 서두르다니, 안 그래도 딱히 도망가는것도 아닌데」
+						PRINTFORMW 사토리는 어딘가 아쉬운 듯한 표정이다
+					CASE 1
+						PRINTFORMW 「후후...촉촉해졌네요♥」
+						PRINTFORMW 「...뭐어 로션때문만은 아닌것도 같지만」
+						PALAM:윤활 += 500
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「미끌미끌해졌네요, 그러면 이제 슬슬...」
+						PRINTFORMW 사토리는 요염한 미소를 지어보이고 있다
+					CASE 1
+						PRINTFORMW 「후후...이거로 준비 끝♥」
+						PRINTFORMW 「그러면...가보실까요♥」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「미끈미끈해졌네...피부가 반들거려」
+						PRINTFORMW 「...그렇다고 계속 바르고 싶진 않지만」
+					CASE 1
+						PRINTFORMW 「차갓...이거 적응 안돼...」
+				ENDSELECT
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;181,미약,
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_181
+CALL M_KOJO_MESSAGE_COM_K49_181_1
+CALL TRAIN_MESSAGE
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_181_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;PRINTFORMW 「」
+		IF ABL:순종 <= 2
+			;억지로
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				PRINTFORMW 「자, 잠깐, 그런거 먹을리가 없잖...응읏...」
+				PRINTFORMW 저항하던 팔다리도 억지로 먹인 미약이 돌자 맥없이 풀려버렸다
+				PRINTFORMW 사토리는 끓어오르는 성욕과 분함에 눈물짓고 있다
+				CFLAG:3101 += 2
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「시, 싫엇...그런거 먹고 싶지 않...응읏...응...♥」
+				PRINTFORMW 억지로 삼킨 미약의 효능으로 저항하던 팔다리는 맥없이 풀렸다
+				CFLAG:3101 += 1
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「자, 잠깐, 그건 조금...응읏...응...♥」
+				PRINTFORMW 생각을 읽고 도망치려 버둥거리던 사토리를 붙잡아 억지로 미약을 먹였다
+				PRINTFORMW 이내 저항하던 힘도 풀려 바닥에 깔린채로 거친 숨을 몰아쉬고 있을 뿐이었다
+				CFLAG:3101 += 1
+			ELSE
+				PRINTFORMW 「자, 잠깐, 그런거 먹을리가 없잖...응읏...」
+				PRINTFORMW 저항하던 팔다리도 억지로 먹인 미약이 돌자 맥없이 풀려버렸다
+				PRINTFORMW 사토리는 끓어오르는 성욕과 분함에 눈물짓고 있다
+				CFLAG:3101 += 2
+			ENDIF
+		ELSE
+			;순순히
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				PRINTFORMW 「...약이라, 이런것 까지 동원할 줄은 몰랐네요」
+				PRINTFORMW 「어짜피 약따위 먹으나 마나, 범해지는건 똑같으니 나한텐 별 차이 없는데 말야...」
+				PRINTFORMW 사토리는 애써 침착한 척을 하는 모양이다
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「미약인가요...어디서 그런걸 잘도 구해오시는지」
+				PRINTFORMW 「그렇게 제가 흐트러지는 모습이 보고 싶으신건가요? 정말 변태라니깐...」
+				PRINTFORMW 「...뭐어 원하신다면야 보여드리고 말고요, 다른 누구의 부탁도 아닌 %사마스터의% 부탁인데」
+				PRINTFORMW 「그래도 이런건 처음 먹어보는거니까...조금만 상냥히...응?」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「미약인가요...도대체 어디서 그런 물건을 구해오는건지 원」
+				PRINTFORMW 「그래도, 재미있어 보이니까 마셔는 볼게요」
+				PRINTFORMW 「대신에 이런건 처음이니까 조금만 부드럽게 해주세요?」
+				PRINTFORMW 미약의 효과로 살짝 발그레해진 얼굴이 요염한 미소를 지어보이고 있다
+			ELSE
+				PRINTFORMW 「이상한 약을...안 먹겠다 해도 안 들을 생각이죠?」
+				PRINTFORMW 「...이런 약은 처음 먹으니까, 조금은 상냥히 해주세요」
+			ENDIF
+			CFLAG:3101 += 1
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+		IF ABL:순종 <= 2
+			IF MARK:반발각인 == 3&&!TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「또 그 약이라니...싫어...」
+						PRINTFORMW 사토리는 몸을 움츠린 채 저항하였지만 헛수고에 그치고 말았다
+					CASE 1
+						PRINTFORMW 「그, 그건...잠깐, 먹이지 맛...!」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그, 그건...」
+						PRINTFORMW 사토리는 주춤주춤 도망가려 했지만 그리 멀리가진 못했다
+					CASE 1
+						PRINTFORMW 「싫어...이상한 약 들이대지 마세요...」
+						PRINTFORMW 사토리는 몸을 움츠린 채 저항하였지만 헛수고에 그치고 말았다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「기분 좋은 약이라니, 이상한 약이잖아...」
+						PRINTFORMW 「그런건 필요 없으니까...응읏」
+					CASE 1
+						PRINTFORMW 「그런 약 먹는다고 전혀 좋지 않으니깐...저리 치워...」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「또 그 약...도대체 어디서 구해오는거야 대체」
+						PRINTFORMW 사토리는 기가막히다는 표정이다
+					CASE 1
+						PRINTFORMW 「그런 약 같은거 먹인다고 기쁘지 않아...」
+						PRINTFORMW 사토리는 작게 중얼거렸다
+				ENDSELECT
+			ENDIF
+			CFLAG:3101 += 1
+		ELSE
+			IF MARK:반발각인 == 3&&!TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이런 약에 의존 안하면 만족조차 못 시키는 걸까나」
+						PRINTFORMW 「먹기야 하겠지만...이런거로 느끼게 해봤자 무슨 재미가 있는건지 모르겠네」
+					CASE 1
+						PRINTFORMW 「또 이거야?」
+						PRINTFORMW 「그런걸 먹이고 하면 도대체 무슨 이득이 있다고 그러는지 정말...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어라...또 미약?」
+						PRINTFORMW 「이런거 없이도 %사마스터가% 해주는거면 다 좋은데 말이죠」
+					CASE 1
+						PRINTFORMW 「이거 먹으면 헤롱헤롱해져서 싫은데...」
+						PRINTFORMW 「기왕 하는거면 좀 더 생생히 %사마스터를% 기억하고 싶다구요」
+						PRINTFORMW 「...먹으라면 먹기야 하겠지만」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「그, 그건...♥」
+						PRINTFORMW 사토리는 당황하면서도 어딘가 기대하는 듯한 표정으로 미약을 바라보고 있다
+					CASE 1
+						PRINTFORMW 「아...♥」
+						PRINTFORMW 미약을 본 사토리의 몸이 움찔움찔 반응하고 있다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「또 그 약...도대체 어디서 구해오는거야 대체」
+						PRINTFORMW 사토리는 기가막히다는 표정이다
+					CASE 1
+						PRINTFORMW 「그런 약 같은거 먹는다고 기쁘지 않아...」
+						PRINTFORMW 사토리는 작게 중얼거렸다
+				ENDSELECT
+			ENDIF
+		ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+;==================================================
+;182,이뇨제,
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_182
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_182_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_182_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+
+	IF MARK:반발각인 == 3&&!TALENT:연인
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「오줌 지리는걸 보는게 도대체 뭐가 기쁘다고 약까지 먹이는 거야」
+				PRINTFORMW 사토리는 어이없다는 표정이다
+			CASE 1
+				PRINTFORMW 「그렇게 원하신다면 얼굴에라도 싸갈겨 드릴까요? 그 편도 오히려 기뻐하시려나」
+				PRINTFORMW 「어찌됐던 나는 기분 나쁘기만 하지만」
+		ENDSELECT
+		CFLAG:3101++
+	ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「아...화장실, 참으라니...그런...」
+				PRINTFORMW 올라오는 요의에 얼굴이 새빨게지고 있다
+			CASE 1
+				PRINTFORMW 「이대로 참으라니...무리야, 새어나올것만 같은걸...」
+				PRINTFORMW 사토리는 안짱다리를 한 채 안절부절 못하고 있다
+		ENDSELECT
+	ELSEIF TALENT:섹프||TALENT:애욕
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「이대로 참으라니...그런...금방이라도 새어나올것 같은데」
+				PRINTFORMW 사토리는 올라오는 요의에 안절부절 못하고 있다
+			CASE 1
+				PRINTFORMW 「참으면서 하면 기분 좋다니, 싫어...이대로 지려버릴것만 같단 말야...」
+				PRINTFORMW 「...설마, 만족해야 화장실에 보내준다...란 건가요?」
+		ENDSELECT
+	ELSE
+		SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「화, 화장실...여기 흘려버리면 냄새난다고요? 그 편이 좋을...설마 좋다는건 아니겠죠?」
+			CASE 1
+				PRINTFORMW 「이런게 뭐가 즐겁다는거야 이 외도...」
+		ENDSELECT
+		CFLAG:3101++
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;183,비디오촬영, 미작성
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_183
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_183_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_183_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;개시
+	IF TEQUIP:비디오촬영
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;종료
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;187,목욕탕플레이, 미실장
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_187
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_187_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_187_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;개시
+	IF TEQUIP:목욕탕플레이
+		
+		
+	;종료
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;188,샤워
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_188
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_188_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_188_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;개시
+	IF TEQUIP:샤워
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;종료
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;189,새댁플레이
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_189
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_189_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_189_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		IF MARK:반발각인 == 3
+			PRINTFORMW 「...아내가 입는 그거인가요, 그걸 알몸 위에?」
+			PRINTFORMW 「이런거에 흥분하시는 걸까나...장차 아내분은 아침마다 범해지겠네요」
+			PRINTFORMW 「...그것도 나쁘진 않으려나아」
+		ELSE
+			PRINTFORMW 「이건...요리할때 쓰는 그거 아닌가요, 이걸 알몸에?」
+			PRINTFORMW 「과연, 그런 류의 플레이란 건가요...」
+			IF IS_아내(49)
+				PRINTFORMW 「이런걸 좋아하실줄 알았다면 평소에도 해 드릴걸 그랬네요」
+				PRINTFORMW 사토리는 부끄러운듯이 웃었다
+			ELSE
+				PRINTFORMW 「...으으음, 그렇단 말은 지금은 제가 %사마스터의%...」
+				PRINTFORMW 무엇을 상상하는건지 사토리의 얼굴이 발갛게 물들어 갔다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;개시
+	IF TEQUIP:새댁플레이
+		;기본적으로 연모 이상만 실행 가능 커맨드
+		IF MARK:반발각인 == 3
+			SELECTCASE RAND:2
+				CASE 0
+					IF IS_아내(49)
+						PRINTFORMW 「옷깃이 스쳐서 간지러워...」
+						PRINTFORMW 「부끄러우니 얼른 벗으면 안될까요...」
+					ELSE
+						PRINTFORMW 「...」
+						PRINTFORMW 사토리는 말없이 앞치마의 깃을 만지작거리고 있다
+					ENDIF
+				CASE 1
+					PRINTFORMW 「시원하고 좋긴 한데, 이러고 요리했다간 다른 애들 교육에 문제가 생길지도...」
+					PRINTFORMW 「특히 코이시가 이러고 돌아다닐까봐 무서운걸요」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					IF IS_아내(49)
+						PRINTFORMW 「이 모습이 좋아? 정말 변태라니깐...」
+						PRINTFORMW 「그래도 이러고 있으면 신혼 느낌 나서 너무 기뻐」
+						PRINTFORMW 사토리는 옷깃을 만지작거리고 있다
+					ELSE
+						PRINTFORMW 「...」
+						PRINTFORMW 사토리는 말없이 앞치마의 깃을 만지작거리고 있다
+					ENDIF
+				CASE 1
+					PRINTFORMW 「이렇게 입혀놓으셔 봤자 밥도, 목욕물도 준비해놓은게 없답니다?」
+					PRINTFORMW 「대신에 제 몸만큼은 얼마든지 사용해 주셔도 괜찮으니깐...후후후♥」
+			ENDSELECT
+			CFLAG:3100++
+		ENDIF
+	;종료
+	ELSE
+		IF RAND:3 == 0&&!IS_아내(49)
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「이제 그만 됐어? 벌써 질리신 건가요...」
+					PRINTFORMW 사토리는 어딘가 시무룩한 표정이다
+				CASE 1
+					PRINTFORMW 「아...이제 그만?」
+					PRINTFORMW 사토리는 어쩐지 아쉬운 듯한 표정이다
+			ENDSELECT
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;190,에이프런을 두른다, 미실장
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_190
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_190_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_190_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+	;기본세트
+	;개시
+	IF TEQUIP:에이프런
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;괘씸3
+		ELSEIF MARK:괘씸각인 == 3
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;종료
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;SOURCE나 NOWEX를 사용해서 SELECTCOM에 의존하지 않는 구상이 있어도 괜찮잖아
+@M_KOJO_MESSAGE_COM_K49_00
+;성교 처녀상실을 RETURN 100 하고
+;IF RESULT == 100 으로 정리하거나
+;고통이나 쾌락의 SOURCE를 트리거로 범용 신음 구상을 만든다든가
+;여러가지 이용방법을 생각할 수 있습니다만, 적당히 해 주세요
+
+
+
+
+;-------------------------------------------
+;조교 후의 텍스트
+;TFLAG:8 (1=TARGET이 청소 2=ASSI가 청소 3=TARGET과 ASSI가 청소)
+;-------------------------------------------
+@M_KOJO_MESSAGE_PALAMCNG_C_K49
+CALL PALAM_MESSAGE_C
+;처녀상실
+IF TCVAR:파과
+	;진짜처녀상실
+	IF TCVAR:파과 == 1
+	;재생처녀상실
+	ELSEIF TCVAR:파과 == 2
+	;무자각비처녀상실
+	ELSEIF TCVAR:파과 == -1
+	ENDIF
+ENDIF
+
+;A처녀상실
+IF TCVAR:A파과
+	;진짜A처녀상실
+	IF TCVAR:A파과 == 1
+	;무자각A처녀상실
+	ELSEIF TCVAR:A파과 == -1
+	ENDIF
+ENDIF
+
+;펠라로 사정후의 청소
+IF (TCVAR:MASTER:112 == 1 || TCVAR:MASTER:112 == 2) && SELECTCOM == 81
+	PRINTFORMW 
+ENDIF

@@ -1,0 +1,1775 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;"COUNTER"계 구상
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;-------------------------------------------------
+;커뮤니케이션
+;-------------------------------------------------
+;==================================================
+;거리가 가깝다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_1
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_1_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_1_1
+;PRINTFORML 「」
+IF MARK:반발각인 == 3
+	IF TALENT:연인
+		SELECTCASE RAND:3
+            CASE 0
+                PRINTFORML 「...뭔가요? 다가오는게 마음에 안 드나요?」
+            CASE 1
+                PRINTFORML 「...왜요? 연인끼리 가까이 있는데 특별히 이유가 필요 한가요?」
+            CASE 2
+                PRINTFORML 「왜요? 가까이 있으면 싫을 이유라도 있나요?」
+                PRINTFORML 「연인끼리 있는건 지극히 당연한거잖아요?」
+        ENDSELECT
+	ELSE
+		IF CFLAG:3000 == 0
+            SELECTCASE RAND:3
+                CASE 0
+                    PRINTFORML 「별 다른 의미는 없어요, 그저 여기 서 있고 싶을 뿐이니까」
+                CASE 1
+                    PRINTFORML 「...붙으면 기분 나쁘기라도 한가요?」
+                    PRINTFORML 「기분 나쁘다 말해도 가진 않을거지만」
+                CASE 2
+                    PRINTFORML 「그냥, 별 이유 없이 서 있는거니까...딱히 그렇게 깊은 뜻은 없다구요?」
+                    PRINTFORML 「...뭔가 오해하진 말아줬음 하네요」
+            ENDSELECT
+		ELSE
+            SELECTCASE RAND:3
+                CASE 0
+                    PRINTFORML 「그냥, 별 이유 없이 서 있는거니까...딱히 그렇게 깊은 뜻은 없어」
+                    PRINTFORML %마스터의% 생각에 사토리는 쌀쌀맞게 대답했다
+                CASE 1
+                    PRINTFORML 「거리가 가깝다니, 이 정도는 평범한거야」
+                    PRINTFORML 「...기분 나쁘니깐 이상한 생각은 하지 말아줬음 하는데」
+                    PRINTFORML 과연 정말로 기분 나쁜것일까 싶은 표정이었다
+                CASE 2
+                    PRINTFORML 「가까워서, 불쾌하기라도 하신지?」
+                    PRINTFORML 「그렇게 생각한대도 갈 생각은 없지만」
+            ENDSELECT
+		ENDIF
+	ENDIF
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「가깝다니, 저희 사이에 이 정도는 너무 먼게 아닌가요?」
+            PRINTFORML 「좀 더 붙어도 상관없지 않을까 생각하는데...」
+        CASE 1
+            PRINTFORML 「가까워서 싫으신가요?」
+            PRINTFORML 「...내심 좋으시면서, 빤히 다 안다고요?」
+            PRINTFORML 마음을 읽은건지 안 읽은건지 억지를 부리며 점점 더 다가오고 있다
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「아, 아뇨, 딱히 특별한 이유는...」
+            PRINTFORML %마스터의% 생각을 읽고는 깜짝 놀라 횡설수설 변명하고 있다
+        CASE 1
+            PRINTFORML 「너, 너무 붙었나요...?」
+            PRINTFORML 「이정돈 괜찮을거라 생각했는데...」
+        CASE 2
+            PRINTFORML 사토리는 서드아이로 %마스터의% 눈치를 연신 살피고 있다
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「오늘따라 뭔가 더 가까이 있고 싶어지는 그런 기분인걸요...」
+        CASE 1
+            PRINTFORML 「으응? 가깝다니요? 겨우 이 정도가?」
+            PRINTFORML 「더 한짓도 했으면서 이걸로 예민하게 굴기예요? 후후♥」
+    ENDSELECT
+ELSE
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「가깝다니, 여기 서 있으면 안되나요?」
+            PRINTFORML 「...불편하시면 %사마스터가% 저쪽으로 가시는게?」
+        CASE 1
+            PRINTFORML 본인은 모른채 하고 있지만 서드아이가 %마스터의% 눈치를 연신 살피고 있다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;슬쩍 봄
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_2
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_2_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_2_1
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML %마스터의% 생각을 읽자마자 보란듯이 고개를 돌려버리고 말았다
+        CASE 1
+            PRINTFORML 「...그냥 쳐다본거만으로 이상한 상상하진 말아주실래요」
+            PRINTFORML 사토리는 쌀쌀맞게 쏘아붙였지만, 그 목소리는 진심이라고 보기 어려웠다
+        CASE 2
+            PRINTFORML 「...쳐다보는것도 안돼?」
+            PRINTFORML 「닳는것도 아니면서 말야」
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...후후♥」
+            PRINTFORML 뭐가 그리 기쁜진 몰라도 살짝 미소짓고 있다
+        CASE 1
+            PRINTFORML 사토리는 얼굴을 살짝 붉히고 있다
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「...핫, 아, 아니...일부러 그런건...으으으...」
+            PRINTFORML 멍하니 %마스터를% 바라보던 사토리는 깜짝 놀라며 횡설수설 얼버무리고 있다
+        CASE 1
+            PRINTFORML 뭐가 그리 기쁜지 사토리는 옅은 미소를 띈 채 사랑스럽다는 듯한 시선으로 %마스터를% 바라보고 있다
+        CASE 2
+            PRINTFORML 사토리는 얼굴을 살짝 붉히고 있다
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:3
+        CASE 0
+            ;낮은 확률로
+            PRINTFORML 「...후후, 뭔가 오늘따라 계속 쳐다보게 되네요...♥」
+            PRINTFORML 「요새 쌓여버린걸까나...후후후♥」
+        ;CASE 1
+
+        ;CASE 2
+        
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「아, 아무것도 아녜요...」
+            PRINTFORML %마스터가% 눈치챈걸 읽은 사토리는 이내 황급히 시선을 돌렸다
+        CASE 1
+            PRINTFORML 사토리는 연신 흘끔흘끔 %마스터를% 바라보고 있다
+        CASE 2
+            ;공란
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;이야기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_3
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_3_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_3_1
+;날먹
+CALL ST_통상회화
+RETURN 1
+
+;==================================================
+;좋은 냄새
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_4
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_4_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_4_1
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「뭘 그리 킁킁대는건지...변태같아」
+            PRINTFORML 말로는 빈정거려도 싫은 표정은 아니였다
+        CASE 1
+            PRINTFORML 「기분 나쁘게 킁킁거리기나 하고...저리 가 이 변태...」
+            PRINTFORML 사토리는 싫다는 듯이 거리를 손사래를 쳤지만 그 표정은 어쩐지 웃고 있었다
+        CASE 2
+            ;공란
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「좋은 냄새? 후후, %MASTERNAME:49%도 이 향이 좋은가요?」
+            PRINTFORML 「다음 부턴 이걸로 뿌리고 다녀야겠네요」
+        CASE 1
+
+        CASE 2
+        
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「좋은 냄새라, 후후...그렇게 느껴지시나요?」
+            PRINTFORML 「마음에 드시는거 같아 다행이네요」
+        CASE 1
+
+        CASE 2
+        
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「좋은 냄새? 후후, 새로 산 향수를 용케 맞추셨네요」
+        CASE 1
+
+        CASE 2
+        
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「좋은 냄새다, 라니...칭찬으로 받아들여도 되나요?」
+        CASE 1
+
+        CASE 2
+        
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;베리소프트
+;-------------------------------------------------
+;==================================================
+;접근해 온다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_11
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_11_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_11_1
+;PRINTFORML 「」
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「...너무 가까운게 아니냐고요?」
+            PRINTFORML 「...%사마스터가% 예민한거예요, 전혀 가깝지 않은걸」
+        CASE 1
+
+        CASE 2
+
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「후후...후후후...♥」
+            PRINTFORML 사토리는 실실 웃으며 %마스터의% 옆으로 다가왔다
+        CASE 1
+            PRINTFORML 「아아, 옷에 먼지가 붙어있어요」
+            PRINTFORML 사토리는 먼지를 털어낸다는 핑계로 바로 옆까지 다가왔다
+        CASE 2
+        
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 사토리는 어느새 코 앞까지 다가와 있었다
+            PRINTFORML 그 얼굴은 어딘가 요염함이 배어나오고 있었다
+        CASE 1
+            PRINTFORML 「너무 달라붙은거 아니냐고요?」
+            PRINTFORML 「후후, 정말로 달라붙는게 뭔지 보여드릴까요?」
+            PRINTFORML 사토리는 요염한 미소를 띄우며 도발해왔다
+        CASE 2
+        
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「너무 붙었다...? 그, 그런가요, 조금 허물없이」
+            PRINTFORML 넋놓고 다가오던 사토리는 %마스터의% 마음을 읽곤 흠칫 놀라며 몇 걸음 후진했다
+        CASE 1
+
+        CASE 2
+        
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;웃는 얼굴을 띠운다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_12
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_12_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_12_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	PRINTFORML 아직은 살짝 딱딱하지만, 분명히 사토리의 얼굴은 %마스터를% 바라본채 희미하게 웃고 있었다
+ELSE
+    PRINTFORML 사토리는 어딘가 포근해 보이는 미소를 지어보이고 있다
+ENDIF
+RETURN 1
+
+;==================================================
+;관계를 원한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_13
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_13_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_13_1
+
+;별로 대사가 나올만한 파트는 아님
+SELECTCASE RAND:3
+    CASE 0
+        PRINTFORML 사토리는 살짝 얼굴을 붉히고 있다
+    CASE 1
+    
+    CASE 2
+
+ENDSELECT
+
+RETURN 1
+
+;==================================================
+;몸을 문질러댄다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_14
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_14_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_14_1
+;이것도 채워넣기 어려우니 전부 뜨진 않게
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「...」
+            PRINTFORML 사토리는 묵묵히 옆에 서 있을 뿐이었다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            IF GET_MONTH() == "겨울의 달"
+                IF !CFLAG:4001 || CFLAG:4000
+                    PRINTFORML 「후후...이렇게 추운 겨울이라도, 더 이상 춥지 않네요」
+                ELSE
+                    PRINTFORML 「이렇게 추운 겨울에, 누구씨는 혼자 옆구리에 다른 사람을 끼고 다닌단 거죠」
+                    PRINTFORML 「조금 쓸쓸하네...나도 추운건 마찬가지인데」
+                ENDIF
+            ELSE
+                PRINTFORML 「...조금만 붙어있어도 괜찮을까요?」
+                PRINTFORML 「별다른 이유는 없지만...그냥 옆에 있고 싶은걸요」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            IF GET_MONTH() == "겨울의 달"
+                PRINTFORML 「이번 겨울은 어쩐지 옆구리가 시린걸...누군가 채워주지 않으려나」
+            ELSE
+                PRINTFORML 「...조금만 붙어있어도 괜찮을까요?」
+                PRINTFORML 「별다른 이유는 없지만...그냥 옆에 있고 싶은걸요」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「어딘가 좋은 냄새가...후후후♥ 야릇한 기분인걸요」
+            PRINTFORML 사토리는 %마스터의% 몸에 달라붙었다
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            IF GET_MONTH() == "겨울의 달"
+                PRINTFORML 「왠지 추운걸...조금만 따뜻하게 해주지 않으려나」
+            ELSE
+                PRINTFORML 「...조금만 붙어있어도 괜찮을까나」
+            ENDIF
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;응시해 온다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_15
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_15_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_15_1
+;대사 무, 21, 응시한다랑 너무 겹칠것
+RETURN 1
+
+;==================================================
+;어깨에 턱을 얹어
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_16
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_16_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_16_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...가만히 있어, 이러고 있는게 편하니까, 계속 이러고 있을꺼야」
+            PRINTFORML 되도않는 억지를 부리며 사토리는 %CALLNAME:MASTER%에 기대고 있다
+        CASE 1
+
+    ENDSELECT
+ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후...」
+            IF TALENT:연인
+                PRINTFORML 사토리는 %마스터의% 볼에 가볍게 키스해왔다
+            ELSE
+                PRINTFORML 사토리는 행복해 보이는 표정이다
+            ENDIF
+        CASE 1
+        
+    ENDSELECT
+ELSEIF TALENT:섹프
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「저기, 할 일 없으시면 뭐라도 같이 하지 않으실래요?」
+            PRINTFORML 「이를테면...기분 좋은 일이라던가...후후후...♥」
+        CASE 1
+        
+    ENDSELECT
+ELSE
+    SELECTCASE RAND:2
+        CASE 0
+            ;뭔가 어울리는 느낌을 모르겠다
+        CASE 1
+        
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;소프트
+;-------------------------------------------------
+;==================================================
+;요염한 몸짓
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_20
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_20_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_20_1
+;PRINTFORML 「」
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「아-...어쩐지 더운데...」
+            PRINTFORML 사토리는 어색한 연기로 유혹해오고 있다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「요염하다라, 후후후...좋아하는 사람한테 듣는건 싫진 않네」
+            PRINTFORML 「그래서요? 감상만으로 끝?」
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 사토리는 수치심에 얼굴을 붉히면서도 조금씩 더 과감한 행동을 해 왔다
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「후후후, 유혹하는거 맞아요, 잘 아시면서 왜 아직도 멀뚱히 계시나요?」
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            ;모르겠다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;응시한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_21
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_21_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_21_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...왜 그리 뚫어져라 보고 있는가, 라니...그건...」
+            PRINTFORML 사토리는 쉽사리 대답하지 못하고 있다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...왜 그리 뚫어져라 보고 있는가, 인가요?」
+            PRINTFORML 「후후...사랑하는 사람은, 얼마를 보고 있어도 행복한 법이라구요」
+        CASE 1
+            PRINTFORML 「오늘따라 왜 이리 더 사랑스러운지...♥」
+            PRINTFORML 세 개의 눈이 %마스터를% 뚫어져라 바라보고 있다
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...왜 그리 뚫어져라 보고 있는가, 인가요?」
+            PRINTFORML 「뭐랄까...보고 있으면 마음의 안정이 오니까?」
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「흐으응-...」
+            PRINTFORML 3개의 눈이 이상야릇한 시선으로 %마스터를% 응시해오고 있다 
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...아, 아아, 너무 쳐다보고 있었나...죄송해요」
+            PRINTFORML 넋놓고 %마스터를% 응시하고 있단걸 깨닫곤 얼굴을 붉히며 고개를 숙였다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;몸을 밀착한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_22
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_22_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_22_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...왜 달라붙냐, 인가요?」
+            PRINTFORML 「그래서 싫은가요? 저같은 미소녀와 맞닿는건 어디가서 쉽게 할 수 있는게 아니라고요」
+            PRINTFORML 사토리는 되려 화를 내며 더더욱 달라붙어 왔다
+    ENDSELECT
+ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후후...♥」
+        CASE 1
+            PRINTFORML 「너무 가까워...? 제가 붙는건 싫으신가요?」
+            PRINTFORML 「...역시 싫지는 않으시면서♥ 다 알고 있답니다?」
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「딱히 할 일 없으면, 같이 좋은거 해요, 네?」
+            PRINTFORML 사토리는 전신을 %마스터의% 몸에 문지르며 열띤 한숨을 쉬고 있다
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...너무 달라붙은거 아닌가, 인가요?」
+            PRINTFORML 「저같은 미소녀와 살을 맞닿는건 어디가서 쉽게 할 수 있는게 아니라고요? 오히려 감사해야 하는게 아닐까나...」
+            PRINTFORML 사토리는 되도 않는 억지를 부리며 더더욱 엉겨붙었다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;치마를 넘긴다, 여아나타용?
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_23
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_23_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_23_1
+RETURN 1
+
+;==================================================
+;귀에 숨결을 내뿜는다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_24
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_24_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_24_1
+IF MARK:반발각인 == 3 &&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...뭔가요? 제가 뭐라도 했나요?」
+            PRINTFORML 뻔히 들킨걸 알면서도 모른체 하고 있다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            IF TALENT:키스미경험
+                PRINTFORML 「귀가 약하시네요- 다음번엔 귀를 괴롭혀 볼까나」
+                PRINTFORML 사토리는 히죽히죽 웃고 있다
+            ELSE
+                PRINTFORML 사토리는 되돌아보는 %마스터의% 머리를 끌어안고 기습 키스를 해왔다
+                EXP:MASTER:키스경험 ++
+                EXP:키스경험++
+                PRINTFORML 사토리는 얼굴을 살짝 붉히고 있다
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「아, 뒤돌아봤다...후후후♥」
+            PRINTFORML 뭐가 그리 기쁜지 사토리는 작게 웃음을 띄웠다
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            IF TALENT:키스미경험
+                PRINTFORML 「귀가 약하시네요- 다음번엔 귀를 괴롭혀 볼까나」
+                PRINTFORML 사토리는 히죽히죽 웃고 있다
+            ELSE
+                PRINTFORML 사토리는 되돌아보는 %마스터의% 머리를 끌어안고 기습 키스를 해왔다
+                EXP:MASTER:키스경험 ++
+                EXP:키스경험++
+                PRINTFORML 「방심하면 안되죠...후후♥」
+            ENDIF
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            ;가능한가?
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;엉덩이를 쓰다듬는다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_25
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_25_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_25_1
+;연모계 함락시 할 대사가 딱히 떠오르지 않는다
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...이리 무방비하게 들이댄다면, 조금정도 만져진다는건 감수했단 거죠」
+            PRINTFORML 「정말이지 이이상 최악의 변태가 따로 있을까...」
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후♥ 좋은 엉덩이군요, 이래서야 만져지는건 당연한거겠죠?」
+            PRINTFORML 「전적으로 %사마스터가% 잘못한거라고요♥」
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「아아, 이건 무심코」
+            PRINTFORML 「만지는 느낌이 굉장히 마음에 드는 바람에 무심코 한것 뿐이니까...신경쓰진 마세요」
+            PRINTFORML 사토리는 되도않는 억지를 부리고 있다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;팔에 달라붙어
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_26
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_26_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_26_1
+;PRINTFORML 「」
+IF MARK:반발각인 == 3
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...뭔가요, 갑자기 왜 이러는가 인가요?」
+            IF TALENT:연모
+                PRINTFORML 「가끔씩은 이정돈 할 수도 있는거예요...」
+            ELSE
+                PRINTFORML 「...%사마스터가% 먼저 시작했으니까, 조금 정도는 어울려 드릴까 했는데...싫으면 그만두고요」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 사토리는 느슨한 미소를 지으며 달라붙고 있다
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 사토리는 어딘가 사랑스럽다는 시선을 보내며 달라붙고 있다
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「갑자기 뭐 하는 거냐고요? 음...연인 놀이?」
+            PRINTFORML 「%사마스터가% 그럴 기분 들게 해버렸으니 한동안은 같이 어울려주세요」
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 사토리는 말없이 %마스터의% 팔을 붙잡곤 느슨한 미소를 띄워보이고 있다
+    ENDSELECT
+ENDIF
+RETURN 1
+;==================================================
+;골짜기를 과시한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_27
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_27_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_27_1
+;PRINTFORML 「」
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            IF GET_MONTH() == "여름의 달"
+                PRINTFORML 「아-...뭔가 덥네...」
+                IF !GET_TARGETNUM()
+                    PRINTFORML 대놓고 드러난 가슴을 한손으로 아슬아슬 가리며 덥다는 듯한 시늉을 내고 있다
+                ELSE
+                    PRINTFORML 사토리는 단추를 몇 개 풀고 가슴골을 살짝 드러냈다
+                ENDIF
+            ELSE
+                PRINTFORML 「뭔가 답답한 기분인걸...하아아-...」
+                PRINTFORML 사토리는 단추를 풀고 노골적으로 가슴을 드러내고 있다
+            ENDIF
+        CASE 1
+
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            IF TALENT:가슴사이즈 == 0
+                PRINTFORML 「그래도 이정도면 꽤 있는 편...까진 아닌가?」
+                PRINTFORML 「조금쯤 더 커졌으면 좋겠네」
+            ELSE
+                PRINTFORML 「아...가슴 커진거 생각보다 불편하네」
+                PRINTFORML 「무거워서 상당히 어깨가 부담이란 말이지...응, 좋은건 별로 없고 말야」
+                PRINTFORML 「...그래도 큰 가슴이 좋다고 하시니 어쩔수 없지만」
+            ENDIF
+        CASE 1
+            IF GET_MONTH() == "여름의 달"
+                PRINTFORML 「아-...뭔가 덥네...」
+                IF TALENT:가슴사이즈 > 0
+                    PRINTFORML 「커져서 그런지 속에서 열이 안 빠져나가네...후우-...」
+                ENDIF
+                IF !GET_TARGETNUM()
+                    PRINTFORML 대놓고 드러난 가슴을 \@TALENT:연인 || TALENT:애욕 ? 가릴 생각조차 없이 # 한손으로 아슬아슬 가리며 \@ 덥다는 듯한 시늉을 내고 있다
+                ELSE
+                    PRINTFORML 사토리는 단추를 몇 개 풀고 가슴골을 살짝 드러냈다
+                ENDIF
+            ELSE
+                PRINTFORML 「뭔가 가슴이 답답한 기분인걸...후아-...」
+                PRINTFORML 사토리는 단추를 풀고 노골적으로 가슴을 드러내고 있다
+                PRINTFORML 「...가슴이 신경쓰이나요? 뭐 어떤가요, 다른 사람도 아니고 %MASTERNAME:49%한테 보이는 건데」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「전에 쟀을땐 코이시보다 컸는데, 지금은 어떠려나...」
+        CASE 1
+            PRINTFORML 「그래도 모으면 조금은 있는 편...아닌가?」
+            PRINTFORML 사토리는 가슴을 최대한 모아보려 노력하고 있다
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            IF GET_MONTH() == "여름의 달"
+                PRINTFORML 「아-...뭔가 덥네...」
+                IF !GET_TARGETNUM()
+                    PRINTFORML 대놓고 드러난 가슴을 한손으로 아슬아슬 가리며 덥다는 듯한 시늉을 내고 있다
+                ELSE
+                    PRINTFORML 사토리는 단추를 몇 개 풀고 가슴골을 살짝 드러냈다
+                ENDIF
+            ELSE
+                PRINTFORML 「뭔가 답답한 기분인걸...아-...」
+                PRINTFORML 사토리는 단추를 풀고 노골적으로 가슴을 드러내고 있다
+            ENDIF
+        CASE 1
+            PRINTFORML 「이정도면 그래도 조금은 있는 편 아닐까나...응, 그렇겠지」
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;성희롱
+;-------------------------------------------------
+;==================================================
+;키스
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_30
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_30_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_30_1
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후아...뭔가요? 갑자기 키스 당해서 기분 나쁘신지?」
+            PRINTFORML 「어짜피 기쁘면서 뭘 그리...얌전히 당하기나 하란 말야」
+        CASE 1
+            PRINTFORML 「...뭔가요 그 표정은, 모처럼 어울려 드렸는데」
+            PRINTFORML 「어짜피 %사마스터의% 입술같은거, \@ EXP:MASTER:키스경험 > EXP:키스경험 + 5 ? 닳고 닳은 중고품인데 한 번 대주는게 뭐가 대수라고 # 저 말고 누가 써 줄 일이라도 있나요? 되려 이쪽이 무료봉사 해주는 거라고요 \@」
+            PRINTFORML 사토리는 툴툴대며 다시 입술을 접해왔다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...후후후♥」
+            PRINTFORML 사토리는 잠시 멋쩍은듯 %마스터를% 바라보더니 이내 배시시 웃기 시작했다
+        CASE 1
+            PRINTFORML 「...후후, 좋아합니다, %MASTERNAME:49%♥」
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「아, 아하하...♥ 이건...」
+            PRINTFORML 막상 해놓고도 부끄러운지 얼굴을 새빨갛게 붉히고 있다
+        CASE 1
+            PRINTFORML 「...뭐, 뭔가요, 이건 인사에요 인사, 다른 곳에서 이정도 키스는 인사에 불과하니까...」
+            PRINTFORML 사토리는 얼굴을 새빨갛게 물들인 채 횡설수설 변명하고 있다
+        CASE 2
+            PRINTFORML 「...왜, 왜 그러시죠? 이건 그러니까...그래, 살과 살이 맞붙을뿐인, 단순한 스킨십에 불과한 일이니까...」
+            PRINTFORML 막상 해놓고도 부끄러운건지 얼굴을 새빨갛게 물들인 채 횡설수설 변명하고 있다
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「응츄...후후후♥ 이거 기분 좋아...♥」
+            PRINTFORML 「야한짓 당할때랑은 뭔가 다른, 굉장히 충만해지는 기분인걸」
+        CASE 1
+            PRINTFORML 「가끔은 이런 것도 괜찮을지도 모르겠네♥」
+            PRINTFORML 「...저기, 조금만 더 할까요?」
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...내, 내가 뭘 한거람...으으...」
+            PRINTFORML 사토리는 얼굴을 붉히고 있다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;뒤로부터 안겨든다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_31
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_31_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_31_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...뒤 돌아보지 마」
+            PRINTFORML 「그냥...가만히 있어줘」
+            PRINTFORML 사토리는 묵묵히 %마스터를% 안고 있다
+    ENDSELECT
+ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...♥」
+            PRINTFORML 사토리는 말없이 %마스터를% 끌어안을 뿐이었다
+        CASE 1
+            PRINTFORML 「...좋아해, 정말로...좋아해」
+            IF CFLAG:4001 && !CFLAG:4000
+                PRINTFORML 「...%MASTERNAME:40%도 좋아하는지는 잘 모르겠지만」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후...이러고 있으면 마치 연인같네요」
+            IF TALENT:애욕
+                PRINTFORML 「...진짜였으면 더 좋겠지만」
+                PRINTFORML 사토리는 들릴락 말락한 소리로 중얼거렸다
+            ENDIF
+    ENDSELECT
+ELSE
+    ;될까 싶지만
+    PRINTFORML 「...과연, 이러고 있으면 굉장히 안정감 있네요」
+    PRINTFORML 「길거리의 연인들이 왜 하는지 조금은 이해가 갈지도...」
+ENDIF
+RETURN 1
+
+;==================================================
+;앞에서 안겨든다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_32
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_32_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_32_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...조금만 어울려줘, 잠깐이면 되니까」
+            PRINTFORML 사토리는 %마스터를% 어거지를 껴안곤 말없이 있을 뿐이었다
+        CASE 1
+            PRINTFORML 「가만히 있어, 조금이면 되니까...」
+            PRINTFORML 사토리는 %마스터를% 껴안은채 한참을 말없이 있을 뿐이었다
+    ENDSELECT
+ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...♥」
+            PRINTFORML 사토리는 말없이 %마스터를% 끌어안을 뿐이었다
+        CASE 1
+            PRINTFORML 「...좋아해, 정말로...좋아해」
+            IF CFLAG:4001 && !CFLAG:4000
+                PRINTFORML 「...%MASTERNAME:40%도 좋아하는지는 잘 모르겠지만」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후...옳지옳지, 귀여워라」
+            PRINTFORML 「...랄까나, 뭔가 부끄러운걸」
+            PRINTFORML 사토리는 큭큭 웃었다
+    ENDSELECT
+ELSE
+    ;될까 싶지만
+    PRINTFORML 「뭐랄까, 조금 기분 좋은거 같기도」
+ENDIF
+RETURN 1
+
+;==================================================
+;가슴을 비비게 한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_33
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_33_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_33_1
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...뭐, 뭔가요, 기껏 만져주게 해줬더니 멀뚱멀뚱...」
+            PRINTFORML 「적어도 어떻다던가 말이라도 해보란 말야...」
+            PRINTFORML 사토리는 뾰로통하게 쏘아붙였다
+        CASE 1
+            PRINTFORML 「이, 이건...그러니까...」
+            PRINTFORML 「아무튼 %사마스터가% 잘못한거야...자꾸 야한 생각을...으으으...나도 덩달아 이상해지게 하고...」
+            PRINTFORML 사토리는 횡설수설 변명하고 있다
+            PRINTFORML 그녀의 서드아이는 이미 한계까지 흥분해서 %마스터를% 제대로 바라보지도 못하고 있었다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「...어떤가요? 제 가슴...기분 좋죠?」
+            PRINTFORML 「제 가슴은 %MASTERNAME:49%꺼니까, 내키는대로 마음껏 만져도 좋아요...후후후♥」
+            PRINTFORML 사토리는 요염한 미소를 지어보이고 있다
+            IF TALENT:모유체질
+                PRINTFORML %마스터의% 손바닥에 약간의 끈적함이 느껴진다...
+            ENDIF
+        CASE 1
+            PRINTFORML 「뭔가 심장이 콩닥콩닥 거리는데, 어째설까요...」
+            PRINTFORML 사토리는 %마스터의% 손을 가슴 사이에 끌어안고 있다
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「이, 이건 그러니까...」
+            PRINTFORML 「...우으으」
+            PRINTFORML 뒤늦게 무슨짓을 했는지 깨달은 사토리는 뭐라 변명도 못하고 얼굴을 붉힐 뿐이었다
+        CASE 1
+            PRINTFORML 「어떤가요...? 저, 지금 왠지 심장이 많이 콩닥거려서...」
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「어떤가요? 좀 더 만지고 싶다던가 그런가요?...후후후♥」
+            PRINTFORML 「기분좋게만 해준다면 내키는대로 만져도 되는데♥」
+            PRINTFORML 사토리는 귓가에 작게 속삭여왔다
+        CASE 1
+            PRINTFORML 「꺄아♥ 변태씨♥」
+            PRINTFORML 「이런일은 침대에서만 해주세요♥」
+            PRINTFORML 사토리는 헤실헤실 웃으며 자기 가슴을 주무르게 하고 있다
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「어...어라, 내가 무슨...」
+            PRINTFORML 사토리는 황급히 손을 떼어놓았다
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;고간을 만지작거린다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_34
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_34_1
+RETURN RESULT
+;PRINTFORML 「」
+;얘도 연모계에서 딱히 할 말이...
+@M_KOJO_MESSAGE_COUNTER_K49_34_1
+IF MARK:반발각인 == 3 && !TALENT:연인
+    IF CFLAG:우후후
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「......」
+                PRINTFORML 사토리는 부끄러운지 얼굴을 붉힌채 조심조심 %마스터의% 다리 사이를 더듬거리고 있을 뿐이었다
+            CASE 1
+                PRINTFORML 「아으으...」
+                PRINTFORML 사토리는 부끄러운지 미적미적 %마스터를% 더듬고 있다
+        ENDSELECT
+    ELSE
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「...소, 손이 멋대로...」
+                PRINTFORML 「이런거 안되는데...손을 못떼겠어...」
+            CASE 1
+                PRINTFORML 「뭐, 뭐야 그 표정은...」
+                PRINTFORML 「...기분 좋게 해주고 있잖아...좋은게 좋은거니까 얌전히 당해달란 말야...」
+                PRINTFORML 흥분한 사토리는 횡설수설 변명하며 %마스터의% 몸을 더듬고 있다
+        ENDSELECT
+    ENDIF
+ELSEIF TALENT:연인
+	SELECTCASE RAND:2
+        CASE 0
+            
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모
+	SELECTCASE RAND:2
+        CASE 0
+            
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「말랑말랑...후후후, 만질수록 중독성 있는걸♥」
+            IF HAS_PENIS(MASTER)
+                PRINTFORML 「...어라라, 단단해지고 있어...혹시 만져져서 흥분한건가요?」
+                BASE:MASTER:발기 = MIN(MAXBASE:MASTER:발기,BASE:MASTER:발기 + 100)
+            ELSE
+                PRINTFORML 「...어라라, 축축해지고 있어...혹시 만져져서 흥분한건가요?」
+                PALAM:MASTER:윤활 = MIN(3000,PALAM:MASTER:윤활 + 100)
+            ENDIF
+        CASE 1
+            PRINTFORML 「후후후...기분 좋으신가요?」
+            IF CFLAG:우후후
+                PRINTFORML 「그러면 %MASTERNAME:49%도 기분좋은 일 해주세요♥」
+            ELSE
+                PRINTFORML 「저기, 그러면 지금 해버릴까요? 응?」
+                PRINTFORML 사토리는 요염한 시선을 던져오고 있다
+            ENDIF
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「뭔가 말랑말랑한게 귀여울지도...?」
+            IF HAS_PENIS(MASTER)
+                PRINTFORML 「...어째 만질수록 조금 단단해 지는 느낌인데...후후, 재밌네요」
+                BASE:MASTER:발기 = MIN(MAXBASE:MASTER:발기,BASE:MASTER:발기 + 100)
+            ELSE
+                PRINTFORML 「...어째 만질수록 조금 축축해 지는 느낌인데...후후, 재밌네요」
+                PALAM:MASTER:윤활 = MIN(3000,PALAM:MASTER:윤활 + 100)
+            ENDIF
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;==================================================
+;치마 속을 드러낸다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_35
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_35_1
+RETURN RESULT
+
+;정액 있는채로 할때 대사가 애널 구분 안하고 있다, 고쳐야 하는데...
+
+;PRINTFORML 「」
+@M_KOJO_MESSAGE_COUNTER_K49_35_1
+IF MARK:반발각인 == 3 && !TALENT:연인
+	IF TEQUIP:TARGET:50 == MASTER ; 박고있다
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「......」
+                PRINTFORML 사토리는 얼굴을 붉히면서 결합부를 보이고 있다...
+            CASE 1
+                PRINTFORML 「이...이렇게 박히고 있구나...야해라...」
+                PRINTFORML 서드아이로 %마스터를% 통해 자신의 결합부를 보는 사토리는 얼굴을 새빨갛게 물들이고 있었다
+        ENDSELECT
+    ELSEIF 충전율(TARGET, 1) > 100 || 충전율(TARGET, 2) > 100 ;정액 잔뜩
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「이...이렇게나 많이...」
+                IF EXP:출산경험 || CFLAG:임신경과일수
+                    PRINTFORML 「이 정도면 또 생겨버릴지도...」
+                ELSE
+                    PRINTFORML 「이정도면 무조건 생겨버려...아아...」
+                ENDIF
+                PRINTFORML 사토리는 흠칫흠칫 떨고 있다
+            CASE 1
+                PRINTFORML 「배 안에서 넘쳐 흘러...보여?」
+                PRINTFORML 「이게 다 %사마스터가% 싼거라고...그렇게나 좋았던가야?」
+        ENDSELECT
+    ELSEIF 충전율(TARGET, 1) > 50 || 충전율(TARGET, 2) > 50 ; 정액 좀 들음
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「안에서 넘치고 있어...얼마나 싼거야 이 변태」
+                IF EXP:출산경험 || CFLAG:임신경과일수
+                    PRINTFORML 「또 생기면 어쩌려고 이러는지 참...」
+                ELSE
+                    PRINTFORML 「...생기면 어쩌려고」
+                ENDIF
+                PRINTFORML 사토리는 흠칫흠칫 떨고 있다
+            CASE 1
+                PRINTFORML 「정액이 계속 새나오고 있어...」
+                PRINTFORML 「어떡할거야 이거, 안 멈춘단 말야」
+        ENDSELECT
+    ELSEIF !EQUIP:하반신속옷2 && !CFLAG:우후후 ;노팬티 + 우후후 아님
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「우으...」
+                PRINTFORML 사토리는 얼굴을 새빨갛게 물들인 채 실오라기 하나 없는 자신의\@ HAS_PENIS(TARGET) ? 자지# 보지\@를 드러내고 있다
+            CASE 1
+                PRINTFORML 「이...이런 거 보면 기쁜거지...? 이 변태...」
+                PRINTFORML 사토리는 부끄러움에 얼굴을 붉히면서도 도발적인 표정으로 %마스터를% 향해 \@ HAS_PENIS(TARGET) ? 자지# 보지\@를 보이고 있다
+        ENDSELECT
+    ELSE
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「자, 자아...이런거 좋아하지...? 얼른 해버리라고 이 변태...」
+                    PRINTFORML 사토리는 부끄러움에 얼굴을 붉히면서도 도발적인 표정을 지어보이고 있다
+                CASE 1
+                    PRINTFORML 「읏...보, 보고만 있을거야...?」
+                    PRINTFORML 「나도...부끄러운건 있다고...얼른 하란 말야...」
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「이...이런거 보면 기쁜거지...? 변태같으니라고...♥」
+                    PRINTFORML 사토리는 수치심에 얼굴을 붉히면서도 도발적인 표정으로 %마스터를% 바라보고 있다
+                CASE 1
+                    PRINTFORML 「...자, 잘 봐둬...다신 못 볼 장면이니까...이번만 특별히 보게 해주는거니까...」
+                    PRINTFORML 사토리는 얼굴을 새빨갛게 물들이고 있다
+            ENDSELECT
+        ENDIF
+    ENDIF
+ELSEIF TALENT:연인
+	IF TEQUIP:TARGET:50 == MASTER ; 박고있다
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「바, 박히고 있는 걸 보고 있으니까...왠지 부끄러워...」
+            CASE 1
+                PRINTFORML 「보, 보여...? %사마스터의% 자지, 내 보지에 제대로 푹푹 박히고 있어...♥」
+                PRINTFORML 「앗♥ 끄, 끝까지 들어왔어...기분...좋아♥」
+                PRINTFORML 사토리는 쾌락과 수치심이 뒤섞인 복잡한 표정으로 %마스터를% 응시하고 있다
+        ENDSELECT
+    ELSEIF 충전율(TARGET, 1) > 100 || 충전율(TARGET, 2) > 100 ;정액 잔뜩
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「뱃속이 정액으로 가득...이건 무조건 생겨버려...」
+                    IF CFLAG:임신경과일수
+                        PRINTFORML 「두명이 들어갈 자리는 없단 말야...으으...」
+                    ELSE
+                        PRINTFORML 「...싫은건, 아니지만」
+                    ENDIF
+                    PRINTFORML 흠칫흠칫 떠는 사토리의 다리 사이에서 정액이 한도끝도 없이 넘쳐흐르고 있다
+                CASE 1
+                    PRINTFORML 「계, 계속 나오는걸...얼마나 싼거야...」
+                    PRINTFORML 「그렇게 제 안이 기분 좋으셨나요...? 그렇다면 뭔가 기쁘지만...」
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「아, 아직도 나와...정액 안 멈춰...」
+                    PRINTFORML 「이거 어쩔거예요, 가는곳마다 정액길이 생긴다구요」
+                CASE 1
+                    PRINTFORML 「얼마나 싼 거예요...아직도 안 멈춘다고요?」
+                    PRINTFORML 「옷이며 바닥이며 정액 범벅이 되버리잖아요...」
+                    PRINTFORML 사토리는 정액이 울컥울컥 쏟아지는 보지를 보이며 타박해왔다
+            ENDSELECT
+        ENDIF
+    ELSEIF 충전율(TARGET, 1) > 50 || 충전율(TARGET, 2) > 50 ; 정액 좀 들음
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「보이시나요? 배가 정액으로 가득하다구요」
+                PRINTFORML 사토리는 정액이 흘러나오는 다리 사이를 과시하고 있다
+            CASE 1
+                PRINTFORML 「굉장해...아직도 나와...♥」
+                PRINTFORML 「후후, 역시 저랑 하는게 제일 기분 좋죠?」
+                PRINTFORML 사토리는 흘러나오는 정액을 사랑스럽다는 듯이 바라보고 있다
+        ENDSELECT
+    ELSEIF !EQUIP:하반신속옷2 && !CFLAG:우후후 ;노팬티 + 우후후 아님
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「후후후...♥ 몰래 보세요♥」
+                PRINTFORML 사토리는 얼굴을 붉힌채 자신의 실오라기 하나 없는\@ HAS_PENIS(TARGET) ? 자지# 보지\@를 과시하고 있다
+            CASE 1
+                IF EYEWITNESS()
+                    PRINTFORML 「이거...왠지 두근두근해서 조금 젖어버릴지도?」
+                    PRINTFORML 「...아직까지 안 들켰으니까, 조금 더 해도 괜찮겠지...♥」
+                    SOURCE:치정 += 50
+                ELSE
+                    PRINTFORML 「이러고 남들 앞에 가면...후후후, 어떻게 되려나」
+                    PRINTFORML 사토리는 허전한 아랫도리를 과시하며 얼굴을 붉혔다
+                ENDIF
+        ENDSELECT
+    ELSE
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「와주세요♥」
+                CASE 1
+                    PRINTFORML 「자, 여기에요, 얼른 기분 좋은일 해주세요...♥」
+                    PRINTFORML 사토리는 치마를 팔랑팔랑 흔들고 있다
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「이러면 좋아하시려나...남자들은 대개 좋아한다는거 같은데」
+                    PRINTFORML 사토리는 쭈뼛쭈뼛 치마를 들쳐보이고 있다
+                CASE 1
+                    PRINTFORML 「새 팬티, 어떤가요?」
+                    PRINTFORML 「좀 더 예쁜게 좋으려나...」
+                    PRINTFORML 사토리는 태연히 속옷을 과시해오고 있다
+            ENDSELECT
+        ENDIF
+    ENDIF
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	IF TEQUIP:TARGET:50 == MASTER ; 박고있다
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「바, 박히고 있는 걸 보고 있으니까...왠지 부끄러워...」
+            CASE 1
+                PRINTFORML 「보, 보이시나요...? %사마스터의% 자지, 내 보지에 제대로 푹푹 박히고 있어...♥」
+                PRINTFORML 「앗♥ 끄, 끝까지 들어왔어...기분...좋아♥」
+                PRINTFORML 사토리는 쾌락과 수치심이 뒤섞인 복잡한 표정으로 %마스터를% 응시하고 있다
+        ENDSELECT
+    ELSEIF 충전율(TARGET, 1) > 50 || 충전율(TARGET, 2) > 50 ; 정액 좀 들음
+        IF CFLAG:생해금 || TCVAR:피임약
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「굉장해...안에서 계속 흘러나와...♥」
+                    IF CFLAG:임신경과일수
+                        PRINTFORML 「분명 뱃 속의 아이도 사랑받아서 기뻐할거예요...♥」
+                    ELSE
+                        PRINTFORML 「...이거, 임신해버리는건 아닐까나」
+                    ENDIF
+                CASE 1
+                    PRINTFORML 「배 안이 따스해...후후♥」
+                    PRINTFORML 「굉장히 기뻐요...♥」
+            ENDSELECT
+        ELSE
+            PRINTFORML 「...계속 이렇게 정액이 콸콸 나오고 있어요」
+            PRINTFORML 「아직 아이는...마음의 준비가 안 됐는데」
+        ENDIF
+    ELSEIF !EQUIP:하반신속옷2 && !CFLAG:우후후 ;노팬티 + 우후후 아님
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「이, 이런거 보면 기뻐한다길래...」
+                PRINTFORML 「저기, 어떤가요...?」
+                PRINTFORML 사토리는 얼굴을 새빨갛게 물들이고 있다
+            CASE 1
+                PRINTFORML 「...저기, 부끄러우니까 뭐라도 말해주세요...」
+                PRINTFORML 「일부러 이러고 있는데...우으...」
+                PRINTFORML 사토리는 얼굴을 붉히고 있다
+        ENDSELECT
+    ELSE
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「더, 더는 못참겠어...만져줘...」
+                CASE 1
+                    PRINTFORML 「하아...하아...♥ 저기, 보고만 있을건가요...?」
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「그...저기, 뭐라도 말 좀...」
+                    PRINTFORML 사토리는 얼굴을 붉히고 있다
+                CASE 1
+                    PRINTFORML 「...저, 저기, 보고만 있을건가요...?」
+                    PRINTFORML 「어디론가 가서...응?」
+            ENDSELECT
+        ENDIF
+    ENDIF
+ELSEIF TALENT:섹프
+	IF TEQUIP:TARGET:50 == MASTER ; 박고있다
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「%사마스터의% 자지...쑤컹쑤컹 들어오고 있어...♥」
+                PRINTFORML 「직접 보니까 뭔가 더 흥분되는걸...♥」
+            CASE 1
+                PRINTFORML 「끄, 끝까지 들어왔어...♥ 후후♥」
+                PRINTFORML 「이정도까지 들어온 걸까나...♥」
+                PRINTFORML 사토리는 배 위에서 자지의 높이를 짐작하고 있다
+        ENDSELECT
+    ELSEIF 충전율(TARGET, 1) > 50 || 충전율(TARGET, 2) > 50 ; 정액 좀 들음
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「배 안이 정액으로 잔뜩...♥ 뭔가 충만해지는 기분인걸요」
+                    PRINTFORML 「...그치만 이렇게나 새어나와 버렸으니까...또 얼른 채워주세요♥」
+                CASE 1
+                    PRINTFORML 「와아...잔뜩 나왔네...♥」
+                    PRINTFORML 「그래도 아직...조금 더 하실수 있겠죠? 후후후♥」
+                    PRINTFORML 사토리는 녹아내린 표정으로 %마스터를% 응시해오고 있다
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「배 안이 정액으로 가득찬 거 같아...」
+                    PRINTFORML 「잔뜩 나왔는데 아직도 빵빵해...♥」
+                    PRINTFORML 사토리는 느슨한 미소를 띄며 흘러넘치는 정액을 과시하고 있다
+                CASE 1
+                    PRINTFORML 「정말, 너무 많이 쌌다구요」
+                    PRINTFORML 「계속 흘러서 곤란하단 말야...으으...」
+                    PRINTFORML 울컥울컥 쏟아져 나오는 정액이 사토리의 매끈한 다리를 타고 주르륵 흘러나오고 있었다
+            ENDSELECT
+        ENDIF
+    ELSEIF !EQUIP:하반신속옷2 && !CFLAG:우후후 ;노팬티 + 우후후 아님
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「안 입으니 시원하고 좋네요」
+                PRINTFORML 「그치만 자꾸 바람이 닿으니까, 뭔가 계-속 흥분된단 말이죠」
+                PRINTFORML 「어떻게 해야 좋으려나...♥」
+                PRINTFORML 사토리는 헤실헤실 웃으며 달라붙어 왔다
+            CASE 1
+                PRINTFORML 「이런거 좋아하시려나...후후후♥」
+                PRINTFORML 사토리는 상기된 얼굴로 매끈한 보지둔덕을 과시해왔다
+        ENDSELECT
+    ELSE
+        IF CFLAG:우후후
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「자아, 어서요...더 이상은 참을수 없으니까...♥」
+                CASE 1
+                    PRINTFORML 「후후, 얼른 와주세요♥」
+                    PRINTFORML 사토리는 거친 숨을 몰아쉬며 치마를 들추고 있다
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「후후후...♥ 이건 특별 서비스♥」
+                    PRINTFORML 「좀 더 보고 싶어? 그렇다면 어디 조용한 곳으로 가서...♥」
+                    PRINTFORML 사토리는 히죽히죽 웃으며 %마스터의% 팔을 잡아당기고 있다
+                CASE 1
+                    PRINTFORML 「이런거 좋아하시죠? 변태씨♥」
+                    PRINTFORML 「조금만 더 서비스해줘? 우후후...그렇다면♥」
+                    PRINTFORML 사토리는 살며시 팬티를 제껴 남들몰래 새하얀 보지를 보여왔다
+                    PRINTFORML 「이 뒤는, 나중에 침대 위에서♥」
+            ENDSELECT
+        ENDIF
+    ENDIF
+ELSE
+    ;별로 볼 일 있나?
+	IF TEQUIP:TARGET:50 == MASTER ; 박고있다
+        PRINTFORML 「우으...」
+        PRINTFORML 사토리는 얼굴을 붉혔다
+    ELSEIF 충전율(TARGET, 1) > 50 || 충전율(TARGET, 2) > 50 ; 정액 좀 들음
+        IF CFLAG:우후후
+            PRINTFORML 「아아...내 안에 이렇게나...」
+            PRINTFORML 「...묘한, 기분인걸」
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「아...정말이지, 아직도 나오잖아」
+                    PRINTFORML 「이렇게나 나온다면 조금 곤란한데...」
+                CASE 1
+                    PRINTFORML 「아직도 나오고 있어...도대체 얼마나 싼건가요...」
+                    PRINTFORML 사토리는 쓴 웃음을 지으며 다리 사이로 울컥울컥 흘러나오는 정액을 가르켰다
+            ENDSELECT
+        ENDIF
+    ELSEIF !EQUIP:하반신속옷2 && !CFLAG:우후후 ;노팬티 + 우후후 아님
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORML 「...이런거 보면 금방 흥분해서 덮쳐든다던가, 그런줄 알았는데」
+                PRINTFORML 사토리는 입술을 삐죽였다
+            CASE 1
+                PRINTFORML 「...그, 뭐라도 말 좀 해보세요」
+                PRINTFORML 「이런거 까지 보여주는데...조금 정도는 상대해달라고」
+        ENDSELECT
+    ELSE
+        IF CFLAG:우후후
+            PRINTFORML 「이, 이러면 좋아한다고 했는데...」
+            PRINTFORML 「...우으으」
+            PRINTFORML 사토리는 얼굴을 붉혔다
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORML 「...이러면 기뻐 한다고 들었는데...아닌가?」
+                    PRINTFORML 「아니면 팬티 정도론 성에 차지 않는단 걸까나...」
+                CASE 1
+                    PRINTFORML 「...그, 뭐라도 말 좀...」
+                    PRINTFORML 「부끄럽단 말야...」
+            ENDSELECT
+        ENDIF
+    ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;뒤로부터 가슴을 만지작 만지작 여/후타 전용, 생략
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_36
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_36_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_36_1
+RETURN 1
+
+;==================================================
+;엿강탈
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_39
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_39_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_39_1
+
+IF TALENT:섹프 || TALENT:애욕
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORML 「후후, 그렇게 무방비하게 있으시면 안된다구요?」
+            PRINTFORML 「도로 가져가고 싶으시다면...가져가 보시던가요?」
+            PRINTFORML 사토리는 입에 사탕을 문 채 도발적인 시선을 보내오고 있다
+            PRINTFORML [0] 도로 빼앗는다
+            PRINTFORML [1] 그냥 준다
+            INPUT
+            IF RESULT == 0
+                PRINTFORML 「응읏♥ 응응응...♥ 쪽♥」
+                PRINTFORML 사토리의 입술을 탐하며 입 안의 사탕을 혀로 가로채왔다
+                PRINTFORML 엿을 빼앗기면서도 어쩐지 사토리는 기뻐보이는 표정이다
+                EXP:MASTER:키스경험 ++
+                EXP:키스경험 ++
+            ELSE
+                PRINTFORML 「어라라, 싱겁게」
+                PRINTFORML 「뭐어 그럼 감사히♥」
+            ENDIF
+        CASE 1
+
+    ENDSELECT
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;애원
+;-------------------------------------------------
+;==================================================
+;정상위V애원
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_41
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_41_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_41_1
+RETURN 1
+
+;==================================================
+;정상위V애원2
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_43
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_43_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_43_1
+RETURN 1
+
+;==================================================
+;후배위A애원
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_44
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_44_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_44_1
+RETURN 1
+
+;-------------------------------------------------
+;애무
+;-------------------------------------------------
+;==================================================
+;수음
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_50
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_50_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_50_1
+RETURN 1
+
+;==================================================
+;펠라치오
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_51
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_51_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_51_1
+RETURN 1
+
+;==================================================
+;스마타
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_52
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_52_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_52_1
+RETURN 1
+
+;==================================================
+;파이즈리
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_53
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_53_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_53_1
+RETURN 1
+
+;==================================================
+;풋잡
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_54
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_54_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_54_1
+RETURN 1
+
+;==================================================
+;애널애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_55
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_55_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_55_1
+RETURN 1
+
+;==================================================
+;애널핥기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_56
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_56_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_56_1
+RETURN 1
+
+;==================================================
+;손가락挿入
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_57
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_57_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_57_1
+RETURN 1
+
+;==================================================
+;가슴애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_58
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_58_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_58_1
+RETURN 1
+
+;==================================================
+;유두빨기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_59
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_59_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_59_1
+RETURN 1
+
+;==================================================
+;딥키스
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_60
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_60_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_60_1
+RETURN 1
+
+
+;-------------------------------------------------
+;봉사
+;-------------------------------------------------
+;==================================================
+;커닐링구스강제
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_70
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_70_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_70_1
+RETURN 1
+
+;==================================================
+;펠라치오강제
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_71
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_71_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_71_1
+RETURN 1
+
+;==================================================
+;애널봉사
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_72
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_72_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_72_1
+RETURN 1
+
+;==================================================
+;파후파후
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_73
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_73_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_73_1
+RETURN 1
+
+;==================================================
+;젖맞대기
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_74
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_74_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_74_1
+RETURN 1
+
+;==================================================
+;타와시아라이
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_75
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_75_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_75_1
+RETURN 1
+
+;==================================================
+;강제보지애무
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_76
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_76_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_76_1
+RETURN 1
+
+;==================================================
+;젖을 빨게 한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_77
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_77_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_77_1
+RETURN 1
+
+;-------------------------------------------------
+;성교
+;-------------------------------------------------
+;==================================================
+;삽입당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_80
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_80_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_80_1
+RETURN 1
+
+;==================================================
+;V삽입한다（TARGET이 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_85
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_85_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_85_1
+RETURN 1
+
+;==================================================
+;정말좋아 hold
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_86
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_86_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_86_1
+RETURN 1
+
+;==================================================
+;A삽입한다（TARGET이 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_87
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_87_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_87_1
+RETURN 1
+
+;==================================================
+;V허리흔들기（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_88
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_88_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_88_1
+RETURN 1
+
+;==================================================
+;A허리흔들기（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_89
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_89_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_89_1
+RETURN 1
+
+;==================================================
+;A삽입당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_90
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_90_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_90_1
+RETURN 1
+
+;==================================================
+;이라마치오당한다（MASTER가 당한다）
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_91
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_91_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_91_1
+RETURN 1
+
+;==================================================
+;애널개발허가를 요구한다
+;==================================================
+@M_KOJO_MESSAGE_COUNTER_K49_92
+CALL EVENT_COUNTER_MESSAGE
+CALL M_KOJO_MESSAGE_COUNTER_K49_92_1
+RETURN RESULT
+@M_KOJO_MESSAGE_COUNTER_K49_92_1
+RETURN 1
+
+;-------------------------------------------------
+;우후후 카운터
+;-------------------------------------------------
+;아직

@@ -1,0 +1,41 @@
+﻿#DEFINE 사마스터는 조사처리(MASTERNAME:49,"는")
+#DEFINE 사마스터가 조사처리(MASTERNAME:49,"이")
+#DEFINE 사마스터를 조사처리(MASTERNAME:49,"을")
+#DEFINE 사마스터와 조사처리(MASTERNAME:49,"과")
+#DEFINE 사마스터로 조사처리(MASTERNAME:49,"로")
+#DEFINE 사마스터랑 조사처리(MASTERNAME:49,"랑")
+#DEFINE 사마스터며 조사처리(MASTERNAME:49,"며")
+#DEFINE 사마스터고 조사처리(MASTERNAME:49,"고")
+#DEFINE 사마스터라 조사처리(MASTERNAME:49,"라")
+#DEFINE 사마스터다 조사처리(MASTERNAME:49,"다")
+#DEFINE 사마스터였 조사처리(MASTERNAME:49,"였")
+#DEFINE 사마스터여 조사처리(MASTERNAME:49,"여")
+#DEFINE 사마스터야 조사처리(MASTERNAME:49,"야")
+#DEFINE 사마스터나 조사처리(MASTERNAME:49,"이나")
+#DEFINE 사마스터면 조사처리(MASTERNAME:49,"이면")
+#DEFINE 사마스터의 조사처리(MASTERNAME:49,"의")
+#DEFINE 사마스터에게 조사처리(MASTERNAME:49,"에게")
+#DIM SAVEDATA 사토리V경험
+#DIM SAVEDATA 사토리A경험
+#DIM SAVEDATA 코이시V경험
+#DIM SAVEDATA 코이시A경험
+#DIM SAVEDATA 오린V경험
+#DIM SAVEDATA 오린A경험
+#DIM SAVEDATA 오쿠V경험
+#DIM SAVEDATA 오쿠A경험
+
+#DIM SAVEDATA ST_대사플래그,100
+;0 - 방으로 데려가려함에서 연계되는 대사용
+;1 - 플레이어와 한 그날의 식사 시간
+;2 - 플레이어와 한 그날의 마지막 식사의 평가
+;3 - 약 탄 차 첫회
+;4 - 주택거주 허가 신청 마지막날
+;5 - 생활능력무 상태로 고백한 횟수
+#DIMS ST_식사이름
+
+#DIM ST_고백정보,4
+;장소,달,날,날씨
+
+#DIM ST_시간정지
+;위치
+#DIM ST_전회시간정지

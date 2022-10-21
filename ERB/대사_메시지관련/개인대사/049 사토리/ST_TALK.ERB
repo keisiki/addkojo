@@ -1,0 +1,2964 @@
+﻿;===========================================
+;사토리 전용 회화 함수
+;
+;커맨드 파일의 길이가 너무 길어지면 디버그등에 애로사항이 크니까, 별로 복잡한 기능을 쓰지 않는 회화는 이쪽에 분리시켜둔다
+;도레미 구상의 제조기법을 참고하여서, 여러 대사함수를 만들어두고 어울리는 대사함수를 로드하는 방식으로
+;===========================================
+
+;순정TW에선 반발각인 3는 대화를 못하므로 고려를 하지 않아도 좋다
+;하지만 텍붕이 대응을 하려면 있는게 좋겠지, 그리고 회화 패턴을 다른곳에서 유용할수도 있으니까
+;그런고로 기본 대사를 만들고 나서 따로 반발각인 대사를 따로 다른 함수로 만들어 놓는다
+;각 패턴마다 최소 두줄, 기왕이면 3줄, 많으면 5줄까지도 가 보자
+;그리고 최소 40패턴은 넣읍시다
+
+[SKIPSTART]
+;SUMIKOIMI ROOM이 없는 맵도 있지만 언젠가 패치로 추가될수 있으므로
+SELECTCASE MAIN_MAP
+    CASE 0
+        ;신사
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 1
+        ;절
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 2
+        ;마을
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 3
+        ;홍마관
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 4
+        ;죽림
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 5
+        ;마법의 숲
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 6
+        ;삼도천
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 7
+        ;산록
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 8
+        ;산정
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 9
+        ;지저
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASE 10
+        ;달
+        IF FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+    CASEELSE
+        ;아마도 주택
+        IF !(저택거주:[[사토리]]:0)&&FLAG:더부살이캐릭터 != 49
+
+        ELSE
+            
+        ENDIF
+ENDSELECT
+[SKIPEND]
+
+@ST_통상회화
+#DIM 이전대화, 5
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 55
+;이 패턴에서는 통상적인 대화를 합니다
+;함락계마다 변화 없음, 넣으려면 넣을수도 있긴 하지만 뭐...
+
+;PRINTFORMW 「」
+;일단은 나오는 만큼만 잡아두자
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1 , 이전대화:2 , 이전대화:3 , 이전대화:4)
+이전대화:4 = 이전대화:3
+이전대화:3 = 이전대화:2
+이전대화:2 = 이전대화:1
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+SELECTCASE 대화선택
+    CASE 0
+        IF !(저택거주:[[사토리]]:0)&&FLAG:더부살이캐릭터 != 49
+            PRINTFORMW 「가끔 살다보면 지저 밖에서 살고 싶다는 생각도 들어요」
+            PRINTFORMW 「...주로 오니들이 문 앞에 토해놨을때 말이죠」
+        ELSE
+            PRINTFORMW 「지저에서 나오니 좋은건 하나 있네요」
+            PRINTFORMW 「...밤마다 난리치는 오니들이 없다는거?」
+        ENDIF
+        PRINTFORMW 사토리는 씁쓸하게 웃어보였다    
+    CASE 1
+        PRINTFORMW 「코이시는 늘상 밖으로 쏘다니곤 했죠」
+        PRINTFORMW 「그래도 요즘엔 조금 자중해주는거 같긴 하지만...」
+        PRINTFORMW 「어쩔때는 두어달정도 실종된적도 있다니깐요?」
+        IF CFLAG:38:현재위치 == CFLAG:현재위치
+            PRINTFORMW 『에, 그랬던가?』
+            PRINTFORMW 코이시는 고개를 갸웃거리고 있다
+        ENDIF
+    CASE 2
+        PRINTFORMW 「솔직히 지령전은 조금 지저분 하죠...」
+        PRINTFORMW 「충동적으로 애완동물을 늘려버려서 그런걸까나」
+        PRINTFORMW 「치워도치워도 금세 털투성이에, 먼지가 풀풀...」
+        PRINTFORMW 사토리는 투덜거려왔다
+    CASE 3
+        SELECTCASE MAIN_MAP
+            CASE 0
+                ;신사
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「요즘 신사쪽은 어떤가요?」
+                    PRINTFORMW 「지저는 원체 소식이 느리니 뭔 일이 있어도 잘 모르거든요」
+                    PRINTFORMW 「...오린한텐 툇마루에서 조는 기억뿐이고」
+                ELSE
+                    PRINTFORMW 「여기서 사는것도 나름 괜찮네요」
+                    PRINTFORMW 「...뭐어, 참배객이 없는게 제 탓은 아니겠죠」
+                    PRINTFORMW 「여기야 원래부터 요괴신사잖아요?」
+                    PRINTFORMW 사토리는 키득키득거리며 말해왔다
+                ENDIF
+            CASE 1
+                ;절
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「그나저나 절에선 어떤 일이 있었나요?」
+                    PRINTFORMW 「가끔 코이시를 데리러 갈때 말고는 그닥 알 길이 없단 말이죠, 신문은 제대로 오지도 않고」
+                    PRINTFORMW 사토리는 호기심 가득한 눈으로 %마스터를% 바라보고 있다
+                ELSE
+                    PRINTFORMW 「절에서 사는것도 나름 나쁘진 않네요」
+                    PRINTFORMW 「...그치만 시키는일이 많은건 별로일지도, 게다가 주지라는 사람이 사심이 다 드러난단 말이지...」
+                    PRINTFORMW 사토리는 소근소근 말해왔다..
+                ENDIF
+            CASE 2
+                ;마을
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「마을에선 무슨 일이 있었나요?」
+                    PRINTFORMW 「뭐어, 신문을 통해 간간히 소식이 들리긴 해도...원체 믿을수가 있어야죠 그게」
+                    PRINTFORMW 사토리는 멋쩍게 웃어보였다
+                ELSE
+                    PRINTFORMW 「마을도 적응되니 살만 하네요」
+                    PRINTFORMW 「인쇄도 편하고, 후후...」
+                ENDIF
+            CASE 3
+                ;홍마관
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「그쪽은 요즘 어떤가요?」
+                    PRINTFORMW 「지저는 워낙 소식이 안 들어오니 잘 모르겠단 말이죠, 직접 가긴 좀 멀고」
+                ELSE
+                    PRINTFORMW 「여기도 나름 괜찮은 곳 같아요, 딱 하나만 빼면 말이죠」
+                    PRINTFORMW 「...동물들이 없어...」
+                    PRINTFORMW 사토리는 약간 시무룩한 표정이다
+                ENDIF
+            CASE 4
+                ;죽림
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「그쪽은 요즘 어떤가요?」
+                    PRINTFORMW 「뭐어, 간간히 들리고는 있지만...아무래도 소식이 느리니까요」
+                    PRINTFORMW 「...그래서, 토끼들은 아직 잘 있겠죠?」
+                ELSE
+                    PRINTFORMW 「여기도 나름 괜찮은거 같네요, 공기 좋고, 잔잔하고」
+                    PRINTFORMW 「무엇보다도 토끼들...후아아...♥」
+                ENDIF
+            CASE 5
+                ;마법의 숲
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「그쪽은 요즘 어떤가요?」
+                    PRINTFORMW 「들를 일이 거의 없다보니 잘 모르겠네요」
+                ELSE
+                    PRINTFORMW 「여기에 있으면 새삼 희한한게 많이 보여요」
+                    PRINTFORMW 「날아다닌 발광 버섯이라던가...」
+                ENDIF
+            CASE 6
+                ;삼도천
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「지옥쪽은 괜찮은가요?」
+                    PRINTFORMW 「그쪽 소식은 별로 들리는것도 없거든요...」
+                ELSE
+                    PRINTFORMW 「피안은 조용해서 좋네요」
+                    PRINTFORMW 「원령보다 다들 조용조용하고, 다루기도 쉽고...」
+                ENDIF
+            CASE 7
+                ;산록
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「산은 좀 어떤가요?」
+                    PRINTFORMW 「요즘 지저 온천 수온을 보면 분출이라도 할것만 같은데, 아직은 괜찮나요?」
+                ELSE
+                    PRINTFORMW 「산에 돌아온건 참 오랜만인거 같네요」
+                    PRINTFORMW 「...별로 변한건 없는거 같지만」
+                ENDIF
+            CASE 8
+                ;산정
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「산은 좀 어떻던가요?」
+                    PRINTFORMW 「요즘 지저 온천이 심상찮은게 금방이라도 분출할것만 같단 말이죠...아직은 괜찮은가요?」
+                ELSE
+                    PRINTFORMW 「산도 변한건 별로 없네요」
+                    PRINTFORMW 「그래도 신사 하나가 들어서니 좀 더 북적해진건 같지만」
+                ENDIF
+            CASE 9
+                ;지저
+                PRINTFORMW 「지저엔 지상의 요괴가 안 들어오기로 한거 같은데」
+                PRINTFORMW 「사실 그런 규칙 지키는 사람이 있는가 싶기도 하네요...」
+                PRINTFORMW 「뭐, 문제될건 없겠죠」
+            CASE 10
+                ;달
+                IF FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「그쪽은 좀 어떤가요?」
+                    PRINTFORMW 「다른곳은 몰라도 달은 전혀 소식이 안 들어오거든요...」
+                    PRINTFORMW 사토리는 호기심에 찬 눈으로 바라보고 있다
+                ELSE
+                    PRINTFORMW 「의외로 달에 들어와 살아도 별 말이 없네요」
+                    PRINTFORMW 「달토끼들도 만져볼수 있음 좋으련만」
+                ENDIF
+            CASEELSE
+                ;아마도 주택
+                IF !(저택거주:[[사토리]]:0)&&FLAG:더부살이캐릭터 != 49
+                    PRINTFORMW 「요즘 어떻게 지내시나요?」
+                    PRINTFORMW 「멋진 저택에서 사는데, 재밌는 이야기라도 없나요?」
+                    PRINTFORMW 사토리는 호기심 가득한 눈으로 바라보고 있다
+                ELSE
+                    PRINTFORMW 「이 집도 꽤나 살기 좋고, 나름대로 만족스럽긴 한데...」
+                    PRINTFORMW 「...동물들이 없는건 조금 불만일지도?」
+                ENDIF
+            ENDSELECT
+    CASE 4
+        IF TALENT:38:연모&&!TALENT:38:연인
+            PRINTFORMW 「그, 제 동생, 코이시랑은 어떤가요...?」
+            PRINTFORMW 「그게...요즘 %사마스터의% 대한 얘기만 연신 한단 말이죠」
+        ELSE
+            PRINTFORMW 「나중에라도 코이시가 이상한데 돌아다니고 있는걸 보신다면 꼭 데려와 주세요」
+            PRINTFORMW 「이리저리 돌아다니면서 사고치고 다니면 머리가 지끈거리거든요」
+            IF CFLAG:38:현재위치 == CFLAG:현재위치
+                 CALL ST_KS대사W ("『그 정도는 아니다 뭐』")
+                PRINTFORMW 코이시는 볼을 부풀렸다
+            ENDIF
+        ENDIF
+    CASE 5
+        IF CFLAG:6100
+            PRINTFORMW 「가끔 지상이 지저보다 희한한게 많아보여요」
+            PRINTFORMW 「팬티가 하늘을 날질 않나...이상한 연기가 풀풀 피어오른다던가...」
+        ELSE
+            PRINTFORMW 「지저 밖에선 이상 기후도 자주 난다는게 사실인가요?」
+            PRINTFORMW 「이상한 분홍 안개라던가...팬티가 날아다닌다던가...」
+        ENDIF
+    CASE 6
+        IF TALENT:연모||TALENT:애욕
+            PRINTFORMW 「...다른 사람이랑 얘기할땐 금방 질려버리는데」
+            PRINTFORMW 「%사마스터랑% 이야기할땐 그런게 없어서 좋아요」
+            PRINTFORMW 사토리는 희미한 웃음을 보내왔다
+        ELSE
+            PRINTFORMW 「상대가 할 말을 미리 안다는건 생각보다 고역이랍니다」
+            PRINTFORMW 「똑같은 이야기를 두 번 듣는 셈이니까요」
+            PRINTFORMW 「싫은 얘기도 좋은 얘기도 상관없이...」
+        ENDIF
+    CASE 7
+        PRINTFORMW 「가끔 코이시가 제 책상에서 이것저것 훔쳐가는거 같은데」
+        PRINTFORMW 「...원고나 그런건 상관 없으니까 혹시라도, 회계장부를 들고 다니는걸 보시면 저한테 갖다주세요」
+        PRINTFORMW 「한번 잃어버리면 다시쓰는게 상당히 귀찮아지니까...으으...」
+        IF CFLAG:38:현재위치 == CFLAG:현재위치
+            CALL ST_KS대사W ("『그러면 원고는 맘대로 훔쳐도 되는거야?』")
+            PRINTFORMW 「안되는거 알잖니?」
+             CALL ST_KS대사W ("『에- 야박해라』")
+        ENDIF
+    CASE 8
+        PRINTFORMW 「제 애완동물들도 저를 그닥 좋아하진 않는거 같아요」
+        PRINTFORMW 「...으으음...딱히 그 아이들한테 미움받을 일은 안 한거 같은데」
+        PRINTFORMW 「......몇 번 무턱대고 귀나 배를 쓰다듬은거 때문인가...」
+    CASE 9
+        PRINTFORMW 「원령들도 알고보면 쓸모가 많단 말이죠」
+        PRINTFORMW 「다루는법도 방법만 알면 간단하고」
+        PRINTFORMW 「...가끔 예외가 있긴 하지만 대부분은 겁 좀 주면 도망가니까요」
+    CASE 10
+        SELECTCASE DAY:2
+            CASE 1
+                PRINTFORMW 「서드아이를 달고 태어난건 하나도 불만이 없어요」
+                PRINTFORMW 「이런 때에 지상에 있다면 꽃가루 때문에 고생하는게 문제일뿐」
+                PRINTFORMW 「...감을수도 없는 커다란 눈동자에 한가득 꽃가루가 들이치는건 유쾌한 경험은 아니죠」
+                IF CFLAG:현재위치 / 100 == 9
+                    PRINTFORMW 「지저에 있으면 상관없는 이야기지만요」
+                ENDIF
+            CASE 2
+                PRINTFORMW 「더운 여름엔 물놀이-겠지만...」
+                PRINTFORMW 「사람이 몰리는 곳에선 눈병이 옮을 가능성이 크지요」
+                PRINTFORMW 「...특히나 이런 커다랗고 수경도 없는 눈이라면 더더욱」
+                PRINTFORMW 사토리는 자신의 서드아이를 만지작거렸다
+            CASE 3
+                IF CFLAG:현재위치 / 100 == 9
+                    PRINTFORMW 「지금 지상은 가을이겠죠...」
+                    PRINTFORMW 「단풍이니 오곡백과니 하는건 지저랑은 관련없는 이야기네요」
+                    PRINTFORMW 「...아니지, 지상에서 들여온 쌀로 청주 담그느라 바쁜 오니들의 모습이 있었지」
+                ELSE
+                    PRINTFORMW 「지저에선 단풍같은걸 볼 일이 없어요」
+                    PRINTFORMW 「사철 내내 거기서 거기인 날씨니까...」
+                ENDIF
+            CASE 4
+                PRINTFORMW 「겨울...이맘때면 지저도 상당히 추워지죠」
+                PRINTFORMW 「작열 지옥의 열기가 있긴 해도 말이죠, 거리가 있다보니 별 체감은 안 가거든요」
+                PRINTFORMW 「그래서 겨울만 되면 애완동물들의 틈바구니에서 자는게 버릇이 되버렸네요」
+        ENDSELECT
+    CASE 11
+        PRINTFORMW 「지상의 대본소로 가는길은 짜증날 정도로 멀어서 불편하네요」
+        PRINTFORMW 「...가끔 용무가 있어 갈 때마다 다리가 아파서 원...」
+    CASE 12
+        PRINTFORMW 「요괴는 두려움을 받는 존재, 인간은 두려워 하는 존재」
+        PRINTFORMW 「그래요, 명목상으로는 그런 관계죠」
+        PRINTFORMW 「정확히 말해선 그런 척하는게 전부지만...」
+    CASE 13
+        PRINTFORMW 「어째서 지저엔 술집밖에 없는걸까요?」
+        PRINTFORMW 「아무리 오니들 천지라 해도, 너무 하잖아」
+        PRINTFORMW 사토리는 볼멘소리를 해 왔다
+    CASE 14
+        PRINTFORMW 「지상에선 사념들이 많아서 머리가 지끈지끈거려요」
+        PRINTFORMW 「지저에선 술취한 오니 무리가 난동부리는 소리에 지끈거리지만...」
+        IF !(저택거주:[[사토리]]:0)&&FLAG:더부살이캐릭터 != 49
+            PRINTFORMW 「그래서 지령전이 좋은거예요, 조용하니까」
+        ELSE
+            ;아마도 연모일테니까
+            PRINTFORMW 「...그래도 %사마스터의% 옆에 있으면 상당히 괜찮아지니깐요」
+            PRINTFORMW 사토리는 희미한 미소를 지어보였다
+        ENDIF
+    CASE 15
+        PRINTFORMW 「밤중에 넓다란 장미정원을 보고 있으면 상당히 장관이랍니다」
+        PRINTFORMW 「꽃가루가 괴롭긴 해도 그걸 보고 있으면 꽤 즐거워요」
+    CASE 16
+        PRINTFORMW 「사실 마음을 읽다가 실수하는 경우도 더러 있답니다」
+        PRINTFORMW 「한글자정도 틀린다 해서 눈치채는 사람은 없지만...」
+        PRINTFORMW 「솔직히 '비광충' 보단 '비행충'이 더 어울리지 않나요?」
+    CASE 17
+        PRINTFORMW 「가끔 까마귀 텐구가 취재를 빙자한 도촬을 해대고 다닌답니다」
+        PRINTFORMW 「안 찍힐려고 발버둥 쳐봐도 속도 앞에선 어쩔수 없었죠...」
+        PRINTFORMW 「...뭐, 피해봤자 어딘가에선 그마저도 찍고 있었겠지만」
+    CASE 18
+        PRINTFORMW 「산의 신사는 영 마음에 안 들어요」
+        PRINTFORMW 「멋대로 남의 펫을 데려다 마구 개조시켜놓고, 위험천만하게 만들다니」
+        PRINTFORMW 「누가 보면 자기가 주인인줄 알겠어요」
+        PRINTFORMW 사토리는 투덜거려왔다
+    CASE 19
+        PRINTFORMW 「남의 마음을 읽어주면 참 싫어한단 말이죠」
+        PRINTFORMW 「그치만 다들 이 능력을 가지면 저랑 똑같이 하고 다닐게 분명해요」
+        PRINTFORMW 「이 재밌는걸 다른 사람도 못 느낀다는게 불쌍하게 느껴진다니깐요?」
+        PRINTFORMW 사토리는 키득키득 웃으며 말해왔다
+    CASE 20
+        PRINTFORMW 「가끔은 옛날 일도 생각나네요」
+        PRINTFORMW 「산에서 살던 시절에, 나름 저와 동생은 악명높은 요괴였답니다」
+        PRINTFORMW 「...물론 그것때문에 쫓겨났지만」
+    CASE 21
+        PRINTFORMW 「아직도 산에선 도박판이 열리고 있나요?」
+        PRINTFORMW 「아아, 거기 참 재미있었는데 말이죠」
+        PRINTFORMW 「온갖 사기와 권모술수가 난무하는 곳에서 그걸 다 꿰뚫어보는건 상당히 즐거웠어요」
+        PRINTFORMW 「...그래도 앉혀놓고 몇시간동안이나 심판을 보게 한다는건 좀 그랬지만」
+    CASE 22
+        PRINTFORMW 「열 길 물 속은 알아도 한 길 사람 속은 모른다라는 말이 있죠」
+        PRINTFORMW 「...사실 한 길이나 되지도 않더라고요, 거짓말쟁이들」
+    CASE 23
+        PRINTFORMW 「왜 다들 마음을 읽어주면 싫어할까요?」
+        PRINTFORMW 「자기가 생각한 건데 불쾌할게 뭐가 있나, 들리고 보인게 잘못이죠」
+        PRINTFORMW 「...맞잖아요? 보이는대로 읽어줄 뿐인데...」
+    CASE 24
+        PRINTFORMW 「그런데 환상향 지하에 지저가 있다면...」
+        PRINTFORMW 「언젠가 큰 지진이 나면 폭삭 가라앉는게 아닐까요?」
+        PRINTFORMW 「...여태껏 그런적은 없지만, 그리 생각하면 조금 무서워질지도」
+    CASE 25
+        PRINTFORMW 「아가사 크리스Q라는 사람은 누굴까요」
+        PRINTFORMW 「대본소에만 가면 늘상 베스트 셀러 위치에 있던데...」
+        PRINTFORMW 「...질투하는건 아니고, 단지 호기심일 뿐예요」
+    CASE 26
+        PRINTFORMW 「그래서 산의 신들은...작열지옥터에서 나온 에너지로 뭘 하는걸까요?」
+        PRINTFORMW 「기껏해야 물을 끓이는 정도라면 좀 낭비인것 같지만...」
+    CASE 27
+        PRINTFORMW 「유기씨는 다 좋은데, 하나 마음에 안 드는게 있죠」
+        PRINTFORMW 「친구들 데리고 집에 쳐들어와서 난장판을 벌이고 간다는거」
+        PRINTFORMW 「...뭐어, 공짜 술은 맛있지만요」
+    CASE 28
+        PRINTFORMW 「오린이 훔쳐온 시체는 작열 지옥의 장작이 되죠」
+        PRINTFORMW 「...그 열기를 유지하려면 상당히 바쁘게 움직여야겠지만...」
+        PRINTFORMW 「뭐어, 오린은 저랑은 다르게 활발한 아이니까요, 괜찮겠죠...」
+    CASE 29
+        PRINTFORMW 「오쿠의 능력덕에, 작열지옥터의 화력은 관리하기 쉬워졌어요」
+        PRINTFORMW 「단지 올라간 온도가 내려가려면 한참이라는게 문제지...」
+    CASE 30
+        PRINTFORMW 「오쿠는 맹한게 귀엽죠」
+        PRINTFORMW 「...그치만 시킨일도 까먹는건 조금 곤란하지만」
+    CASE 31
+        PRINTFORMW 「그러고보니 예전엔 지저에 눈도 왔던거 같은데」
+        PRINTFORMW 「요근래엔 코빼기도 보이지 않네요, 구름이 없어졌나」
+    CASE 32
+        PRINTFORMW 「지령전에서 할 일은 그리 많진 않답니다」
+        PRINTFORMW 「사실 실무는 펫들이 다 하니깐요」
+        PRINTFORMW 「물론 그 아이들 돌보는건 상당히 귀찮지만요」
+        PRINTFORMW 「...그것도 다른 펫들이 많이 도와주니깐 할만한거고요」
+    CASE 33
+        PRINTFORMW 「관광객도 가끔은 지저에 들어오죠」
+        PRINTFORMW 「뭐, 관광지로써는 제격일지도 모르겠네요, 널린게 술집에 온천이니」
+    CASE 34
+        PRINTFORMW 「오니들은 자기 입으로 거짓말을 안 한다고들 하죠」
+        PRINTFORMW 「그게 거짓말이라는건 아무도 신경 안 쓸거예요, 아마도」
+        PRINTFORMW 사토리는 나지막히 속삭여왔다
+    CASE 35
+        PRINTFORMW 「사실 지저는 환상향 밖으로 분류되죠」
+        PRINTFORMW 「그런거 치곤 왕래가 상당히 자유로운 편인거 같지만...」
+        PRINTFORMW 「...대결계도 맘만 먹으면 왔다갔다 하는 판국이니 별 차이 없으려나」
+    CASE 36
+        PRINTFORMW 「펫들의 털을 정리하다보면 상당히 아깝다는 생각도 들어요」
+        PRINTFORMW 「계속 모았으면 지금쯤 옷장 하나쯤은 가득 채우지 않았을까- 싶을 정도로 쌓이니까요」
+    CASE 37
+        PRINTFORMW 「지저에도 분명히 기후가 있지요, 지금은 잘 안보이지만」
+        PRINTFORMW 「...그러면 지저에 내리는 비나 눈은, 천장에서 떨어지는 석회수인걸까요...아니면...」
+        PRINTFORMW 「...설마 오니들의 땀은...아니겠죠?」
+    CASE 38
+        IF ST_식사이름 != "" && ST_대사플래그:1 + 45 <= TIME && ST_대사플래그:2 != -1
+            IF ST_대사플래그:2 == 1 && RAND:2 == 0
+                PRINTFORMW 「아까 먹은 %ST_식사이름%...굉장히 맛있었어요」
+                PRINTFORMW 「다음에 또 먹을수 있을라나요, 후후...」
+                PRINTFORMW 사토리는 굉장히 만족스러워 보이는 표정이다
+            ELSE
+                PRINTFORMW 「아까먹은 %ST_식사이름%...맛있었어요...」
+                SELECTCASE ST_식사이름
+                    CASE "오믈렛"
+                        PRINTFORMW 「오믈렛이야 가끔 펫들이 떠넘긴 알로 해 먹지만, 남이 해주는게 역시 더 맛있단 말이죠」
+                    CASE "야채볶음"
+                        PRINTFORMW 「지저에선 야채는 구하기 번거로웠으니까요」
+                        PRINTFORMW 「가끔 먹으면 상당히 신선한 맛이죠」
+                    CASE "된장국"
+                        PRINTFORMW 「가정적인 맛이 일품이야」
+                        PRINTFORMW 「화려한 맛은 안 나도 이런게 그리워지는 때가 있는법이죠」
+                    CASE "햄버그"
+                        PRINTFORMW 「어린 아이 같다는 느낌도 들지마는...」
+                        PRINTFORMW 「그래도 맛있는걸요, 그럼 된거지...후후」
+                    CASE "우동", "소바", "소면", "라면"
+                        PRINTFORMW 「면요리는 역시 먹는 재미가 있다니깐요」
+                        PRINTFORMW 「후룩후룩 소리와 함께 들어오는 면발의 감촉이 너무 좋아」
+                    CASE "스테이크"
+                        PRINTFORMW 「한입 먹으면 올라오는 풍미, 이런건 스테이크로만 느낄수 있죠」
+                        PRINTFORMW 「돼지고기론 그만큼의 풍미가 안 나」
+                    CASE "모짜렐라 치즈와 토마토의 샐러드"
+                        PRINTFORMW 「인살라타 카프레제, 간단한만큼 재료 품질이 중요한 요리죠」
+                        PRINTFORMW 「후후, 상당히 맛있었어요...」
+                    CASE "튀김"
+                        PRINTFORMW 「건강에 나쁘니 뭐니 해도, 튀기면 뭐든 맛있죠」
+                        PRINTFORMW 「바삭바삭한 식감과 기름의 풍미는 참을수가 없으니까요」
+                    CASE "고봉밥"
+                        PRINTFORMW 「잘 지은 밥은 역시 제일이죠」
+                        PRINTFORMW 「밥상의 주인이란 말이 아깝지 않아」
+                    CASE "채소절임 곱빼기밥"
+                        PRINTFORMW 「이런 담백한 식사도 상당히 좋지요」
+                        PRINTFORMW 「화려한 맛과는 또 다른 즐거움이 있으니까요」
+                    CASE "푸딩"
+                        PRINTFORMW 「...코이시도 상당히 푸딩을 좋아하죠」
+                        PRINTFORMW 「전엔 푸딩가지고 자주 싸우기도 했는데 말예요」
+                        PRINTFORMW 「이젠 싸우기도 전에 제 몫을 챙겨 달아나버리니 뭐라 할 수도 없고...」
+                        IF CFLAG:38:현재위치 == CFLAG:현재위치
+                            PRINTFORMW 『그치만 언니도 내꺼 자주 빼먹었잖아?』
+                            PRINTFORMW 코이시는 볼을 부풀렸다
+                        ENDIF
+                    CASE "쿠키"
+                        PRINTFORMW 「가끔 티타임에 만들어주셨음 할 정도로 괜찮았어요」
+                    CASE "스시", "생선회"
+                        PRINTFORMW 「나름 만들기 번거로웠을텐데」
+                        PRINTFORMW 「훌륭한 솜씨였어요, 후후」
+                    CASEELSE
+                        PRINTFORMW 「후후, 잘 먹었어요, 고마워요」
+                        PRINTFORMW 사토리는 온화한 미소를 띄고 있다
+                        SIF TALENT:기분 == -1
+                            TALENT:기분 = 0
+                ENDSELECT
+            ENDIF
+            VARSET ST_식사이름
+        ELSE
+            PRINTFORMW 「...입이 심심해지네요, 과자라도 먹을까나」
+            PRINTFORMW 「라고 해도 딱히 집히는건 없고, 흐으음...」
+        ENDIF
+    CASE 39
+        IF FLAG:더부살이캐릭터 != 49 || MAIN_MAP != 10
+            PRINTFORMW 「요즘은 달로 왕래하기도 쉬워진 모양이네요」
+            PRINTFORMW 「레이무나 그 스키마 요괴가 고생고생하면서 가던거랑은 비교가 안될만큼 쉽게」
+            PRINTFORMW 「기술의 발전이란건 참 무서운거 같아요...」
+        ELSE
+            PRINTFORMW 「달에서 바라보는 지구란 또 오묘한 느낌이네요」
+            PRINTFORMW 「제 아무리 뛰어난 요괴니 뭐니 해도, 결국 점 하나보다도 자그마한 존재...」
+            PRINTFORMW 「약간은...소름조차 느껴질 정도로요」
+        ENDIF
+    CASE 40
+        PRINTFORMW 「서드아이는 제 자랑이지만, 가끔은 떼어버리고 싶을 때도 많지요」
+        PRINTFORMW 「가끔 갈고리 같은데에 걸려버리면 굉장히 아프거든요...」
+        PRINTFORMW 「문고리나 팔걸이, 그런데에 몇번 걸려보면...하아, 정말이지...」
+    CASE 41
+        PRINTFORMW 「가끔 코이시는 신발도 안 신고 외출을 나가곤 하는데...왜 그러는걸까요?」
+        PRINTFORMW 「...어짜피 집 더러워지는건 애완동물 탓이니 상관없지만...조금 걱정이 드네요」
+        PRINTFORMW 「그러면서도 발을 다쳐온건 본 적이 없긴하지만」
+    CASE 42
+        PRINTFORMW 「그런데 요정들은 아직도 좀비놀이를 하고 있네요」
+        PRINTFORMW 「보통은 쉽게 질리던데, 상당히 마음에 들었던 모양이에요...」
+    CASE 43
+        PRINTFORMW 「가끔 오린이 복도에서 희한한 춤을 추는걸 보실수도 있는데, 그때엔 그만두라고 해주세요」
+        PRINTFORMW 「정말이지, 그만 하라고 해도 말도 안 듣고...」
+        PRINTFORMW 「게다가 오쿠나 코이시도 따라하는탓에 보고있으면 머리가 아파질정도란 말예요」
+    CASE 44
+        PRINTFORMW 「생각해보면, 요 근래 지진이 일어난적은 없네요」
+        PRINTFORMW 「...가끔, 아주 가끔 오쿠가 난동을 부리면 땅이 흔들리는 경우도 있지만」
+        PRINTFORMW 「반응로에 벌레같은게 나타나지만 않으면 안전할거예요, 아마도...」
+    CASE 45
+        PRINTFORMW 「가끔 저한테 팔이 짧다고 놀리는 사람들이 간혹 있단 말이죠」
+        PRINTFORMW 「...그렇게 짧지는 않은데, 아닌가」
+        PRINTFORMW 사토리는 불만스러워 보이는 표정으로 팔을 뻗어보이고 있다
+    CASE 46
+        PRINTFORMW 「가끔 코이시가 오린을 길게 늘리고 있을때가 있어요」
+        PRINTFORMW 「혹시라도 보시면 못하게 막아주세요」
+        PRINTFORMW 「안 그러면 밤 새 오린이 옆에서 칭얼거리니까...곤란하거든요」
+    CASE 47
+        PRINTFORMW 「지저의 밤에는 방문을 꼭 닫고 있어야 해요」
+        PRINTFORMW 「그냥도 아니고 자물쇠 여러개에 가구까지 동원해 막아놓으면 더 좋고」
+        PRINTFORMW 「안 그러면 무서운 오니들이 쳐들어와서 술잔치를 벌이니까요」
+        PRINTFORMW 「...사실 막아도 들어오니까 소용은 없지만」
+    CASE 48
+        PRINTFORMW 「가끔 꿈에 가슴 취향을 묻는 신이 나오는데」
+        PRINTFORMW 「과연 무슨 신이길래 그런걸 묻는걸까요...」
+    CASE 49
+        PRINTFORMW 「텐구들은 왜 항상 신문을 난폭하게 전해주는 걸까요?」
+        PRINTFORMW 「그러면서도 오니들에겐 얌전히 전해주고」
+        PRINTFORMW 「...볼거라고는 카리스마 가격뿐이면서 말이죠」
+    CASE 50
+        PRINTFORMW 「온천 계란...관광객들이 무척이나 좋아하는것중 하나죠」
+        PRINTFORMW 「사실 지저에 널린 지옥 까마귀 알을 쓰는곳이 더 많지만, 별로 신경쓰는 사람은 없겠죠」
+    CASE 51
+        PRINTFORMW 「흔히 고양이는 물을 싫어한다고 생각하는데..」
+        PRINTFORMW 「실은 찬 물을 무척이나 싫어할 뿐이에요」
+        PRINTFORMW 「그래서 오린이 뜨겁게 데워진 온천물에서 첨벙거리는것도 볼 수 있는거고요」
+    CASE 52
+        PRINTFORMW 「지저에서는 난방이 상당히 중요하답니다」
+        PRINTFORMW 「뜨겁게 집을 데워서 습기를 날리지 않으면 곰팡이가 슬어버리거든요」
+        PRINTFORMW 「그런면에서 지령전은, 상당히 위생적인 공간이기도 하고요」
+        PRINTFORMW 「...대신에 동물 털은 좀 많지만」
+    CASE 53
+        PRINTFORMW 「지저의 온천은 그다지 가지 않고 싶네요」
+        PRINTFORMW 「거기 주인은 수전노면서 호색한이라 무슨 짓을 저지를지 모를 사람이니까」
+    CASE 54
+        PRINTFORMW 「가끔씩 바닥에서 석유가 스며 올라오곤 하는데」
+        PRINTFORMW 「그게 작열지옥의 열기를 만나면 간간히 불타오르곤 하더군요」
+        PRINTFORMW 「한번 타기 시작하면 잘 꺼지지도 않는데, 끈적거려서 치우기도 곤란한 물건이라 정말...」
+    ;CASE 55
+
+ENDSELECT
+
+
+@ST_마스터회화불능
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 10
+;이 패턴에서는 마스터가 회화불능일 때 대사를 합니다
+;연모나 달변이 있으면 발동 안함
+;함락계마다 변화 있음
+
+;PRINTFORMW 「」
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+SELECTCASE 대화선택
+    CASE 0
+        PRINTFORMW 「...구태여 할 말이 없다면, 무리해서 하지 않아도 좋아요」
+        IF MARK:반발각인 == 3&&!TALENT:연인 ; 원판에선 표시되지 않는다
+            PRINTFORMW 「별로 듣고싶지도 않고」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「저는 그저 가까이 있기만 해도 좋으니까요」
+        ELSEIF TALENT:사모||TALENT:애욕
+            PRINTFORMW 「애써서 이야깃거리를 만들 궁리 하는거, 다 보이거든요」
+            PRINTFORMW 「...괜찮아요, 할 말이 없어도 상관 안하니까」
+        ELSE
+            PRINTFORMW 「천천히 생각나는대로 이야기 하세요」
+        ENDIF
+    CASE 1
+        IF MARK:반발각인 == 3&&!TALENT:연인 ; 원판에선 표시되지 않는다
+            PRINTFORMW 「...그냥 조용히 있어줘요」
+            PRINTFORMW 「어짜피 이제 할 말도 없으면서」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「...으으으음~...」
+            PRINTFORMW 사토리는 약간 지루해 보인다
+        ELSEIF TALENT:사모||TALENT:애욕
+            PRINTFORMW 「...아까도 한 얘기인걸요?」
+        ELSE
+            PRINTFORMW 「...그 얘기, 아까도 했는걸」
+            PRINTFORMW 사토리는 지루해 보인다
+        ENDIF
+    CASE 2
+        PRINTFORMW 「...슬슬 할 말이 떨어졌나 보네요...」
+        IF MARK:반발각인 == 3&&!TALENT:연인 ; 원판에선 표시되지 않는다
+            PRINTFORMW 「잘 됐네요, 더 안 들어도 되니까...」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「괜찮아요, 언제나 할 말이 있는건 아니니까」
+            PRINTFORMW 「잠시동안은 이러고 있어도 괜찮겠지요」
+        ELSEIF TALENT:사모||TALENT:애욕
+            PRINTFORMW 「뭐어, 저도 마찬가지니까요...」
+            PRINTFORMW 사토리는 멋쩍게 웃어보였다
+        ELSE
+            PRINTFORMW 「그럴수 있죠 뭐, 잠시 기다리다보면 또 생각날 거예요」
+        ENDIF
+    CASE 3
+        PRINTFORMW 「...이제 할 얘깃거리가 없다, 란건가요?」
+        PRINTFORMW 「그럴땐 잠시 입을 멈추고 있는것도 좋아요」
+        PRINTFORMW 「...그래도 저한텐 전부 들리고 있으니까, 별 상관 없지만...」
+    CASE 4
+        PRINTFORMW 「...어라, 할 말이 더 이상 없는건가요...?」
+        IF MARK:반발각인 == 3&&!TALENT:연인 ; 원판에선 표시되지 않는다
+            PRINTFORMW 「...듣던중 반가운 소리네요 그거」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「...괜찮아요, 좀 있으면 또 생각나겠죠」
+        ELSEIF TALENT:사모||TALENT:애욕
+            PRINTFORMW 「...그럼 어쩔수 없죠 뭐...없는 이야깃거리가 솟아나는것도 아니고...」
+            PRINTFORMW 사토리는 약간 시무룩해 보이는 표정이다
+        ELSE
+            PRINTFORMW 「...알고 있어요, 화젯거리가 더 없는건...」
+            PRINTFORMW 「잠시 생각하고 있다보면 또 생기겠죠」
+        ENDIF
+    CASE 5
+        PRINTFORMW 「이제 할 말이 없다, 라는건가요...흐으음...」
+        IF TIME_PROGRESS(TCVAR:300) < 120
+            PRINTFORMW 「잠시 쉬다보면 또 생각날거예요, 조급해 하지 말구」
+        ELSE
+            PRINTFORMW 「뭐어, 차라도 한 잔 마시면서 기다리다보면 생각나겠죠」
+        ENDIF
+    CASE 6
+        PRINTFORMW 「이야깃거리가 떨어진건가요?」
+        PRINTFORMW 「...어쩐지 머릿속에서 말들이 되돌이 된다 했어요」
+    CASE 7
+        PRINTFORMW 「쉬잇-」
+        PRINTFORMW 사토리는 %마스터의% 입을 가로막았다
+        PRINTFORMW 「말 안해도 화젯거리 떨어진건 훤히 보이니깐 그냥 가만히 계세요」
+    CASE 8
+        IF MARK:반발각인 == 3&&!TALENT:연인 ; 원판에선 표시되지 않는다
+            PRINTFORMW 「...할 말이 없으면 그만 재잘거리는게 좋지 않을까요?」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「...으음...」
+            PRINTFORMW 사토리는 따분해보이는 표정이다
+        ELSEIF TALENT:사모||TALENT:애욕
+            PRINTFORMW 「아...그, 그런가요...」
+            PRINTFORMW 사토리는 지루한지 다른곳을 바라보고 있다
+        ELSE
+            PRINTFORMW 「...아까도 하지 않았었나요...?」
+            PRINTFORMW 사토리는 따분하다는듯이 말해왔다
+        ENDIF
+    CASE 9
+        PRINTFORMW 「굳이 힘들게 말하려고 하지 않아도 좋아요」
+        PRINTFORMW 「생각이 안 나면 안 나는대로, 그냥 가만히 있어도 괜찮으니까요」
+ENDSELECT
+
+@ST_시간정지후
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 3
+;이 패턴에서는 사토리가 차를 타 주는 구상이 나옵니다
+;함락계마다 변화 있음
+
+;PRINTFORMW 「」
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+
+SELECTCASE 대화선택
+    CASE 0
+        IF MARK:반발각인 == 3 && TALENT:연인
+            PRINTFORMW 「시간정지로 돌아다니면서 뭘 하고 다니는건가요?」
+            PRINTFORMW 「...이상한짓은 하지 않으면 좋겠네」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「제 앞에서 시간정지 해놓곤, 어디갔다 온건가요?」
+            PRINTFORMW 「다른데 가버리면 싫어요...」
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 「...급한일이라도 있었던 건가요?」
+            PRINTFORMW 「그렇게 시간정지까지 써가면서...」
+            PRINTFORMW 사토리는 고개를 갸웃거리고 있다
+        ELSE
+            PRINTFORMW 「뭐 급한일이라도 있었나요?」
+            PRINTFORMW 사토리는 의아해 하고 있다
+        ENDIF
+    CASE 1
+        IF MARK:반발각인 == 3 && TALENT:연인
+            PRINTFORMW 「멀리 가버렸길래 안 올줄 알았는데 말이죠」
+            PRINTFORMW 「그나저나 그렇게 바삐 가서 뭘 한걸까나」
+        ELSEIF TALENT:연인
+            PRINTFORMW 「늘 생각해본건데 말이죠」
+            PRINTFORMW 「시간정지 하고 돌아다니면 더 피곤할거 같은데, 괜찮은 건가요?」
+            PRINTFORMW 「지쳐보이는 기색은 없는거 같은데...」
+        ELSE
+            PRINTFORMW 「그래서 시간정지까지 써서 처리한 일은 뭐였나요?」
+            PRINTFORMW 「...딱히 별 일 없었다, 이런건 아니겠죠?」
+        ENDIF
+    CASE 2
+        IF MARK:반발각인 == 3 && TALENT:연인
+            PRINTFORMW 「어딜 그렇게 바쁘게 다니는건가요?」
+            PRINTFORMW 「시간정지까지 해 가면서...」
+        ELSE
+            PRINTFORMW 「시간까지 멈춰가면서 뭘 하고 온건가요?」
+            PRINTFORMW 사토리는 의아해 하고 있다
+        ENDIF
+ENDSELECT
+ST_시간정지 = 0
+
+@ST_차타주기
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 5
+;이 패턴에서는 사토리가 차를 타 주는 구상이 나옵니다
+;함락계마다 변화 있음
+
+;PRINTFORMW 「」
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+
+SELECTCASE 대화선택
+    CASE 0
+        PRINTFORMW 「녹차라도 한 잔 하실래요?」
+        IF ABL:기교 > ABL:MASTER:기교
+            IF MARK:반발각인 == 3&&!TALENT:연인
+                PRINTFORMW 「뭐어, 어디의 누구씨보다는 맛있게 탈 수 있을거 같다는 생각이 들어서요」
+            ELSE
+                PRINTFORMW 「후후, 맛있게 타는법 알려드릴게요」
+            ENDIF
+        ELSE
+            IF MARK:반발각인 == 3&&!TALENT:연인
+                PRINTFORMW 「계속 재잘거리는건 목이 아플테니깐 말이죠」
+            ELSE
+                PRINTFORMW 「다과는 별로 없지만...」
+            ENDIF
+        ENDIF
+        PRINTFORMW 사토리는 찻 주전자를 들이밀어 왔다
+        PRINTFORMW 둘이서 조용히 차를 음미할 수 있었다
+        DOWNBASE:MASTER:기력 -= 125
+        DOWNBASE:기력 -= 125
+    CASE 1
+        PRINTFORMW 「커피 한 잔, 어떤가요?」
+        PRINTFORMW 사토리는 대뜸 커피 한 잔을 들이밀어 왔다
+        IF MARK:반발각인 == 3 && !TALENT:연인
+            PRINTFORMW 「...아아, 독 같은건 아까워서라도 못 넣으니까, 걱정마세요」
+            PRINTFORMW 「대신에 설탕이라면 얼마든지 넣어도 신경 안 쓰니」
+        ELSE
+            PRINTFORMW 「설탕이나 프림은 취향껏 알아서 넣어주세요」
+            PRINTFORMW 사토리는 자리에 앉아 편안한 미소를 띈 채로 커피를 음미하기 시작했다
+        ENDIF
+        PRINTFORMW ...둘이서 묵묵히 커피를 마셨다
+        DOWNBASE:MASTER:기력 -= 125
+        DOWNBASE:기력 -= 125
+    CASE 2
+        PRINTFORMW 「흠흠...목이 조금 마를지도...」
+        PRINTFORML 「...커피 한잔 마실 생각인데, %사마스터는% 어때요?」
+        PRINTFORML [0] 마신다
+        PRINTFORML [1] 마시지 않는다
+        INPUT
+        IF RESULT
+            PRINTFORMW 「...뭐어, 그럼 어쩔수 없죠」
+            PRINTFORMW 사토리는 잔에 진한 블랙 커피를 따라내곤 자리에 앉아 조용히 마시기 시작했다
+            DOWNBASE:기력 -= 150
+        ELSE
+            PRINTFORMW 사토리는 잔 두개를 꺼내 진한 블랙 커피를 따라냈다
+            PRINTFORMW 그리고는 집게로 각설탕 다섯개를 각각의 잔에 퐁당퐁당 빠뜨린 뒤 휘휘 저어내 %마스터의% 앞에 대령했다
+            PRINTFORMW 「...아차, 무심코 코이시 기준으로 타버렸네요...」
+            PRINTFORMW 「그 아이는 달달하게 해주지 않으면 잘 못 마시니까, 매번 습관적으로 잔뜩 타버리거든요...」
+            PRINTFORMW 사토리는 멋쩍게 웃으며 자리에 앉았다
+            PRINTFORMW ...한동안 둘이서 느긋하게 커피를 즐길수 있었다
+            DOWNBASE:MASTER:기력 -= 150
+            DOWNBASE:기력 -= 150
+        ENDIF
+    CASE 3
+        PRINTFORMW 「차라도 한 잔 할까...하는데, 어떤거로 드릴까요?」
+        PRINTFORMW 「만들수 있는거라면 내오도록 할게요」
+        CALL ST_차본체()
+    CASE 4
+        PRINTFORMW 「음...마실거라도 내 올까요?」
+        PRINTFORMW 사토리는 %마스터의% 눈치를 살피고 있다
+        CALL ST_차본체()
+ENDSELECT
+;차 일시 기입
+TCVAR:300 = 1440 * DAY + TIME
+
+@ST_차본체
+#DIM DYNAMIC 차종류
+;위의 함수에서 고른 것을 바탕으로 각 음료마다 다른 대사가 나옴
+;만들다 애매하게 될거 같긴 하지만
+PRINTFORML 어떤 차를 마실까?
+PRINTFORMW 「이중에서 골라주세요」
+PRINTFORML [0] 블랙 커피
+PRINTFORML [1] 홍차
+PRINTFORML [2] 녹차
+;PRINTFORML [3] 말차
+;PRINTFORML [4] 아이스 티
+;PRINTFORML [5] 밀크티
+;PRINTFORML [6] '우유를 넣은 커피'
+PRINTFORML [7] 잠깐, 이게 다야?
+PRINTFORML [99] 그만둔다
+INPUT
+차종류 = RESULT
+SELECTCASE 차종류
+    CASE 0 ; 블랙 커피
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「심플한 선택이시네요」
+                PRINTFORMW 「후후, 그럼 잠시만 기다려 주시겠어요?」
+                PRINTFORMW 사토리는 달그락달그락 잔을 꺼내와 뜨거운 커피 두 잔을 따라냈다
+            CASE 1
+                PRINTFORMW 「네에, 잠시만 기다려 주세요」
+                PRINTFORMW 사토리는 찬장에서 분쇄된 원두를 찾아와 커피를 내리기 시작했다
+                PRINTFORMW 향긋한 커피 내음이 방안 가득히 퍼진다
+            CASE 2
+                PRINTFORMW 「그 편이 무난하긴 하죠」
+                PRINTFORMW 사토리는 찬장에서 인스턴트 커피를 꺼내왔다
+                PRINTFORMW 「간단하게 이걸로 괜찮겠죠 뭐...」
+                PRINTFORMW 갓 끓인 뜨거운 물을 잔에 부으니 금세 스르르 녹은 커피 알맹이들은 방 안 가득히 커피 향을 풍기기 시작했다
+        ENDSELECT
+        PRINTFORMW ...
+        PRINTFORMW ..
+        PRINTFORMW .
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「...으음~ 조금 진하게 타버렸나...」
+                PRINTFORMW 「...어쩔수 없죠, 설탕을 좀 더 많이 넣는 수밖엔...」
+                PRINTFORMW 사토리는 은근슬쩍 각설탕 뭉치를 자신의 잔에 털어넣었다
+            CASE 1
+                PRINTFORMW 「후우...」
+                PRINTFORMW 「가끔은 이런 여유도 좋은거 같네요, 후훗」
+            CASE 2
+                PRINTFORMW 「...비스킷이라도 드실래요?」
+                PRINTFORMW 사토리는 어디선가 가져온 비스킷도 옆에 내 놓았다
+        ENDSELECT
+        PRINTFORMW 둘이서 느긋히 커피를 마시며 시간을 보냈다
+        DOWNBASE:MASTER:기력 -= 90
+        DOWNBASE:기력 -= 90
+    CASE 1 ; 홍차
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「...홍차라, 그럼 잠시만 기다려 주세요」
+            CASE 1
+                PRINTFORMW 「홍차...있기야 하겠지만 그리 다양하게 있을거 같진 않네요」
+                PRINTFORMW 「적당히 아무거나 괜찮겠죠?」
+            CASE 2
+                PRINTFORMW 「홍차라, 그것도 괜찮겠네요」
+                PRINTFORMW 「금방 끓여 올테니 잠시 기다려주세요?」
+        ENDSELECT
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 자리를 떠난 사토리는 잠시후 찻 주전자와 컵 두개를 들고 돌아왔다
+                PRINTFORMW 「죄송해요, 곁들여 먹을만한 과자가 그닥 없네요」
+                PRINTFORMW 「그래도 뭐, 차만으로 괜찮겠죠?」
+                PRINTFORMW 사토리는 홍차를 따라 %마스터의% 손에 건내주었다
+            CASE 1
+                PRINTFORMW 사토리는 이내 찻 주전자와 과자접시를 들고 돌아왔다
+                PRINTFORMW 「마침 쿠키가 조금 남아 있었거든요, 같이 하면 좋겠지요」
+            CASE 2
+                PRINTFORMW 사토리는 달그락거리며 차를 준비해왔다
+                PRINTFORMW 「티 푸드는 변변찮지만 뭐...그런대로 괜찮겠죠」
+        ENDSELECT
+        PRINTFORM .
+        WAIT
+        PRINTFORM .
+        WAIT
+        PRINTFORM .
+        WAIT
+        PRINTL
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 둘이서 느긋하게 티타임을 즐길수 있었다
+            CASE 1
+                PRINTFORMW 「가끔은 이런 여유도 좋은거 같네요, 후후...」
+            CASE 2
+                PRINTFORMW 묵묵히 둘만의 다과회를 즐겼다
+        ENDSELECT
+        DOWNBASE:MASTER:기력 -= 120
+        DOWNBASE:기력 -= 120
+    CASE 2 ; 녹차
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「녹차라, 그러면 다기를 찾아볼까요」
+            CASE 1
+                PRINTFORMW 「녹차라...엽차로 괜찮겠지요?」
+            CASE 2
+                PRINTFORMW 「으음~ 그러면 찻잎을 찾아올게요」
+        ENDSELECT
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 사토리는 종종걸음으로 떠나, 한참뒤에 돌아왔다
+                PRINTFORMW 「...으으, 먹던게 다 떨어져서 새 찻잎을 찾는데 조금 시간이 걸려버렸네요...」
+                PRINTFORMW 사토리는 멋쩍어 하며 따뜻한 김이 모락모락 피어오르는 잔을 내려놓았다
+            CASE 1
+                PRINTFORMW 사토리는 어디선가 김이 모락모락 나는 찻주전자를 들고 왔다
+            CASE 2
+                PRINTFORMW 「조금만 기다려 주세요?」
+                PRINTFORMW 사토리는 종종걸음으로 떠나, 쟁반에 주전자와 잔을 들고 돌아왔다
+        ENDSELECT
+        SELECTCASE RAND:4
+            CASE 0
+                PRINTFORMW 「가끔은 엽차도 말차랑은 다른 풍취가 있는법이죠」
+                PRINTFORMW 「만들기는 조금 더 복잡하지만...」
+            CASE 1
+                PRINTFORMW 「낮은 온도에서, 물 붓고 2분에서 3분, 이렇게 하면 적당하다고 하죠」
+                PRINTFORMW 「...티백보단 불편하지만, 그 불편함이 맛의 차이를 만드는 법이겠죠, 아마도」
+            CASE 2
+                PRINTFORMW 「...생각해보니 쌀과자라도 들고 올걸 그랬나요?」
+            CASE 3
+                PRINTFORMW 「생각보다 물이 뜨겁게 되버렸네요, 쓴 맛이 조금 강할지도 모르겠지만...」
+                PRINTFORMW 「...뭐어, 감안해주세요」
+        ENDSELECT
+        PRINTFORMW .
+        PRINTFORMW .
+        PRINTFORMW .
+        PRINTFORMW 둘이서 한동안 느긋하게 차를 마셨다
+        DOWNBASE:MASTER:기력 -= 100
+        DOWNBASE:기력 -= 100
+    ;CASE 3
+    ;CASE 4
+    CASE 7
+        PRINTFORMW 「어째서 이것뿐이냐고요?」
+        PRINTFORMW 「그거야 당연히, 있는게 이게 전부니까 그렇죠...」
+        PRINTFORMW 「없는건 없는거예요, 이제사 사러갈수도 없는 노릇이잖아요?」
+        PRINTFORMW 사토리는 툴툴대며 말해왔다
+        RESTART
+    CASE 99
+        PRINTFORMW 역시 그만두자
+    CASEELSE
+        SELECTCASE RAND:4
+            CASE 0
+                PRINTFORMW 「으~음...그런건 만들줄 모르는걸요」
+                PRINTFORMW 「다른건 안되나요?」
+            CASE 1
+                PRINTFORMW 「에-...그거, 만들줄 모르는데...」
+                PRINTFORMW 「...다른거로 해 주시면 안될까요?」
+            CASE 2
+                PRINTFORMW 「...음...그건 좀...」
+            CASE 3
+                PRINTFORMW 「...죄송하지만, 그건 만들줄 모르거든요...」
+                PRINTFORMW 「다른거로 해 주시면 안될까요?」
+        ENDSELECT
+        RESTART
+ENDSELECT
+
+
+@ST_통상스킨십
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 6
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+SELECTCASE 대화선택
+    CASE 0
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                PRINTFORMW 「으으응...잠까안...너무 달라붙잖아요...」
+                IF EYEWITNESS()
+                    PRINTFORMW 「...보는 눈도 있는데, 참...」
+                    PRINTFORMW 사토리는 싫은 소리를 하면서도 손을 떨쳐내진 않고 있다
+                ELSE
+                    PRINTFORMW 「...응큼해, 진짜」
+                    PRINTFORMW 그렇게 말하면서도 사토리는 어쩐지 헤실헤실 웃고 있다
+                ENDIF
+            ELSE
+                IF CFLAG:3000 == 0
+                    PRINTFORMW 「...그렇게 가까이 달라붙어서 좋은건가요?」
+                    PRINTFORMW 「정말이지...호색한이라고 밖엔 해 줄 말이 없네요...」
+                    PRINTFORMW 사토리는 틱틱거리곤 있지만 저항의 의사는 보이지 않았다
+                ELSE
+                    PRINTFORMW 「...이런게 좋다니, 참...」
+                    PRINTFORMW 「그렇게나 좋으면 맘대로 하시던가요...」
+                ENDIF
+            ENDIF
+        ELSEIF TALENT:연인
+            PRINTFORMW 「...♥」
+            PRINTFORMW 사토리는 %마스터의% 손길을 기쁜듯이 받아들이고 있다
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            IF CFLAG:3000 == 0
+                PRINTFORMW 「...으응...」
+                PRINTFORMW 사토리는 %마스터의% 손길을 받아들이며 이따금 묘한 소리를 내 왔다
+            ELSE
+                PRINTFORMW 「...」
+                PRINTFORMW 사토리는 살짝 경직된채 %마스터의% 손길을 즐기고 있다
+            ENDIF
+        ELSEIF TALENT:섹프
+            IF EYEWITNESS()
+                PRINTFORMW 「...보는 눈도 있는데, 참...」
+                PRINTFORMW 사토리는 %마스터의% 손등을 가볍게 때려왔다
+            ELSE
+                PRINTFORMW 「후후, 간지러워요♥」
+                PRINTFORMW 사토리는 헤실헤실 웃고 있다
+            ENDIF
+        ELSE
+            IF CFLAG:3000 == 0
+                PRINTFORMW 「...저기, 너무 달라붙는거 아닌가요...?」
+                PRINTFORMW 「으음...」
+                PRINTFORMW 사토리는 떨떠름한 표정을 지어왔지만, 그 이상의 저항은 없었다
+            ELSE
+                PRINTFORMW 「...조금은 떨어져 줬음 하는데...하아...」
+                PRINTFORMW 사토리는 싫은 소리를 해 왔지만 별다른 저항은 보이지 않았다
+            ENDIF
+        ENDIF
+    CASE 1
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                IF EYEWITNESS()
+                    PRINTFORMW 「남들 앞에서 대담하시네요...」
+                    PRINTFORMW 「...뭐어, 싫은건 아니지만...」
+                    PRINTFORMW 사토리는 얼굴을 붉혔다
+                ELSE
+                    PRINTFORMW 「정말...간지러워요」
+                    PRINTFORMW 사토리는 히죽히죽 웃으며 %마스터의% 손길을 받아들이고 있다
+                ENDIF
+            ELSE
+                PRINTFORMW 「...이게 그리 좋은가요?」
+                PRINTFORMW 「하아...좋을대로 하시던가요...」
+                PRINTFORMW 사토리는 체념한듯 몸을 맡기고 있다
+            ENDIF
+        ELSEIF TALENT:연인
+            PRINTFORMW 「후후, 그렇게 만지면 간지러워요♥」
+            IF EYEWITNESS()
+                PRINTFORMW 사토리는 주위에 일부로 과시하듯이 %마스터의% 손길을 즐기고 있다
+            ELSE
+                PRINTFORMW 사토리는 %마스터의% 팔에 살며시 안겨왔다
+            ENDIF
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 「...좀 더 해주세요...」
+            PRINTFORMW 사토리는 손을 떼려는 %마스터를% 향해 나지막히 부탁해왔다
+        ELSEIF TALENT:섹프
+            IF EYEWITNESS()
+                PRINTFORMW 「남들 앞에서 부끄럽게시리...」
+                PRINTFORMW 「이런건 좀 더 은밀한 곳에서 하는거라구요?」
+            ELSE
+                PRINTFORMW 「후후♥ 손 움직이는게 간지러워요♥」
+                PRINTFORMW 사토리는 느슨한 얼굴로 %마스터의% 손길을 받아들이고 있다
+            ENDIF
+        ELSE
+            IF CFLAG:3000 == 0
+                PRINTFORMW 「너무 가까운데...」
+                PRINTFORMW 「숨소리도 들린다고요...?」
+            ELSE
+                PRINTFORMW 「으음...」
+                PRINTFORMW 사토리는 약간 불편해 보이는 표정으로 %마스터를% 응시하고 있다
+            ENDIF
+        ENDIF
+    CASE 2
+        ;손 깍지
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                PRINTFORMW 「으응...」
+                PRINTFORMW 사토리는 %마스터의% 손길에 흠칫흠칫 떨고 있다
+            ELSE
+                PRINTFORMW 「...뭘 그리 들러붙어 오는건가요, 진짜...」
+                PRINTFORMW 떨떠름한 표정을 하곤 있지만 그 이상의 저항은 없었다
+            ENDIF
+        ELSEIF TALENT:연인
+            PRINTFORMW 사토리에게 손을 뻗은 찰나, 사토리가 먼저 %마스터를% 끌어 안았다
+            PRINTFORMW 「후후, 잠시 이러고 있죠...♥」
+            PRINTFORMW 사토리는 무척이나 즐거워 보이는 표정이다
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 부드럽게 사토리의 손을 잡자, 얼굴이 살며시 붉어지는게 보였다
+            PRINTFORMW 「......」
+            PRINTFORMW 그렇게 생각할수록 사토리의 얼굴이 더더욱 발갛게 물들어 갔다
+        ELSEIF TALENT:섹프
+            PRINTFORMW 부드럽게 사토리의 손을 잡자, 사토리는 의아해했다
+            PRINTFORMW 「갑자기 이건 또 무슨...단순한 스킨십일뿐이라고요?」
+            PRINTFORMW 「...기왕 할거면 좀 더 이렇게...응...」
+            PRINTFORMW 사토리는 %마스터를% 잡아끌어 자신의 옆에 밀착시켰다
+            PRINTFORMW 「서로 할거 다 한 사인데, 이정도는 해야 스킨십이라 할 수 있지 않을까요?」
+            PRINTFORMW 사토리는 히죽히죽 웃으며 %마스터의% 옆구리에 팔을 둘러왔다
+        ELSE
+            IF CFLAG:3000 == 0
+                PRINTFORMW 사토리의 손을 부드럽게 잡아올리자, 사토리는 의아해하는 표정으로 %마스터를% 바라보고 있다
+                PRINTFORMW 「저기, 이건 또 무슨...?」
+                PRINTFORMW 「...별 의미 없는 스킨십이라...그런가요...」
+                PRINTFORMW 「닳는것도 아니니 별 신경은 안 쓰겠지만...」
+            ELSE
+                PRINTFORMW 사토리의 손을 부드럽게 잡아올리자, 사토리는 떨떠름한 표정을 지어왔다
+                PRINTFORMW 「...저기, 갑자기 이게 뭐 하는건가요,,,?」
+                PRINTFORMW 「그만해 주셨으면 좋겠는데...」
+                PRINTFORMW 그러나 그 이상의 저항은 없었다
+            ENDIF
+        ENDIF
+    CASE 3
+        ;팔짱
+        PRINTFORM 사토리의 팔을 부드럽게 껴안
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                PRINTFORMW 자 사토리는 얼굴을 붉히며 %마스터의% 몸에 기대왔다
+                PRINTFORMW 「...에헤헤...이거 좋네요...」
+                PRINTFORMW 「연인같다는 기분이 물씬 들어서 좋아」
+                PRINTFORMW ...사토리가 팔을 놓으려 하지 않아 한동안 팔을 붙잡혀 있어야 했다
+            ELSE
+                PRINTFORMW 자 사토리는 언짢아 보이는 표정을 지어왔다
+                PRINTFORMW 「...이게 지금 뭐하는건가요?」
+                PRINTFORMW 「스킨십...? 장난치지 말고 빨리 떨어...하아...」
+                PRINTFORMW 「제가 뭐라 한다고 들을 사람이 아니긴 했죠, 맘대로 하던가요 진짜...」
+            ENDIF
+        ELSEIF TALENT:연인
+            PRINTFORMW 자 사토리에게 끌어당겨져 옆에 밀착하게 되었다
+            PRINTFORMW 「이러고 있으면 연인같다는 기분이 물씬 들어서 좋아요」
+            IF EYEWITNESS()
+                PRINTFORMW 「남들에게 과시하는거 같기도 하고?」
+                PRINTFORMW 사토리는 히죽거리며 주위를 바라보고 있다
+            ELSE
+                PRINTFORMW 「그러니까- 안 놔줄거예요?」
+                PRINTFORMW 「후후후...조금만 더 이러고 있어요, 자꾸 도망가려 하지 말구」
+                PRINTFORMW 사토리는 한참동안이나 %마스터를% 붙잡은채 놓아주지 않았다
+            ENDIF
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 자 사토리는 얼굴을 붉혔다
+            PRINTFORMW 「...조금 부끄러워요」
+            PRINTFORMW 「...하지만 싫지는 않으니까, 계속 해주세요」
+            PRINTFORMW 사토리는 양 팔로 %마스터의% 팔을 끌어안듯 붙잡아왔다
+        ELSEIF TALENT:섹프
+            PRINTFORMW 았지만 사토리는 시큰둥했다... 
+            PRINTFORMW 「으음- 우리 사이에 이런거로 그닥 두근거리진 않네요...」
+            PRINTFORMW 「...정말이에요? 자, 만져봐요, 평소랑 똑같이 뛰잖아요? 오히려 이렇게 하는게...」
+            PRINTFORMW 사토리는 다짜고짜 팔을 잡아당겨 자신의 가슴에 얹었다
+            PRINTFORMW ...정말로 평온한 심박을 느낄수 있었다
+        ELSE
+            PRINTFORMW 자 사토리는 의아해 하는 표정을 지어왔다
+            PRINTFORMW 「...팔짱...?」
+            PRINTFORMW 「저기, 이건 무슨 의미...별 의민 없다고요? 하아...」
+            PRINTFORMW 「...너무 달라붙지는 말아줬음 하지만...」
+            PRINTFORMW 약간 떨떠름해 보였지만, 순순히 팔을 내 주는 사토리였다
+        ENDIF
+    CASE 4
+        ;쓰다듬
+        PRINTFORMW 사토리의 머리를 부드럽게 쓰다듬었다
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                PRINTFORMW 「...뭔가 어린아이를 다루는거 같은 느낌인데...」
+                PRINTFORMW 「싫은건 아니지만 기분이 묘해...」
+            ELSE
+                PRINTFORMW 「......」
+                PRINTFORMW 사토리는 뚱한 표정으로 %마스터를% 바라보고 있다
+            ENDIF
+        ELSEIF TALENT:연인
+            PRINTFORMW 「...♥」
+            PRINTFORMW 사토리는 굉장히 기뻐보였다
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 「......」
+            PRINTFORMW 사토리는 말없이 얼굴을 붉혔다
+        ELSEIF TALENT:섹프
+            PRINTFORMW 「이건 또 뭔가요?」
+            PRINTFORMW 「...저는 동물이 아닌데...」
+            PRINTFORMW 사토리는 별 감흥 없는 모양이다
+        ELSE
+            PRINTFORMW 「저기, 이건 또 무슨 뜻이죠...?」
+            PRINTFORMW 「...이런게 좋아? 특이하신 분이네요...」
+            PRINTFORMW 「...제가 동물은 아니지만 뭐, 그래서 만족하신다면야...」
+            PRINTFORMW 사토리는 시큰둥해보인다
+        ENDIF
+    CASE 5
+        ;볼 키스
+        ;PRINTFORMW 「」
+        PRINTFORM 사토리의 볼에 기습적인 키스를
+        IF MARK:반발각인 == 3
+            IF TALENT:연인
+                PRINTFORMW 했다
+                PRINTFORMW 「...?! 가, 갑자기 무슨...」
+                PRINTFORMW 사토리는 깜짝 놀란 눈치다
+            ELSE
+                PRINTFORMW 하려 했으나 %마스터를% 눈치챈 사토리가 재빨리 몸을 뺀 탓에 실패했다
+                PRINTFORMW 「...뭐하는짓이에요?」
+                PRINTFORMW 「갑자기 볼에 키스라니...하아...그런걸 받아줄거라고 생각한건가요?」
+                PRINTFORMW 사토리는 쌀쌀맞게 %마스터를% 바라보고 있다
+                IF TALENT:연모||TALENT:사모||TALENT:애욕
+                    PRINTFORMW 「...그렇게 하고 싶음 제대로 말하고 하면 될거 아녜요」
+                    PRINTFORMW 사토리는 들릴락말락하게 중얼거렸다
+                ENDIF
+            ENDIF
+        ELSEIF TALENT:연인
+            IF EXP:키스경험
+                PRINTFORMW 하려 했으나 사토리는 그새 눈치채곤 고개를 돌렸다
+                PRINTFORMW 그대로 서로의 입술이 포개어져 버리고, 한동안 사토리의 혀에 입 안을 마구 희롱당했다
+                PRINTFORMW 「푸하-...무르다고요, 저한테 기습을 하다니」
+                PRINTFORMW 「다음에 또 그러시면 이걸로 안 끝날거니까, 각오하세요? 후훗♥」
+            ELSE
+                PRINTFORMW 했다
+                PRINTFORMW 「...?! 가, 갑자기 뭐하는거예요 진짜」
+                IF EYEWITNESS()
+                    PRINTFORMW 「보는 눈도 있는데...」
+                    PRINTFORMW 사토리는 %마스터의% 등을 투닥투닥 때려왔다
+                ELSE
+                    PRINTFORMW 「...하..할거면 볼이 아니라...으으...」
+                ENDIF
+            ENDIF
+        ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+            PRINTFORMW 했다
+            PRINTFORMW 「...?!」
+            PRINTFORMW 사토리는 새빨게진 얼굴로 %마스터를% 응시하고 있다
+        ELSEIF TALENT:섹프
+            PRINTFORMW 했다
+            PRINTFORMW 「...에, 이게 전부?」
+            PRINTFORMW 「좀 더 만지작거린다던가...그런건 없나요?」
+            PRINTFORMW 사토리는 약간 불만스러워 보인다
+        ELSE
+            PRINTFORMW 했다
+            PRINTFORMW 「저기, 이건 무슨...?」
+            PRINTFORMW 「...가벼운 스킨쉽?...그렇게 보기엔 조금...」
+            PRINTFORMW 「에...어딘가의 인사라고요? 으으음...」
+            PRINTFORMW 사토리는 떨떠름한 표정으로 %마스터를% 응시하고 있다
+        ENDIF
+ENDSELECT
+
+@ST_우후후분위기스킨십
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 10
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;호텔 데려가서 스킨십하는거
+
+IF MARK:반발각인 == 3
+	IF TALENT:연인
+		CALL ST_우후후분위기스킨십_연인(대화선택)
+	ELSE
+		CALL ST_우후후분위기스킨십_반발3(대화선택)
+	ENDIF
+ELSEIF TALENT:연인
+	CALL ST_우후후분위기스킨십_연인(대화선택)
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	CALL ST_우후후분위기스킨십_연사애(대화선택)
+ELSEIF TALENT:섹프
+	CALL ST_우후후분위기스킨십_섹프(대화선택)
+ELSE
+    CALL ST_우후후분위기스킨십_일반(대화선택)
+ENDIF
+
+
+
+@ST_우후후분위기스킨십_연인(ARG)
+SELECTCASE ARG
+    CASE 0
+        PRINTFORMW 「응...거기...」
+        PRINTFORMW 「후아아...기분 좋아...」
+        PRINTFORMW 사토리는 %마스터의% 손길에 따라 희미하게 몸을 떨고 있다
+    CASE 1
+        PRINTFORMW 「으으응♥ 거깃♥」
+        PRINTFORMW 사토리는 %마스터의% 몸에 기댄채 열띤 한숨을 쉬고 있다
+    CASE 2
+        PRINTFORMW 「하아...♥」
+        PRINTFORMW 사토리는 달콤한 한숨을 내쉬며 %마스터의% 손을 받아들이고 있다
+    CASE 3
+        ;무릎에 앉힌다
+        PRINTFORMW %마스터는% 사토리를 무릎 위에 앉게 했다
+        PRINTFORMW 「왠지 야한 느낌인걸요, 이대로 해버릴건가요?」
+        PRINTFORMW 「앗♥ 잠까, 잠까안, 간지러워요♥」
+        PRINTFORMW 생글생글 웃어보이는 사토리의 목을 부드럽게 쓸어내리며 반응을 즐겼다
+    CASE 4
+        ;무릎에 앉힌다
+        PRINTFORMW %마스터는% 사토리를 무릎 위에 앉게 했다
+        PRINTFORMW 「...에헤헤...어쩐지 야한 기분」
+        PRINTFORMW 사토리는 엉덩이를 꼼지락꼼지락 움직이며 달라붙어오고 있다
+        PRINTFORMW 살며시 허리를 끌어안아주니 약간 놀란듯한 표정으로 뒤돌아 보았다
+        PRINTFORMW 「가...갑자기 안으면...으으...♥」
+        PRINTFORMW 싫지는 않은 모양이다
+    CASE 5
+        ;무릎에 앉힌다
+        PRINTFORMW %마스터는% 사토리를 무릎 위에 앉게 했다
+        PRINTFORMW 「으응...이 자세로는 %사마스터가% 안 보이는 걸요」
+        PRINTFORMW 사토리는 슬며시 뒤돌아 양 다리로 %마스터의% 허리를 끌어안았다
+        PRINTFORMW 「에헤헤...역시 이 편이 더 좋은거 같네요」
+        PRINTFORMW 사토리는 생글생글 웃으며 %마스터를% 양 팔로 껴안았다
+        IF EXP:키스경험
+            PRINTFORMW 「그리고 이 자세라면」
+            PRINTFORMW 기습적으로 %마스터의% 입술에 혀를 비집어 넣어왔다
+            PRINTFORMW 「...이런것도 하기 쉬우니까요, 후후♥」
+            PRINTFORMW %마스터의% 입 안을 농염하게 핥아낸 사토리는 해맑은 표정으로 %마스터를% 응시해오고 있다
+            EXP:키스경험 += 1
+            EXP:MASTER:키스경험 += 1
+        ENDIF
+    CASE 6
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 낼름낼름 핥아보였다
+        PRINTFORMW 「안대...거기, 더럽다구요...핥으면 안대는데에...♥」
+        PRINTFORMW 사토리는 새빨게진 얼굴로 연신 안돼안돼만 되뇌이고 있다
+    CASE 7
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 낼름낼름 핥아보였다
+        PRINTFORMW 「후아아...♥ 이, 이상한 기분...」
+        PRINTFORMW 「앗, 안돼, 귀 물지 마요, 흐아아..♥」
+        PRINTFORMW 사토리는 %마스터의% 혀놀림에 따라 바르르 떨고 있다
+    CASE 8
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 낼름낼름 핥아보였다
+        PRINTFORMW 「시러어...♥ 귀 핥으면 안대에..♥」
+        PRINTFORMW 「끈적한 소리가 간지러워어...♥」
+        PRINTFORMW 일부러 질척하게 소리를 내 주며 사토리의 귀를 희롱해주었다
+    CASE 9
+        ;백허그
+        PRINTFORMW %마스터는% 사토리를 뒤에서부터 꼬옥 끌어안았다
+        PRINTFORMW 「...엄청 포근하네요...」
+        PRINTFORMW 「...에헤헤...왠지 이거 마음에 들어...」
+        PRINTFORMW 사토리는 %마스터의% 몸에 기댄채 무척이나 행복해 보이는 미소를 지어보였다
+        TALENT:기분 = 1
+ENDSELECT
+
+@ST_우후후분위기스킨십_반발3(ARG)
+SELECTCASE ARG
+    CASE 0
+        PRINTFORMW 「읏...」
+        PRINTFORMW 「하...할거면 빨리 하고 끝내던지, 이런걸 해야할 이유가...으읏...」
+        PRINTFORMW 사토리는 새빨게진 얼굴로 %마스터의% 손길을 받아들이고 있다
+    CASE 1
+        PRINTFORMW 「...이런거 할 시간에 얼른 본편으로 하고 끝내야지...」
+        PRINTFORMW 「...응읏....그...그러니까 그만 하라니까...」
+        PRINTFORMW 사토리는 불만스런 얼굴로 %마스터의% 손길을 받아들이고 있따
+    CASE 2
+        PRINTFORMW 「흐으...이런거 전혀 안 기쁘니까...」
+        PRINTFORMW 「...떨고 있는건 그냥...으읏...간지러운거 뿐이니까...」
+        PRINTFORMW 사토리는 %마스터의% 손길을 따라 몸을 파르르 떨고 있다
+    CASE 3
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 붙잡아 %마스터의% 무릎위에 앉혔다
+        PRINTFORMW 「읏...지금 뭐하는거야...」
+        PRINTFORMW 사토리는 잠시 바둥거렸지만 이내 포기하고 %마스터의% 무릎위에 앉았다
+        PRINTFORMW 「이런게 뭐가 좋다는건지...」
+        PRINTFORMW 투덜투덜거리는 사토리를 부드럽게 쓰다듬으며 시간을 보냈다
+    CASE 4
+        ;무릎에 앉힌다
+        PRINTFORMW %마스터는% 사토리를 무릎 위에 걸터앉게 했다
+        PRINTFORMW 「...이런게 무슨 의미가 있는건가요?」
+        PRINTFORMW 「이대로 시간만 죽치고 있을거라면, 여긴 왜 온건지...」
+        PRINTFORMW 사토리는 불만스러워 보인다
+    CASE 5
+        ;무릎에 앉힌다
+        PRINTFORMW %마스터는% 사토리를 무릎 위에 걸터앉게 했다
+        PRINTFORMW 「이럴 시간도 아까운데, 얼른 해버리는게 어때요?」
+        PRINTFORMW 「...어짜피 그럴 생각으로 들어온거잖아요? 이런데에 끌고온걸 보면」
+        PRINTFORMW 사토리는 투덜거리고 있다
+    CASE 6
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 천천히 핥기 시작했다
+        PRINTFORMW 「그...더러울텐데...」
+        PRINTFORMW 「기분나쁜건 제쳐두고...그런데 핥으면 즐거워요...?」
+        PRINTFORMW 사토리는 어이없다는듯이 바라보고 있다
+    CASE 7
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 가볍게 물었다
+        PRINTFORMW 「읏...물지마요, 아프진 않더라도 기분 나빠...」
+        PRINTFORMW 「...가...간지러우니까 핥지도 마요, 그만, 그만해에...」
+        PRINTFORMW 사토리는 %마스터의% 혀놀림에 맞춰 온 몸을 파르르 떨고 있다
+    CASE 8
+        ;귀를 핥는다
+        PRINTFORMW %마스터는% 사토리의 귀를 입에 물고 찬찬히 핥기 시작했다
+        PRINTFORMW 「...귀라니, 하아...」
+        PRINTFORMW 「...혀가 낼름거리는 소리, 너무 세세하게 들려...」
+        PRINTFORMW 사토리는 눈을 질끈 감은채 행위가 끝나기를 기다리고 있다
+    CASE 9
+        ;백허그
+        PRINTFORMW %마스터는% 사토리를 뒤에서부터 부드럽게 껴안았다
+        PRINTFORMW 「...포근하네, 평소에도 이만큼만 해주면 얼마나 좋아」
+        PRINTFORMW 사토리는 빈정거리면서도 편안히 몸을 맡기고 있다
+ENDSELECT
+
+@ST_우후후분위기스킨십_연사애(ARG)
+SELECTCASE ARG
+    CASE 0
+        PRINTFORMW 「으읏...♥ 자, 잠까안...♥」
+        PRINTFORMW 사토리는 %마스터의% 손길에 온 몸을 파르르 떨고 있다
+    CASE 1
+        PRINTFORMW 「후아아...♥ 거기 기분 좋아... 좀 더...」
+        PRINTFORMW 사토리는 녹아내린 표정으로 %마스터의% 몸에 기대오고 있다
+    CASE 2
+        PRINTFORMW 「으응...간지러워요...♥」
+        PRINTFORMW 「앗♥ 거긴 안돼♥ 그마안...♥」
+        PRINTFORMW 사토리는 %마스터의% 손길에 허덕이고 있다
+    CASE 3
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉혔다
+        PRINTFORMW 「으으...어쩐지 부끄러운 자세인데...」
+        PRINTFORMW 「저기, 언제까지 할건가요...?」
+        PRINTFORMW 얼굴을 붉히며 다리를 꼼지락거리고 있다
+    CASE 4
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 붙잡아 무릎 위에 앉혔다
+        PRINTFORMW 「어쩐지 어린아이 같다는 기분이 드네요...」
+        PRINTFORMW 「그치만 어린애는 이런곳 못오겠죠...후후...♥」
+    CASE 5
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉혔다
+        PRINTFORMW 「...얼굴이 안 보이니까 쓸쓸한걸요」
+        PRINTFORMW 「모처럼 이런데 왔는데, 벽만 보고 있는건 싫어요」
+        PRINTFORMW 사토리는 그대로 180도 돌아, 두 다리로 %마스터의% 허리를 끌어안았다
+        PRINTFORMW 「후후, 역시 이게 더 좋은거 같네요..♥」
+    CASE 6
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 부드럽게 핥았다
+        PRINTFORMW 「그, 그런데 핥는거 아녜요...」
+        PRINTFORMW 「...더럽다구요? 으...그..그만...」
+        PRINTFORMW 사토리는 얼굴을 새빨갛게 물들이고 있다
+    CASE 7
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 가볍게 물었다
+        PRINTFORMW 「읏...물지 마요...이..입안에서 핥지도 마요...!」
+        PRINTFORMW 「으으...이런게 뭐가 좋은건지...」
+        PRINTFORMW 사토리는 눈을 질끈 감은채 %마스터의% 행위를 받아들이고 있다
+    CASE 8
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 핥았다
+        PRINTFORMW 「으으...♥ 낼름거리는 소리가 생생히 들려...」
+        PRINTFORMW 「기분이 이상해...읏...♥」
+    CASE 9
+        ;백허그
+        PRINTFORMW 뒤에서부터 부드럽게 사토리를 안아주었다
+        PRINTFORMW 「왜...왠지 이러니까 연인...같네요?」
+        PRINTFORMW 「어쩐지 묘한 기분이 드네요...」
+        PRINTFORMW 사토리는 얼굴을 붉히고 있다
+ENDSELECT
+
+@ST_우후후분위기스킨십_섹프(ARG)
+SELECTCASE ARG
+    CASE 0
+        PRINTFORMW 「아하하, 간지러워요♥」
+        PRINTFORMW 사토리는 꺄르르 웃으며 %마스터의% 손길을 즐기고 있다
+    CASE 1
+        PRINTFORMW 「후아아♥」
+        PRINTFORMW 사토리는 녹아내린 표정으로 %마스터의% 손길을 받아들이고 있다
+    CASE 2
+        PRINTFORMW 「으응...♥ 이런것도 좋지만, 모처럼 온건데...얼른 해버리는건 어떤가요?」
+        PRINTFORMW 「더는 못참겠단 말이죠...네?」
+        PRINTFORMW 사토리는 녹아내린 표정으로 달라붙어왔다
+        CALL ST_야스준비
+    CASE 3
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉혔다
+        PRINTFORMW 「이거, 왠지 야한기분이 드는걸요」
+        PRINTFORMW 「저만 그런가요?」
+        IF HAS_PENIS(MASTER)
+            PRINTFORMW 사토리는 슬그머니 뒤로 뺀 엉덩이로 %마스터의% 자지를 꾹꾹 눌러왔다
+        ELSE
+            PRINTFORMW 사토리는 능글맞게 웃고 있다
+        ENDIF
+    CASE 4
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉혔다
+        PRINTFORMW 「으음...이게 전부...?」
+        PRINTFORMW 「너무 밋밋해서 재미없으니 가슴이라도 만져보는건 어떤가요...」
+        PRINTFORMW 사토리는 불만스런 모양이다
+    CASE 5
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎 위에 앉게 했다
+        PRINTFORMW 「이제 뭘 할건가요?」
+        PRINTFORMW 「...이게 전부? 에에...그러언...」
+        PRINTFORMW 사토리는 약간 토라진 모양이다
+        IF HAS_PENIS(49)
+            PRINTFORMW 「모처럼 둘만 있는건데, 얼른 기분 좋은거 해요, 네?」
+        ELSE
+            PRINTFORMW 「하는수 없죠, 저 혼자서라도...」
+            PRINTFORMW 사토리는 %마스터의% 무릎에 스스로의 고간을 대고 왕복운동을 시작했다
+            PRINTFORMW 「%사마스터가% 기분 좋게 해줄 떄까지 계속할거예요?」
+            PALAM:윤활 += 200
+            PALAM:쾌C+= 150
+            PALAM:욕정 += 150
+        ENDIF
+    CASE 6
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 살짝 핥았다
+        PRINTFORMW 「으읏...♥ 이상한 기분...」
+        PRINTFORMW 「...그치만 싫지는 않아...」
+    CASE 7
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 살짝 꺠물었다
+        PRINTFORMW 「읏...그런데 깨물지 마요...」
+        PRINTFORMW 「아픈거보다...으...더럽잖아요? 그런데 입에 넣는거 아녜요...」
+    CASE 8
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 부드럽게 핥았다
+        PRINTFORMW 「가..간지러...그마안...」
+        PRINTFORMW 「안대에♥ 핥지 말아줫, 그만해에♥」
+        PRINTFORMW 사토리는 온 몸을 파르르 떨고 있다
+    CASE 9
+        ;백허그
+        PRINTFORMW 사토리를 뒤에서부터 부드럽게 안아주었다
+        PRINTFORMW 「...으음, 별 느낌 없는걸요...조금 따스한거만 빼면」
+        PRINTFORMW 「그래도 싫지는 않네요, 다음엔 이렇게 안으면서 해볼까요?」
+ENDSELECT
+
+@ST_우후후분위기스킨십_일반(ARG)
+SELECTCASE ARG
+    CASE 0
+        PRINTFORMW 「으읏...가...간지러워요...」
+        PRINTFORMW 사토리는 파르르 몸을 떨고 있다
+    CASE 1
+        PRINTFORMW 「읏...이..이런게 좋은건가요...?」
+        PRINTFORMW 「낯간지럽기만 한데...」
+    CASE 2
+        PRINTFORMW 「그만...그렇게 더듬지 마세요...」
+        PRINTFORMW 「...하나도 기분 좋지 않으니까」
+    CASE 3
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉혔다
+        PRINTFORMW 「...생각만큼 편하지는 않네요」
+        PRINTFORMW 「으음, 그냥 침대에 앉게 해 주시는건 어떨까 싶은데...」
+    CASE 4
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉게했다
+        PRINTFORMW 「...왠지 어린아이 취급받는 기분인걸요」
+        PRINTFORMW 그다지 마음에 들진 않는 모양이다
+    CASE 5
+        ;무릎에 앉힌다
+        PRINTFORMW 사토리를 무릎에 앉게했다
+        PRINTFORMW 「...이런게 뭐가 좋은건가요...?」
+        PRINTFORMW 그다지 마음에 들진 않는 모양이다
+    CASE 6
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 가볍게 핥아주었다
+        PRINTFORMW 「더...더러울텐데...」
+        PRINTFORMW 「저기...괜찮은건가요...?」
+    CASE 7
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 부드럽게 물었다
+        PRINTFORMW 「읏...! 무..물지마세요...」
+        PRINTFORMW 「안 아프긴 하지만...으으...더럽다구요...」
+        PRINTFORMW 사토리는 귀에 묻은 침을 닦아냈다        
+    CASE 8
+        ;귀를 핥는다
+        PRINTFORMW 사토리의 귀를 부드럽게 핥았다
+        PRINTFORMW 「에...그...그런곳을...핥아...?」
+        PRINTFORMW 「...저기, 괜찮으신거 맞죠?」
+    CASE 9
+        ;백허그
+        PRINTFORMW 사토리를 뒤에서부터 부드럽게 안았다
+        PRINTFORMW 「...저기, 놔주세요...」
+        PRINTFORMW 「아니, 포근하긴 하지만...좀 놔주시면 안될까요...?」
+        PRINTFORMW 별로 마음에 들진 않는 모양이다
+ENDSELECT
+
+
+
+@ST_사모회화
+#DIM 이전대화, 3
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 11 
+;20
+;목표수는 15개~20개
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1, 이전대화:2)
+이전대화:2 = 이전대화:1
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+
+SELECTCASE 대화선택
+    CASE 0
+        PRINTFORMW 「질리지도 않나보네요...」
+        PRINTFORMW 「저랑 대화하는걸 즐기는 사람은 별로 없는데」
+        PRINTFORMW 「...희한한 사람이야, 정말」
+    CASE 1
+        PRINTFORMW 「...다른 사람이랑 대화하면 금방 질려버리는데」
+        PRINTFORMW 「%사마스터랑%은 그러지가 않네요」
+        PRINTFORMW 사토리는 희미하게 웃어보이며 말해왔다
+    CASE 2
+        ;사실은 그렇게까지 예상하고 대사를 만들수가 없어서 그런거지만
+        PRINTFORMW 「실은, %사마스터의% 마음은 제대로 읽을수가 없어요」
+        PRINTFORMW 「못 읽을 정도는 아니지만...읽으려 해도 희미한 부분이 많아서 피곤해져」
+        PRINTFORMW 「...뭔가 하고 있는건 아니겠죠?」
+    CASE 3
+        IF CHK_DATENOW(CFLAG:TARGET:데이트중)
+            PRINTFORMW 「나가는건 그다지 좋아하지 않았는데」
+            PRINTFORMW 「막상 나와보니 그럭저럭 괜찮은거 같네요...」
+            PRINTFORMW 「그치만 계속 걷다가 지쳐서 집에 못 돌아갈지도 모르겠네요」
+        ELSE
+            PRINTFORMW 「...어딘가 좋아하시는 곳, 있나요?」
+            PRINTFORMW 「아뇨...나중에 한번 지상으로 나갔을때 들려보려고요」
+            PRINTFORMW 「가끔 코이시를 찾으려 나가니까, 그때 즐길수 있지 않을까- 해서...」
+            PRINTFORMW 사토리는 옆머리를 베베꼬며 말하고 있다
+        ENDIF
+    CASE 4
+        IF TALENT:38:연인
+            PRINTFORMW 「저기, 코이시랑은 잘 되고 있나요?」
+            PRINTFORMW 「그게...아무래도 그 아이는 조금 걱정되니까 말이죠」
+            IF MARK:38:반발각인 == 3
+                PRINTFORMW 「...조금 험악해 보이긴 하던데...」
+                PRINTFORMW 「둘이 싸운건가요?」
+            ELSE
+                PRINTFORMW 「...뭐, 잘 지내고 있으면 상관 없어요」
+            ENDIF
+            PRINTFORMW 「...코이시가 이상한 짓도 할 수 있고, 서로 의견이 안 맞을수도 있지만...」
+            PRINTFORMW 「그래도 일부러 그러는건 아니니까...잘 보듬어 주세요, 부탁드립니다」
+            IF CFLAG:38:현재위치 == CFLAG:현재위치
+                CALL ST_KS대사W("『저기, 언니- 둘이서 뭔 얘기를 그렇게 속닥속닥 하는거야』")
+                CALL ST_KS대사W("코이시는 약간 불만스러워 보이는 표정으로 사토리를 떼어냈다")
+            ENDIF
+        ELSEIF TALENT:38:연모||TALENT:38:사모
+            PRINTFORMW 「제 동생...코이시에 대해서, 어떻게 생각하시나요?」
+            PRINTFORMW 「왠지 둘이 친해보이길래 궁금해서 말이죠」
+            PRINTFORML [0] 그냥 그렇다
+            PRINTFORML [1] 귀엽다
+            PRINTFORML [2] 좋아한다
+            PRINTFORML [3] 귀찮다
+            PRINTFORML [4] 싫다
+            INPUT
+            SELECTCASE RESULT
+                CASE 0
+                    PRINTFORMW 「...흐으음...그런가요」
+                    PRINTFORMW 「그 애는 아닌거 같지만...」
+                    PRINTFORMW 사토리는 흥미롭다는듯이 바라보고 있다
+                CASE 1
+                    PRINTFORMW 「그런가요」
+                    PRINTFORMW 「귀여운 편이 좀 더 좋은거구나...」
+                    PRINTFORMW 사토리는 고개를 끄덕이고 있다
+                CASE 2
+                    PRINTFORMW 「...좋아, 한다라...」
+                    PRINTFORMW 「...잘 됐네요, 서로 죽이 잘 맞는 사람끼리 만나서」
+                    PRINTFORMW 어째서인지 사토리는 입술을 삐죽이고 있다
+                CASE 3
+                    PRINTFORMW 「...귀찮다니...」
+                    PRINTFORMW 「그래도 그 애는 나름대로 %사마스터가% 좋아서 그러는거니까, 너무 그러진 말아줘요」
+                    PRINTFORMW 「제대로 사랑하는법을 모르는 아이니까, 어쩔수 없는거예요...」
+                CASE 4
+                    PRINTFORMW 「...싫은건가요...역시 그렇겠죠...」
+                    PRINTFORMW 「저나 동생을 좋아해주는 사람은 그다지 없으니까요」
+                    PRINTFORMW 「그래도 너무 미워하진 말아주세요, 그 애는 나름대로 잘 보이려고 하고 있으니까...」
+                CASEELSE
+                    PRINTFORMW 「...대답하기 싫은건가요」
+                    PRINTFORMW 「상관없어요, 별로 중요한것도 아닌걸요」
+            ENDSELECT
+        ELSE
+            PRINTFORMW 「코이시한테도 잘 대해주세요」
+            PRINTFORMW 「가끔 이상한 짓을 하긴 하지만...너무 미워하진 말아줘요」
+            PRINTFORMW 「그 애가 나쁜 마음으로 한 건 아닐...아마도 아닐거예요...」
+            PRINTFORMW 「...아마도...」
+        ENDIF
+    CASE 5
+        IF ST_HOW_연인() && !TALENT:38:연인 ; 코이시는 제외, 코이시는 아는 사이니까
+            PRINTFORMW 「그나저나, \@ ST_HOW_연인() > 1 ? 연인이랑은# 연인들이랑은\@ 어떻게 지내시나요?」
+            PRINTFORMW 「사이가 안 좋다던가...뭐 그런일, 없나요?」
+            PRINTFORMW 사토리는 호기심에 찬 눈으로 바라보고 있다
+        ELSEIF !ST_HOW_연인()
+            ;연인 없다
+            PRINTFORMW 「%사마스터의% 이상형은 어떤가요?」
+            PRINTFORMW 「...벼...별다른 뜻은 아니고, 그냥 궁금해서요, 대답하기 싫음 말고요」
+            PRINTFORMW 사토리는 머리를 베베 꼬며 둘러대었다
+        ELSE
+            ;코이시랑 연인
+            PRINTFORMW 「그, %사마스터는% 코이시의 어떤 점을 보고 만나는 건가요?」
+            PRINTFORMW 「뭐가 마음에 든다던가...그런거 말예요」
+            PRINTFORMW 「아, 아뇨 별 뜻은 아니고, 그냥 궁금해서 말이죠」
+            PRINTFORMW 사토리는 머리칼을 베베 꼬며 둘러대었다
+        ENDIF
+    CASE 6
+        PRINTFORMW 「보통은 저하고 말하다보면 짜증난다던 사람이 대다수던데」
+        PRINTFORMW 「...%MASTERNAME:49%도 그런가요?」
+        PRINTFORML [0] 그렇다
+        PRINTFORML [1] 아니다
+        INPUT
+        IF RESULT
+            PRINTFORMW 사토리는 내색은 않지만 기뻐보이는 눈치였다
+            TALENT:기분 = 1
+        ELSE
+            PRINTFORMW 「...역시 그렇겠죠」
+            PRINTFORMW 사토리는 약간 시무룩해졌다...
+            IF TALENT:기분 == 1
+                TALENT:기분 = 0
+            ENDIF
+        ENDIF
+    CASE 7
+        PRINTFORMW 「...역시 팔이 짧으면, 여러모로 불편하겠죠」
+        PRINTFORMW 「좋아하는 사람을 안는것 조차 조금 버거울테니까」
+        PRINTFORMW 「...아니, 그렇게 짧진 않은가? 흐으음...」
+        PRINTFORMW 사토리는 %마스터를% 지그시 바라보고 있다
+    CASE 8
+        PRINTFORMW 「좀 더 말을 삼가는 편이 좋다, 라곤 잔뜩 들었지만」
+        PRINTFORMW 「계속 남의 생각을 듣다보면 입이 간질간질 해지는걸 참을수가 없는데 어쩌라는건지」
+        PRINTFORMW 「...그래도 역시 줄이는 편이 좋을까요?」
+        PRINTFORML [0] 딱히
+        PRINTFORML [1] 응
+        INPUT
+        IF !RESULT
+            PRINTFORMW 「...정말로요?」
+            PRINTFORMW 「역시 희한한 사람이라니깐...」
+            PRINTFORMW 「그렇게 말해주는 사람은 지금껏 거의 보지 못했는데」
+            PRINTFORMW 사토리는 약간 기뻐보이는 표정으로 %마스터를% 바라보았다
+            CFLAG:3100++
+        ELSE
+            PRINTFORMW 「그런가요...」
+            PRINTFORMW 「노력은 해봐야겠네요, 될지는 모르겠지만」
+            PRINTFORMW 어쩐지 부루퉁해보이는 표정이 되었다...
+            IF TALENT:기분 == 1
+                TALENT:기분 = 0
+            ENDIF
+        ENDIF
+    CASE 9
+        IF FLAG:데이트상대 == 49
+            PRINTFORMW 「누군가와 함께 어딘가로 간다는거, 영 익숙치 않아요」
+            PRINTFORMW 「애시당초 나갈 일이 별로 없긴 했지만」
+            PRINTFORMW 「기껏해야 애완동물들을 데리고 나서는게 전부였으니깐」
+            PRINTFORMW 「...그래서 조금은 기뻐요」
+        ELSEIF CHK_DATENOW(CFLAG:MASTER:데이트중)
+            PRINTFORMW 「나중에 말하면 안되나요?」
+            PRINTFORMW 「그 옆에서 무시무시한 질투심이 느껴져서 조금 무서울 지경이라」
+            PRINTFORMW 「...그리고 어쩐지 가슴이 답답해서요」
+            PRINTFORMW 사토리는 고개를 돌렸다
+        ELSE
+            PRINTFORMW 「요즘들어 밖에 나가고 싶다는 생각이 부쩍 드네요」
+            PRINTFORMW 「...늘 집에만 있는다고 오린이 뭐라 하니까....가끔씩은 나가줘야겠죠」
+            PRINTFORMW 「그래도 혼자 나가긴 또 싫고, 어쩌면 좋을까나」
+            PRINTFORMW 사토리는 %마스터를% 흘끔흘끔 바라보고 있다
+        ENDIF
+    CASE 10
+        IF ST_HUMI()
+            PRINTFORMW 「어쩐지 습한 날씨네...」
+            PRINTFORMW 「이런 날엔 머리카락이 더 곱슬거려서 짜증나」
+            PRINTFORMW 「...공들여 빗어놓은게 다 소용없게 된단 말예요, 그게 얼마나 오래 걸리는데」
+            PRINTFORMW 「이제와서 다시 빗을수도 없고...」
+            PRINTFORMW 사토리는 투덜거렸다
+        ELSE
+            PRINTFORML 「머리가 이렇게 곱슬거리는거, 참 불편하기 짝이 없어요」
+            PRINTFORMW 「예쁘게 세팅해봐도 금세 망가져서 평소처럼 돼버리고」
+            PRINTFORMW 「밖에 비라도 오면...아아, 상상한것 만으로도 끔찍해」
+            PRINTFORMW 사토리는 앞머리를 매만지며 투덜거렸다
+        ENDIF
+ENDSELECT
+
+@ST_섹프회화
+#DIM 이전대화, 3
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 10
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1, 이전대화:2)
+이전대화:2 = 이전대화:1
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+
+SELECTCASE 대화선택
+    CASE 0
+        PRINTFORMW 「부끄럽지만, 요즘엔 혼자서는 영 만족할수가 없네요...」
+        PRINTFORMW 「%사마스터가% 해주는게 상당히 마음에 들었으니까」
+        PRINTFORMW 「...그러니까 이젠 %사마스터가% 해줄때 빼곤 만족스레 가버릴수가 없다구요?」
+        PRINTFORMW 사토리는 얼굴을 붉히며 말했다
+    CASE 1
+        PRINTFORMW 「예전에는 매일같이 호텔방으로 들어가는 사람들을 이해할수 없었어요」
+        PRINTFORMW 「근데...이제는 조금 알 것 같아, 이런 기분좋은거 매일매일 하고 싶단 말야」
+    CASE 2
+        PRINTFORMW 「솔직히 제대로된 연인이 있었음 좋겠어요」
+        PRINTFORMW 「연인이라면 같은 방에서 살 수도 있고...그럼 매일매일 기분 좋은거 할 테니까」
+        PRINTFORMW 「...그치만 그런걸 좋아하는 사람을 만날 확률이 그다지 높진 않겠죠」
+    CASE 3
+        PRINTFORMW 「요즘엔 호텔 근처를 서성이는 버릇이 들어버렸어요」
+        PRINTFORMW 「방방마다 들려오는 야릇한 사념들에 몸이 떨리는게 좋아」
+        PRINTFORMW 「어쩔땐 근처 사람들이 걱정할 정도로 벌벌 떨고 있었다니깐요」
+    CASE 4
+        PRINTFORMW 「하루 종일 방에서 야한짓만 하면서 보내고 싶네...」
+        PRINTFORMW 「분명히 기분 좋을텐데...」
+        PRINTFORMW 사토리는 멍하니 %마스터를% 바라보며 되뇌이고 있다
+    CASE 5
+        PRINTFORMW 「야한 속옷 입으면 좋을것 같나요?」
+        PRINTFORMW 「좋아한다면 나중에 한번 입고 해볼려 했는데」
+        PRINTFORMW 「...안 어울리려나」
+    CASE 6
+        IF TALENT:38:섹프
+            PRINTFORMW 「어쩌다가 자매 둘이 한 사람의 섹프가 된걸까...」
+            PRINTFORMW 「그런건 관능 소설에서나 나올법한 이야기잖아」
+            PRINTFORMW 「...뭐어, 그런데 나오는거 만큼 %사마스터가% 능숙하니까 그런거겠죠?」
+        ELSEIF TALENT:38:연인 && CFLAG:38:현재위치 != CFLAG:현재위치
+            PRINTFORMW 「코이시랑 사귀어 놓고, 저랑 즐기다니...생각해보면 참 못된 분이시네요」
+            PRINTFORMW 「...그걸 즐기고 있는 저도 똑같지만...」
+        ELSE
+            PRINTFORMW 「야한짓은 하고 싶은데, 혼자서는 만족스럽게 할 수도 없고...」
+            PRINTFORMW 「다른 사람한테 부탁하자니 그것대로 곤란하고」
+            PRINTFORMW 「결국은 %사마스터랑% 하는거 밖엔 방법이 없네요」
+            PRINTFORMW 「이렇게 만든건 %MASTERNAME:49%니까 책임지고 계속 기분좋게 해줬으면 좋겠네」
+            PRINTFORMW 사토리는 음흉한 미소를 지어보였다
+        ENDIF
+    CASE 7
+        PRINTFORMW 「야한짓한 경험이 있으니까, 글을 읽어주는 사람들이 늘어나는거 같아요」
+        PRINTFORMW 「전보다 표현력이 더 올랐다니 뭐니...조금 기뻐요」
+        PRINTFORMW 「...좀 더 잔뜩 하면, 더 늘겠죠?」
+    CASE 8
+        IF EQUIP:하반신속옷2 && !EYEWITNESS()
+            PRINTFORMW 「혹시- 팬티같은거 필요한가요?」
+            PRINTFORMW 「필요하다고 말하면 줄 수도 있는데」
+            PRINTFORMW 사토리는 히죽히죽 웃으며 달라붙고 있다
+            PRINTFORML [0] 받는다
+            PRINTFORML [1] 필요 없다
+            INPUT
+            IF RESULT
+                PRINTFORMW 「그런가요? 뭐, 그럼 어쩔수 없죠」
+                PRINTFORMW 사토리는 희한하다는듯이 바라보고 있다
+            ELSE
+                PRINTFORMW 「...후후, 네, 좋아요」
+                PRINTFORMW 사토리는 그 자리에서 팬티를 벗어 %마스터의% 손에 들려주었다
+                PRINTFORMW 「다리 사이로 바람이 들어오는 이 감각...어쩐지 두근두근해」
+                PRINTFORMW 「...맞다, 그거, 남한테 들키지 않게 조심하세요?」
+                CALL PANTS_GET(49,"받는다")
+            ENDIF
+        ELSE
+            PRINTFORMW 「요근래 팬티신 신앙이 간간히 퍼지고 있나 보네요...」
+            PRINTFORMW 「...믿는건 상관없지만 그거로 이상한 짓을 하는게 문제라나봐요」
+            PRINTFORMW 「요컨데 다른 사람들을 발정나게 한다던지...」
+            PRINTFORMW 「...%MASTERNAME:49%도 그런걸 빌 건가요?」
+            PRINTFORMW 사토리는 %마스터를% 빤히 바라보고 있다
+        ENDIF
+    CASE 9
+        PRINTFORMW 「쌓일때는 많은데, %사마스터가% 늘 처리 해줄수도 없고」
+        PRINTFORMW 「...다른사람이라도 만날까- 싶다가도...그건 조금 꺼려지고」
+        PRINTFORMW 「고민이네요, 어쩌는게 좋을까」
+ENDSELECT
+
+@ST_연모회화
+#DIM 이전대화, 3
+#DIM DYNAMIC 대화선택
+#DIM CONST 대화개수 = 11
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1, 이전대화:2)
+이전대화:2 = 이전대화:1
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+SELECTCASE 대화선택
+    CASE 0
+        PRINTFORMW 「요즘들어 자도자도 영 피곤한데...」
+        PRINTFORMW 「꿈자리가 나쁜걸까나?」
+    CASE 1
+        PRINTFORMW 「요근래 만사가 귀찮단 말이죠...」
+        PRINTFORMW 「뭐, 애시당초 할 일이 별로 없기야 하지만」
+        PRINTFORMW 「...그래도 뭔갈 하려 해도 집중이 안된단 말야, 정말이지...」
+    CASE 2
+        PRINTFORMW 「아...」
+        PRINTFORMW 사토리는 멍하니 %마스터를% 바라보고 있다
+    CASE 3
+        PRINTFORMW 「%사마스터는%, 동물...좋아하나요?」
+        PRINTFORML [0] 좋아한다
+        PRINTFORML [1] 좋아하지 않는다
+        IF RESULT == 0
+            PRINTFORMW 「그런가요? 후후, 저랑 비슷하네요」
+            PRINTFORMW 사토리는 묘하게 기뻐하는 눈치다
+        ELSE
+            PRINTFORMW 「그런가요...」
+            PRINTFORMW 사토리는 약간 시무룩해진 모양이다
+        ENDIF
+    CASE 4
+        SELECTCASE DAY:2
+            CASE 1
+                IF CFLAG:현재위치 / 100 == 9
+                    PRINTFORMW 「꽃놀이라도 갈까나」
+                    PRINTFORMW 「나가는건 그리 좋아하진 않지만...가끔씩은 변덕을 부리고도 싶어지네」
+                    PRINTFORMW 사토리는 피식 웃어보였다
+                ELSE
+                    PRINTFORMW 「봄 기분이 물씬 나는게 좋네요」
+                    PRINTFORMW 사토리는 기분이 좋은 모양이다
+                ENDIF
+            CASE 2
+                PRINTFORMW 「지저에도 운 좋게 외래본이 흘러들어오는 경우도 있어요」
+                PRINTFORMW 「가끔 볼때마다 재미는 있답니다」
+                PRINTFORMW 「...그러고보니 그 책에선 이 맘때쯤엔...바다에서 수영하는 모습이 더러 있었네요」
+                PRINTFORMW 「그렇게 재밌는걸까요, 바다에서의 데이트는...」
+                PRINTFORMW 「환상향엔 바다가 없으니 호수로 만족할 수밖엔 없겠지만」
+            CASE 3
+                PRINTFORMW 「단풍이 예쁘게 물들었다곤 하던데」
+                IF CFLAG:현재위치 / 100 == 9
+                    PRINTFORMW 「구경이라도 갈까나, 후후」
+                ELSE
+                    PRINTFORMW 「실제로 보니 훨씬 더 예쁘네요」
+                    PRINTFORMW 사토리는 즐거운 모양이다
+                ENDIF
+            CASE 4
+                PRINTFORMW 「겨울...이 맘때는 연인들이 즐거워 하는 시기죠」
+                PRINTFORMW 「얼마나 기쁜건지는 잘 모르겠지만, 조금은 부러워지네」
+                IF CHK_DATENOW(CFLAG:TARGET:데이트중)
+                    PRINTFORMW 「...뭐어, 지금은 아니에요, 지금 당장은, 후후♥」
+                    PRINTFORMW 「그치만 헤어지면 또 다시 샘나질지도 모르겠네」
+                ENDIF
+        ENDSELECT
+    CASE 5
+        IF TALENT:38:연인
+            PRINTFORMW 「나름 전 좋은 언니라고 생각했는데」
+            PRINTFORMW 「이젠 그것도 아닌가봐요」
+            PRINTFORMW 「욕심에 못 이겨 동생걸 탐내고 있다니...조금 부끄러워질 정도야」
+        ELSEIF TALENT:38:연모||TALENT:38:애욕
+            PRINTFORMW 「이 나이 먹고도 동생이랑 서로 가지겠다고 싸우려 들다니...」
+            PRINTFORMW 「나름대로 좋은 언니라고 생각했는데, 아니었나봐요」
+            PRINTFORMW 사토리는 살짝 울적해 보인다
+            PRINTFORMW 「...그래도, 양보하고 싶지는 않은걸요」
+        ELSE
+            PRINTFORMW 「...가끔 코이시가 제 원고나 장부를 훔쳐가긴 하는데」
+            PRINTFORMW 「요근래엔 편지지까지 훔쳐가버리지 뭐예요」
+            PRINTFORMW 「정말이지...쓰는데 한참걸렸는데...」
+        ENDIF
+    CASE 6
+        PRINTFORMW 「옛날엔 길가에 돌아다니는 연인들을 이해할 수 없었어요」
+        PRINTFORMW 「뭐가 그리 좋아서 붙어다니고...뭐가 좋아서 히히덕대는지...」
+        PRINTFORMW 「이제서야 조금 이해가 되네요」
+        PRINTFORMW 「평생 모르는채 지내는게 차라리 나았을지도 모르겠지만」
+    CASE 7
+        PRINTFORMW 「저는 제 능력이 좋지만」
+        PRINTFORMW 「남들은 그걸 이해해 주지 않아요」
+        PRINTFORMW 「...그걸 가지고 남한테 험한 말만 하니까 그런거겠지만」
+        PRINTFORMW 「이제와서 고쳐질 성격도 아니고, 그냥 그려려니 할 수 밖에 없겠죠...」
+        PRINTFORMW 사토리는 약간 쓸쓸해 보인다
+    CASE 8
+        PRINTFORMW 「읽어버린 마음을 무심코 내뱉어버리는건, 정말로 나쁜 습관인데...」
+        PRINTFORMW 「그게...참을수가 없단 말이죠」
+        PRINTFORMW 「요즘엔 그래서 %사마스터의% 생각만은 최대한 안 읽고, 안 말하려 노력은 해봤는데」
+        PRINTFORMW 「그게 그리 쉽지가 않네요...입이 간질거려서 참을수가 없어」
+    CASE 9
+        IF FLAG:데이트상대 == 49
+            PRINTFORMW 「애완동물들과 산책은 몇번 나왔지만」
+            PRINTFORMW 「다른 사람과의 산책은 그다지 할 기회가 없었어요」
+            PRINTFORMW 「...그래서 조금은 기뻐요」
+        ELSEIF CHK_DATENOW(CFLAG:MASTER:데이트중)
+            PRINTFORMW 「나중에 말하면 안되나요?」
+            PRINTFORMW 「옆에 계신 분이, 상당히 불편해 하는거 같아보입니다만...」
+            PRINTFORMW 「후후후...조금, 괘씸하네요...어째설까」
+        ELSE
+            PRINTFORMW 「요즘들어 밖에 나가고 싶다는 생각이 부쩍 드네요」
+            PRINTFORMW 「...늘 집에만 있는다고 오린이 뭐라 하니까....가끔씩은 나가줘야겠죠」
+            PRINTFORMW 「그래서 말인데...어딘가 데려다 주실래요? 혼자 나가기는 조금 쓸쓸해서」
+            PRINTFORMW 사토리는 %마스터를% 흘끔흘끔 바라보고 있다
+        ENDIF
+    CASE 10
+        PRINTFORMW 「나름대로 남을 위해서 배려도 해보고 했지만」
+        PRINTFORMW 「마음을 읽어도 다른 사람을 만족시키는 일은 어렵더군요」
+        PRINTFORMW 「어쩌면 제가 도와주는거 자체를 싫어하는거 일려나」
+ENDSELECT
+
+
+
+
+@ST_통상청소
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM DYNAMIC 대화개수
+IF ST_NEARBYHOME() == 1 && CFLAG:초기위치 == 919
+    CALL ST_지령전청소
+    RETURN
+ENDIF
+SELECTCASE TFLAG:194
+    CASE 3
+        대화개수 = 4
+    CASE 1,2
+        대화개수 = 5
+    CASE 0
+        대화개수 = 4
+ENDSELECT
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+IF OUTROOF(CFLAG:현재위치)
+    ;바깥
+    IF DAY:2 == 4
+        CALL ST_제설()
+    ELSE
+        SELECTCASE TFLAG:194
+            CASE 3
+                SELECTCASE 대화선택
+                    CASE 0
+                        PRINTFORMW 「여긴...으으...치울수 있긴 한걸까」
+                        PRINTFORMW 사토리는 한숨을 쉬며 쓰레기들을 치워내고 있다
+                    CASE 1
+                        PRINTFORMW 「...치울 자신이 없어지네」
+                        PRINTFORMW 「이렇게 더러워지도록 아무도 치울 생각을 안 한걸까?」
+                    CASE 2
+                        PRINTFORMW 「...쓰레기가 산더미네」
+                        PRINTFORMW 「어째서 치우는 사람은 없고 어지르는 사람만 가득한걸까」
+                        PRINTFORMW 사토리는 한숨을 쉬며 쓰레가를 줍고 있다
+                    CASE 3
+                        PRINTFORMW 「치울수...있겠죠?」
+                        PRINTFORMW 「...힘내봅시다」
+                ENDSELECT
+            CASE 1,2
+                SELECTCASE 대화선택
+                    CASE 0
+                        PRINTFORMW 「이런곳도 치워주지 않으면 계속 더러워지니깐...」
+                    CASE 1
+                        PRINTFORMW 「...한번 쓰레기가 쌓인 곳은, 마음놓고 쓰레기를 버리게 되기 십상이라죠」
+                        PRINTFORMW 「그러기 전에 깔끔히 치워버리지 않으면 겉잡을수 없게 되버릴 거예요」
+                    CASE 2
+                        PRINTFORMW 「이건...타는 쓰레기, 저거는...」
+                    CASE 3
+                        PRINTFORMW 「애초부터 길바닥에 쓰레기를 버리는 이유가 뭘까요...」
+                        PRINTFORMW 사토리는 투덜거리며 쓰레기를 줍고 있다
+                    CASE 4
+                        PRINTFORMW 「저쪽을 치워주세요, 저는 이쪽을 치울테니」
+                        PRINTFORMW 사토리와 구역을 나누어 쓰레기를 치워나갔다
+                ENDSELECT
+            CASE 0
+                SELECTCASE 대화선택
+                    CASE 0
+                        PRINTFORMW 「이 정도면 한동안은 깔끔하겠지」
+                        PRINTFORMW 사토리는 말끔해진 거리를 뿌듯한 표정으로 바라보고 있다
+                    CASE 1
+                        PRINTFORMW 「흠흠...보이는 덴 전부 깔끔해졌네요」
+                        PRINTFORMW 「한동안은 깔끔하겠죠, 한동안은」
+                    CASE 2
+                        PRINTFORMW 「후-...이렇게 치워도, 금세 또 쓰레기 밭이 되겠지만」
+                        PRINTFORMW 「적어도 오늘은 이렇게 깔끔한 채면 좋겠네요」
+                    CASE 3
+                        PRINTFORMW 「깔끔해졌네요」
+                        PRINTFORMW 「아아, 이제야 좀 마음이 편해지네」
+                ENDSELECT
+        ENDSELECT
+    ENDIF
+ELSE
+    ;실내, 지령전도 아니고 사토리의 방도 아님
+    SELECTCASE TFLAG:194
+        CASE 3
+            SELECTCASE 대화선택
+                CASE 0
+                    PRINTFORMW 「...어쩌다 이렇게 더러워 진거람」
+                    PRINTFORMW 사토리는 한숨을 쉬며 빗자루를 들었다
+                CASE 1
+                    PRINTFORMW 「...치울 자신이 없어지네」
+                    PRINTFORMW 「이렇게 더러워지도록 아무도 치울 생각을 안 한걸까?」
+                CASE 2
+                    PRINTFORMW 「...쓰레기가 산더미네」
+                    PRINTFORMW 「오늘 안에 다 치울수 있긴 할까요?」
+                    PRINTFORMW 사토리는 한숨을 쉬며 쓰레가를 줍고 있다
+                CASE 3
+                    PRINTFORMW 「치울수...있겠죠?」
+                    PRINTFORMW 「...힘내봅시다」
+                    PRINTFORMW 사토리는 힘없이 말하며 빗자루를 들었다
+            ENDSELECT
+        CASE 1,2
+            SELECTCASE 대화선택
+                CASE 0
+                    PRINTFORMW 「읏차...대걸레 좀 가져다가 바닥좀 밀어보세요」
+                CASE 1
+                    PRINTFORMW 「...한번 쓰레기가 쌓인 곳은, 마음놓고 쓰레기를 버리게 되기 십상이라죠」
+                    PRINTFORMW 「그러기 전에 깔끔히 치워버리지 않으면 겉잡을수 없게 되버릴 거예요」
+                    PRINTFORMW 「...그게 집 안이라 해도 말이죠」
+                CASE 2
+                    PRINTFORMW 「이건...타는 쓰레기, 저거는...」
+                    PRINTFORMW 「...음, 모르겠네, 작열지옥에 넣으면 타려나」
+                CASE 3
+                    PRINTFORMW 「버릴거면 쓰레기통에 버리면 어디 덧나나...」
+                    PRINTFORMW 사토리는 투덜거리며 쓰레기를 줍고 있다
+                CASE 4
+                    PRINTFORMW 「저쪽을 치워주세요, 저는 이쪽을 치울테니」
+                    PRINTFORMW 사토리와 구역을 나누어 쓰레기를 치워나갔다
+            ENDSELECT
+        CASE 0
+            SELECTCASE 대화선택
+                CASE 0
+                    PRINTFORMW 「이 정도면 한동안은 괜찮겠지」
+                    PRINTFORMW 사토리는 말끔해진 주변을 뿌듯한 표정으로 바라보고 있다
+                CASE 1
+                    PRINTFORMW 「후우...」
+                    PRINTFORMW 사토리는 뿌듯한 표정으로 주위를 바라보고 있다
+                CASE 2
+                    PRINTFORMW 「후-...이렇게 치워도, 금세 또 어지럽혀 지겠지만」
+                    PRINTFORMW 「적어도 오늘은 이렇게 깔끔한 채면 좋겠네요」
+                CASE 3
+                    PRINTFORMW 「깔끔해졌네요」
+                    PRINTFORMW 「아아, 이제야 좀 마음이 편해지네」
+            ENDSELECT
+    ENDSELECT
+ENDIF
+
+@ST_통상방청소
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM DYNAMIC 대화개수
+SELECTCASE TFLAG:194
+    CASE 3
+        대화개수 = 4
+    CASE 1,2
+        대화개수 = 5
+    CASE 0
+        대화개수 = 4
+ENDSELECT
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+SELECTCASE TFLAG:194
+    CASE 3
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「음...요근래 청소를 좀 게을리 했던가...」
+                PRINTFORMW 사토리는 머쓱해하며 방정리를 시작했다
+            CASE 1
+                PRINTFORMW 「요즘 좀 바빠서 청소를 안했더니 금세 이렇게 되버렸네...」
+                PRINTFORMW 사토리는 멋쩍어 하며 쓰레기를 치우기 시작했다
+            CASE 2
+                PRINTFORMW 「청소라...마침 하려고 했었긴 한데...」
+                PRINTFORMW 「이거, 전부 치울순...있겠죠?」
+                PRINTFORMW 사토리는 한숨을 쉬며 바닥의 쓰레기들을 주웠다
+                PRINTFORMW 방 한가득 쌓인 쓰레기는 전혀 줄 기세가 없어보인다
+            CASE 3
+                PRINTFORMW 「...잠깐 신경 안썼다고 이렇게 쓰레기 밭이 될 줄은 몰랐는데 말이죠」
+                PRINTFORMW 「별로 버린것도 없는데 왜 이렇게 된걸까나」
+                PRINTFORMW 사토리는 투덜거리며 쓰레기를 줍고 있다
+        ENDSELECT
+    CASE 1,2
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「읏차...여기, 쓰레기통 좀 비워주실래요?」
+                PRINTFORMW 사토리는 책상에서 치워낸 종이뭉치가 한가득 들은 쓰레기통을 내밀었다
+            CASE 1
+                PRINTFORMW 「도와주시는건가요? 감사합니다」
+                PRINTFORMW 사토리는 조금 기뻐보이는 얼굴로 빗자루를 들었다
+            CASE 2
+                PRINTFORMW 「%사마스터는% 저쪽을 청소해 주세요」
+                PRINTFORMW 사토리와 구역을 나누어 방을 청소해 나갔다
+            CASE 3
+                PRINTFORMW 「음...먼지가 좀 많네...」
+                PRINTFORMW 사토리는 쓰레받기에 한가득 먼지를 담아내고 있다
+            CASE 4
+                PRINTFORMW 「청소를 안 하는건 아닌데, 왜 맨날 이렇게 더러워지는 걸까요」
+                PRINTFORMW 「...물론 가끔 까먹는 날이 있기도 하지만」
+        ENDSELECT
+    CASE 0
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「조금 설렁설렁 해도 괜찮아요」
+                PRINTFORMW 「먼지 조금 안 치운다고 큰일 나는것도 아닌데」
+                PRINTFORMW 사토리는 %마스터의% 걸레를 뺏어 가구를 닦고 있다
+            CASE 1
+                PRINTFORMW 「이제 먼지만 털어내면 되겠다」
+                PRINTFORMW 사토리는 먼지털이로 마무리 청소를 시작했다
+            CASE 2
+                PRINTFORMW 「반들반들해 지니까 보기 좋네」
+                PRINTFORMW 사토리는 먼지 한톨 없이 깨끗해진 가구들을 보며 뿌듯해 하고 있다
+            CASE 3
+                PRINTFORMW 「휴...이제 완전 깨끗해진거 같네」
+                PRINTFORMW 「수고하셨어요」
+        ENDSELECT
+ENDSELECT
+
+
+@ST_지령전청소
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM DYNAMIC 대화개수
+SELECTCASE TFLAG:194
+    CASE 3
+        대화개수 = 6
+    CASE 1,2
+        대화개수 = 5
+    CASE 0
+        대화개수 = 4
+ENDSELECT
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+SELECTCASE TFLAG:194
+    CASE 3
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「애완동물이 너무 많은걸까나...」
+                PRINTFORMW 「치워도치워도 계속 더러워지는걸」
+                PRINTFORMW 사토리는 한숨을 쉬며 빗자루질을 하고 있다
+            CASE 1
+                PRINTFORMW 「...이 정도면 홍마관에 문의를 해보는게 나을려나?」
+            CASE 2
+                PRINTFORMW 「...청소를 맡은 아이가 분명히 있었죠」
+                PRINTFORMW 「그런데도 이렇게 더러워 지는건, 농땡이일까요, 아니면 치워도치워도 끝이 안 나는 걸까요」
+                PRINTFORMW 「어쩌면 둘 다 일려나」
+                PRINTFORMW 사토리는 중얼중얼거리며 빗자루질을 하고 있다
+            CASE 3
+                PRINTFORMW 「...이 집에서 청소를 하는 사람은 별로 없죠」
+                PRINTFORMW 「다들 조금이나마 거들어주면 좋을텐데...」
+                PRINTFORMW 「...하기사 이렇게 금세 더러워지는데 의욕이 안 나겠죠」
+            CASE 4
+                PRINTFORMW 「치워도 치워도 변하는게 없어보이는건 제 착각인가요?」
+                PRINTFORMW 「갑자기 의욕이 사라졌어...」
+            CASE 5
+                PRINTFORMW 「...배변 훈련도 충분히 시켰고, 털도 잘 빗어서 안 흘리게 주의하고 있는데」
+                PRINTFORMW 「어째서 이렇게 더러워 지는걸까요」
+        ENDSELECT
+    CASE 1,2
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「지령전은 수시로 청소해줘야 해요」
+                PRINTFORMW 「안 그러면 금세 축사나 다름없어지니깐」
+            CASE 1
+                PRINTFORMW 「오쿠나 오린이 청소를 거들어 줬음 좋겠네...」
+                PRINTFORMW 「...코이시야 뭐, 흙묻은 신발이나 털고 들어오기나 해줬음 좋겠어」
+            CASE 2
+                PRINTFORMW 「동물을 기르는건 이런걸 치울 각오를 하고 해야한다지만...」
+                PRINTFORMW 「...그래도 치우는게 즐겁진 않네요」
+                PRINTFORMW 사토리는 한숨을 쉬었다
+            CASE 3
+                PRINTFORMW 「후우...그래도 %사마스터가% 도와주니 금방 끝나겠네요」
+                PRINTFORMW 사토리는 옅게 웃어보였다
+            CASE 4
+                PRINTFORMW 「복도의 쓰레기는 모아뒀다가 작열지옥에 던져버리면 간편하죠」
+                PRINTFORMW 「어짜피 전부 타는 쓰레기니깐, 구분할 필요가 없어요」
+        ENDSELECT
+    CASE 0
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「이렇게 세심하게 청소할 필요가 있나 싶네요」
+                PRINTFORMW 「그래도 잠깐동안은 깔끔하겠죠...아주 잠깐 동안...」
+            CASE 1
+                PRINTFORMW 「음~ 깔끔해라, 늘 이랬음 좋겠네」
+                PRINTFORMW 「금세 더러워지겠지만」
+            CASE 2
+                PRINTFORMW 「깔끔한게 보기 좋네요」
+                PRINTFORMW 「할땐 피곤해도 결과물을 보고 나면 기분이 좋아진다니까요」
+            CASE 3
+                PRINTFORMW 「후우...오린한테 요정들을 가르쳐서 청소나 하라고 시켜야 하나...」
+                PRINTFORMW 「매번 이렇게 청소해도 금세 더러워지니 의욕이 안 나...」
+        ENDSELECT
+ENDSELECT
+
+@ST_동거방청소
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM DYNAMIC 대화개수
+SELECTCASE TFLAG:194
+    CASE 3
+        대화개수 = 6
+    CASE 1,2
+        대화개수 = 5
+    CASE 0
+        대화개수 = 3
+ENDSELECT
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+SELECTCASE TFLAG:194
+    CASE 3
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「...어...그러니까 이건...」
+                PRINTFORMW 「...미안해요, 치우는걸 까먹어서...」
+            CASE 1
+                PRINTFORMW 「...치울수 있을까」
+            CASE 2
+                PRINTFORMW 「...이게 방이야 돼지우리야...」
+            CASE 3
+                PRINTFORMW 「......」
+                PRINTFORMW 사토리는 할말을 잃은듯 하다
+            CASE 4
+                PRINTFORMW 「...다음부터 청소는, 제깍제깍 하도록 합시다」
+                PRINTFORMW 「잠깐 미뤘다고 이렇게나...」
+            CASE 5
+                PRINTFORMW 「...미치겠네」
+                PRINTFORMW 사토리는 머리를 짚었다
+        ENDSELECT
+    CASE 1,2
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「같이 사는곳이니 치우는건 도와야죠」
+                PRINTFORMW 사토리는 포댓자루 한가득 쓰레기를 담고 있다
+            CASE 1
+                PRINTFORMW 「하는김에 이불도 좀 털고...」
+            CASE 2
+                PRINTFORMW 「으에...한번 쓸었는데 이 만큼이나...」
+                PRINTFORMW 사토리는 빗자루에 한가득 묻어 나오는 먼지에 경악하고 있다
+            CASE 3
+                PRINTFORMW 「바닥좀 닦을게요」
+                PRINTFORMW 「미끄러지지 않게 조심하세요」
+            CASE 4
+                PRINTFORMW 「먼지떨이 드릴테니 구석진데 좀 털고 와주세요」
+        ENDSELECT
+    CASE 0
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「흐음...이쯤이면 됐나」
+                PRINTFORMW 사토리는 반들반들 윤이 나는 바닥을 뿌듯한 얼굴로 바라보고 있다
+            CASE 1
+                PRINTFORMW 「그래, 사람 사는데가 이래야지」
+                PRINTFORMW 사토리는 만족스러운 미소를 지어보이고 있다
+            CASE 2
+                PRINTFORMW 「후우...힘들었지만, 기분 좋네」
+                PRINTFORMW 정갈하게 놓인 가구, 먼지 한톨없는 바닥...새로 지은 방이라 해도 믿을 정도의 청결함에 뿌듯함이 느껴지고 있다
+        ENDSELECT
+ENDSELECT
+
+@ST_제설
+#DIM 이전대화, 2
+#DIM DYNAMIC 대화선택
+#DIM DYNAMIC 대화개수
+SELECTCASE TFLAG:194
+    CASE 3
+        대화개수 = 4
+    CASE 1,2
+        대화개수 = 3
+    CASE 0
+        대화개수 = 3
+ENDSELECT
+대화선택 = ST_대사섞기(대화개수, 이전대화:0 , 이전대화:1)
+이전대화:1 = 이전대화:0
+이전대화:0 = 대화선택
+;PRINTFORMW 「」
+SELECTCASE TFLAG:194
+    CASE 3
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「우와, 온 세상이 눈밭이야」
+                PRINTFORMW 「...미치겠네, 녹기전에 치워야하는데」
+                PRINTFORMW 사토리는 망연자실한 눈으로 허공을 바라보고 있다
+            CASE 1
+                PRINTFORMW 「...엄청 쌓였네, 얼지나 않았음 좋겠는데」
+            CASE 2
+                PRINTFORMW 「...치워도 금방 쌓일거라는게 무섭네...」
+                PRINTFORMW 「어느세월에 다 치우지...」
+            CASE 3
+                PRINTFORMW 「...무릎, 아니, 허리 밑...?」
+                PRINTFORMW 「이거 치울순 있나요?」
+        ENDSELECT
+    CASE 1,2
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「볼땐 즐거운데」
+                PRINTFORMW 「치울땐 왜 이리 화가 나는걸까요」
+            CASE 1
+                PRINTFORMW 「...추워...」
+            CASE 2
+               PRINTFORMW 「그래도 몇번 삽질하니까 길이 보이긴 하네」
+               PRINTFORMW 「...근데 등 뒤가 다시 눈밭이 되고 있잖아...」
+        ENDSELECT
+    CASE 0
+        SELECTCASE 대화선택
+            CASE 0
+                PRINTFORMW 「하아, 쌓인 눈은 다 치웠네」
+                PRINTFORMW 「...또 쌓이겠지만」
+            CASE 1
+                PRINTFORMW 「방금 치운데 위로 또 눈이 쌓이려 해...으으...」
+            CASE 2
+                PRINTFORMW 「...이렇게 치워도, 몇시간 뒤면 다시 눈밭이 되겠죠」
+                PRINTFORMW 사토리는 멍한 표정으로 삽질을 계속하고 있다
+        ENDSELECT
+ENDSELECT
+
+@ST_IKUSA
+#DIM DYNAMIC 사토리체력
+#DIM DYNAMIC 당신체력
+#DIM DYNAMIC 위력,2
+#DIM DYNAMIC 승자
+
+위력:0 = 5 + (MAX(ABL:전투능력, 5))
+위력:1 = 3 + (MAX(ABL:MASTER:전투능력, 7))
+사토리체력 = 20
+당신체력 = 15 + (MAX((BASE:MASTER:체력/100), 20))
+
+PRINTFORML
+PRINTFORMW 사토리와 %마스터는% 거리를 벌리고 탄막놀이를 개시했다
+PRINTFORML
+IF MARK:반발각인 == 3 && !TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORMW 「평소에 당한 만큼 돌려주겠어...」
+        CASE 1
+            PRINTFORMW 「제대로 혼쭐을 내버릴테야...」
+        CASE 2
+            PRINTFORMW 「진심으로 해버릴거니까, 각오 하세요?」
+            PRINTFORMW ...연습이라는건 잊혀진것 같다
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORMW 「그래도 왠지 신나는걸, %사마스터와% 하는 탄막놀이는」
+            PRINTFORMW 「피곤하긴 해도 탄막놀이는 재밌으니깐요」
+        CASE 1
+            PRINTFORMW 「읏차...그러면 어디, 해 볼까요」
+        CASE 2
+            SELECTCASE ABL:MASTER:전투능력 - ABL:전투능력
+				CASE IS < 0
+					PRINTFORMW 「열심히 피해주세요?」
+				CASE 0
+					PRINTFORMW 「진 사람이...으음~ 뭘 하는거로 걸까나」
+				CASE IS > 0
+					PRINTFORMW 「으...살살...」
+			ENDSELECT
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「연습이긴 해도, 진짜 탄막놀이처럼 갑시다?」
+        CASE 1
+            PRINTFORMW 「선공은 제가 먼저」
+    ENDSELECT
+ELSEIF TALENT:섹프
+	SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「가끔은 이런것도 재밌죠」
+        CASE 1
+            PRINTFORMW 「역시 탄막놀이도 야한짓 만큼이나 재밌죠」
+            PRINTFORMW 「그럼 야한짓 하면서 해보면...후후후♥」
+    ENDSELECT
+ELSE
+    PRINTFORMW 「읏챠...그럼 가볼까나」
+ENDIF
+PRINTFORML
+WHILE 1
+    ;SATORI
+    SELECTCASE RAND:6
+        CASE 0
+            PRINTFORMW 서드아이의 코드들이 일제히 뻗어나와 %마스터의% 몸을 찌르는 촉수가 되었다!
+            IF RAND:100 > 20
+                PRINTFORMW 온 몸 구석구석을 강하게 찔러왔다!
+                당신체력 -= 위력:0
+            ELSE
+                PRINTFORMW 그러나 재빨리 굴러서 피했다
+            ENDIF
+        CASE 1
+            PRINTFORMW 「이래뵈도 길가의 허접한 요괴는 아니라고요」
+            PRINTFORMW 빽빽한 하트 모양의 탄막이 %마스터를% 향해 쏟아진다!
+            IF RAND:100 > 35
+                PRINTFORMW 회피할 틈도 없이 탄막에 폭격당했다!
+                당신체력 -= 위력:0
+            ELSE
+                PRINTFORMW 재빠르게 옆으로 달려나가며 탄막 세레를 피했다!
+            ENDIF
+        CASE 2
+            PRINTFORMW 「이쪽은 취향이 아니지만」
+            PRINTFORMW 땅을 박차며 날아온 사토리의 주먹이 %마스터를% 강타했다!
+            IF RAND:100 > 10
+                PRINTFORMW 강렬한 충격이 전신에 느껴진다!
+                당신체력 -= 위력:0
+            ELSE
+                PRINTFORMW 그러나 옆으로 몸을 피한 덕에 피격은 면할수 있었다
+            ENDIF
+        CASE 3
+            PRINTFORMW 「자아 당신의 트라우마를 보여드리죠!」
+            PRINTFORMW 불길한 빛의 광선이 마구잡이로 쏘여지고 있다!
+            당신체력 -= 위력:0
+        CASE 4
+            PRINTFORMW 「제게서 피하는건 불가능하답니다」
+            PRINTFORMW %마스터가% 회피하려는 위치마다 무자비한 탄막 세례가 퍼부어지고 있다!
+            IF RAND:100 > 7
+                PRINTFORMW 결국 탄막에 적중당했다!
+                당신체력 -= 위력:0
+            ELSE
+                PRINTFORMW 그러나 재빨리 사토리를 공격해 탄막 세례를 멈추게 만들었다
+            ENDIF
+        CASE 5
+            PRINTFORMW %마스터의% 옆으로 촉수들이 스쳐지나가더니, 금세 %마스터를% 묶어버렸다!
+            IF RAND:100 > 25
+                PRINTFORMW 그대로 사토리의 앞으로 끌어당겨진뒤 근거리 탄막세례를 받았다!
+                당신체력 -= (위력:0) * 2
+            ELSE
+                PRINTFORMW 그러나 %마스터를% 끌어당기기엔 힘이 부족했다
+            ENDIF
+    ENDSELECT
+    IF 당신체력 <= 0
+        승자 = 0
+        BREAK
+    ENDIF
+    ;MASTER
+    SELECTCASE RAND:4
+        CASE 0
+            PRINTFORMW 사토리의 탄막 난사를 회피하며 눈 앞까지 다가간 %마스터는% 최대한 힘을 모아 춉을 날렸다!
+            IF RAND:100 > 20
+                PRINTFORMW 「읏!」
+                PRINTFORMW 사토리는 조금 뒤로 밀려졌지만, 이내 다시 자세를 고치고 다음 공격을 준비하고 있다!
+                사토리체력 -= 위력:1
+            ELSE
+                PRINTFORMW 「%사마스터의% 공격은 전부 읽혀진다고요!」
+                PRINTFORMW 사토리는 재빠르게 몸을 놀려 공격을 피해냈다
+            ENDIF
+        CASE 1
+            PRINTFORMW 가까이 다가온 사토리의 주먹을 옆으로 피해냈다!
+            PRINTFORML 「으긋...!」
+            PRINTFORMW 주춤거리는 사토리의 등 뒤를 가격했다!
+            사토리체력 -= 위력:1 
+        CASE 2
+            PRINTFORMW %마스터의% 주위로 날아오는 촉수를 낚아채 사토리를 끌어당겼다!
+            IF RAND:100 > 15
+                PRINTFORMW 「우왓?!」
+                PRINTFORMW 사토리는 가볍게 당겨져 버렸다!
+                사토리체력 -= 위력:1
+            ELSE
+                PRINTFORMW 그러나 사토리는 침착하게 촉수를 수축시켜 손에서 빼냈다!
+            ENDIF
+        CASE 3
+            PRINTFORMW 시간을 멈춘채 사토리의 등 뒤로 움직였다!
+            PRINTFORMW 「...핫!」
+            PRINTFORMW 눈치채기도 전에 재빨리 공격을 날렸다!
+            사토리체력 -= 위력:1
+    ENDSELECT
+    IF 사토리체력 <= 0
+        승자 = 1
+        BREAK
+    ENDIF
+WEND
+;PRINTFORMW 「」
+IF 승자 == 0
+    ;사토리 승
+    PRINTFORMW *피츙*
+    PRINTFORMW %마스터는% 쓰러지고 말았다!
+    IF MARK:반발각인 == 3 && !TALENT:연인
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 사토리는 해냈다는 표정이다
+            CASE 1
+                PRINTFORMW 「후우- 속이 다 시원하네」
+                PRINTFORMW 사토리는 즐거워 보인다
+            CASE 2
+                SELECTCASE ABL:MASTER:전투능력 - ABL:전투능력
+                    CASE IS < 0
+                        PRINTFORMW 「거봐, 내가 뭐랬어」
+                        PRINTFORMW 사토리는 으스대고 있다
+                    CASE 0
+                        PRINTFORMW 「푸흡」
+                        PRINTFORMW 사토리는 쓰러진 %마스터를% 비웃고 있다
+                    CASE IS > 0
+                        PRINTFORMW 「어라, 왠지 약해졌네」
+                        PRINTFORMW 「...그렇다면 이제...후후후...」
+                        PRINTFORMW 사토리는 의미심장한 웃음을 짓고 있다
+                ENDSELECT
+        ENDSELECT
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「어...괘, 괜찮아요?」
+                PRINTFORMW 「조금 세게 던진거 같네...」
+            CASE 1
+                PRINTFORMW 사토리는 무안해 하며 %마스터를% 일으켜주고 있다
+            CASE 2
+                SELECTCASE ABL:MASTER:전투능력 - ABL:전투능력
+                    CASE IS < 0
+                        PRINTFORMW 「괘, 괜찮아요?」
+                        PRINTFORMW 「그러게 적당히 하다 그만하지...」
+                    CASE 0
+                        PRINTFORMW 「하아...하아...이겼긴 한데, 힘드네...」
+                    CASE IS > 0
+                        PRINTFORMW 「...어라? 이겼네」
+                        PRINTFORMW 사토리는 얼떨떨하게 %마스터를% 바라보고 있다
+                ENDSELECT
+        ENDSELECT
+    ELSE
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「어...조금 과했나?」
+            CASE 1
+                PRINTFORMW 「저기, 괜찮아요?」
+            CASE 2
+                PRINTFORMW 「안 다쳤어요?」
+        ENDSELECT
+        PRINTFORMW 사토리는 %마스터를% 걱정해주고 있다
+    ENDIF
+    DOWNBASE:MASTER:체력 += 500
+ELSE
+    ;당신 승
+    PRINTFORMW *피츙*
+    PRINTFORMW 사토리는 쓰러지고 말았다!
+    IF MARK:반발각인 == 3 && !TALENT:연인
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「으으으...」
+                PRINTFORMW 사토리는 분한듯이 %마스터를% 올려다보고 있다
+            CASE 1
+                PRINTFORMW 「아파라...」
+            CASE 2
+                SELECTCASE ABL:MASTER:전투능력 - ABL:전투능력
+                    CASE IS < 0
+                        PRINTFORMW 「어, 어라...? 어째서...?」
+                        PRINTFORMW 사토리는 당황한 눈치다
+                    CASE 0
+                        PRINTFORMW 「으으...져버렸네...분해...」
+                    CASE IS > 0
+                        PRINTFORMW 「이, 이럴줄 알고 한거지...」
+                        PRINTFORMW 「아파...으...」
+                ENDSELECT
+        ENDSELECT
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+        SELECTCASE RAND:4
+            CASE 0
+                PRINTFORMW 「...으에에...」
+            CASE 1
+                PRINTFORMW 「져버렸네...으...」
+            CASE 2
+                PRINTFORMW 「...다음번엔 꼭 이길거니까요」
+            CASE 3
+                SELECTCASE ABL:MASTER:전투능력 - ABL:전투능력
+                    CASE IS < 0
+                        PRINTFORMW 「...많이 늘었네요, 이길줄은 몰랐는데」
+                    CASE 0
+                        PRINTFORMW 「후우...다음번엔 안 질거니까, 각오해 주세요?」
+                    CASE IS > 0
+                        PRINTFORMW 「으...역시 무리...」
+                ENDSELECT
+        ENDSELECT
+    ELSE
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「으으...」
+            CASE 1
+                PRINTFORMW 「아파라...」
+            CASE 2
+                PRINTFORMW 「가, 강하네...으...」
+        ENDSELECT
+    ENDIF
+    EXP:MASTER:전투경험++
+ENDIF
+
+DOWNBASE:MASTER:체력 += 250
+DOWNBASE:MASTER:기력 += 250
+DOWNBASE:체력 += 250
+DOWNBASE:기력 += 250
+EXP:MASTER:전투경험 += 3
+EXP:전투경험 += 3
+
+
+@ST_반찬투정
+
+SELECTCASE DISH_NAME
+    CASE "주먹밥"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...왠지 어석어석한걸, 설익은 걸까」
+            CASE 1
+                PRINTFORMW 「...어딘 싱겁고 어디는 짜, 소금이 덜 섞인건가?」
+        ENDSELECT
+    CASE "캇파마키"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「으음- 왜 이리 씁쓸할까...」
+                PRINTFORMW 「좋은 오이가 아니었던 걸까?」
+            CASE 1
+                PRINTFORMW 「...오이가 물렀어」
+        ENDSELECT
+    CASE "스콘"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...아무맛도 안 나는걸요, 밀가루 맛 이외엔...」
+            CASE 1
+                PRINTFORMW 「음, 설탕이 뭉친것 같은 맛...」
+        ENDSELECT
+    CASE "샌드위치"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「어째 빵이 질겨...」
+            CASE 1
+                PRINTFORMW 「양상추 쓴 맛 밖에 안 나...」
+        ENDSELECT
+    CASE "햄버거"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...패티가 좀 설익었나?」
+            CASE 1
+                PRINTFORMW 「...조금 느끼한걸」
+        ENDSELECT
+    CASE "핫도그"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「으음- 어째 너무 짠 걸...」
+            CASE 1
+                PRINTFORMW 「...빵이 질겨서 먹기 힘든걸」
+        ENDSELECT
+    CASE "라퓨타빵"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...노른자가 비려」
+            CASE 1
+                PRINTFORMW 「빵이 조금 탄 것 같네...」
+        ENDSELECT
+    CASE "칼로리바"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...텁텁해」
+            CASE 1
+                PRINTFORMW 「...밀가루 맛 밖에 안 나는걸」
+        ENDSELECT
+    CASE "팝콘"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...느끼할 정도로 기름만 많은걸」
+            CASE 1
+                PRINTFORMW 「...밍밍해」
+        ENDSELECT
+    CASE "샐러드"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...써-」
+                PRINTFORMW 드레싱이 별로 마음에 안 드는 모양이다
+            CASE 1
+                PRINTFORMW 「야채가 더 다양했으면 좋을것을...」
+                PRINTFORMW 「어째선지 있는게 죄다 쓴 맛만 나는것도 그렇고...」
+        ENDSELECT
+    CASE "산나물 샐러드"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...윽, 쓰, 쓴 맛이...」
+            CASE 1
+                PRINTFORMW 「드레싱 맛이 연한걸까, 풀 맛이 너무...」
+        ENDSELECT
+    CASE "절임"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...너무 짠 걸」
+                PRINTFORMW 「짠 맛을 싫어하는건 아니지만 이건 너무...」
+            CASE 1
+                PRINTFORMW 「...어째 군내가 나는걸」
+        ENDSELECT
+    CASE "모짜렐라 치즈와 토마토의 샐러드"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...토마토가 덜 신선 했던걸까나」
+            CASE 1
+                PRINTFORMW 「...물컹하고 이상한 맛만 나는걸...」
+                PRINTFORMW 「발사믹 식초가 이상한건가?」
+        ENDSELECT
+    CASE "오믈렛"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...어째 설 익은거 같은데」
+            CASE 1
+                PRINTFORMW 「...비려」
+        ENDSELECT
+
+
+    CASE "프라이드 치킨"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...너무 기름진건 싫은데」
+            CASE 1
+                PRINTFORMW 「...조금 상큼한게 먹고 싶어졌어」
+        ENDSELECT
+    CASE "개구리 튀김"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...으엑, 개구리...」
+                PRINTFORMW 「이상한 맛이야...」
+            CASE 1
+                PRINTFORMW 「...이상한 냄새...좋은 느낌은 아닌걸」
+        ENDSELECT
+    CASE "채소절임 곱빼기밥"
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「...너무 양이 많은데다가, 채소가 너무 짜...」
+            CASE 1
+                PRINTFORMW 「...채소가 군내가 나는걸」
+        ENDSELECT
+
+    ;예비용
+    CASEELSE
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「으음, 역시 내 입맛엔 조금...」    
+            CASE 1
+                PRINTFORMW 「으음...내 취향은 아닌걸...」
+            CASE 2
+                PRINTFORMW 「......」
+                PRINTFORMW 사토리는 인상을 쓰며 %조사처리(DISH_NAME,"을")% 깨작거리고 있다
+        ENDSELECT
+ENDSELECT
+
+
+@ST_삽입공용대사()
+IF ABL:V감각 >= 2
+    IF MARK:반발각인 == 3
+        IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+            SELECTCASE RAND:3
+                CASE 0
+                    PRINTFORMW 「으응...」
+                    PRINTFORMW 사토리는 짧게 신음할뿐 별다른 말은 하지 않았다
+                CASE 1
+                    PRINTFORMW 「앗...♥」
+                    PRINTFORMW 삽입의 쾌락에 사토리의 입에서 짧은 탄성이 나왔다
+                CASE 2
+                    PRINTFORMW 「아...♥ 들어 왔다...♥」
+                    PRINTFORMW 사토리는 황홀한듯한 표정을 짓고 있었다
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORMW 「읏...♥」
+                    PRINTFORMW 사토리는 입술을 깨문채 신음을 참고 있다
+                CASE 1
+                    PRINTFORMW 「흐읏...♥ 아...♥」
+                    PRINTFORMW 삽입의 쾌락에 사토리의 표정이 흐물흐물해졌다
+            ENDSELECT
+        ENDIF
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「아아...♥」
+                PRINTFORMW 사토리는 황홀한듯한 표정을 지었다
+            CASE 1
+                PRINTFORMW 「앗...♥」
+                PRINTFORMW 삽입의 쾌락에 사토리의 입에서 짧은 탄성이 나왔다
+            CASE 2
+                PRINTFORMW 「아...♥ 들어 왔다...♥」
+                PRINTFORMW 사토리는 녹아내린듯한 표정으로 삽입의 쾌락을 즐기고 있다
+        ENDSELECT
+    ELSEIF TALENT:섹프||TALENT:애욕
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「아핫...♥」
+                PRINTFORMW 삽입의 쾌락에 사토리의 몸이 잘게 떨렸다
+            CASE 1
+                PRINTFORMW 「아...♥ 좋아...♥」
+                PRINTFORMW 사토리의 입에서 달콤한 한숨이 흘러나왔다
+            CASE 2
+                PRINTFORMW 「아...♥ 들어 왔다...♥」
+                PRINTFORMW 사토리는 녹아내린 표정을 짓고 있다
+        ENDSELECT
+    ELSE
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「읏...♥」
+                PRINTFORMW 사토리는 입술을 깨물며 신음을 참았다
+            CASE 1
+                PRINTFORMW 「흐읏...♥ 아, 안돼...이거 너무 좋아...♥」
+                PRINTFORMW 사토리는 삽입의 쾌락에 어쩔줄 몰라 하고 있다
+        ENDSELECT
+    ENDIF
+ELSE
+    IF MARK:반발각인 == 3
+        IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORMW 「으응...」
+                    PRINTFORMW 사토리는 짧게 신음할뿐 별다른 말은 하지 않았다
+                CASE 1
+                    PRINTFORMW 「아...」
+                    PRINTFORMW 사토리는 조용히 삽입을 받아들일 뿐이었다
+            ENDSELECT
+        ELSE
+            SELECTCASE RAND:2
+                CASE 0
+                    PRINTFORMW 「......」
+                    PRINTFORMW 사토리는 고개를 돌렸다
+                CASE 1
+                    PRINTFORMW 「숨소리 기분 나빠...」
+            ENDSELECT
+        ENDIF
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「아...♥」
+                PRINTFORMW 사토리는 행복해 보이는 표정을 지어보였다
+            CASE 1
+                PRINTFORMW 「아아...♥ 들어왔다...♥」
+                PRINTFORMW 사토리는 삽입의 쾌락에 몸을 떨었다
+        ENDSELECT
+    ELSEIF TALENT:섹프||TALENT:애욕
+        SELECTCASE RAND:3
+            CASE 0
+                PRINTFORMW 「아핫...♥」
+                PRINTFORMW 삽입의 쾌락에 사토리의 몸이 잘게 떨렸다
+            CASE 1
+                PRINTFORMW 「아... 좋아...♥」
+                PRINTFORMW 사토리의 입에서 달콤한 한숨이 흘러나왔다
+            CASE 2
+                PRINTFORMW 「아... 들어 왔다...♥」
+                PRINTFORMW 사토리는 녹아내린 표정을 짓고 있다
+        ENDSELECT
+    ELSE
+        SELECTCASE RAND:2
+            CASE 0
+                PRINTFORMW 「읏...」
+                PRINTFORMW 사토리는 짧게 신음할 뿐이었다
+            CASE 1
+                PRINTFORMW 「응...」
+                PRINTFORMW 사토리는 무신경하게 삽입을 받아들였다
+        ENDSELECT
+    ENDIF
+ENDIF
+
+@ST_윤활부족()
+SELECTCASE RAND:4
+    CASE 0
+        PRINTFORMW 「아...아팟...아직 안돼...!」
+    CASE 1
+        PRINTFORMW 「아, 아직 젖지도 않았...응긋?!」
+    CASE 2
+        PRINTFORMW 「자, 잠시만...지금은 안돼엣?!」
+    CASE 3
+        PRINTFORMW 「저, 적어도 조금은 젖게 해주고...으긋...아팟...」
+ENDSELECT
+
+
+@ST_애널파과()
+IF ABL:A감각 > 1
+    ;A익숙함
+    IF MARK:반발각인 == 3 && !TALENT:연인
+        PRINTFORMW 「아...♥ 아아...♥ 이런거, 이상할 뿐인데...♥」
+        PRINTFORMW 「왜 이렇게 좋은거야...♥」
+        PRINTFORMW 애널에서 올라오는 쾌감에 복잡한 표정을 짓고 있다
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+        PRINTFORMW 「아아...♥ 어, 엉덩이...♥ 들어왔다...♥」
+        PRINTFORMW 「온 몸이 오싹거려...♥ 이상한 기분...♥」
+        PRINTFORMW 애널에서 올라오는 쾌감에 사토리의 몸이 파르르 떨렸다
+    ELSEIF TALENT:섹프||TALENT:애욕
+        PRINTFORMW 「아아...♥ 드, 들어왔다...♥」
+        PRINTFORMW 「손가락 같은거보다 기분 좋아...♥ 온 몸이 오싹거려...♥」
+        PRINTFORMW 애널에서 올라오는 쾌감에 사토리의 몸이 파르르 떨렸다
+    ELSE
+        PRINTFORMW 「아...♥ 아아...♥ 이런거, 이상할 뿐인데...♥」
+        PRINTFORMW 「왜 이렇게 좋은거야...♥」
+    ENDIF
+ELSE
+    ;A 낯설음
+    IF MARK:반발각인 == 3 && !TALENT:연인
+        PRINTFORMW 「거...거긴 넣는데가 아냐...!」
+        PRINTFORMW 「아프니깐, 얼른 빼...으극...」
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+        PRINTFORMW 「아...아팟...싫어...빼 줘, 빼주세요...」
+        PRINTFORMW 사토리는 삽입의 고통과 이물감에 눈물짓고 있다
+    ELSEIF TALENT:섹프||TALENT:애욕
+        PRINTFORMW 「으긋...이, 이런거로 기분 좋아진다니...이상해...」
+        PRINTFORMW 「이런거 익숙해질리 없잖아...아프기만 하곳...」
+        PRINTFORMW 아직 쾌감보단 고통이 앞서는 모양이다
+    ELSE
+        PRINTFORMW 「거, 거긴 안...으극...!」
+        PRINTFORMW 아직 애널은 익숙해지지 않는 모양이다
+    ENDIF
+ENDIF
+
+@ST_통상애널계속()
+IF MARK:반발각인 == 3 && !TALENT:연인
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「어, 엉덩이...이상한 느낌...」
+            PRINTFORMW 「이런게, 기분 좋은거야...?」
+        CASE 1
+            PRINTFORMW 「구, 굳이 엉덩이여야 할 필요가 있는거야...?」
+            PRINTFORMW 「아프기만 한걸...으...」
+    ENDSELECT
+ELSEIF TALENT:연인||TALENT:연모||TALENT:사모 
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「이, 이상하기만 할 뿐이고...기분 좋은건 모르겠어...」
+            PRINTFORMW 「...그만 하고 싶어...이거 말고 다른거, 많잖아요...」
+            PRINTFORMW 사토리는 기어들어가는 목소리로 애원했다
+        CASE 1
+            PRINTFORMW 「아...아파...그만...」
+            PRINTFORMW 「이런거 이상해, 이상하단 말야...」
+    ENDSELECT
+ELSEIF TALENT:섹프||TALENT:애욕
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「어, 어째서 엉덩이 인거야...」
+            PRINTFORMW 「다른데라면 좋을걸...」
+        CASE 1
+            PRINTFORMW 「이, 이런거로 기분 좋아진다니...」
+            PRINTFORMW 「아프기만 한걸...」
+    ENDSELECT
+ELSE
+    SELECTCASE RAND:2
+        CASE 0
+            PRINTFORMW 「아...아프기만 하단 말야...그만해...」
+            PRINTFORMW 「엉덩이, 찢어져 버려...」
+        CASE 1
+            PRINTFORMW 「이런거로 기분 좋아질리가 없어...」
+            PRINTFORMW 사토리는 이를 악물고 엉덩이의 고통을 참고 있다
+    ENDSELECT
+ENDIF

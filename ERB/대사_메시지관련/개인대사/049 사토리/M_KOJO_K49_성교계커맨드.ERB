@@ -1,0 +1,2811 @@
+﻿;※※※※※※※※※※※※※※※※※※※※※※※※※
+;성교계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;60,정상위
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_60
+IF TCVAR:파과
+	CALL M_KOJO_MESSAGE_COM_K49_60_1
+	CALL TRAIN_MESSAGE
+ELSE
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_60_1
+ENDIF
+
+;파과시엔 순서를 바꾸는게 연출상 더 좋다
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_60_1
+
+;-------------------------------------------------
+;대면 입위(立位)
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && TFLAG:193
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			IF MARK:반발각인 == 3
+				IF TALENT:연인
+					PRINTFORMW 「서, 선채로? 아무리 그래도...」
+					PRINTFORMW 「...아, 아녜요, %사마스터가% 하고 싶으시다면...」
+					PRINTFORM 어쩐지 탐탁치 않은듯한 표정을 짓는 
+					;이후 개행없이 대사 이어짐
+				ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「처, 처음은 적어도 침대에 누워서 하는게...」
+					PRINTFORMW 「...역시 이건 좀 무서운걸요...」
+					PRINTFORMW 사토리는 살짝 긴장한듯한 표정으로 %마스터를% 바라보고 있다
+					PRINTFORMW 「그래도, %사마스터가% 하고 싶으시다면」
+					PRINTFORMW 「이대로 해도...좋아요」
+					PRINTFORM 얼굴을 붉힌 
+				ELSE
+					PRINTFORMW 「...처음정도는 평범하게 하고 싶었는데」
+					PRINTFORMW 「하기사 제가 말해봐야 안 들어주시겠죠...」
+					PRINTFORMW 사토리는 살짝 체념한듯한 목소리로 말해왔다
+					PRINTFORMW 「...할거면, 얼른 해버리던가 하세요」
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「처, 첫 경험이 이런거라니...너무 하드한게 아닐까요...」
+				PRINTFORMW 「역시 조금 무서울지도...」
+				PRINTFORMW 「...그래도, %사마스터가% 하고 싶으시다면야...」
+				PRINTFORMW 사토리는 살짝 긴장한듯한 표정으로 %마스터를% 바라보고 있다
+				PRINTFORM %마스터는% 천천히 
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「서, 선 채로? 처음부터 너무 하드한건 아닐까 싶은데...」
+				PRINTFORMW 「...그래도 하고 싶다면야...그, 상냥하게...」
+				PRINTFORM 살짝 긴장한듯한 
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니, 여기로 하는건 처음이었나」
+				PRINTFORMW 「다른건 잔뜩 해놓고 이건 안한게 신기하긴 하네」
+				PRINTFORM 고개를 갸웃거리는 
+			ELSE
+				PRINTFORMW 「...처음정도는 평범하게 하고 싶었는데」
+				PRINTFORMW 「뭐어, 그래도 아프지만 않게 해준다면...처음같은거야 별 의미 없겠지」
+			ENDIF
+			;%CALLNAME:TARGET%의 한쪽 발을 들어 올려 %SLIT(TARGET)%에
+			;귀두를 주어 단숨에 관철했다…
+			;로 이어짐
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인
+					PRINTFORMW 「...묘한 자세네요」
+					PRINTFORMW 「이대로 안아주시는걸까나...나름 낭만적일지도」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「아...이거, 왠지 안겨지는거 같은 기분...」
+					PRINTFORMW 「...뭐랄까, 되게 좋네, 이거...」
+					PRINTFORMW 사토리는 살며시 %마스터를% 끌어안았다
+				ELSE
+					PRINTFORMW 「...얼굴보고 하는건, 처음이었던가」
+					PRINTFORMW 「어쩐지 기분이 묘한걸」
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「아...이거, 왠지 안겨지는거 같네...」
+				PRINTFORMW 사토리는 약간 기쁜듯이 말해왔다
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「...이거, 왠지 안겨지는거 같네...」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「어라라, 새로운 체위인가요?」
+				PRINTFORMW 「나쁘진...않을지도?」
+			ELSE
+				PRINTFORMW 「또 다른 자세? 뭐가 좋은건진 모르겠지만...」
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;기본세트
+	;-------------------------------------------------
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF MARK:반발각인 == 3
+			IF TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「이건 자세 잡기 힘든데...」
+					CASE 1
+						PRINTFORMW 「이거, 서 있기 힘든걸...」
+						PRINTFORMW 사토리는 %마스터를% 지지대 삼아 껴안았다
+					CASE 2
+						PRINTFORMW 「아...♥ 안에 들어 왔다...♥」
+						PRINTFORMW 사토리는 녹아내린 표정으로 %마스터를% 끌어안았다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...」
+						PRINTFORMW 사토리는 말없이 %마스터의% 자지가 들어오는걸 바라볼 뿐이었다  
+					CASE 1
+						PRINTFORMW 「얼굴 들이 밀지 마...」
+						PRINTFORMW 사토리는 고개를 돌렸다
+				ENDSELECT
+			ENDIF
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「아...♥」
+					PRINTFORMW 자지가 보지를 비집고 들어가자 사토리의 입에서 짧은 탄성이 나왔다
+				CASE 1
+					PRINTFORMW 「드...들어왔다...♥」
+					PRINTFORMW 사토리는 삽입의 쾌락에 몸을 잘게 떨었다
+				CASE 2
+					PRINTFORMW 「응읏...♥」
+					PRINTFORMW 삽입의 쾌락에 사토리는 작은 신음소리를 흘렸다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「앗...♥ 자, 자지...♥」
+					PRINTFORMW 삽입의 쾌락에 사토리는 칠칠치 못한 표정을 짓고 있다
+				CASE 1
+					PRINTFORMW 「아...♥ 들어왔다...♥」
+					PRINTFORMW 사토리는 %마스터를% 끌어안은채 삽입의 쾌락으로 떨고 있었다
+				CASE 2
+					PRINTFORMW 「으응♥」
+					PRINTFORMW 사토리는 한 발로 선 채 %마스터를% 끌어 안았다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「응...」
+					PRINTFORMW 사토리는 작게 신음할 뿐이었다
+				CASE 1
+					PRINTFORMW 「아...」
+					PRINTFORMW 사토리는 말없이 연결부를 바라볼 뿐이었다
+			ENDSELECT
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;정상위
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「저기, 혹시나 해서 말해두는거지만, 저 처음이니까요」
+					PRINTFORMW 「물론 좀 더 좋은 분위기에서 했으면 좋겠단 생각도 있기는 하지만...굳이 하시겠다면...」
+					PRINTFORMW 「...적어도 살살, 해주세요, 아픈건 싫으니깐」
+				ELSE
+					;가능?
+					PRINTFORMW 「......」
+					PRINTFORMW 사토리는 약간 분한듯이 %마스터를% 올려다 볼 뿐이었다
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「...하고 싶다, 라는거죠」
+				PRINTFORMW 사토리는 얼굴을 살짝 붉힌채 고개를 돌렸다
+				PRINTFORMW 「...좋아요, %사마스터가% 원하신다면...얼마든지...」
+				PRINTFORMW 「그리고 저도 원하니깐...응...」
+				PRINTFORMW 사토리는 더욱 얼굴을 붉힌채 말해왔다
+				PRINTFORMW 「그래도...처음이니깐...상냥하게 부탁드릴게요」
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「...하고 싶다, 라는거군요」
+				PRINTFORMW %마스터가% 말하기도 전에 사토리가 선수를 쳐 왔다
+				PRINTFORMW 「뭐어...%사마스터가% 원하신다면...저도 크게 상관은 없어요」
+				PRINTFORMW 「...조금은 흥미 있기도 하니깐」
+				PRINTFORMW 사토리는 얼굴을 살짝 붉혔다
+				PRINTFORMW 「그래도 저 처음이니깐, 상냥하게 해주셨으면 좋겠네요...」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 이건 처음이었던가...」
+				PRINTFORMW 「다른건 다 해놓고 이것만 안 했다는것도 이상하긴 하네요...」
+				PRINTFORMW 사토리는 쿡쿡 웃고는 다리로 %마스터를% 끌어안았다
+				PRINTFORMW 「자, 뚫어주세요」
+				PRINTFORMW 「기분 좋은거...더 알고 싶으니깐♥」
+			ELSE
+				;가능?
+				PRINTFORMW 「아...」
+				PRINTFORMW 사토리는 복잡한 표정으로 %마스터를% 올려다 봤다
+				PRINTFORMW 그러나 그 이상의 저항은 없었다
+			ENDIF
+			RETURN 1
+		ELSE
+			PRINTFORMW 「그러고보니 이 자세론 처음이었나」
+			PRINTFORMW 「가장 기본적인걸 나중에 하다니, 참 변태스럽네요...」
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		CALL ST_삽입공용대사()
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;61,후배위
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_61
+IF TCVAR:파과
+	CALL M_KOJO_MESSAGE_COM_K49_61_1
+	CALL TRAIN_MESSAGE
+ELSE
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_61_1
+ENDIF
+
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_61_1
+;-------------------------------------------------
+;입위(立位)
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && TFLAG:193
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「저기, 혹시나 해서 말해두는거지만, 저 처음이니까요」
+					PRINTFORMW 「적어도 살살 해주세요, 아픈건 싫으니깐」
+					PRINTFORMW 「...들어주실진 모르겠지만」
+				ELSE
+					PRINTFORMW 「...처음정도는 평범하게 하고 싶었는데」
+					PRINTFORMW 「하기사 제가 말해봐야 안 들어주시겠죠...」
+					PRINTFORMW 사토리는 살짝 체념한듯한 목소리로 말해왔다
+					PRINTFORMW 「그래도 얼굴은 안 보이니 조금 나으려나, 보였다면 더 싫었을테니」
+					PRINTFORMW 빈정거리던 사토리는 %마스터를% 향해 엉덩이를 들이밀었다
+					PRINTFORMW 「할거면, 얼른 해버리던가요」
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「정말, 처음인데도 밖에서라니...」
+				PRINTFORMW 「로맨틱한 무드는 하나도 없고 변태스럽기만 한걸요」
+				PRINTFORMW 「...그거에 살짝 두근거리는 나 자신이 미워질 정도로」
+				PRINTFORMW 사토리는 살짝 불평하면서도 엉덩이를 들이밀어 왔다
+				PRINTFORMW 「...뭐어, 이번엔 이걸로 좋겠죠, 침대에선 다음에도 할 수 있는걸」
+				PRINTFORMW 「그래도 처음이니깐, 부드럽게 해주세요」
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「처음정도는 느긋하게 침대에서 하고 싶었는데」
+				PRINTFORMW 사토리는 약간 실망한듯한 목소리로 말했다
+				PRINTFORMW 「...뭐, 이런것도 나쁘지야 않겠죠」
+				PRINTFORMW 「대신에 다음번엔, 침대에서 해 주세요」
+				PRINTFORMW 사토리는 엉덩이를 쑤욱 들이밀어 왔다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 이건 처음이었던가...」
+				PRINTFORMW 「다른건 다 해놓고 이것만 안 했다는것도 이상하긴 하네요...」
+				PRINTFORMW 사토리는 쿡쿡 웃고는 엉덩이를 들이밀어왔다
+				PRINTFORMW 「자, 뚫어주세요」
+				PRINTFORMW 「기분 좋은거...더 알고 싶으니깐♥」
+			ELSE
+				PRINTFORMW 「처음은 침대에서 느긋히 하고 싶었는데」
+				PRINTFORMW 「...이렇게 말해봐야 소용 없겠죠, 하아...」
+				PRINTFORMW 사토리는 체념한듯 엉덩이를 들이밀어왔다
+				PRINTFORMW 「...할거면, 얼른 해버리던가 하세요」
+			ENDIF
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「기, 깊엇♥ 안까지 찔리고 있어♥」
+					PRINTFORMW 「안대...자극이 너무...♥」
+					PRINTFORMW 사토리의 다리가 후들후들 떨리고 있다
+				ELSE
+					PRINTFORMW 「읏...기, 깊어...」
+					PRINTFORMW 사토리는 삽입의 충격에 거칠게 숨을 몰아쉬고 있다
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「기, 깊엇♥ 안까지 찔리고 있어♥」
+				PRINTFORMW 「안대...자극이 너무...♥」
+				PRINTFORMW 사토리의 다리가 후들후들 떨리고 있다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「앗...♥ 이 자세♥ 깊숙히 들어와서...기분 좋아...♥」
+				PRINTFORMW 사토리의 입에서 짧은 탄성이 터져나왔다
+			ELSE
+				PRINTFORMW 「읏...기, 깊어...」
+				PRINTFORMW 사토리는 삽입의 충격에 거칠게 숨을 몰아쉬고 있다
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	;그 이외
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:V감각 > 3
+			IF MARK:반발각인 == 3 && !TALENT:연인&&!TALENT:연모&&!TALENT:사모&&!TALENT:애욕&&!TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「흐아앗♥」
+						PRINTFORMW 삽입과 동시에 사토리는 칠칠치 못한 표정을 지으며 쾌락에 허덕이고 있었다
+						PRINTFORMW 평소의 경멸감 가득한 표정은 찾을수 조차 없었다
+					CASE 1
+						PRINTFORMW 「힛♥ 안댓♥ 자극이, 너무♥」
+						PRINTFORMW 사토리는 안쪽을 찔릴때마다 쾌락에 허덕이고 있었다
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「히잇♥ 너♥ 너무 격렬햇♥ 잠깐...♥」
+						PRINTFORMW 자지에 찔릴때마다 달콤한 교성이 터져나오는 사토리였다
+					CASE 1
+						PRINTFORMW 「앗♥ 드, 들어왔다아...♥」
+						PRINTFORMW 사토리는 질내의 쾌감에 떨고 있었다 움찔움찔 떨고 있다
+					CASE 2
+						PRINTFORMW 「이♥ 이 자세♥ 깊숙히 찔려서♥」
+						PRINTFORMW 「아아아♥ 너무 기분 좋아 어떻해♥ 머리, 이상해져버려♥」
+						PRINTFORMW 안쪽을 찔러줄때 마다 사토리의 질내가 꿈틀꿈틀 조여들었다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아핫♥ 기, 깊숙히 찔리는거, 너무 좋아아...!」
+						PRINTFORMW 사토리의 입에서 달콤한 교성이 터져나왔다
+					CASE 1
+						PRINTFORMW 「앗♥ 드, 들어왔다아...♥」
+						PRINTFORMW 「이 자세, 깊숙히 찔려서...♥ 머리, 이상해질거 같아...♥」
+						PRINTFORMW 사토리는 몰려오는 쾌락에 거칠게 숨을 몰아쉬고 있었다
+					CASE 2
+						PRINTFORMW 「힛♥ 그렇게 찌르면 안대에♥」
+						PRINTFORMW 「너무♥ 기분 좋아서 이상해져버려♥」
+						PRINTFORMW 자지에 찔릴때마다 쏟아지는 쾌락의 파도에 사토리는 연신 허덕이고 있었다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「흐아앗♥」
+						PRINTFORMW 삽입과 동시에 사토리는 칠칠치 못한 표정을 지으며 쾌락에 허덕이고 있었다
+					CASE 1
+						PRINTFORMW 「힛♥ 안댓♥ 자극이, 너무♥」
+						PRINTFORMW 사토리는 안쪽을 찔릴때마다 쾌락에 허덕이고 있었다
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					SELECTCASE RAND:3
+						CASE 0
+							PRINTFORMW 「으읏...♥」
+							PRINTFORMW 사토리는 작게 신음할 뿐이었다
+						CASE 1
+							PRINTFORMW 「아앗...♥ 거기, 좋아...♥」
+							PRINTFORMW 안쪽을 찌를때마다 달콤한 교성을 흘렸다
+						CASE 2
+							PRINTFORMW 「으응...♥ 조, 좀 더...♥」
+							PRINTFORMW 사토리의 입에서 연신 신음소리가 새어나왔다
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:3
+						CASE 0
+							PRINTFORMW 「큿...으응...♥」
+							PRINTFORMW 사토리는 입을 앙다문채 신음을 참고 있었다
+						CASE 1
+							PRINTFORMW 「으읏...♥ 흣♥」
+							PRINTFORMW 부끄러운건지 애써 신음을 참고 있는 사토리였다
+						CASE 2
+							PRINTFORMW 「으긋...♥ 조금, 살살♥」
+							PRINTFORMW 질내 깊숙히 찔릴때마다 가는 신음소리가 새어나왔다
+					ENDSELECT
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:4
+					CASE 0
+						PRINTFORMW 「하앗♥ 거, 거기 좋아♥」
+						PRINTFORMW 깊숙히 찌를때마다 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORMW 「아아...♥ 들어왔다...♥」
+                		PRINTFORMW 사토리는 삽입의 쾌락에 몸을 떨었다
+					CASE 2
+						PRINTFORMW 「아앗...♥ 기, 깊어♥ 안쪽까지 닿아버려...♥」
+                		PRINTFORMW 사토리의 입에서 열띤 한숨이 새어나왔다
+					CASE 3
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+						PRINTFORMW 사토리는 연신 교성을 흘리고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「흣♥ 아앙♥ 깊숙히 찔리는거 기분 좋아아♥」
+						PRINTFORMW 사토리는 교성을 흘리며 쾌락을 즐기고 있다
+					CASE 1
+						PRINTFORMW 「아핫...♥」
+                		PRINTFORMW 삽입의 쾌락에 사토리의 몸이 잘게 떨렸다
+					CASE 2
+						PRINTFORMW 「기, 깊어♥ 이거 좋아...♥」
+                		PRINTFORMW 사토리의 입에서 열띤 한숨이 새어나왔다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...다리 아파...눕거나 앉아서 하고 싶은데」
+						PRINTFORMW 사토리는 불평만 할 뿐이었다
+					CASE 1
+						PRINTFORMW 「읏...으응...」
+						PRINTFORMW 사토리는 간간히 희미한 신음을 흘릴 뿐이었다
+				ENDSELECT
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;후배위
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「처음부터 이런거라니...」
+					PRINTFORMW 「최소한 마주보고라도 해줬음 했는데...역시 약간 무서운걸」
+					PRINTFORMW 「...이런 말 해봤자 들어주시진 않겠죠, 그렇담 안 아프게라도 해주세요」
+				ELSE
+					;가능?
+					PRINTFORMW 「...처음이 이런 자세라니, 뭔가 동물 같아서 기분이 이상한걸」
+					PRINTFORMW 사토리는 불만스러운듯이 중얼거렸다
+					PRINTFORMW 그러나 그 이상의 반응은 없었다
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「처음인데...이런 자세라니...」
+				PRINTFORMW 「적어도 처음은 마주보고 하고 싶었는데」
+				PRINTFORMW 사토리는 약간 섭섭한듯이 말해왔다
+				PRINTFORMW 「그래도...%사마스터랑% 하는거라면, 뭐가됐든 상관 없겠죠」
+				PRINTFORMW 「네, 좋아요...와주세요, 저한테 기분 좋은일을 알려주세요」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 이건 처음이었던가...」
+				PRINTFORMW 「다른건 다 해놓고 이것만 안 했다는것도 이상하긴 하네요...」
+				PRINTFORMW 사토리는 쿡쿡 웃고는 자리에 엎드렸다
+				PRINTFORMW 「자, 뚫어주세요」
+				PRINTFORMW 「기분 좋은거...더 알고 싶으니깐♥」
+			ELSE
+				;가능?
+				PRINTFORMW 「처음정도는 평범하게 하고 싶었는데...」
+				PRINTFORMW 사토리는 불만스러운듯이 말해왔다
+				PRINTFORMW 그러나 그 이상의 저항은 없었다
+			ENDIF
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「이번엔 뒤에서? 왠지 동물같은걸요」
+					PRINTFORMW 「...이 편이 더 깊숙히 넣을수 있다라...헤에...그런가요」
+				ELSE
+					PRINTFORMW 「이번엔 뒤로?」
+					PRINTFORMW 「...펫들이 자주 하던 자세네, 동물이 된 기분인걸」
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「이번엔 뒤에서?」
+				PRINTFORMW 「...이거, 펫들이 발정날때 서로 하던 자세네요...뭔가 부끄러워질려 하는걸」
+				PRINTFORMW 사토리는 얼굴을 붉히면서도 순순히 자리에 엎드렸다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「뭔가...동물같은 자세네요」
+				PRINTFORMW 「그만큼 거칠게 해주시겠단 건가요? 후후...」
+				PRINTFORMW 사토리는 기대하는듯한 눈빛을 보내왔다
+			ELSE
+				PRINTFORMW 「엎드린채로? ...이거 펫들이 발정나면 하던 자세네」
+				PRINTFORMW 「...그만큼 기분 좋다, 라고 해도...하아, 이런 말 해봐야 안 듣겠지」
+				PRINTFORMW 사토리는 체념한듯이 자리에 엎드렸다
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		CALL ST_삽입공용대사()
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;62,정상위애널
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_62
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_62_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_62_1
+;-------------------------------------------------
+;입위(立位)
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && TFLAG:193
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;정상위
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;63,후배위애널
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_63
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_63_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_63_1
+;-------------------------------------------------
+;입위(立位)
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && TFLAG:193
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+;-------------------------------------------------
+;후배위
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;====================================================================
+;64,역강간
+;헷갈리지만 여자 아나타가 위에 올라타는 것, 아나타가 습격당하는 것은 아니다
+;====================================================================
+@M_KOJO_MESSAGE_COM_K49_64
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_64_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_64_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;調教者が処女
+		IF TCVAR:PLAYER:파과 == 1
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:PLAYER:100 == TARGET
+		;전회 사정했다
+		IF TCVAR:PLAYER:102
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;65,기승위
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_65
+IF TCVAR:파과 == 1
+	CALL M_KOJO_MESSAGE_COM_K49_65_1
+	CALL TRAIN_MESSAGE
+ELSE
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_65_1
+ENDIF
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_65_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「꽤나 매니악한 취향이시네요, 스스로 바치라니...」
+					PRINTFORMW 「적어도 처음쯤은 평범하게 해줬음 했는데, 역시 너무 큰 기대였겠죠」
+					PRINTFORMW 「...하아, 난 왜 이런 사람을...」
+					PRINTFORM 작게 한숨을 쉰 
+				ELSE
+					PRINTFORMW 「내가 스스로 바치라고...하아...」
+					PRINTFORMW 「적어도, 가져갈거면 자기 손으로 직접 하란 말야...」
+					PRINTFORM 온갖 불평을 쏟아낸 
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「제가 스스로...바치는거군요」
+				PRINTFORMW 「드디어 이어진다고 생각하니 조금 기쁠지도」
+				PRINTFORMW 사토리는 빙그레 웃어보였다
+				PRINTFORMW 「좋아해요 %MASTERNAME:49%, 그러니 제 처녀, 받아주세요」
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「제가 스스로...바치는거군요」
+				PRINTFORMW 「조금은 무섭지만...%사마스터가% 원하신다면야」
+				PRINTFORMW 사토리는 빙그레 웃어보였다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 이쪽은 처음이었나」
+				PRINTFORMW 「할건 다 해놓고 이거만 안 한것도 조금 웃기긴 하네요」
+				PRINTFORMW 「이제는 여기로도 즐겨보자고요」
+			ELSE
+				PRINTFORMW 「스스로 넣어보라니, 처음부터 너무 과격한거 아닐까나...」
+				PRINTFORMW 「...라고 말해봐도 소용없겠지, 하아...」
+			ENDIF
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「아...이 자세도, 나쁘진 않은거 같기도...?」
+					PRINTFORMW 「...약간 피곤하지만」
+				ELSE
+					PRINTFORMW 「이대로 조금만 힘 주면 뽀각, 해버리는걸까나」
+					PRINTFORMW 「...안 할거예요, 안에서 분질러지면 그것대로 기분 나쁠테니까」
+					PRINTFORMW 「뭐, 다리에 힘풀려서 깔아 뭉개버릴지도 모르겠지만」
+				ENDIF
+			ELSEIF TALENT:연인
+				PRINTFORMW 「후후...어떤가요? 기분 좋죠?」
+				PRINTFORML [0] 기분 좋다
+				PRINTFORML [1] 기분좋지 않다
+				INPUT
+				IF RESULT == 0
+					PRINTFORMW 「당연하죠♥ %사마스터가% 좋아하는 곳은 전부 꿰뚫고 있으니까요」
+					PRINTFORMW 「허리가 빠질정도로 기분 좋게 만들어 드릴테니 각오하세요♥」
+					PRINTFORMW 히죽히죽 웃는 어린 얼굴과는 달리 음란한 허리놀림으로 %마스터를% 쥐어짜내고 있었다
+				ELSE
+					PRINTFORMW 「어, 어라...그럴리가...우으으...」
+					PRINTFORMW 사토리는 약간 토라진듯한 모양이다
+				ENDIF
+			ELSEIF TALENT:연모||TALENT:사모
+				PRINTFORMW 「이렇게 움직이면 기분 좋은거구나...조금 재밌네」
+				PRINTFORMW 「...어라, 이건 또 아파? 으으음...」
+				PRINTFORMW 「재밌는거랑 별개로 힘들긴 하네요...」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「이것도 나름 좋은걸요...제 마음대로 움직일 수 있고...♥」
+				PRINTFORMW 「조금 더 격렬히 움직여 볼까나...♥」
+				PRINTFORMW 사토리는 열정적으로 허리를 흔들며 쾌락을 탐하고 있다
+			ELSE
+				PRINTFORMW 「...마냥 앉아도 안되고, 너무 일어나도 안되고...바라는게 많네」
+				PRINTFORMW 「조금 피곤할거 같기도 한걸...」
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		;전회 사정했다
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	;그 이외
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:V감각 > 3
+			IF MARK:반발각인 == 3 && !TALENT:연인&&!TALENT:연모&&!TALENT:사모&&!TALENT:애욕&&!TALENT:섹프
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아...♥ 허리에, 힘이 안 들어가...♥」
+						PRINTFORMW 「움직이라니...무리야...♥ 지금도 간신히 버티는데...♥」
+						PRINTFORMW 사토리는 질내에서 올라오는 쾌감에 온 몸을 떨고 있었다
+					CASE 1
+						PRINTFORMW 「흐읏...♥ 이거, 자극이 너무 세...♥」
+						PRINTFORMW 사토리의 다리가 파르르 떨렸다
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아...♥ 허리에, 힘이 안 들어가...♥ 못 움직이겠어...♥」
+						PRINTFORMW 「...자, 잠깐♥ 아래에서 찌르면 안대에♥」
+						PRINTFORMW 갑작스런 공격에 사토리는 교성을 질렀다
+					CASE 1
+						PRINTFORMW 「흐읏...♥ 이거, 자극이 너무 세...♥」
+						PRINTFORMW 삽입만으로 가볍게 절정한듯이 질내가 살짝 조여왔다
+					CASE 2
+						PRINTFORMW 「아아♥ 깊숙히 찔리는 이 감각...♥ 너무 기분 좋아아...♥」
+						PRINTFORMW 사토리는 칠칠치 못한 표정으로 허리를 마구 흔들어댔다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「아아♥ 깊숙히 찔리는 이 감각...♥ 너무 기분 좋아아...♥」
+						PRINTFORMW 사토리는 쾌락에 녹아내린 표정으로 허리를 마구 흔들어댔다
+					CASE 1
+						PRINTFORMW 「후후후...♥ 마음껏 움직여도 된다, 라는거죠?」
+						PRINTFORMW 「그렇담 사양않고♥」
+						PRINTFORMW 약간 무서울 정도로 즐겁게 웃는 사토리였다
+					CASE 2
+						PRINTFORMW 「제 쪽에서 한다면, 주체 못하고 마구 해버릴지도 모르는데...」
+						PRINTFORMW 「그럼에도 시키신다는건, 오케이라는 건가요?」
+						PRINTFORMW 「...후후후, 그런거로 알고 있을게요♥」
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「읏...♥ 이거, 자극이 너무 세...♥」
+						PRINTFORMW 사토리의 다리가 후들후들 떨렸다
+					CASE 1
+						PRINTFORMW 「허, 허리에 힘이...♥」
+						PRINTFORMW 사토리는 민감한 질에서 느껴지는 막대한 쾌감에 전신을 떨고 있다 
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					SELECTCASE RAND:2
+						CASE 0
+							PRINTFORMW 「아...♥ 들어왔다...♥」
+							PRINTFORMW 사토리는 삽입의 쾌락에 몸을 떨었다
+						CASE 1
+							PRINTFORMW 「으응...」
+							PRINTFORMW 사토리는 묵묵히 허리를 흔들 뿐이었다
+					ENDSELECT
+				ELSE
+					SELECTCASE RAND:3
+						CASE 0
+							PRINTFORMW 「기분 좋은가요」
+							PRINTFORMW 「...안 좋아도 뭐 딱히 해 드릴건 없지만」
+						CASE 1
+							PRINTFORMW 「으음...따뜻한 자위도구라 생각하면 그리 나쁘지도 않겠지...」
+							PRINTFORMW 「...써본적은 없지만」
+						CASE 2
+							PRINTFORMW 「으응...」
+							PRINTFORMW 사토리는 묵묵히 허리를 흔들 뿐이었다
+					ENDSELECT
+				ENDIF
+			ELSEIF TALENT:연모||TALENT:사모||TALENT:연인
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「후후...어떤가요? 기분 좋은가요?」
+						PRINTFORMW 「기분 좋다고 인정하면, 좀 더 봉사해드릴테니까요」
+					CASE 1
+						PRINTFORMW 「힛♥ 잠깐, 아래에서 찌르는건 반칙♥」
+						PRINTFORMW 갑작스런 공격에 사토리는 교성을 흘렸다
+					CASE 2
+						PRINTFORMW 「아...♥ 들어왔다...♥」
+						PRINTFORMW 사토리는 삽입의 쾌락에 몸을 떨었다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:3
+					CASE 0
+						PRINTFORMW 「후후...기분 좋게 해 드릴게요♥」
+						PRINTFORMW 사토리는 즐거운듯이 웃었다
+					CASE 1
+						PRINTFORMW 「후후후...♥ 마음껏 움직여도 된다, 라는거죠?」
+						PRINTFORMW 「그렇담 사양않고♥」
+					CASE 2
+						PRINTFORMW 「제 쪽에서 한다면, 주체 못하고 마구 해버릴지도 모르는데...」
+						PRINTFORMW 「그럼에도 시키신다는건, 오케이라는 건가요?」
+						PRINTFORMW 「...후후후, 그런거로 알고 있을게요♥」
+				ENDSELECT
+			ELSE
+				;별로 볼 일 없을듯
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「...내 페이스대로 하는거니 조금 편하긴 한데, 지치네」
+					CASE 1
+						PRINTFORMW 「아래에서 찔리는 감각도 색다르네...나쁘진 않아」
+				ENDSELECT
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;66,기승위애널
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_66
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_66_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_66_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		IF TCVAR:A파과
+			IF ABL:A감각 > 1
+				;A익숙함
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「아...♥ 아아...♥ 이런거, 이상할 뿐인데...♥」
+					PRINTFORMW 「왜 이렇게 좋은거야...♥」
+					PRINTFORMW 애널에서 올라오는 쾌감에 복잡한 표정을 짓고 있다
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「아아...♥ 어, 엉덩이...♥ 들어왔다...♥」
+					PRINTFORMW 「온 몸이 오싹거려...♥ 이상한 기분...♥」
+					PRINTFORMW 애널에서 올라오는 쾌감에 사토리의 몸이 파르르 떨렸다
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「아아...♥ 드, 들어왔다...♥」
+					PRINTFORMW 「손가락 같은거보다 기분 좋아...♥ 온 몸이 오싹거려...♥」
+					PRINTFORMW 애널에서 올라오는 쾌감에 사토리의 몸이 파르르 떨렸다
+				ELSE
+					PRINTFORMW 「아...♥ 아아...♥ 이런거, 이상할 뿐인데...♥」
+					PRINTFORMW 「왜 이렇게 좋은거야...♥」
+				ENDIF
+			ELSE
+				;A 낯설음
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「스...스스로 넣으라니...여기에...?」
+					PRINTFORMW 「그런거 할 리가 없잖...윽...!」
+					PRINTFORMW 불평하는 사토리를 억지로 붙잡아 내려 삽입해주었다
+					PRINTFORMW 사토리는 눈을 까뒤집고 항문의 고통을 견디고 있다
+				ELSE
+					PRINTFORMW 「스...스스로 넣으라니...여기에...?」
+					PRINTFORMW 「그런게 될리가...으으...」
+					PRINTFORMW 「...알았어요, 하면, 하면 되는거죠...」
+					PRINTFORMW 사토리는 체념한듯 허리를 내렸다
+					PRINTFORMW 「으긋...아...아팟...」
+				ENDIF
+				CFLAG:3101++
+			ENDIF
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 내가?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「내, 내가 넣으라고? 그런...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 제가 직접...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+					PRINTFORMW 「역시 무서운걸요...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+					PRINTFORMW 「심지어 나보고 직접 넣으라니, 너무한거 아냐...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+				CFLAG:3101++
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		;전회 사정했다
+		IF TCVAR:104
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;67,대면좌위
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_67
+IF TCVAR:파과
+	CALL M_KOJO_MESSAGE_COM_K49_67_1
+	CALL TRAIN_MESSAGE
+ELSE
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_67_1
+ENDIF
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_67_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			;별로 볼 일 없지만
+			IF MARK:반발각인 == 3 && !TALENT:연인&&!TALENT:연모&&!TALENT:사모&&!TALENT:애욕&&!TALENT:섹프
+				PRINTFORMW 「...얼굴 보고 하는건 별론데」
+				PRINTFORMW 「게다가 이렇게 안기는건 더더욱 싫은걸」
+				PRINTFORMW 사토리는 불평불만을 쏟아냈다
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「이 자세, 얼굴이 너무 가까운걸요」
+				PRINTFORMW 「싫은건 아니지만 뭔가 부끄러워...」
+				PRINTFORMW 사토리는 얼굴을 붉혔다
+				PRINTFORMW 「...저, 처음이니깐, 상냥하게 해주셔야 해요?」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 본방은 아직이었던가...」
+				PRINTFORMW 「할 건 다 해놓고 이것만 안 하다니, 이상하네요」
+				PRINTFORMW 사토리는 가볍게 웃어보였다
+				PRINTFORMW 「자, 그럼 어서 뚫어주세요」
+				PRINTFORMW 「더 기분 좋은거, 알고 싶으니까」
+			ELSE
+				PRINTFORMW 「처음인데 이런 자세라니, 힘들진 않으려나...」
+				PRINTFORMW 「...뭐, 별 차이야 없겠지」
+			ENDIF
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「이 자세, 얼굴이 가까워서 부끄러운걸요...」
+					PRINTFORMW 사토리는 얼굴을 붉혔다
+				ELSE
+					PRINTFORMW 「얼굴, 너무 들이밀잖아...」
+					PRINTFORMW 「...이 자세 마음에 안 들어」
+					PRINTFORMW 사토리는 고개를 돌렸다
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「이 자세, 얼굴이 너무 가까운걸요」
+				PRINTFORMW 「싫은건 아니지만 뭔가 부끄러워...」
+				PRINTFORMW 사토리는 얼굴을 붉혔다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「이렇게 안기면서 하는것도, 나름 기분 좋을지도?」
+				PRINTFORMW 「왠지 연인같아서 기분 좋아♥」
+			ELSE
+				PRINTFORMW 「이런 자세는 뭐가 좋은걸까나...」
+				PRINTFORMW 「...그래도 안기는건 뭔가 기분 좋네」
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	IF PALAM:윤활 < 2000
+		CALL ST_윤활부족()
+		RETURN 1
+	ENDIF
+	IF ABL:V감각 > 3
+		IF MARK:반발각인 == 3
+			IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:3
+					CASE 0, 1
+						CALL ST_삽입공용대사()
+					CASE 2
+						PRINTFORMW 「아앗♥ 여기♥ 여기 좋아아...♥」
+						PRINTFORMW 사토리는 허리를 꿈틀꿈틀 움직여 귀두로 자궁구를 문지르고 있다
+				ENDSELECT
+			ELSE
+				CALL ST_삽입공용대사()
+			ENDIF
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「아앗♥ 여기♥ 여기 좋아아...♥」
+					PRINTFORMW 사토리는 허리를 꿈틀꿈틀 움직여 귀두로 자궁구를 문지르고 있다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「앗♥ 거기♥ 거기 찌르는거 좋아아♥」
+					PRINTFORMW 사토리는 쾌감에 움찔움찔 떨었다
+			ENDSELECT
+		ELSE
+			CALL ST_삽입공용대사()
+		ENDIF
+	ELSE
+		IF MARK:반발각인 == 3
+			IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:3
+					CASE 0,2
+						CALL ST_삽입공용대사()
+					CASE 1
+						PRINTFORMW 「응...응읏...」
+						PRINTFORMW 사토리는 %마스터의% 몸에 기댄채 조용히 허리를 흔들 뿐이었다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						CALL ST_삽입공용대사()
+					CASE 1
+						PRINTFORMW 「얼굴 들이밀지 마...」
+						PRINTFORMW 사토리는 냉담하게 쏘아붙였다
+				ENDSELECT
+			ENDIF
+		ELSEIF TALENT:연인
+			SELECTCASE RAND:4
+				CASE 0,3
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「이 자세, %사마스터의% 얼굴이 가까워서...조금 기뻐요」
+					PRINTFORMW 사토리는 얼굴을 붉혔다
+				CASE 2
+					PRINTFORMW 「이거, 묘하게 안기는 거 같아서, 기분 좋아...」
+					PRINTFORMW 사토리는 가만히 %마스터를% 끌어안았다
+			ENDSELECT
+		ELSEIF TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「이 자세, %사마스터의% 얼굴이 가까워서...조금 부끄러워요」
+					PRINTFORMW 사토리는 얼굴을 붉혔다
+				CASE 2
+					PRINTFORMW 「이거, 묘하게 안기는 거 같아서, 기분 좋아...」
+					PRINTFORMW 사토리는 가만히 %마스터를% 끌어안았다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「어떤가요? 제 안은, 기분 좋은가요?」
+					PRINTFORMW 「한동안 다리가 후들거릴 정도로 기분 좋게 만들어 드릴테니깐요」
+					PRINTFORMW 사토리는 %마스터의% 다리 위에서 음란한 허리놀림을 선보이고 있다
+				CASE 2
+					PRINTFORMW 「이런 자세도 나름대로 좋은걸요...」
+					PRINTFORMW 사토리는 %마스터의% 몸에 기댄채 거칠게 허리를 흔들어왔다
+					PRINTFORMW 부드러운 가슴의 촉감이 %마스터의% 가슴팍에서 느껴졌다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「이렇게 움직이면 되는걸까...」
+					PRINTFORMW 사토리는 미적미적 허리를 움직이고 있다
+			ENDSELECT
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+;==================================================
+;68,배면좌위
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_68
+IF TCVAR:파과
+	CALL M_KOJO_MESSAGE_COM_K49_68_1
+	CALL TRAIN_MESSAGE
+ELSE
+	CALL TRAIN_MESSAGE
+	CALL M_KOJO_MESSAGE_COM_K49_68_1
+ENDIF
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_68_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;처녀
+		;PRINTFORMW 「」
+		IF TCVAR:파과 == 1
+			;별로 볼 일 없지만
+			IF MARK:반발각인 == 3 && !TALENT:연인&&!TALENT:연모&&!TALENT:사모&&!TALENT:애욕&&!TALENT:섹프
+				PRINTFORMW 「첫 경험부터 이런 자세라니, 게다가 내가 스스로 움직여야 하고」
+				PRINTFORMW 「처음정도는 제대로 해주면 어디가 덧나나」
+				PRINTFORMW 사토리는 불평불만을 쏟아냈다
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「뒤, 뒤에서라니...처음인데, 조금 무서운걸요...」
+				PRINTFORMW 「...그래도, 정 원하신다면...」
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「그러고보니 본방은 아직이었던가...」
+				PRINTFORMW 「할 건 다 해놓고 이것만 안 하다니, 이상하네요」
+				PRINTFORMW 사토리는 가볍게 웃어보였다
+				PRINTFORMW 「자, 그럼 어서 뚫어주세요」
+				PRINTFORMW 「더 기분 좋은거, 알고 싶으니까」
+			ELSE
+				PRINTFORMW 「처음인데 이런 자세라니, 힘들진 않으려나...」
+				PRINTFORMW 「...뭐, 별 차이야 없겠지」
+			ENDIF
+			RETURN 1
+		ELSE
+			IF MARK:반발각인 == 3
+				IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+					PRINTFORMW 「안 보이니까, 왠지 조금 불안한걸요」
+					PRINTFORMW 「...제대로 하고 있는거 맞죠?」
+				ELSE
+					PRINTFORMW 「그래도 얼굴이 안 보이는건 좋으려나아...」
+					PRINTFORMW 「내가 움직여야 하는건 귀찮지만」
+					PRINTFORMW 사토리는 투덜거리며 허리를 흔들었다
+				ENDIF
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				PRINTFORMW 「뒤에서 안긴채로 하는거, 왠지 두근두근 하네요...」
+				PRINTFORMW 「이 자세, 나쁘지는 않을지도...?」
+				PRINTFORMW 사토리는 어쩐지 기뻐보이는 목소리였다
+			ELSEIF TALENT:섹프||TALENT:애욕
+				PRINTFORMW 「뭔가...안긴채로 하는건 기분이 좋아」
+				PRINTFORMW 「포근한 느낌이 마음에 들어」
+				PRINTFORMW 「후후...그러니깐 보답으로 최고로 기분 좋게 만들어 줘야겠네」
+			ELSE
+				PRINTFORMW 「이런 자세는 뭐가 좋은걸까나...」
+				PRINTFORMW 「...그래도 안기는건 뭔가 기분 좋네」
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		;전회 사정했다
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	IF PALAM:윤활 < 2000
+		CALL ST_윤활부족()
+		RETURN 1
+	ENDIF
+	IF ABL:V감각 > 3
+		IF MARK:반발각인 == 3
+			IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:3
+					CASE 0, 1
+						CALL ST_삽입공용대사()
+					CASE 2
+						PRINTFORMW 「아앗♥ 여기♥ 여기 좋아아...♥」
+						PRINTFORMW 사토리는 허리를 꿈틀꿈틀 움직여 귀두로 자궁구를 문지르고 있다
+				ENDSELECT
+			ELSE
+				CALL ST_삽입공용대사()
+			ENDIF
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「아앗♥ 여기♥ 여기 좋아아...♥」
+					PRINTFORMW 사토리는 허리를 꿈틀꿈틀 움직여 귀두로 자궁구를 문지르고 있다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「앗♥ 거기♥ 거기 찌르는거 좋아아♥」
+					PRINTFORMW 사토리는 쾌감에 움찔움찔 떨었다
+			ENDSELECT
+		ELSE
+			CALL ST_삽입공용대사()
+		ENDIF
+	ELSE
+		IF MARK:반발각인 == 3
+			IF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕||TALENT:섹프
+				SELECTCASE RAND:3
+					CASE 0,2
+						CALL ST_삽입공용대사()
+					CASE 1
+						PRINTFORMW 「응...응읏...♥」
+						PRINTFORMW 다리 위에 앉아 허리를 흔드는 사토리의 입에서 조용한 신음소리가 새어나오고 있었다
+				ENDSELECT
+			ELSE
+				SELECTCASE RAND:2
+					CASE 0
+						CALL ST_삽입공용대사()
+					CASE 1
+						PRINTFORMW 「...잠깐, 그렇게 들어올리지 않아도 알아서 할테니깐...」
+						PRINTFORMW 사토리는 뾰로퉁하게 말했다
+				ENDSELECT
+			ENDIF
+		ELSEIF TALENT:연인
+			SELECTCASE RAND:4
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「후후...어떤가요? 기분 좋은가요?」
+					PRINTFORMW 「기분 좋다고 인정하면, 좀 더 봉사해드릴테니까요」
+				CASE 3
+					PRINTFORMW 「힛♥ 잠깐, 아래에서 찌르는건 반칙♥」
+					PRINTFORMW 갑작스런 공격에 사토리는 교성을 흘렸다
+			ENDSELECT
+		ELSEIF TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0,1
+					CALL ST_삽입공용대사()
+				CASE 2
+					PRINTFORMW 「힛♥ 잠깐, 아래에서 찌르는건 반칙♥」
+					PRINTFORMW 갑작스런 공격에 사토리는 교성을 흘렸다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「어떤가요? 제 안은, 기분 좋은가요?」
+					PRINTFORMW 「한동안 다리가 후들거릴 정도로 기분 좋게 만들어 드릴테니깐요」
+					PRINTFORMW 살과 살이 맞부딪히는 경쾌한 소음이 주위를 가득 메웠다
+				CASE 2
+					PRINTFORMW 「이런 자세도 나름대로 좋은걸요...」
+					PRINTFORMW 사토리는 %마스터의% 몸에 기댄채 거칠게 허리를 흔들어왔다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					CALL ST_삽입공용대사()
+				CASE 1
+					PRINTFORMW 「이렇게 움직이면 되는걸까...」
+					PRINTFORMW 사토리는 미적미적 허리를 움직이고 있다
+			ENDSELECT
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;69,대면좌위애널
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_69
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_69_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_69_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;70,배면좌위애널
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_70
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_70_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_70_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		;애널처녀
+		IF TCVAR:A파과
+			CALL ST_애널파과()
+			RETURN 1
+		ELSE
+			IF ABL:A감각 > 1
+				PRINTFORMW 「이, 이번엔 이 자세?」
+				PRINTFORMW 사토리는 기대하는듯한 표정으로 %마스터를% 바라보고 있다
+			ELSE
+				IF MARK:반발각인 == 3 && !TALENT:연인
+					PRINTFORMW 「또 엉덩이...어째서야...」
+				ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+					PRINTFORMW 「어, 엉덩이? 이런 자세로...?」
+					PRINTFORMW 「...%사마스터가% 원하신다면, 하기야 하겠지만...」
+				ELSEIF TALENT:섹프||TALENT:애욕
+					PRINTFORMW 「어떤 자세로 해도, 아픈건 잊을수가 없는걸...」
+				ELSE
+					PRINTFORMW 「어, 엉덩이...다른 곳에 하면 안되려나...」
+				ENDIF
+			ENDIF
+			RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		IF ABL:A감각 > 1
+			PRINTFORM 「
+			CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+			PRINTFORMW 」
+		ELSE
+			CALL ST_통상애널계속()
+		ENDIF
+		RETURN 1
+	ENDIF
+	;기본세트
+	;시간(時姦)중
+	IF FLAG:70
+		RETURN 1
+	ELSE
+		IF PALAM:윤활 < 2000
+			CALL ST_윤활부족()
+			RETURN 1
+		ENDIF
+		IF ABL:A감각 > 1
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛...♥ 드, 들어왔...다...♥」
+						PRINTFORMW 사토리는 쾌감에 조용히 몸을 떨었다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 드, 들어왔다아...♥」
+						PRINTFORMW 엉덩이에 삽입되는 오싹한 쾌감에 사토리의 몸이 파르르 떨렸다
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「아핫...♥ 이, 이 오싹한 느낌...♥ 중독될거 같아...♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ELSE
+				;볼일 있을까
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「힛♥ 어, 엉덩이 기분 좋아아♥」
+						PRINTFORMW 「이상해♥ 이상한데도♥ 기분 좋아아♥」
+					CASE 1
+						PRINTFORM 「
+						CALL ST_CLIMAX(RAND:3 + RAND:3 + 1)
+						PRINTFORMW 」
+				ENDSELECT
+			ENDIF
+		ELSE
+			IF MARK:반발각인 == 3 && !TALENT:연인
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「어, 엉덩이는...」
+						PRINTFORMW 「...이런게 뭐가 좋다는 거야...」
+					CASE 1
+						PRINTFORMW 「이런거로 기분 좋아질리 없잖아...」
+				ENDSELECT
+			ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이상한 느낌...이런데로 기분 좋아지다니, 그럴리가 없잖아요...」
+						PRINTFORMW 개발되지 않은 항문으론 이물감만 느껴지는 모양이다
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSEIF TALENT:섹프||TALENT:애욕
+				SELECTCASE RAND:2
+					CASE 0
+						PRINTFORMW 「이...이건 아직도 적응이 안되는걸...」
+					CASE 1
+						PRINTFORMW 「으긋...」
+						PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+				ENDSELECT
+			ELSE
+				PRINTFORMW 「으긋...」
+				PRINTFORMW 사토리는 입을 앙다물고 항문의 이물감을 견뎌내고 있다
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;71,양구멍삽입 ; 생략
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_71
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_71_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_71_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;생각할 수 있는 분기가 너무 많기 때문에 지문의 대략적인 분기만
+	;연속
+	IF PREVCOM == SELECTCOM
+		PRINTFORMW 
+		RETURN 1
+	;주인V삽입→조수A삽입
+	ELSEIF TCVAR:100 == MASTER
+		PRINTFORMW 
+		RETURN 1
+	;주인A삽입→조수V삽입
+	ELSEIF TCVAR:101 == MASTER
+		PRINTFORMW 
+		RETURN 1
+	;조수V삽입→주인A삽입
+	ELSEIF TCVAR:100 == ASSI
+		PRINTFORMW 
+		RETURN 1
+	;조수A삽입→주인V삽입
+	ELSEIF TCVAR:101 == ASSI
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;72,삽입G스팟자극
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_72
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_72_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_72_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		;전회 사정했다
+		RETURN 1
+	ENDIF
+	;기본세트
+	IF ABL:V감각 >= 3
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「힛♥ 사, 살살♥ 너무 쎄♥」
+					PRINTFORMW 사토리는 연신 몰려오는 쾌감에 허덕이고 있었다
+				CASE 1
+					PRINTFORMW 「아, 안쪽♥ 민감한데엣♥ 찌르지 맛♥」
+					PRINTFORMW G스팟을 집중 자극해주자 사토리의 몸이 움찔움찔 떨렸다
+			ENDSELECT
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「앗♥ 거, 거깃♥ 민감한댓♥ 찌르면 안대엣♥」
+					PRINTFORMW G스팟을 자극당하자 사토리는 새된 교성을 흘려댔다
+				CASE 1
+					PRINTFORMW 「아♥ 안쪽♥ 그렇게 찌르면♥ 히이이잇♥」
+					PRINTFORMW 사토리는 몰려오는 쾌감에 움찔움찔 떨고 있다
+				CASE 2
+					PRINTFORMW 「히잇♥ 거, 거기 너무 쎄에♥ 그만♥」
+					PRINTFORMW 민감한 질내를 자극당하는 쾌락에 사토리의 허리가 통통 튀었다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「힛♥ 거, 거깃♥ 너무 좋아아♥」
+					PRINTFORMW 「좀 더♥ 좀 더 찔러줘엇♥」
+					PRINTFORMW 사토리는 지나친 쾌감에 몸을 움찔움찔 떨면서도 더더욱 쾌락을 탐하고 있었다
+				CASE 1
+					PRINTFORMW 「아♥ 안쪽♥ 그렇게 찌르면♥ 히이이잇♥」
+					PRINTFORMW 사토리는 몰려오는 쾌감에 움찔움찔 떨고 있다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「거, 거기느은♥ 민감♥ 한댓♥」
+					PRINTFORMW 사토리는 지나친 쾌감에 말조차 제대로 할 수 없는 모양이었다
+				CASE 1
+					PRINTFORMW 「히잇♥ 거, 거기 너무 쎄에♥ 그만♥」
+					PRINTFORMW 민감한 질내를 자극당하는 쾌락에 사토리의 허리가 통통 튀었다
+			ENDSELECT
+		ENDIF
+	ELSE
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「읏...♥ 응읏...♥」
+					PRINTFORMW 부끄러운지 입을 앙다물고 신음을 참고 있는 사토리였다
+				CASE 1
+					PRINTFORMW 「거, 거깃♥ 찌르지 마...흐읏...♥」
+					PRINTFORMW G스팟을 공략해주자 사토리의 입에서 야릇한 한숨이 새어나왔다
+			ENDSELECT
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「읏♥ 거, 거기 찌르는거 이상해...♥」
+					PRINTFORMW G스팟을 건드리자 사토리의 몸이 움찔움찔 떨렸다
+				CASE 1
+					PRINTFORMW 「히잇♥ 자, 잠깐♥ 조금만 살살...읏♥」
+					PRINTFORMW 민감한 부분을 연신 자극해주니 질벽이 움찔움찔 조여들어왔다
+				CASE 2
+					PRINTFORMW 「이, 이거...♥ 뭔가, 기분 좋아...♥」
+					PRINTFORMW 사토리는 야릇한 한숨을 흘렸다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「이, 이거 좋아...♥ 안쪽 누르는거, 기분 좋아...♥」
+					PRINTFORMW 사토리는 칠칠치 못한 표정으로 쾌감을 즐기고 있었다
+				CASE 1
+					PRINTFORMW 「하읏...♥ 거, 거기...♥ 좀 더 찔러줘...♥」
+					PRINTFORMW 사토리는 야릇한 한숨을 흘리며 속삭여왔다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「읏...♥」
+					PRINTFORMW 사토리는 부끄러운지 신음을 눌러 죽였다
+				CASE 1
+					PRINTFORMW 「거, 거깃♥ 찌르지 마...흐읏...♥」
+					PRINTFORMW G스팟을 공략해주자 사토리의 입에서 야릇한 한숨이 새어나왔다
+			ENDSELECT
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+
+;==================================================
+;73,삽입자궁구자극
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_73
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_73_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_73_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;PRINTFORMW 「」
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:100 == PLAYER
+		;전회 사정했다
+		PRINTFORM 「
+		CALL ST_CLIMAX_HARD(RAND:4 + RAND:4 + 2)
+		PRINTFORMW 」
+		RETURN 1
+	ENDIF
+	;기본세트
+	IF ABL:V감각 >= 3
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「힛♥ 안댓♥ 자궁 찌르면 안대엣♥」
+					PRINTFORMW 자궁구를 두드려주자 사토리의 몸이 팔딱팔딱 튀어올랐다
+				CASE 1
+					PRINTFORMW 「읏♥ 그, 그만♥ 거긴 안♥ 대엣♥」
+					PRINTFORMW 지나친 쾌락에 숨이 넘어갈것만 같은 사토리였다
+			ENDSELECT
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「히끅?! 거♥ 거거는♥」
+					PRINTFORMW 「안대에♥ 찔러올리지 마앗♥」
+					PRINTFORMW 자궁을 짓눌리는 쾌감에 사토리의 표정이 흐물흐물 풀어져 갔다
+				CASE 1
+					PRINTFORMW 「히잇...♥ 그, 그거...♥ 머리가 멍해져...♥」
+					PRINTFORMW 「이상해...♥ 그치만, 기분 좋아...♥」
+					PRINTFORMW 사토리는 완전한 암컷의 표정으로 %마스터를% 가만히 바라보고 있다
+				CASE 2
+					PRINTFORM 「
+					CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+					PRINTFORMW 」
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「힛♥ 거, 거깃♥ 너무 좋아아♥」
+					PRINTFORMW 「좀 더♥ 좀 더 박아줘엇♥」
+					PRINTFORMW 사토리는 지나친 쾌감에 몸을 움찔움찔 떨면서도 더더욱 쾌락을 탐하고 있었다
+				CASE 1
+					PRINTFORMW 「아♥ 안쪽♥ 그렇게 찌르면♥ 히이이잇♥」
+					PRINTFORMW 사토리는 몰려오는 쾌감에 움찔움찔 떨고 있다
+				CASE 2
+					PRINTFORM 「
+					CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+					PRINTFORMW 」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「으긋♥ 그, 그만♥ 거긴 안댓♥」
+					PRINTFORMW 사토리는 자궁이 짓눌리는 쾌감에 숨을 헐떡이고 있다
+				CASE 1
+					PRINTFORM 「
+					CALL ST_CLIMAX_HARD(RAND:3 + RAND:3 + 1)
+					PRINTFORMW 」
+			ENDSELECT
+		ENDIF
+	ELSE
+		IF MARK:반발각인 == 3 && !TALENT:연인
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「그, 그렇게 거칠게 찌른다고, 기분 좋을리가아...♥」
+					PRINTFORMW 사토리의 목소리에 약간씩 신음소리가 섞여들었다 
+				CASE 1
+					PRINTFORMW 「으긋...♥ 배가 찌부려져...♥」
+					PRINTFORMW 「아플뿐 일텐데...왜...좋은거야...♥」
+			ENDSELECT
+		ELSEIF TALENT:연인||TALENT:연모||TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「거, 거기♥ 그렇게 찌르며언...♥」
+					PRINTFORMW 자궁구를 찔리는 쾌감에 사토리의 표정이 흐트러져 갔다
+				CASE 1
+					PRINTFORMW 「읏♥ 배, 배가 찌부려져...♥」
+					PRINTFORMW 「조금만, 살살...으읏♥」
+				CASE 2
+					PRINTFORMW 「히잇♥ 자, 잠깐♥ 조금만 살살...읏♥」
+					PRINTFORMW 자궁을 짓누르듯이 찔러주자 질내가 꾹꾹 조여들어왔다
+			ENDSELECT
+		ELSEIF TALENT:섹프||TALENT:애욕
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「이, 이거 좋아...♥ 자궁 두드리는거, 기분 좋아...♥」
+					PRINTFORMW 사토리는 칠칠치 못한 표정으로 쾌감을 즐기고 있었다
+				CASE 1
+					PRINTFORMW 「하읏...♥ 거, 거기...♥ 좀 더 찔러줘...♥」
+					PRINTFORMW 사토리는 야릇한 한숨을 흘리며 속삭여왔다
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+				CASE 0
+					PRINTFORMW 「읏...♥」
+					PRINTFORMW 사토리는 부끄러운지 신음을 눌러 죽였다
+				CASE 1
+					PRINTFORMW 「배...배가 찌부려져 버려...♥」
+					PRINTFORMW 「그런데도...뭔가...기분 좋은게...♥」
+					PRINTFORMW 사토리는 자궁구를 개발 당하는 쾌감에 움찔움찔 떨었다
+			ENDSELECT
+		ENDIF
+	ENDIF
+	RETURN 1
+ENDIF
+RETURN 1
+;==================================================
+;74,S형결장자극
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_74
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_74_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_74_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		;전회 사정했다
+		IF TCVAR:104
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;기본세트
+	;연모
+	PRINTFORM 「
+	CALL ST_CLIMAX_HARD(RAND:4 + RAND:4 + 2)
+	PRINTFORMW 」
+	RETURN 1
+ENDIF
+RETURN 1
+;==================================================
+;75,질내자극
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_75
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_75_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_75_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		;전회 사정했다
+		IF TCVAR:104
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;기본세트
+	PRINTFORM 「
+	CALL ST_CLIMAX_HARD(RAND:4 + RAND:4 + 2)
+	PRINTFORMW 」
+	RETURN 1
+ENDIF
+RETURN 1
+;==================================================
+;이하 생략
+;==================================================
+;==================================================
+;77,난쟁이오나홀(신묘마루 전용?)
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_77
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_77_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_77_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;삽입계속
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && TCVAR:101 == PLAYER
+		;전회 사정했다
+		IF TCVAR:104
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+	;기본세트
+	;연모
+	IF TALENT:연모
+		PRINTFORMW 
+		RETURN 1
+	;괘씸3
+	ELSEIF MARK:괘씸각인 == 3
+		PRINTFORMW 
+		RETURN 1
+	;그 이외
+	ELSE
+		PRINTFORMW 
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;95,유사삽입
+;==================================================
+@M_KOJO_MESSAGE_COM_K49_95
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K49_95_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K49_95_1
+;-------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;처음
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	ENDIF
+	;-------------------------------------------------
+	;기입체크
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	;처녀이거나 무자각비처녀인 경우
+	IF LOCAL:1 && TFLAG:194
+		;욕정이 높을 경우의 분기
+		IF TFLAG:194 == 2
+			PRINTFORMW 
+			RETURN 1
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	;비처녀
+	ELSE
+		;연모
+		IF TALENT:연모
+			PRINTFORMW 
+			RETURN 1
+		;그 이외
+		ELSE
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1

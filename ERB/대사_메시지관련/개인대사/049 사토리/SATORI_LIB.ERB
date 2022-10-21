@@ -1,0 +1,1293 @@
+﻿@아나타평가
+#DIM 점수
+#DIM 점수하락
+#DIM 추가된팬티
+#DIM 추가시간경험
+점수 = 0
+점수하락 = 0
+추가된팬티 = 0
+추가시간경험 = 0
+;--------------
+추가시간경험 = EXP:MASTER:시간경험 - CFLAG:3002
+추가된팬티 = FLAG:획득팬티총수 - CFLAG:3001
+CFLAG:3001 = FLAG:획득팬티총수
+CFLAG:3002 = EXP:MASTER:시간경험
+IF 추가된팬티 > 0
+    점수 += ((추가된팬티+1)/2)
+ELSE
+    점수하락++
+ENDIF
+점수 += ABL:MASTER:욕망
+점수 += MAX(EXP:MASTER:수면간경험/10,5)
+점수 += MAX(EXP:MASTER:가학쾌락경험/10,5)
+점수 += MAX(EXP:MASTER:시간경험/10,5)
+점수 += MAX(추가시간경험,5)
+점수 += MARK:반발각인/3
+점수 += MARK:시간각인
+점수 += MARK:고통각인
+점수 += CFLAG:3101
+;----
+점수하락 += 2 * TALENT:MASTER:무지
+점수하락 += 2 * TALENT:MASTER:유치
+IF TALENT:MASTER:연령 == -1
+    점수하락 += 1
+ENDIF
+점수하락 += CFLAG:3100
+점수하락 += TALENT:사모
+점수하락 += 2 * TALENT:섹프
+점수하락 += 3 * TALENT:연모
+점수하락 += 3 * TALENT:애욕
+점수하락 += MAX(CFLAG:호감도/100, 5)
+점수하락 += MAX(CFLAG:신뢰도/100, 5)
+점수하락 += MAX(EXP:애정경험/10, 3)
+점수하락 += MAX(EXP:데이트경험/10, 3)
+IF TALENT:연인 == 1
+    점수하락 += 3
+ELSEIF TALENT:연인 == 2
+    점수하락 += 4
+ENDIF
+
+IF 점수 > 점수하락
+    점수 -= 점수하락
+ELSE
+    점수 = 0
+ENDIF
+;------
+SELECTCASE 점수
+    CASE IS < 4
+        ;좋은사람
+        CFLAG:3000 = 0
+    CASE IS < 10
+        ;나쁜사람
+        CFLAG:3000 = 1
+    CASE IS >= 10
+        ;우와아...뭐야 이 인간...이상해...
+        CFLAG:3000 = 2
+ENDSELECT
+;------
+CFLAG:4100 = EXP:MASTER:삽입경험
+CFLAG:4101 = EXP:MASTER:사정경험
+;------
+RETURN 0
+
+@SATORI_DOWN(ARG,ARG:1)
+FOR LOCAL, 1, GET_TARGETNUM() + 1
+	SIF TARGET:LOCAL <= 0
+		CONTINUE
+    ;자는 애는 제외
+	SIF CFLAG:(TARGET:LOCAL):수면
+		CONTINUE
+    ;연인이나 연모면 제외
+    SIF TALENT:(TARGET:LOCAL):연인||TALENT:(TARGET:LOCAL):연모
+        CONTINUE
+    ;사토리 본인은 제외
+    SIF LOCAL == 49
+        CONTINUE
+    ;여기에 없으면 안돼
+    SIF CFLAG:(TARGET:LOCAL):현재위치 != CFLAG:현재위치
+        CONTINUE
+	TARGET = TARGET:LOCAL
+	CFLAG:(TARGET:LOCAL):호감도 -= ARG
+    CFLAG:(TARGET:LOCAL):신뢰도 -= ARG:1
+NEXT
+
+@SATORI_BULLINGYOU
+SELECTCASE RAND:5
+    CASE 0
+        PRINTFORMW 「흠...여자를 범하고 다니는 생각은 그만 둬 주셨음 합니다만...」
+    CASE 1
+        PRINTFORMW 「어라, '지금 당장 여기 사람들 모두 범해버릴까' 라고요?」
+    CASE 2
+        PRINTFORMW 「흐으음...흠흠...'가슴 만지고 싶다'...흐으으음....」
+    CASE 3
+        PRINTFORMW 「정말이지, 그렇게 야한 생각만 하고 다니시지 마시라고요」
+        PRINTDATA
+            DATA 「길 가다가 바람 불어서 모두의 치마가 뒤집어 진다거나...음음...」
+            DATA 「여기 사람들 전부다 집에 가두고 범한다니...흐으음...」
+            DATA 「'여기서 바로 자위해 버릴까'라고요?...헤에...」
+        ENDDATA
+    CASE 4
+        PRINTFORMW 「그런 생각은 옳지 않아요...」
+        PRINTFORMW 「정말, 여기서 곧바로 옷 벗고 야한짓 한다니...변태도 정도가 있지 않나요?」
+ENDSELECT
+PRINTFORMW 사토리는 히죽거리며 거짓말을 하기 시작했다!
+PRINTFORMW 「아아...정말이지, 답도 없는 사람이군요?」
+PRINTFORMW 「...푸흡...뭔가요, 불만이라도 있나요?」
+PRINTFORMW 사토리는 능글맞은 얼굴로 %마스터를% 바라보고 있다...
+CALL SATORI_DOWN(10,5)
+
+@불륜폭로이벤트
+#DIM 불륜아님계산
+;----------
+;불륜 폭로 이벤트
+;----------
+LOCAL = 0
+불륜아님계산 = 0
+불륜아님계산 += EXP:38:V성교경험 - 코이시V경험
+불륜아님계산 += EXP:38:A성교경험 - 코이시A경험
+불륜아님계산 += EXP:36:V성교경험 - 오린V경험
+불륜아님계산 += EXP:36:A성교경험 - 오린A경험
+불륜아님계산 += EXP:37:V성교경험 - 오쿠V경험
+불륜아님계산 += EXP:37:A성교경험 - 오쿠A경험
+IF CFLAG:4000 == 0&&TALENT:연인&&RAND:3 == 0&&불륜아님계산
+	IF EXP:MASTER:삽입경험 - 불륜아님계산 > CFLAG:4100
+		PRINTFORMW 「......」
+		PRINTFORMW 「저기, %MASTERNAME:49%, 그 애랑은 기분 좋았나요?」
+		PRINTFORMW 사토리는 담담한 목소리로 물어왔지만 어쩐지 어깨를 바들바들 떨고 있다
+		PRINTFORMW 성큼성큼 다가온 사토리는 촉촉한 눈으로 %마스터를% 바라보고 있다...
+		PRINTFORMW 「저로는 만족할수 없나요? 저는 안되나요?」
+		PRINTFORMW 「...앞으로는, 다른 사람이랑 야한짓 금지니까...쌓일때마다 저한테만, 네?」
+		CFLAG:4001++
+		LOCAL = 1
+	ENDIF
+ENDIF
+CFLAG:4100 = EXP:MASTER:삽입경험
+코이시V경험 = EXP:38:V성교경험
+코이시A경험 = EXP:38:A성교경험
+오쿠V경험 = EXP:37:V성교경험
+오쿠A경험 = EXP:37:A성교경험
+오린V경험 = EXP:36:V성교경험
+오린A경험 = EXP:36:A성교경험
+;-----------------------
+RETURN LOCAL
+@ST_삽입경험증가(ARG)
+EXP:MASTER:삽입경험 += ARG
+EXP:V성교경험 += ARG
+CFLAG:4100++
+
+
+@ST_LIVETOGETHER
+#FUNCTION
+
+IF MAIN_MAP == 9&&CFLAG:초기위치 == 919&&CFLAG:MASTER:초기위치 == 919
+    ;지저에서 사토리방에 같이 산다
+    RETURNF 1
+ELSEIF MAIN_MAP == 9&&CFLAG:초기위치 == 919&&(CFLAG:MASTER:초기위치 >= 901 && CFLAG:MASTER:초기위치 >= 930)
+    ;지령전에 산다
+    RETURNF 2
+ELSEIF (MAIN_MAP == 13 || MAIN_MAP == 14) &&저택거주:[[사토리]]:0
+    ;주택, 저택에서 같이 산다
+    RETURNF 3
+ELSEIF FLAG:더부살이캐릭터 == [[사토리]]
+    ;더부살이중이다(오두막에 산다)
+    RETURNF 3
+ELSEIF MAIN_MAP == 9&&CFLAG:초기위치 == 919
+    ;지저에 살지만 지령전엔 안 삼
+    RETURNF 4
+ELSE
+    ;따로 삼
+    RETURNF 0
+ENDIF
+
+;리턴값 1-가까워 2- 조금 거리 있어
+@ST_NEARBYHOME
+#FUNCTION
+#DIM DYNAMIC 지금위치
+#DIM DYNAMIC 사토리집
+
+사토리집 = CFLAG:49:초기위치
+지금위치 = CFLAG:49:현재위치
+IF 사토리집 == 919
+    ;사토리는 사토리 방에 살아
+    IF 지금위치 >= 901 && 지금위치 <= 930
+        ;지령전 안에 있어
+        RETURNF 1
+    ELSEIF 지금위치 >= 931 && 지금위치 <= 948
+        ;지저에 있어
+        RETURNF 2
+    ENDIF
+       
+ELSE
+    IF 지금위치 <= 사토리집 + 5 && 지금위치 >= 사토리집 - 5
+        ;5번 이내
+        RETURNF 1
+    ELSEIF 지금위치 <= 사토리집 + 10 && 지금위치 >= 사토리집 - 10
+        ;10번 이내
+        RETURNF 2
+    ENDIF
+ENDIF
+RETURNF 0
+
+@지령전안
+#FUNCTION
+#DIM DYNAMIC 지금위치
+#DIM DYNAMIC 사토리집
+
+지금위치 = CFLAG:49:현재위치
+IF 지금위치 >= 901 && 지금위치 <= 930
+    ;지령전 안에 있어
+    RETURNF 1
+ENDIF
+RETURNF 0
+
+@ST_NEARBYYOU
+#FUNCTION
+#DIM DYNAMIC 지금위치
+#DIM DYNAMIC 사토리집
+
+사토리집 = CFLAG:49:현재위치
+지금위치 = CFLAG:MASTER:현재위치
+IF 사토리집 == 919
+    ;사토리는 사토리 방
+    IF 지금위치 >= 901 && 지금위치 <= 930
+        ;지령전 안에 있어
+        RETURNF 1
+    ELSEIF 지금위치 >= 931 && 지금위치 <= 948
+        ;지저에 있어
+        RETURNF 2
+    ENDIF
+ELSE
+    IF 지금위치 <= 사토리집 + 5 && 지금위치 >= 사토리집 - 5
+        ;5번 이내
+        RETURNF 1
+    ELSEIF 지금위치 <= 사토리집 + 10 && 지금위치 >= 사토리집 - 10
+        ;10번 이내
+        RETURNF 2
+    ENDIF
+ENDIF
+RETURNF 0
+
+@ST_동거요청
+#FUNCTION
+
+IF !TALENT:연인&&!TALENT:연모
+    RETURNF 0
+ENDIF
+
+IF MARK:반발각인 == 3
+    RETURNF 0
+ENDIF
+
+IF CFLAG:신뢰도 < 1000
+    RETURNF 0
+ENDIF
+
+IF 저택거주:49:0
+    RETURNF 0
+ENDIF
+
+RETURNF 1
+
+@ST_저택빈방
+#FUNCTION
+FOR LOCAL,15,19
+    IF !저택방주인(LOCAL)
+        RETURNF LOCAL
+    ENDIF
+NEXT
+IF ITEM:주택 >= 3
+    FOR LOCAL,24,29
+        IF !저택방주인(LOCAL)
+            RETURNF LOCAL
+        ENDIF
+    NEXT
+ENDIF
+IF ITEM:주택 >= 4
+    FOR LOCAL,34,39
+        IF !저택방주인(LOCAL)
+            RETURNF LOCAL
+        ENDIF
+    NEXT
+ENDIF
+RETURNF 0
+
+@ST_야스합의
+#FUNCTION
+
+RESULT = 0
+GETBIT CFLAG:기정사실, 1
+IF RESULT == 1
+    RETURNF 1
+ENDIF
+RETURNF 0
+
+@ST_내방중
+#FUNCTION
+IF CFLAG:현재위치 / 100 != CFLAG:초기위치
+    RETURNF 1
+ENDIF
+RETURNF 0
+
+@ST_중복대사(ARGS)
+
+IF ARGS == "연인첫출산"
+    PRINTFORMW 「흐읏...아...아파...배가 찢어질거 같아...」
+    PRINTFORMW 늦은 밤, 사토리는 진통에 괴로워하고 있었다
+    IF ST_NEARBYYOU() == 1
+        PRINTFORMW 「도..도와줘...너무 아파...죽을거 같아...」
+        PRINTFORMW 가까스로 근처에 있던 %마스터를% 깨운 사토리는 그렁그렁한 눈으로 %마스터를% 바라보고 있었다
+        PRINTFORMW 이미 터진 양수를 보아하니 곧 아이가 나오려는 모양이다
+        PRINTFORMW 「흐긋...으으윽....제발...뭐라도 좀...해줘....」
+        PRINTFORMW 진통에 사토리의 얼굴은 일그러져 갔다
+        PRINTFORML
+        PRINTFORMW 따뜻한 물수건과 소독된 가위를 준비시켜놓고 사토리의 손을 붙잡았다
+        PRINTFORMW 괜찮다고 연신 속삭이는 말은 고통에 찬 신음소리에 묻혀 사라져갔다
+        PRINTFORMW 첫 출산의 고통에 괴로워 하는 사토리는 %마스터의% 손을 강하게 붙들어 맨 채 끊어질락 말락한 호흡을 이어나갔다
+        PRINTFORML
+        PRINTFORMW 이윽고 아이의 머리가 서서히 산도를 타고 내려왔다
+        PRINTFORMW 미끄러지듯 스르륵 나오는 아이에겐 탯줄과 검붉은 서드아이가 함께 있었다
+        PRINTFORMW 「흐읏...하아...하아...끄...끝난...건가요...」
+        PRINTFORMW 탯줄을 잘라낸 아이를 품에 살포시 안고보니 사토리는 완전히 탈진해 가는 숨을 겨우 내쉬고 있을 뿐이었다
+        PRINTFORMW 지나친 고통에 괴로웠었는지, 그 표정은 초췌했다
+        PRINTFORM 그럼에도 아이를 품에 들려주자 
+        IF CFLAG:생해금
+            PRINTFORMW 희미한 웃음을 지어보였다...
+            PRINTFORMW 「...역시 귀엽네요...%사마스터랑% 제 아이니까...당연하겠지만...」
+        ELSE
+            PRINTFORMW 무척 착잡한 표정으로 아이를 바라보고 있다...
+            PRINTFORMW 「...이제사 실감되는거지만, 저...이제부터 엄마인거네요...」
+            PRINTFORMW 「...기분이 묘해...」
+        ENDIF
+        PRINTFORMW 「...저기, 이름은...뭐로 지을까요?」
+    ELSE
+        PRINTFORMW 그러나 도와줄 사람도 근처에 없는 터라 홀로 견뎌낼 수 밖에 없었다
+        PRINTFORMW 고통속에서 연신 신음하며 도움을 청하려 밖으로 나가려 했지만 출산 직전의 몸은 조금도 움직일 수가 없었다
+        IF CFLAG:신사거주 == 0
+            IF CFLAG:38:신사거주 == 0
+                CALL ST_중복대사("초산코이시도움")
+                IF CFLAG:생해금
+                    PRINTFORMW 「그럼...당연하지, 나랑 %사마스터의% 아인데...후후...」
+                    PRINTFORMW 사토리는 괴로운 와중에도 특유의 웃음을 지어보이며 아이를 바라보았다
+                ELSE
+                    PRINTFORMW 「그..렇겠지...후후...그럴거야...응...」
+                    PRINTFORMW 「아무리 그래도...나랑, %사마스터의% 아이니까...」
+                    PRINTFORMW 사토리는 착잡한 표정으로 아이를 바라보았다...
+                ENDIF
+            ELSEIF CFLAG:36:신사거주 == 0
+                CALL ST_중복대사("초산오린도움")
+                IF CFLAG:생해금
+                    PRINTFORMW 「나랑 %사마스터의% 아인데...당연히 귀엽지...후후...」
+                    PRINTFORMW 사토리는 괴로운 와중에도 특유의 웃음을 지어보이며 아이를 바라보았다
+                ELSE
+                    PRINTFORMW 「그..렇겠지...후후...그럴거야...응...」
+                    PRINTFORMW 「아무리 그래도...나랑, %사마스터의% 아이니까...」
+                    PRINTFORMW 사토리는 착잡한 표정으로 아이를 바라보았다...
+                ENDIF
+            ELSEIF CFLAG:37:신사거주 == 0
+                CALL ST_중복대사("초산오쿠도움")
+                IF CFLAG:생해금
+                    PRINTFORMW 「당연하지... 나랑 %사마스터의% 아인데...후후...」
+                    PRINTFORMW 사토리는 괴로운 와중에도 특유의 웃음을 지어보이며 아이를 바라보았다
+                ELSE
+                    PRINTFORMW 「그..렇겠지...후후...그럴거야...응...」
+                    PRINTFORMW 「아무리 그래도...나랑, %사마스터의% 아이니까...」
+                    PRINTFORMW 사토리는 착잡한 표정으로 아이를 바라보았다...
+                ENDIF
+            ELSE
+                PRINTFORMW 아무도 도와주지 않은채, 홀로 쓸쓸히 아이를 낳은 사토리는, 끊어질것만 같은 의식 속에서 탯줄을 끊고 아이를 품에 안았다
+            ENDIF
+            PRINTFORMW 「...이름, 뭐로 할까...」
+        ELSE
+            PRINTFORMW 아무도 도와주지 않은채, 홀로 쓸쓸히 고통을 견디다 아이를 낳은 사토리는, 끊어질것만 같은 의식 속에서 탯줄을 끊고 아이를 품에 안았다
+            PRINTFORM 초췌한 표정으로 울어대는 아이를 바라본 사토리는
+            IF CFLAG:생해금
+                PRINTFORMW 희미한 웃음을 지어보였다...
+            ELSE
+                PRINTFORMW 무척 착잡한 표정이다...
+            ENDIF
+        ENDIF
+    ENDIF
+ELSEIF ARGS == "초산코이시도움"
+    PRINTFORML
+    PRINTFORMW 『어..언니? 괜찮아?』
+    PRINTFORMW 요행히 코이시가 이변을 눈치채고 들어와주었다
+    PRINTFORML
+    PRINTFORMW 간신히 입술을 움직인 사토리는 코이시를 시켜 아이를 받을 준비를 시켰다
+    PRINTFORMW 따뜻하게 데운 물수건과 소독한 가위, 그리고 바구니를 들고온 코이시는 제 언니의 머리를 부드럽게 쓰다듬어주기 시작했다
+    PRINTFORMW 「..코...코이시, 그런거, 그만하고...으그긋...어느정도 나온건지...좀, 봐줘...」
+    PRINTFORMW 『으응...머리가 보여, 아, 나온다나온다...』
+    PRINTFORMW 코이시는 산도를 따라 미끄러져 내려오는 아이를 받아내 사토리에게 안겨주었다
+    PRINTFORMW 「아하핫...끄..끝난거지? 응?」
+    PRINTFORMW 『끝이야...아마도? 아무튼간에 굉장히 귀여운 아이네~』
+ELSEIF ARGS == "초산오린도움"
+    PRINTFORML
+    PRINTFORMW 「사토리님...괜찮으세요...?」
+    PRINTFORMW 요행히 오린이 이변을 눈치채고 들어와 주었다
+    PRINTFORML
+    PRINTFORMW 상황을 파악한 오린은 서둘러 아이를 받을 채비를 하였다
+    PRINTFORMW 겨우 안심한 사토리는 오린의 손을 묵묵히 붙잡은채 가는 신음소리를 흘리고 있었다
+    PRINTFORMW 「으극...오...오린, 이거, 언제까지 해야하는거야...?」
+    PRINTFORMW 『이제 곧...아아, 머리가 나와요, 조금만 더...』
+    PRINTFORMW 산도를 따라 미끄러져 내려오는 아이를 받아낸 오린은 부드럽게 요람에 싸서 사토리의 품에 안겨주었다
+    PRINTFORMW 『축하드려요 사토리님, 귀엽고 사랑스러운 아이네요』
+ELSEIF ARGS == "초산오쿠도움"
+     PRINTFORML
+    PRINTFORMW 「사토리님...괜찮으세요...?」
+    PRINTFORMW 요행히 오쿠가 이변을 눈치채고 들어와 주었다
+    PRINTFORML
+    PRINTFORMW 상황을 파악한 오쿠는 화들짝 놀라 뛰어다니며 아이를 받을 채비를 하였다
+    PRINTFORMW 영 신용이 안가지만 제대로 도구를 챙겨온 걸 본 사토리는 호들갑을 떠는 오쿠의 손을 묵묵히 붙잡은채 가는 신음소리를 흘리고 있었다
+    PRINTFORMW 「으극...오...오쿠, 아직 멀은거니..?」
+    PRINTFORMW 『머리, 머리가 나왔으니까...이제 곧...아아, 나와요, 조금만 더...』
+    PRINTFORMW 산도를 따라 미끄러져 내려오는 아이를 받아낸 오쿠는 부드럽게 요람에 싸서 사토리의 품에 안겨주었다
+    PRINTFORMW 『축하해요 사토리님! 엄청 건강하고 귀여운 아이에요』
+ELSEIF ARGS == "팬티어디에쓰려고"
+    ; EVENT NO.6 (어디에 쓰려고?)
+    IF MARK:반발각인 == 3
+        IF TALENT:연인
+            PRINTFORMW 「그런데 팬티는 가져다 어따 쓰실려고요?」
+        ELSE
+            PRINTFORMW 「근데 그렇게 모아서 도대체 뭘 하려는건가요?」
+        ENDIF
+    ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+        PRINTFORMW 「근데...이렇게 모은 팬티는 어쩔 생각인가요?」
+    ELSEIF TALENT:섹프
+       PRINTFORMW 「근데, 팬티는 모아서 어디에 쓰시려고요?」
+    ELSE
+        PRINTFORMW 「...그래서 팬티는 모아다 뭐에 쓰려는건가요?」
+    ENDIF
+    PRINTFORML [0] 소장한다
+    PRINTFORML [1] 신님께 바친다
+    PRINTFORML [2] 딸감으로 삼는다
+    PRINTFORML [3] 판다
+    INPUT
+    SELECTCASE RESULT
+        CASE 0
+            PRINTFORMW 「...늘 생각해봤지만 역시 변태라니깐요」
+            PRINTFORMW 사토리는 얼굴을 붉혔다
+        CASE 1
+            PRINTFORMW 「...그, 팬티신이란 신은 도대체 왜 그걸...하아...」
+            PRINTFORMW 「...그래서 뭘 빌건가요?」
+            PRINTFORML [1] 사토리가 너무 격렬하므로 어떻게든 해 달라고
+            PRINTFORML [2] 사토리가 좀 더 H하게 되도록
+            PRINTFORML [3] 사토리와의 자식보정
+            PRINTFORML [4] 사토리의 감도를 올리고 싶어
+            PRINTFORML [5] 사토리에게 미움받아 버린 것을 어떻게든 하고 싶다
+            PRINTFORML [6] 사토리에게 약점잡혀 버린 것을 어떻게든 하고 싶다
+            INPUT
+            IF RESULT == 1
+                IF MARK:반발각인 == 3
+                    IF TALENT:연인
+                        PRINTFORMW 「그...그랬나요...? 죄송해요...」
+                        PRINTFORMW 「...으으으...」
+                        PRINTFORMW 사토리는 얼굴을 새빨갛게 물들이고 있다...
+                    ELSE
+                        PRINTFORMW 「......」
+                        PRINTFORMW 사토리는 얼굴을 새빨갛게 물들이더니, 이내 고개를 돌려버렸다...
+                    ENDIF
+                ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+                    PRINTFORMW 「에에...그...그렇게 격렬했나요...」
+                    PRINTFORMW 「다음부턴 자제할게요...」
+                    PRINTFORMW 사토리는 얼굴을 붉혔다...
+                ELSEIF TALENT:섹프
+                    PRINTFORMW 「에- 그치만 그정도로 하지 않으면 개운해지질 않는걸요」
+                    PRINTFORMW 사토리는 입술을 삐죽였다
+                ELSE
+                    PRINTFORMW 「그, 그랬나요...그렇게 격렬하게 하진 않은거 같은데...」
+                    PRINTFORMW 「...다음부턴 주의 할게요? 다음부터는 말이죠....」
+                ENDIF
+                IF RAND:5 == 0
+                    ABL:새드끼 = MAX(ABL:새드끼 - 1 , 0)
+                    JUEL:우월 = 0
+                    EXP:가학쾌락경험 = MAX(EXP:가학쾌락경험 - 200, 0)
+                ENDIF
+            ELSEIF RESULT == 2
+                IF MARK:반발각인 == 3
+                    IF TALENT:연인
+                        PRINTFORMW 「에...여기서 더 야하게...」
+                        PRINTFORMW 「...그러는 편이 좋은가요...?」
+                    ELSE
+                        PRINTFORMW 「...추잡해...」
+                        PRINTFORMW 사토리는 깬다는듯이 %마스터를% 바라보고 있다...
+                    ENDIF
+                ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+                    PRINTFORMW 「에...더 야하게라니...」
+                    PRINTFORMW 「...노력은 해볼게요...」
+                ELSEIF TALENT:섹프
+                    PRINTFORMW 「더 야하게 만들어 달라니...」
+                    PRINTFORMW 「정말이지, 변태라니깐요」
+                    PRINTFORMW 사토리는 키득거리며 %마스터를% 바라보고 있다...
+                ELSE
+                    PRINTFORMW 「...더 야하게라니, 무슨...하아...」
+                    PRINTFORMW 사토리는 깬다는듯이 %마스터를% 바라보고 있다...
+                ENDIF
+            ELSEIF RESULT == 3
+                IF MARK:반발각인 == 3
+                    IF TALENT:연인
+                        PRINTFORMW 「...아...아이라니...으...」
+                        IF TALENT:임신||CFLAG:육아인원수
+                            PRINTFORMW 「...그렇게 원한다면...으으응...」
+                            PRINTFORMW 「이번 아이가 제대로 자라고 난 뒤에, 또 한번...♥」
+                            CFLAG:자식보정 += 6
+                        ELSEIF CFLAG:생해금 == 2
+                            PRINTFORMW 「...그...그렇게 원하신다면야...」
+                            PRINTFORMW 「...열심히 해야겠네요...후후...」
+                            PRINTFORMW 사토리는 정욕에 찬 얼굴을 하고 있다...
+                            CFLAG:자식보정 += 5
+                        ELSE
+                            PRINTFORMW 「아이라니...그건...아직...」
+                            PRINTFORMW 「...으으...그렇게나 원하는거예요...?」
+                            PRINTFORMW 조금 깬다는듯한 표정으로 이쪽을 응시하고 있다...
+                        ENDIF
+                    ELSE
+                        IF TALENT:임신||CFLAG:육아인원수
+                            PRINTFORMW 「지금도 힘든데 여기서 더라니, 하아...」
+                            PRINTFORMW 「조금은 제 생각도 해주시면 안되나요?」
+                        ELSEIF CFLAG:생해금 == 2
+                            PRINTFORMW 「...그렇게나 원하는건가요?」
+                            PRINTFORMW 「그렇게 말해도 마냥 기쁘진 않지만...」
+                        ELSE
+                           PRINTFORMW 「...하아...」
+                           PRINTFORMW 사토리는 머리를 짚었다...
+                        ENDIF
+                    ENDIF
+                ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+                    PRINTFORMW 「...아...아이라니...으...」
+                    IF TALENT:임신||CFLAG:육아인원수
+                        PRINTFORMW 「...그렇게 원한다면...으으응...」
+                        PRINTFORMW 「이번 아이가 제대로 자라고 난 뒤에, 또 한번...♥」
+                        CFLAG:자식보정 += 6
+                    ELSEIF CFLAG:생해금 == 2
+                        PRINTFORMW 「...그...그렇게 원하신다면야...」
+                        PRINTFORMW 「...열심히 해야겠네요...후후...」
+                        PRINTFORMW 사토리는 정욕에 찬 얼굴을 하고 있다...
+                        CFLAG:자식보정 += 5
+                    ELSE
+                        PRINTFORMW 「아이라니...그건...아직...」
+                        PRINTFORMW 「...으으...그렇게나 원하는거예요...?」
+                        PRINTFORMW 조금 깬다는듯한 표정으로 이쪽을 응시하고 있다...
+                    ENDIF
+                ELSE
+                    IF TALENT:임신||CFLAG:육아인원수
+                        PRINTFORMW 「...이미 있는것도 힘들다구요?」
+                        PRINTFORMW 사토리는 투덜거렸다...
+                    ELSEIF CFLAG:생해금 == 2
+                        PRINTFORMW 「으음...그렇게나 원하실줄은...」
+                        PRINTFORMW 사토리는 곤란해보이는 표정이다...
+                        CFLAG:자식보정 += 5
+                    ELSE
+                        PRINTFORMW 「아이라니...그런건 부부 사이에서나 만드는거예요」
+                        PRINTFORMW 「...그렇게 봐도 안된다고요?」
+                        PRINTFORMW 사토리는 조금 깬다는듯한 표정으로 이쪽을 응시하고 있다...
+                    ENDIF
+                ENDIF
+            ELSEIF RESULT == 4
+                IF MARK:반발각인 == 3
+                    IF TALENT:연인
+                        PRINTFORMW 「에에...더 민감하게라니...」
+                        PRINTFORMW 「그렇게 점점 민감하게 만들면 나중가선 일상에 지장이 갈지도 모르겠네요...」
+                    ELSE
+                        PRINTFORMW 「...그런짓은 하지 말아줬으면 하는데」
+                        PRINTFORMW 「왜냐니...제 몸이 장난감인가요?」
+                        PRINTFORMW 사토리는 투덜거리고 있다...
+                    ENDIF
+                ELSEIF TALENT:연인||TALENT:연모||TALENT:사모||TALENT:애욕
+                    PRINTFORMW 「더 민감하게 만들고 싶다니, 참...」
+                    PRINTFORMW 「그런거 없이도 %사마스터가% 만져주기만 하면 충분한데」
+                ELSEIF TALENT:섹프
+                    PRINTFORMW 「더욱 민감하게라니...으음...」
+                    PRINTFORMW 「그랬다간 걸어다니기도 힘들어지는게 아닐까요?」
+                    PRINTFORMW %마스터의% 말에 사토리는 키득키득 웃었다
+                ELSE
+                    PRINTFORMW 「...으으...」
+                    PRINTFORMW 사토리는 떨떠름한 표정으로 %마스터를% 바라보고 있다...
+                ENDIF
+            ELSEIF RESULT == 5
+                IF MARK:반발각인 == 3
+                    IF TALENT:연인
+                        PRINTFORMW 「...그, 그런가요...」
+                        PRINTFORMW 「그런건 차라리 말로 하는게 좋을거 같지만...」
+                        PRINTFORMW 사토리는 조금 무안한듯이 %마스터를% 바라보고 있다...
+                    ELSE
+                        PRINTFORMW 「...하아...」
+                        PRINTFORMW 「그런거에 의지해야만 사과할수 있는건가요?」
+                        PRINTFORMW 사토리는 조금 짜증 난 모양이다...
+                    ENDIF
+                ELSE
+                    PRINTFORMW 「...그, 그런가요...」
+                    PRINTFORMW 「그런건 차라리 말로 하는게 좋을거 같지만...」
+                    PRINTFORMW 사토리는 조금 무안한듯이 %마스터를% 바라보고 있다...
+                ENDIF
+                CFLAG:5000 ++
+            ELSEIF RESULT == 6
+                PRINTFORMW 「아...그거...」
+                PRINTFORMW 「그렇게나 힘들어하실줄은 몰랐는데...」
+                PRINTFORMW 「...미안해요?」
+                PRINTFORMW 사토리는 옅게 웃어보였다...
+                IF RAND:5 == 0
+                    PRINTFORMW 「뭐어...전의 그건 없던 거로 해드릴게요」
+                    PRINTFORMW 「그걸로 계속 트집잡기도 뭐하고」
+                    PRINTFORMW 사토리는 %마스터의% 손을 부드럽게 잡아왔다...
+                    CFLAG:약점잡음 = 0
+                ENDIF
+            ELSE
+                PRINTFORMW 「...원하는게 없다는건가요? 아님 말하기 곤란한거?」
+                PRINTFORMW 「뭐어...굳이 읽어보진 않겠지만...이상한건 빌지 말아주세요」
+            ENDIF
+        CASE 2
+            IF MARK:반발각인 == 3
+                IF TALENT:연인
+                    PRINTFORMW 「...그런거라면 팬티같은거 말고 직접 해도 괜찮잖아요...」
+                    PRINTFORMW 사토리는 입술을 삐죽였다...
+                ELSE
+                    PRINTFORMW 「...왠지 주기 싫어지는걸요」
+                    PRINTFORMW 사토리는 떨떠름한 표정으로 %마스터를% 바라보고 있다
+                ENDIF
+            ELSE
+                PRINTFORMW 「......」
+                PRINTFORMW 사토리의 얼굴이 새빨게졌다
+            ENDIF
+        CASE 3
+            
+            IF MARK:반발각인 == 3
+                IF TALENT:연인
+                    PRINTFORMW 「...팔다니, 제 팬티를...그런...」
+                    PRINTFORMW 사토리는 얼굴을 붉혔다
+                ELSE
+                    PRINTFORMW 「...하아...추잡해...」
+                    PRINTFORMW 「그런걸 팔 생각을 하는 %MASTERNAME:49%도, 그걸 사가는 사람도...」
+                    PRINTFORMW 사토리는 짜증이 가득찬 얼굴로 %마스터를% 바라보고 있다..
+                ENDIF
+            ELSE
+                PRINTFORMW 「...판다니...으으...그런걸 사가는 사람이 있다는건가요?」
+                PRINTFORMW 사토리의 얼굴이 새빨게졌다
+            ENDIF
+        CASE 6974
+            PRINTFORMW 머릿속으로 팬티를 으적으적 씹어먹는 상상을 하자, 사토리가 질겁했다
+        CASEELSE
+            PRINTFORMW 「대답 안 한다는건...별 생각없이 그냥 가지고 싶어서, 라는건가요」
+            PRINTFORMW 「굳이 읽진 않을게요, 읽고 싶진 않아...」
+    ENDSELECT
+ELSEIF ARGS == "오랜만에외출처에서마주침"
+    IF TALENT:연인
+        SELECTCASE RAND:2
+            CASE 0
+                IF CFLAG:MASTER:현재위치 / 100 == 9
+                    PRINTFORMW 「...오랜만이에요」
+                    PRINTFORMW 「그동안 바빴나요? 한번쯤은 얼굴 비춰줘도 좋았을텐데」
+                    PRINTFORMW 사토리는 굉장히 삐친것 같은 표정으로 말해왔다
+                ELSE
+                    PRINTFORMW 「...이런데서 다 보네요」
+                    PRINTFORMW 「오랜만이에요, 요 근래 얼굴도 못 봤는데」
+                    PRINTFORMW 사토리는 굉장히 삐친것 같은 말투다
+                ENDIF
+            CASE 1
+                IF CFLAG:MASTER:현재위치 / 100 == 9
+                    PRINTFORMW 「아, 드디어 와줬다」
+                    PRINTFORMW 사토리는 %마스터를% 보곤 종종걸음으로 달려와 품에 안겼다
+                    PRINTFORMW 「걱정했다구요? 무슨일이라도 있나...」
+                    PRINTFORMW 「다음부터는 이렇게 오래 내버려두지 마세요...」
+                ELSE
+                    PRINTFORMW 「어라, 여기서 뵐 줄은 몰랐는데」
+                    PRINTFORMW 「그동안 코빼기도 안 보이더니 이런데 있을줄이야」
+                    PRINTFORMW 사토리는 냉담한 표정으로 말해왔다
+                ENDIF
+        ENDSELECT
+    ELSEIF TALENT:연모||TALENT:애욕
+        SELECTCASE RAND:2
+            CASE 0
+                IF CFLAG:MASTER:현재위치 / 100 == 9
+                    PRINTFORMW 「앗...」
+                    PRINTFORMW %마스터를% 발견한 사토리는 일순간 굉장히 기뻐보이는 표정을 지어보였다
+                    PRINTFORMW 「아, 안녕하세요, 오랜만이에요?」
+                    PRINTFORMW 그러나 이내 평소의 표정으로 되돌아갔다
+                ELSE
+                    PRINTFORMW 「어라, 이런데서 뵐줄은 몰랐는데」
+                    PRINTFORMW 「오랜만이에요, 그동안 잘 지냈나요?」
+                    PRINTFORMW 사토리는 묘하게 밝아보이는 표정으로 말을 건내왔다
+                ENDIF
+            CASE 1
+                IF CFLAG:MASTER:현재위치 / 100 == 9
+                    PRINTFORMW 「오랜만이에요 %MASTERNAME:49%, 잘 지내셨나요?」
+                    PRINTFORMW 사토리는 %마스터를% 발견하곤 종종걸음으로 다가와 말을 걸어왔다
+                ELSE
+                    PRINTFORMW 「희한한 데서 만났네요, 잘 지냈나요?」
+                    PRINTFORMW 「요새 잘 안보이길래 무슨 일이라도 있었나 해서요」
+                ENDIF
+        ENDSELECT
+    ENDIF
+ENDIF
+
+
+
+@ST_대사섞기( 대사량 , 기출0 = -1 , 기출1 = -1 , 기출2 = -1 , 기출3 = -1 , 기출4 = -1 , 기출5 = -1)
+#FUNCTION
+#DIM DYNAMIC 대사량
+#DIM DYNAMIC 기출0
+#DIM DYNAMIC 기출1
+#DIM DYNAMIC 기출2
+#DIM DYNAMIC 기출3
+#DIM DYNAMIC 기출4
+#DIM DYNAMIC 기출5
+#DIM DYNAMIC 대사배열, 1000 ;설마 이거보다 많겠어
+VARSET LOCAL
+IF 대사량 == 0
+    RETURNF 0
+ENDIF
+FOR LOCAL, 0 , 대사량
+    IF !GROUPMATCH(LOCAL,기출0,기출1,기출2,기출3,기출4,기출5)
+        대사배열:(LOCAL:1) = LOCAL
+        LOCAL:1++
+    ENDIF
+NEXT
+LOCAL:1-- ;포인터는 항상 이번에 숫자가 찍힐곳을 가리키므로, 배열의 끝자리를 나타내기 위해 -1 해준다
+
+IF LOCAL:1 <= 0
+    ;대사가 하나보다 적었다면 첫번째 대사가 되도록
+    RETURNF 0
+ENDIF
+
+FOR LOCAL,0,LOCAL:1
+    LOCAL:2 = RAND:(LOCAL:1 + 1)
+    SWAP 대사배열:LOCAL , 대사배열:(LOCAL:2)
+NEXT
+
+RETURNF 대사배열:0
+
+@ST_야스준비
+BASE:49:무드 = MAX(9000,BASE:49:무드)
+BASE:49:이성 = MIN(500,BASE:49:이성)
+
+
+@ST_KS대사W(ARGS)
+SIF FLAG:구상색
+    CALL M_KOJO_COLOR_K38
+PRINTFORMW %ARGS%
+SIF FLAG:구상색
+    RESETCOLOR
+
+@ST_KS대사L(ARGS)
+SIF FLAG:구상색
+    CALL M_KOJO_COLOR_K38
+PRINTFORML %ARGS%
+SIF FLAG:구상색
+    CALL M_KOJO_COLOR_K49
+
+
+;연인플래그에 있던 함수를 파쿠리, 적당히 개조한다
+@ST_HOW_연인()
+#FUNCTION
+VARSET LOCAL
+FOR LOCAL, 1, CHARANUM
+	IF LOCAL == FLAG:역극
+		CONTINUE
+	ELSEIF IS_연인(LOCAL) || IS_아내(LOCAL)
+		LOCAL:1 ++
+	ENDIF
+NEXT
+;스침상대 연인 스텍기능이 남아있을 때 // 솔직히 모브코 연인이 몇이나 있을까 싶지마는
+LOCAL:1 += 스친연인수
+RETURNF LOCAL:1
+
+
+@ST_HUMI()
+#FUNCTION
+IF GROUPMATCH(TIME:5,4,5,6,7,8)
+    RETURNF 1
+ENDIF
+
+
+@ST_DATEPLACE(ARGS)
+#FUNCTIONS
+IF ARGS == "요괴의 산(산록)"
+    RETURNF "요괴의 산"
+ELSEIF ARGS == "요괴의 산(산정)"
+    RETURNF "요괴의 산"
+ELSE
+    RETURNF ARGS
+ENDIF
+
+
+
+
+
+@ST_CLIMAX(ARG)
+;ARG = 길이
+#DIM POST_CURR
+#DIM NOW_CURR
+POST_CURR = -1
+REPEAT ARG
+    $절정리롤
+    NOW_CURR = RAND:17
+    IF NOW_CURR == POST_CURR
+        GOTO 절정리롤
+    ELSE
+        POST_CURR = NOW_CURR
+    ENDIF
+    SELECTCASE NOW_CURR
+        CASE 0
+            PRINT 앗
+        CASE 1
+            PRINT 아흣
+        CASE 2
+            PRINT 응긋
+        CASE 3
+            PRINT 응앗
+        CASE 4
+            PRINT 아앗
+        CASE 5
+            PRINT 아
+        CASE 6
+            PRINT 응읏
+        CASE 7
+            PRINT 흐으
+        CASE 8
+            PRINT 흐읏
+        CASE 9
+            PRINT 후으으
+        CASE 10
+            PRINT 아핫
+        CASE 11
+            PRINT 하아
+        CASE 12
+            PRINT 하앗
+        CASE 13
+            PRINT 하아앙
+        CASE 14
+            PRINT 흐앗
+        CASE 15
+            PRINT 읏
+        CASE 16
+            PRINT 흣
+    ENDSELECT
+    SELECTCASE RAND:6
+        CASE 0
+            PRINT ...
+        CASE 1
+            PRINT ,
+        CASE 2
+            PRINT ♥ 
+        CASE 3
+            PRINT ...! 
+        CASE 4
+            PRINT ..
+        CASE 5
+            PRINT ! 
+    ENDSELECT
+REND
+SELECTCASE 17
+    CASE 0
+        PRINT 앗
+    CASE 1
+        PRINT 아흣
+    CASE 2
+        PRINT 응긋
+    CASE 3
+        PRINT 응앗
+    CASE 4
+        PRINT 아앗
+    CASE 5
+        PRINT 아
+    CASE 6
+        PRINT 응읏
+    CASE 7
+        PRINT 흐으
+    CASE 8
+        PRINT 흐읏
+    CASE 9
+        PRINT 후으으
+    CASE 10
+        PRINT 아핫
+    CASE 11
+        PRINT 하아
+    CASE 12
+        PRINT 하앗
+    CASE 13
+        PRINT 하아앙
+    CASE 14
+        PRINT 흐앗
+    CASE 15
+        PRINT 읏
+    CASE 16
+        PRINT 흣
+ENDSELECT
+SELECTCASE RAND:5
+    CASE 0
+        PRINT ...
+    CASE 1
+        PRINT ♥ 
+    CASE 2
+        PRINT ...! 
+    CASE 3
+        PRINT ..
+    CASE 4
+        PRINT ! 
+ENDSELECT
+
+
+@ST_CLIMAX_HARD(ARG)
+;ARG = 길이
+#DIM POST_CURR
+#DIM NOW_CURR
+POST_CURR = -1
+REPEAT ARG
+    $절정리롤
+    NOW_CURR = RAND:17
+    IF NOW_CURR == POST_CURR
+        GOTO 절정리롤
+    ELSE
+        POST_CURR = NOW_CURR
+    ENDIF
+    SELECTCASE NOW_CURR
+        CASE 0
+            PRINT 앗
+        CASE 1
+            PRINT 아흣
+        CASE 2
+            PRINT 응긋
+        CASE 3
+            PRINT 응앗
+        CASE 4
+            PRINT 아앗
+        CASE 5
+            PRINT 아
+        CASE 6
+            PRINT 응읏
+        CASE 7
+            PRINT 흐으
+        CASE 8
+            PRINT 흐읏
+        CASE 9
+            PRINT 후으으
+        CASE 10
+            PRINT 아핫
+        CASE 11
+            PRINT 하아
+        CASE 12
+            PRINT 하앗
+        CASE 13
+            PRINT 하아앙
+        CASE 14
+            PRINT 흐앗
+        CASE 15
+            PRINT 읏
+        CASE 16
+            PRINT 흣
+    ENDSELECT
+    SELECTCASE RAND:5
+        CASE 1
+            PRINT ,
+        CASE 2
+            PRINT ...! 
+        CASE 3
+            PRINT ! 
+        CASEELSE
+            PRINT  
+    ENDSELECT
+REND
+SELECTCASE 18
+    CASE 0
+        PRINT 앗
+    CASE 1
+        PRINT 아흣
+    CASE 2
+        PRINT 응긋
+    CASE 3
+        PRINT 응앗
+    CASE 4
+        PRINT 아앗
+    CASE 5
+        PRINT 아
+    CASE 6
+        PRINT 응읏
+    CASE 7
+        PRINT 흐으
+    CASE 8
+        PRINT 흐읏
+    CASE 9
+        PRINT 후으으
+    CASE 10
+        PRINT 아핫
+    CASE 11
+        PRINT 하아
+    CASE 12
+        PRINT 하앗
+    CASE 13
+        PRINT 하아앙
+    CASE 14
+        PRINT 흐앗
+    CASE 15
+        PRINT 읏
+    CASE 16
+        PRINT 흣
+    CASE 17
+        PRINT 오곡
+ENDSELECT
+SELECTCASE RAND:5
+    CASE 0
+        PRINT ...
+    CASE 1
+        PRINT ♥ 
+    CASE 2
+        PRINT ...! 
+    CASE 3
+        PRINT ..
+    CASE 4
+        PRINT ! 
+ENDSELECT
+
+@ST_펠라치오사운드(ARG)
+;ARG = 길이
+#FUNCTIONS
+#DIM POST_CURR
+#DIM NOW_CURR
+POST_CURR = -1
+VARSET LOCALS
+REPEAT ARG
+    $절정리롤
+    NOW_CURR = RAND:7
+    IF NOW_CURR == POST_CURR
+        GOTO 절정리롤
+    ELSE
+        POST_CURR = NOW_CURR
+    ENDIF
+    SELECTCASE NOW_CURR
+        CASE 0
+            LOCALS += "츕"
+        CASE 1
+            LOCALS += "츄릅"
+        CASE 2
+            LOCALS += "낼름"
+        CASE 3
+            LOCALS += "핥짝"
+        CASE 4
+            LOCALS += "쪽"
+        CASE 5
+            LOCALS += "쪼옥"
+        CASE 6
+            LOCALS += "아음"
+    ENDSELECT
+    SELECTCASE RAND:3
+        CASE 0
+            LOCALS += "..."
+        CASE 1
+            LOCALS += ","
+        CASE 2
+            IF TALENT:연인 || TALENT:섹프 || TALENT:애욕
+                LOCALS += "♥ "
+            ELSE
+                LOCALS += " "
+            ENDIF
+    ENDSELECT
+REND
+RETURNF LOCALS
+
+@ST_펠라치오()
+#DIM DYNAMIC 정음여부
+#DIM DYNAMIC 정액좋아하지않음
+;PRINTFORML 「」
+IF EXP_UP(15,TARGET) == NOWEX:PLAYER:사정 * 3
+    정음여부 = 1
+ENDIF
+IF EXP:정음경험 < 20
+    정액좋아하지않음 = 1
+ENDIF
+
+
+IF MARK:반발각인 == 3&&!TALENT:연인
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「읍?! 으븝...음...」
+            IF 정음여부
+                IF 정액좋아하지않음
+                    PRINTFORML 「놀라서 삼켜버렸잖아, 으...」
+                ELSE
+                    PRINTFORML 사토리는 조용히 입 안에 남은 정액을 음미하고 있는 모양이다
+                ENDIF
+            ELSE
+                PRINTFORML 「푸하...이렇게나 많이 싸다니, 입 안에서 정액냄새가 가시질 않는걸」
+                PRINTFORML 사토리는 투덜거리며 입 안의 정액을 뱉어냈다
+            ENDIF
+        CASE 1
+            IF 정음여부
+                IF 정액좋아하지않음
+                    PRINTFORML 「으븝...코, 코에 정액이 넘어가서...이상한 냄새...」
+                ELSE
+                    PRINTFORML 「입안이 아직도 끈적한거 같아...냄새...」
+                    PRINTFORML 「...그거에 살짝 기쁜 이유는 도대체 뭘까」
+                ENDIF
+            ELSE
+                IF 정액좋아하지않음
+                    PRINTFORML 「으븝?!! 읏...으븝...푸하...수, 숨 막혀 죽는줄 알았네...」
+                ELSE
+                    PRINTFORML 「으엑...입 안에서 정액 냄새가 빠지질 않잖아...」
+                    PRINTFORML 사토리는 투덜거리며 입안의 정액을 뱉어냈다
+                ENDIF
+            ENDIF
+        CASE 2
+            IF 정음여부
+                PRINTFORML 「응...♥」
+                PRINTFORML 한순간 굉장히 요염한듯한 미소를 띄워보인 사토리였다
+                PRINTFORML 「...뭐, 뭐예요, 치울 방법이 없으니 마신것 뿐인데요? 그런 표정 지을리가...으으...」
+                PRINTFORML 뒤늦게 툴툴거리지만, 그 모습은 선명히 기억되고 있었다
+            ELSE
+                PRINTFORML 「...조금은 시원해 졌으려나? 그러면 이번엔 어떤걸 할까...」
+            ENDIF
+    ENDSELECT
+ELSEIF TALENT:연인
+	SELECTCASE RAND:4
+        CASE 0
+            PRINTFORML 「에헤헤...방금 막 사정한 자지, 입 안에서 꿈틀거리는게 귀여워♥」
+            PRINTFORML 사토리는 입 안에서 요도구를 낼름낼름 핥아 남은 정액을 긁어모으고 있다
+        CASE 1
+            IF 정음여부
+                PRINTFORML 「...엄청 진해, 몸 속이 정액으로 가득차는 느낌이야...♥」
+                PRINTFORML 사토리는 황홀한 표정을 지으며 요도구에 남은 정액을 빨이들이고 있다
+            ELSE
+                PRINTFORML 「에헤헤...♥ 사정할때 귀두 괴롭히는거, 기분 좋아-♥ 기분 좋은게 계속 읽혀져서 좋아...♥」
+                PRINTFORML 사토리는 멍한 표정으로 계속 움찔거리고 있다
+            ENDIF
+        CASE 2
+            IF 정음여부
+                PRINTFORML 「입 안에 이렇게나 가득 싸다니...후후, 기분이 이상해져 버리는걸요?」
+                PRINTFORML 사토리는 입 안 가득 들어찬 끈적한 정액을 과시하고는 그대로 꿀꺽 삼켜버렸다
+            ELSE
+                PRINTFORML 「이렇게나 많다니, 숨 막히는줄 알았잖아요」
+                PRINTFORML 「제 입이 그렇게나 좋던가요? 후후♥」
+            ENDIF
+        CASE 3
+            PRINTFORML 「...후후, 이렇게나 가득 싸시다니」
+            PRINTFORML 「제 입이 그렇게나 좋았나요?」
+    ENDSELECT
+ELSEIF TALENT:연모||TALENT:사모||TALENT:애욕
+	SELECTCASE RAND:3
+        CASE 0
+            IF 정음여부
+                PRINTFORML 「츄르릅...낼름...음...」
+                IF 정액좋아하지않음
+                    PRINTFORML 「역시 맛은 없네...그래도 기분 좋았어...」
+                ELSE
+                    PRINTFORML 「에헤헤...♥ 사정할때 귀두 괴롭히는거, 기분 좋아-♥ 기분 좋은게 계속 읽혀져서 좋아...♥」
+                    PRINTFORML 사토리는 멍한 표정으로 계속 움찔거리고 있다
+                ENDIF
+            ELSE
+                PRINTFORML 「...후후, 이렇게나 가득 싸시다니」
+                PRINTFORML 「제 입이 그렇게나 좋았나요?」
+            ENDIF
+        CASE 1
+            PRINTFORML 「입 안이 정액으로 가득해...그렇게나 느껴주시다니, 조금은 기쁠지도」
+            PRINTFORML 사토리는 즐거운듯한 표정이다
+        CASE 2
+            PRINTFORML 「자지가 민감해진게 느껴져...이거, 엄청 기분 좋아...♥」
+            PRINTFORML 사토리는 막 사정한 자지를 낼름낼름 핥으며 황홀한 표정을 짓고 있다
+    ENDSELECT
+ELSEIF TALENT:섹프
+    ;여기선 보통 정액 좋아함인게 기본일것이라고 생각, 아니더라도 야한짓을 좋아하니 정액 싫어하는 티는 안 낼것
+	SELECTCASE RAND:3
+        CASE 0
+            IF 정음여부
+                PRINTFORML 「으음- 이 진한 냄새, 참을수가 없다니깐...」
+                PRINTFORML 「...아직 정액 많이 남았죠? 벌써 지치면 안돼요?」
+                PRINTFORML 사토리는 막 사정한 자지를 낼름낼름 핥아보이고 있다
+            ELSE
+                PRINTFORML 「헤헤...이러케나 많이 나왔네요...」
+                PRINTFORML 사토리는 조금 우쭐한듯한 표정을 지어보였다
+                PRINTFORML 아직도 입에서 정액이 조금씩 흘러 내려오고 있다
+            ENDIF
+        CASE 1
+            IF 정음여부
+                PRINTFORML 「츄르르릅...츕, 츄릅...」
+                PRINTFORML 사토리는 요도에 남은 정액까지 탐욕스럽게 빨아올리고 있다
+            ELSE
+                PRINTFORML 「입 안이 정액 냄새로 가득- 후후후, 기분 좋았나요?」
+                PRINTFORML 사토리는 요염한 시선으로 %마스터를% 올려다 보고 있다
+            ENDIF
+        CASE 2
+            IF 정음여부
+                PRINTFORML 「입 안에 이렇게나 가득 싸다니...후후, 기분이 이상해져 버리는걸요?」
+                PRINTFORML 사토리는 입 안 가득 들어찬 끈적한 정액을 과시하고는 그대로 꿀꺽 삼켜버렸다
+            ELSE
+                PRINTFORML 「이렇게나 많다니, 숨 막히는줄 알았잖아요」
+                PRINTFORML 「제 입이 그렇게나 좋던가요? 후후♥」
+            ENDIF
+    ENDSELECT
+ELSE
+	SELECTCASE RAND:3
+        CASE 0
+            PRINTFORML 「읍?! 으븝...으에에...」
+            IF 정음여부
+                PRINTFORML 「정액, 마셔버렸다...」
+            ELSE
+                IF 정액좋아하지않음
+                    PRINTFORML 「지독한 맛...적응이 안돼...」
+                ELSE
+                    PRINTFORML 「정액 흘려버렸다...」
+                ENDIF
+            ENDIF
+        CASE 1
+            IF 정액좋아하지않음
+                PRINTFORML 「읍...?! 케헥, 쿨럭...입 안이 이상해지는 기분인걸...」
+                PRINTFORML 「이런거 마실수 없어...」
+            ELSEIF 정음여부
+                PRINTFORML 「음...츄릅, 꿀꺽...」
+                PRINTFORML 사토리는 뿜어져나오는 백탁액을 낼름낼름 핥아 먹고 있다
+            ELSE
+                PRINTFORML 「아, 정액...흘려버렸다」
+                PRINTFORML 「...어째서 아깝다는 생각이 드는걸까, 나도 참 이상해진거 같네」
+            ENDIF
+        CASE 2
+            PRINTFORML 「으에...이상한 맛...」
+            IF 정음여부 && !정액좋아하지않음
+                PRINTFORML 「하지만 그게 좋단 말이지...희한해」
+            ELSEIF 정음여부
+                PRINTFORML 「...그래도 이젠 조금 적응된것도 같고?」
+            ELSE
+                PRINTFORML 「혀가 이상해지는 느낌인걸」
+            ENDIF
+    ENDSELECT
+ENDIF
+
+@ST_위험일
+#FUNCTION
+IF (CFLAG:생리주기 == 7||CFLAG:생리주기 == 8||TCVAR:강제배란)&&!TCVAR:피임약&&!TALENT:임신&&CFLAG:생해금 != 2&&!TEQUIP:MASTER:콘돔
+    RETURNF 1
+ELSE
+    RETURNF 0
+ENDIF
+
+@ST_KISS(ARG)
+PRINTFORM %ST_KISS_MAIN(ARG)%
+
+@ST_KISS_MAIN(RANGE)
+#FUNCTIONS
+#DIM DYNAMIC RANGE
+#DIM DYNAMIC NOW_CURR
+#DIM POST_CURR
+POST_CURR = -1
+VARSET LOCALS
+FOR LOCAL, 0, RANGE
+    $키스리롤
+    NOW_CURR = RAND:11
+    IF NOW_CURR == POST_CURR
+        GOTO 키스리롤
+    ELSE
+        POST_CURR = NOW_CURR
+    ENDIF
+    SELECTCASE NOW_CURR
+        CASE 0
+            LOCALS += "응"
+        CASE 1
+            LOCALS += "츕"
+        CASE 2
+            LOCALS += "츄웁"
+        CASE 3
+            LOCALS += "쪽"
+        CASE 4
+            LOCALS += "하읍"
+        CASE 5
+            LOCALS += "응읏"
+        CASE 6
+            LOCALS += "쪼옥"
+        CASE 7
+            LOCALS += "쯉"
+        CASE 8
+            LOCALS += "쮸웁"
+        CASE 9
+            LOCALS += "으응"
+        CASE 10
+            LOCALS += "하읍"
+    ENDSELECT
+    SELECTCASE RAND:6
+        CASE 1
+            LOCALS += ","
+        CASE 2
+            LOCALS += "♥ "
+        CASE 3
+            LOCALS += "..."
+        CASE 4
+            LOCALS += "...♥"
+        CASEELSE
+            LOCALS += " "
+    ENDSELECT
+NEXT
+RETURNF LOCALS
