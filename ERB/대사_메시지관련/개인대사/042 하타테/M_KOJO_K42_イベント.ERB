@@ -832,7 +832,7 @@ IF LOCAL
 									PRINTFORML %조사처리(CHILDNAME:42:(TALENT:TARGET:육아중),"를")% 안은 하타테가 웃는 얼굴로 마중나와 주었다.
 									PRINTFORML 「%CHILDNAME:42:(TALENT:TARGET:육아중)%、아빠가 돌아왔어. 다행이네～」
 									PRINTW 
-									PRINTFORML 「후후、%CHILDNAME:42:(TALENT:TARGET:육아중)도 기뻐하고 있어♪」
+									PRINTFORML 「후후、%CHILDNAME:42:(TALENT:TARGET:육아중)%도 기뻐하고 있어♪」
 									PRINTFORML 「오늘은 우리집에서 쉬어가겠지? 차라리 쉬어가는게 좋아.」
 									PRINTW 
 									PRINTFORML 「여기、%조사처리(CHILDNAME:42:(TALENT:TARGET:육아중),"를")% 안아줘」
@@ -3441,7 +3441,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
-		LOCAL:2 = EXP:自慰経験 - EXP:調教自慰経験
+		LOCAL:2 = EXP:자위경험 - EXP:조교자위경험
 		;無知消去イベントあり（표시は一度だけ
 		IF LOCAL:1 >= 25
 		;地の文分岐。書きたい場合は[SKIPSTART][SKIPEND]を削除してください

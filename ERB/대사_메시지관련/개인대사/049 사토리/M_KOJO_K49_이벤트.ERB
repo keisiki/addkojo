@@ -5279,7 +5279,7 @@ IF LOCAL
 					PRINTFORMW 「헤에에...재밌어보이네요...」
 					PRINTFORMW 「다음에 저랑 할때도 그거 해주세요?」
 					PRINTFORMW %마스터를% 빤히 바라보던 사토리는 입맛을 다시며 말하고 있다...
-					PRINTFORMW ...%사토리의% 시선이 부담되어서 더이상 행위를 지속할수 없었다...
+					PRINTFORMW ...사토리의 시선이 부담되어서 더이상 행위를 지속할수 없었다...
 			ENDSELECT
 		ELSE
 			IF CFLAG:3000 == 0
@@ -5586,7 +5586,7 @@ IF LOCAL
 					PRINTFORMW 「왜 그러니 코이시...들어오자마자 그렇게 한숨이고」
 					PRINTFORMW 『언니가 저사람이랑 그렇게 사이좋게 하고 있는걸 보니 내가 답답해서...』
 					IF CFLAG:3000 == 0
-						PRINTFORMW 「너무 뭐라하진 마, %사마스터도% 알고보면 좋은 분이야...」
+						PRINTFORMW 「너무 뭐라하진 마, %MASTERNAME:49%도 알고보면 좋은 분이야...」
 						PRINTFORMW 『.....』
 					ELSE
 						PRINTFORMW 「...뭔 생각인진 알고 있지만 말야...뭐어어...가끔은 이런것도 괜찮잖아...」
@@ -12954,7 +12954,7 @@ IF LOCAL
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && ARG == 4
-		LOCAL:2 = EXP:自慰経験 - EXP:調教自慰経験
+		LOCAL:2 = EXP:자위경험 - EXP:조교자위경험
 		;無知消去イベントあり（表示は一度だけ
 		IF LOCAL:1 >= 25
 		;地の文分岐。書きたい場合は[SKIPSTART][SKIPEND]を削除してください
@@ -18339,7 +18339,7 @@ SIF RESULTS != ""
 @M_KOJO_EVENT_K49_GRAVITY(ARG)
 
 SIF 0
-	TCVAR:引力点 = 0
+	TCVAR:인력점 = 0
 
 ;▼共通設定で使われているサンプル
 [SKIPSTART]

@@ -12,51 +12,51 @@
 @UPDATE_RESET_K68()
 	CLEARBIT CFLAG:68:기정사실 , 1
 	CFLAG:68:호감도 = 0
-	CFLAG:68:信頼度 = 0
-	CFLAG:68:弱み握り = 0
-	CFLAG:68:弱み握られ = 0
+	CFLAG:68:신뢰도 = 0
+	CFLAG:68:약점잡음 = 0
+	CFLAG:68:약점잡힘 = 0
 	CFLAG:68:생해금 = 0
-	CFLAG:68:面識 = 0
-	CFLAG:68:清い交際 = 0
-	CFLAG:68:オナバレ = 0
+	CFLAG:68:안면 = 0
+	CFLAG:68:깨끗한교제 = 0
+	CFLAG:68:딸딸이들킴 = 0
 	CFLAG:68:빡침 = 0
-	CFLAG:68:不機嫌 = 0
-	CFLAG:68:眠姦発覚 = 0
+	CFLAG:68:언짢음 = 0
+	CFLAG:68:면간발각 = 0
 	;CFLAG:68:出産経過日 = 0
-	CFLAG:68:育児人数 = 0
-	CFLAG:68:子供人数 = 0
+	CFLAG:68:육아인원수 = 0
+	CFLAG:68:아이인원수 = 0
 	IF TALENT:68:연인 == 1 && TALENT:MASTER:연인 == 1
 		TALENT:68:연인 = 0
 		TALENT:MASTER:연인 = 0
 	ENDIF
 	
 	;累計정액경험
-	CFLAG:68:累計膣内精液 = 0
-	CFLAG:68:累計アナル精液 = 0
-	CFLAG:68:累計精飲 = 0
-	CFLAG:68:累計ぶっかけ = 0
+	CFLAG:68:누계질내정액 = 0
+	CFLAG:68:누계애널정액 = 0
+	CFLAG:68:누계정음 = 0
+	CFLAG:68:누계뿌려짐 = 0
 	
 	;ファーストキス系 키스경험無し、키스미경험の素質があれば他は初期化しなくても問題ないっぽい?
 	TALENT:68:키스미경험 = 1
 	
 	;陥落
-	TALENT:68:弱味 = 0
+	TALENT:68:약점 = 0
 	TALENT:68:연모 = 0
 	TALENT:68:사모 = 0
 	TALENT:68:음란 = 0
 	TALENT:68:애욕 = 0
-	TALENT:68:セフレ = 0
+	TALENT:68:섹프 = 0
 	;TALENT:68:妊娠 = 0
 	;TALENT:68:育児中 = 0
 	
 	;淫乱系
-	TALENT:68:マゾ = 0
-	TALENT:68:自慰狂い = 0
-	TALENT:68:淫壺 = 0
-	TALENT:68:尻穴狂い = 0
-	TALENT:68:淫乳 = 0
-	TALENT:68:キス魔 = 0
-	TALENT:68:ポルチオ性感 = 0
+	TALENT:68:마조 = 0
+	TALENT:68:자위중독 = 0
+	TALENT:68:음호 = 0
+	TALENT:68:항문광 = 0
+	TALENT:68:음유 = 0
+	TALENT:68:키스마 = 0
+	TALENT:68:포르치오성감 = 0
 	
 	;キャンディ
 	TALENT:68:처녀 = 0
@@ -64,10 +64,10 @@
 	TALENT:68:동물귀 = 0
 	
 	;刻印
-	MARK:68:時姦刻印 = 0
+	MARK:68:시간각인 = 0
 	MARK:68:반발각인 = 0
-	MARK:68:苦痛刻印 = 0
-	MARK:68:快楽刻印 = 0
+	MARK:68:고통각인 = 0
+	MARK:68:쾌락각인 = 0
 	MARK:68:괘씸각인 = 0
 	
 	;ABL初期化

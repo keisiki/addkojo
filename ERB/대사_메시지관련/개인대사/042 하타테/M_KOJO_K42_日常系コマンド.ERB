@@ -751,7 +751,7 @@ IF LOCAL
 							PRINTFORML 「………………그、그치마안、%MASTERNAME:42%가 그렇게 부탁한다면、못해줄 것도 아니지만～…」
 							PRINTFORML 머뭇거리며 하타테가 허벅지 근처를 어루만져왔다…
 							PRINTW 
-							PALAM:欲情 += 100
+							PALAM:욕정 += 100
 						ENDSELECT
 					ENDIF
 				;발렌타인 데이
@@ -3705,7 +3705,7 @@ IF LOCAL
 				PRINTFORML  뾰족한 귀를 손가락으로 만지작 거리자 하타테는 간지러운 듯이 몸을 비틀었다
 				PRINTW 
 			CASE 2
-				PRINTFORML 「앞으로 어떻게 할까ー。%MASTERNAME:42는 뭐하고 싶어？」
+				PRINTFORML 「앞으로 어떻게 할까ー。%MASTERNAME:42%는 뭐하고 싶어？」
 				PRINTFORML 하타테는 %MASTERNAME:42%의 책상다리 위에 올라타 양팔을 잡고 좌우로 흔들고 있었다
 				PRINTW 
 			CASE 3
@@ -4048,7 +4048,7 @@ IF LOCAL
 				PRINTFORML 뾰족한 귀를 손가락으로 만지작 거리자 하타테는 간지러운 듯이 몸을 비틀었다
 				PRINTW 
 			CASE 2
-				PRINTFORML 「앞으로 어떻게 할까ー。%MASTERNAME:42는 뭐하고 싶어？」
+				PRINTFORML 「앞으로 어떻게 할까ー。%MASTERNAME:42%는 뭐하고 싶어？」
 				PRINTFORML 하타테는 %MASTERNAME:42%의 책상다리 위에 올라타 양팔을 잡고 좌우로 흔들고 있었다
 				PRINTW 
 			CASE 3
@@ -9730,9 +9730,9 @@ IF LOCAL
 						PRINTW 「……」
 						PRINTW 「…………」
 						PRINTFORMW 「……밥 잘 챙겨먹고 목욕한 뒤라면、좋아……%UNICODE(0x2665) *1%」
-						SOURCE:液体 += 100
-						SOURCE:欲情 += 300
-						SOURCE:歓楽 += 200
+						SOURCE:액체 += 100
+						SOURCE:욕정 += 300
+						SOURCE:환락 += 200
 					CASEELSE
 						GOTO INPUT_LOOP_OYUHAN2
 					ENDSELECT
